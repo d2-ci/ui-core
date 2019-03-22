@@ -93,6 +93,12 @@ Object.defineProperty(exports, "Menu", {
     return _Menu.default;
   }
 });
+Object.defineProperty(exports, "MenuItem", {
+  enumerable: true,
+  get: function get() {
+    return _Menu.MenuItem;
+  }
+});
 Object.defineProperty(exports, "Radio", {
   enumerable: true,
   get: function get() {
@@ -158,7 +164,7 @@ var _LinearProgress = _interopRequireDefault(require("./LinearProgress"));
 
 var _Logo = _interopRequireWildcard(require("./Logo"));
 
-var _Menu = _interopRequireDefault(require("./Menu"));
+var _Menu = _interopRequireWildcard(require("./Menu"));
 
 var _Radio = _interopRequireDefault(require("./Radio"));
 
