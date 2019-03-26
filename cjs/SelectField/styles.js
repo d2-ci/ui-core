@@ -3,9 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.selectIconStyles = exports.menuOverride = exports.arrowIcon = exports.default = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
+
+var _react = _interopRequireDefault(require("react"));
 
 var _theme = require("../theme.js");
 
@@ -17,38 +19,23 @@ _defaultExport.__hash = "2160295497";
 var _default = _defaultExport;
 exports.default = _default;
 var arrowIcon = {
-  styles: React.createElement(_style.default, {
+  styles: _react.default.createElement(_style.default, {
     id: "1039571365"
   }, "svg.jsx-1039571365{fill:inherit;height:24px;width:24px;vertical-align:middle;pointer-events:none;}"),
   className: "jsx-1039571365"
 };
+exports.arrowIcon = arrowIcon;
 var menuOverride = {
-  styles: React.createElement(_style.default, {
+  styles: _react.default.createElement(_style.default, {
     id: "1122726799"
   }, ".jsx-1122726799{max-height:300px;overflow-y:auto;}"),
   className: "jsx-1122726799"
 };
-var iconStyleDefault = {
-  styles: React.createElement(_style.default, {
-    id: "554943615"
-  }, "svg.jsx-554943615{fill:".concat(_theme.colors.grey700, ";height:24px;width:24px;}")),
-  className: "jsx-554943615"
+exports.menuOverride = menuOverride;
+var selectIconStyles = {
+  styles: _react.default.createElement(_style.default, {
+    id: "1036212399"
+  }, "svg.jsx-1036212399{margin:0;}"),
+  className: "jsx-1036212399"
 };
-var iconStyleValid = {
-  styles: React.createElement(_style.default, {
-    id: "2436197713"
-  }, "svg.jsx-2436197713{fill:".concat(_theme.colors.blue600, ";height:24px;width:24px;}")),
-  className: "jsx-2436197713"
-};
-var iconStyleWarning = {
-  styles: React.createElement(_style.default, {
-    id: "3160157964"
-  }, "svg.jsx-3160157964{fill:".concat(_theme.colors.yellow500, ";height:24px;width:24px;}")),
-  className: "jsx-3160157964"
-};
-var iconStyleError = {
-  styles: React.createElement(_style.default, {
-    id: "1247084451"
-  }, "svg.jsx-1247084451{fill:".concat(_theme.colors.red500, ";height:24px;width:24px;}")),
-  className: "jsx-1247084451"
-};
+exports.selectIconStyles = selectIconStyles;

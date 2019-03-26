@@ -2,24 +2,18 @@ import _JSXStyle from "styled-jsx/style";
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { isPointInRect } from '../utils/math';
 import { Valid, Warning, Error } from '../icons/Status.js';
 import { ArrowUp, ArrowDown } from '../icons/Arrow.js';
+import { createIcon } from '../icons/helpers';
+import { iconStatuses, iconStatusPropType } from '../icons/constants';
 import { colors, fonts } from '../theme.js';
 import Menu from '../Menu';
 import Help from '../Help';
-import styles, { arrowIcon, menuOverride, iconStyleDefault, iconStyleValid, iconStyleWarning, iconStyleError } from './styles.js';
-const statuses = {
-  DEFAULT: 'default',
-  VALID: 'valid',
-  WARNING: 'warning',
-  ERROR: 'error'
-};
+import styles, { arrowIcon, menuOverride, selectIconStyles } from './styles.js';
 const sizes = {
   DEFAULT: 'default',
   DENSE: 'dense'
@@ -29,30 +23,18 @@ const kinds = {
   OUTLINED: 'outlined'
 };
 const statusToIcon = {
-  [statuses.VALID]: React.createElement(Valid, null),
-  [statuses.WARNING]: React.createElement(Warning, null),
-  [statuses.ERROR]: React.createElement(Error, null)
-};
-const icons = {
-  [statuses.DEFAULT]: iconStyleDefault,
-  [statuses.VALID]: iconStyleValid,
-  [statuses.WARNING]: iconStyleWarning,
-  [statuses.ERROR]: iconStyleError
+  [iconStatuses.VALID]: Valid,
+  [iconStatuses.WARNING]: Warning,
+  [iconStatuses.ERROR]: Error
 };
 
-function icon(Icon, action = null, status = statuses.DEFAULT) {
-  if (!Icon) {
-    return null;
-  }
-
-  return React.createElement(Fragment, null, React.createElement(Icon.type, _extends({}, Icon.props, {
-    onClick: action,
-    className: icons[status].className
-  })), icons[status].styles);
-}
-
-function trailIcon(status, trail, fn) {
-  return status !== statuses.DEFAULT ? icon(statusToIcon[status], fn, status) : icon(trail, fn);
+function createTrailIcon(status, trail, fn) {
+  const icon = status !== iconStatuses.DEFAULT ? statusToIcon[status] : trail;
+  const options = {
+    action: fn,
+    className: selectIconStyles.className
+  };
+  return createIcon(icon, options);
 }
 
 function markActive(list, value) {
@@ -217,7 +199,7 @@ class SelectField extends React.Component {
       className: `jsx-${styles.__hash}` + " " + "value"
     }, selected)), React.createElement("div", {
       className: `jsx-${styles.__hash}` + " " + "trail-icon-field"
-    }, this.props.status !== statuses.DEFAULT && trailIcon(this.props.status)), React.createElement("div", {
+    }, this.props.status !== iconStatuses.DEFAULT && createTrailIcon(this.props.status)), React.createElement("div", {
       className: `jsx-${styles.__hash}` + " " + (cx('trail-icon-field', {
         disabled: this.props.disabled
       }) || "")
@@ -232,9 +214,9 @@ class SelectField extends React.Component {
       size: this.props.size,
       onClick: this.onClick,
       className: menuOverride.className
-    })), menuOverride.styles, arrowIcon.styles, React.createElement(_JSXStyle, {
+    })), React.createElement("style", null, menuOverride.styles), React.createElement("style", null, arrowIcon.styles), React.createElement(_JSXStyle, {
       id: styles.__hash
-    }, styles));
+    }, styles), React.createElement("style", null, selectIconStyles.styles));
   }
 
 }
@@ -242,7 +224,7 @@ class SelectField extends React.Component {
 SelectField.defaultProps = {
   size: sizes.DEFAULT,
   kind: kinds.FILLED,
-  status: statuses.DEFAULT,
+  status: iconStatuses.DEFAULT,
   help: '',
   className: '',
   disabled: false,
@@ -264,7 +246,7 @@ SelectField.propTypes = {
   icon: PropTypes.element,
   size: PropTypes.oneOf([sizes.DEFAULT, sizes.DENSE]),
   kind: PropTypes.oneOf([kinds.FILLED, kinds.OUTLINED]),
-  status: PropTypes.oneOf([statuses.DEFAULT, statuses.VALID, statuses.WARNING, statuses.ERROR])
+  status: iconStatusPropType
 };
-export { SelectField, statuses, sizes, kinds };
+export { SelectField, sizes, kinds };
 export default SelectField;

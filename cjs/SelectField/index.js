@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.kinds = exports.sizes = exports.statuses = exports.SelectField = void 0;
+exports.default = exports.kinds = exports.sizes = exports.SelectField = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -19,6 +19,10 @@ var _Status = require("../icons/Status.js");
 
 var _Arrow = require("../icons/Arrow.js");
 
+var _helpers = require("../icons/helpers");
+
+var _constants = require("../icons/constants");
+
 var _theme = require("../theme.js");
 
 var _Menu = _interopRequireDefault(require("../Menu"));
@@ -27,7 +31,7 @@ var _Help = _interopRequireDefault(require("../Help"));
 
 var _styles = _interopRequireWildcard(require("./styles.js"));
 
-var _statusToIcon, _icons;
+var _statusToIcon;
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -51,17 +55,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var statuses = {
-  DEFAULT: 'default',
-  VALID: 'valid',
-  WARNING: 'warning',
-  ERROR: 'error'
-};
-exports.statuses = statuses;
 var sizes = {
   DEFAULT: 'default',
   DENSE: 'dense'
@@ -72,25 +67,15 @@ var kinds = {
   OUTLINED: 'outlined'
 };
 exports.kinds = kinds;
-var statusToIcon = (_statusToIcon = {}, _defineProperty(_statusToIcon, statuses.VALID, _react.default.createElement(_Status.Valid, null)), _defineProperty(_statusToIcon, statuses.WARNING, _react.default.createElement(_Status.Warning, null)), _defineProperty(_statusToIcon, statuses.ERROR, _react.default.createElement(_Status.Error, null)), _statusToIcon);
-var icons = (_icons = {}, _defineProperty(_icons, statuses.DEFAULT, _styles.iconStyleDefault), _defineProperty(_icons, statuses.VALID, _styles.iconStyleValid), _defineProperty(_icons, statuses.WARNING, _styles.iconStyleWarning), _defineProperty(_icons, statuses.ERROR, _styles.iconStyleError), _icons);
+var statusToIcon = (_statusToIcon = {}, _defineProperty(_statusToIcon, _constants.iconStatuses.VALID, _Status.Valid), _defineProperty(_statusToIcon, _constants.iconStatuses.WARNING, _Status.Warning), _defineProperty(_statusToIcon, _constants.iconStatuses.ERROR, _Status.Error), _statusToIcon);
 
-function icon(Icon) {
-  var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-  var status = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : statuses.DEFAULT;
-
-  if (!Icon) {
-    return null;
-  }
-
-  return _react.default.createElement(_react.Fragment, null, _react.default.createElement(Icon.type, _extends({}, Icon.props, {
-    onClick: action,
-    className: icons[status].className
-  })), icons[status].styles);
-}
-
-function trailIcon(status, trail, fn) {
-  return status !== statuses.DEFAULT ? icon(statusToIcon[status], fn, status) : icon(trail, fn);
+function createTrailIcon(status, trail, fn) {
+  var icon = status !== _constants.iconStatuses.DEFAULT ? statusToIcon[status] : trail;
+  var options = {
+    action: fn,
+    className: _styles.selectIconStyles.className
+  };
+  return (0, _helpers.createIcon)(icon, options);
 }
 
 function markActive(list, value) {
@@ -265,7 +250,7 @@ function (_React$Component) {
         className: "jsx-".concat(_styles.default.__hash) + " " + "value"
       }, selected)), _react.default.createElement("div", {
         className: "jsx-".concat(_styles.default.__hash) + " " + "trail-icon-field"
-      }, this.props.status !== statuses.DEFAULT && trailIcon(this.props.status)), _react.default.createElement("div", {
+      }, this.props.status !== _constants.iconStatuses.DEFAULT && createTrailIcon(this.props.status)), _react.default.createElement("div", {
         className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('trail-icon-field', {
           disabled: this.props.disabled
         }) || "")
@@ -282,9 +267,9 @@ function (_React$Component) {
         size: this.props.size,
         onClick: this.onClick,
         className: _styles.menuOverride.className
-      })), _styles.menuOverride.styles, _styles.arrowIcon.styles, _react.default.createElement(_style.default, {
+      })), _react.default.createElement("style", null, _styles.menuOverride.styles), _react.default.createElement("style", null, _styles.arrowIcon.styles), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
-      }, _styles.default));
+      }, _styles.default), _react.default.createElement("style", null, _styles.selectIconStyles.styles));
     }
   }]);
 
@@ -295,7 +280,7 @@ exports.SelectField = SelectField;
 SelectField.defaultProps = {
   size: sizes.DEFAULT,
   kind: kinds.FILLED,
-  status: statuses.DEFAULT,
+  status: _constants.iconStatuses.DEFAULT,
   help: '',
   className: '',
   disabled: false,
@@ -317,7 +302,7 @@ SelectField.propTypes = {
   icon: _propTypes.default.element,
   size: _propTypes.default.oneOf([sizes.DEFAULT, sizes.DENSE]),
   kind: _propTypes.default.oneOf([kinds.FILLED, kinds.OUTLINED]),
-  status: _propTypes.default.oneOf([statuses.DEFAULT, statuses.VALID, statuses.WARNING, statuses.ERROR])
+  status: _constants.iconStatusPropType
 };
 var _default = SelectField;
 exports.default = _default;

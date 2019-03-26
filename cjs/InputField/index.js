@@ -1,7 +1,5 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -9,23 +7,27 @@ exports.default = exports.InputField = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireWildcard(require("react"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _Help = _interopRequireDefault(require("../Help"));
-
 var _Status = require("../icons/Status.js");
 
-var _styles = _interopRequireDefault(require("./styles.js"));
+var _helpers = require("../icons/helpers");
 
 var _theme = require("../theme.js");
+
+var _Help = _interopRequireDefault(require("../Help"));
+
+var _styles = _interopRequireDefault(require("./styles.js"));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -45,56 +47,17 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 var statusToIcon = {
-  valid: _react.default.createElement(_Status.Valid, null),
-  warning: _react.default.createElement(_Status.Warning, null),
-  error: _react.default.createElement(_Status.Error, null)
-};
-var icons = {
-  default: {
-    styles: _react.default.createElement(_style.default, {
-      id: "3033330349"
-    }, "svg.jsx-3033330349{fill:".concat(_theme.colors.grey700, ";height:24px;width:24px;margin-right:8px;}")),
-    className: "jsx-3033330349"
-  },
-  valid: {
-    styles: _react.default.createElement(_style.default, {
-      id: "3522955246"
-    }, "svg.jsx-3522955246{fill:".concat(_theme.colors.blue600, ";height:24px;width:24px;margin-right:8px;}")),
-    className: "jsx-3522955246"
-  },
-  warning: {
-    styles: _react.default.createElement(_style.default, {
-      id: "3520916525"
-    }, "svg.jsx-3520916525{fill:".concat(_theme.colors.yellow500, ";height:24px;width:24px;margin-right:8px;}")),
-    className: "jsx-3520916525"
-  },
-  error: {
-    styles: _react.default.createElement(_style.default, {
-      id: "898494457"
-    }, "svg.jsx-898494457{fill:".concat(_theme.colors.red500, ";height:24px;width:24px;margin-right:8px;}")),
-    className: "jsx-898494457"
-  }
+  valid: _Status.Valid,
+  warning: _Status.Warning,
+  error: _Status.Error
 };
 
-function icon(Icon) {
-  var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-  var extra = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'default';
-
-  if (Icon) {
-    return _react.default.createElement("span", null, _react.default.createElement(Icon.type, _extends({}, Icon.props, {
-      className: icons[extra].className
-    })), icons[extra].styles);
-  }
-
-  return null;
-}
-
-function trailIcon(status, trail, fn) {
+function createTrailIcon(status, trail, fn) {
   if (status !== 'default') {
-    return icon(statusToIcon[status], fn, status);
+    return (0, _helpers.createIcon)(statusToIcon[status], {
+      action: fn
+    });
   } else {
     return trail;
   }
@@ -191,7 +154,7 @@ function (_React$Component) {
         className: "jsx-".concat(_styles.default.__hash) + " " + "legend"
       }, _react.default.createElement("span", {
         className: "jsx-".concat(_styles.default.__hash)
-      }, "\u200B"))), icon(this.props.icon), _react.default.createElement("input", {
+      }, "\u200B"))), (0, _helpers.createIcon)(this.props.icon), _react.default.createElement("input", {
         ref: this.inputRef,
         type: this.props.type,
         placeholder: this.props.placeholder,
@@ -203,7 +166,7 @@ function (_React$Component) {
         className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)({
           disabled: this.props.disabled
         }) || "")
-      }), trailIcon(this.props.status, this.props.trailIcon)), this.props.help && _react.default.createElement(_Help.default, {
+      }), createTrailIcon(this.props.status, this.props.trailIcon)), this.props.help && _react.default.createElement(_Help.default, {
         text: this.props.help,
         status: this.props.status
       }), _react.default.createElement(_style.default, {
