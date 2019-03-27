@@ -3,35 +3,35 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.kinds = exports.sizes = exports.SelectField = void 0;
+exports.default = exports.SelectField = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireWildcard(require("react"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _math = require("../utils/math");
+var _Arrow = require("../icons/Arrow");
 
-var _Status = require("../icons/Status.js");
+var _Status = require("../icons/Status");
 
-var _Arrow = require("../icons/Arrow.js");
+var _theme = require("../theme");
 
 var _helpers = require("../icons/helpers");
 
 var _constants = require("../icons/constants");
 
-var _theme = require("../theme.js");
+var _constants2 = require("../forms/constants");
 
-var _Menu = _interopRequireDefault(require("../Menu"));
+var _math = require("../utils/math");
 
 var _Help = _interopRequireDefault(require("../Help"));
 
-var _styles = _interopRequireWildcard(require("./styles.js"));
+var _Menu = _interopRequireDefault(require("../Menu"));
 
-var _statusToIcon;
+var _styles = _interopRequireWildcard(require("./styles"));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -57,20 +57,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var sizes = {
-  DEFAULT: 'default',
-  DENSE: 'dense'
-};
-exports.sizes = sizes;
-var kinds = {
-  FILLED: 'filled',
-  OUTLINED: 'outlined'
-};
-exports.kinds = kinds;
-var statusToIcon = (_statusToIcon = {}, _defineProperty(_statusToIcon, _constants.iconStatuses.VALID, _Status.Valid), _defineProperty(_statusToIcon, _constants.iconStatuses.WARNING, _Status.Warning), _defineProperty(_statusToIcon, _constants.iconStatuses.ERROR, _Status.Error), _statusToIcon);
-
 function createTrailIcon(status, trail, fn) {
-  var icon = status !== _constants.iconStatuses.DEFAULT ? statusToIcon[status] : trail;
+  var icon = status !== _constants.iconStatuses.DEFAULT ? _constants.statusToIcon[status] : trail;
   var options = {
     action: fn,
     className: _styles.selectIconStyles.className
@@ -278,8 +266,8 @@ function (_React$Component) {
 
 exports.SelectField = SelectField;
 SelectField.defaultProps = {
-  size: sizes.DEFAULT,
-  kind: kinds.FILLED,
+  size: _constants2.inputSizes.DEFAULT,
+  kind: _constants2.inputKinds.FILLED,
   status: _constants.iconStatuses.DEFAULT,
   help: '',
   className: '',
@@ -300,8 +288,8 @@ SelectField.propTypes = {
   disabled: _propTypes.default.bool,
   required: _propTypes.default.bool,
   icon: _propTypes.default.element,
-  size: _propTypes.default.oneOf([sizes.DEFAULT, sizes.DENSE]),
-  kind: _propTypes.default.oneOf([kinds.FILLED, kinds.OUTLINED]),
+  size: _propTypes.default.oneOf([_constants2.inputSizes.DEFAULT, _constants2.inputSizes.DENSE]),
+  kind: _propTypes.default.oneOf([_constants2.inputKinds.FILLED, _constants2.inputKinds.OUTLINED]),
   status: _constants.iconStatusPropType
 };
 var _default = SelectField;

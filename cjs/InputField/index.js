@@ -15,9 +15,13 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _Status = require("../icons/Status.js");
 
+var _theme = require("../theme.js");
+
 var _helpers = require("../icons/helpers");
 
-var _theme = require("../theme.js");
+var _constants = require("../forms/constants");
+
+var _constants2 = require("../icons/constants");
 
 var _Help = _interopRequireDefault(require("../Help"));
 
@@ -47,20 +51,10 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var statusToIcon = {
-  valid: _Status.Valid,
-  warning: _Status.Warning,
-  error: _Status.Error
-};
-
 function createTrailIcon(status, trail, fn) {
-  if (status !== 'default') {
-    return (0, _helpers.createIcon)(statusToIcon[status], {
-      action: fn
-    });
-  } else {
-    return trail;
-  }
+  return status !== 'default' ? (0, _helpers.createIcon)(_constants2.statusToIcon[status], {
+    action: fn
+  }) : trail;
 }
 
 var InputField =
@@ -181,7 +175,7 @@ function (_React$Component) {
 exports.InputField = InputField;
 InputField.defaultProps = {
   status: 'default',
-  size: 'default',
+  size: _constants.inputSizes.DEFAULT,
   kind: 'filled',
   type: 'text',
   focus: false,
@@ -198,8 +192,8 @@ InputField.propTypes = {
   help: _propTypes.default.string,
   icon: _propTypes.default.element,
   trailIcon: _propTypes.default.element,
-  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error']),
-  size: _propTypes.default.oneOf(['default', 'dense']),
+  status: _constants2.iconStatusPropType,
+  size: _propTypes.default.oneOf([_constants.inputSizes.DEFAULT, _constants.inputSizes.DENSE]),
   kind: _propTypes.default.oneOf(['filled', 'outlined']),
   type: _propTypes.default.oneOf(['text', 'email', 'number', 'password', 'url']),
   focus: _propTypes.default.bool,
