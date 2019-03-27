@@ -44,7 +44,7 @@ const icons = {
 
 function icon(Icon, action = null, extra = 'default') {
   if (Icon) {
-    return React.createElement("span", null, React.createElement(Icon.type, _extends({}, Icon.props, {
+    return React.createElement(Fragment, null, React.createElement(Icon.type, _extends({}, Icon.props, {
       className: icons[extra].className
     })), icons[extra].styles);
   }
@@ -141,6 +141,7 @@ class InputField extends React.Component {
       }) || "")
     }), React.createElement("label", {
       ref: this.labelRef,
+      style: this.props.styles.label instanceof Object ? this.props.styles.label : {},
       className: `jsx-${styles.__hash}` + " " + (cx('label', {
         [`${this.props.status}`]: true,
         [`${this.props.size}`]: true,
@@ -150,7 +151,7 @@ class InputField extends React.Component {
         disabled: this.props.disabled,
         focused: this.isFocused(),
         shrink: this.shrink(),
-        [this.props.classes.label || 'classes.label']: !!this.props.classes.label
+        [typeof this.props.styles.label === 'string' ? this.props.styles.label : 'styles.label']: typeof this.props.styles.label === 'string' && !!this.props.styles.label
       }) || "")
     }, this.props.label), icon(this.props.icon), React.createElement("input", {
       ref: this.inputRef,
@@ -182,7 +183,7 @@ InputField.defaultProps = {
   focus: false,
   disabled: false,
   required: false,
-  classes: {}
+  styles: {}
 };
 InputField.propTypes = {
   className: PropTypes.string,
@@ -201,8 +202,8 @@ InputField.propTypes = {
   focus: PropTypes.bool,
   disabled: PropTypes.bool,
   required: PropTypes.bool,
-  classes: PropTypes.shape({
-    label: PropTypes.string
+  styles: PropTypes.shape({
+    label: PropTypes.oneOf([PropTypes.string, PropTypes.object])
   })
 };
 export { InputField };

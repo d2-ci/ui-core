@@ -84,7 +84,7 @@ function icon(Icon) {
   var extra = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'default';
 
   if (Icon) {
-    return _react.default.createElement("span", null, _react.default.createElement(Icon.type, _extends({}, Icon.props, {
+    return _react.default.createElement(_react.Fragment, null, _react.default.createElement(Icon.type, _extends({}, Icon.props, {
       className: icons[extra].className
     })), icons[extra].styles);
   }
@@ -185,7 +185,8 @@ function (_React$Component) {
         className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('flatline', (_cx2 = {}, _defineProperty(_cx2, "".concat(this.props.status), true), _defineProperty(_cx2, "focused", this.isFocused()), _defineProperty(_cx2, "idle", !this.isFocused()), _defineProperty(_cx2, "filled", this.props.value), _cx2)) || "")
       }), _react.default.createElement("label", {
         ref: this.labelRef,
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', (_cx3 = {}, _defineProperty(_cx3, "".concat(this.props.status), true), _defineProperty(_cx3, "".concat(this.props.size), true), _defineProperty(_cx3, "".concat(this.props.kind), true), _defineProperty(_cx3, 'has-icon', !!this.props.icon), _defineProperty(_cx3, "required", this.props.required), _defineProperty(_cx3, "disabled", this.props.disabled), _defineProperty(_cx3, "focused", this.isFocused()), _defineProperty(_cx3, "shrink", this.shrink()), _defineProperty(_cx3, this.props.classes.label || 'classes.label', !!this.props.classes.label), _cx3)) || "")
+        style: this.props.styles.label instanceof Object ? this.props.styles.label : {},
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', (_cx3 = {}, _defineProperty(_cx3, "".concat(this.props.status), true), _defineProperty(_cx3, "".concat(this.props.size), true), _defineProperty(_cx3, "".concat(this.props.kind), true), _defineProperty(_cx3, 'has-icon', !!this.props.icon), _defineProperty(_cx3, "required", this.props.required), _defineProperty(_cx3, "disabled", this.props.disabled), _defineProperty(_cx3, "focused", this.isFocused()), _defineProperty(_cx3, "shrink", this.shrink()), _defineProperty(_cx3, typeof this.props.styles.label === 'string' ? this.props.styles.label : 'styles.label', typeof this.props.styles.label === 'string' && !!this.props.styles.label), _cx3)) || "")
       }, this.props.label), icon(this.props.icon), _react.default.createElement("input", {
         ref: this.inputRef,
         type: this.props.type,
@@ -219,7 +220,7 @@ InputField.defaultProps = {
   focus: false,
   disabled: false,
   required: false,
-  classes: {}
+  styles: {}
 };
 InputField.propTypes = {
   className: _propTypes.default.string,
@@ -238,8 +239,8 @@ InputField.propTypes = {
   focus: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   required: _propTypes.default.bool,
-  classes: _propTypes.default.shape({
-    label: _propTypes.default.string
+  styles: _propTypes.default.shape({
+    label: _propTypes.default.oneOf([_propTypes.default.string, _propTypes.default.object])
   })
 };
 var _default = InputField;
