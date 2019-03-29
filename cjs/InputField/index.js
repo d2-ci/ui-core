@@ -101,16 +101,11 @@ function icon(Icon) {
   return null;
 }
 
-function TrailIcon(_ref) {
+var TrailIcon = function TrailIcon(_ref) {
   var status = _ref.status,
       trail = _ref.trail;
-
-  if (status !== 'default') {
-    return icon(statusToIcon[status], status);
-  } else {
-    return trail;
-  }
-}
+  return status !== 'default' ? icon(statusToIcon[status], status) : trail;
+};
 
 TrailIcon.propTypes = {
   status: _propTypes.default.string,
@@ -178,8 +173,8 @@ function (_React$Component) {
       return this.state.focused;
     }
   }, {
-    key: "shrink",
-    value: function shrink() {
+    key: "shouldShrink",
+    value: function shouldShrink() {
       return !!(this.isFocused() || this.props.value || this.props.placeholder);
     }
   }, {
@@ -210,7 +205,7 @@ function (_React$Component) {
         status: this.props.status,
         size: this.props.size,
         kind: this.props.kind,
-        isShrinked: this.shrink(),
+        isShrinked: this.shouldShrink(),
         isFocused: this.isFocused(),
         isDisabled: this.props.disabled,
         isRequired: this.props.required,
