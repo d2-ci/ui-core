@@ -171,5 +171,5 @@ InputField.propTypes = {
   disabled: PropTypes.bool,
   required: PropTypes.bool
 };
-export { InputField, types, inputSizes, inputKinds };
+export { InputField, types, iconStatuses, inputSizes, inputKinds };
 export default InputField;
