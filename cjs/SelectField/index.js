@@ -3,24 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "iconStatuses", {
-  enumerable: true,
-  get: function get() {
-    return _constants.iconStatuses;
-  }
-});
-Object.defineProperty(exports, "inputKinds", {
-  enumerable: true,
-  get: function get() {
-    return _constants2.inputKinds;
-  }
-});
-Object.defineProperty(exports, "inputSizes", {
-  enumerable: true,
-  get: function get() {
-    return _constants2.inputSizes;
-  }
-});
 exports.default = exports.SelectField = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
