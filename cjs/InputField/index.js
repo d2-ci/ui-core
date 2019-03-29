@@ -15,13 +15,21 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _Help = _interopRequireDefault(require("../Help"));
-
 var _Status = require("../icons/Status.js");
 
-var _styles = _interopRequireDefault(require("./styles.js"));
-
 var _theme = require("../theme.js");
+
+var _constants = require("../forms/constants");
+
+var _Input = require("./InputField/Input");
+
+var _Label = require("./InputField/Label");
+
+var _Fieldset = require("./InputField/Fieldset");
+
+var _Help = _interopRequireDefault(require("../Help"));
+
+var _styles = _interopRequireDefault(require("./styles.js"));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -80,8 +88,7 @@ var icons = {
 };
 
 function icon(Icon) {
-  var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-  var extra = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'default';
+  var extra = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'default';
 
   if (Icon) {
     return _react.default.createElement(_react.Fragment, null, _react.default.createElement(Icon.type, _extends({}, Icon.props, {
@@ -92,29 +99,45 @@ function icon(Icon) {
   return null;
 }
 
-function trailIcon(status, trail, fn) {
+function TrailIcon(_ref) {
+  var status = _ref.status,
+      trail = _ref.trail;
+
   if (status !== 'default') {
-    return icon(statusToIcon[status], fn, status);
+    return icon(statusToIcon[status], status);
   } else {
     return trail;
   }
 }
+
+TrailIcon.propTypes = {
+  status: _propTypes.default.string,
+  fn: _propTypes.default.func
+};
+TrailIcon.defaultProps = {
+  trail: ''
+};
 
 var InputField =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(InputField, _React$Component);
 
-  function InputField(props) {
+  function InputField() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, InputField);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(InputField).call(this, props));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(InputField)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      focused: false,
-      labelWidth: 0
+      focused: false
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (evt) {
@@ -137,8 +160,6 @@ function (_React$Component) {
       _this.props.onChange(_this.props.name, evt.target.value);
     });
 
-    _this.labelRef = _react.default.createRef();
-    _this.inputRef = _react.default.createRef();
     return _this;
   }
 
@@ -146,13 +167,8 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.setState({
-        labelWidth: this.labelRef.current.offsetWidth,
         focused: this.props.focus
       });
-
-      if (this.props.focus) {
-        this.inputRef.current.focus();
-      }
     }
   }, {
     key: "isFocused",
@@ -167,39 +183,49 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _cx, _cx2, _cx3;
+      var _cx;
 
-      var legendWidth = this.shrink() ? {
-        width: "".concat(this.state.labelWidth, "px")
-      } : {
-        width: '0.01px'
-      };
       return _react.default.createElement("div", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', this.props.className, {
+        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["3717134333", [_theme.colors.grey500]]]) + " " + ((0, _classnames.default)('base', this.props.className, {
           focused: this.isFocused(),
           disabled: this.props.disabled
         }) || "")
-      }, _react.default.createElement("div", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('field', (_cx = {}, _defineProperty(_cx, "size-".concat(this.props.size), true), _defineProperty(_cx, "status-".concat(this.props.status), true), _defineProperty(_cx, "kind-".concat(this.props.kind), true), _defineProperty(_cx, "focused", this.isFocused()), _defineProperty(_cx, "filled", this.props.value), _defineProperty(_cx, "disabled", this.props.disabled), _cx)) || "")
-      }, this.props.kind === 'outlined' && _react.default.createElement("fieldset", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('flatline', (_cx2 = {}, _defineProperty(_cx2, "".concat(this.props.status), true), _defineProperty(_cx2, "focused", this.isFocused()), _defineProperty(_cx2, "idle", !this.isFocused()), _defineProperty(_cx2, "filled", this.props.value), _cx2)) || "")
-      }), _react.default.createElement("label", {
-        ref: this.labelRef,
-        style: this.props.styles.label instanceof Object ? this.props.styles.label : {},
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', (_cx3 = {}, _defineProperty(_cx3, "".concat(this.props.status), true), _defineProperty(_cx3, "".concat(this.props.size), true), _defineProperty(_cx3, "".concat(this.props.kind), true), _defineProperty(_cx3, 'has-icon', !!this.props.icon), _defineProperty(_cx3, "required", this.props.required), _defineProperty(_cx3, "disabled", this.props.disabled), _defineProperty(_cx3, "focused", this.isFocused()), _defineProperty(_cx3, "shrink", this.shrink()), _defineProperty(_cx3, typeof this.props.styles.label === 'string' ? this.props.styles.label : 'styles.label', typeof this.props.styles.label === 'string' && !!this.props.styles.label), _cx3)) || "")
-      }, this.props.label), icon(this.props.icon), _react.default.createElement("input", {
-        ref: this.inputRef,
+      }, _react.default.createElement(_style.default, {
+        id: "3717134333",
+        dynamic: [_theme.colors.grey500]
+      }, "div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::-webkit-input-placeholder){color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::-moz-placeholder){color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector:-ms-input-placeholder){color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::placeholder){color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}")), _react.default.createElement("div", {
+        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["3717134333", [_theme.colors.grey500]]]) + " " + ((0, _classnames.default)('field', (_cx = {}, _defineProperty(_cx, "size-".concat(this.props.size), true), _defineProperty(_cx, "status-".concat(this.props.status), true), _defineProperty(_cx, "kind-".concat(this.props.kind), true), _defineProperty(_cx, "focused", this.isFocused()), _defineProperty(_cx, "filled", this.props.value), _defineProperty(_cx, "disabled", this.props.disabled), _cx)) || "")
+      }, _react.default.createElement(_Fieldset.Fieldset, {
+        kind: this.props.kind,
+        status: this.props.status,
+        isFocused: this.isFocused(),
+        hasValue: !!this.props.value
+      }), _react.default.createElement(_Label.Label, {
+        status: this.props.status,
+        size: this.props.size,
+        kind: this.props.kind,
+        isShrinked: this.shrink(),
+        isFocused: this.isFocused(),
+        isDisabled: this.props.disabled,
+        isRequired: this.props.required,
+        hasIcon: !!this.props.icon,
+        className: this.props.styles.label,
+        styles: this.props.styles.label,
+        label: this.props.label
+      }), icon(this.props.icon), _react.default.createElement(_Input.Input, {
         type: this.props.type,
-        placeholder: this.props.placeholder,
-        disabled: this.props.disabled,
         value: this.props.value,
+        placeholder: this.props.placeholder,
+        isFocused: this.props.focus,
+        disabled: this.props.disabled,
+        filled: this.props.kind === 'filled',
         onFocus: this.onFocus,
         onBlur: this.onBlur,
-        onChange: this.onChange,
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)({
-          disabled: this.props.disabled
-        }) || "")
-      }), trailIcon(this.props.status, this.props.trailIcon)), this.props.help && _react.default.createElement(_Help.default, {
+        onChange: this.onChange
+      }), _react.default.createElement(TrailIcon, {
+        status: this.props.status,
+        trail: this.props.trailIcon
+      })), this.props.help && _react.default.createElement(_Help.default, {
         text: this.props.help,
         status: this.props.status
       }), _react.default.createElement(_style.default, {

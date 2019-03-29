@@ -3,13 +3,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 import _JSXStyle from "styled-jsx/style";
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import Help from '../Help';
 import { Valid, Warning, Error } from '../icons/Status.js';
-import styles from './styles.js';
 import { colors } from '../theme.js';
+import { inputFontSizeValue, heightDefault, heightDense } from '../forms/constants';
+import { Input } from './InputField/Input';
+import { Label } from './InputField/Label';
+import { Fieldset } from './InputField/Fieldset';
+import Help from '../Help';
+import styles from './styles.js';
 const statusToIcon = {
   valid: React.createElement(Valid, null),
   warning: React.createElement(Warning, null),
@@ -42,7 +46,7 @@ const icons = {
   }
 };
 
-function icon(Icon, action = null, extra = 'default') {
+function icon(Icon, extra = 'default') {
   if (Icon) {
     return React.createElement(Fragment, null, React.createElement(Icon.type, _extends({}, Icon.props, {
       className: icons[extra].className
@@ -52,21 +56,31 @@ function icon(Icon, action = null, extra = 'default') {
   return null;
 }
 
-function trailIcon(status, trail, fn) {
+function TrailIcon({
+  status,
+  trail
+}) {
   if (status !== 'default') {
-    return icon(statusToIcon[status], fn, status);
+    return icon(statusToIcon[status], status);
   } else {
     return trail;
   }
 }
 
+TrailIcon.propTypes = {
+  status: PropTypes.string,
+  fn: PropTypes.func
+};
+TrailIcon.defaultProps = {
+  trail: ''
+};
+
 class InputField extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(...args) {
+    super(...args);
 
     _defineProperty(this, "state", {
-      focused: false,
-      labelWidth: 0
+      focused: false
     });
 
     _defineProperty(this, "onFocus", evt => {
@@ -88,20 +102,12 @@ class InputField extends React.Component {
 
       this.props.onChange(this.props.name, evt.target.value);
     });
-
-    this.labelRef = React.createRef();
-    this.inputRef = React.createRef();
   }
 
   componentDidMount() {
     this.setState({
-      labelWidth: this.labelRef.current.offsetWidth,
       focused: this.props.focus
     });
-
-    if (this.props.focus) {
-      this.inputRef.current.focus();
-    }
   }
 
   isFocused() {
@@ -113,18 +119,16 @@ class InputField extends React.Component {
   }
 
   render() {
-    const legendWidth = this.shrink() ? {
-      width: `${this.state.labelWidth}px`
-    } : {
-      width: '0.01px'
-    };
     return React.createElement("div", {
-      className: `jsx-${styles.__hash}` + " " + (cx('base', this.props.className, {
+      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["3717134333", [colors.grey500]]]) + " " + (cx('base', this.props.className, {
         focused: this.isFocused(),
         disabled: this.props.disabled
       }) || "")
-    }, React.createElement("div", {
-      className: `jsx-${styles.__hash}` + " " + (cx('field', {
+    }, React.createElement(_JSXStyle, {
+      id: "3717134333",
+      dynamic: [colors.grey500]
+    }, `div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::-webkit-input-placeholder){color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::-moz-placeholder){color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector:-ms-input-placeholder){color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::placeholder){color:${colors.grey500};cursor:not-allowed;}`), React.createElement("div", {
+      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["3717134333", [colors.grey500]]]) + " " + (cx('field', {
         [`size-${this.props.size}`]: true,
         [`status-${this.props.status}`]: true,
         [`kind-${this.props.kind}`]: true,
@@ -132,40 +136,37 @@ class InputField extends React.Component {
         filled: this.props.value,
         disabled: this.props.disabled
       }) || "")
-    }, this.props.kind === 'outlined' && React.createElement("fieldset", {
-      className: `jsx-${styles.__hash}` + " " + (cx('flatline', {
-        [`${this.props.status}`]: true,
-        focused: this.isFocused(),
-        idle: !this.isFocused(),
-        filled: this.props.value
-      }) || "")
-    }), React.createElement("label", {
-      ref: this.labelRef,
-      style: this.props.styles.label instanceof Object ? this.props.styles.label : {},
-      className: `jsx-${styles.__hash}` + " " + (cx('label', {
-        [`${this.props.status}`]: true,
-        [`${this.props.size}`]: true,
-        [`${this.props.kind}`]: true,
-        'has-icon': !!this.props.icon,
-        required: this.props.required,
-        disabled: this.props.disabled,
-        focused: this.isFocused(),
-        shrink: this.shrink(),
-        [typeof this.props.styles.label === 'string' ? this.props.styles.label : 'styles.label']: typeof this.props.styles.label === 'string' && !!this.props.styles.label
-      }) || "")
-    }, this.props.label), icon(this.props.icon), React.createElement("input", {
-      ref: this.inputRef,
+    }, React.createElement(Fieldset, {
+      kind: this.props.kind,
+      status: this.props.status,
+      isFocused: this.isFocused(),
+      hasValue: !!this.props.value
+    }), React.createElement(Label, {
+      status: this.props.status,
+      size: this.props.size,
+      kind: this.props.kind,
+      isShrinked: this.shrink(),
+      isFocused: this.isFocused(),
+      isDisabled: this.props.disabled,
+      isRequired: this.props.required,
+      hasIcon: !!this.props.icon,
+      className: this.props.styles.label,
+      styles: this.props.styles.label,
+      label: this.props.label
+    }), icon(this.props.icon), React.createElement(Input, {
       type: this.props.type,
-      placeholder: this.props.placeholder,
-      disabled: this.props.disabled,
       value: this.props.value,
+      placeholder: this.props.placeholder,
+      isFocused: this.props.focus,
+      disabled: this.props.disabled,
+      filled: this.props.kind === 'filled',
       onFocus: this.onFocus,
       onBlur: this.onBlur,
-      onChange: this.onChange,
-      className: `jsx-${styles.__hash}` + " " + (cx({
-        disabled: this.props.disabled
-      }) || "")
-    }), trailIcon(this.props.status, this.props.trailIcon)), this.props.help && React.createElement(Help, {
+      onChange: this.onChange
+    }), React.createElement(TrailIcon, {
+      status: this.props.status,
+      trail: this.props.trailIcon
+    })), this.props.help && React.createElement(Help, {
       text: this.props.help,
       status: this.props.status
     }), React.createElement(_JSXStyle, {
