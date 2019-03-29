@@ -236,5 +236,5 @@ SelectField.propTypes = {
   kind: PropTypes.oneOf([inputKinds.FILLED, inputKinds.OUTLINED]),
   status: iconStatusPropType
 };
-export { SelectField };
+export { SelectField, inputSizes, inputKinds };
 export default SelectField;

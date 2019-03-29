@@ -3,7 +3,19 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.InputField = void 0;
+Object.defineProperty(exports, "inputKinds", {
+  enumerable: true,
+  get: function get() {
+    return _constants2.inputKinds;
+  }
+});
+Object.defineProperty(exports, "inputSizes", {
+  enumerable: true,
+  get: function get() {
+    return _constants2.inputSizes;
+  }
+});
+exports.default = exports.types = exports.InputField = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -19,9 +31,9 @@ var _theme = require("../theme.js");
 
 var _helpers = require("../icons/helpers");
 
-var _constants = require("../forms/constants");
+var _constants = require("../icons/constants");
 
-var _constants2 = require("../icons/constants");
+var _constants2 = require("../forms/constants");
 
 var _Help = _interopRequireDefault(require("../Help"));
 
@@ -51,8 +63,17 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var types = {
+  TEXT: 'text',
+  EMAIL: 'email',
+  NUMBER: 'number',
+  PASSWORD: 'password',
+  URL: 'url'
+};
+exports.types = types;
+
 function createTrailIcon(status, trail, fn) {
-  return status !== 'default' ? (0, _helpers.createIcon)(_constants2.statusToIcon[status], {
+  return status !== 'default' ? (0, _helpers.createIcon)(_constants.statusToIcon[status], {
     action: fn
   }) : trail;
 }
@@ -174,10 +195,10 @@ function (_React$Component) {
 
 exports.InputField = InputField;
 InputField.defaultProps = {
-  status: 'default',
-  size: _constants.inputSizes.DEFAULT,
-  kind: 'filled',
-  type: 'text',
+  status: _constants.iconStatuses.DEFAULT,
+  size: _constants2.inputSizes.DEFAULT,
+  kind: _constants2.inputKinds.FILLED,
+  type: types.TEXT,
   focus: false,
   disabled: false,
   required: false
@@ -192,10 +213,10 @@ InputField.propTypes = {
   help: _propTypes.default.string,
   icon: _propTypes.default.element,
   trailIcon: _propTypes.default.element,
-  status: _constants2.iconStatusPropType,
-  size: _propTypes.default.oneOf([_constants.inputSizes.DEFAULT, _constants.inputSizes.DENSE]),
-  kind: _propTypes.default.oneOf(['filled', 'outlined']),
-  type: _propTypes.default.oneOf(['text', 'email', 'number', 'password', 'url']),
+  status: _constants.iconStatusPropType,
+  size: _propTypes.default.oneOf([_constants2.inputSizes.DEFAULT, _constants2.inputSizes.DENSE]),
+  kind: _propTypes.default.oneOf([_constants2.inputKinds.FILLED, _constants2.inputKinds.OUTLINED]),
+  type: _propTypes.default.oneOf([types.TEXT, types.EMAIL, types.NUMBER, types.PASSWORD, types.URL]),
   focus: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   required: _propTypes.default.bool
