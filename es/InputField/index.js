@@ -12,6 +12,7 @@ import { inputFontSizeValue, heightDefault, heightDense } from '../forms/constan
 import { Input } from './InputField/Input';
 import { Label } from './InputField/Label';
 import { Fieldset } from './InputField/Fieldset';
+import { Field } from './InputField/Field';
 import Help from '../Help';
 import styles from './styles.js';
 const statusToIcon = {
@@ -127,15 +128,14 @@ class InputField extends React.Component {
     }, React.createElement(_JSXStyle, {
       id: "3717134333",
       dynamic: [colors.grey500]
-    }, `div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::-webkit-input-placeholder){color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::-moz-placeholder){color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector:-ms-input-placeholder){color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::placeholder){color:${colors.grey500};cursor:not-allowed;}`), React.createElement("div", {
-      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["3717134333", [colors.grey500]]]) + " " + (cx('field', {
-        [`size-${this.props.size}`]: true,
-        [`status-${this.props.status}`]: true,
-        [`kind-${this.props.kind}`]: true,
-        focused: this.isFocused(),
-        filled: this.props.value,
-        disabled: this.props.disabled
-      }) || "")
+    }, `div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::-webkit-input-placeholder){color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::-moz-placeholder){color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector:-ms-input-placeholder){color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::placeholder){color:${colors.grey500};cursor:not-allowed;}`), React.createElement(Field, {
+      value: this.props.value,
+      size: this.props.size,
+      status: this.props.status,
+      kind: this.props.kind,
+      isFocused: this.isFocused(),
+      isFilled: this.props.kind === 'filled',
+      isDisabled: this.props.disabled
     }, React.createElement(Fieldset, {
       kind: this.props.kind,
       status: this.props.status,

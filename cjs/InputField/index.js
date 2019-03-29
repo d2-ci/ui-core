@@ -27,6 +27,8 @@ var _Label = require("./InputField/Label");
 
 var _Fieldset = require("./InputField/Fieldset");
 
+var _Field = require("./InputField/Field");
+
 var _Help = _interopRequireDefault(require("../Help"));
 
 var _styles = _interopRequireDefault(require("./styles.js"));
@@ -183,8 +185,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _cx;
-
       return _react.default.createElement("div", {
         className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["3717134333", [_theme.colors.grey500]]]) + " " + ((0, _classnames.default)('base', this.props.className, {
           focused: this.isFocused(),
@@ -193,8 +193,14 @@ function (_React$Component) {
       }, _react.default.createElement(_style.default, {
         id: "3717134333",
         dynamic: [_theme.colors.grey500]
-      }, "div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::-webkit-input-placeholder){color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::-moz-placeholder){color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector:-ms-input-placeholder){color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::placeholder){color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}")), _react.default.createElement("div", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["3717134333", [_theme.colors.grey500]]]) + " " + ((0, _classnames.default)('field', (_cx = {}, _defineProperty(_cx, "size-".concat(this.props.size), true), _defineProperty(_cx, "status-".concat(this.props.status), true), _defineProperty(_cx, "kind-".concat(this.props.kind), true), _defineProperty(_cx, "focused", this.isFocused()), _defineProperty(_cx, "filled", this.props.value), _defineProperty(_cx, "disabled", this.props.disabled), _cx)) || "")
+      }, "div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::-webkit-input-placeholder){color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::-moz-placeholder){color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector:-ms-input-placeholder){color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::placeholder){color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}")), _react.default.createElement(_Field.Field, {
+        value: this.props.value,
+        size: this.props.size,
+        status: this.props.status,
+        kind: this.props.kind,
+        isFocused: this.isFocused(),
+        isFilled: this.props.kind === 'filled',
+        isDisabled: this.props.disabled
       }, _react.default.createElement(_Fieldset.Fieldset, {
         kind: this.props.kind,
         status: this.props.status,
