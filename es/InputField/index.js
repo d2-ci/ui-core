@@ -1,63 +1,29 @@
+import _JSXStyle from "styled-jsx/style";
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-import _JSXStyle from "styled-jsx/style";
-import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import React, { Fragment } from 'react';
 import cx from 'classnames';
-import Help from '../Help';
-import { Valid, Warning, Error } from '../icons/Status.js';
-import styles from './styles.js';
+import { Error, Valid, Warning } from '../icons/Status.js';
 import { colors } from '../theme.js';
-const statusToIcon = {
-  valid: React.createElement(Valid, null),
-  warning: React.createElement(Warning, null),
-  error: React.createElement(Error, null)
-};
-const icons = {
-  default: {
-    styles: React.createElement(_JSXStyle, {
-      id: "3033330349"
-    }, `svg.jsx-3033330349{fill:${colors.grey700};height:24px;width:24px;margin-right:8px;}`),
-    className: "jsx-3033330349"
-  },
-  valid: {
-    styles: React.createElement(_JSXStyle, {
-      id: "3522955246"
-    }, `svg.jsx-3522955246{fill:${colors.blue600};height:24px;width:24px;margin-right:8px;}`),
-    className: "jsx-3522955246"
-  },
-  warning: {
-    styles: React.createElement(_JSXStyle, {
-      id: "3520916525"
-    }, `svg.jsx-3520916525{fill:${colors.yellow500};height:24px;width:24px;margin-right:8px;}`),
-    className: "jsx-3520916525"
-  },
-  error: {
-    styles: React.createElement(_JSXStyle, {
-      id: "898494457"
-    }, `svg.jsx-898494457{fill:${colors.red500};height:24px;width:24px;margin-right:8px;}`),
-    className: "jsx-898494457"
-  }
+import { createIcon } from '../icons/helpers';
+import { iconStatusPropType, iconStatuses, statusToIcon } from '../icons/constants';
+import { inputKinds, inputSizes } from '../forms/constants';
+import Help from '../Help';
+import styles from './styles.js';
+const types = {
+  TEXT: 'text',
+  EMAIL: 'email',
+  NUMBER: 'number',
+  PASSWORD: 'password',
+  URL: 'url'
 };
 
-function icon(Icon, action = null, extra = 'default') {
-  if (Icon) {
-    return React.createElement("span", null, React.createElement(Icon.type, _extends({}, Icon.props, {
-      className: icons[extra].className
-    })), icons[extra].styles);
-  }
-
-  return null;
-}
-
-function trailIcon(status, trail, fn) {
-  if (status !== 'default') {
-    return icon(statusToIcon[status], fn, status);
-  } else {
-    return trail;
-  }
+function createTrailIcon(status, trail, fn) {
+  return status !== 'default' ? createIcon(statusToIcon[status], {
+    action: fn
+  }) : trail;
 }
 
 class InputField extends React.Component {
@@ -156,7 +122,7 @@ class InputField extends React.Component {
       className: `jsx-${styles.__hash}` + " " + "legend"
     }, React.createElement("span", {
       className: `jsx-${styles.__hash}`
-    }, "\u200B"))), icon(this.props.icon), React.createElement("input", {
+    }, "\u200B"))), createIcon(this.props.icon), React.createElement("input", {
       ref: this.inputRef,
       type: this.props.type,
       placeholder: this.props.placeholder,
@@ -168,7 +134,7 @@ class InputField extends React.Component {
       className: `jsx-${styles.__hash}` + " " + (cx({
         disabled: this.props.disabled
       }) || "")
-    }), trailIcon(this.props.status, this.props.trailIcon)), this.props.help && React.createElement(Help, {
+    }), createTrailIcon(this.props.status, this.props.trailIcon)), this.props.help && React.createElement(Help, {
       text: this.props.help,
       status: this.props.status
     }), React.createElement(_JSXStyle, {
@@ -179,10 +145,10 @@ class InputField extends React.Component {
 }
 
 InputField.defaultProps = {
-  status: 'default',
-  size: 'default',
-  kind: 'filled',
-  type: 'text',
+  status: iconStatuses.DEFAULT,
+  size: inputSizes.DEFAULT,
+  kind: inputKinds.FILLED,
+  type: types.TEXT,
   focus: false,
   disabled: false,
   required: false
@@ -197,10 +163,10 @@ InputField.propTypes = {
   help: PropTypes.string,
   icon: PropTypes.element,
   trailIcon: PropTypes.element,
-  status: PropTypes.oneOf(['default', 'valid', 'warning', 'error']),
-  size: PropTypes.oneOf(['default', 'dense']),
-  kind: PropTypes.oneOf(['filled', 'outlined']),
-  type: PropTypes.oneOf(['text', 'email', 'number', 'password', 'url']),
+  status: iconStatusPropType,
+  size: PropTypes.oneOf([inputSizes.DEFAULT, inputSizes.DENSE]),
+  kind: PropTypes.oneOf([inputKinds.FILLED, inputKinds.OUTLINED]),
+  type: PropTypes.oneOf([types.TEXT, types.EMAIL, types.NUMBER, types.PASSWORD, types.URL]),
   focus: PropTypes.bool,
   disabled: PropTypes.bool,
   required: PropTypes.bool
