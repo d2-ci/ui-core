@@ -5,7 +5,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import cx from 'classnames';
-import { Default, Error, Valid, Warning } from '../icons/Status.js';
+import { Error, Valid, Warning } from '../icons/Status.js';
 import { colors } from '../theme.js';
 import { createIcon } from '../icons/helpers';
 import { iconStatusPropType, iconStatuses, statusToIcon } from '../icons/constants';

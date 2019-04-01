@@ -3,173 +3,113 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Default = Default;
 exports.Valid = Valid;
 exports.Warning = Warning;
 exports.Error = Error;
+
+var _style = _interopRequireDefault(require("styled-jsx/style"));
 
 var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _styles = require("./styles");
+var _theme = require("../theme.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var stylesPropType = _propTypes.default.shape({
-  className: _propTypes.default.string.isRequired,
-  styles: _propTypes.default.object.isRequired
-});
+var iconStyleValid = new String("svg.jsx-1819142562{fill:".concat(_theme.colors.blue600, ";width:24px;height:24px;margin-right:8px;}"));
+iconStyleValid.__hash = "1819142562";
+var iconStyleWarning = new String("svg.jsx-1902194108{fill:".concat(_theme.colors.yellow500, ";width:24px;height:24px;margin-right:8px;}"));
+iconStyleWarning.__hash = "1902194108";
+var iconStyleError = new String("svg.jsx-6165027{fill:".concat(_theme.colors.red500, ";width:24px;height:24px;margin-right:8px;}"));
 /**
- * Abstract icon component
- *
  * @param {Object} props
- * @param {Object} props.styles
- * @param {any} props.children
- * @returns {Object}
+ * @param {string} props.className
+ * @returns {ReactNode}
  */
 
+iconStyleError.__hash = "6165027";
 
-function Icon(_ref) {
-  var styles = _ref.styles,
-      children = _ref.children,
-      className = _ref.className;
+function Valid(_ref) {
+  var className = _ref.className;
   return _react.default.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     width: "48",
     height: "48",
     viewBox: "0 0 48 48",
-    className: [_styles.iconStyle.className, styles.className, className].join(' ')
-  }, children, _react.default.createElement("style", null, _styles.iconStyle.styles), _react.default.createElement("style", null, styles.styles));
-}
-
-Icon.propTypes = {
-  children: _propTypes.default.node.isRequired,
-  styles: stylesPropType.isRequired,
-  className: _propTypes.default.string
-};
-Icon.defaultProps = {
-  styles: _styles.iconStyleDefault,
-  className: ''
-  /**
-   * @param {Object} props
-   * @param {Object} props.styles
-   * @returns {Object}
-   */
-
-};
-
-var _ref3 =
-/*#__PURE__*/
-_react.default.createElement("path", {
-  d: "M0 0h48v48H0z",
-  fill: "none"
-});
-
-function Default(_ref2) {
-  var styles = _ref2.styles,
-      className = _ref2.className;
-  return _react.default.createElement(Icon, {
-    className: className,
-    styles: styles
-  }, _ref3);
-}
-
-Default.propTypes = {
-  styles: stylesPropType,
-  className: _propTypes.default.string
-};
-Default.defaultProps = {
-  styles: _styles.iconStyleDefault,
-  className: ''
-  /**
-   * @param {Object} props
-   * @param {Object} props.styles
-   * @returns {Object}
-   */
-
-};
-
-var _ref5 =
-/*#__PURE__*/
-_react.default.createElement("path", {
-  d: "M24 4C12.95 4 4 12.95 4 24c0 11.04 8.95 20 20 20 11.04 0 20-8.96 20-20 0-11.05-8.96-20-20-20zm-4 30L10 24l2.83-2.83L20 28.34l15.17-15.17L38 16 20 34z"
-});
-
-function Valid(_ref4) {
-  var styles = _ref4.styles,
-      className = _ref4.className;
-  return _react.default.createElement(Icon, {
-    className: className,
-    styles: styles
-  }, _ref5);
+    className: "jsx-".concat(iconStyleValid.__hash) + " " + (className || "")
+  }, _react.default.createElement("path", {
+    d: "M0 0h48v48H0z",
+    fill: "none",
+    className: "jsx-".concat(iconStyleValid.__hash)
+  }), _react.default.createElement("path", {
+    d: "M24 4C12.95 4 4 12.95 4 24c0 11.04 8.95 20 20 20 11.04 0 20-8.96 20-20 0-11.05-8.96-20-20-20zm-4 30L10 24l2.83-2.83L20 28.34l15.17-15.17L38 16 20 34z",
+    className: "jsx-".concat(iconStyleValid.__hash)
+  }), _react.default.createElement(_style.default, {
+    id: iconStyleValid.__hash
+  }, iconStyleValid));
 }
 
 Valid.propTypes = {
-  styles: stylesPropType,
-  className: _propTypes.default.string
-};
-Valid.defaultProps = {
-  styles: _styles.iconStyleValid,
-  className: ''
+  className: _propTypes.default.string.isRequired
   /**
    * @param {Object} props
-   * @param {Object} props.styles
-   * @returns {Object}
+   * @param {string} props.className
+   * @returns {ReactNode}
    */
 
 };
 
-var _ref7 =
-/*#__PURE__*/
-_react.default.createElement("path", {
-  d: "M2 42h44L24 4 2 42zm24-6h-4v-4h4v4zm0-8h-4v-8h4v8z"
-});
-
-function Warning(_ref6) {
-  var styles = _ref6.styles,
-      className = _ref6.className;
-  return _react.default.createElement(Icon, {
-    className: className,
-    styles: styles
-  }, _ref7);
+function Warning(_ref2) {
+  var className = _ref2.className;
+  return _react.default.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "48",
+    height: "48",
+    viewBox: "0 0 48 48",
+    className: "jsx-".concat(iconStyleWarning.__hash) + " " + (className || "")
+  }, _react.default.createElement("path", {
+    d: "M0 0h48v48H0z",
+    fill: "none",
+    className: "jsx-".concat(iconStyleWarning.__hash)
+  }), _react.default.createElement("path", {
+    d: "M2 42h44L24 4 2 42zm24-6h-4v-4h4v4zm0-8h-4v-8h4v8z",
+    className: "jsx-".concat(iconStyleWarning.__hash)
+  }), _react.default.createElement(_style.default, {
+    id: iconStyleWarning.__hash
+  }, iconStyleWarning));
 }
 
 Warning.propTypes = {
-  styles: stylesPropType,
-  className: _propTypes.default.string
-};
-Warning.defaultProps = {
-  styles: _styles.iconStyleWarning,
-  className: ''
+  className: _propTypes.default.string.isRequired
   /**
    * @param {Object} props
-   * @param {Object} props.styles
-   * @returns {Object}
+   * @param {string} props.className
+   * @returns {ReactNode}
    */
 
 };
 
-var _ref9 =
-/*#__PURE__*/
-_react.default.createElement("path", {
-  d: "M24 4C12.96 4 4 12.95 4 24s8.96 20 20 20 20-8.95 20-20S35.04 4 24 4zm2 30h-4v-4h4v4zm0-8h-4V14h4v12z"
-});
-
-function Error(_ref8) {
-  var styles = _ref8.styles,
-      className = _ref8.className;
-  return _react.default.createElement(Icon, {
-    className: className,
-    styles: styles
-  }, _ref9);
+function Error(_ref3) {
+  var className = _ref3.className;
+  return _react.default.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "48",
+    height: "48",
+    viewBox: "0 0 48 48",
+    className: "jsx-".concat(iconStyleError.__hash) + " " + (className || "")
+  }, _react.default.createElement("path", {
+    d: "M0 0h48v48H0z",
+    fill: "none",
+    className: "jsx-".concat(iconStyleError.__hash)
+  }), _react.default.createElement("path", {
+    d: "M24 4C12.96 4 4 12.95 4 24s8.96 20 20 20 20-8.95 20-20S35.04 4 24 4zm2 30h-4v-4h4v4zm0-8h-4V14h4v12z",
+    className: "jsx-".concat(iconStyleError.__hash)
+  }), _react.default.createElement(_style.default, {
+    id: iconStyleError.__hash
+  }, iconStyleError));
 }
 
 Error.propTypes = {
-  styles: stylesPropType,
-  className: _propTypes.default.string
-};
-Error.defaultProps = {
-  styles: _styles.iconStyleError,
-  className: ''
+  className: _propTypes.default.string.isRequired
 };
