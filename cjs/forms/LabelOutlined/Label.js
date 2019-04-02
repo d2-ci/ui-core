@@ -13,7 +13,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _constants = require("../constants");
+var _constants = require("./constants");
 
 var _constants2 = require("../../icons/constants");
 

@@ -51,12 +51,6 @@ Object.defineProperty(exports, "Help", {
     return _Help.default;
   }
 });
-Object.defineProperty(exports, "Fieldset", {
-  enumerable: true,
-  get: function get() {
-    return _Fieldset.default;
-  }
-});
 Object.defineProperty(exports, "InputField", {
   enumerable: true,
   get: function get() {
@@ -163,8 +157,6 @@ var _Divider = _interopRequireDefault(require("./Divider"));
 var _DropdownButton = _interopRequireDefault(require("./DropdownButton"));
 
 var _Help = _interopRequireDefault(require("./Help"));
-
-var _Fieldset = _interopRequireDefault(require("./Fieldset"));
 
 var _InputField = _interopRequireDefault(require("./InputField"));
 

@@ -4,7 +4,7 @@ import React, { Fragment } from 'react';
 import cx from 'classnames';
 import { children } from '../../utils/react';
 import { innerSpacingSides, inputSizes, inputSizesPropTypes } from '../../forms/constants';
-import { inputHeight, inputHeightDense } from '../constants';
+import { inputHeight, inputHeightDense } from './constants';
 const styles = new String(`.content.jsx-3722125387{height:${inputHeight + 2}px;line-height:${inputHeight + 2}px;padding:0 0 0 ${innerSpacingSides};position:relative;top:-2px;width:calc(100% - 1px);box-sizing:border-box;left:1px;}.content.dense.jsx-3722125387{height:${inputHeightDense + 2}px;line-height:${inputHeightDense + 2}px;}`);
 styles.__hash = "3722125387";
 

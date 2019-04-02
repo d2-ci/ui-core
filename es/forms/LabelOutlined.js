@@ -2,17 +2,17 @@ import _JSXStyle from "styled-jsx/style";
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import cx from 'classnames';
-import { Content } from './Fieldset/Content';
-import { Label } from './Fieldset/Label';
-import { borderRadius, inputHeight, inputHeightDense } from './constants';
+import { Content } from './LabelOutlined/Content';
+import { Label } from './LabelOutlined/Label';
+import { borderRadius, inputHeight, inputHeightDense } from './LabelOutlined/constants';
 import { children } from '../utils/react';
 import { colors } from '../theme';
 import { iconStatusPropType, iconStatuses, statusColors } from '../icons/constants';
-import { innerSpacingSides, inputSizes, inputSizesPropTypes } from '../forms/constants';
+import { innerSpacingSides, inputSizes, inputSizesPropTypes } from './constants';
 const styles = new String(`.fieldset.jsx-2291090312{padding-top:10px;height:${inputHeight}px;position:relative;}.fieldset.jsx-2291090312:before{border:1px solid ${statusColors[iconStatuses.DEFAULT]};border-top:0;border-radius:0 0 ${borderRadius} ${borderRadius};box-sizing:border-box;bottom:0;content:'';height:75%;left:0;position:absolute;width:100%;}.fieldset.valid.jsx-2291090312:before{border-color:${statusColors[iconStatuses.VALID]};}.fieldset.warning.jsx-2291090312:before{border-color:${statusColors[iconStatuses.WARNING]};}.fieldset.error.jsx-2291090312:before{border-color:${statusColors[iconStatuses.ERROR]};}.fieldset.dense.jsx-2291090312{height:34px;}`);
 styles.__hash = "2291090312";
 
-const createFieldsetClassName = props => cx('fieldset', {
+const createLabelOutlinedClassName = props => cx('fieldset', {
   focused: props.isFocused,
   dense: props.size === inputSizes.DENSE,
   valid: props.status === iconStatuses.VALID,
@@ -20,9 +20,9 @@ const createFieldsetClassName = props => cx('fieldset', {
   error: props.status === iconStatuses.ERROR
 });
 
-export const Fieldset = props => {
+export const LabelOutlined = props => {
   return React.createElement("div", {
-    className: `jsx-${styles.__hash}` + " " + (createFieldsetClassName(props) || "")
+    className: `jsx-${styles.__hash}` + " " + (createLabelOutlinedClassName(props) || "")
   }, React.createElement(Label, {
     size: props.size,
     status: props.status,
@@ -35,7 +35,7 @@ export const Fieldset = props => {
     id: styles.__hash
   }, styles));
 };
-Fieldset.propTypes = {
+LabelOutlined.propTypes = {
   label: PropTypes.string.isRequired,
   children: children.isRequired,
   hasValue: PropTypes.bool.isRequired,
@@ -43,9 +43,9 @@ Fieldset.propTypes = {
   size: inputSizesPropTypes,
   htmlFor: PropTypes.string
 };
-Fieldset.defaultProps = {
+LabelOutlined.defaultProps = {
   status: iconStatuses.DEFAULT,
   size: inputSizes.DEFAULT,
   htmlFor: ''
 };
-export default Fieldset;
+export default LabelOutlined;
