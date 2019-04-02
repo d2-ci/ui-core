@@ -1,79 +1,28 @@
+import _JSXStyle from "styled-jsx/style";
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-import _JSXStyle from "styled-jsx/style";
-import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Menu from '../Menu';
-import Help from '../Help';
-import { isPointInRect } from '../utils/math';
+import React, { Fragment } from 'react';
 import cx from 'classnames';
-import styles from './styles.js';
-import { colors } from '../theme.js';
-import { Valid, Warning, Error } from '../icons/Status.js';
-import { ArrowUp, ArrowDown } from '../icons/Arrow.js';
-const arrowIcon = {
-  styles: React.createElement(_JSXStyle, {
-    id: "1039571365"
-  }, "svg.jsx-1039571365{fill:inherit;height:24px;width:24px;vertical-align:middle;pointer-events:none;}"),
-  className: "jsx-1039571365"
-};
-const menuOverride = {
-  styles: React.createElement(_JSXStyle, {
-    id: "1122726799"
-  }, ".jsx-1122726799{max-height:300px;overflow-y:auto;}"),
-  className: "jsx-1122726799"
-};
-const statusToIcon = {
-  valid: React.createElement(Valid, null),
-  warning: React.createElement(Warning, null),
-  error: React.createElement(Error, null)
-};
-const icons = {
-  default: {
-    styles: React.createElement(_JSXStyle, {
-      id: "2215268291"
-    }, `svg.jsx-2215268291{fill:${colors.grey700};height:24px;width:24px;}`),
-    className: "jsx-2215268291"
-  },
-  valid: {
-    styles: React.createElement(_JSXStyle, {
-      id: "1378458444"
-    }, `svg.jsx-1378458444{fill:${colors.blue600};height:24px;width:24px;}`),
-    className: "jsx-1378458444"
-  },
-  warning: {
-    styles: React.createElement(_JSXStyle, {
-      id: "3220898470"
-    }, `svg.jsx-3220898470{fill:${colors.yellow500};height:24px;width:24px;}`),
-    className: "jsx-3220898470"
-  },
-  error: {
-    styles: React.createElement(_JSXStyle, {
-      id: "2028575264"
-    }, `svg.jsx-2028575264{fill:${colors.red500};height:24px;width:24px;}`),
-    className: "jsx-2028575264"
-  }
-};
+import { ArrowUp, ArrowDown } from '../icons/Arrow';
+import { Valid, Warning, Error } from '../icons/Status';
+import { colors, fonts } from '../theme';
+import { createIcon } from '../icons/helpers';
+import { iconStatusPropType, iconStatuses, statusToIcon } from '../icons/constants';
+import { inputKinds, inputSizes } from '../forms/constants';
+import { isPointInRect } from '../utils/math';
+import Help from '../Help';
+import Menu from '../Menu';
+import styles, { arrowIcon, menuOverride, selectIconStyles } from './styles';
 
-function icon(Icon, action = null, extra = 'default') {
-  if (Icon) {
-    return React.createElement(Fragment, null, React.createElement(Icon.type, _extends({}, Icon.props, {
-      onClick: action,
-      className: icons[extra].className
-    })), icons[extra].styles);
-  }
-
-  return null;
-}
-
-function trailIcon(status, trail, fn) {
-  if (status !== 'default') {
-    return icon(statusToIcon[status], fn, status);
-  } else {
-    return icon(trail, fn);
-  }
+function createTrailIcon(status, trail, fn) {
+  const icon = status !== iconStatuses.DEFAULT ? statusToIcon[status] : trail;
+  const options = {
+    action: fn,
+    className: selectIconStyles.className
+  };
+  return createIcon(icon, options);
 }
 
 function markActive(list, value) {
@@ -173,22 +122,17 @@ class SelectField extends React.Component {
   }
 
   render() {
+    const {
+      open
+    } = this.state;
+    const selected = this.getLabel();
+    const list = markActive(this.props.list, this.props.value);
     const legendWidth = this.shrink() ? {
       width: `${this.state.labelWidth}px`
     } : {
       width: '0.01px'
     };
-    const {
-      open
-    } = this.state;
-    let width = 'inherit';
-
-    if (open && this.elSelect) {
-      width = `${this.elSelect.getBoundingClientRect().width}px`;
-    }
-
-    const selected = this.getLabel();
-    const list = markActive(this.props.list, this.props.value);
+    const width = open && this.elSelect ? `${this.elSelect.getBoundingClientRect().width}px` : 'inherit';
     const Arrow = open ? React.createElement(ArrowUp, {
       className: arrowIcon.className
     }) : React.createElement(ArrowDown, {
@@ -243,7 +187,7 @@ class SelectField extends React.Component {
       className: `jsx-${styles.__hash}` + " " + "value"
     }, selected)), React.createElement("div", {
       className: `jsx-${styles.__hash}` + " " + "trail-icon-field"
-    }, this.props.status !== 'default' && trailIcon(this.props.status)), React.createElement("div", {
+    }, this.props.status !== iconStatuses.DEFAULT && createTrailIcon(this.props.status)), React.createElement("div", {
       className: `jsx-${styles.__hash}` + " " + (cx('trail-icon-field', {
         disabled: this.props.disabled
       }) || "")
@@ -258,22 +202,23 @@ class SelectField extends React.Component {
       size: this.props.size,
       onClick: this.onClick,
       className: menuOverride.className
-    })), menuOverride.styles, arrowIcon.styles, React.createElement(_JSXStyle, {
+    })), React.createElement("style", null, menuOverride.styles), React.createElement("style", null, arrowIcon.styles), React.createElement(_JSXStyle, {
       id: styles.__hash
-    }, styles));
+    }, styles), React.createElement("style", null, selectIconStyles.styles));
   }
 
 }
 
 SelectField.defaultProps = {
-  size: 'default',
-  kind: 'filled',
-  status: 'default',
+  size: inputSizes.DEFAULT,
+  kind: inputKinds.FILLED,
+  status: iconStatuses.DEFAULT,
+  help: '',
+  className: '',
   disabled: false,
   required: false
 };
 SelectField.propTypes = {
-  className: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
@@ -281,14 +226,15 @@ SelectField.propTypes = {
     label: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
   })).isRequired,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  icon: PropTypes.element,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   help: PropTypes.string,
-  size: PropTypes.oneOf(['default', 'dense']),
-  kind: PropTypes.oneOf(['filled', 'outlined']),
-  status: PropTypes.oneOf(['default', 'valid', 'warning', 'error']),
+  className: PropTypes.string,
   disabled: PropTypes.bool,
-  required: PropTypes.bool
+  required: PropTypes.bool,
+  icon: PropTypes.element,
+  size: PropTypes.oneOf([inputSizes.DEFAULT, inputSizes.DENSE]),
+  kind: PropTypes.oneOf([inputKinds.FILLED, inputKinds.OUTLINED]),
+  status: iconStatusPropType
 };
 export { SelectField };
 export default SelectField;

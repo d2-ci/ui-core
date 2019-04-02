@@ -1,7 +1,5 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -9,17 +7,19 @@ exports.default = exports.InputField = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireWildcard(require("react"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _Status = require("../icons/Status.js");
-
 var _theme = require("../theme.js");
 
-var _constants = require("../forms/constants");
+var _helpers = require("../icons/helpers");
+
+var _constants = require("../icons/constants");
+
+var _constants2 = require("../forms/constants");
 
 var _Input = require("./InputField/Input");
 
@@ -29,6 +29,8 @@ var _Fieldset = require("./InputField/Fieldset");
 
 var _Field = require("./InputField/Field");
 
+var _TrailIcon = require("./InputField/TrailIcon");
+
 var _Help = _interopRequireDefault(require("../Help"));
 
 var _styles = _interopRequireDefault(require("./styles.js"));
@@ -36,6 +38,8 @@ var _styles = _interopRequireDefault(require("./styles.js"));
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -55,64 +59,12 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-var statusToIcon = {
-  valid: _react.default.createElement(_Status.Valid, null),
-  warning: _react.default.createElement(_Status.Warning, null),
-  error: _react.default.createElement(_Status.Error, null)
-};
-var icons = {
-  default: {
-    styles: _react.default.createElement(_style.default, {
-      id: "3033330349"
-    }, "svg.jsx-3033330349{fill:".concat(_theme.colors.grey700, ";height:24px;width:24px;margin-right:8px;}")),
-    className: "jsx-3033330349"
-  },
-  valid: {
-    styles: _react.default.createElement(_style.default, {
-      id: "3522955246"
-    }, "svg.jsx-3522955246{fill:".concat(_theme.colors.blue600, ";height:24px;width:24px;margin-right:8px;}")),
-    className: "jsx-3522955246"
-  },
-  warning: {
-    styles: _react.default.createElement(_style.default, {
-      id: "3520916525"
-    }, "svg.jsx-3520916525{fill:".concat(_theme.colors.yellow500, ";height:24px;width:24px;margin-right:8px;}")),
-    className: "jsx-3520916525"
-  },
-  error: {
-    styles: _react.default.createElement(_style.default, {
-      id: "898494457"
-    }, "svg.jsx-898494457{fill:".concat(_theme.colors.red500, ";height:24px;width:24px;margin-right:8px;}")),
-    className: "jsx-898494457"
-  }
-};
-
-function icon(Icon) {
-  var extra = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'default';
-
-  if (Icon) {
-    return _react.default.createElement(_react.Fragment, null, _react.default.createElement(Icon.type, _extends({}, Icon.props, {
-      className: icons[extra].className
-    })), icons[extra].styles);
-  }
-
-  return null;
-}
-
-var TrailIcon = function TrailIcon(_ref) {
-  var status = _ref.status,
-      trail = _ref.trail;
-  return status !== 'default' ? icon(statusToIcon[status], status) : trail;
-};
-
-TrailIcon.propTypes = {
-  status: _propTypes.default.string,
-  fn: _propTypes.default.func
-};
-TrailIcon.defaultProps = {
-  trail: ''
+var types = {
+  TEXT: 'text',
+  EMAIL: 'email',
+  NUMBER: 'number',
+  PASSWORD: 'password',
+  URL: 'url'
 };
 
 var InputField =
@@ -180,28 +132,27 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _React$createElement;
+
+      var isFilled = this.props.kind === _constants2.inputKinds.FILLED;
+      var isDense = this.props.size === _constants2.inputSizes.DENSE;
       return _react.default.createElement("div", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["3717134333", [_theme.colors.grey500]]]) + " " + ((0, _classnames.default)('base', this.props.className, {
+        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["2004200063", [_theme.colors.grey500]]]) + " " + ((0, _classnames.default)('base', this.props.className, {
           focused: this.isFocused(),
           disabled: this.props.disabled
         }) || "")
       }, _react.default.createElement(_style.default, {
-        id: "3717134333",
+        id: "2004200063",
         dynamic: [_theme.colors.grey500]
-      }, "div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::-webkit-input-placeholder){color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::-moz-placeholder){color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector:-ms-input-placeholder){color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector global(.disabled).__jsx-style-dynamic-selector,div.__jsx-style-dynamic-selector global(.disabled.__jsx-style-dynamic-selector::placeholder){color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}")), _react.default.createElement(_Field.Field, {
+      }, "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}")), _react.default.createElement(_Field.Field, {
         value: this.props.value,
         size: this.props.size,
         status: this.props.status,
         kind: this.props.kind,
         isFocused: this.isFocused(),
-        isFilled: this.props.kind === 'filled',
+        isFilled: isFilled,
         isDisabled: this.props.disabled
-      }, _react.default.createElement(_Fieldset.Fieldset, {
-        kind: this.props.kind,
-        status: this.props.status,
-        isFocused: this.isFocused(),
-        hasValue: !!this.props.value
-      }), _react.default.createElement(_Label.Label, {
+      }, _react.default.createElement(_Label.Label, (_React$createElement = {
         status: this.props.status,
         size: this.props.size,
         kind: this.props.kind,
@@ -209,21 +160,22 @@ function (_React$Component) {
         isFocused: this.isFocused(),
         isDisabled: this.props.disabled,
         isRequired: this.props.required,
+        hasValue: !!this.props.value,
         hasIcon: !!this.props.icon,
         className: this.props.styles.label,
         styles: this.props.styles.label,
-        label: this.props.label
-      }), icon(this.props.icon), _react.default.createElement(_Input.Input, {
+        label: this.props.label || this.props.placeholder
+      }, _defineProperty(_React$createElement, "hasValue", !!this.props.value), _defineProperty(_React$createElement, "isFilled", isFilled), _React$createElement)), (0, _helpers.createIcon)(this.props.icon), _react.default.createElement(_Input.Input, {
         type: this.props.type,
         value: this.props.value,
-        placeholder: this.props.placeholder,
         isFocused: this.props.focus,
         disabled: this.props.disabled,
-        filled: this.props.kind === 'filled',
+        isFilled: isFilled,
+        isDense: isDense,
         onFocus: this.onFocus,
         onBlur: this.onBlur,
         onChange: this.onChange
-      }), _react.default.createElement(TrailIcon, {
+      }), _react.default.createElement(_TrailIcon.TrailIcon, {
         status: this.props.status,
         trail: this.props.trailIcon
       })), this.props.help && _react.default.createElement(_Help.default, {
@@ -240,10 +192,10 @@ function (_React$Component) {
 
 exports.InputField = InputField;
 InputField.defaultProps = {
-  status: 'default',
-  size: 'default',
-  kind: 'filled',
-  type: 'text',
+  status: _constants.iconStatuses.DEFAULT,
+  size: _constants2.inputSizes.DEFAULT,
+  kind: _constants2.inputKinds.FILLED,
+  type: types.TEXT,
   focus: false,
   disabled: false,
   required: false,
@@ -259,10 +211,10 @@ InputField.propTypes = {
   help: _propTypes.default.string,
   icon: _propTypes.default.element,
   trailIcon: _propTypes.default.element,
-  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error']),
-  size: _propTypes.default.oneOf(['default', 'dense']),
-  kind: _propTypes.default.oneOf(['filled', 'outlined']),
-  type: _propTypes.default.oneOf(['text', 'email', 'number', 'password', 'url']),
+  status: _constants.iconStatusPropType,
+  size: _propTypes.default.oneOf([_constants2.inputSizes.DEFAULT, _constants2.inputSizes.DENSE]),
+  kind: _propTypes.default.oneOf([_constants2.inputKinds.FILLED, _constants2.inputKinds.OUTLINED]),
+  type: _propTypes.default.oneOf([types.TEXT, types.EMAIL, types.NUMBER, types.PASSWORD, types.URL]),
   focus: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   required: _propTypes.default.bool,

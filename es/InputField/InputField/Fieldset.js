@@ -15,7 +15,23 @@ export const Fieldset = props => {
   });
   return React.createElement("fieldset", {
     className: `jsx-${styles.__hash}` + " " + (className || "")
-  }, React.createElement(_JSXStyle, {
+  }, React.createElement(Legend, null, props.children), React.createElement(_JSXStyle, {
     id: styles.__hash
   }, styles));
 };
+
+var _ref =
+/*#__PURE__*/
+React.createElement("span", {
+  className: "jsx-2328510469"
+}, "\xA0");
+
+var _ref2 =
+/*#__PURE__*/
+React.createElement(_JSXStyle, {
+  id: "2328510469"
+}, "span.jsx-2328510469{display:inline-block;width:0;}");
+
+const Legend = props => React.createElement("legend", {
+  className: "jsx-2328510469"
+}, _ref, props.children, _ref2);

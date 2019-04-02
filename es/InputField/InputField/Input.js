@@ -9,6 +9,8 @@ import { inputFontSizeValue } from '../../forms/constants';
 
 const calculatePaddingTop = props => props.filled ? '14px' : '18.5px';
 
+const styles = new String(`.input.jsx-3976741333{background-color:transparent;border:0;box-sizing:border-box;font-size:${inputFontSizeValue};height:100%;line-height:19px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}.input.outlined.jsx-3976741333{height:calc(100% - 12px);padding-top:12px;}.input.outlined.dense.jsx-3976741333{height:calc(100% - 12px);padding-top:12px;}.input.filled.jsx-3976741333{height:calc(100% - 20px);padding-top:20px;}.input.filled.dense.jsx-3976741333{height:calc(100% - 18px);padding-top:18px;font-size:14px;}`);
+styles.__hash = "3976741333";
 export class Input extends Component {
   constructor(...args) {
     super(...args);
@@ -24,30 +26,30 @@ export class Input extends Component {
 
   render() {
     const paddingTop = calculatePaddingTop(this.props);
-    const className = cx({
+    const className = cx('input', {
+      dense: this.props.isDense,
+      filled: this.props.isFilled,
+      outlined: !this.props.isFilled,
       disabled: this.props.disabled
     });
     return React.createElement(Fragment, null, React.createElement("input", {
       ref: this.inputRef,
       type: this.props.type,
-      placeholder: this.props.placeholder,
       disabled: this.props.disabled,
       value: this.props.value,
       onFocus: this.props.onFocus,
       onBlur: this.props.onBlur,
       onChange: this.props.onChange,
-      className: _JSXStyle.dynamic([["2878274301", [inputFontSizeValue, paddingTop]]]) + " " + (className || "")
+      className: `jsx-${styles.__hash}` + " " + (className || "")
     }), React.createElement(_JSXStyle, {
-      id: "2878274301",
-      dynamic: [inputFontSizeValue, paddingTop]
-    }, `input.__jsx-style-dynamic-selector{background-color:transparent;border:0;box-sizing:border-box;font-size:${inputFontSizeValue};height:100%;line-height:19px;outline:0;padding:${paddingTop} 0 18.5px;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}`));
+      id: styles.__hash
+    }, styles));
   }
 
 }
 Input.propTypes = {
   type: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.string,
   disabled: PropTypes.bool.isRequired,
   isFocused: PropTypes.bool.isRequired,
   onFocus: PropTypes.func.isRequired,

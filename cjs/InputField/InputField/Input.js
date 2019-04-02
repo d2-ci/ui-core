@@ -43,6 +43,9 @@ var calculatePaddingTop = function calculatePaddingTop(props) {
   return props.filled ? '14px' : '18.5px';
 };
 
+var styles = new String(".input.jsx-3976741333{background-color:transparent;border:0;box-sizing:border-box;font-size:".concat(_constants.inputFontSizeValue, ";height:100%;line-height:19px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}.input.outlined.jsx-3976741333{height:calc(100% - 12px);padding-top:12px;}.input.outlined.dense.jsx-3976741333{height:calc(100% - 12px);padding-top:12px;}.input.filled.jsx-3976741333{height:calc(100% - 20px);padding-top:20px;}.input.filled.dense.jsx-3976741333{height:calc(100% - 18px);padding-top:18px;font-size:14px;}"));
+styles.__hash = "3976741333";
+
 var Input =
 /*#__PURE__*/
 function (_Component) {
@@ -77,23 +80,24 @@ function (_Component) {
     key: "render",
     value: function render() {
       var paddingTop = calculatePaddingTop(this.props);
-      var className = (0, _classnames.default)({
+      var className = (0, _classnames.default)('input', {
+        dense: this.props.isDense,
+        filled: this.props.isFilled,
+        outlined: !this.props.isFilled,
         disabled: this.props.disabled
       });
       return _react.default.createElement(_react.Fragment, null, _react.default.createElement("input", {
         ref: this.inputRef,
         type: this.props.type,
-        placeholder: this.props.placeholder,
         disabled: this.props.disabled,
         value: this.props.value,
         onFocus: this.props.onFocus,
         onBlur: this.props.onBlur,
         onChange: this.props.onChange,
-        className: _style.default.dynamic([["2878274301", [_constants.inputFontSizeValue, paddingTop]]]) + " " + (className || "")
+        className: "jsx-".concat(styles.__hash) + " " + (className || "")
       }), _react.default.createElement(_style.default, {
-        id: "2878274301",
-        dynamic: [_constants.inputFontSizeValue, paddingTop]
-      }, "input.__jsx-style-dynamic-selector{background-color:transparent;border:0;box-sizing:border-box;font-size:".concat(_constants.inputFontSizeValue, ";height:100%;line-height:19px;outline:0;padding:").concat(paddingTop, " 0 18.5px;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}")));
+        id: styles.__hash
+      }, styles));
     }
   }]);
 
@@ -104,7 +108,6 @@ exports.Input = Input;
 Input.propTypes = {
   type: _propTypes.default.string.isRequired,
   value: _propTypes.default.string.isRequired,
-  placeholder: _propTypes.default.string.string,
   disabled: _propTypes.default.bool.isRequired,
   isFocused: _propTypes.default.bool.isRequired,
   onFocus: _propTypes.default.func.isRequired,

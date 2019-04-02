@@ -31,9 +31,27 @@ var Fieldset = function Fieldset(props) {
   });
   return _react.default.createElement("fieldset", {
     className: "jsx-".concat(styles.__hash) + " " + (className || "")
-  }, _react.default.createElement(_style.default, {
+  }, _react.default.createElement(Legend, null, props.children), _react.default.createElement(_style.default, {
     id: styles.__hash
   }, styles));
 };
 
 exports.Fieldset = Fieldset;
+
+var _ref =
+/*#__PURE__*/
+_react.default.createElement("span", {
+  className: "jsx-2328510469"
+}, "\xA0");
+
+var _ref2 =
+/*#__PURE__*/
+_react.default.createElement(_style.default, {
+  id: "2328510469"
+}, "span.jsx-2328510469{display:inline-block;width:0;}");
+
+var Legend = function Legend(props) {
+  return _react.default.createElement("legend", {
+    className: "jsx-2328510469"
+  }, _ref, props.children, _ref2);
+};
