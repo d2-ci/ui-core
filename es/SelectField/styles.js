@@ -6,12 +6,6 @@ const _defaultExport = new String(`.base.jsx-2160295497{display:inline-block;pos
 
 _defaultExport.__hash = "2160295497";
 export default _defaultExport;
-export const arrowIcon = {
-  styles: React.createElement(_JSXStyle, {
-    id: "1039571365"
-  }, "svg.jsx-1039571365{fill:inherit;height:24px;width:24px;vertical-align:middle;pointer-events:none;}"),
-  className: "jsx-1039571365"
-};
 export const menuOverride = {
   styles: React.createElement(_JSXStyle, {
     id: "1122726799"

@@ -6,15 +6,15 @@ import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import cx from 'classnames';
 import { ArrowUp, ArrowDown } from '../icons/Arrow';
-import { Valid, Warning, Error } from '../icons/Status';
+import { Error, Valid, Warning, statusToIcon } from '../icons/Status';
 import { colors, fonts } from '../theme';
 import { createIcon } from '../icons/helpers';
-import { iconStatusPropType, iconStatuses, statusToIcon } from '../icons/constants';
+import { iconStatusPropType, iconStatuses } from '../icons/constants';
 import { inputKinds, inputSizes } from '../forms/constants';
 import { isPointInRect } from '../utils/math';
 import Help from '../Help';
 import Menu from '../Menu';
-import styles, { arrowIcon, menuOverride, selectIconStyles } from './styles';
+import styles, { menuOverride, selectIconStyles } from './styles';
 
 function createTrailIcon(status, trail, fn) {
   const icon = status !== iconStatuses.DEFAULT ? statusToIcon[status] : trail;
@@ -40,6 +40,14 @@ function markActive(list, value) {
     return item;
   });
 }
+
+var _ref =
+/*#__PURE__*/
+React.createElement(ArrowUp, null);
+
+var _ref2 =
+/*#__PURE__*/
+React.createElement(ArrowDown, null);
 
 class SelectField extends React.Component {
   constructor(props) {
@@ -133,11 +141,7 @@ class SelectField extends React.Component {
       width: '0.01px'
     };
     const width = open && this.elSelect ? `${this.elSelect.getBoundingClientRect().width}px` : 'inherit';
-    const Arrow = open ? React.createElement(ArrowUp, {
-      className: arrowIcon.className
-    }) : React.createElement(ArrowDown, {
-      className: arrowIcon.className
-    });
+    const Arrow = open ? _ref : _ref2;
     return React.createElement("div", {
       ref: c => this.elContainer = c,
       className: `jsx-${styles.__hash}` + " " + (cx('base', this.props.className, {

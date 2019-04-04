@@ -11,9 +11,9 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _constants = require("../../icons/constants");
-
 var _helpers = require("../../icons/helpers");
+
+var _Status = require("../../icons/Status");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -22,7 +22,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var TrailIcon = function TrailIcon(_ref) {
   var status = _ref.status,
       trail = _ref.trail;
-  return status !== 'default' ? (0, _helpers.createIcon)(_constants.statusToIcon[status], status) : trail;
+  return status !== 'default' ? (0, _helpers.createIcon)(_Status.statusToIcon[status], status) : trail;
 };
 
 exports.TrailIcon = TrailIcon;

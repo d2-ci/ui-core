@@ -2,15 +2,15 @@ import _JSXStyle from "styled-jsx/style";
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component, Fragment } from 'react';
 import cx from 'classnames';
 import { inputFontSizeValue } from '../../forms/constants';
 
 const calculatePaddingTop = props => props.filled ? '14px' : '18.5px';
 
-const styles = new String(`.input.jsx-3976741333{background-color:transparent;border:0;box-sizing:border-box;font-size:${inputFontSizeValue};height:100%;line-height:19px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}.input.outlined.jsx-3976741333{height:calc(100% - 12px);padding-top:12px;}.input.outlined.dense.jsx-3976741333{height:calc(100% - 12px);padding-top:12px;}.input.filled.jsx-3976741333{height:calc(100% - 20px);padding-top:20px;}.input.filled.dense.jsx-3976741333{height:calc(100% - 18px);padding-top:18px;font-size:14px;}`);
-styles.__hash = "3976741333";
+const styles = new String(`.input.jsx-2196150148{background-color:transparent;border:0;box-sizing:border-box;font-size:${inputFontSizeValue};height:100%;line-height:19px;padding:0;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}.input.filled.dense.jsx-2196150148{font-size:14px;}`);
+styles.__hash = "2196150148";
 export class Input extends Component {
   constructor(...args) {
     super(...args);
@@ -33,6 +33,9 @@ export class Input extends Component {
       disabled: this.props.disabled
     });
     return React.createElement(Fragment, null, React.createElement("input", {
+      id: this.props.name,
+      name: this.props.name,
+      placeholder: this.props.placeholder,
       ref: this.inputRef,
       type: this.props.type,
       disabled: this.props.disabled,
@@ -48,11 +51,13 @@ export class Input extends Component {
 
 }
 Input.propTypes = {
+  name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   disabled: PropTypes.bool.isRequired,
   isFocused: PropTypes.bool.isRequired,
   onFocus: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  placeholder: PropTypes.string.isRequired
 };

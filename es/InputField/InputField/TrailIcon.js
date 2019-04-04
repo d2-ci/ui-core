@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import cx from 'classnames';
-import { statusToIcon } from '../../icons/constants';
 import { createIcon } from '../../icons/helpers';
+import { statusToIcon } from '../../icons/Status';
 export const TrailIcon = ({
   status,
   trail

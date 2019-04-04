@@ -10,5 +10,5 @@ var borderRadius = '4px';
 exports.borderRadius = borderRadius;
 var inputHeight = 56;
 exports.inputHeight = inputHeight;
-var inputHeightDense = 34;
+var inputHeightDense = 44;
 exports.inputHeightDense = inputHeightDense;

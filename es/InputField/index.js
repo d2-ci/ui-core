@@ -5,15 +5,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import cx from 'classnames';
-import { colors } from '../theme.js';
-import { createIcon } from '../icons/helpers';
-import { iconStatusPropType, iconStatuses, statusToIcon } from '../icons/constants';
-import { inputKinds, inputSizes } from '../forms/constants';
+import { Field } from './InputField/Field';
+import { Fieldset } from './InputField/Fieldset';
 import { Input } from './InputField/Input';
 import { Label } from './InputField/Label';
-import { Fieldset } from './InputField/Fieldset';
-import { Field } from './InputField/Field';
+import { LabelFilled } from '../forms/LabelFilled';
+import { LabelOutlined } from '../forms/LabelOutlined';
 import { TrailIcon } from './InputField/TrailIcon';
+import { colors } from '../theme.js';
+import { createIcon } from '../icons/helpers';
+import { iconStatusPropType, iconStatuses } from '../icons/constants';
+import { inputKinds, inputSizes } from '../forms/constants';
 import Help from '../Help';
 import styles from './styles.js';
 const types = {
@@ -63,61 +65,44 @@ class InputField extends React.Component {
     return this.state.focused;
   }
 
-  shouldShrink() {
-    return !!(this.isFocused() || this.props.value || this.props.placeholder);
-  }
-
   render() {
     const isFilled = this.props.kind === inputKinds.FILLED;
     const isDense = this.props.size === inputSizes.DENSE;
+    const Container = this.props.kind === inputKinds.FILLED ? LabelFilled : LabelOutlined;
     return React.createElement("div", {
+      onClick: this.onFocus,
       className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["2004200063", [colors.grey500]]]) + " " + (cx('base', this.props.className, {
         focused: this.isFocused(),
         disabled: this.props.disabled
       }) || "")
-    }, React.createElement(_JSXStyle, {
-      id: "2004200063",
-      dynamic: [colors.grey500]
-    }, `div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:${colors.grey500};cursor:not-allowed;}`), React.createElement(Field, {
-      value: this.props.value,
-      size: this.props.size,
-      status: this.props.status,
-      kind: this.props.kind,
-      isFocused: this.isFocused(),
-      isFilled: isFilled,
-      isDisabled: this.props.disabled
-    }, React.createElement(Label, {
-      status: this.props.status,
-      size: this.props.size,
-      kind: this.props.kind,
-      isShrinked: this.shouldShrink(),
-      isFocused: this.isFocused(),
-      isDisabled: this.props.disabled,
-      isRequired: this.props.required,
-      hasValue: !!this.props.value,
-      hasIcon: !!this.props.icon,
-      className: this.props.styles.label,
-      styles: this.props.styles.label,
+    }, React.createElement(Container, {
       label: this.props.label || this.props.placeholder,
-      hasValue: !!this.props.value,
-      isFilled: isFilled
-    }), createIcon(this.props.icon), React.createElement(Input, {
+      isFocused: this.state.focused,
+      hasValue: !!this.props.value || this.props.placeholder,
+      htmlFor: this.props.name,
+      required: this.props.required,
+      status: this.props.status,
+      size: this.props.size,
+      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["2004200063", [colors.grey500]]])
+    }, React.createElement(Input, {
+      name: this.props.name,
       type: this.props.type,
       value: this.props.value,
-      isFocused: this.props.focus,
+      placeholder: this.props.placeholder,
+      isFocused: this.state.focused,
       disabled: this.props.disabled,
       isFilled: isFilled,
       isDense: isDense,
       onFocus: this.onFocus,
       onBlur: this.onBlur,
       onChange: this.onChange
-    }), React.createElement(TrailIcon, {
-      status: this.props.status,
-      trail: this.props.trailIcon
     })), this.props.help && React.createElement(Help, {
       text: this.props.help,
       status: this.props.status
     }), React.createElement(_JSXStyle, {
+      id: "2004200063",
+      dynamic: [colors.grey500]
+    }, `div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:${colors.grey500};cursor:not-allowed;}`), React.createElement(_JSXStyle, {
       id: styles.__hash
     }, styles));
   }
@@ -132,7 +117,8 @@ InputField.defaultProps = {
   focus: false,
   disabled: false,
   required: false,
-  styles: {}
+  styles: {},
+  placeholder: ''
 };
 InputField.propTypes = {
   className: PropTypes.string,

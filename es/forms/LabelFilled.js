@@ -7,33 +7,33 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import cx from 'classnames';
-import { InputContainer } from './LabelOutlined/InputContainer';
-import { Label } from './LabelOutlined/Label';
+import { InputContainer } from './LabelFilled/InputContainer';
+import { Label } from './LabelFilled/Label';
 import { StatusIconNoDefault } from '../icons/Status';
-import { borderRadius, inputHeight, inputHeightDense } from './LabelOutlined/constants';
 import { children } from '../utils/react';
 import { colors } from '../theme';
 import { iconStatusPropType, iconStatuses, statusColors } from '../icons/constants';
 import { innerSpacingSides, inputSizes, inputSizesPropTypes } from './constants';
-const styles = new String(`.label-outlined.jsx-3266083721{height:${inputHeight + 10}px;position:relative;}.label-outlined.dense.jsx-3266083721{height:${inputHeightDense + 10}px;}.label-outlined.jsx-3266083721:before{border:1px solid ${statusColors[iconStatuses.DEFAULT]};border-top:0;border-radius:0 0 ${borderRadius} ${borderRadius};box-sizing:border-box;bottom:0;content:'';height:75%;left:0;position:absolute;width:100%;}.label-outlined.valid.jsx-3266083721:before{border-color:${statusColors[iconStatuses.VALID]};}.label-outlined.warning.jsx-3266083721:before{border-color:${statusColors[iconStatuses.WARNING]};}.label-outlined.error.jsx-3266083721:before{border-color:${statusColors[iconStatuses.ERROR]};}.content.jsx-3266083721{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:54px;left:1px;position:relative;top:11px;width:calc(100% - 1px);}.dense.jsx-3266083721 .content.jsx-3266083721{height:42px;}`);
-styles.__hash = "3266083721";
+const styles = new String(`.label-filled.jsx-422363918{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:rgba(0,0,10,0.05);border-bottom:2px solid transparent;border-radius:4px;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;height:56px;padding-left:${innerSpacingSides};position:relative;}.label-filled.dense.jsx-422363918{height:44px;}.label-filled.jsx-422363918:hover{background-color:rgba(0,0,10,0.08);}.label-filled.focused.jsx-422363918{border-color:${colors.teal600};}.label-filled.valid.jsx-422363918{border-color:${statusColors[iconStatuses.VALID]};}.label-filled.warning.jsx-422363918{border-color:${statusColors[iconStatuses.WARNING]};}.label-filled.error.jsx-422363918{border-color:${statusColors[iconStatuses.ERROR]};}.content.jsx-422363918{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:100%;position:relative;width:100%;z-index:-1;}.focused.jsx-422363918 .content.jsx-422363918,.has-value.jsx-422363918 .content.jsx-422363918{z-index:2;}`);
+styles.__hash = "422363918";
 
-const createLabelOutlinedClassName = props => cx('label-outlined', {
+const createLabelFilledClassName = props => cx('label-filled', {
   focused: props.isFocused,
   dense: props.size === inputSizes.DENSE,
   valid: props.status === iconStatuses.VALID,
   warning: props.status === iconStatuses.WARNING,
-  error: props.status === iconStatuses.ERROR
+  error: props.status === iconStatuses.ERROR,
+  'has-value': props.hasValue
 });
 
-export const LabelOutlined = (_ref) => {
+export const LabelFilled = (_ref) => {
   let {
     tailIcon: TailIcon
   } = _ref,
       props = _objectWithoutProperties(_ref, ["tailIcon"]);
 
   return React.createElement("div", {
-    className: `jsx-${styles.__hash}` + " " + (createLabelOutlinedClassName(props) || "")
+    className: `jsx-${styles.__hash}` + " " + (createLabelFilledClassName(props) || "")
   }, React.createElement(Label, {
     size: props.size,
     status: props.status,
@@ -43,6 +43,9 @@ export const LabelOutlined = (_ref) => {
   }), React.createElement("div", {
     className: `jsx-${styles.__hash}` + " " + "content"
   }, React.createElement(InputContainer, {
+    size: props.size,
+    isFocused: props.isFocused,
+    hasValue: props.hasValue,
     size: props.size
   }, props.children), React.createElement(StatusIconNoDefault, {
     status: props.status
@@ -52,7 +55,7 @@ export const LabelOutlined = (_ref) => {
     id: styles.__hash
   }, styles));
 };
-LabelOutlined.propTypes = {
+LabelFilled.propTypes = {
   label: PropTypes.string.isRequired,
   children: children.isRequired,
   hasValue: PropTypes.bool.isRequired,
@@ -62,10 +65,9 @@ LabelOutlined.propTypes = {
   status: iconStatusPropType,
   size: inputSizesPropTypes
 };
-LabelOutlined.defaultProps = {
+LabelFilled.defaultProps = {
+  required: false,
   status: iconStatuses.DEFAULT,
   size: inputSizes.DEFAULT,
-  htmlFor: '',
   tailIcon: () => null
 };
-export default LabelOutlined;

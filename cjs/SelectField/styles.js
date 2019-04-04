@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.selectIconStyles = exports.menuOverride = exports.arrowIcon = exports.default = void 0;
+exports.selectIconStyles = exports.menuOverride = exports.default = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -18,13 +18,6 @@ var _defaultExport = new String(".base.jsx-2160295497{display:inline-block;posit
 _defaultExport.__hash = "2160295497";
 var _default = _defaultExport;
 exports.default = _default;
-var arrowIcon = {
-  styles: _react.default.createElement(_style.default, {
-    id: "1039571365"
-  }, "svg.jsx-1039571365{fill:inherit;height:24px;width:24px;vertical-align:middle;pointer-events:none;}"),
-  className: "jsx-1039571365"
-};
-exports.arrowIcon = arrowIcon;
 var menuOverride = {
   styles: _react.default.createElement(_style.default, {
     id: "1122726799"

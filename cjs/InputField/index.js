@@ -13,6 +13,20 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
+var _Field = require("./InputField/Field");
+
+var _Fieldset = require("./InputField/Fieldset");
+
+var _Input = require("./InputField/Input");
+
+var _Label = require("./InputField/Label");
+
+var _LabelFilled = require("../forms/LabelFilled");
+
+var _LabelOutlined = require("../forms/LabelOutlined");
+
+var _TrailIcon = require("./InputField/TrailIcon");
+
 var _theme = require("../theme.js");
 
 var _helpers = require("../icons/helpers");
@@ -20,16 +34,6 @@ var _helpers = require("../icons/helpers");
 var _constants = require("../icons/constants");
 
 var _constants2 = require("../forms/constants");
-
-var _Input = require("./InputField/Input");
-
-var _Label = require("./InputField/Label");
-
-var _Fieldset = require("./InputField/Fieldset");
-
-var _Field = require("./InputField/Field");
-
-var _TrailIcon = require("./InputField/TrailIcon");
 
 var _Help = _interopRequireDefault(require("../Help"));
 
@@ -125,63 +129,45 @@ function (_React$Component) {
       return this.state.focused;
     }
   }, {
-    key: "shouldShrink",
-    value: function shouldShrink() {
-      return !!(this.isFocused() || this.props.value || this.props.placeholder);
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _React$createElement;
-
       var isFilled = this.props.kind === _constants2.inputKinds.FILLED;
       var isDense = this.props.size === _constants2.inputSizes.DENSE;
+      var Container = this.props.kind === _constants2.inputKinds.FILLED ? _LabelFilled.LabelFilled : _LabelOutlined.LabelOutlined;
       return _react.default.createElement("div", {
+        onClick: this.onFocus,
         className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["2004200063", [_theme.colors.grey500]]]) + " " + ((0, _classnames.default)('base', this.props.className, {
           focused: this.isFocused(),
           disabled: this.props.disabled
         }) || "")
-      }, _react.default.createElement(_style.default, {
-        id: "2004200063",
-        dynamic: [_theme.colors.grey500]
-      }, "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}")), _react.default.createElement(_Field.Field, {
-        value: this.props.value,
-        size: this.props.size,
-        status: this.props.status,
-        kind: this.props.kind,
-        isFocused: this.isFocused(),
-        isFilled: isFilled,
-        isDisabled: this.props.disabled
-      }, _react.default.createElement(_Label.Label, (_React$createElement = {
+      }, _react.default.createElement(Container, {
+        label: this.props.label || this.props.placeholder,
+        isFocused: this.state.focused,
+        hasValue: !!this.props.value || this.props.placeholder,
+        htmlFor: this.props.name,
+        required: this.props.required,
         status: this.props.status,
         size: this.props.size,
-        kind: this.props.kind,
-        isShrinked: this.shouldShrink(),
-        isFocused: this.isFocused(),
-        isDisabled: this.props.disabled,
-        isRequired: this.props.required,
-        hasValue: !!this.props.value,
-        hasIcon: !!this.props.icon,
-        className: this.props.styles.label,
-        styles: this.props.styles.label,
-        label: this.props.label || this.props.placeholder
-      }, _defineProperty(_React$createElement, "hasValue", !!this.props.value), _defineProperty(_React$createElement, "isFilled", isFilled), _React$createElement)), (0, _helpers.createIcon)(this.props.icon), _react.default.createElement(_Input.Input, {
+        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["2004200063", [_theme.colors.grey500]]])
+      }, _react.default.createElement(_Input.Input, {
+        name: this.props.name,
         type: this.props.type,
         value: this.props.value,
-        isFocused: this.props.focus,
+        placeholder: this.props.placeholder,
+        isFocused: this.state.focused,
         disabled: this.props.disabled,
         isFilled: isFilled,
         isDense: isDense,
         onFocus: this.onFocus,
         onBlur: this.onBlur,
         onChange: this.onChange
-      }), _react.default.createElement(_TrailIcon.TrailIcon, {
-        status: this.props.status,
-        trail: this.props.trailIcon
       })), this.props.help && _react.default.createElement(_Help.default, {
         text: this.props.help,
         status: this.props.status
       }), _react.default.createElement(_style.default, {
+        id: "2004200063",
+        dynamic: [_theme.colors.grey500]
+      }, "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}")), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default));
     }
@@ -199,7 +185,8 @@ InputField.defaultProps = {
   focus: false,
   disabled: false,
   required: false,
-  styles: {}
+  styles: {},
+  placeholder: ''
 };
 InputField.propTypes = {
   className: _propTypes.default.string,

@@ -7,9 +7,9 @@ exports.Input = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireWildcard(require("react"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
@@ -43,8 +43,8 @@ var calculatePaddingTop = function calculatePaddingTop(props) {
   return props.filled ? '14px' : '18.5px';
 };
 
-var styles = new String(".input.jsx-3976741333{background-color:transparent;border:0;box-sizing:border-box;font-size:".concat(_constants.inputFontSizeValue, ";height:100%;line-height:19px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}.input.outlined.jsx-3976741333{height:calc(100% - 12px);padding-top:12px;}.input.outlined.dense.jsx-3976741333{height:calc(100% - 12px);padding-top:12px;}.input.filled.jsx-3976741333{height:calc(100% - 20px);padding-top:20px;}.input.filled.dense.jsx-3976741333{height:calc(100% - 18px);padding-top:18px;font-size:14px;}"));
-styles.__hash = "3976741333";
+var styles = new String(".input.jsx-2196150148{background-color:transparent;border:0;box-sizing:border-box;font-size:".concat(_constants.inputFontSizeValue, ";height:100%;line-height:19px;padding:0;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}.input.filled.dense.jsx-2196150148{font-size:14px;}"));
+styles.__hash = "2196150148";
 
 var Input =
 /*#__PURE__*/
@@ -87,6 +87,9 @@ function (_Component) {
         disabled: this.props.disabled
       });
       return _react.default.createElement(_react.Fragment, null, _react.default.createElement("input", {
+        id: this.props.name,
+        name: this.props.name,
+        placeholder: this.props.placeholder,
         ref: this.inputRef,
         type: this.props.type,
         disabled: this.props.disabled,
@@ -106,11 +109,13 @@ function (_Component) {
 
 exports.Input = Input;
 Input.propTypes = {
+  name: _propTypes.default.string.isRequired,
   type: _propTypes.default.string.isRequired,
   value: _propTypes.default.string.isRequired,
   disabled: _propTypes.default.bool.isRequired,
   isFocused: _propTypes.default.bool.isRequired,
   onFocus: _propTypes.default.func.isRequired,
   onBlur: _propTypes.default.func.isRequired,
-  onChange: _propTypes.default.func.isRequired
+  onChange: _propTypes.default.func.isRequired,
+  placeholder: _propTypes.default.string.isRequired
 };

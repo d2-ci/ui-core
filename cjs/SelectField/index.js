@@ -58,7 +58,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function createTrailIcon(status, trail, fn) {
-  var icon = status !== _constants.iconStatuses.DEFAULT ? _constants.statusToIcon[status] : trail;
+  var icon = status !== _constants.iconStatuses.DEFAULT ? _Status.statusToIcon[status] : trail;
   var options = {
     action: fn,
     className: _styles.selectIconStyles.className
@@ -81,6 +81,14 @@ function markActive(list, value) {
     return item;
   });
 }
+
+var _ref2 =
+/*#__PURE__*/
+_react.default.createElement(_Arrow.ArrowUp, null);
+
+var _ref3 =
+/*#__PURE__*/
+_react.default.createElement(_Arrow.ArrowDown, null);
 
 var SelectField =
 /*#__PURE__*/
@@ -199,11 +207,7 @@ function (_React$Component) {
         width: '0.01px'
       };
       var width = open && this.elSelect ? "".concat(this.elSelect.getBoundingClientRect().width, "px") : 'inherit';
-      var Arrow = open ? _react.default.createElement(_Arrow.ArrowUp, {
-        className: _styles.arrowIcon.className
-      }) : _react.default.createElement(_Arrow.ArrowDown, {
-        className: _styles.arrowIcon.className
-      });
+      var Arrow = open ? _ref2 : _ref3;
       return _react.default.createElement("div", {
         ref: function ref(c) {
           return _this3.elContainer = c;
@@ -255,7 +259,7 @@ function (_React$Component) {
         size: this.props.size,
         onClick: this.onClick,
         className: _styles.menuOverride.className
-      })), _react.default.createElement("style", null, _styles.menuOverride.styles), _react.default.createElement("style", null, _styles.arrowIcon.styles), _react.default.createElement(_style.default, {
+      })), _react.default.createElement("style", null, _styles.menuOverride.styles), _react.default.createElement("style", null, arrowIcon.styles), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default), _react.default.createElement("style", null, _styles.selectIconStyles.styles));
     }
