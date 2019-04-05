@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Input = void 0;
+exports.Select = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -39,83 +39,107 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var calculatePaddingTop = function calculatePaddingTop(props) {
-  return props.filled ? '14px' : '18.5px';
-};
+var styles = new String("select.jsx-512228681{background:none;border:0;color:black;font-size:".concat(_constants.inputFontSizeValue, ";height:100%;left:0;outline:0;", " padding:0 4px 0 15px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}select.dense.jsx-512228681{font-size:14px;}select.outlined.jsx-512228681{", " padding-left:14px;}select.filled.jsx-512228681{padding-top:20px;}option.jsx-512228681:not(:checked){color:black;}select.jsx-512228681:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}"));
+styles.__hash = "512228681";
 
-var styles = new String(".input.jsx-3474100830{color:black;background-color:transparent;border:0;box-sizing:border-box;font-size:".concat(_constants.inputFontSizeValue, ";height:100%;line-height:16px;", " padding:3px 0 10px 15px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}", ".jsx-3474100830 .input.outlined.jsx-3474100830{padding-left:14px;}.input.filled.dense.jsx-3474100830{font-size:14px;}"));
-styles.__hash = "3474100830";
-
-var Input =
+var Select =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Input, _Component);
+  _inherits(Select, _Component);
 
-  function Input() {
+  function Select() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _classCallCheck(this, Input);
+    _classCallCheck(this, Select);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Input)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Select)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "inputRef", _react.default.createRef());
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "selectRef", (0, _react.createRef)());
 
     return _this;
   }
 
-  _createClass(Input, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      if (this.props.isFocused) {
-        this.inputRef.current.focus();
+  _createClass(Select, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.focused !== this.props.focused) {
+        if (this.props.focused) {
+          this.selectRef.focus();
+        } else {
+          this.selectRef.blur();
+        }
       }
     }
   }, {
     key: "render",
     value: function render() {
-      var paddingTop = calculatePaddingTop(this.props);
-      var className = (0, _classnames.default)('input', {
-        dense: this.props.isDense,
-        outlined: this.props.kind === _constants.inputKinds.OUTLINED,
-        disabled: this.props.disabled
+      var className = (0, _classnames.default)({
+        dense: this.props.size === _constants.inputSizes.DENSE,
+        filled: this.props.kind === _constants.inputKinds.FILLED,
+        outlined: this.props.kind === _constants.inputKinds.OUTLINED
       });
-      return _react.default.createElement(_react.Fragment, null, _react.default.createElement("input", {
-        id: this.props.name,
-        name: this.props.name,
-        placeholder: this.props.placeholder,
-        ref: this.inputRef,
-        type: this.props.type,
-        disabled: this.props.disabled,
+      return _react.default.createElement("select", {
+        onChange: this.props.onChange,
         value: this.props.value,
+        disabled: this.props.disabled,
         onFocus: this.props.onFocus,
         onBlur: this.props.onBlur,
-        onChange: this.props.onChange,
         className: "jsx-".concat(styles.__hash) + " " + (className || "")
+      }, this.props.list.map(function (_ref) {
+        var value = _ref.value,
+            label = _ref.label,
+            list = _ref.list;
+        return _react.default.createElement(_react.Fragment, null, _react.default.createElement("option", {
+          key: label,
+          value: value,
+          className: "jsx-".concat(styles.__hash)
+        }, label), list && list.length && _react.default.createElement("optgroup", {
+          label: label,
+          className: "jsx-".concat(styles.__hash)
+        }, list.map(function (_ref2) {
+          var value = _ref2.value,
+              label = _ref2.label;
+          return _react.default.createElement("option", {
+            key: label,
+            value: value,
+            className: "jsx-".concat(styles.__hash)
+          }, label);
+        })));
       }), _react.default.createElement(_style.default, {
         id: styles.__hash
       }, styles));
     }
   }]);
 
-  return Input;
+  return Select;
 }(_react.Component);
 
-exports.Input = Input;
-Input.propTypes = {
-  name: _propTypes.default.string.isRequired,
-  type: _propTypes.default.string.isRequired,
+exports.Select = Select;
+Select.propTypes = {
   value: _propTypes.default.string.isRequired,
-  disabled: _propTypes.default.bool.isRequired,
-  isFocused: _propTypes.default.bool.isRequired,
-  onFocus: _propTypes.default.func.isRequired,
-  onBlur: _propTypes.default.func.isRequired,
   onChange: _propTypes.default.func.isRequired,
-  placeholder: _propTypes.default.string.isRequired,
-  kind: _propTypes.default.arrayOf([_constants.inputKinds.FILLED, _constants.inputKinds.OUTLINED]).isRequired
+  size: _propTypes.default.arrayOf([_constants.inputSizes.DEFAULT, _constants.inputSizes.DENSE]).isRequired,
+  kind: _propTypes.default.arrayOf([_constants.inputKinds.FILLED, _constants.inputKinds.OUTLINED]).isRequired,
+  list: _propTypes.default.shape({
+    value: _propTypes.default.string.isRequired,
+    label: _propTypes.default.string.isRequired,
+    list: _propTypes.default.shape({
+      value: _propTypes.default.string.isRequired,
+      label: _propTypes.default.string.isRequired
+    })
+  }).isRequired,
+  disabled: _propTypes.default.bool,
+  onFocus: _propTypes.default.func,
+  onBlur: _propTypes.default.func
+};
+Select.defaultProps = {
+  disabled: false,
+  onFocus: null,
+  onBlur: null
 };

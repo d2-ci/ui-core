@@ -37,8 +37,8 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-var styles = new String(".label-filled.jsx-422363918{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:rgba(0,0,10,0.05);border-bottom:2px solid transparent;border-radius:4px;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;height:56px;padding-left:".concat(_constants2.innerSpacingSides, ";position:relative;}.label-filled.dense.jsx-422363918{height:44px;}.label-filled.jsx-422363918:hover{background-color:rgba(0,0,10,0.08);}.label-filled.focused.jsx-422363918{border-color:").concat(_theme.colors.teal600, ";}.label-filled.valid.jsx-422363918{border-color:").concat(_constants.statusColors[_constants.iconStatuses.VALID], ";}.label-filled.warning.jsx-422363918{border-color:").concat(_constants.statusColors[_constants.iconStatuses.WARNING], ";}.label-filled.error.jsx-422363918{border-color:").concat(_constants.statusColors[_constants.iconStatuses.ERROR], ";}.content.jsx-422363918{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:100%;position:relative;width:100%;z-index:-1;}.focused.jsx-422363918 .content.jsx-422363918,.has-value.jsx-422363918 .content.jsx-422363918{z-index:2;}"));
-styles.__hash = "422363918";
+var styles = new String(".label-filled.jsx-752660714{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:rgba(0,0,10,0.05);border-bottom:2px solid transparent;border-radius:4px;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;height:56px;position:relative;}.label-filled.dense.jsx-752660714{height:44px;}.label-filled.jsx-752660714:hover{background-color:rgba(0,0,10,0.08);}.label-filled.focused.jsx-752660714{border-color:".concat(_theme.colors.teal600, ";}.label-filled.valid.jsx-752660714{border-color:").concat(_constants.statusColors[_constants.iconStatuses.VALID], ";}.label-filled.warning.jsx-752660714{border-color:").concat(_constants.statusColors[_constants.iconStatuses.WARNING], ";}.label-filled.error.jsx-752660714{border-color:").concat(_constants.statusColors[_constants.iconStatuses.ERROR], ";}.content.jsx-752660714{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:100%;position:relative;width:100%;z-index:-1;}.focused.jsx-752660714 .content.jsx-752660714,.has-value.jsx-752660714 .content.jsx-752660714{z-index:2;}.status-icon.jsx-752660714{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:24px;height:24px;}"));
+styles.__hash = "752660714";
 
 var createLabelFilledClassName = function createLabelFilledClassName(props) {
   return (0, _classnames.default)('label-filled', {
@@ -56,6 +56,7 @@ var LabelFilled = function LabelFilled(_ref) {
       props = _objectWithoutProperties(_ref, ["tailIcon"]);
 
   return _react.default.createElement("div", {
+    onClick: props.onClick,
     className: "jsx-".concat(styles.__hash) + " " + (createLabelFilledClassName(props) || "")
   }, _react.default.createElement(_Label.Label, {
     size: props.size,
@@ -69,9 +70,11 @@ var LabelFilled = function LabelFilled(_ref) {
     size: props.size,
     isFocused: props.isFocused,
     hasValue: props.hasValue
-  }, "size", props.size), props.children), _react.default.createElement(_Status.StatusIconNoDefault, {
+  }, "size", props.size), props.children), _react.default.createElement("div", {
+    className: "jsx-".concat(styles.__hash) + " " + "status-icon"
+  }, _react.default.createElement(_Status.StatusIconNoDefault, {
     status: props.status
-  }), _react.default.createElement(TailIcon, {
+  })), _react.default.createElement(TailIcon, {
     className: "jsx-".concat(styles.__hash)
   })), _react.default.createElement(_style.default, {
     id: styles.__hash
@@ -87,7 +90,8 @@ LabelFilled.propTypes = {
   tailIcon: _propTypes.default.element,
   required: _propTypes.default.bool,
   status: _constants.iconStatusPropType,
-  size: _constants2.inputSizesPropTypes
+  size: _constants2.inputSizesPropTypes,
+  onClick: _propTypes.default.func
 };
 LabelFilled.defaultProps = {
   required: false,
@@ -95,5 +99,6 @@ LabelFilled.defaultProps = {
   size: _constants2.inputSizes.DEFAULT,
   tailIcon: function tailIcon() {
     return null;
-  }
+  },
+  onClick: null
 };

@@ -14,8 +14,8 @@ import { children } from '../utils/react';
 import { colors } from '../theme';
 import { iconStatusPropType, iconStatuses, statusColors } from '../icons/constants';
 import { innerSpacingSides, inputSizes, inputSizesPropTypes } from './constants';
-const styles = new String(`.label-filled.jsx-422363918{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:rgba(0,0,10,0.05);border-bottom:2px solid transparent;border-radius:4px;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;height:56px;padding-left:${innerSpacingSides};position:relative;}.label-filled.dense.jsx-422363918{height:44px;}.label-filled.jsx-422363918:hover{background-color:rgba(0,0,10,0.08);}.label-filled.focused.jsx-422363918{border-color:${colors.teal600};}.label-filled.valid.jsx-422363918{border-color:${statusColors[iconStatuses.VALID]};}.label-filled.warning.jsx-422363918{border-color:${statusColors[iconStatuses.WARNING]};}.label-filled.error.jsx-422363918{border-color:${statusColors[iconStatuses.ERROR]};}.content.jsx-422363918{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:100%;position:relative;width:100%;z-index:-1;}.focused.jsx-422363918 .content.jsx-422363918,.has-value.jsx-422363918 .content.jsx-422363918{z-index:2;}`);
-styles.__hash = "422363918";
+const styles = new String(`.label-filled.jsx-752660714{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:rgba(0,0,10,0.05);border-bottom:2px solid transparent;border-radius:4px;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;height:56px;position:relative;}.label-filled.dense.jsx-752660714{height:44px;}.label-filled.jsx-752660714:hover{background-color:rgba(0,0,10,0.08);}.label-filled.focused.jsx-752660714{border-color:${colors.teal600};}.label-filled.valid.jsx-752660714{border-color:${statusColors[iconStatuses.VALID]};}.label-filled.warning.jsx-752660714{border-color:${statusColors[iconStatuses.WARNING]};}.label-filled.error.jsx-752660714{border-color:${statusColors[iconStatuses.ERROR]};}.content.jsx-752660714{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:100%;position:relative;width:100%;z-index:-1;}.focused.jsx-752660714 .content.jsx-752660714,.has-value.jsx-752660714 .content.jsx-752660714{z-index:2;}.status-icon.jsx-752660714{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:24px;height:24px;}`);
+styles.__hash = "752660714";
 
 const createLabelFilledClassName = props => cx('label-filled', {
   focused: props.isFocused,
@@ -33,6 +33,7 @@ export const LabelFilled = (_ref) => {
       props = _objectWithoutProperties(_ref, ["tailIcon"]);
 
   return React.createElement("div", {
+    onClick: props.onClick,
     className: `jsx-${styles.__hash}` + " " + (createLabelFilledClassName(props) || "")
   }, React.createElement(Label, {
     size: props.size,
@@ -47,9 +48,11 @@ export const LabelFilled = (_ref) => {
     isFocused: props.isFocused,
     hasValue: props.hasValue,
     size: props.size
-  }, props.children), React.createElement(StatusIconNoDefault, {
+  }, props.children), React.createElement("div", {
+    className: `jsx-${styles.__hash}` + " " + "status-icon"
+  }, React.createElement(StatusIconNoDefault, {
     status: props.status
-  }), React.createElement(TailIcon, {
+  })), React.createElement(TailIcon, {
     className: `jsx-${styles.__hash}`
   })), React.createElement(_JSXStyle, {
     id: styles.__hash
@@ -63,11 +66,13 @@ LabelFilled.propTypes = {
   tailIcon: PropTypes.element,
   required: PropTypes.bool,
   status: iconStatusPropType,
-  size: inputSizesPropTypes
+  size: inputSizesPropTypes,
+  onClick: PropTypes.func
 };
 LabelFilled.defaultProps = {
   required: false,
   status: iconStatuses.DEFAULT,
   size: inputSizes.DEFAULT,
-  tailIcon: () => null
+  tailIcon: () => null,
+  onClick: null
 };

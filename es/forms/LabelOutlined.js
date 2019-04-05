@@ -15,8 +15,8 @@ import { children } from '../utils/react';
 import { colors } from '../theme';
 import { iconStatusPropType, iconStatuses, statusColors } from '../icons/constants';
 import { innerSpacingSides, inputSizes, inputSizesPropTypes } from './constants';
-const styles = new String(`.label-outlined.jsx-3266083721{height:${inputHeight + 10}px;position:relative;}.label-outlined.dense.jsx-3266083721{height:${inputHeightDense + 10}px;}.label-outlined.jsx-3266083721:before{border:1px solid ${statusColors[iconStatuses.DEFAULT]};border-top:0;border-radius:0 0 ${borderRadius} ${borderRadius};box-sizing:border-box;bottom:0;content:'';height:75%;left:0;position:absolute;width:100%;}.label-outlined.valid.jsx-3266083721:before{border-color:${statusColors[iconStatuses.VALID]};}.label-outlined.warning.jsx-3266083721:before{border-color:${statusColors[iconStatuses.WARNING]};}.label-outlined.error.jsx-3266083721:before{border-color:${statusColors[iconStatuses.ERROR]};}.content.jsx-3266083721{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:54px;left:1px;position:relative;top:11px;width:calc(100% - 1px);}.dense.jsx-3266083721 .content.jsx-3266083721{height:42px;}`);
-styles.__hash = "3266083721";
+const styles = new String(`.label-outlined.jsx-2614983922{height:${inputHeight + 10}px;position:relative;}.label-outlined.dense.jsx-2614983922{height:${inputHeightDense + 10}px;}.label-outlined.jsx-2614983922:before{border:1px solid ${statusColors[iconStatuses.DEFAULT]};border-top:0;border-radius:0 0 ${borderRadius} ${borderRadius};box-sizing:border-box;bottom:0;content:'';height:75%;left:0;position:absolute;width:100%;}.label-outlined.valid.jsx-2614983922:before{border-color:${statusColors[iconStatuses.VALID]};}.label-outlined.warning.jsx-2614983922:before{border-color:${statusColors[iconStatuses.WARNING]};}.label-outlined.error.jsx-2614983922:before{border-color:${statusColors[iconStatuses.ERROR]};}.content.jsx-2614983922{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:54px;left:1px;position:relative;top:11px;width:calc(100% - 1px);}.dense.jsx-2614983922 .content.jsx-2614983922{height:42px;}.status-icon.jsx-2614983922{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:24px;height:24px;}`);
+styles.__hash = "2614983922";
 
 const createLabelOutlinedClassName = props => cx('label-outlined', {
   focused: props.isFocused,
@@ -44,9 +44,11 @@ export const LabelOutlined = (_ref) => {
     className: `jsx-${styles.__hash}` + " " + "content"
   }, React.createElement(InputContainer, {
     size: props.size
-  }, props.children), React.createElement(StatusIconNoDefault, {
+  }, props.children), React.createElement("div", {
+    className: `jsx-${styles.__hash}` + " " + "status-icon"
+  }, React.createElement(StatusIconNoDefault, {
     status: props.status
-  }), React.createElement(TailIcon, {
+  })), React.createElement(TailIcon, {
     className: `jsx-${styles.__hash}`
   })), React.createElement(_JSXStyle, {
     id: styles.__hash

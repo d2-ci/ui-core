@@ -37,8 +37,8 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-var styles = new String(".label-outlined.jsx-3266083721{height:".concat(_constants.inputHeight + 10, "px;position:relative;}.label-outlined.dense.jsx-3266083721{height:").concat(_constants.inputHeightDense + 10, "px;}.label-outlined.jsx-3266083721:before{border:1px solid ").concat(_constants2.statusColors[_constants2.iconStatuses.DEFAULT], ";border-top:0;border-radius:0 0 ").concat(_constants.borderRadius, " ").concat(_constants.borderRadius, ";box-sizing:border-box;bottom:0;content:'';height:75%;left:0;position:absolute;width:100%;}.label-outlined.valid.jsx-3266083721:before{border-color:").concat(_constants2.statusColors[_constants2.iconStatuses.VALID], ";}.label-outlined.warning.jsx-3266083721:before{border-color:").concat(_constants2.statusColors[_constants2.iconStatuses.WARNING], ";}.label-outlined.error.jsx-3266083721:before{border-color:").concat(_constants2.statusColors[_constants2.iconStatuses.ERROR], ";}.content.jsx-3266083721{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:54px;left:1px;position:relative;top:11px;width:calc(100% - 1px);}.dense.jsx-3266083721 .content.jsx-3266083721{height:42px;}"));
-styles.__hash = "3266083721";
+var styles = new String(".label-outlined.jsx-2614983922{height:".concat(_constants.inputHeight + 10, "px;position:relative;}.label-outlined.dense.jsx-2614983922{height:").concat(_constants.inputHeightDense + 10, "px;}.label-outlined.jsx-2614983922:before{border:1px solid ").concat(_constants2.statusColors[_constants2.iconStatuses.DEFAULT], ";border-top:0;border-radius:0 0 ").concat(_constants.borderRadius, " ").concat(_constants.borderRadius, ";box-sizing:border-box;bottom:0;content:'';height:75%;left:0;position:absolute;width:100%;}.label-outlined.valid.jsx-2614983922:before{border-color:").concat(_constants2.statusColors[_constants2.iconStatuses.VALID], ";}.label-outlined.warning.jsx-2614983922:before{border-color:").concat(_constants2.statusColors[_constants2.iconStatuses.WARNING], ";}.label-outlined.error.jsx-2614983922:before{border-color:").concat(_constants2.statusColors[_constants2.iconStatuses.ERROR], ";}.content.jsx-2614983922{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:54px;left:1px;position:relative;top:11px;width:calc(100% - 1px);}.dense.jsx-2614983922 .content.jsx-2614983922{height:42px;}.status-icon.jsx-2614983922{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:24px;height:24px;}"));
+styles.__hash = "2614983922";
 
 var createLabelOutlinedClassName = function createLabelOutlinedClassName(props) {
   return (0, _classnames.default)('label-outlined', {
@@ -66,9 +66,11 @@ var LabelOutlined = function LabelOutlined(_ref) {
     className: "jsx-".concat(styles.__hash) + " " + "content"
   }, _react.default.createElement(_InputContainer.InputContainer, {
     size: props.size
-  }, props.children), _react.default.createElement(_Status.StatusIconNoDefault, {
+  }, props.children), _react.default.createElement("div", {
+    className: "jsx-".concat(styles.__hash) + " " + "status-icon"
+  }, _react.default.createElement(_Status.StatusIconNoDefault, {
     status: props.status
-  }), _react.default.createElement(TailIcon, {
+  })), _react.default.createElement(TailIcon, {
     className: "jsx-".concat(styles.__hash)
   })), _react.default.createElement(_style.default, {
     id: styles.__hash

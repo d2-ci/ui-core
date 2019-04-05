@@ -5,12 +5,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import cx from 'classnames';
-import { inputFontSizeValue } from '../../forms/constants';
+import { innerSpacingSides, inputFontSizeValue, inputKinds } from '../../forms/constants';
 
 const calculatePaddingTop = props => props.filled ? '14px' : '18.5px';
 
-const styles = new String(`.input.jsx-2196150148{background-color:transparent;border:0;box-sizing:border-box;font-size:${inputFontSizeValue};height:100%;line-height:19px;padding:0;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}.input.filled.dense.jsx-2196150148{font-size:14px;}`);
-styles.__hash = "2196150148";
+const styles = new String(`.input.jsx-3474100830{color:black;background-color:transparent;border:0;box-sizing:border-box;font-size:${inputFontSizeValue};height:100%;line-height:16px;${
+/** 15px => 16px inner spacing - 1px of space in the select text **/
+''} padding:3px 0 10px 15px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}${
+/** 14px => 16px inner spacing - 1px of space in the select text and 1px for border**/
+''}.jsx-3474100830 .input.outlined.jsx-3474100830{padding-left:14px;}.input.filled.dense.jsx-3474100830{font-size:14px;}`);
+styles.__hash = "3474100830";
 export class Input extends Component {
   constructor(...args) {
     super(...args);
@@ -28,8 +32,7 @@ export class Input extends Component {
     const paddingTop = calculatePaddingTop(this.props);
     const className = cx('input', {
       dense: this.props.isDense,
-      filled: this.props.isFilled,
-      outlined: !this.props.isFilled,
+      outlined: this.props.kind === inputKinds.OUTLINED,
       disabled: this.props.disabled
     });
     return React.createElement(Fragment, null, React.createElement("input", {
@@ -59,5 +62,6 @@ Input.propTypes = {
   onFocus: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string.isRequired
+  placeholder: PropTypes.string.isRequired,
+  kind: PropTypes.arrayOf([inputKinds.FILLED, inputKinds.OUTLINED]).isRequired
 };

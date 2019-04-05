@@ -5,8 +5,8 @@ import cx from 'classnames';
 import { children } from '../../utils/react';
 import { innerSpacingSides, inputSizes, inputSizesPropTypes } from '../../forms/constants';
 import { inputHeight, inputHeightDense } from './constants';
-const styles = new String(`.input-container.jsx-3407983543{height:100%;line-height:${inputHeight}px;padding:0 0 0 ${innerSpacingSides};width:100%;}.input-container.dense.jsx-3407983543{line-height:${inputHeightDense}px;}`);
-styles.__hash = "3407983543";
+const styles = new String(`.input-container.jsx-2526961367{height:100%;line-height:${inputHeight}px;min-width:0;overflow:hidden;padding:0;position:relative;width:100%;}.input-container.dense.jsx-2526961367{line-height:${inputHeightDense}px;}`);
+styles.__hash = "2526961367";
 
 const createInputContainerClassName = props => cx('input-container', {
   dense: props.size === inputSizes.DENSE
