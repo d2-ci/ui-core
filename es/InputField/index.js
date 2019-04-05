@@ -27,8 +27,8 @@ const types = {
 };
 
 class InputField extends React.Component {
-  constructor(...args) {
-    super(...args);
+  constructor(props) {
+    super(props);
 
     _defineProperty(this, "state", {
       focused: false
@@ -53,6 +53,10 @@ class InputField extends React.Component {
 
       this.props.onChange(this.props.name, evt.target.value);
     });
+
+    this.state = {
+      focused: props.focus
+    };
   }
 
   componentDidMount() {
@@ -118,29 +122,23 @@ InputField.defaultProps = {
   focus: false,
   disabled: false,
   required: false,
-  styles: {},
   placeholder: ''
 };
 InputField.propTypes = {
-  className: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  className: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label: PropTypes.string,
   placeholder: PropTypes.string,
   help: PropTypes.string,
-  icon: PropTypes.element,
-  trailIcon: PropTypes.element,
   status: iconStatusPropType,
   size: PropTypes.oneOf([inputSizes.DEFAULT, inputSizes.DENSE]),
   kind: PropTypes.oneOf([inputKinds.FILLED, inputKinds.OUTLINED]),
   type: PropTypes.oneOf([types.TEXT, types.EMAIL, types.NUMBER, types.PASSWORD, types.URL]),
   focus: PropTypes.bool,
   disabled: PropTypes.bool,
-  required: PropTypes.bool,
-  styles: PropTypes.shape({
-    label: PropTypes.oneOf([PropTypes.string, PropTypes.object])
-  })
+  required: PropTypes.bool
 };
 export { InputField };
 export default InputField;

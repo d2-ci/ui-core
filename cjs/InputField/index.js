@@ -76,18 +76,12 @@ var InputField =
 function (_React$Component) {
   _inherits(InputField, _React$Component);
 
-  function InputField() {
-    var _getPrototypeOf2;
-
+  function InputField(props) {
     var _this;
 
     _classCallCheck(this, InputField);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(InputField)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(InputField).call(this, props));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       focused: false
@@ -113,6 +107,9 @@ function (_React$Component) {
       _this.props.onChange(_this.props.name, evt.target.value);
     });
 
+    _this.state = {
+      focused: props.focus
+    };
     return _this;
   }
 
@@ -186,29 +183,23 @@ InputField.defaultProps = {
   focus: false,
   disabled: false,
   required: false,
-  styles: {},
   placeholder: ''
 };
 InputField.propTypes = {
-  className: _propTypes.default.string,
   name: _propTypes.default.string.isRequired,
   onChange: _propTypes.default.func.isRequired,
+  className: _propTypes.default.string,
   value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
   label: _propTypes.default.string,
   placeholder: _propTypes.default.string,
   help: _propTypes.default.string,
-  icon: _propTypes.default.element,
-  trailIcon: _propTypes.default.element,
   status: _constants.iconStatusPropType,
   size: _propTypes.default.oneOf([_constants2.inputSizes.DEFAULT, _constants2.inputSizes.DENSE]),
   kind: _propTypes.default.oneOf([_constants2.inputKinds.FILLED, _constants2.inputKinds.OUTLINED]),
   type: _propTypes.default.oneOf([types.TEXT, types.EMAIL, types.NUMBER, types.PASSWORD, types.URL]),
   focus: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
-  required: _propTypes.default.bool,
-  styles: _propTypes.default.shape({
-    label: _propTypes.default.oneOf([_propTypes.default.string, _propTypes.default.object])
-  })
+  required: _propTypes.default.bool
 };
 var _default = InputField;
 exports.default = _default;
