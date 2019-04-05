@@ -31,14 +31,14 @@ var statusToIcon = (_statusToIcon = {}, _defineProperty(_statusToIcon, _constant
  */
 
 exports.statusToIcon = statusToIcon;
-var iconStyleValid = new String("svg.jsx-1819142562{fill:".concat(_theme.colors.blue600, ";width:24px;height:24px;margin-right:8px;}"));
+var iconStyleValid = new String("svg.jsx-294723437{fill:".concat(_theme.colors.blue600, ";width:24px;height:24px;margin-right:4px;}"));
 /**
  * @param {Object} props
  * @param {string} props.className
  * @returns {ReactNode}
  */
 
-iconStyleValid.__hash = "1819142562";
+iconStyleValid.__hash = "294723437";
 
 function Valid(_ref) {
   var className = _ref.className;
@@ -68,14 +68,14 @@ Valid.propTypes = {
    */
 
 };
-var iconStyleWarning = new String("svg.jsx-1902194108{fill:".concat(_theme.colors.yellow500, ";width:24px;height:24px;margin-right:8px;}"));
+var iconStyleWarning = new String("svg.jsx-4220013059{fill:".concat(_theme.colors.yellow500, ";width:24px;height:24px;margin-right:4px;}"));
 /**
  * @param {Object} props
  * @param {string} props.className
  * @returns {ReactNode}
  */
 
-iconStyleWarning.__hash = "1902194108";
+iconStyleWarning.__hash = "4220013059";
 
 function Warning(_ref2) {
   var className = _ref2.className;
@@ -105,14 +105,14 @@ Warning.propTypes = {
    */
 
 };
-var iconStyleError = new String("svg.jsx-6165027{fill:".concat(_theme.colors.red500, ";width:24px;height:24px;margin-right:8px;}"));
+var iconStyleError = new String("svg.jsx-1515634284{fill:".concat(_theme.colors.red500, ";width:24px;height:24px;margin-right:4px;}"));
 /**
  * @param {Object} props
  * @param {string} props.className
  * @returns {ReactNode}
  */
 
-iconStyleError.__hash = "6165027";
+iconStyleError.__hash = "1515634284";
 
 function Error(_ref3) {
   var className = _ref3.className;

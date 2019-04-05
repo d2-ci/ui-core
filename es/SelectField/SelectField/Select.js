@@ -6,12 +6,10 @@ import PropTypes from 'prop-types';
 import React, { Component, Fragment, createRef } from 'react';
 import cx from 'classnames';
 import { innerSpacingSides, inputFontSizeValue, inputKinds, inputSizes } from '../../forms/constants';
-const styles = new String(`select.jsx-512228681{background:none;border:0;color:black;font-size:${inputFontSizeValue};height:100%;left:0;outline:0;${
-/** 15px => 16px inner spacing - 1px of space in the select text **/
-''} padding:0 4px 0 15px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}select.dense.jsx-512228681{font-size:14px;}select.outlined.jsx-512228681{${
-/** 14px => 16px inner spacing - 1px of space in the select text and 1px of the bordr**/
-''} padding-left:14px;}select.filled.jsx-512228681{padding-top:20px;}option.jsx-512228681:not(:checked){color:black;}select.jsx-512228681:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}`);
-styles.__hash = "512228681";
+const styles = new String(`select.jsx-629041383{background:none;border:0;color:black;font-size:${inputFontSizeValue};height:100%;left:0;outline:0;padding:0 12px 0 16px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}select.dense.jsx-629041383{font-size:14px;}select.outlined.jsx-629041383{${
+/** 15px => 16px inner spacing - 1px of the border**/
+''} padding-left:15px;}select.filled.jsx-629041383{padding-top:20px;}option.jsx-629041383:not(:checked){color:black;}select.jsx-629041383:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}`);
+styles.__hash = "629041383";
 export class Select extends Component {
   constructor(...args) {
     super(...args);

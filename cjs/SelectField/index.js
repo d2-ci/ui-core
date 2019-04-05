@@ -13,8 +13,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _Arrow = require("../icons/Arrow");
-
 var _Status = require("../icons/Status");
 
 var _Input = require("../InputField/InputField/Input");
@@ -24,6 +22,8 @@ var _LabelFilled = require("../forms/LabelFilled");
 var _LabelOutlined = require("../forms/LabelOutlined");
 
 var _Select = require("./SelectField/Select");
+
+var _Arrow = require("./SelectField/Arrow");
 
 var _theme = require("../theme");
 
@@ -180,7 +180,6 @@ function (_React$Component) {
       var _this2 = this;
 
       var open = this.state.open;
-      var Arrow = open ? _Arrow.ArrowUp : _Arrow.ArrowDown;
       var isFilled = this.props.kind === _constants2.inputKinds.FILLED;
       var isDense = this.props.size === _constants2.inputSizes.DENSE;
       var Container = this.props.kind === _constants2.inputKinds.FILLED ? _LabelFilled.LabelFilled : _LabelOutlined.LabelOutlined;
@@ -200,7 +199,11 @@ function (_React$Component) {
         required: this.props.required,
         status: this.props.status,
         size: this.props.size,
-        tailIcon: Arrow,
+        tailIcon: function tailIcon() {
+          return _react.default.createElement(_Arrow.Arrow, {
+            open: _this2.state.open
+          });
+        },
         onClick: this.onFocus,
         className: "jsx-1546415887 " + "jsx-".concat(_styles.default.__hash)
       }, _react.default.createElement(_Select.Select, {

@@ -13,14 +13,14 @@ export const statusToIcon = {
    */
 
 };
-const iconStyleValid = new String(`svg.jsx-1819142562{fill:${colors.blue600};width:24px;height:24px;margin-right:8px;}`);
+const iconStyleValid = new String(`svg.jsx-294723437{fill:${colors.blue600};width:24px;height:24px;margin-right:4px;}`);
 /**
  * @param {Object} props
  * @param {string} props.className
  * @returns {ReactNode}
  */
 
-iconStyleValid.__hash = "1819142562";
+iconStyleValid.__hash = "294723437";
 export function Valid({
   className
 }) {
@@ -49,14 +49,14 @@ Valid.propTypes = {
    */
 
 };
-const iconStyleWarning = new String(`svg.jsx-1902194108{fill:${colors.yellow500};width:24px;height:24px;margin-right:8px;}`);
+const iconStyleWarning = new String(`svg.jsx-4220013059{fill:${colors.yellow500};width:24px;height:24px;margin-right:4px;}`);
 /**
  * @param {Object} props
  * @param {string} props.className
  * @returns {ReactNode}
  */
 
-iconStyleWarning.__hash = "1902194108";
+iconStyleWarning.__hash = "4220013059";
 export function Warning({
   className
 }) {
@@ -85,14 +85,14 @@ Warning.propTypes = {
    */
 
 };
-const iconStyleError = new String(`svg.jsx-6165027{fill:${colors.red500};width:24px;height:24px;margin-right:8px;}`);
+const iconStyleError = new String(`svg.jsx-1515634284{fill:${colors.red500};width:24px;height:24px;margin-right:4px;}`);
 /**
  * @param {Object} props
  * @param {string} props.className
  * @returns {ReactNode}
  */
 
-iconStyleError.__hash = "6165027";
+iconStyleError.__hash = "1515634284";
 export function Error({
   className
 }) {

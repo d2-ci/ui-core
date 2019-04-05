@@ -39,8 +39,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var styles = new String("select.jsx-512228681{background:none;border:0;color:black;font-size:".concat(_constants.inputFontSizeValue, ";height:100%;left:0;outline:0;", " padding:0 4px 0 15px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}select.dense.jsx-512228681{font-size:14px;}select.outlined.jsx-512228681{", " padding-left:14px;}select.filled.jsx-512228681{padding-top:20px;}option.jsx-512228681:not(:checked){color:black;}select.jsx-512228681:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}"));
-styles.__hash = "512228681";
+var styles = new String("select.jsx-629041383{background:none;border:0;color:black;font-size:".concat(_constants.inputFontSizeValue, ";height:100%;left:0;outline:0;padding:0 12px 0 16px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}select.dense.jsx-629041383{font-size:14px;}select.outlined.jsx-629041383{", " padding-left:15px;}select.filled.jsx-629041383{padding-top:20px;}option.jsx-629041383:not(:checked){color:black;}select.jsx-629041383:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}"));
+styles.__hash = "629041383";
 
 var Select =
 /*#__PURE__*/

@@ -14,8 +14,8 @@ import { children } from '../utils/react';
 import { colors } from '../theme';
 import { iconStatusPropType, iconStatuses, statusColors } from '../icons/constants';
 import { innerSpacingSides, inputSizes, inputSizesPropTypes } from './constants';
-const styles = new String(`.label-filled.jsx-752660714{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:rgba(0,0,10,0.05);border-bottom:2px solid transparent;border-radius:4px;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;height:56px;position:relative;}.label-filled.dense.jsx-752660714{height:44px;}.label-filled.jsx-752660714:hover{background-color:rgba(0,0,10,0.08);}.label-filled.focused.jsx-752660714{border-color:${colors.teal600};}.label-filled.valid.jsx-752660714{border-color:${statusColors[iconStatuses.VALID]};}.label-filled.warning.jsx-752660714{border-color:${statusColors[iconStatuses.WARNING]};}.label-filled.error.jsx-752660714{border-color:${statusColors[iconStatuses.ERROR]};}.content.jsx-752660714{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:100%;position:relative;width:100%;z-index:-1;}.focused.jsx-752660714 .content.jsx-752660714,.has-value.jsx-752660714 .content.jsx-752660714{z-index:2;}.status-icon.jsx-752660714{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:24px;height:24px;}`);
-styles.__hash = "752660714";
+const styles = new String(`.label-filled.jsx-1448498707{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:rgba(0,0,10,0.05);border-bottom:2px solid transparent;border-radius:4px;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;height:56px;position:relative;}.label-filled.dense.jsx-1448498707{height:44px;}.label-filled.jsx-1448498707:hover{background-color:rgba(0,0,10,0.08);}.label-filled.focused.jsx-1448498707{border-color:${colors.teal600};}.label-filled.valid.jsx-1448498707{border-color:${statusColors[iconStatuses.VALID]};}.label-filled.valid.focused.jsx-1448498707{border-color:${colors.blue700};}.label-filled.warning.jsx-1448498707{border-color:${statusColors[iconStatuses.WARNING]};}.label-filled.warning.focused.jsx-1448498707{border-color:${colors.yellow700};}.label-filled.error.jsx-1448498707{border-color:${statusColors[iconStatuses.ERROR]};}.label-filled.error.focused.jsx-1448498707{border-color:${colors.red700};}.content.jsx-1448498707{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:100%;position:relative;width:100%;z-index:-1;}.focused.jsx-1448498707 .content.jsx-1448498707,.has-value.jsx-1448498707 .content.jsx-1448498707{z-index:2;}.status-icon.jsx-1448498707{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:24px;height:24px;margin-right:4px;}.status-icon.jsx-1448498707:last-child{margin-right:10px;}`);
+styles.__hash = "1448498707";
 
 const createLabelFilledClassName = props => cx('label-filled', {
   focused: props.isFocused,
@@ -36,6 +36,7 @@ export const LabelFilled = (_ref) => {
     onClick: props.onClick,
     className: `jsx-${styles.__hash}` + " " + (createLabelFilledClassName(props) || "")
   }, React.createElement(Label, {
+    isFocused: props.isFocused,
     size: props.size,
     status: props.status,
     hasValue: props.isFocused || props.hasValue,

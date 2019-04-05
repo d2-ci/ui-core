@@ -43,8 +43,8 @@ var calculatePaddingTop = function calculatePaddingTop(props) {
   return props.filled ? '14px' : '18.5px';
 };
 
-var styles = new String(".input.jsx-3474100830{color:black;background-color:transparent;border:0;box-sizing:border-box;font-size:".concat(_constants.inputFontSizeValue, ";height:100%;line-height:16px;", " padding:3px 0 10px 15px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}", ".jsx-3474100830 .input.outlined.jsx-3474100830{padding-left:14px;}.input.filled.dense.jsx-3474100830{font-size:14px;}"));
-styles.__hash = "3474100830";
+var styles = new String(".input.jsx-1940274888{color:black;background-color:transparent;border:0;box-sizing:border-box;font-size:".concat(_constants.inputFontSizeValue, ";height:100%;line-height:16px;padding:3px 0 10px 16px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}", ".jsx-1940274888 .input.outlined.jsx-1940274888{padding-left:15px;}.input.filled.dense.jsx-1940274888{font-size:14px;}"));
+styles.__hash = "1940274888";
 
 var Input =
 /*#__PURE__*/
