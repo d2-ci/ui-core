@@ -36,15 +36,10 @@ React.createElement(_JSXStyle, {
 }, ".select-value.jsx-1546415887{display:block;overflow:hidden;padding-right:10px;text-overflow:ellipsis;white-space:nowrap;}");
 
 class SelectField extends React.Component {
-  constructor(...args) {
-    super(...args);
+  constructor(props) {
+    super(props);
 
     _defineProperty(this, "elContainer", React.createRef());
-
-    _defineProperty(this, "state", {
-      focused: false,
-      open: false
-    });
 
     _defineProperty(this, "onDocClick", evt => {
       if (this.focused && this.elContainer) {
@@ -91,6 +86,11 @@ class SelectField extends React.Component {
         this.props.onBlur(e);
       }
     });
+
+    this.state = {
+      focused: props.focused,
+      open: false
+    };
   }
 
   componentDidMount() {
@@ -167,8 +167,8 @@ SelectField.defaultProps = {
   onBlur: null
 };
 SelectField.propTypes = {
-  onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   list: Select.propTypes.list,
@@ -176,6 +176,7 @@ SelectField.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   required: PropTypes.bool,
+  focus: PropTypes.bool,
   size: PropTypes.oneOf([inputSizes.DEFAULT, inputSizes.DENSE]),
   kind: PropTypes.oneOf([inputKinds.FILLED, inputKinds.OUTLINED]),
   status: iconStatusPropType,

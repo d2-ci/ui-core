@@ -91,12 +91,20 @@ function (_React$Component) {
       _this.setState({
         focused: true
       });
+
+      if (_this.props.onFocus) {
+        _this.props.onFocus(evt);
+      }
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function (evt) {
       _this.setState({
         focused: false
       });
+
+      if (_this.props.onBlur) {
+        _this.props.onBlur(evt);
+      }
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
@@ -114,13 +122,6 @@ function (_React$Component) {
   }
 
   _createClass(InputField, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.setState({
-        focused: this.props.focus
-      });
-    }
-  }, {
     key: "isFocused",
     value: function isFocused() {
       return this.state.focused;
@@ -138,7 +139,7 @@ function (_React$Component) {
           disabled: this.props.disabled
         }) || "")
       }, _react.default.createElement(Container, {
-        label: this.props.label || this.props.placeholder,
+        label: this.props.label,
         isFocused: this.state.focused,
         hasValue: !!this.props.value || this.props.placeholder,
         htmlFor: this.props.name,
@@ -188,18 +189,20 @@ InputField.defaultProps = {
 InputField.propTypes = {
   name: _propTypes.default.string.isRequired,
   onChange: _propTypes.default.func.isRequired,
-  className: _propTypes.default.string,
-  value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
-  label: _propTypes.default.string,
-  placeholder: _propTypes.default.string,
+  label: _propTypes.default.string.isRequired,
+  value: _propTypes.default.string.isRequired,
   help: _propTypes.default.string,
+  className: _propTypes.default.string,
+  disabled: _propTypes.default.bool,
+  required: _propTypes.default.bool,
+  focus: _propTypes.default.bool,
   status: _constants.iconStatusPropType,
   size: _propTypes.default.oneOf([_constants2.inputSizes.DEFAULT, _constants2.inputSizes.DENSE]),
   kind: _propTypes.default.oneOf([_constants2.inputKinds.FILLED, _constants2.inputKinds.OUTLINED]),
-  type: _propTypes.default.oneOf([types.TEXT, types.EMAIL, types.NUMBER, types.PASSWORD, types.URL]),
-  focus: _propTypes.default.bool,
-  disabled: _propTypes.default.bool,
-  required: _propTypes.default.bool
+  onFocus: _propTypes.default.func,
+  onBlur: _propTypes.default.func,
+  placeholder: _propTypes.default.string,
+  type: _propTypes.default.oneOf([types.TEXT, types.EMAIL, types.NUMBER, types.PASSWORD, types.URL])
 };
 var _default = InputField;
 exports.default = _default;

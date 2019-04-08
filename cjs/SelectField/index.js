@@ -85,25 +85,14 @@ var SelectField =
 function (_React$Component) {
   _inherits(SelectField, _React$Component);
 
-  function SelectField() {
-    var _getPrototypeOf2;
-
+  function SelectField(props) {
     var _this;
 
     _classCallCheck(this, SelectField);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SelectField)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SelectField).call(this, props));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "elContainer", _react.default.createRef());
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      focused: false,
-      open: false
-    });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
       if (_this.focused && _this.elContainer) {
@@ -151,6 +140,10 @@ function (_React$Component) {
       }
     });
 
+    _this.state = {
+      focused: props.focused,
+      open: false
+    };
     return _this;
   }
 
@@ -240,8 +233,8 @@ SelectField.defaultProps = {
   onBlur: null
 };
 SelectField.propTypes = {
-  onChange: _propTypes.default.func.isRequired,
   name: _propTypes.default.string.isRequired,
+  onChange: _propTypes.default.func.isRequired,
   label: _propTypes.default.string.isRequired,
   value: _propTypes.default.string.isRequired,
   list: _Select.Select.propTypes.list,
@@ -249,6 +242,7 @@ SelectField.propTypes = {
   className: _propTypes.default.string,
   disabled: _propTypes.default.bool,
   required: _propTypes.default.bool,
+  focus: _propTypes.default.bool,
   size: _propTypes.default.oneOf([_constants2.inputSizes.DEFAULT, _constants2.inputSizes.DENSE]),
   kind: _propTypes.default.oneOf([_constants2.inputKinds.FILLED, _constants2.inputKinds.OUTLINED]),
   status: _constants.iconStatusPropType,

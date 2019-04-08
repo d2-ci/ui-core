@@ -38,12 +38,20 @@ class InputField extends React.Component {
       this.setState({
         focused: true
       });
+
+      if (this.props.onFocus) {
+        this.props.onFocus(evt);
+      }
     });
 
     _defineProperty(this, "onBlur", evt => {
       this.setState({
         focused: false
       });
+
+      if (this.props.onBlur) {
+        this.props.onBlur(evt);
+      }
     });
 
     _defineProperty(this, "onChange", evt => {
@@ -57,12 +65,6 @@ class InputField extends React.Component {
     this.state = {
       focused: props.focus
     };
-  }
-
-  componentDidMount() {
-    this.setState({
-      focused: this.props.focus
-    });
   }
 
   isFocused() {
@@ -80,7 +82,7 @@ class InputField extends React.Component {
         disabled: this.props.disabled
       }) || "")
     }, React.createElement(Container, {
-      label: this.props.label || this.props.placeholder,
+      label: this.props.label,
       isFocused: this.state.focused,
       hasValue: !!this.props.value || this.props.placeholder,
       htmlFor: this.props.name,
@@ -127,18 +129,20 @@ InputField.defaultProps = {
 InputField.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  className: PropTypes.string,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  label: PropTypes.string,
-  placeholder: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
   help: PropTypes.string,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  required: PropTypes.bool,
+  focus: PropTypes.bool,
   status: iconStatusPropType,
   size: PropTypes.oneOf([inputSizes.DEFAULT, inputSizes.DENSE]),
   kind: PropTypes.oneOf([inputKinds.FILLED, inputKinds.OUTLINED]),
-  type: PropTypes.oneOf([types.TEXT, types.EMAIL, types.NUMBER, types.PASSWORD, types.URL]),
-  focus: PropTypes.bool,
-  disabled: PropTypes.bool,
-  required: PropTypes.bool
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  placeholder: PropTypes.string,
+  type: PropTypes.oneOf([types.TEXT, types.EMAIL, types.NUMBER, types.PASSWORD, types.URL])
 };
 export { InputField };
 export default InputField;
