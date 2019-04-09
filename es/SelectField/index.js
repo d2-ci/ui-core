@@ -2,7 +2,7 @@ import _JSXStyle from "styled-jsx/style";
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import cx from 'classnames';
 import { Arrow } from './Arrow';
@@ -140,21 +140,21 @@ SelectField.defaultProps = {
   onBlur: null
 };
 SelectField.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  name: propTypes.string.isRequired,
+  onChange: propTypes.func.isRequired,
+  label: propTypes.string.isRequired,
+  value: propTypes.string.isRequired,
   list: Select.propTypes.list,
-  help: PropTypes.string,
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
-  required: PropTypes.bool,
-  focus: PropTypes.bool,
-  size: PropTypes.oneOf([inputSizes.DEFAULT, inputSizes.DENSE]),
-  kind: PropTypes.oneOf([inputKinds.FILLED, inputKinds.OUTLINED]),
+  help: propTypes.string,
+  className: propTypes.string,
+  disabled: propTypes.bool,
+  required: propTypes.bool,
+  focus: propTypes.bool,
+  size: propTypes.oneOf([inputSizes.DEFAULT, inputSizes.DENSE]),
+  kind: propTypes.oneOf([inputKinds.FILLED, inputKinds.OUTLINED]),
   status: iconStatusPropType,
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func
+  onFocus: propTypes.func,
+  onBlur: propTypes.func
 };
 export { SelectField };
 export default SelectField;

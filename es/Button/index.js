@@ -1,7 +1,7 @@
 import _JSXStyle from "styled-jsx/style";
 import cx from 'classnames';
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import styles from './styles.js';
 
 function Button({
@@ -38,14 +38,14 @@ Button.defaultProps = {
   onClick: undefined
 };
 Button.propTypes = {
-  className: PropTypes.string,
-  icon: PropTypes.element,
-  label: PropTypes.string,
-  kind: PropTypes.oneOf(['basic', 'primary', 'secondary', 'destructive']),
-  type: PropTypes.oneOf(['submit', 'reset', 'button']),
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  disabled: PropTypes.bool,
-  onClick: PropTypes.func
+  className: propTypes.string,
+  icon: propTypes.element,
+  label: propTypes.string,
+  kind: propTypes.oneOf(['basic', 'primary', 'secondary', 'destructive']),
+  type: propTypes.oneOf(['submit', 'reset', 'button']),
+  size: propTypes.oneOf(['small', 'medium', 'large']),
+  disabled: propTypes.bool,
+  onClick: propTypes.func
 };
 export { Button };
 export default Button;

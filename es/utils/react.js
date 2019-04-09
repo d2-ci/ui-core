@@ -1,2 +1,2 @@
-import PropTypes from 'prop-types';
-export const children = PropTypes.oneOf([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]);
+import propTypes from 'prop-types';
+export const children = propTypes.oneOf([propTypes.node, propTypes.arrayOf(propTypes.node)]);

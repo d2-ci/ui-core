@@ -1,6 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import cx from 'classnames';
 import styles from './styles.js';
 
@@ -46,9 +46,9 @@ CircularProgress.defaultProps = {
   size: 'medium'
 };
 CircularProgress.propTypes = {
-  className: PropTypes.string,
-  overlay: PropTypes.bool,
-  size: PropTypes.oneOf(['small', 'medium', 'large'])
+  className: propTypes.string,
+  overlay: propTypes.bool,
+  size: propTypes.oneOf(['small', 'medium', 'large'])
 };
 export { CircularProgress };
 export default CircularProgress;

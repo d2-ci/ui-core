@@ -2,7 +2,7 @@ import _JSXStyle from "styled-jsx/style";
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import cx from 'classnames';
 import { Input } from './Input';
@@ -121,22 +121,22 @@ InputField.defaultProps = {
   placeholder: ''
 };
 InputField.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  help: PropTypes.string,
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
-  required: PropTypes.bool,
-  focus: PropTypes.bool,
+  name: propTypes.string.isRequired,
+  onChange: propTypes.func.isRequired,
+  label: propTypes.string.isRequired,
+  value: propTypes.string.isRequired,
+  help: propTypes.string,
+  className: propTypes.string,
+  disabled: propTypes.bool,
+  required: propTypes.bool,
+  focus: propTypes.bool,
   status: iconStatusPropType,
-  size: PropTypes.oneOf([inputSizes.DEFAULT, inputSizes.DENSE]),
-  kind: PropTypes.oneOf([inputKinds.FILLED, inputKinds.OUTLINED]),
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
-  placeholder: PropTypes.string,
-  type: PropTypes.oneOf([types.TEXT, types.EMAIL, types.NUMBER, types.PASSWORD, types.URL])
+  size: propTypes.oneOf([inputSizes.DEFAULT, inputSizes.DENSE]),
+  kind: propTypes.oneOf([inputKinds.FILLED, inputKinds.OUTLINED]),
+  onFocus: propTypes.func,
+  onBlur: propTypes.func,
+  placeholder: propTypes.string,
+  type: propTypes.oneOf([types.TEXT, types.EMAIL, types.NUMBER, types.PASSWORD, types.URL])
 };
 export { InputField };
 export default InputField;

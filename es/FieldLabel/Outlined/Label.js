@@ -1,5 +1,5 @@
 import _JSXStyle from "styled-jsx/style";
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import cx from 'classnames';
 import { borderRadius, inputHeight, inputHeightDense, shrinkedLabelFontSize } from '../constants';
@@ -28,12 +28,12 @@ export const Label = props => React.createElement("label", {
   id: styles.__hash
 }, styles));
 Label.propTypes = {
-  label: PropTypes.string.isRequired,
-  hasValue: PropTypes.bool.isRequired,
+  label: propTypes.string.isRequired,
+  hasValue: propTypes.bool.isRequired,
   status: iconStatusPropType.isRequired,
   size: inputSizesPropTypes.isRequired,
-  htmlFor: PropTypes.string.isRequired,
-  disabled: PropTypes.bool
+  htmlFor: propTypes.string.isRequired,
+  disabled: propTypes.bool
 };
 Label.defaultProps = {
   disabled: false

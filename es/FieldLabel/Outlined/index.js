@@ -4,7 +4,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import cx from 'classnames';
 import { InputContainer } from './InputContainer';
@@ -57,12 +57,12 @@ export const Outlined = (_ref) => {
   }, styles));
 };
 Outlined.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: propTypes.string.isRequired,
   children: children.isRequired,
-  hasValue: PropTypes.bool.isRequired,
-  htmlFor: PropTypes.string.isRequired,
-  tailIcon: PropTypes.element,
-  required: PropTypes.bool,
+  hasValue: propTypes.bool.isRequired,
+  htmlFor: propTypes.string.isRequired,
+  tailIcon: propTypes.element,
+  required: propTypes.bool,
   status: iconStatusPropType,
   size: inputSizesPropTypes
 };

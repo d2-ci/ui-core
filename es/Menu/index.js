@@ -1,6 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import Card from '../Card';
 import cx from 'classnames';
 import styles from './styles';
@@ -20,8 +20,8 @@ Menu.defaultProps = {
   size: 'default'
 };
 Menu.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
-  size: PropTypes.oneOf(['default', 'dense'])
+  className: propTypes.string,
+  children: propTypes.arrayOf(propTypes.element).isRequired,
+  size: propTypes.oneOf(['default', 'dense'])
 };
 export default Menu;

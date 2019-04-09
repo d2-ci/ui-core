@@ -1,5 +1,5 @@
 import _JSXStyle from "styled-jsx/style";
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import React from 'react';
 import { colors } from '../theme';
 import { iconStatusPropType, iconStatuses } from './constants';
@@ -42,7 +42,7 @@ export function Valid({
   }, iconStyleValid));
 }
 Valid.propTypes = {
-  className: PropTypes.string.isRequired
+  className: propTypes.string.isRequired
   /**
    * Icon: Warning
    * =============
@@ -78,7 +78,7 @@ export function Warning({
   }, iconStyleWarning));
 }
 Warning.propTypes = {
-  className: PropTypes.string.isRequired
+  className: propTypes.string.isRequired
   /**
    * Icon: Error
    * =============
@@ -114,7 +114,7 @@ export function Error({
   }, iconStyleError));
 }
 Error.propTypes = {
-  className: PropTypes.string.isRequired
+  className: propTypes.string.isRequired
   /**
    * @param {Object} props
    * @param {string} props.status
@@ -135,7 +135,7 @@ export const StatusIconNoDefault = ({
 }) : null;
 StatusIconNoDefault.propTypes = {
   status: iconStatusPropType,
-  className: PropTypes.string
+  className: propTypes.string
 };
 StatusIconNoDefault.defaultProps = {
   className: ''

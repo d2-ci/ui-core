@@ -1,6 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import cx from 'classnames';
 import styles from './styles';
 
@@ -28,9 +28,9 @@ function LinearProgress({
 }
 
 LinearProgress.propTypes = {
-  className: PropTypes.string,
-  amount: PropTypes.number,
-  margin: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  className: propTypes.string,
+  amount: propTypes.number,
+  margin: propTypes.oneOfType([propTypes.string, propTypes.number])
 };
 export { LinearProgress };
 export default LinearProgress;

@@ -3,7 +3,7 @@ import _JSXStyle from "styled-jsx/style";
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import cx from 'classnames';
 import styles from './styles';
 
@@ -56,13 +56,13 @@ Switch.defaultProps = {
   status: 'default'
 };
 Switch.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  className: PropTypes.string,
-  checked: PropTypes.bool,
-  label: PropTypes.string,
-  disabled: PropTypes.bool,
-  status: PropTypes.oneOf(['default', 'valid', 'warning', 'error'])
+  name: propTypes.string.isRequired,
+  onChange: propTypes.func.isRequired,
+  className: propTypes.string,
+  checked: propTypes.bool,
+  label: propTypes.string,
+  disabled: propTypes.bool,
+  status: propTypes.oneOf(['default', 'valid', 'warning', 'error'])
 };
 export { Switch };
 export default Switch;

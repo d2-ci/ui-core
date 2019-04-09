@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 /**
  * Variants
  * ========
@@ -8,12 +8,12 @@ export const inputKinds = {
   FILLED: 'filled',
   OUTLINED: 'outlined'
 };
-export const inputKindPropTypes = PropTypes.oneOf([inputKinds.FILLED, inputKinds.OUTLINED]);
+export const inputKindPropTypes = propTypes.oneOf([inputKinds.FILLED, inputKinds.OUTLINED]);
 export const inputSizes = {
   DEFAULT: 'default',
   DENSE: 'dense'
 };
-export const inputSizesPropTypes = PropTypes.oneOf([inputSizes.DEFAULT, inputSizes.DENSE]);
+export const inputSizesPropTypes = propTypes.oneOf([inputSizes.DEFAULT, inputSizes.DENSE]);
 /**
  * Box model values
  * ================

@@ -1,5 +1,5 @@
 import _JSXStyle from "styled-jsx/style";
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import cx from 'classnames';
 import { children } from '../../utils/react';

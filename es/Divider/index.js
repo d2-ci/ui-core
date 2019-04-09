@@ -1,6 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import cx from 'classnames';
 import { colors } from '../theme.js';
 export function Divider({
@@ -22,7 +22,7 @@ Divider.defaultProps = {
   margin: '8px 0'
 };
 Divider.propTypes = {
-  className: PropTypes.string,
-  margin: PropTypes.string
+  className: propTypes.string,
+  margin: propTypes.string
 };
 export default Divider;

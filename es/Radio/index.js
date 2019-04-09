@@ -2,7 +2,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import cx from 'classnames';
 import { colors } from '../theme.js';
 import styles from './styles.js';
@@ -89,14 +89,14 @@ Radio.defaultProps = {
   disabled: false
 };
 Radio.propTypes = {
-  className: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  label: PropTypes.string,
-  checked: PropTypes.bool,
-  disabled: PropTypes.bool,
-  status: PropTypes.oneOf(['default', 'valid', 'warning', 'error'])
+  className: propTypes.string,
+  onChange: propTypes.func.isRequired,
+  name: propTypes.string.isRequired,
+  value: propTypes.string.isRequired,
+  label: propTypes.string,
+  checked: propTypes.bool,
+  disabled: propTypes.bool,
+  status: propTypes.oneOf(['default', 'valid', 'warning', 'error'])
 };
 export { Radio };
 export default Radio;

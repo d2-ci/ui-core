@@ -1,6 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import cx from 'classnames';
 import { colors } from '../theme.js';
 
@@ -23,9 +23,9 @@ Help.defaultProps = {
   status: 'default'
 };
 Help.propTypes = {
-  className: PropTypes.string,
-  text: PropTypes.string.isRequired,
-  status: PropTypes.oneOf(['default', 'valid', 'warning', 'error'])
+  className: propTypes.string,
+  text: propTypes.string.isRequired,
+  status: propTypes.oneOf(['default', 'valid', 'warning', 'error'])
 };
 export { Help };
 export default Help;

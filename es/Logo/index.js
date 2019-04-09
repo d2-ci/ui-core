@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 var _ref =
 /*#__PURE__*/
@@ -28,8 +28,8 @@ LogoIcon.defaultProps = {
   fill: '#0080d4'
 };
 LogoIcon.propTypes = {
-  className: PropTypes.string,
-  fill: PropTypes.string
+  className: propTypes.string,
+  fill: propTypes.string
 };
 export const LogoIconWhite = ({
   className
@@ -83,9 +83,9 @@ Logo.defaultProps = {
   fill2: '#212225'
 };
 Logo.propTypes = {
-  className: PropTypes.string,
-  fill1: PropTypes.string,
-  fill2: PropTypes.string
+  className: propTypes.string,
+  fill1: propTypes.string,
+  fill2: propTypes.string
 };
 
 var _ref2 =

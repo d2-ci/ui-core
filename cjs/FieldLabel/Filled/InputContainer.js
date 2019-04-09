@@ -7,8 +7,6 @@ exports.InputContainer = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));

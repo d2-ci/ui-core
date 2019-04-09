@@ -2,7 +2,7 @@ import _JSXStyle from "styled-jsx/style";
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import React, { Component, Fragment, createRef } from 'react';
 import cx from 'classnames';
 import { colors } from '../theme';
@@ -67,21 +67,21 @@ export class Select extends Component {
 
 }
 Select.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  size: PropTypes.arrayOf([inputSizes.DEFAULT, inputSizes.DENSE]).isRequired,
-  kind: PropTypes.arrayOf([inputKinds.FILLED, inputKinds.OUTLINED]).isRequired,
-  list: PropTypes.shape({
-    value: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    list: PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired
+  value: propTypes.string.isRequired,
+  onChange: propTypes.func.isRequired,
+  size: propTypes.arrayOf([inputSizes.DEFAULT, inputSizes.DENSE]).isRequired,
+  kind: propTypes.arrayOf([inputKinds.FILLED, inputKinds.OUTLINED]).isRequired,
+  list: propTypes.shape({
+    value: propTypes.string.isRequired,
+    label: propTypes.string.isRequired,
+    list: propTypes.shape({
+      value: propTypes.string.isRequired,
+      label: propTypes.string.isRequired
     })
   }).isRequired,
-  disabled: PropTypes.bool,
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func
+  disabled: propTypes.bool,
+  onFocus: propTypes.func,
+  onBlur: propTypes.func
 };
 Select.defaultProps = {
   disabled: false,

@@ -1,6 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import cx from 'classnames';
 import { colors } from '../theme.js';
 
@@ -17,8 +17,8 @@ function Card({
 }
 
 Card.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node
+  className: propTypes.string,
+  children: propTypes.node
 };
 export { Card };
 export default Card;
