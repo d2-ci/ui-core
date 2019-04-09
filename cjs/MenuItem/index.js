@@ -15,8 +15,6 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _styles = _interopRequireDefault(require("./styles"));
 
-var _Menu = _interopRequireDefault(require("../Menu"));
-
 var _Chevron = require("../icons/Chevron.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -89,7 +87,7 @@ MenuItem.propTypes = {
   className: _propTypes.default.string,
   label: _propTypes.default.oneOf([_propTypes.default.string, _propTypes.default.element]).isRequired,
   icon: _propTypes.default.element,
-  children: _propTypes.default.instanceOf(_Menu.default),
+  children: _propTypes.default.element,
   active: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   size: _propTypes.default.string,

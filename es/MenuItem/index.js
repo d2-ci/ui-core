@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import styles from './styles';
-import Menu from '../Menu';
 import { ChevronRight } from '../icons/Chevron.js';
 const subChevron = {
   styles: React.createElement(_JSXStyle, {
@@ -73,7 +72,7 @@ MenuItem.propTypes = {
   className: PropTypes.string,
   label: PropTypes.oneOf([PropTypes.string, PropTypes.element]).isRequired,
   icon: PropTypes.element,
-  children: PropTypes.instanceOf(Menu),
+  children: PropTypes.element,
   active: PropTypes.bool,
   disabled: PropTypes.bool,
   size: PropTypes.string,

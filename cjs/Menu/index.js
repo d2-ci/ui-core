@@ -4,12 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Menu = Menu;
-Object.defineProperty(exports, "MenuItem", {
-  enumerable: true,
-  get: function get() {
-    return _MenuItem.default;
-  }
-});
 exports.default = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
@@ -19,10 +13,6 @@ var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _Card = _interopRequireDefault(require("../Card"));
-
-var _MenuItem = _interopRequireDefault(require("../MenuItem"));
-
-var _Divider = _interopRequireDefault(require("../Divider"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
@@ -47,7 +37,7 @@ Menu.defaultProps = {
 };
 Menu.propTypes = {
   className: _propTypes.default.string,
-  children: _propTypes.default.arrayOf(_propTypes.default.oneOf([_propTypes.default.instanceOf(_MenuItem.default), _propTypes.default.instanceOf(_Divider.default)])).isRequired,
+  children: _propTypes.default.arrayOf(_propTypes.default.element).isRequired,
   size: _propTypes.default.oneOf(['default', 'dense'])
 };
 var _default = Menu;
