@@ -43,7 +43,8 @@ function SubMenu(_ref) {
 }
 
 function MenuItem(_ref2) {
-  var label = _ref2.label,
+  var value = _ref2.value,
+      label = _ref2.label,
       icon = _ref2.icon,
       children = _ref2.children,
       active = _ref2.active,
@@ -58,7 +59,7 @@ function MenuItem(_ref2) {
         evt.preventDefault();
         evt.stopPropagation();
 
-        _onClick();
+        _onClick(value);
       }
     },
     className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('item', className, subMenu.className, {
@@ -71,7 +72,6 @@ function MenuItem(_ref2) {
     className: subChevron.className
   }), subChevron.styles, hasMenu && _react.default.createElement(SubMenu, {
     size: size,
-    onClick: _onClick,
     className: subMenu.className
   }, children), subMenu.styles, _react.default.createElement(_style.default, {
     id: _styles.default.__hash
@@ -84,8 +84,9 @@ MenuItem.defaultProps = {
   disabled: false
 };
 MenuItem.propTypes = {
-  className: _propTypes.default.string,
   label: _propTypes.default.oneOf([_propTypes.default.string, _propTypes.default.element]).isRequired,
+  value: _propTypes.default.any.isRequired,
+  className: _propTypes.default.string,
   icon: _propTypes.default.element,
   children: _propTypes.default.element,
   active: _propTypes.default.bool,

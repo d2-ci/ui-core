@@ -29,6 +29,7 @@ function SubMenu({
 }
 
 export default function MenuItem({
+  value,
   label,
   icon,
   children,
@@ -44,7 +45,7 @@ export default function MenuItem({
       if (onClick) {
         evt.preventDefault();
         evt.stopPropagation();
-        onClick();
+        onClick(value);
       }
     },
     className: `jsx-${styles.__hash}` + " " + (cx('item', className, subMenu.className, {
@@ -57,7 +58,6 @@ export default function MenuItem({
     className: subChevron.className
   }), subChevron.styles, hasMenu && React.createElement(SubMenu, {
     size: size,
-    onClick: onClick,
     className: subMenu.className
   }, children), subMenu.styles, React.createElement(_JSXStyle, {
     id: styles.__hash
@@ -69,8 +69,9 @@ MenuItem.defaultProps = {
   disabled: false
 };
 MenuItem.propTypes = {
-  className: PropTypes.string,
   label: PropTypes.oneOf([PropTypes.string, PropTypes.element]).isRequired,
+  value: PropTypes.any.isRequired,
+  className: PropTypes.string,
   icon: PropTypes.element,
   children: PropTypes.element,
   active: PropTypes.bool,
