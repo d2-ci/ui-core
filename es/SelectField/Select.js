@@ -7,10 +7,10 @@ import React, { Component, Fragment, createRef } from 'react';
 import cx from 'classnames';
 import { colors } from '../theme';
 import { innerSpacingSides, inputFontSizeValue, inputKinds, inputSizes } from '../forms/constants';
-const styles = new String(`select.jsx-3250355104{background:none;border:0;color:black;font-size:${inputFontSizeValue};height:100%;left:0;outline:0;padding:0 12px 0 16px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}select.disabled.jsx-3250355104{color:${colors.grey500};cursor:not-allowed;}select.dense.jsx-3250355104{font-size:14px;}select.outlined.jsx-3250355104{${
+const styles = new String(`select.jsx-2468634884{background:none;border:0;color:black;font-size:${inputFontSizeValue};height:100%;left:0;outline:0;padding:0 12px 0 16px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}select.disabled.jsx-2468634884{color:${colors.grey500};cursor:not-allowed;}select.dense.jsx-2468634884{font-size:14px;}select.outlined.jsx-2468634884{${
 /** 15px => 16px inner spacing - 1px of the border**/
-''} padding-left:15px;}select.filled.jsx-3250355104{padding-top:20px;}option.jsx-3250355104:not(:checked){color:black;}select.jsx-3250355104:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}`);
-styles.__hash = "3250355104";
+''} padding-left:15px;}select.filled.jsx-2468634884{padding-top:24px;}select.filled.dense.jsx-2468634884{padding-top:20px;}option.jsx-2468634884:not(:checked){color:black;}select.jsx-2468634884:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}`);
+styles.__hash = "2468634884";
 export class Select extends Component {
   constructor(...args) {
     super(...args);

@@ -121,7 +121,6 @@ function (_React$Component) {
       var isDense = this.props.size === _constants2.inputSizes.DENSE;
       var Container = this.props.kind === _constants2.inputKinds.FILLED ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
       return _react.default.createElement("div", {
-        onClick: this.onFocus,
         className: "jsx-".concat(styles.__hash) + " " + _style.default.dynamic([["2004200063", [_theme.colors.grey500]]]) + " " + ((0, _classnames.default)('base', this.props.className, {
           disabled: this.props.disabled
         }) || "")

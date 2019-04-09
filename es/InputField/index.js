@@ -71,7 +71,6 @@ class InputField extends React.Component {
     const isDense = this.props.size === inputSizes.DENSE;
     const Container = this.props.kind === inputKinds.FILLED ? LabelFilled : LabelOutlined;
     return React.createElement("div", {
-      onClick: this.onFocus,
       className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["2004200063", [colors.grey500]]]) + " " + (cx('base', this.props.className, {
         disabled: this.props.disabled
       }) || "")

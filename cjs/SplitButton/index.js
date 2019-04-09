@@ -155,7 +155,7 @@ function (_Component) {
         width: "".concat(width, "px"),
         list: this.props.list,
         onClick: this.props.onClick
-      })), ArrowIcon.styles, _react.default.createElement(_style.default, {
+      })), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default), _react.default.createElement(_style.default, {
         id: _styles2.default.__hash

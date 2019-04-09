@@ -13,6 +13,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
+var _theme = require("../theme");
+
 var _constants = require("../forms/constants");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -43,8 +45,8 @@ var calculatePaddingTop = function calculatePaddingTop(props) {
   return props.filled ? '14px' : '18.5px';
 };
 
-var styles = new String(".input.jsx-1940274888{color:black;background-color:transparent;border:0;box-sizing:border-box;font-size:".concat(_constants.inputFontSizeValue, ";height:100%;line-height:16px;padding:3px 0 10px 16px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}", ".jsx-1940274888 .input.outlined.jsx-1940274888{padding-left:15px;}.input.filled.dense.jsx-1940274888{font-size:14px;}"));
-styles.__hash = "1940274888";
+var styles = new String(".input.jsx-341996737{color:black;background-color:transparent;border:0;box-sizing:border-box;font-size:".concat(_constants.inputFontSizeValue, ";height:100%;line-height:16px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}.input.filled.jsx-341996737{padding:32px 0 8px 16px;}.input.outlined.jsx-341996737{padding:18px 0 18px 16px;}.input.disabled.jsx-341996737{color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}", ".jsx-341996737 .input.outlined.jsx-341996737{padding-left:15px;}.input.filled.dense.jsx-341996737{font-size:14px;padding:25px 0 5px 16px;}.input.outlined.dense.jsx-341996737{padding-top:12px;padding-bottom:12px;}"));
+styles.__hash = "341996737";
 
 var Input =
 /*#__PURE__*/
@@ -82,6 +84,7 @@ function (_Component) {
       var paddingTop = calculatePaddingTop(this.props);
       var className = (0, _classnames.default)('input', {
         dense: this.props.isDense,
+        filled: this.props.kind === _constants.inputKinds.FILLED,
         outlined: this.props.kind === _constants.inputKinds.OUTLINED,
         disabled: this.props.disabled
       });

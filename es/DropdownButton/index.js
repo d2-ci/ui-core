@@ -89,7 +89,7 @@ class DropdownButton extends Component {
     }, React.createElement(Menu, {
       list: this.props.list,
       onClick: this.props.onClick
-    })), ArrowIcon.styles, React.createElement(_JSXStyle, {
+    })), React.createElement(_JSXStyle, {
       id: buttons.__hash
     }, buttons), React.createElement(_JSXStyle, {
       id: styles.__hash
