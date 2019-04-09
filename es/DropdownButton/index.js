@@ -67,7 +67,7 @@ class DropdownButton extends Component {
       className: `jsx-${buttons.__hash} jsx-${styles.__hash}` + " " + "button-icon"
     }, this.props.icon), this.props.label || this.props.children, icon), open && React.createElement("div", {
       className: `jsx-${buttons.__hash} jsx-${styles.__hash}` + " " + "menu"
-    }, this.props.component && this.props.component), ArrowIcon.styles, React.createElement(_JSXStyle, {
+    }, this.props.component), ArrowIcon.styles, React.createElement(_JSXStyle, {
       id: buttons.__hash
     }, buttons), React.createElement(_JSXStyle, {
       id: styles.__hash

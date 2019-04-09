@@ -128,7 +128,7 @@ function (_Component) {
         className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "button-icon"
       }, this.props.icon), this.props.label || this.props.children, icon), open && _react.default.createElement("div", {
         className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "menu"
-      }, this.props.component && this.props.component), ArrowIcon.styles, _react.default.createElement(_style.default, {
+      }, this.props.component), ArrowIcon.styles, _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default), _react.default.createElement(_style.default, {
         id: _styles2.default.__hash
