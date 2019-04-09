@@ -60,7 +60,7 @@ function (_React$Component) {
         return;
       }
 
-      _this.props.onChange(_this.props.name, !_this.props.checked);
+      _this.props.onChange(!_this.props.checked);
     });
 
     return _this;
@@ -80,6 +80,7 @@ function (_React$Component) {
       }, _react.default.createElement("input", {
         type: "checkbox",
         disabled: disabled,
+        name: this.props.name,
         checked: this.props.checked,
         onChange: this.onChange,
         className: "jsx-".concat(_styles.default.__hash)
@@ -103,9 +104,9 @@ Switch.defaultProps = {
   status: 'default'
 };
 Switch.propTypes = {
-  className: _propTypes.default.string,
-  onChange: _propTypes.default.func.isRequired,
   name: _propTypes.default.string.isRequired,
+  onChange: _propTypes.default.func.isRequired,
+  className: _propTypes.default.string,
   checked: _propTypes.default.bool,
   label: _propTypes.default.string,
   disabled: _propTypes.default.bool,

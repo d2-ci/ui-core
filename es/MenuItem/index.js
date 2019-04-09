@@ -1,7 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
 import PropTypes from 'prop-types';
-import Menu from './index';
 import cx from 'classnames';
 import styles from './styles';
 import { ChevronRight } from '../icons/Chevron.js';
@@ -11,36 +10,36 @@ const subChevron = {
   }, "svg.jsx-2023721407{margin:0 -14px 0 auto;width:18px;height:18px;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}"),
   className: "jsx-2023721407"
 };
+const subMenu = {
+  styles: React.createElement(_JSXStyle, {
+    id: "2242740484"
+  }, "div.jsx-2242740484{display:none;position:absolute;top:0;left:100%;white-space:nowrap;}.item.jsx-2242740484:hover>div.jsx-2242740484{display:block;}"),
+  className: "jsx-2242740484"
+};
 
 function SubMenu({
   size,
-  list,
+  children,
   onClick,
   className
 }) {
   return React.createElement("div", {
-    className: `jsx-${styles.__hash}` + " " + (cx('sub-menu', className) || "")
-  }, React.createElement(Menu, {
-    size: size,
-    list: list,
-    onClick: onClick
-  }), React.createElement(_JSXStyle, {
-    id: styles.__hash
-  }, styles));
+    className: className
+  }, children);
 }
 
 export default function MenuItem({
-  label,
   value,
+  label,
   icon,
-  list,
+  children,
   active,
   disabled,
   size,
   onClick,
   className
 }) {
-  const hasMenu = list.length > 0;
+  const hasMenu = !!children;
   return React.createElement("li", {
     onClick: evt => {
       if (onClick) {
@@ -49,7 +48,7 @@ export default function MenuItem({
         onClick(value);
       }
     },
-    className: `jsx-${styles.__hash}` + " " + (cx('item', className, {
+    className: `jsx-${styles.__hash}` + " " + (cx('item', className, subMenu.className, {
       disabled,
       active
     }) || "")
@@ -57,26 +56,24 @@ export default function MenuItem({
     className: `jsx-${styles.__hash}` + " " + "label"
   }, label), hasMenu && React.createElement(ChevronRight, {
     className: subChevron.className
-  }), hasMenu && React.createElement(SubMenu, {
+  }), subChevron.styles, hasMenu && React.createElement(SubMenu, {
     size: size,
-    list: list,
-    onClick: onClick
-  }), subChevron.styles, React.createElement(_JSXStyle, {
+    className: subMenu.className
+  }, children), subMenu.styles, React.createElement(_JSXStyle, {
     id: styles.__hash
   }, styles));
 }
 MenuItem.defaultProps = {
-  list: [],
   size: 'default',
   active: false,
   disabled: false
 };
 MenuItem.propTypes = {
+  label: PropTypes.oneOf([PropTypes.string, PropTypes.element]).isRequired,
+  value: PropTypes.any.isRequired,
   className: PropTypes.string,
-  label: PropTypes.string.isRequired,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   icon: PropTypes.element,
-  list: PropTypes.array,
+  children: PropTypes.element,
   active: PropTypes.bool,
   disabled: PropTypes.bool,
   size: PropTypes.string,

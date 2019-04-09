@@ -5,7 +5,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Menu from '../Menu';
-import { isPointInRect } from '../utils';
 import buttons from '../Button/styles.js';
 import { ArrowUp, ArrowDown } from '../icons/Arrow.js';
 import cx from 'classnames';
@@ -28,19 +27,10 @@ class SplitButton extends Component {
     });
 
     _defineProperty(this, "onDocClick", evt => {
-      if (this.elContainer && this.elMenu) {
-        const target = {
-          x: evt.clientX,
-          y: evt.clientY
-        };
-        const menu = this.elMenu.getBoundingClientRect();
-        const container = this.elContainer.getBoundingClientRect();
-
-        if (!isPointInRect(target, menu) && !isPointInRect(target, container)) {
-          this.setState({
-            open: false
-          });
-        }
+      if (this.elContainer && !this.elContainer.contains(evt.target)) {
+        this.setState({
+          open: false
+        });
       }
     });
 
@@ -61,12 +51,6 @@ class SplitButton extends Component {
     const {
       open
     } = this.state;
-    let width = this.props.width;
-
-    if (!width) {
-      width = this.elContainer ? this.elContainer.getBoundingClientRect()['width'] : 'inherit';
-    }
-
     const icon = open ? _ref : _ref2;
     return React.createElement("div", {
       ref: c => this.elContainer = c,
@@ -85,13 +69,8 @@ class SplitButton extends Component {
       onClick: this.onToggle,
       className: `jsx-${buttons.__hash} jsx-${styles.__hash}` + " " + (cx('base', `kind-${this.props.kind}`, `size-${this.props.size}`) || "")
     }, icon), open && React.createElement("div", {
-      ref: c => this.elMenu = c,
       className: `jsx-${buttons.__hash} jsx-${styles.__hash}` + " " + "menu"
-    }, React.createElement(Menu, {
-      width: `${width}px`,
-      list: this.props.list,
-      onClick: this.props.onClick
-    })), React.createElement(_JSXStyle, {
+    }, this.props.component && this.props.component), React.createElement(_JSXStyle, {
       id: buttons.__hash
     }, buttons), React.createElement(_JSXStyle, {
       id: styles.__hash
@@ -106,11 +85,10 @@ SplitButton.defaultProps = {
   disabled: false
 };
 SplitButton.propTypes = {
-  className: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  component: PropTypes.element.isRequired,
   label: PropTypes.string.isRequired,
-  list: PropTypes.array.isRequired,
-  width: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+  className: PropTypes.string,
   kind: PropTypes.oneOf(['basic', 'primary']),
   icon: PropTypes.element,
   disabled: PropTypes.bool,

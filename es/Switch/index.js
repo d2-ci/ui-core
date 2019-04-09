@@ -16,7 +16,7 @@ class Switch extends React.Component {
         return;
       }
 
-      this.props.onChange(this.props.name, !this.props.checked);
+      this.props.onChange(!this.props.checked);
     });
   }
 
@@ -33,6 +33,7 @@ class Switch extends React.Component {
     }, React.createElement("input", {
       type: "checkbox",
       disabled: disabled,
+      name: this.props.name,
       checked: this.props.checked,
       onChange: this.onChange,
       className: `jsx-${styles.__hash}`
@@ -55,9 +56,9 @@ Switch.defaultProps = {
   status: 'default'
 };
 Switch.propTypes = {
-  className: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  className: PropTypes.string,
   checked: PropTypes.bool,
   label: PropTypes.string,
   disabled: PropTypes.bool,

@@ -13,8 +13,6 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _Menu = _interopRequireDefault(require("../Menu"));
 
-var _utils = require("../utils");
-
 var _styles = _interopRequireDefault(require("../Button/styles.js"));
 
 var _Arrow = require("../icons/Arrow.js");
@@ -78,21 +76,10 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
-      if (_this.elContainer && _this.elMenu) {
-        var target = {
-          x: evt.clientX,
-          y: evt.clientY
-        };
-
-        var menu = _this.elMenu.getBoundingClientRect();
-
-        var container = _this.elContainer.getBoundingClientRect();
-
-        if (!(0, _utils.isPointInRect)(target, menu) && !(0, _utils.isPointInRect)(target, container)) {
-          _this.setState({
-            open: false
-          });
-        }
+      if (_this.elContainer && !_this.elContainer.contains(evt.target)) {
+        _this.setState({
+          open: false
+        });
       }
     });
 
@@ -121,12 +108,6 @@ function (_Component) {
       var _this2 = this;
 
       var open = this.state.open;
-      var width = this.props.width;
-
-      if (!width) {
-        width = this.elContainer ? this.elContainer.getBoundingClientRect()['width'] : 'inherit';
-      }
-
       var icon = open ? _ref : _ref2;
       return _react.default.createElement("div", {
         ref: function ref(c) {
@@ -147,15 +128,8 @@ function (_Component) {
         onClick: this.onToggle,
         className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size)) || "")
       }, icon), open && _react.default.createElement("div", {
-        ref: function ref(c) {
-          return _this2.elMenu = c;
-        },
         className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "menu"
-      }, _react.default.createElement(_Menu.default, {
-        width: "".concat(width, "px"),
-        list: this.props.list,
-        onClick: this.props.onClick
-      })), _react.default.createElement(_style.default, {
+      }, this.props.component && this.props.component), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default), _react.default.createElement(_style.default, {
         id: _styles2.default.__hash
@@ -173,11 +147,10 @@ SplitButton.defaultProps = {
   disabled: false
 };
 SplitButton.propTypes = {
-  className: _propTypes.default.string,
-  onClick: _propTypes.default.func.isRequired,
+  component: _propTypes.default.element.isRequired,
   label: _propTypes.default.string.isRequired,
-  list: _propTypes.default.array.isRequired,
-  width: _propTypes.default.string,
+  onClick: _propTypes.default.func.isRequired,
+  className: _propTypes.default.string,
   kind: _propTypes.default.oneOf(['basic', 'primary']),
   icon: _propTypes.default.element,
   disabled: _propTypes.default.bool,

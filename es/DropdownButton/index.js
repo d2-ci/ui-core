@@ -6,8 +6,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Button from '../Button';
-import Menu from '../Menu';
-import { isPointInRect } from '../utils';
 import { ArrowUp, ArrowDown } from '../icons/Arrow.js';
 import buttons from '../Button/styles.js';
 import styles from './styles.js';
@@ -29,19 +27,10 @@ class DropdownButton extends Component {
     });
 
     _defineProperty(this, "onDocClick", evt => {
-      if (this.elContainer && this.elMenu) {
-        const target = {
-          x: evt.clientX,
-          y: evt.clientY
-        };
-        const menu = this.elMenu.getBoundingClientRect();
-        const container = this.elContainer.getBoundingClientRect();
-
-        if (!isPointInRect(target, menu) && !isPointInRect(target, container)) {
-          this.setState({
-            open: false
-          });
-        }
+      if (this.elContainer && !this.elContainer.contains(evt.target)) {
+        this.setState({
+          open: false
+        });
       }
     });
 
@@ -62,12 +51,6 @@ class DropdownButton extends Component {
     const {
       open
     } = this.state;
-    let width = this.props.width;
-
-    if (!width) {
-      width = this.elContainer ? this.elContainer.getBoundingClientRect()['width'] : 'inherit';
-    }
-
     const icon = open ? _ref : _ref2;
     return React.createElement("div", {
       ref: c => this.elContainer = c,
@@ -81,15 +64,9 @@ class DropdownButton extends Component {
       }) || "")
     }, this.props.icon && React.createElement("span", {
       className: `jsx-${buttons.__hash} jsx-${styles.__hash}` + " " + "button-icon"
-    }, this.props.icon), React.createElement("span", {
-      className: `jsx-${buttons.__hash} jsx-${styles.__hash}` + " " + "menu-label"
-    }, this.props.label), icon), open && React.createElement("div", {
-      ref: c => this.elMenu = c,
+    }, this.props.icon), this.props.label || this.props.children, icon), open && React.createElement("div", {
       className: `jsx-${buttons.__hash} jsx-${styles.__hash}` + " " + "menu"
-    }, React.createElement(Menu, {
-      list: this.props.list,
-      onClick: this.props.onClick
-    })), React.createElement(_JSXStyle, {
+    }, this.props.component), React.createElement(_JSXStyle, {
       id: buttons.__hash
     }, buttons), React.createElement(_JSXStyle, {
       id: styles.__hash
@@ -105,10 +82,11 @@ DropdownButton.defaultProps = {
 };
 DropdownButton.propTypes = {
   className: PropTypes.string,
-  list: PropTypes.array.isRequired,
+  component: PropTypes.element.isRequired,
   width: PropTypes.string,
   icon: PropTypes.element,
   label: PropTypes.string,
+  children: PropTypes.string,
   kind: PropTypes.oneOf(['basic', 'primary', 'secondary', 'destructive']),
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),

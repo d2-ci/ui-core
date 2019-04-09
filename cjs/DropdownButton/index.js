@@ -15,10 +15,6 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _Button = _interopRequireDefault(require("../Button"));
 
-var _Menu = _interopRequireDefault(require("../Menu"));
-
-var _utils = require("../utils");
-
 var _Arrow = require("../icons/Arrow.js");
 
 var _styles = _interopRequireDefault(require("../Button/styles.js"));
@@ -80,21 +76,10 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
-      if (_this.elContainer && _this.elMenu) {
-        var target = {
-          x: evt.clientX,
-          y: evt.clientY
-        };
-
-        var menu = _this.elMenu.getBoundingClientRect();
-
-        var container = _this.elContainer.getBoundingClientRect();
-
-        if (!(0, _utils.isPointInRect)(target, menu) && !(0, _utils.isPointInRect)(target, container)) {
-          _this.setState({
-            open: false
-          });
-        }
+      if (_this.elContainer && !_this.elContainer.contains(evt.target)) {
+        _this.setState({
+          open: false
+        });
       }
     });
 
@@ -123,12 +108,6 @@ function (_Component) {
       var _this2 = this;
 
       var open = this.state.open;
-      var width = this.props.width;
-
-      if (!width) {
-        width = this.elContainer ? this.elContainer.getBoundingClientRect()['width'] : 'inherit';
-      }
-
       var icon = open ? _ref : _ref2;
       return _react.default.createElement("div", {
         ref: function ref(c) {
@@ -144,17 +123,9 @@ function (_Component) {
         }) || "")
       }, this.props.icon && _react.default.createElement("span", {
         className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "button-icon"
-      }, this.props.icon), _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "menu-label"
-      }, this.props.label), icon), open && _react.default.createElement("div", {
-        ref: function ref(c) {
-          return _this2.elMenu = c;
-        },
+      }, this.props.icon), this.props.label || this.props.children, icon), open && _react.default.createElement("div", {
         className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "menu"
-      }, _react.default.createElement(_Menu.default, {
-        list: this.props.list,
-        onClick: this.props.onClick
-      })), _react.default.createElement(_style.default, {
+      }, this.props.component), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default), _react.default.createElement(_style.default, {
         id: _styles2.default.__hash
@@ -173,10 +144,11 @@ DropdownButton.defaultProps = {
 };
 DropdownButton.propTypes = {
   className: _propTypes.default.string,
-  list: _propTypes.default.array.isRequired,
+  component: _propTypes.default.element.isRequired,
   width: _propTypes.default.string,
   icon: _propTypes.default.element,
   label: _propTypes.default.string,
+  children: _propTypes.default.string,
   kind: _propTypes.default.oneOf(['basic', 'primary', 'secondary', 'destructive']),
   type: _propTypes.default.oneOf(['submit', 'reset', 'button']),
   size: _propTypes.default.oneOf(['small', 'medium', 'large']),

@@ -11,7 +11,6 @@ import { Select } from './Select';
 import { colors } from '../theme';
 import { iconStatusPropType, iconStatuses } from '../icons/constants';
 import { inputKinds, inputSizes } from '../forms/constants';
-import { isPointInRect } from '../utils/math';
 import Help from '../Help';
 const styles = new String(`.base.jsx-2528058342{display:inline-block;position:relative;width:100%;background-color:inherit;color:${colors.grey700};pointer-events:all;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}.disabled.jsx-2528058342{cursor:not-allowed;opacity:1;}`);
 styles.__hash = "2528058342";
@@ -23,19 +22,11 @@ class SelectField extends React.Component {
     _defineProperty(this, "elContainer", React.createRef());
 
     _defineProperty(this, "onDocClick", evt => {
-      if (this.focused && this.elContainer) {
-        const target = {
-          x: evt.clientX,
-          y: evt.clientY
-        };
-        const container = this.elContainer.getBoundingClientRect();
-
-        if (!isPointInRect(target, container)) {
-          this.setState({
-            focused: false,
-            open: false
-          });
-        }
+      if (this.elContainer && !this.elContainer.contains(evt.target)) {
+        this.setState({
+          focused: false,
+          show: false
+        });
       }
     });
 

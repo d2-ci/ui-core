@@ -25,8 +25,6 @@ var _constants = require("../icons/constants");
 
 var _constants2 = require("../forms/constants");
 
-var _math = require("../utils/math");
-
 var _Help = _interopRequireDefault(require("../Help"));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -71,20 +69,11 @@ function (_React$Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "elContainer", _react.default.createRef());
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
-      if (_this.focused && _this.elContainer) {
-        var target = {
-          x: evt.clientX,
-          y: evt.clientY
-        };
-
-        var container = _this.elContainer.getBoundingClientRect();
-
-        if (!(0, _math.isPointInRect)(target, container)) {
-          _this.setState({
-            focused: false,
-            open: false
-          });
-        }
+      if (_this.elContainer && !_this.elContainer.contains(evt.target)) {
+        _this.setState({
+          focused: false,
+          show: false
+        });
       }
     });
 
