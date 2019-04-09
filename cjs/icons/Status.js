@@ -6,29 +6,39 @@ Object.defineProperty(exports, "__esModule", {
 exports.Valid = Valid;
 exports.Warning = Warning;
 exports.Error = Error;
+exports.StatusIconNoDefault = exports.statusToIcon = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireDefault(require("react"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _theme = require("../theme.js");
+var _react = _interopRequireDefault(require("react"));
+
+var _theme = require("../theme");
+
+var _constants = require("./constants");
+
+var _statusToIcon;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var iconStyleValid = new String("svg.jsx-1819142562{fill:".concat(_theme.colors.blue600, ";width:24px;height:24px;margin-right:8px;}"));
-iconStyleValid.__hash = "1819142562";
-var iconStyleWarning = new String("svg.jsx-1902194108{fill:".concat(_theme.colors.yellow500, ";width:24px;height:24px;margin-right:8px;}"));
-iconStyleWarning.__hash = "1902194108";
-var iconStyleError = new String("svg.jsx-6165027{fill:".concat(_theme.colors.red500, ";width:24px;height:24px;margin-right:8px;}"));
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var statusToIcon = (_statusToIcon = {}, _defineProperty(_statusToIcon, _constants.iconStatuses.VALID, Valid), _defineProperty(_statusToIcon, _constants.iconStatuses.WARNING, Warning), _defineProperty(_statusToIcon, _constants.iconStatuses.ERROR, Error), _statusToIcon);
+/**
+ * Icon: Valid
+ * =============
+ */
+
+exports.statusToIcon = statusToIcon;
+var iconStyleValid = new String("svg.jsx-294723437{fill:".concat(_theme.colors.blue600, ";width:24px;height:24px;margin-right:4px;}"));
 /**
  * @param {Object} props
  * @param {string} props.className
  * @returns {ReactNode}
  */
 
-iconStyleError.__hash = "6165027";
+iconStyleValid.__hash = "294723437";
 
 function Valid(_ref) {
   var className = _ref.className;
@@ -53,12 +63,19 @@ function Valid(_ref) {
 Valid.propTypes = {
   className: _propTypes.default.string.isRequired
   /**
-   * @param {Object} props
-   * @param {string} props.className
-   * @returns {ReactNode}
+   * Icon: Warning
+   * =============
    */
 
 };
+var iconStyleWarning = new String("svg.jsx-4220013059{fill:".concat(_theme.colors.yellow500, ";width:24px;height:24px;margin-right:4px;}"));
+/**
+ * @param {Object} props
+ * @param {string} props.className
+ * @returns {ReactNode}
+ */
+
+iconStyleWarning.__hash = "4220013059";
 
 function Warning(_ref2) {
   var className = _ref2.className;
@@ -83,12 +100,19 @@ function Warning(_ref2) {
 Warning.propTypes = {
   className: _propTypes.default.string.isRequired
   /**
-   * @param {Object} props
-   * @param {string} props.className
-   * @returns {ReactNode}
+   * Icon: Error
+   * =============
    */
 
 };
+var iconStyleError = new String("svg.jsx-1515634284{fill:".concat(_theme.colors.red500, ";width:24px;height:24px;margin-right:4px;}"));
+/**
+ * @param {Object} props
+ * @param {string} props.className
+ * @returns {ReactNode}
+ */
+
+iconStyleError.__hash = "1515634284";
 
 function Error(_ref3) {
   var className = _ref3.className;
@@ -112,4 +136,32 @@ function Error(_ref3) {
 
 Error.propTypes = {
   className: _propTypes.default.string.isRequired
+  /**
+   * @param {Object} props
+   * @param {string} props.status
+   * @param {string} props.className
+   * @returns {ReactNode}
+   */
+
+};
+
+var StatusIconNoDefault = function StatusIconNoDefault(_ref4) {
+  var status = _ref4.status,
+      className = _ref4.className;
+  return status === _constants.iconStatuses.VALID ? _react.default.createElement(Valid, {
+    className: className
+  }) : status === _constants.iconStatuses.WARNING ? _react.default.createElement(Warning, {
+    className: className
+  }) : status === _constants.iconStatuses.ERROR ? _react.default.createElement(Error, {
+    className: className
+  }) : null;
+};
+
+exports.StatusIconNoDefault = StatusIconNoDefault;
+StatusIconNoDefault.propTypes = {
+  status: _constants.iconStatusPropType,
+  className: _propTypes.default.string
+};
+StatusIconNoDefault.defaultProps = {
+  className: ''
 };

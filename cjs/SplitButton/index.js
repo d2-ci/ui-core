@@ -1,7 +1,5 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -29,6 +27,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -47,12 +47,13 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var ArrowIcon = {
-  styles: _react.default.createElement(_style.default, {
-    id: "1039571365"
-  }, "svg.jsx-1039571365{fill:inherit;height:24px;width:24px;vertical-align:middle;pointer-events:none;}"),
-  className: "jsx-1039571365"
-};
+var _ref =
+/*#__PURE__*/
+_react.default.createElement(_Arrow.ArrowUp, null);
+
+var _ref2 =
+/*#__PURE__*/
+_react.default.createElement(_Arrow.ArrowDown, null);
 
 var SplitButton =
 /*#__PURE__*/
@@ -126,11 +127,7 @@ function (_Component) {
         width = this.elContainer ? this.elContainer.getBoundingClientRect()['width'] : 'inherit';
       }
 
-      var icon = open ? _react.default.createElement(_Arrow.ArrowUp, {
-        className: ArrowIcon.className
-      }) : _react.default.createElement(_Arrow.ArrowDown, {
-        className: ArrowIcon.className
-      });
+      var icon = open ? _ref : _ref2;
       return _react.default.createElement("div", {
         ref: function ref(c) {
           return _this2.elContainer = c;
@@ -158,7 +155,7 @@ function (_Component) {
         width: "".concat(width, "px"),
         list: this.props.list,
         onClick: this.props.onClick
-      })), ArrowIcon.styles, _react.default.createElement(_style.default, {
+      })), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default), _react.default.createElement(_style.default, {
         id: _styles2.default.__hash

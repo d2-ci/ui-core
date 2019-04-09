@@ -1,6 +1,7 @@
+import _JSXStyle from "styled-jsx/style";
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import _JSXStyle from "styled-jsx/style";
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Menu from '../Menu';
@@ -9,12 +10,14 @@ import buttons from '../Button/styles.js';
 import { ArrowUp, ArrowDown } from '../icons/Arrow.js';
 import cx from 'classnames';
 import styles from './styles';
-const ArrowIcon = {
-  styles: React.createElement(_JSXStyle, {
-    id: "1039571365"
-  }, "svg.jsx-1039571365{fill:inherit;height:24px;width:24px;vertical-align:middle;pointer-events:none;}"),
-  className: "jsx-1039571365"
-};
+
+var _ref =
+/*#__PURE__*/
+React.createElement(ArrowUp, null);
+
+var _ref2 =
+/*#__PURE__*/
+React.createElement(ArrowDown, null);
 
 class SplitButton extends Component {
   constructor(...args) {
@@ -64,11 +67,7 @@ class SplitButton extends Component {
       width = this.elContainer ? this.elContainer.getBoundingClientRect()['width'] : 'inherit';
     }
 
-    const icon = open ? React.createElement(ArrowUp, {
-      className: ArrowIcon.className
-    }) : React.createElement(ArrowDown, {
-      className: ArrowIcon.className
-    });
+    const icon = open ? _ref : _ref2;
     return React.createElement("div", {
       ref: c => this.elContainer = c,
       className: `jsx-${buttons.__hash} jsx-${styles.__hash}`
@@ -92,7 +91,7 @@ class SplitButton extends Component {
       width: `${width}px`,
       list: this.props.list,
       onClick: this.props.onClick
-    })), ArrowIcon.styles, React.createElement(_JSXStyle, {
+    })), React.createElement(_JSXStyle, {
       id: buttons.__hash
     }, buttons), React.createElement(_JSXStyle, {
       id: styles.__hash

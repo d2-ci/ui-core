@@ -1,19 +1,26 @@
 import _JSXStyle from "styled-jsx/style";
-import React from 'react';
 import PropTypes from 'prop-types';
-import { colors } from '../theme.js';
-const iconStyleValid = new String(`svg.jsx-1819142562{fill:${colors.blue600};width:24px;height:24px;margin-right:8px;}`);
-iconStyleValid.__hash = "1819142562";
-const iconStyleWarning = new String(`svg.jsx-1902194108{fill:${colors.yellow500};width:24px;height:24px;margin-right:8px;}`);
-iconStyleWarning.__hash = "1902194108";
-const iconStyleError = new String(`svg.jsx-6165027{fill:${colors.red500};width:24px;height:24px;margin-right:8px;}`);
+import React from 'react';
+import { colors } from '../theme';
+import { iconStatusPropType, iconStatuses } from './constants';
+export const statusToIcon = {
+  [iconStatuses.VALID]: Valid,
+  [iconStatuses.WARNING]: Warning,
+  [iconStatuses.ERROR]: Error
+  /**
+   * Icon: Valid
+   * =============
+   */
+
+};
+const iconStyleValid = new String(`svg.jsx-294723437{fill:${colors.blue600};width:24px;height:24px;margin-right:4px;}`);
 /**
  * @param {Object} props
  * @param {string} props.className
  * @returns {ReactNode}
  */
 
-iconStyleError.__hash = "6165027";
+iconStyleValid.__hash = "294723437";
 export function Valid({
   className
 }) {
@@ -37,12 +44,19 @@ export function Valid({
 Valid.propTypes = {
   className: PropTypes.string.isRequired
   /**
-   * @param {Object} props
-   * @param {string} props.className
-   * @returns {ReactNode}
+   * Icon: Warning
+   * =============
    */
 
 };
+const iconStyleWarning = new String(`svg.jsx-4220013059{fill:${colors.yellow500};width:24px;height:24px;margin-right:4px;}`);
+/**
+ * @param {Object} props
+ * @param {string} props.className
+ * @returns {ReactNode}
+ */
+
+iconStyleWarning.__hash = "4220013059";
 export function Warning({
   className
 }) {
@@ -66,12 +80,19 @@ export function Warning({
 Warning.propTypes = {
   className: PropTypes.string.isRequired
   /**
-   * @param {Object} props
-   * @param {string} props.className
-   * @returns {ReactNode}
+   * Icon: Error
+   * =============
    */
 
 };
+const iconStyleError = new String(`svg.jsx-1515634284{fill:${colors.red500};width:24px;height:24px;margin-right:4px;}`);
+/**
+ * @param {Object} props
+ * @param {string} props.className
+ * @returns {ReactNode}
+ */
+
+iconStyleError.__hash = "1515634284";
 export function Error({
   className
 }) {
@@ -94,4 +115,28 @@ export function Error({
 }
 Error.propTypes = {
   className: PropTypes.string.isRequired
+  /**
+   * @param {Object} props
+   * @param {string} props.status
+   * @param {string} props.className
+   * @returns {ReactNode}
+   */
+
+};
+export const StatusIconNoDefault = ({
+  status,
+  className
+}) => status === iconStatuses.VALID ? React.createElement(Valid, {
+  className: className
+}) : status === iconStatuses.WARNING ? React.createElement(Warning, {
+  className: className
+}) : status === iconStatuses.ERROR ? React.createElement(Error, {
+  className: className
+}) : null;
+StatusIconNoDefault.propTypes = {
+  status: iconStatusPropType,
+  className: PropTypes.string
+};
+StatusIconNoDefault.defaultProps = {
+  className: ''
 };

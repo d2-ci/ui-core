@@ -1,4 +1,11 @@
+import _JSXStyle from "styled-jsx/style";
 import React from 'react';
+export const styles = {
+  styles: React.createElement(_JSXStyle, {
+    id: "1039571365"
+  }, "svg.jsx-1039571365{fill:inherit;height:24px;width:24px;vertical-align:middle;pointer-events:none;}"),
+  className: "jsx-1039571365"
+};
 
 var _ref =
 /*#__PURE__*/
@@ -13,16 +20,14 @@ React.createElement("path", {
   fill: "none"
 });
 
-export function ArrowDown({
-  className
-}) {
+export function ArrowDown() {
   return React.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     width: "48",
     height: "48",
     viewBox: "0 0 48 48",
-    className: className
-  }, _ref, _ref2);
+    className: styles.className
+  }, _ref, _ref2, React.createElement("style", null, styles.styles));
 }
 
 var _ref3 =
@@ -38,14 +43,12 @@ React.createElement("path", {
   fill: "none"
 });
 
-export function ArrowUp({
-  className
-}) {
+export function ArrowUp() {
   return React.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     width: "48",
     height: "48",
     viewBox: "0 0 48 48",
-    className: className
-  }, _ref3, _ref4);
+    className: styles.className
+  }, _ref3, _ref4, React.createElement("style", null, styles.styles));
 }
