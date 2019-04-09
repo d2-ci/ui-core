@@ -1,6 +1,7 @@
+import _JSXStyle from "styled-jsx/style";
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import _JSXStyle from "styled-jsx/style";
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
@@ -8,12 +9,14 @@ import Button from '../Button';
 import { ArrowUp, ArrowDown } from '../icons/Arrow.js';
 import buttons from '../Button/styles.js';
 import styles from './styles.js';
-const ArrowIcon = {
-  styles: React.createElement(_JSXStyle, {
-    id: "1039571365"
-  }, "svg.jsx-1039571365{fill:inherit;height:24px;width:24px;vertical-align:middle;pointer-events:none;}"),
-  className: "jsx-1039571365"
-};
+
+var _ref =
+/*#__PURE__*/
+React.createElement(ArrowUp, null);
+
+var _ref2 =
+/*#__PURE__*/
+React.createElement(ArrowDown, null);
 
 class DropdownButton extends Component {
   constructor(...args) {
@@ -48,11 +51,7 @@ class DropdownButton extends Component {
     const {
       open
     } = this.state;
-    const icon = open ? React.createElement(ArrowUp, {
-      className: ArrowIcon.className
-    }) : React.createElement(ArrowDown, {
-      className: ArrowIcon.className
-    });
+    const icon = open ? _ref : _ref2;
     return React.createElement("div", {
       ref: c => this.elContainer = c,
       className: `jsx-${buttons.__hash} jsx-${styles.__hash}`
@@ -67,7 +66,7 @@ class DropdownButton extends Component {
       className: `jsx-${buttons.__hash} jsx-${styles.__hash}` + " " + "button-icon"
     }, this.props.icon), this.props.label || this.props.children, icon), open && React.createElement("div", {
       className: `jsx-${buttons.__hash} jsx-${styles.__hash}` + " " + "menu"
-    }, this.props.component), ArrowIcon.styles, React.createElement(_JSXStyle, {
+    }, this.props.component), React.createElement(_JSXStyle, {
       id: buttons.__hash
     }, buttons), React.createElement(_JSXStyle, {
       id: styles.__hash
