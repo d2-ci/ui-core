@@ -4,7 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Help = Help;
-exports.default = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -40,5 +39,3 @@ Help.propTypes = {
   text: _propTypes.default.string.isRequired,
   status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error'])
 };
-var _default = Help;
-exports.default = _default;

@@ -95,4 +95,3 @@ SplitButton.propTypes = {
   size: propTypes.oneOf(['small', 'medium', 'large'])
 };
 export { SplitButton };
-export default SplitButton;

@@ -5,7 +5,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.Chip = void 0;
+exports.Chip = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -160,5 +160,3 @@ Chip.propTypes = {
   onClick: _propTypes.default.func,
   onRemove: _propTypes.default.func
 };
-var _default = Chip;
-exports.default = _default;

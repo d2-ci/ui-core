@@ -33,4 +33,3 @@ LinearProgress.propTypes = {
   margin: propTypes.oneOfType([propTypes.string, propTypes.number])
 };
 export { LinearProgress };
-export default LinearProgress;

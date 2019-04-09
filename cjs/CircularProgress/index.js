@@ -4,7 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.CircularProgress = CircularProgress;
-exports.default = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -64,5 +63,3 @@ CircularProgress.propTypes = {
   overlay: _propTypes.default.bool,
   size: _propTypes.default.oneOf(['small', 'medium', 'large'])
 };
-var _default = CircularProgress;
-exports.default = _default;

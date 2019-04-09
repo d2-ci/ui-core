@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.Switch = void 0;
+exports.Switch = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -112,5 +112,3 @@ Switch.propTypes = {
   disabled: _propTypes.default.bool,
   status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error'])
 };
-var _default = Switch;
-exports.default = _default;

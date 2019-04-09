@@ -122,4 +122,3 @@ Checkbox.propTypes = {
   status: propTypes.oneOf(['default', 'valid', 'warning', 'error'])
 };
 export { Checkbox };
-export default Checkbox;

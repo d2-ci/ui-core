@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.DropdownButton = void 0;
+exports.DropdownButton = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -155,5 +155,3 @@ DropdownButton.propTypes = {
   disabled: _propTypes.default.bool,
   onClick: _propTypes.default.func
 };
-var _default = DropdownButton;
-exports.default = _default;

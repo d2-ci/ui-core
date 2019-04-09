@@ -65,4 +65,3 @@ Switch.propTypes = {
   status: propTypes.oneOf(['default', 'valid', 'warning', 'error'])
 };
 export { Switch };
-export default Switch;

@@ -48,4 +48,3 @@ Button.propTypes = {
   onClick: propTypes.func
 };
 export { Button };
-export default Button;

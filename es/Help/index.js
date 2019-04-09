@@ -28,4 +28,3 @@ Help.propTypes = {
   status: propTypes.oneOf(['default', 'valid', 'warning', 'error'])
 };
 export { Help };
-export default Help;

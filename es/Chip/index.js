@@ -107,4 +107,3 @@ Chip.propTypes = {
   onRemove: propTypes.func
 };
 export { Chip };
-export default Chip;

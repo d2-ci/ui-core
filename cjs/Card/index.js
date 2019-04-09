@@ -4,7 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Card = Card;
-exports.default = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -33,5 +32,3 @@ Card.propTypes = {
   className: _propTypes.default.string,
   children: _propTypes.default.node
 };
-var _default = Card;
-exports.default = _default;

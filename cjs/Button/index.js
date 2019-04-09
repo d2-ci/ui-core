@@ -4,7 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Button = Button;
-exports.default = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -60,5 +59,3 @@ Button.propTypes = {
   disabled: _propTypes.default.bool,
   onClick: _propTypes.default.func
 };
-var _default = Button;
-exports.default = _default;

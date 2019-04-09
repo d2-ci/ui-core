@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = MenuItem;
+exports.MenuItem = MenuItem;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 

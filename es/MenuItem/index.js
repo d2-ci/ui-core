@@ -28,7 +28,7 @@ function SubMenu({
   }, children);
 }
 
-export default function MenuItem({
+function MenuItem({
   value,
   label,
   icon,
@@ -63,6 +63,7 @@ export default function MenuItem({
     id: styles.__hash
   }, styles));
 }
+
 MenuItem.defaultProps = {
   size: 'default',
   active: false,
@@ -79,3 +80,4 @@ MenuItem.propTypes = {
   size: propTypes.string,
   onClick: propTypes.func
 };
+export { MenuItem };

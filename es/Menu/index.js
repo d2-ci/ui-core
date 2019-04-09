@@ -4,7 +4,8 @@ import propTypes from 'prop-types';
 import Card from '../Card';
 import cx from 'classnames';
 import styles from './styles';
-export function Menu({
+
+function Menu({
   size,
   width,
   children,
@@ -16,6 +17,7 @@ export function Menu({
     id: styles.__hash
   }, styles));
 }
+
 Menu.defaultProps = {
   size: 'default'
 };
@@ -24,4 +26,4 @@ Menu.propTypes = {
   children: propTypes.arrayOf(propTypes.element).isRequired,
   size: propTypes.oneOf(['default', 'dense'])
 };
-export default Menu;
+export { Menu };

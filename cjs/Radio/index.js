@@ -5,7 +5,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.Radio = void 0;
+exports.Radio = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -154,5 +154,3 @@ Radio.propTypes = {
   disabled: _propTypes.default.bool,
   status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error'])
 };
-var _default = Radio;
-exports.default = _default;

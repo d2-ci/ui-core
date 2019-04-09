@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.InputField = void 0;
+exports.InputField = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -13,7 +13,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _Input = require("./Input");
+var _Input = require("../Input");
 
 var _FieldLabel = require("../FieldLabel");
 
@@ -23,7 +23,7 @@ var _constants = require("../icons/constants");
 
 var _constants2 = require("../forms/constants");
 
-var _Help = _interopRequireDefault(require("../Help"));
+var _Help = require("../Help");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -147,7 +147,7 @@ function (_React$Component) {
         onFocus: this.onFocus,
         onBlur: this.onBlur,
         onChange: this.onChange
-      })), this.props.help && _react.default.createElement(_Help.default, {
+      })), this.props.help && _react.default.createElement(_Help.Help, {
         text: this.props.help,
         status: this.props.status
       }), _react.default.createElement(_style.default, {
@@ -191,5 +191,3 @@ InputField.propTypes = {
   placeholder: _propTypes.default.string,
   type: _propTypes.default.oneOf([types.TEXT, types.EMAIL, types.NUMBER, types.PASSWORD, types.URL])
 };
-var _default = InputField;
-exports.default = _default;

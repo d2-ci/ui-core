@@ -94,4 +94,3 @@ DropdownButton.propTypes = {
   onClick: propTypes.func
 };
 export { DropdownButton };
-export default DropdownButton;

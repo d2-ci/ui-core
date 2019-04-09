@@ -21,4 +21,3 @@ Card.propTypes = {
   children: propTypes.node
 };
 export { Card };
-export default Card;

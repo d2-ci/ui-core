@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.SelectField = void 0;
+exports.SelectField = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -215,5 +215,3 @@ SelectField.propTypes = {
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func
 };
-var _default = SelectField;
-exports.default = _default;

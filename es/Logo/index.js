@@ -96,4 +96,3 @@ React.createElement(Logo, {
 });
 
 export const LogoWhite = () => _ref2;
-export default Logo;

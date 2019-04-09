@@ -157,4 +157,3 @@ SelectField.propTypes = {
   onBlur: propTypes.func
 };
 export { SelectField };
-export default SelectField;

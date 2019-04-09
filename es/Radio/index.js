@@ -99,4 +99,3 @@ Radio.propTypes = {
   status: propTypes.oneOf(['default', 'valid', 'warning', 'error'])
 };
 export { Radio };
-export default Radio;

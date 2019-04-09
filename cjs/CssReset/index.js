@@ -4,7 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.CssReset = CssReset;
-exports.default = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -26,6 +25,3 @@ _react.default.createElement(_style.default, {
 function CssReset() {
   return _ref;
 }
-
-var _default = CssReset;
-exports.default = _default;

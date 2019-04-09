@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.LogoIcon = LogoIcon;
 exports.Logo = Logo;
-exports.default = exports.LogoWhite = exports.LogoIconWhite = void 0;
+exports.LogoWhite = exports.LogoIconWhite = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -117,5 +117,3 @@ var LogoWhite = function LogoWhite() {
 };
 
 exports.LogoWhite = LogoWhite;
-var _default = Logo;
-exports.default = _default;

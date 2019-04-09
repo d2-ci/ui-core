@@ -51,4 +51,3 @@ CircularProgress.propTypes = {
   size: propTypes.oneOf(['small', 'medium', 'large'])
 };
 export { CircularProgress };
-export default CircularProgress;

@@ -4,7 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Divider = Divider;
-exports.default = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -40,5 +39,3 @@ Divider.propTypes = {
   className: _propTypes.default.string,
   margin: _propTypes.default.string
 };
-var _default = Divider;
-exports.default = _default;

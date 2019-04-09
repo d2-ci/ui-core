@@ -4,7 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.LinearProgress = LinearProgress;
-exports.default = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -45,5 +44,3 @@ LinearProgress.propTypes = {
   amount: _propTypes.default.number,
   margin: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number])
 };
-var _default = LinearProgress;
-exports.default = _default;

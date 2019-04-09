@@ -5,12 +5,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import propTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import cx from 'classnames';
-import { Input } from './Input';
+import { Input } from '../Input';
 import { LabelFilled, LabelOutlined } from '../FieldLabel';
 import { colors } from '../theme';
 import { iconStatusPropType, iconStatuses } from '../icons/constants';
 import { inputKinds, inputSizes } from '../forms/constants';
-import Help from '../Help';
+import { Help } from '../Help';
 const styles = new String(`.base.jsx-3338623497{display:inline-block;width:100%;color:${colors.grey700};}`);
 styles.__hash = "3338623497";
 const types = {
@@ -139,4 +139,3 @@ InputField.propTypes = {
   type: propTypes.oneOf([types.TEXT, types.EMAIL, types.NUMBER, types.PASSWORD, types.URL])
 };
 export { InputField };
-export default InputField;

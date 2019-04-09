@@ -4,7 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Menu = Menu;
-exports.default = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -40,5 +39,3 @@ Menu.propTypes = {
   children: _propTypes.default.arrayOf(_propTypes.default.element).isRequired,
   size: _propTypes.default.oneOf(['default', 'dense'])
 };
-var _default = Menu;
-exports.default = _default;
