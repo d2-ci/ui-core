@@ -13,11 +13,9 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _Input = require("./InputField/Input");
+var _Input = require("./Input");
 
-var _LabelFilled = require("../forms/LabelFilled");
-
-var _LabelOutlined = require("../forms/LabelOutlined");
+var _FieldLabel = require("../FieldLabel");
 
 var _theme = require("../theme");
 
@@ -121,7 +119,7 @@ function (_React$Component) {
     value: function render() {
       var isFilled = this.props.kind === _constants2.inputKinds.FILLED;
       var isDense = this.props.size === _constants2.inputSizes.DENSE;
-      var Container = this.props.kind === _constants2.inputKinds.FILLED ? _LabelFilled.LabelFilled : _LabelOutlined.LabelOutlined;
+      var Container = this.props.kind === _constants2.inputKinds.FILLED ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
       return _react.default.createElement("div", {
         onClick: this.onFocus,
         className: "jsx-".concat(styles.__hash) + " " + _style.default.dynamic([["2004200063", [_theme.colors.grey500]]]) + " " + ((0, _classnames.default)('base', this.props.className, {

@@ -5,9 +5,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import cx from 'classnames';
-import { Input } from './InputField/Input';
-import { LabelFilled } from '../forms/LabelFilled';
-import { LabelOutlined } from '../forms/LabelOutlined';
+import { Input } from './Input';
+import { LabelFilled, LabelOutlined } from '../FieldLabel';
 import { colors } from '../theme';
 import { iconStatusPropType, iconStatuses } from '../icons/constants';
 import { inputKinds, inputSizes } from '../forms/constants';

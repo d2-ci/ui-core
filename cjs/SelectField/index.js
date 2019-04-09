@@ -13,13 +13,11 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _Arrow = require("./SelectField/Arrow");
+var _Arrow = require("./Arrow");
 
-var _LabelFilled = require("../forms/LabelFilled");
+var _FieldLabel = require("../FieldLabel");
 
-var _LabelOutlined = require("../forms/LabelOutlined");
-
-var _Select = require("./SelectField/Select");
+var _Select = require("./Select");
 
 var _theme = require("../theme");
 
@@ -153,7 +151,7 @@ function (_React$Component) {
       var open = this.state.open;
       var isFilled = this.props.kind === _constants2.inputKinds.FILLED;
       var isDense = this.props.size === _constants2.inputSizes.DENSE;
-      var Container = this.props.kind === _constants2.inputKinds.FILLED ? _LabelFilled.LabelFilled : _LabelOutlined.LabelOutlined;
+      var Container = this.props.kind === _constants2.inputKinds.FILLED ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
       return _react.default.createElement("div", {
         ref: function ref(c) {
           return _this2.elContainer = c;
