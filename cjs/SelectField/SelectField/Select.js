@@ -13,6 +13,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
+var _theme = require("../../theme");
+
 var _constants = require("../../forms/constants");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -39,8 +41,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var styles = new String("select.jsx-629041383{background:none;border:0;color:black;font-size:".concat(_constants.inputFontSizeValue, ";height:100%;left:0;outline:0;padding:0 12px 0 16px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}select.dense.jsx-629041383{font-size:14px;}select.outlined.jsx-629041383{", " padding-left:15px;}select.filled.jsx-629041383{padding-top:20px;}option.jsx-629041383:not(:checked){color:black;}select.jsx-629041383:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}"));
-styles.__hash = "629041383";
+var styles = new String("select.jsx-3250355104{background:none;border:0;color:black;font-size:".concat(_constants.inputFontSizeValue, ";height:100%;left:0;outline:0;padding:0 12px 0 16px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}select.disabled.jsx-3250355104{color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}select.dense.jsx-3250355104{font-size:14px;}select.outlined.jsx-3250355104{", " padding-left:15px;}select.filled.jsx-3250355104{padding-top:20px;}option.jsx-3250355104:not(:checked){color:black;}select.jsx-3250355104:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}"));
+styles.__hash = "3250355104";
 
 var Select =
 /*#__PURE__*/
@@ -82,7 +84,8 @@ function (_Component) {
       var className = (0, _classnames.default)({
         dense: this.props.size === _constants.inputSizes.DENSE,
         filled: this.props.kind === _constants.inputKinds.FILLED,
-        outlined: this.props.kind === _constants.inputKinds.OUTLINED
+        outlined: this.props.kind === _constants.inputKinds.OUTLINED,
+        disabled: this.props.disabled
       });
       return _react.default.createElement("select", {
         onChange: this.props.onChange,

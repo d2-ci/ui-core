@@ -13,9 +13,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _Status = require("../icons/Status");
-
-var _Input = require("../InputField/InputField/Input");
+var _Arrow = require("./SelectField/Arrow");
 
 var _LabelFilled = require("../forms/LabelFilled");
 
@@ -23,11 +21,7 @@ var _LabelOutlined = require("../forms/LabelOutlined");
 
 var _Select = require("./SelectField/Select");
 
-var _Arrow = require("./SelectField/Arrow");
-
 var _theme = require("../theme");
-
-var _helpers = require("../icons/helpers");
 
 var _constants = require("../icons/constants");
 
@@ -36,10 +30,6 @@ var _constants2 = require("../forms/constants");
 var _math = require("../utils/math");
 
 var _Help = _interopRequireDefault(require("../Help"));
-
-var _Menu = _interopRequireDefault(require("../Menu"));
-
-var _styles = _interopRequireWildcard(require("./styles"));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -65,20 +55,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function createTrailIcon(status, trail, fn) {
-  var icon = status !== _constants.iconStatuses.DEFAULT ? _Status.statusToIcon[status] : trail;
-  var options = {
-    action: fn,
-    className: _styles.selectIconStyles.className
-  };
-  return (0, _helpers.createIcon)(icon, options);
-}
-
-var _ref =
-/*#__PURE__*/
-_react.default.createElement(_style.default, {
-  id: "1546415887"
-}, ".select-value.jsx-1546415887{display:block;overflow:hidden;padding-right:10px;text-overflow:ellipsis;white-space:nowrap;}");
+var styles = new String(".base.jsx-2528058342{display:inline-block;position:relative;width:100%;background-color:inherit;color:".concat(_theme.colors.grey700, ";pointer-events:all;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}.disabled.jsx-2528058342{cursor:not-allowed;opacity:1;}"));
+styles.__hash = "2528058342";
 
 var SelectField =
 /*#__PURE__*/
@@ -180,7 +158,7 @@ function (_React$Component) {
         ref: function ref(c) {
           return _this2.elContainer = c;
         },
-        className: "jsx-1546415887 " + "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', this.props.className, _defineProperty({
+        className: "jsx-".concat(styles.__hash) + " " + ((0, _classnames.default)('base', this.props.className, _defineProperty({
           selected: !!this.props.value,
           disabled: this.props.disabled
         }, "size-".concat(this.props.size), true)) || "")
@@ -190,6 +168,7 @@ function (_React$Component) {
         hasValue: true,
         htmlFor: this.props.name,
         required: this.props.required,
+        disabled: this.props.disabled,
         status: this.props.status,
         size: this.props.size,
         tailIcon: function tailIcon() {
@@ -198,7 +177,7 @@ function (_React$Component) {
           });
         },
         onClick: this.onFocus,
-        className: "jsx-1546415887 " + "jsx-".concat(_styles.default.__hash)
+        className: "jsx-".concat(styles.__hash)
       }, _react.default.createElement(_Select.Select, {
         value: this.props.value,
         disabled: this.props.disabled,
@@ -211,9 +190,9 @@ function (_React$Component) {
       })), this.props.help && _react.default.createElement(_Help.default, {
         text: this.props.help,
         status: this.props.status
-      }), _react.default.createElement("style", null, _styles.menuOverride.styles), _react.default.createElement(_style.default, {
-        id: _styles.default.__hash
-      }, _styles.default), _react.default.createElement("style", null, _styles.selectIconStyles.styles), _ref);
+      }), _react.default.createElement(_style.default, {
+        id: styles.__hash
+      }, styles));
     }
   }]);
 

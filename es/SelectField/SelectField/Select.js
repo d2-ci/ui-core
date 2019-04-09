@@ -5,11 +5,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import PropTypes from 'prop-types';
 import React, { Component, Fragment, createRef } from 'react';
 import cx from 'classnames';
+import { colors } from '../../theme';
 import { innerSpacingSides, inputFontSizeValue, inputKinds, inputSizes } from '../../forms/constants';
-const styles = new String(`select.jsx-629041383{background:none;border:0;color:black;font-size:${inputFontSizeValue};height:100%;left:0;outline:0;padding:0 12px 0 16px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}select.dense.jsx-629041383{font-size:14px;}select.outlined.jsx-629041383{${
+const styles = new String(`select.jsx-3250355104{background:none;border:0;color:black;font-size:${inputFontSizeValue};height:100%;left:0;outline:0;padding:0 12px 0 16px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}select.disabled.jsx-3250355104{color:${colors.grey500};cursor:not-allowed;}select.dense.jsx-3250355104{font-size:14px;}select.outlined.jsx-3250355104{${
 /** 15px => 16px inner spacing - 1px of the border**/
-''} padding-left:15px;}select.filled.jsx-629041383{padding-top:20px;}option.jsx-629041383:not(:checked){color:black;}select.jsx-629041383:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}`);
-styles.__hash = "629041383";
+''} padding-left:15px;}select.filled.jsx-3250355104{padding-top:20px;}option.jsx-3250355104:not(:checked){color:black;}select.jsx-3250355104:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}`);
+styles.__hash = "3250355104";
 export class Select extends Component {
   constructor(...args) {
     super(...args);
@@ -31,7 +32,8 @@ export class Select extends Component {
     const className = cx({
       dense: this.props.size === inputSizes.DENSE,
       filled: this.props.kind === inputKinds.FILLED,
-      outlined: this.props.kind === inputKinds.OUTLINED
+      outlined: this.props.kind === inputKinds.OUTLINED,
+      disabled: this.props.disabled
     });
     return React.createElement("select", {
       onChange: this.props.onChange,

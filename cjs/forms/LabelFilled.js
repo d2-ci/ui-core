@@ -37,11 +37,12 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-var styles = new String(".label-filled.jsx-1448498707{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:rgba(0,0,10,0.05);border-bottom:2px solid transparent;border-radius:4px;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;height:56px;position:relative;}.label-filled.dense.jsx-1448498707{height:44px;}.label-filled.jsx-1448498707:hover{background-color:rgba(0,0,10,0.08);}.label-filled.focused.jsx-1448498707{border-color:".concat(_theme.colors.teal600, ";}.label-filled.valid.jsx-1448498707{border-color:").concat(_constants.statusColors[_constants.iconStatuses.VALID], ";}.label-filled.valid.focused.jsx-1448498707{border-color:").concat(_theme.colors.blue700, ";}.label-filled.warning.jsx-1448498707{border-color:").concat(_constants.statusColors[_constants.iconStatuses.WARNING], ";}.label-filled.warning.focused.jsx-1448498707{border-color:").concat(_theme.colors.yellow700, ";}.label-filled.error.jsx-1448498707{border-color:").concat(_constants.statusColors[_constants.iconStatuses.ERROR], ";}.label-filled.error.focused.jsx-1448498707{border-color:").concat(_theme.colors.red700, ";}.content.jsx-1448498707{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:100%;position:relative;width:100%;z-index:-1;}.focused.jsx-1448498707 .content.jsx-1448498707,.has-value.jsx-1448498707 .content.jsx-1448498707{z-index:2;}.status-icon.jsx-1448498707{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:24px;height:24px;margin-right:4px;}.status-icon.jsx-1448498707:last-child{margin-right:10px;}"));
-styles.__hash = "1448498707";
+var styles = new String(".label-filled.jsx-4222127506{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:rgba(0,0,10,0.05);border-bottom:2px solid transparent;border-radius:4px;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;height:56px;position:relative;}.label-filled.disabled.jsx-4222127506{cursor:not-allowed;}.label-filled.dense.jsx-4222127506{height:44px;}.label-filled.jsx-4222127506:not(.disabled):hover{background-color:rgba(0,0,10,0.08);}.label-filled.focused.jsx-4222127506{border-color:".concat(_theme.colors.teal600, ";}.label-filled.valid.jsx-4222127506{border-color:").concat(_constants.statusColors[_constants.iconStatuses.VALID], ";}.label-filled.valid.focused.jsx-4222127506{border-color:").concat(_theme.colors.blue700, ";}.label-filled.warning.jsx-4222127506{border-color:").concat(_constants.statusColors[_constants.iconStatuses.WARNING], ";}.label-filled.warning.focused.jsx-4222127506{border-color:").concat(_theme.colors.yellow700, ";}.label-filled.error.jsx-4222127506{border-color:").concat(_constants.statusColors[_constants.iconStatuses.ERROR], ";}.label-filled.error.focused.jsx-4222127506{border-color:").concat(_theme.colors.red700, ";}.content.jsx-4222127506{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:100%;position:relative;width:100%;z-index:-1;}.focused.jsx-4222127506 .content.jsx-4222127506,.has-value.jsx-4222127506 .content.jsx-4222127506{z-index:2;}.status-icon.jsx-4222127506{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:24px;height:24px;margin-right:4px;}.status-icon.jsx-4222127506:empty{display:none;}.status-icon.jsx-4222127506:last-child{margin-right:10px;}"));
+styles.__hash = "4222127506";
 
 var createLabelFilledClassName = function createLabelFilledClassName(props) {
   return (0, _classnames.default)('label-filled', {
+    disabled: props.disabled,
     focused: props.isFocused,
     dense: props.size === _constants2.inputSizes.DENSE,
     valid: props.status === _constants.iconStatuses.VALID,
@@ -64,7 +65,8 @@ var LabelFilled = function LabelFilled(_ref) {
     status: props.status,
     hasValue: props.isFocused || props.hasValue,
     label: props.label,
-    htmlFor: props.htmlFor
+    htmlFor: props.htmlFor,
+    disabled: props.disabled
   }), _react.default.createElement("div", {
     className: "jsx-".concat(styles.__hash) + " " + "content"
   }, _react.default.createElement(_InputContainer.InputContainer, _defineProperty({
@@ -89,12 +91,14 @@ LabelFilled.propTypes = {
   hasValue: _propTypes.default.bool.isRequired,
   htmlFor: _propTypes.default.string.isRequired,
   tailIcon: _propTypes.default.element,
+  disabled: _propTypes.default.bool,
   required: _propTypes.default.bool,
   status: _constants.iconStatusPropType,
   size: _constants2.inputSizesPropTypes,
   onClick: _propTypes.default.func
 };
 LabelFilled.defaultProps = {
+  disabled: false,
   required: false,
   status: _constants.iconStatuses.DEFAULT,
   size: _constants2.inputSizes.DEFAULT,

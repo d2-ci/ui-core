@@ -13,31 +13,19 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _Field = require("./InputField/Field");
-
-var _Fieldset = require("./InputField/Fieldset");
-
 var _Input = require("./InputField/Input");
-
-var _Label = require("./InputField/Label");
 
 var _LabelFilled = require("../forms/LabelFilled");
 
 var _LabelOutlined = require("../forms/LabelOutlined");
 
-var _TrailIcon = require("./InputField/TrailIcon");
-
-var _theme = require("../theme.js");
-
-var _helpers = require("../icons/helpers");
+var _theme = require("../theme");
 
 var _constants = require("../icons/constants");
 
 var _constants2 = require("../forms/constants");
 
 var _Help = _interopRequireDefault(require("../Help"));
-
-var _styles = _interopRequireDefault(require("./styles.js"));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -63,6 +51,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var styles = new String(".base.jsx-3338623497{display:inline-block;width:100%;color:".concat(_theme.colors.grey700, ";}"));
+styles.__hash = "3338623497";
 var types = {
   TEXT: 'text',
   EMAIL: 'email',
@@ -134,8 +124,7 @@ function (_React$Component) {
       var Container = this.props.kind === _constants2.inputKinds.FILLED ? _LabelFilled.LabelFilled : _LabelOutlined.LabelOutlined;
       return _react.default.createElement("div", {
         onClick: this.onFocus,
-        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["2004200063", [_theme.colors.grey500]]]) + " " + ((0, _classnames.default)('base', this.props.className, {
-          focused: this.isFocused(),
+        className: "jsx-".concat(styles.__hash) + " " + _style.default.dynamic([["2004200063", [_theme.colors.grey500]]]) + " " + ((0, _classnames.default)('base', this.props.className, {
           disabled: this.props.disabled
         }) || "")
       }, _react.default.createElement(Container, {
@@ -144,9 +133,10 @@ function (_React$Component) {
         hasValue: !!this.props.value || this.props.placeholder,
         htmlFor: this.props.name,
         required: this.props.required,
+        disabled: this.props.disabled,
         status: this.props.status,
         size: this.props.size,
-        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["2004200063", [_theme.colors.grey500]]])
+        className: "jsx-".concat(styles.__hash) + " " + _style.default.dynamic([["2004200063", [_theme.colors.grey500]]])
       }, _react.default.createElement(_Input.Input, {
         name: this.props.name,
         type: this.props.type,
@@ -167,8 +157,8 @@ function (_React$Component) {
         id: "2004200063",
         dynamic: [_theme.colors.grey500]
       }, "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}")), _react.default.createElement(_style.default, {
-        id: _styles.default.__hash
-      }, _styles.default));
+        id: styles.__hash
+      }, styles));
     }
   }]);
 

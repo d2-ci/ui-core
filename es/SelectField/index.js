@@ -5,35 +5,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import cx from 'classnames';
-import { Error, Valid, Warning, statusToIcon } from '../icons/Status';
-import { Input } from '../InputField/InputField/Input';
+import { Arrow } from './SelectField/Arrow';
 import { LabelFilled } from '../forms/LabelFilled';
 import { LabelOutlined } from '../forms/LabelOutlined';
 import { Select } from './SelectField/Select';
-import { Arrow } from './SelectField/Arrow';
-import { colors, fonts } from '../theme';
-import { createIcon } from '../icons/helpers';
+import { colors } from '../theme';
 import { iconStatusPropType, iconStatuses } from '../icons/constants';
-import { innerSpacingSides, inputKinds, inputSizes } from '../forms/constants';
+import { inputKinds, inputSizes } from '../forms/constants';
 import { isPointInRect } from '../utils/math';
 import Help from '../Help';
-import Menu from '../Menu';
-import styles, { menuOverride, selectIconStyles } from './styles';
-
-function createTrailIcon(status, trail, fn) {
-  const icon = status !== iconStatuses.DEFAULT ? statusToIcon[status] : trail;
-  const options = {
-    action: fn,
-    className: selectIconStyles.className
-  };
-  return createIcon(icon, options);
-}
-
-var _ref =
-/*#__PURE__*/
-React.createElement(_JSXStyle, {
-  id: "1546415887"
-}, ".select-value.jsx-1546415887{display:block;overflow:hidden;padding-right:10px;text-overflow:ellipsis;white-space:nowrap;}");
+const styles = new String(`.base.jsx-2528058342{display:inline-block;position:relative;width:100%;background-color:inherit;color:${colors.grey700};pointer-events:all;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}.disabled.jsx-2528058342{cursor:not-allowed;opacity:1;}`);
+styles.__hash = "2528058342";
 
 class SelectField extends React.Component {
   constructor(props) {
@@ -118,7 +100,7 @@ class SelectField extends React.Component {
     const Container = this.props.kind === inputKinds.FILLED ? LabelFilled : LabelOutlined;
     return React.createElement("div", {
       ref: c => this.elContainer = c,
-      className: "jsx-1546415887 " + `jsx-${styles.__hash}` + " " + (cx('base', this.props.className, {
+      className: `jsx-${styles.__hash}` + " " + (cx('base', this.props.className, {
         selected: !!this.props.value,
         disabled: this.props.disabled,
         [`size-${this.props.size}`]: true
@@ -129,13 +111,14 @@ class SelectField extends React.Component {
       hasValue: true,
       htmlFor: this.props.name,
       required: this.props.required,
+      disabled: this.props.disabled,
       status: this.props.status,
       size: this.props.size,
       tailIcon: () => React.createElement(Arrow, {
         open: this.state.open
       }),
       onClick: this.onFocus,
-      className: "jsx-1546415887 " + `jsx-${styles.__hash}`
+      className: `jsx-${styles.__hash}`
     }, React.createElement(Select, {
       value: this.props.value,
       disabled: this.props.disabled,
@@ -148,9 +131,9 @@ class SelectField extends React.Component {
     })), this.props.help && React.createElement(Help, {
       text: this.props.help,
       status: this.props.status
-    }), React.createElement("style", null, menuOverride.styles), React.createElement(_JSXStyle, {
+    }), React.createElement(_JSXStyle, {
       id: styles.__hash
-    }, styles), React.createElement("style", null, selectIconStyles.styles), _ref);
+    }, styles));
   }
 
 }

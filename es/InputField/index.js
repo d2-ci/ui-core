@@ -5,19 +5,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import cx from 'classnames';
-import { Field } from './InputField/Field';
-import { Fieldset } from './InputField/Fieldset';
 import { Input } from './InputField/Input';
-import { Label } from './InputField/Label';
 import { LabelFilled } from '../forms/LabelFilled';
 import { LabelOutlined } from '../forms/LabelOutlined';
-import { TrailIcon } from './InputField/TrailIcon';
-import { colors } from '../theme.js';
-import { createIcon } from '../icons/helpers';
+import { colors } from '../theme';
 import { iconStatusPropType, iconStatuses } from '../icons/constants';
 import { inputKinds, inputSizes } from '../forms/constants';
 import Help from '../Help';
-import styles from './styles.js';
+const styles = new String(`.base.jsx-3338623497{display:inline-block;width:100%;color:${colors.grey700};}`);
+styles.__hash = "3338623497";
 const types = {
   TEXT: 'text',
   EMAIL: 'email',
@@ -78,7 +74,6 @@ class InputField extends React.Component {
     return React.createElement("div", {
       onClick: this.onFocus,
       className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["2004200063", [colors.grey500]]]) + " " + (cx('base', this.props.className, {
-        focused: this.isFocused(),
         disabled: this.props.disabled
       }) || "")
     }, React.createElement(Container, {
@@ -87,6 +82,7 @@ class InputField extends React.Component {
       hasValue: !!this.props.value || this.props.placeholder,
       htmlFor: this.props.name,
       required: this.props.required,
+      disabled: this.props.disabled,
       status: this.props.status,
       size: this.props.size,
       className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["2004200063", [colors.grey500]]])
