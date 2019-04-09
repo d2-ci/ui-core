@@ -33,6 +33,7 @@ class Switch extends React.Component {
     }, React.createElement("input", {
       type: "checkbox",
       disabled: disabled,
+      name: this.props.name,
       checked: this.props.checked,
       onChange: this.onChange,
       className: `jsx-${styles.__hash}`
@@ -55,6 +56,7 @@ Switch.defaultProps = {
   status: 'default'
 };
 Switch.propTypes = {
+  name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   className: PropTypes.string,
   checked: PropTypes.bool,
