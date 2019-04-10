@@ -25,7 +25,7 @@ var _constants = require("../icons/constants");
 
 var _constants2 = require("../forms/constants");
 
-var _Help = _interopRequireDefault(require("../Help"));
+var _Help = require("../Help");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -174,7 +174,7 @@ function (_React$Component) {
         onChange: this.onChange,
         onFocus: this.onFocus,
         onBlur: this.onBlur
-      })), this.props.help && _react.default.createElement(_Help.default, {
+      })), this.props.help && _react.default.createElement(_Help.Help, {
         text: this.props.help,
         status: this.props.status
       }), _react.default.createElement(_style.default, {
