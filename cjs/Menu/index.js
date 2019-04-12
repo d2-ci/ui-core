@@ -21,7 +21,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function Menu(_ref) {
   var size = _ref.size,
-      width = _ref.width,
       children = _ref.children,
       className = _ref.className;
   return _react.default.createElement(_Card.Card, null, _react.default.createElement("ul", {

@@ -7,7 +7,6 @@ import styles from './styles';
 
 function Menu({
   size,
-  width,
   children,
   className
 }) {
