@@ -33,12 +33,10 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-var styles = new String(".label-outlined.jsx-3173687768{height:".concat(_constants.inputHeight + 10, "px;position:relative;}.label-outlined.disabled.jsx-3173687768{cursor:not-allowed;}.label-outlined.dense.jsx-3173687768{height:").concat(_constants.inputHeightDense + 10, "px;}.label-outlined.jsx-3173687768:before{border:1px solid ").concat(_constants2.statusColors[_constants2.iconStatuses.DEFAULT], ";border-top:0;border-radius:0 0 ").concat(_constants.borderRadius, " ").concat(_constants.borderRadius, ";box-sizing:border-box;bottom:0;content:'';height:75%;left:0;position:absolute;width:100%;}.label-outlined.valid.jsx-3173687768:before{border-color:").concat(_constants2.statusColors[_constants2.iconStatuses.VALID], ";}.label-outlined.warning.jsx-3173687768:before{border-color:").concat(_constants2.statusColors[_constants2.iconStatuses.WARNING], ";}.label-outlined.error.jsx-3173687768:before{border-color:").concat(_constants2.statusColors[_constants2.iconStatuses.ERROR], ";}.content.jsx-3173687768{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:54px;left:1px;position:relative;top:11px;width:calc(100% - 1px);}.dense.jsx-3173687768 .content.jsx-3173687768{height:42px;}.status-icon.jsx-3173687768{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:24px;height:24px;}.status-icon.jsx-3173687768:empty{display:none;}.status-icon.jsx-3173687768:last-child{margin-right:10px;}"));
-styles.__hash = "3173687768";
+var styles = new String(".label-outlined.jsx-2953596136{height:".concat(_constants.inputHeight + 10, "px;position:relative;}.label-outlined.disabled.jsx-2953596136{cursor:not-allowed;}.label-outlined.dense.jsx-2953596136{height:").concat(_constants.inputHeightDense + 10, "px;}.label-outlined.jsx-2953596136:before{border:1px solid ").concat(_constants2.statusColors[_constants2.iconStatuses.DEFAULT], ";border-top:0;border-radius:0 0 ").concat(_constants.borderRadius, " ").concat(_constants.borderRadius, ";box-sizing:border-box;bottom:0;content:'';height:75%;left:0;position:absolute;width:100%;}.label-outlined.valid.jsx-2953596136:before{border-color:").concat(_constants2.statusColors[_constants2.iconStatuses.VALID], ";}.label-outlined.warning.jsx-2953596136:before{border-color:").concat(_constants2.statusColors[_constants2.iconStatuses.WARNING], ";}.label-outlined.error.jsx-2953596136:before{border-color:").concat(_constants2.statusColors[_constants2.iconStatuses.ERROR], ";}.content.jsx-2953596136{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:54px;left:1px;position:relative;top:11px;width:calc(100% - 1px);}.dense.jsx-2953596136 .content.jsx-2953596136{height:42px;}.status-icon.jsx-2953596136{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:24px;height:24px;margin-right:4px;}.status-icon.jsx-2953596136:empty{display:none;}.status-icon.jsx-2953596136:last-child{margin-right:10px;}"));
+styles.__hash = "2953596136";
 
 var createLabelOutlinedClassName = function createLabelOutlinedClassName(props) {
   return (0, _classnames.default)('label-outlined', {
@@ -52,8 +50,7 @@ var createLabelOutlinedClassName = function createLabelOutlinedClassName(props) 
 };
 
 var Outlined = function Outlined(_ref) {
-  var TailIcon = _ref.tailIcon,
-      props = _objectWithoutProperties(_ref, ["tailIcon"]);
+  var props = _extends({}, _ref);
 
   return _react.default.createElement("div", {
     className: "jsx-".concat(styles.__hash) + " " + (createLabelOutlinedClassName(props) || "")
@@ -72,9 +69,7 @@ var Outlined = function Outlined(_ref) {
     className: "jsx-".concat(styles.__hash) + " " + "status-icon"
   }, _react.default.createElement(_Status.StatusIconNoDefault, {
     status: props.status
-  })), _react.default.createElement(TailIcon, {
-    className: "jsx-".concat(styles.__hash)
-  })), _react.default.createElement(_style.default, {
+  }))), _react.default.createElement(_style.default, {
     id: styles.__hash
   }, styles));
 };
@@ -85,7 +80,6 @@ Outlined.propTypes = {
   children: _react2.children.isRequired,
   hasValue: _propTypes.default.bool.isRequired,
   htmlFor: _propTypes.default.string.isRequired,
-  tailIcon: _propTypes.default.element,
   required: _propTypes.default.bool,
   status: _constants2.iconStatusPropType,
   size: _constants3.inputSizesPropTypes
@@ -93,8 +87,5 @@ Outlined.propTypes = {
 Outlined.defaultProps = {
   status: _constants2.iconStatuses.DEFAULT,
   size: _constants3.inputSizes.DEFAULT,
-  htmlFor: '',
-  tailIcon: function tailIcon() {
-    return null;
-  }
+  htmlFor: ''
 };

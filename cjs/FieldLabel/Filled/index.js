@@ -33,9 +33,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var styles = new String(".label-filled.jsx-1153177665{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:rgba(0,0,10,0.05);border-bottom:2px solid transparent;border-radius:4px;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;height:56px;position:relative;}.label-filled.disabled.jsx-1153177665{cursor:not-allowed;}.label-filled.dense.jsx-1153177665{height:44px;}.label-filled.jsx-1153177665:not(.disabled):hover{background-color:rgba(0,0,10,0.08);}.label-filled.focused.jsx-1153177665{border-color:".concat(_theme.colors.teal600, ";}.label-filled.valid.jsx-1153177665{border-color:").concat(_constants.statusColors[_constants.iconStatuses.VALID], ";}.label-filled.valid.focused.jsx-1153177665{border-color:").concat(_theme.colors.blue700, ";}.label-filled.warning.jsx-1153177665{border-color:").concat(_constants.statusColors[_constants.iconStatuses.WARNING], ";}.label-filled.warning.focused.jsx-1153177665{border-color:").concat(_theme.colors.yellow700, ";}.label-filled.error.jsx-1153177665{border-color:").concat(_constants.statusColors[_constants.iconStatuses.ERROR], ";}.label-filled.error.focused.jsx-1153177665{border-color:").concat(_theme.colors.red700, ";}.content.jsx-1153177665{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:100%;position:relative;width:100%;}.focused.jsx-1153177665 .content.jsx-1153177665,.has-value.jsx-1153177665 .content.jsx-1153177665{z-index:2;}.status-icon.jsx-1153177665{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:24px;height:24px;margin-right:4px;}.status-icon.jsx-1153177665:empty{display:none;}.status-icon.jsx-1153177665:last-child{margin-right:10px;}"));
 styles.__hash = "1153177665";
@@ -53,8 +51,7 @@ var createLabelFilledClassName = function createLabelFilledClassName(props) {
 };
 
 var Filled = function Filled(_ref) {
-  var TailIcon = _ref.tailIcon,
-      props = _objectWithoutProperties(_ref, ["tailIcon"]);
+  var props = _extends({}, _ref);
 
   return _react.default.createElement("div", {
     onClick: props.onClick,
@@ -77,9 +74,7 @@ var Filled = function Filled(_ref) {
     className: "jsx-".concat(styles.__hash) + " " + "status-icon"
   }, _react.default.createElement(_Status.StatusIconNoDefault, {
     status: props.status
-  })), _react.default.createElement(TailIcon, {
-    className: "jsx-".concat(styles.__hash)
-  })), _react.default.createElement(_style.default, {
+  }))), _react.default.createElement(_style.default, {
     id: styles.__hash
   }, styles));
 };
@@ -90,7 +85,6 @@ Filled.propTypes = {
   children: _react2.children.isRequired,
   hasValue: _propTypes.default.bool.isRequired,
   htmlFor: _propTypes.default.string.isRequired,
-  tailIcon: _propTypes.default.element,
   disabled: _propTypes.default.bool,
   required: _propTypes.default.bool,
   status: _constants.iconStatusPropType,
@@ -102,8 +96,5 @@ Filled.defaultProps = {
   required: false,
   status: _constants.iconStatuses.DEFAULT,
   size: _constants2.inputSizes.DEFAULT,
-  tailIcon: function tailIcon() {
-    return null;
-  },
   onClick: null
 };

@@ -13,7 +13,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _Arrow = require("./Arrow");
+var _Arrow = require("../icons/Arrow");
 
 var _FieldLabel = require("../FieldLabel");
 
@@ -54,6 +54,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var styles = new String(".base.jsx-2528058342{display:inline-block;position:relative;width:100%;background-color:inherit;color:".concat(_theme.colors.grey700, ";pointer-events:all;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}.disabled.jsx-2528058342{cursor:not-allowed;opacity:1;}"));
 styles.__hash = "2528058342";
 
+var _ref =
+/*#__PURE__*/
+_react.default.createElement("div", {
+  className: "jsx-3487810764"
+}, _react.default.createElement(_Arrow.ArrowDown, null), _react.default.createElement(_style.default, {
+  id: "3487810764"
+}, "div.jsx-3487810764{pointer-events:none;position:absolute;right:4px;}"));
+
+var TailIcon = function TailIcon() {
+  return _ref;
+};
+
+var _ref2 =
+/*#__PURE__*/
+_react.default.createElement(TailIcon, null);
+
 var SelectField =
 /*#__PURE__*/
 function (_React$Component) {
@@ -71,8 +87,7 @@ function (_React$Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
       if (_this.elContainer && !_this.elContainer.contains(evt.target)) {
         _this.setState({
-          focused: false,
-          show: false
+          focused: false
         });
       }
     });
@@ -106,8 +121,7 @@ function (_React$Component) {
     });
 
     _this.state = {
-      focused: props.focused,
-      open: false
+      focused: props.focused
     };
     return _this;
   }
@@ -137,7 +151,6 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var open = this.state.open;
       var isFilled = this.props.kind === _constants2.inputKinds.FILLED;
       var isDense = this.props.size === _constants2.inputSizes.DENSE;
       var Container = this.props.kind === _constants2.inputKinds.FILLED ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
@@ -151,18 +164,13 @@ function (_React$Component) {
         }, "size-".concat(this.props.size), true)) || "")
       }, _react.default.createElement(Container, {
         label: this.props.label,
-        isFocused: this.state.focused,
+        isFocused: this.isFocused(),
         hasValue: true,
         htmlFor: this.props.name,
         required: this.props.required,
         disabled: this.props.disabled,
         status: this.props.status,
         size: this.props.size,
-        tailIcon: function tailIcon() {
-          return _react.default.createElement(_Arrow.Arrow, {
-            open: _this2.state.open
-          });
-        },
         onClick: this.onFocus,
         className: "jsx-".concat(styles.__hash)
       }, _react.default.createElement(_Select.Select, {
@@ -174,7 +182,7 @@ function (_React$Component) {
         onChange: this.onChange,
         onFocus: this.onFocus,
         onBlur: this.onBlur
-      })), this.props.help && _react.default.createElement(_Help.Help, {
+      }), _ref2), this.props.help && _react.default.createElement(_Help.Help, {
         text: this.props.help,
         status: this.props.status
       }), _react.default.createElement(_style.default, {
@@ -194,9 +202,7 @@ SelectField.defaultProps = {
   help: '',
   className: '',
   disabled: false,
-  required: false,
-  onFocus: null,
-  onBlur: null
+  required: false
 };
 SelectField.propTypes = {
   name: _propTypes.default.string.isRequired,

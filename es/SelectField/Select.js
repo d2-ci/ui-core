@@ -84,7 +84,5 @@ Select.propTypes = {
   onBlur: propTypes.func
 };
 Select.defaultProps = {
-  disabled: false,
-  onFocus: null,
-  onBlur: null
+  disabled: false
 };
