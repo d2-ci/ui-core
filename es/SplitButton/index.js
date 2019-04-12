@@ -4,11 +4,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import Menu from '../Menu';
 import buttons from '../Button/styles.js';
 import { ArrowUp, ArrowDown } from '../icons/Arrow.js';
+import { DropMenu } from '../DropMenu';
 import cx from 'classnames';
-import styles from './styles';
 
 var _ref =
 /*#__PURE__*/
@@ -17,6 +16,12 @@ React.createElement(ArrowUp, null);
 var _ref2 =
 /*#__PURE__*/
 React.createElement(ArrowDown, null);
+
+var _ref3 =
+/*#__PURE__*/
+React.createElement(_JSXStyle, {
+  id: "686802189"
+}, "div.jsx-686802189{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}button.jsx-686802189:first-child{border-top-right-radius:0;border-bottom-right-radius:0;}button.jsx-686802189:nth-child(2){padding:0 9px;border-top-left-radius:0;border-bottom-left-radius:0;}");
 
 class SplitButton extends Component {
   constructor(...args) {
@@ -54,27 +59,25 @@ class SplitButton extends Component {
     const icon = open ? _ref : _ref2;
     return React.createElement("div", {
       ref: c => this.elContainer = c,
-      className: `jsx-${buttons.__hash} jsx-${styles.__hash}`
+      className: "jsx-686802189 " + `jsx-${buttons.__hash}`
     }, React.createElement("button", {
       disabled: this.props.disabled,
       onClick: this.props.onClick,
-      className: `jsx-${buttons.__hash} jsx-${styles.__hash}` + " " + (cx('base', `kind-${this.props.kind}`, `size-${this.props.size}`, this.props.className, {
+      className: "jsx-686802189 " + `jsx-${buttons.__hash}` + " " + (cx('base', `kind-${this.props.kind}`, `size-${this.props.size}`, this.props.className, {
         'icon-only': this.props.icon && !this.props.label && !this.props.children,
         icon: this.props.icon
       }) || "")
     }, this.props.icon && React.createElement("span", {
-      className: `jsx-${buttons.__hash} jsx-${styles.__hash}` + " " + "button-icon"
+      className: "jsx-686802189 " + `jsx-${buttons.__hash}` + " " + "button-icon"
     }, this.props.icon), this.props.label || this.props.children), React.createElement("button", {
       disabled: this.props.disabled,
       onClick: this.onToggle,
-      className: `jsx-${buttons.__hash} jsx-${styles.__hash}` + " " + (cx('base', `kind-${this.props.kind}`, `size-${this.props.size}`) || "")
-    }, icon), open && React.createElement("div", {
-      className: `jsx-${buttons.__hash} jsx-${styles.__hash}` + " " + "menu"
-    }, this.props.component && this.props.component), React.createElement(_JSXStyle, {
+      className: "jsx-686802189 " + `jsx-${buttons.__hash}` + " " + (cx('base', `kind-${this.props.kind}`, `size-${this.props.size}`) || "")
+    }, icon), open && React.createElement(DropMenu, {
+      component: this.props.component
+    }), React.createElement(_JSXStyle, {
       id: buttons.__hash
-    }, buttons), React.createElement(_JSXStyle, {
-      id: styles.__hash
-    }, styles));
+    }, buttons), _ref3);
   }
 
 }

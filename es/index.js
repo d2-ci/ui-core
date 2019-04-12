@@ -4,10 +4,7 @@ export { Checkbox } from './Checkbox';
 export { Chip } from './Chip';
 export { CircularProgress } from './CircularProgress';
 export { Divider } from './Divider';
-export { DropdownButton } from './DropdownButton'; // These will be exposed at some point, but are kept internal for now until the API stabilizes
-// export { Input } from './Input'
-// export { LabelFilled, LabelOutlined } from './FieldLabel'
-
+export { DropdownButton } from './DropdownButton';
 export { Help } from './Help';
 export { InputField } from './InputField';
 export { LinearProgress } from './LinearProgress';
@@ -20,3 +17,10 @@ export { SplitButton } from './SplitButton';
 export { Switch } from './Switch';
 export { CssReset } from './CssReset';
 export { theme, colors } from './theme.js';
+/*
+ * Components below are internal and may be exposed at some point, but
+ * are kept internal for now until the API stabilizes
+ */
+// export { DropMenu } from './DropMenu'
+// export { Input } from './Input'
+// export { LabelFilled, LabelOutlined } from './FieldLabel'

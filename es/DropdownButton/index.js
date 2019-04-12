@@ -5,10 +5,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
-import Button from '../Button';
 import { ArrowUp, ArrowDown } from '../icons/Arrow.js';
+import { DropMenu } from '../DropMenu';
 import buttons from '../Button/styles.js';
-import styles from './styles.js';
 
 var _ref =
 /*#__PURE__*/
@@ -17,6 +16,12 @@ React.createElement(ArrowUp, null);
 var _ref2 =
 /*#__PURE__*/
 React.createElement(ArrowDown, null);
+
+var _ref3 =
+/*#__PURE__*/
+React.createElement(_JSXStyle, {
+  id: "3163060161"
+}, "div.jsx-3163060161{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}");
 
 class DropdownButton extends Component {
   constructor(...args) {
@@ -54,23 +59,21 @@ class DropdownButton extends Component {
     const icon = open ? _ref : _ref2;
     return React.createElement("div", {
       ref: c => this.elContainer = c,
-      className: `jsx-${buttons.__hash} jsx-${styles.__hash}`
+      className: "jsx-3163060161 " + `jsx-${buttons.__hash}`
     }, React.createElement("button", {
       disabled: this.props.disabled,
       onClick: this.onToggle,
-      className: `jsx-${buttons.__hash} jsx-${styles.__hash}` + " " + (cx('base', `kind-${this.props.kind}`, `size-${this.props.size}`, this.props.className, {
+      className: "jsx-3163060161 " + `jsx-${buttons.__hash}` + " " + (cx('base', `kind-${this.props.kind}`, `size-${this.props.size}`, this.props.className, {
         'icon-only': this.props.icon && !this.props.label && !this.props.children,
         icon: this.props.icon
       }) || "")
     }, this.props.icon && React.createElement("span", {
-      className: `jsx-${buttons.__hash} jsx-${styles.__hash}` + " " + "button-icon"
-    }, this.props.icon), this.props.label || this.props.children, icon), open && React.createElement("div", {
-      className: `jsx-${buttons.__hash} jsx-${styles.__hash}` + " " + "menu"
-    }, this.props.component), React.createElement(_JSXStyle, {
+      className: "jsx-3163060161 " + `jsx-${buttons.__hash}` + " " + "button-icon"
+    }, this.props.icon), this.props.label || this.props.children, icon), open && React.createElement(DropMenu, {
+      component: this.props.component
+    }), React.createElement(_JSXStyle, {
       id: buttons.__hash
-    }, buttons), React.createElement(_JSXStyle, {
-      id: styles.__hash
-    }, styles));
+    }, buttons), _ref3);
   }
 
 }

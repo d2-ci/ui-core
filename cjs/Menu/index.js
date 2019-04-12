@@ -11,7 +11,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _Card = _interopRequireDefault(require("../Card"));
+var _Card = require("../Card");
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
@@ -24,7 +24,7 @@ function Menu(_ref) {
       width = _ref.width,
       children = _ref.children,
       className = _ref.className;
-  return _react.default.createElement(_Card.default, null, _react.default.createElement("ul", {
+  return _react.default.createElement(_Card.Card, null, _react.default.createElement("ul", {
     className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', size, className) || "")
   }, children), _react.default.createElement(_style.default, {
     id: _styles.default.__hash
