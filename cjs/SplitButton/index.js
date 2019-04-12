@@ -122,7 +122,9 @@ function (_Component) {
         name: this.props.name,
         value: this.props.value,
         disabled: this.props.disabled,
-        onClick: this.props.onClick,
+        onClick: function onClick(evt) {
+          return _this2.props.onClick && _this2.props.onClick(_this2.props.name, _this2.props.value);
+        },
         className: "jsx-686802189 " + "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size), this.props.className, {
           'icon-only': this.props.icon && !this.props.children,
           icon: this.props.icon
@@ -148,7 +150,9 @@ exports.SplitButton = SplitButton;
 SplitButton.defaultProps = {
   size: 'medium',
   kind: 'basic',
-  disabled: false
+  disabled: false,
+  name: '',
+  value: ''
 };
 SplitButton.propTypes = {
   component: _propTypes.default.element.isRequired,

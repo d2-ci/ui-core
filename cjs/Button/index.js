@@ -26,11 +26,13 @@ function Button(_ref) {
       name = _ref.name,
       value = _ref.value,
       disabled = _ref.disabled,
-      onClick = _ref.onClick,
+      _onClick = _ref.onClick,
       className = _ref.className;
   return _react.default.createElement("button", {
     disabled: disabled,
-    onClick: onClick,
+    onClick: function onClick(evt) {
+      return _onClick && _onClick(name, value);
+    },
     type: type,
     name: name,
     value: value,
@@ -46,6 +48,8 @@ function Button(_ref) {
 }
 
 Button.defaultProps = {
+  name: '',
+  value: '',
   kind: 'basic',
   type: 'button',
   size: 'medium',

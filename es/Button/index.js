@@ -18,7 +18,7 @@ function Button({
 }) {
   return React.createElement("button", {
     disabled: disabled,
-    onClick: onClick,
+    onClick: evt => onClick && onClick(name, value),
     type: type,
     name: name,
     value: value,
@@ -34,6 +34,8 @@ function Button({
 }
 
 Button.defaultProps = {
+  name: '',
+  value: '',
   kind: 'basic',
   type: 'button',
   size: 'medium',

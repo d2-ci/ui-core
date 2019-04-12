@@ -64,7 +64,7 @@ class SplitButton extends Component {
       name: this.props.name,
       value: this.props.value,
       disabled: this.props.disabled,
-      onClick: this.props.onClick,
+      onClick: evt => this.props.onClick && this.props.onClick(this.props.name, this.props.value),
       className: "jsx-686802189 " + `jsx-${buttons.__hash}` + " " + (cx('base', `kind-${this.props.kind}`, `size-${this.props.size}`, this.props.className, {
         'icon-only': this.props.icon && !this.props.children,
         icon: this.props.icon
@@ -87,7 +87,9 @@ class SplitButton extends Component {
 SplitButton.defaultProps = {
   size: 'medium',
   kind: 'basic',
-  disabled: false
+  disabled: false,
+  name: '',
+  value: ''
 };
 SplitButton.propTypes = {
   component: propTypes.element.isRequired,
