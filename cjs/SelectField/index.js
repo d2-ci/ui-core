@@ -82,16 +82,6 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SelectField).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "elContainer", _react.default.createRef());
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
-      if (_this.elContainer && !_this.elContainer.contains(evt.target)) {
-        _this.setState({
-          focused: false
-        });
-      }
-    });
-
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (event) {
       if (!_this.props.disabled) {
         var value = event.target.value;
@@ -127,37 +117,17 @@ function (_React$Component) {
   }
 
   _createClass(SelectField, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      document.addEventListener('click', this.onDocClick);
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      document.removeEventListener('click', this.onDocClick);
-    }
-  }, {
     key: "isFocused",
     value: function isFocused() {
       return this.state.focused;
     }
   }, {
-    key: "shrink",
-    value: function shrink() {
-      return !!(this.isFocused() || this.props.value);
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       var isFilled = this.props.kind === _constants2.inputKinds.FILLED;
       var isDense = this.props.size === _constants2.inputSizes.DENSE;
       var Container = this.props.kind === _constants2.inputKinds.FILLED ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
       return _react.default.createElement("div", {
-        ref: function ref(c) {
-          return _this2.elContainer = c;
-        },
         className: "jsx-".concat(styles.__hash) + " " + ((0, _classnames.default)('base', this.props.className, _defineProperty({
           selected: !!this.props.value,
           disabled: this.props.disabled

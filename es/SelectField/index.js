@@ -33,16 +33,6 @@ class SelectField extends React.Component {
   constructor(props) {
     super(props);
 
-    _defineProperty(this, "elContainer", React.createRef());
-
-    _defineProperty(this, "onDocClick", evt => {
-      if (this.elContainer && !this.elContainer.contains(evt.target)) {
-        this.setState({
-          focused: false
-        });
-      }
-    });
-
     _defineProperty(this, "onChange", event => {
       if (!this.props.disabled) {
         const {
@@ -77,20 +67,8 @@ class SelectField extends React.Component {
     };
   }
 
-  componentDidMount() {
-    document.addEventListener('click', this.onDocClick);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('click', this.onDocClick);
-  }
-
   isFocused() {
     return this.state.focused;
-  }
-
-  shrink() {
-    return !!(this.isFocused() || this.props.value);
   }
 
   render() {
@@ -98,7 +76,6 @@ class SelectField extends React.Component {
     const isDense = this.props.size === inputSizes.DENSE;
     const Container = this.props.kind === inputKinds.FILLED ? LabelFilled : LabelOutlined;
     return React.createElement("div", {
-      ref: c => this.elContainer = c,
       className: `jsx-${styles.__hash}` + " " + (cx('base', this.props.className, {
         selected: !!this.props.value,
         disabled: this.props.disabled,
