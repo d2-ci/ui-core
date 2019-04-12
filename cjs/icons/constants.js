@@ -19,12 +19,13 @@ var iconStatuses = {
   DEFAULT: 'default',
   VALID: 'valid',
   WARNING: 'warning',
-  ERROR: 'error'
+  ERROR: 'error',
+  LOADING: 'loading'
 };
 exports.iconStatuses = iconStatuses;
-var statusColors = (_statusColors = {}, _defineProperty(_statusColors, iconStatuses.DEFAULT, _theme.colors.grey500), _defineProperty(_statusColors, iconStatuses.VALID, _theme.colors.blue600), _defineProperty(_statusColors, iconStatuses.WARNING, _theme.colors.yellow500), _defineProperty(_statusColors, iconStatuses.ERROR, _theme.colors.red500), _statusColors);
+var statusColors = (_statusColors = {}, _defineProperty(_statusColors, iconStatuses.DEFAULT, _theme.colors.grey500), _defineProperty(_statusColors, iconStatuses.VALID, _theme.colors.blue600), _defineProperty(_statusColors, iconStatuses.WARNING, _theme.colors.yellow500), _defineProperty(_statusColors, iconStatuses.ERROR, _theme.colors.red500), _defineProperty(_statusColors, iconStatuses.LOADING, _theme.colors.blue600), _statusColors);
 exports.statusColors = statusColors;
 
-var iconStatusPropType = _propTypes.default.oneOf([iconStatuses.DEFAULT, iconStatuses.VALID, iconStatuses.WARNING, iconStatuses.ERROR]);
+var iconStatusPropType = _propTypes.default.oneOf([iconStatuses.DEFAULT, iconStatuses.VALID, iconStatuses.WARNING, iconStatuses.ERROR, iconStatuses.LOADING]);
 
 exports.iconStatusPropType = iconStatusPropType;

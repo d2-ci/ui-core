@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.Valid = Valid;
 exports.Warning = Warning;
 exports.Error = Error;
+exports.Loading = Loading;
 exports.StatusIconNoDefault = exports.statusToIcon = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
@@ -24,7 +25,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var statusToIcon = (_statusToIcon = {}, _defineProperty(_statusToIcon, _constants.iconStatuses.VALID, Valid), _defineProperty(_statusToIcon, _constants.iconStatuses.WARNING, Warning), _defineProperty(_statusToIcon, _constants.iconStatuses.ERROR, Error), _statusToIcon);
+var statusToIcon = (_statusToIcon = {}, _defineProperty(_statusToIcon, _constants.iconStatuses.VALID, Valid), _defineProperty(_statusToIcon, _constants.iconStatuses.WARNING, Warning), _defineProperty(_statusToIcon, _constants.iconStatuses.ERROR, Error), _defineProperty(_statusToIcon, _constants.iconStatuses.LOADING, Loading), _statusToIcon);
 /**
  * Icon: Valid
  * =============
@@ -137,6 +138,43 @@ function Error(_ref3) {
 Error.propTypes = {
   className: _propTypes.default.string.isRequired
   /**
+   * Icon: Loading
+   * =============
+   */
+
+};
+var iconStyleLoading = new String("svg.jsx-2864077861{fill:".concat(_theme.theme.primary600, ";color:").concat(_theme.theme.primary600, ";width:24px;height:24px;margin-right:4px;-webkit-animation:anim-rotate-jsx-2864077861 1.4s linear infinite;animation:anim-rotate-jsx-2864077861 1.4s linear infinite;}.circle.jsx-2864077861{stroke:currentColor;stroke-dasharray:80px,200px;stroke-dashoffset:0;-webkit-animation:anim-dash-jsx-2864077861 1.4s ease-in-out infinite;animation:anim-dash-jsx-2864077861 1.4s ease-in-out infinite;}@-webkit-keyframes anim-rotate-jsx-2864077861{100%{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}@keyframes anim-rotate-jsx-2864077861{100%{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}@-webkit-keyframes anim-dash-jsx-2864077861{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-120px;}}@keyframes anim-dash-jsx-2864077861{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-120px;}}"));
+/**
+ * @param {Object} props
+ * @param {string} props.className
+ * @returns {ReactNode}
+ */
+
+iconStyleLoading.__hash = "2864077861";
+
+function Loading(_ref4) {
+  var className = _ref4.className;
+  return _react.default.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "48",
+    height: "48",
+    viewBox: "22 22 44 44",
+    className: "jsx-".concat(iconStyleLoading.__hash) + " " + (className || "")
+  }, _react.default.createElement("circle", {
+    cx: "44",
+    cy: "44",
+    r: "20.2",
+    fill: "none",
+    strokeWidth: "3.6",
+    className: "jsx-".concat(iconStyleLoading.__hash) + " " + "circle"
+  }), _react.default.createElement(_style.default, {
+    id: iconStyleLoading.__hash
+  }, iconStyleLoading));
+}
+
+Loading.propTypes = {
+  className: _propTypes.default.string.isRequired
+  /**
    * @param {Object} props
    * @param {string} props.status
    * @param {string} props.className
@@ -145,14 +183,16 @@ Error.propTypes = {
 
 };
 
-var StatusIconNoDefault = function StatusIconNoDefault(_ref4) {
-  var status = _ref4.status,
-      className = _ref4.className;
+var StatusIconNoDefault = function StatusIconNoDefault(_ref5) {
+  var status = _ref5.status,
+      className = _ref5.className;
   return status === _constants.iconStatuses.VALID ? _react.default.createElement(Valid, {
     className: className
   }) : status === _constants.iconStatuses.WARNING ? _react.default.createElement(Warning, {
     className: className
   }) : status === _constants.iconStatuses.ERROR ? _react.default.createElement(Error, {
+    className: className
+  }) : status === _constants.iconStatuses.LOADING ? _react.default.createElement(Loading, {
     className: className
   }) : null;
 };
