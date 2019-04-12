@@ -23,7 +23,8 @@ function Button(_ref) {
       kind = _ref.kind,
       size = _ref.size,
       icon = _ref.icon,
-      label = _ref.label,
+      name = _ref.name,
+      value = _ref.value,
       disabled = _ref.disabled,
       onClick = _ref.onClick,
       className = _ref.className;
@@ -31,13 +32,15 @@ function Button(_ref) {
     disabled: disabled,
     onClick: onClick,
     type: type,
+    name: name,
+    value: value,
     className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(kind), "size-".concat(size), className, {
-      'icon-only': icon && !label && !children,
+      'icon-only': icon && !children,
       icon: icon
     }) || "")
   }, icon && _react.default.createElement("span", {
     className: "jsx-".concat(_styles.default.__hash) + " " + "button-icon"
-  }, icon), label || children, _react.default.createElement(_style.default, {
+  }, icon), children, _react.default.createElement(_style.default, {
     id: _styles.default.__hash
   }, _styles.default));
 }
@@ -46,13 +49,14 @@ Button.defaultProps = {
   kind: 'basic',
   type: 'button',
   size: 'medium',
-  disabled: false,
-  onClick: undefined
+  disabled: false
 };
 Button.propTypes = {
+  children: _propTypes.default.string,
   className: _propTypes.default.string,
   icon: _propTypes.default.element,
-  label: _propTypes.default.string,
+  name: _propTypes.default.string,
+  value: _propTypes.default.string,
   kind: _propTypes.default.oneOf(['basic', 'primary', 'secondary', 'destructive']),
   type: _propTypes.default.oneOf(['submit', 'reset', 'button']),
   size: _propTypes.default.oneOf(['small', 'medium', 'large']),

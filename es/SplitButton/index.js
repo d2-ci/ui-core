@@ -61,15 +61,17 @@ class SplitButton extends Component {
       ref: c => this.elContainer = c,
       className: "jsx-686802189 " + `jsx-${buttons.__hash}`
     }, React.createElement("button", {
+      name: this.props.name,
+      value: this.props.value,
       disabled: this.props.disabled,
       onClick: this.props.onClick,
       className: "jsx-686802189 " + `jsx-${buttons.__hash}` + " " + (cx('base', `kind-${this.props.kind}`, `size-${this.props.size}`, this.props.className, {
-        'icon-only': this.props.icon && !this.props.label && !this.props.children,
+        'icon-only': this.props.icon && !this.props.children,
         icon: this.props.icon
       }) || "")
     }, this.props.icon && React.createElement("span", {
       className: "jsx-686802189 " + `jsx-${buttons.__hash}` + " " + "button-icon"
-    }, this.props.icon), this.props.label || this.props.children), React.createElement("button", {
+    }, this.props.icon), this.props.children), React.createElement("button", {
       disabled: this.props.disabled,
       onClick: this.onToggle,
       className: "jsx-686802189 " + `jsx-${buttons.__hash}` + " " + (cx('base', `kind-${this.props.kind}`, `size-${this.props.size}`) || "")
@@ -89,8 +91,10 @@ SplitButton.defaultProps = {
 };
 SplitButton.propTypes = {
   component: propTypes.element.isRequired,
-  label: propTypes.string.isRequired,
   onClick: propTypes.func.isRequired,
+  children: propTypes.string,
+  name: propTypes.string,
+  value: propTypes.string,
   className: propTypes.string,
   kind: propTypes.oneOf(['basic', 'primary']),
   icon: propTypes.element,

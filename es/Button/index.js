@@ -10,7 +10,8 @@ function Button({
   kind,
   size,
   icon,
-  label,
+  name,
+  value,
   disabled,
   onClick,
   className
@@ -19,13 +20,15 @@ function Button({
     disabled: disabled,
     onClick: onClick,
     type: type,
+    name: name,
+    value: value,
     className: `jsx-${styles.__hash}` + " " + (cx('base', `kind-${kind}`, `size-${size}`, className, {
-      'icon-only': icon && !label && !children,
+      'icon-only': icon && !children,
       icon
     }) || "")
   }, icon && React.createElement("span", {
     className: `jsx-${styles.__hash}` + " " + "button-icon"
-  }, icon), label || children, React.createElement(_JSXStyle, {
+  }, icon), children, React.createElement(_JSXStyle, {
     id: styles.__hash
   }, styles));
 }
@@ -34,13 +37,14 @@ Button.defaultProps = {
   kind: 'basic',
   type: 'button',
   size: 'medium',
-  disabled: false,
-  onClick: undefined
+  disabled: false
 };
 Button.propTypes = {
+  children: propTypes.string,
   className: propTypes.string,
   icon: propTypes.element,
-  label: propTypes.string,
+  name: propTypes.string,
+  value: propTypes.string,
   kind: propTypes.oneOf(['basic', 'primary', 'secondary', 'destructive']),
   type: propTypes.oneOf(['submit', 'reset', 'button']),
   size: propTypes.oneOf(['small', 'medium', 'large']),

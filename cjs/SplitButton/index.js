@@ -119,15 +119,17 @@ function (_Component) {
         },
         className: "jsx-686802189 " + "jsx-".concat(_styles.default.__hash)
       }, _react.default.createElement("button", {
+        name: this.props.name,
+        value: this.props.value,
         disabled: this.props.disabled,
         onClick: this.props.onClick,
         className: "jsx-686802189 " + "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size), this.props.className, {
-          'icon-only': this.props.icon && !this.props.label && !this.props.children,
+          'icon-only': this.props.icon && !this.props.children,
           icon: this.props.icon
         }) || "")
       }, this.props.icon && _react.default.createElement("span", {
         className: "jsx-686802189 " + "jsx-".concat(_styles.default.__hash) + " " + "button-icon"
-      }, this.props.icon), this.props.label || this.props.children), _react.default.createElement("button", {
+      }, this.props.icon), this.props.children), _react.default.createElement("button", {
         disabled: this.props.disabled,
         onClick: this.onToggle,
         className: "jsx-686802189 " + "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size)) || "")
@@ -150,8 +152,10 @@ SplitButton.defaultProps = {
 };
 SplitButton.propTypes = {
   component: _propTypes.default.element.isRequired,
-  label: _propTypes.default.string.isRequired,
   onClick: _propTypes.default.func.isRequired,
+  children: _propTypes.default.string,
+  name: _propTypes.default.string,
+  value: _propTypes.default.string,
   className: _propTypes.default.string,
   kind: _propTypes.default.oneOf(['basic', 'primary']),
   icon: _propTypes.default.element,

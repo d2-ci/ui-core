@@ -112,7 +112,7 @@ function (_Component) {
       var _this2 = this;
 
       var open = this.state.open;
-      var icon = open ? _ref : _ref2;
+      var ArrowIcon = open ? _ref : _ref2;
       return _react.default.createElement("div", {
         ref: function ref(c) {
           return _this2.elContainer = c;
@@ -122,12 +122,12 @@ function (_Component) {
         disabled: this.props.disabled,
         onClick: this.onToggle,
         className: "jsx-3163060161 " + "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size), this.props.className, {
-          'icon-only': this.props.icon && !this.props.label && !this.props.children,
+          'icon-only': this.props.icon && !this.props.children,
           icon: this.props.icon
         }) || "")
       }, this.props.icon && _react.default.createElement("span", {
         className: "jsx-3163060161 " + "jsx-".concat(_styles.default.__hash) + " " + "button-icon"
-      }, this.props.icon), this.props.label || this.props.children, icon), open && _react.default.createElement(_DropMenu.DropMenu, {
+      }, this.props.icon), this.props.children, ArrowIcon), open && _react.default.createElement(_DropMenu.DropMenu, {
         component: this.props.component
       }), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
@@ -149,7 +149,6 @@ DropdownButton.propTypes = {
   component: _propTypes.default.element.isRequired,
   width: _propTypes.default.string,
   icon: _propTypes.default.element,
-  label: _propTypes.default.string,
   children: _propTypes.default.string,
   kind: _propTypes.default.oneOf(['basic', 'primary', 'secondary', 'destructive']),
   type: _propTypes.default.oneOf(['submit', 'reset', 'button']),

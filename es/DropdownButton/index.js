@@ -56,7 +56,7 @@ class DropdownButton extends Component {
     const {
       open
     } = this.state;
-    const icon = open ? _ref : _ref2;
+    const ArrowIcon = open ? _ref : _ref2;
     return React.createElement("div", {
       ref: c => this.elContainer = c,
       className: "jsx-3163060161 " + `jsx-${buttons.__hash}`
@@ -64,12 +64,12 @@ class DropdownButton extends Component {
       disabled: this.props.disabled,
       onClick: this.onToggle,
       className: "jsx-3163060161 " + `jsx-${buttons.__hash}` + " " + (cx('base', `kind-${this.props.kind}`, `size-${this.props.size}`, this.props.className, {
-        'icon-only': this.props.icon && !this.props.label && !this.props.children,
+        'icon-only': this.props.icon && !this.props.children,
         icon: this.props.icon
       }) || "")
     }, this.props.icon && React.createElement("span", {
       className: "jsx-3163060161 " + `jsx-${buttons.__hash}` + " " + "button-icon"
-    }, this.props.icon), this.props.label || this.props.children, icon), open && React.createElement(DropMenu, {
+    }, this.props.icon), this.props.children, ArrowIcon), open && React.createElement(DropMenu, {
       component: this.props.component
     }), React.createElement(_JSXStyle, {
       id: buttons.__hash
@@ -88,7 +88,6 @@ DropdownButton.propTypes = {
   component: propTypes.element.isRequired,
   width: propTypes.string,
   icon: propTypes.element,
-  label: propTypes.string,
   children: propTypes.string,
   kind: propTypes.oneOf(['basic', 'primary', 'secondary', 'destructive']),
   type: propTypes.oneOf(['submit', 'reset', 'button']),
