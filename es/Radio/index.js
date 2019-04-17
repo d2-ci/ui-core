@@ -10,9 +10,9 @@ import { Checked, Unchecked } from '../icons/Radio.js';
 const icons = {
   default: {
     styles: React.createElement(_JSXStyle, {
-      id: "2215268291"
-    }, `svg.jsx-2215268291{fill:${colors.grey700};height:24px;width:24px;}`),
-    className: "jsx-2215268291"
+      id: "40145635"
+    }, `svg.jsx-40145635{fill:${colors.grey600};height:24px;width:24px;}`),
+    className: "jsx-40145635"
   },
   checked: {
     styles: React.createElement(_JSXStyle, {

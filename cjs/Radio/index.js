@@ -44,9 +44,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var icons = {
   default: {
     styles: _react.default.createElement(_style.default, {
-      id: "2215268291"
-    }, "svg.jsx-2215268291{fill:".concat(_theme.colors.grey700, ";height:24px;width:24px;}")),
-    className: "jsx-2215268291"
+      id: "40145635"
+    }, "svg.jsx-40145635{fill:".concat(_theme.colors.grey600, ";height:24px;width:24px;}")),
+    className: "jsx-40145635"
   },
   checked: {
     styles: _react.default.createElement(_style.default, {

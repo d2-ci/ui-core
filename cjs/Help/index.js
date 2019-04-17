@@ -24,11 +24,11 @@ function Help(_ref) {
       status = _ref.status,
       className = _ref.className;
   return _react.default.createElement("p", {
-    className: _style.default.dynamic([["4164704590", [_theme.colors.grey700, _theme.colors.blue600, _theme.colors.red500, _theme.colors.yellow500]]]) + " " + ((0, _classnames.default)('base', className, _defineProperty({}, "status-".concat(status), true)) || "")
+    className: _style.default.dynamic([["3723102891", [_theme.colors.grey700, _theme.colors.blue600, _theme.colors.red600, _theme.colors.yellow800]]]) + " " + ((0, _classnames.default)('base', className, _defineProperty({}, "status-".concat(status), true)) || "")
   }, text, _react.default.createElement(_style.default, {
-    id: "4164704590",
-    dynamic: [_theme.colors.grey700, _theme.colors.blue600, _theme.colors.red500, _theme.colors.yellow500]
-  }, ".base.__jsx-style-dynamic-selector{height:12px;padding-top:8px;padding-left:12px;font-size:12px;margin:0;line-height:12px;cursor:help;}.status-default.__jsx-style-dynamic-selector{color:".concat(_theme.colors.grey700, ";}.status-valid.__jsx-style-dynamic-selector{color:").concat(_theme.colors.blue600, ";}.status-error.__jsx-style-dynamic-selector{color:").concat(_theme.colors.red500, ";}.status-warning.__jsx-style-dynamic-selector{color:").concat(_theme.colors.yellow500, ";}")));
+    id: "3723102891",
+    dynamic: [_theme.colors.grey700, _theme.colors.blue600, _theme.colors.red600, _theme.colors.yellow800]
+  }, ".base.__jsx-style-dynamic-selector{height:12px;padding-top:8px;padding-left:12px;font-size:12px;margin:0;line-height:12px;cursor:help;}.status-default.__jsx-style-dynamic-selector{color:".concat(_theme.colors.grey700, ";}.status-valid.__jsx-style-dynamic-selector{color:").concat(_theme.colors.blue600, ";}.status-error.__jsx-style-dynamic-selector{color:").concat(_theme.colors.red600, ";}.status-warning.__jsx-style-dynamic-selector{color:").concat(_theme.colors.yellow800, ";}")));
 }
 
 Help.defaultProps = {
