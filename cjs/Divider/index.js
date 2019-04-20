@@ -29,7 +29,7 @@ function Divider(_ref) {
   }, _react.default.createElement(_style.default, {
     id: "3843445062",
     dynamic: [_theme.colors.grey300]
-  }, ".base.__jsx-style-dynamic-selector{display:inline-block;width:100%;height:1px;background-color:".concat(_theme.colors.grey300, ";}")));
+  }, [".base.__jsx-style-dynamic-selector{display:inline-block;width:100%;height:1px;background-color:".concat(_theme.colors.grey300, ";}")]));
 }
 
 Divider.defaultProps = {

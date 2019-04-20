@@ -32,7 +32,7 @@ var statusToIcon = (_statusToIcon = {}, _defineProperty(_statusToIcon, _constant
  */
 
 exports.statusToIcon = statusToIcon;
-var iconStyleValid = new String("svg.jsx-294723437{fill:".concat(_theme.colors.blue600, ";width:24px;height:24px;margin-right:4px;}"));
+var iconStyleValid = ["svg.jsx-294723437{fill:".concat(_theme.colors.blue600, ";width:24px;height:24px;margin-right:4px;}")];
 /**
  * @param {Object} props
  * @param {string} props.className
@@ -69,7 +69,7 @@ Valid.propTypes = {
    */
 
 };
-var iconStyleWarning = new String("svg.jsx-4220013059{fill:".concat(_theme.colors.yellow500, ";width:24px;height:24px;margin-right:4px;}"));
+var iconStyleWarning = ["svg.jsx-4220013059{fill:".concat(_theme.colors.yellow500, ";width:24px;height:24px;margin-right:4px;}")];
 /**
  * @param {Object} props
  * @param {string} props.className
@@ -106,7 +106,7 @@ Warning.propTypes = {
    */
 
 };
-var iconStyleError = new String("svg.jsx-1515634284{fill:".concat(_theme.colors.red500, ";width:24px;height:24px;margin-right:4px;}"));
+var iconStyleError = ["svg.jsx-1515634284{fill:".concat(_theme.colors.red500, ";width:24px;height:24px;margin-right:4px;}")];
 /**
  * @param {Object} props
  * @param {string} props.className
@@ -143,7 +143,7 @@ Error.propTypes = {
    */
 
 };
-var iconStyleLoading = new String("svg.jsx-2864077861{fill:".concat(_theme.theme.primary600, ";color:").concat(_theme.theme.primary600, ";width:24px;height:24px;margin-right:4px;-webkit-animation:anim-rotate-jsx-2864077861 1.4s linear infinite;animation:anim-rotate-jsx-2864077861 1.4s linear infinite;}.circle.jsx-2864077861{stroke:currentColor;stroke-dasharray:80px,200px;stroke-dashoffset:0;-webkit-animation:anim-dash-jsx-2864077861 1.4s ease-in-out infinite;animation:anim-dash-jsx-2864077861 1.4s ease-in-out infinite;}@-webkit-keyframes anim-rotate-jsx-2864077861{100%{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}@keyframes anim-rotate-jsx-2864077861{100%{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}@-webkit-keyframes anim-dash-jsx-2864077861{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-120px;}}@keyframes anim-dash-jsx-2864077861{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-120px;}}"));
+var iconStyleLoading = ["svg.jsx-2864077861{fill:".concat(_theme.theme.primary600, ";color:").concat(_theme.theme.primary600, ";width:24px;height:24px;margin-right:4px;-webkit-animation:anim-rotate-jsx-2864077861 1.4s linear infinite;animation:anim-rotate-jsx-2864077861 1.4s linear infinite;}"), ".circle.jsx-2864077861{stroke:currentColor;stroke-dasharray:80px,200px;stroke-dashoffset:0;-webkit-animation:anim-dash-jsx-2864077861 1.4s ease-in-out infinite;animation:anim-dash-jsx-2864077861 1.4s ease-in-out infinite;}", "@-webkit-keyframes anim-rotate-jsx-2864077861{100%{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}", "@keyframes anim-rotate-jsx-2864077861{100%{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}", "@-webkit-keyframes anim-dash-jsx-2864077861{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-120px;}}", "@keyframes anim-dash-jsx-2864077861{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-120px;}}"];
 /**
  * @param {Object} props
  * @param {string} props.className

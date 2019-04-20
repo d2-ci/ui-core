@@ -45,31 +45,31 @@ var icons = {
   default: {
     styles: _react.default.createElement(_style.default, {
       id: "40145635"
-    }, "svg.jsx-40145635{fill:".concat(_theme.colors.grey600, ";height:24px;width:24px;}")),
+    }, ["svg.jsx-40145635{fill:".concat(_theme.colors.grey600, ";height:24px;width:24px;}")]),
     className: "jsx-40145635"
   },
   checked: {
     styles: _react.default.createElement(_style.default, {
       id: "3230514506"
-    }, "svg.jsx-3230514506{fill:".concat(_theme.colors.teal400, ";height:24px;width:24px;}")),
+    }, ["svg.jsx-3230514506{fill:".concat(_theme.colors.teal400, ";height:24px;width:24px;}")]),
     className: "jsx-3230514506"
   },
   valid: {
     styles: _react.default.createElement(_style.default, {
       id: "1378458444"
-    }, "svg.jsx-1378458444{fill:".concat(_theme.colors.blue600, ";height:24px;width:24px;}")),
+    }, ["svg.jsx-1378458444{fill:".concat(_theme.colors.blue600, ";height:24px;width:24px;}")]),
     className: "jsx-1378458444"
   },
   warning: {
     styles: _react.default.createElement(_style.default, {
       id: "3220898470"
-    }, "svg.jsx-3220898470{fill:".concat(_theme.colors.yellow500, ";height:24px;width:24px;}")),
+    }, ["svg.jsx-3220898470{fill:".concat(_theme.colors.yellow500, ";height:24px;width:24px;}")]),
     className: "jsx-3220898470"
   },
   error: {
     styles: _react.default.createElement(_style.default, {
       id: "2028575264"
-    }, "svg.jsx-2028575264{fill:".concat(_theme.colors.red500, ";height:24px;width:24px;}")),
+    }, ["svg.jsx-2028575264{fill:".concat(_theme.colors.red500, ";height:24px;width:24px;}")]),
     className: "jsx-2028575264"
   }
 };

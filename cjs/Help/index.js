@@ -28,7 +28,7 @@ function Help(_ref) {
   }, text, _react.default.createElement(_style.default, {
     id: "3723102891",
     dynamic: [_theme.colors.grey700, _theme.colors.blue600, _theme.colors.red600, _theme.colors.yellow800]
-  }, ".base.__jsx-style-dynamic-selector{height:12px;padding-top:8px;padding-left:12px;font-size:12px;margin:0;line-height:12px;cursor:help;}.status-default.__jsx-style-dynamic-selector{color:".concat(_theme.colors.grey700, ";}.status-valid.__jsx-style-dynamic-selector{color:").concat(_theme.colors.blue600, ";}.status-error.__jsx-style-dynamic-selector{color:").concat(_theme.colors.red600, ";}.status-warning.__jsx-style-dynamic-selector{color:").concat(_theme.colors.yellow800, ";}")));
+  }, [".base.__jsx-style-dynamic-selector{height:12px;padding-top:8px;padding-left:12px;font-size:12px;margin:0;line-height:12px;cursor:help;}", ".status-default.__jsx-style-dynamic-selector{color:".concat(_theme.colors.grey700, ";}"), ".status-valid.__jsx-style-dynamic-selector{color:".concat(_theme.colors.blue600, ";}"), ".status-error.__jsx-style-dynamic-selector{color:".concat(_theme.colors.red600, ";}"), ".status-warning.__jsx-style-dynamic-selector{color:".concat(_theme.colors.yellow800, ";}")]));
 }
 
 Help.defaultProps = {

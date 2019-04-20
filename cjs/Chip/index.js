@@ -44,15 +44,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var removeIcon = {
   styles: _react.default.createElement(_style.default, {
     id: "495350568"
-  }, "svg.jsx-495350568{margin-right:4px;color:".concat(_theme.colors.grey700, ";height:18px;width:18px;cursor:pointer;opacity:1;pointer-events:all;}svg.jsx-495350568 hover.jsx-495350568{opacity:0.82;}")),
+  }, ["svg.jsx-495350568{margin-right:4px;color:".concat(_theme.colors.grey700, ";height:18px;width:18px;cursor:pointer;opacity:1;pointer-events:all;}"), "svg.jsx-495350568 hover.jsx-495350568{opacity:0.82;}"]),
   className: "jsx-495350568"
 };
-
-var _ref =
-/*#__PURE__*/
-_react.default.createElement(_style.default, {
-  id: "3458732931"
-}, "span.jsx-3458732931{width:24px;height:24px;margin-left:4px;border-radius:50%;overflow:hidden;}");
 
 var Chip =
 /*#__PURE__*/
@@ -98,7 +92,9 @@ function (_React$PureComponent) {
 
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("span", {
         className: "jsx-3458732931"
-      }, icon), _ref);
+      }, icon), _react.default.createElement(_style.default, {
+        id: "3458732931"
+      }, ["span.jsx-3458732931{width:24px;height:24px;margin-left:4px;border-radius:50%;overflow:hidden;}"]));
     }
   }, {
     key: "showRemove",

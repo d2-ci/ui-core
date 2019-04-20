@@ -13,18 +13,14 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _ref2 =
-/*#__PURE__*/
-_react.default.createElement(_style.default, {
-  id: "795226118"
-}, "div.jsx-795226118{z-index:1000;position:absolute;top:38px;left:0;}");
-
 var DropMenu = function DropMenu(_ref) {
   var component = _ref.component,
       className = _ref.className;
   return _react.default.createElement("div", {
     className: "jsx-795226118" + " " + (className || "")
-  }, component, _ref2);
+  }, component, _react.default.createElement(_style.default, {
+    id: "795226118"
+  }, ["div.jsx-795226118{z-index:1000;position:absolute;top:38px;left:0;}"]));
 };
 
 exports.DropMenu = DropMenu;

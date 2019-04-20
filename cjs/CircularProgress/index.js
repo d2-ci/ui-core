@@ -17,12 +17,6 @@ var _styles = _interopRequireDefault(require("./styles.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _ref2 =
-/*#__PURE__*/
-_react.default.createElement(_style.default, {
-  id: "1483867407"
-}, ".jsx-1483867407{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:absolute;top:0;right:0;bottom:0;left:0;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;}");
-
 function CircularProgress(_ref) {
   var size = _ref.size,
       overlay = _ref.overlay,
@@ -48,7 +42,9 @@ function CircularProgress(_ref) {
   if (overlay) {
     return _react.default.createElement("div", {
       className: "jsx-1483867407"
-    }, loader, _ref2);
+    }, loader, _react.default.createElement(_style.default, {
+      id: "1483867407"
+    }, [".jsx-1483867407{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:absolute;top:0;right:0;bottom:0;left:0;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;}"]));
   }
 
   return loader;

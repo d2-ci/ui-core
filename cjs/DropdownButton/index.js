@@ -51,12 +51,6 @@ var _ref2 =
 /*#__PURE__*/
 _react.default.createElement(_Arrow.ArrowDown, null);
 
-var _ref3 =
-/*#__PURE__*/
-_react.default.createElement(_style.default, {
-  id: "3163060161"
-}, "div.jsx-3163060161{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}");
-
 var DropdownButton =
 /*#__PURE__*/
 function (_Component) {
@@ -131,7 +125,9 @@ function (_Component) {
         component: this.props.component
       }), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
-      }, _styles.default), _ref3);
+      }, _styles.default), _react.default.createElement(_style.default, {
+        id: "3163060161"
+      }, ["div.jsx-3163060161{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}"]));
     }
   }]);
 

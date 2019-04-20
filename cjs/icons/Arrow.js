@@ -16,7 +16,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var styles = {
   styles: _react.default.createElement(_style.default, {
     id: "1039571365"
-  }, "svg.jsx-1039571365{fill:inherit;height:24px;width:24px;vertical-align:middle;pointer-events:none;}"),
+  }, ["svg.jsx-1039571365{fill:inherit;height:24px;width:24px;vertical-align:middle;pointer-events:none;}"]),
   className: "jsx-1039571365"
 };
 exports.styles = styles;

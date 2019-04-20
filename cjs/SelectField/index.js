@@ -51,19 +51,19 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var styles = new String(".base.jsx-2528058342{display:inline-block;position:relative;width:100%;background-color:inherit;color:".concat(_theme.colors.grey700, ";pointer-events:all;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}.disabled.jsx-2528058342{cursor:not-allowed;opacity:1;}"));
+var styles = [".base.jsx-2528058342{display:inline-block;position:relative;width:100%;background-color:inherit;color:".concat(_theme.colors.grey700, ";pointer-events:all;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}"), ".disabled.jsx-2528058342{cursor:not-allowed;opacity:1;}"];
 styles.__hash = "2528058342";
 
 var _ref =
 /*#__PURE__*/
-_react.default.createElement("div", {
-  className: "jsx-3487810764"
-}, _react.default.createElement(_Arrow.ArrowDown, null), _react.default.createElement(_style.default, {
-  id: "3487810764"
-}, "div.jsx-3487810764{pointer-events:none;position:absolute;right:4px;}"));
+_react.default.createElement(_Arrow.ArrowDown, null);
 
 var TailIcon = function TailIcon() {
-  return _ref;
+  return _react.default.createElement("div", {
+    className: "jsx-3487810764"
+  }, _ref, _react.default.createElement(_style.default, {
+    id: "3487810764"
+  }, ["div.jsx-3487810764{pointer-events:none;position:absolute;right:4px;}"]));
 };
 
 var _ref2 =

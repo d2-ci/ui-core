@@ -49,7 +49,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var styles = new String(".base.jsx-3338623497{display:inline-block;width:100%;color:".concat(_theme.colors.grey700, ";}"));
+var styles = [".base.jsx-3338623497{display:inline-block;width:100%;color:".concat(_theme.colors.grey700, ";}")];
 styles.__hash = "3338623497";
 var types = {
   TEXT: 'text',
@@ -153,7 +153,7 @@ function (_React$Component) {
       }), _react.default.createElement(_style.default, {
         id: "2004200063",
         dynamic: [_theme.colors.grey500]
-      }, "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:").concat(_theme.colors.grey500, ";cursor:not-allowed;}")), _react.default.createElement(_style.default, {
+      }, ["div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}")]), _react.default.createElement(_style.default, {
         id: styles.__hash
       }, styles));
     }

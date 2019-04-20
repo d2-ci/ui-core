@@ -23,7 +23,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var styles = new String(".content.jsx-1843972625{box-sizing:border-box;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;height:100%;line-height:".concat(_constants3.inputHeight, "px;min-width:0;position:relative;}.content.focused.jsx-1843972625,.content.has-value.jsx-1843972625{visibility:visible;}.content.dense.jsx-1843972625{line-height:").concat(_constants3.inputHeightDense, "px;}"));
+var styles = [".content.jsx-1843972625{box-sizing:border-box;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;height:100%;line-height:".concat(_constants3.inputHeight, "px;min-width:0;position:relative;}"), ".content.focused.jsx-1843972625,.content.has-value.jsx-1843972625{visibility:visible;}", ".content.dense.jsx-1843972625{line-height:".concat(_constants3.inputHeightDense, "px;}")];
 styles.__hash = "1843972625";
 
 var createInputContainerClassName = function createInputContainerClassName(props) {
