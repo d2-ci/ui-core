@@ -9,13 +9,13 @@ const Help = ({
   status,
   className
 }) => React.createElement("p", {
-  className: _JSXStyle.dynamic([["614915997", [theme.default, theme.default, theme.valid, theme.error, theme.warning]]]) + " " + (cx('base', className, {
+  className: _JSXStyle.dynamic([["3259763296", [theme.default, theme.default, theme.valid, theme.error, theme.warning]]]) + " " + (cx(className, {
     [`status-${status}`]: true
   }) || "")
 }, children, React.createElement(_JSXStyle, {
-  id: "614915997",
+  id: "3259763296",
   dynamic: [theme.default, theme.default, theme.valid, theme.error, theme.warning]
-}, `.base.__jsx-style-dynamic-selector{height:12px;padding-top:8px;padding-left:12px;font-size:12px;margin:0;line-height:12px;cursor:help;color:${theme.default};}.status-default.__jsx-style-dynamic-selector{color:${theme.default};}.status-valid.__jsx-style-dynamic-selector{color:${theme.valid};}.status-error.__jsx-style-dynamic-selector{color:${theme.error};}.status-warning.__jsx-style-dynamic-selector{color:${theme.warning};}`));
+}, `p.__jsx-style-dynamic-selector{height:12px;padding-top:8px;padding-left:12px;font-size:12px;margin:0;line-height:12px;cursor:help;color:${theme.default};}.status-default.__jsx-style-dynamic-selector{color:${theme.default};}.status-valid.__jsx-style-dynamic-selector{color:${theme.valid};}.status-error.__jsx-style-dynamic-selector{color:${theme.error};}.status-warning.__jsx-style-dynamic-selector{color:${theme.warning};}`));
 
 Help.defaultProps = {
   status: 'default'

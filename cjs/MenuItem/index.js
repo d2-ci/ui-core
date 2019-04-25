@@ -27,14 +27,13 @@ var subChevron = {
 };
 var subMenu = {
   styles: _react.default.createElement(_style.default, {
-    id: "2242740484"
-  }, ["div.jsx-2242740484{display:none;position:absolute;top:0;left:100%;white-space:nowrap;}", ".item.jsx-2242740484:hover>div.jsx-2242740484{display:block;}"]),
-  className: "jsx-2242740484"
+    id: "2069506860"
+  }, ["div.jsx-2069506860{display:none;position:absolute;top:0;left:100%;white-space:nowrap;}", "li.jsx-2069506860:hover>div.jsx-2069506860{display:block;}"]),
+  className: "jsx-2069506860"
 };
 
 var SubMenu = function SubMenu(_ref) {
-  var size = _ref.size,
-      children = _ref.children,
+  var children = _ref.children,
       onClick = _ref.onClick,
       className = _ref.className;
   return _react.default.createElement("div", {
@@ -49,7 +48,7 @@ var MenuItem = function MenuItem(_ref2) {
       children = _ref2.children,
       active = _ref2.active,
       disabled = _ref2.disabled,
-      size = _ref2.size,
+      dense = _ref2.dense,
       _onClick = _ref2.onClick,
       className = _ref2.className;
   var hasMenu = !!children;
@@ -62,8 +61,9 @@ var MenuItem = function MenuItem(_ref2) {
         _onClick(value);
       }
     },
-    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('item', className, subMenu.className, {
+    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, subMenu.className, {
       disabled: disabled,
+      dense: dense,
       active: active
     }) || "")
   }, icon, _react.default.createElement("div", {
@@ -71,7 +71,6 @@ var MenuItem = function MenuItem(_ref2) {
   }, label), hasMenu && _react.default.createElement(_Chevron.ChevronRight, {
     className: subChevron.className
   }), subChevron.styles, hasMenu && _react.default.createElement(SubMenu, {
-    size: size,
     className: subMenu.className
   }, children), subMenu.styles, _react.default.createElement(_style.default, {
     id: _styles.default.__hash
@@ -80,18 +79,17 @@ var MenuItem = function MenuItem(_ref2) {
 
 exports.MenuItem = MenuItem;
 MenuItem.defaultProps = {
-  size: 'default',
   active: false,
   disabled: false
 };
 MenuItem.propTypes = {
   label: _propTypes.default.oneOf([_propTypes.default.string, _propTypes.default.element]).isRequired,
   value: _propTypes.default.any.isRequired,
+  dense: _propTypes.default.boolean,
   className: _propTypes.default.string,
   icon: _propTypes.default.element,
   children: _propTypes.default.element,
   active: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
-  size: _propTypes.default.string,
   onClick: _propTypes.default.func
 };

@@ -43,9 +43,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var removeIcon = {
   styles: _react.default.createElement(_style.default, {
-    id: "495350568"
-  }, ["svg.jsx-495350568{margin-right:4px;color:".concat(_theme.colors.grey700, ";height:18px;width:18px;cursor:pointer;opacity:1;pointer-events:all;}"), "svg.jsx-495350568 hover.jsx-495350568{opacity:0.82;}"]),
-  className: "jsx-495350568"
+    id: "1693149603"
+  }, ["svg.jsx-1693149603{margin-right:4px;color:".concat(_theme.colors.grey700, ";height:18px;width:18px;cursor:pointer;opacity:1;pointer-events:all;}"), "svg.jsx-1693149603:hover{opacity:0.82;}"]),
+  className: "jsx-1693149603"
 };
 
 var Chip =
@@ -110,7 +110,6 @@ function (_React$PureComponent) {
     key: "render",
     value: function render() {
       var _this$props = this.props,
-          label = _this$props.label,
           selected = _this$props.selected,
           disabled = _this$props.disabled,
           dragging = _this$props.dragging,
@@ -119,17 +118,17 @@ function (_React$PureComponent) {
           children = _this$props.children;
       return _react.default.createElement("div", {
         onClick: this.onClick,
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className, {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, {
           selected: selected,
           disabled: disabled,
           dragging: dragging,
           static: !this.props.onClick
         }) || "")
       }, this.showIcon(), _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)({
           overflow: overflow
         }) || "")
-      }, label || children), this.showRemove(), _react.default.createElement(_style.default, {
+      }, children), this.showRemove(), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default));
     }
@@ -146,8 +145,8 @@ Chip.defaultProps = {
   overflow: true
 };
 Chip.propTypes = {
+  children: _propTypes.default.string.isRequired,
   className: _propTypes.default.string,
-  label: _propTypes.default.string.isRequired,
   icon: _propTypes.default.element,
   selected: _propTypes.default.bool,
   disabled: _propTypes.default.bool,

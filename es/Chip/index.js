@@ -9,9 +9,9 @@ import styles from './styles.js';
 import { Cancel } from '../icons/Cancel.js';
 const removeIcon = {
   styles: React.createElement(_JSXStyle, {
-    id: "495350568"
-  }, `svg.jsx-495350568{margin-right:4px;color:${colors.grey700};height:18px;width:18px;cursor:pointer;opacity:1;pointer-events:all;}svg.jsx-495350568 hover.jsx-495350568{opacity:0.82;}`),
-  className: "jsx-495350568"
+    id: "1693149603"
+  }, `svg.jsx-1693149603{margin-right:4px;color:${colors.grey700};height:18px;width:18px;cursor:pointer;opacity:1;pointer-events:all;}svg.jsx-1693149603:hover{opacity:0.82;}`),
+  className: "jsx-1693149603"
 };
 
 var _ref =
@@ -62,7 +62,6 @@ class Chip extends React.PureComponent {
 
   render() {
     const {
-      label,
       selected,
       disabled,
       dragging,
@@ -72,17 +71,17 @@ class Chip extends React.PureComponent {
     } = this.props;
     return React.createElement("div", {
       onClick: this.onClick,
-      className: `jsx-${styles.__hash}` + " " + (cx('base', className, {
+      className: `jsx-${styles.__hash}` + " " + (cx(className, {
         selected,
         disabled,
         dragging,
         static: !this.props.onClick
       }) || "")
     }, this.showIcon(), React.createElement("span", {
-      className: `jsx-${styles.__hash}` + " " + (cx('label', {
+      className: `jsx-${styles.__hash}` + " " + (cx({
         overflow
       }) || "")
-    }, label || children), this.showRemove(), React.createElement(_JSXStyle, {
+    }, children), this.showRemove(), React.createElement(_JSXStyle, {
       id: styles.__hash
     }, styles));
   }
@@ -96,8 +95,8 @@ Chip.defaultProps = {
   overflow: true
 };
 Chip.propTypes = {
+  children: propTypes.string.isRequired,
   className: propTypes.string,
-  label: propTypes.string.isRequired,
   icon: propTypes.element,
   selected: propTypes.bool,
   disabled: propTypes.bool,

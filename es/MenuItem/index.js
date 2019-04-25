@@ -12,13 +12,12 @@ const subChevron = {
 };
 const subMenu = {
   styles: React.createElement(_JSXStyle, {
-    id: "2242740484"
-  }, "div.jsx-2242740484{display:none;position:absolute;top:0;left:100%;white-space:nowrap;}.item.jsx-2242740484:hover>div.jsx-2242740484{display:block;}"),
-  className: "jsx-2242740484"
+    id: "2069506860"
+  }, "div.jsx-2069506860{display:none;position:absolute;top:0;left:100%;white-space:nowrap;}li.jsx-2069506860:hover>div.jsx-2069506860{display:block;}"),
+  className: "jsx-2069506860"
 };
 
 const SubMenu = ({
-  size,
   children,
   onClick,
   className
@@ -33,7 +32,7 @@ const MenuItem = ({
   children,
   active,
   disabled,
-  size,
+  dense,
   onClick,
   className
 }) => {
@@ -46,8 +45,9 @@ const MenuItem = ({
         onClick(value);
       }
     },
-    className: `jsx-${styles.__hash}` + " " + (cx('item', className, subMenu.className, {
+    className: `jsx-${styles.__hash}` + " " + (cx(className, subMenu.className, {
       disabled,
+      dense,
       active
     }) || "")
   }, icon, React.createElement("div", {
@@ -55,7 +55,6 @@ const MenuItem = ({
   }, label), hasMenu && React.createElement(ChevronRight, {
     className: subChevron.className
   }), subChevron.styles, hasMenu && React.createElement(SubMenu, {
-    size: size,
     className: subMenu.className
   }, children), subMenu.styles, React.createElement(_JSXStyle, {
     id: styles.__hash
@@ -63,19 +62,18 @@ const MenuItem = ({
 };
 
 MenuItem.defaultProps = {
-  size: 'default',
   active: false,
   disabled: false
 };
 MenuItem.propTypes = {
   label: propTypes.oneOf([propTypes.string, propTypes.element]).isRequired,
   value: propTypes.any.isRequired,
+  dense: propTypes.boolean,
   className: propTypes.string,
   icon: propTypes.element,
   children: propTypes.element,
   active: propTypes.bool,
   disabled: propTypes.bool,
-  size: propTypes.string,
   onClick: propTypes.func
 };
 export { MenuItem };

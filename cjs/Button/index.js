@@ -20,14 +20,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Button = function Button(_ref) {
   var type = _ref.type,
       children = _ref.children,
-      kind = _ref.kind,
-      size = _ref.size,
       icon = _ref.icon,
       name = _ref.name,
       value = _ref.value,
       disabled = _ref.disabled,
       _onClick = _ref.onClick,
-      className = _ref.className;
+      className = _ref.className,
+      basic = _ref.basic,
+      primary = _ref.primary,
+      secondary = _ref.secondary,
+      destructive = _ref.destructive,
+      small = _ref.small,
+      medium = _ref.medium,
+      large = _ref.large;
   return _react.default.createElement("button", {
     disabled: disabled,
     onClick: function onClick(evt) {
@@ -36,7 +41,12 @@ var Button = function Button(_ref) {
     type: type,
     name: name,
     value: value,
-    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(kind), "size-".concat(size), className, {
+    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, {
+      primary: primary,
+      secondary: secondary,
+      destructive: destructive,
+      small: small,
+      large: large,
       'icon-only': icon && !children,
       icon: icon
     }) || "")
@@ -49,12 +59,7 @@ var Button = function Button(_ref) {
 
 exports.Button = Button;
 Button.defaultProps = {
-  name: '',
-  value: '',
-  kind: 'basic',
-  type: 'button',
-  size: 'medium',
-  disabled: false
+  type: 'button'
 };
 Button.propTypes = {
   children: _propTypes.default.string,
@@ -62,9 +67,12 @@ Button.propTypes = {
   icon: _propTypes.default.element,
   name: _propTypes.default.string,
   value: _propTypes.default.string,
-  kind: _propTypes.default.oneOf(['basic', 'primary', 'secondary', 'destructive']),
   type: _propTypes.default.oneOf(['submit', 'reset', 'button']),
-  size: _propTypes.default.oneOf(['small', 'medium', 'large']),
+  small: _propTypes.default.bool,
+  large: _propTypes.default.bool,
+  primary: _propTypes.default.bool,
+  secondary: _propTypes.default.bool,
+  destructive: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   onClick: _propTypes.default.func
 };

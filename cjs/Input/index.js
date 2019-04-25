@@ -45,8 +45,8 @@ var calculatePaddingTop = function calculatePaddingTop(props) {
   return props.filled ? '14px' : '18.5px';
 };
 
-var styles = [".input.jsx-341996737{color:black;background-color:transparent;border:0;box-sizing:border-box;font-size:".concat(_constants.inputFontSizeValue, ";height:100%;line-height:16px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}"), ".input.filled.jsx-341996737{padding:32px 0 8px 16px;}", ".input.outlined.jsx-341996737{padding:18px 0 18px 16px;}", ".input.disabled.jsx-341996737{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), ".jsx-341996737 .input.outlined.jsx-341996737{padding-left:15px;}", ".input.filled.dense.jsx-341996737{font-size:14px;padding:25px 0 5px 16px;}", ".input.outlined.dense.jsx-341996737{padding-top:12px;padding-bottom:12px;}"];
-styles.__hash = "341996737";
+var styles = ["input.jsx-2069260120{color:black;background-color:transparent;border:0;box-sizing:border-box;font-size:".concat(_constants.inputFontSizeValue, ";height:100%;line-height:16px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}"), "input.filled.jsx-2069260120{padding:32px 0 8px 16px;}", "input.outlined.jsx-2069260120{padding:18px 0 18px 16px;}", "input.disabled.jsx-2069260120{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), ".jsx-2069260120 input.outlined.jsx-2069260120{padding-left:15px;}", "input.filled.dense.jsx-2069260120{font-size:14px;padding:25px 0 5px 16px;}", "input.outlined.dense.jsx-2069260120{padding-top:12px;padding-bottom:12px;}"];
+styles.__hash = "2069260120";
 
 var Input =
 /*#__PURE__*/
@@ -82,7 +82,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       var paddingTop = calculatePaddingTop(this.props);
-      var className = (0, _classnames.default)('input', {
+      var className = (0, _classnames.default)({
         dense: this.props.isDense,
         filled: this.props.kind === _constants.inputKinds.FILLED,
         outlined: this.props.kind === _constants.inputKinds.OUTLINED,

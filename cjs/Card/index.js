@@ -21,11 +21,11 @@ var Card = function Card(_ref) {
   var className = _ref.className,
       children = _ref.children;
   return _react.default.createElement("div", {
-    className: _style.default.dynamic([["2046889384", [_theme.colors.white]]]) + " " + ((0, _classnames.default)('base', className) || "")
+    className: _style.default.dynamic([["166161216", [_theme.colors.white]]]) + " " + ((0, _classnames.default)(className) || "")
   }, children, _react.default.createElement(_style.default, {
-    id: "2046889384",
+    id: "166161216",
     dynamic: [_theme.colors.white]
-  }, [".base.__jsx-style-dynamic-selector{display:inline-block;position:relative;width:100%;height:100%;border-radius:3px;background:".concat(_theme.colors.white, ";box-shadow:0 0 1px 0 rgba(64,75,90,0.2), 0 2px 1px 0 rgba(64,75,90,0.28);}")]));
+  }, ["div.__jsx-style-dynamic-selector{display:inline-block;position:relative;width:100%;height:100%;border-radius:3px;background:".concat(_theme.colors.white, ";box-shadow:0 0 1px 0 rgba(64,75,90,0.2), 0 2px 1px 0 rgba(64,75,90,0.28);}")]));
 };
 
 exports.Card = Card;
