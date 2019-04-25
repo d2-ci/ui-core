@@ -7,6 +7,7 @@ import cx from 'classnames';
 import { colors } from '../theme.js';
 import styles from './styles.js';
 import { Checked, Unchecked } from '../icons/Radio.js';
+import { Help } from '..';
 const icons = {
   default: {
     styles: React.createElement(_JSXStyle, {
@@ -60,7 +61,7 @@ class Radio extends React.Component {
     }) : React.createElement(Unchecked, {
       className: icons[state].className
     });
-    return React.createElement("label", {
+    return React.createElement("div", null, React.createElement("label", {
       className: `jsx-${styles.__hash}` + " " + (cx('base', className, {
         disabled: this.props.disabled
       }) || "")
@@ -78,7 +79,10 @@ class Radio extends React.Component {
       }) || "")
     }, this.props.label), icons[state].styles, React.createElement(_JSXStyle, {
       id: styles.__hash
-    }, styles));
+    }, styles)), this.props.help && React.createElement(Help, {
+      text: this.props.help,
+      status: this.props.status
+    }));
   }
 
 }
@@ -94,6 +98,7 @@ Radio.propTypes = {
   name: propTypes.string.isRequired,
   value: propTypes.string.isRequired,
   label: propTypes.string,
+  help: propTypes.string,
   checked: propTypes.bool,
   disabled: propTypes.bool,
   status: propTypes.oneOf(['default', 'valid', 'warning', 'error'])

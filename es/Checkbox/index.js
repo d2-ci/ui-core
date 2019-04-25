@@ -7,6 +7,7 @@ import cx from 'classnames';
 import { colors } from '../theme.js';
 import styles from './styles.js';
 import { Indeterminate, Checked, Unchecked } from '../icons/Checkbox.js';
+import { Help } from '..';
 const icons = {
   default: {
     styles: React.createElement(_JSXStyle, {
@@ -82,7 +83,7 @@ class Checkbox extends React.Component {
     }
 
     console.log(icon);
-    return React.createElement("label", {
+    return React.createElement("div", null, React.createElement("label", {
       className: `jsx-${styles.__hash}` + " " + (cx('base', className, {
         disabled: this.props.disabled
       }) || "")
@@ -98,7 +99,10 @@ class Checkbox extends React.Component {
       }) || "")
     }, this.props.label), icons[state].styles, React.createElement(_JSXStyle, {
       id: styles.__hash
-    }, styles));
+    }, styles)), this.props.help && React.createElement(Help, {
+      text: this.props.help,
+      status: this.props.status
+    }));
   }
 
 }
@@ -115,6 +119,7 @@ Checkbox.propTypes = {
   onChange: propTypes.func.isRequired,
   name: propTypes.string.isRequired,
   label: propTypes.string,
+  help: propTypes.string,
   checked: propTypes.bool,
   required: propTypes.bool,
   disabled: propTypes.bool,

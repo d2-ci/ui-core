@@ -21,6 +21,8 @@ var _styles = _interopRequireDefault(require("./styles.js"));
 
 var _Checkbox = require("../icons/Checkbox.js");
 
+var _ = require("..");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -134,7 +136,7 @@ function (_React$Component) {
       }
 
       console.log(icon);
-      return _react.default.createElement("label", {
+      return _react.default.createElement("div", null, _react.default.createElement("label", {
         className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className, {
           disabled: this.props.disabled
         }) || "")
@@ -150,7 +152,10 @@ function (_React$Component) {
         }) || "")
       }, this.props.label), icons[state].styles, _react.default.createElement(_style.default, {
         id: _styles.default.__hash
-      }, _styles.default));
+      }, _styles.default)), this.props.help && _react.default.createElement(_.Help, {
+        text: this.props.help,
+        status: this.props.status
+      }));
     }
   }]);
 
@@ -170,6 +175,7 @@ Checkbox.propTypes = {
   onChange: _propTypes.default.func.isRequired,
   name: _propTypes.default.string.isRequired,
   label: _propTypes.default.string,
+  help: _propTypes.default.string,
   checked: _propTypes.default.bool,
   required: _propTypes.default.bool,
   disabled: _propTypes.default.bool,

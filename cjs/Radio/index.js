@@ -21,6 +21,8 @@ var _styles = _interopRequireDefault(require("./styles.js"));
 
 var _Radio = require("../icons/Radio.js");
 
+var _ = require("..");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -113,7 +115,7 @@ function (_React$Component) {
       }) : _react.default.createElement(_Radio.Unchecked, {
         className: icons[state].className
       });
-      return _react.default.createElement("label", {
+      return _react.default.createElement("div", null, _react.default.createElement("label", {
         className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className, {
           disabled: this.props.disabled
         }) || "")
@@ -131,7 +133,10 @@ function (_React$Component) {
         }) || "")
       }, this.props.label), icons[state].styles, _react.default.createElement(_style.default, {
         id: _styles.default.__hash
-      }, _styles.default));
+      }, _styles.default)), this.props.help && _react.default.createElement(_.Help, {
+        text: this.props.help,
+        status: this.props.status
+      }));
     }
   }]);
 
@@ -150,6 +155,7 @@ Radio.propTypes = {
   name: _propTypes.default.string.isRequired,
   value: _propTypes.default.string.isRequired,
   label: _propTypes.default.string,
+  help: _propTypes.default.string,
   checked: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error'])

@@ -15,6 +15,8 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _styles = _interopRequireDefault(require("./styles"));
 
+var _ = require("..");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -71,9 +73,10 @@ function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           status = _this$props.status,
+          help = _this$props.help,
           disabled = _this$props.disabled,
           className = _this$props.className;
-      return _react.default.createElement("label", {
+      return _react.default.createElement("div", null, _react.default.createElement("label", {
         className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(status, className, {
           disabled: disabled
         }) || "")
@@ -90,7 +93,10 @@ function (_React$Component) {
         className: "jsx-".concat(_styles.default.__hash) + " " + "required"
       }), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
-      }, _styles.default));
+      }, _styles.default)), this.props.help && _react.default.createElement(_.Help, {
+        text: this.props.help,
+        status: this.props.status
+      }));
     }
   }]);
 
@@ -109,6 +115,7 @@ Switch.propTypes = {
   className: _propTypes.default.string,
   checked: _propTypes.default.bool,
   label: _propTypes.default.string,
+  help: _propTypes.default.string,
   disabled: _propTypes.default.bool,
   status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error'])
 };

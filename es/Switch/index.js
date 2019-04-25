@@ -6,6 +6,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
 import styles from './styles';
+import { Help } from '..';
 
 class Switch extends React.Component {
   constructor(...args) {
@@ -23,10 +24,11 @@ class Switch extends React.Component {
   render() {
     const {
       status,
+      help,
       disabled,
       className
     } = this.props;
-    return React.createElement("label", {
+    return React.createElement("div", null, React.createElement("label", {
       className: `jsx-${styles.__hash}` + " " + (cx(status, className, {
         disabled
       }) || "")
@@ -45,7 +47,10 @@ class Switch extends React.Component {
       className: `jsx-${styles.__hash}` + " " + "required"
     }), React.createElement(_JSXStyle, {
       id: styles.__hash
-    }, styles));
+    }, styles)), this.props.help && React.createElement(Help, {
+      text: this.props.help,
+      status: this.props.status
+    }));
   }
 
 }
@@ -61,6 +66,7 @@ Switch.propTypes = {
   className: propTypes.string,
   checked: propTypes.bool,
   label: propTypes.string,
+  help: propTypes.string,
   disabled: propTypes.bool,
   status: propTypes.oneOf(['default', 'valid', 'warning', 'error'])
 };
