@@ -4,15 +4,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 import propTypes from 'prop-types';
 import React, { Fragment } from 'react';
-import cx from 'classnames';
 import { Input } from '../Input';
 import { LabelFilled, LabelOutlined } from '../FieldLabel';
 import { colors } from '../theme';
 import { iconStatusPropType, iconStatuses } from '../icons/constants';
 import { inputKinds, inputSizes } from '../forms/constants';
-import { Help } from '../Help';
-const styles = new String(`.base.jsx-3338623497{display:inline-block;width:100%;color:${colors.grey700};}`);
-styles.__hash = "3338623497";
 const types = {
   TEXT: 'text',
   EMAIL: 'email',
@@ -70,11 +66,7 @@ class InputField extends React.Component {
     const isFilled = this.props.kind === inputKinds.FILLED;
     const isDense = this.props.size === inputSizes.DENSE;
     const Container = this.props.kind === inputKinds.FILLED ? LabelFilled : LabelOutlined;
-    return React.createElement("div", {
-      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["2004200063", [colors.grey500]]]) + " " + (cx('base', this.props.className, {
-        disabled: this.props.disabled
-      }) || "")
-    }, React.createElement(Container, {
+    return React.createElement(Container, {
       label: this.props.label,
       isFocused: this.state.focused,
       hasValue: !!this.props.value || this.props.placeholder,
@@ -83,7 +75,7 @@ class InputField extends React.Component {
       disabled: this.props.disabled,
       status: this.props.status,
       size: this.props.size,
-      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["2004200063", [colors.grey500]]])
+      className: _JSXStyle.dynamic([["2004200063", [colors.grey500]]])
     }, React.createElement(Input, {
       name: this.props.name,
       type: this.props.type,
@@ -97,15 +89,10 @@ class InputField extends React.Component {
       onFocus: this.onFocus,
       onBlur: this.onBlur,
       onChange: this.onChange
-    })), this.props.help && React.createElement(Help, {
-      text: this.props.help,
-      status: this.props.status
     }), React.createElement(_JSXStyle, {
       id: "2004200063",
       dynamic: [colors.grey500]
-    }, `div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:${colors.grey500};cursor:not-allowed;}`), React.createElement(_JSXStyle, {
-      id: styles.__hash
-    }, styles));
+    }, `div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:${colors.grey500};cursor:not-allowed;}`));
   }
 
 }
@@ -125,7 +112,6 @@ InputField.propTypes = {
   onChange: propTypes.func.isRequired,
   label: propTypes.string.isRequired,
   value: propTypes.string.isRequired,
-  help: propTypes.string,
   className: propTypes.string,
   disabled: propTypes.bool,
   required: propTypes.bool,

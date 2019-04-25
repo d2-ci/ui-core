@@ -20,15 +20,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function Help(_ref) {
-  var text = _ref.text,
+  var children = _ref.children,
       status = _ref.status,
       className = _ref.className;
   return _react.default.createElement("p", {
-    className: _style.default.dynamic([["3723102891", [_theme.colors.grey700, _theme.colors.blue600, _theme.colors.red600, _theme.colors.yellow800]]]) + " " + ((0, _classnames.default)('base', className, _defineProperty({}, "status-".concat(status), true)) || "")
-  }, text, _react.default.createElement(_style.default, {
-    id: "3723102891",
-    dynamic: [_theme.colors.grey700, _theme.colors.blue600, _theme.colors.red600, _theme.colors.yellow800]
-  }, [".base.__jsx-style-dynamic-selector{height:12px;padding-top:8px;padding-left:12px;font-size:12px;margin:0;line-height:12px;cursor:help;}", ".status-default.__jsx-style-dynamic-selector{color:".concat(_theme.colors.grey700, ";}"), ".status-valid.__jsx-style-dynamic-selector{color:".concat(_theme.colors.blue600, ";}"), ".status-error.__jsx-style-dynamic-selector{color:".concat(_theme.colors.red600, ";}"), ".status-warning.__jsx-style-dynamic-selector{color:".concat(_theme.colors.yellow800, ";}")]));
+    className: _style.default.dynamic([["1131653761", [_theme.theme.default, _theme.theme.default, _theme.theme.valid, _theme.theme.error, _theme.theme.warning]]]) + " " + ((0, _classnames.default)('base', className, _defineProperty({}, "status-".concat(status), true)) || "")
+  }, children, _react.default.createElement(_style.default, {
+    id: "1131653761",
+    dynamic: [_theme.theme.default, _theme.theme.default, _theme.theme.valid, _theme.theme.error, _theme.theme.warning]
+  }, [".base.__jsx-style-dynamic-selector{height:12px;padding-top:8px;padding-left:12px;font-size:12px;margin:0;line-height:12px;cursor:help;color:".concat(_theme.theme.default, ";}"), ".status-default.__jsx-style-dynamic-selector{color:".concat(_theme.theme.default, ";}"), ".status-valid.__jsx-style-dynamic-selector{color:".concat(_theme.theme.valid, ";}"), ".status-error.__jsx-style-dynamic-selector{color:".concat(_theme.theme.error, ";}"), ".status-warning.__jsx-style-dynamic-selector{color:".concat(_theme.theme.warning, ";}")]));
 }
 
 Help.defaultProps = {
@@ -36,6 +36,6 @@ Help.defaultProps = {
 };
 Help.propTypes = {
   className: _propTypes.default.string,
-  text: _propTypes.default.string.isRequired,
+  children: _propTypes.default.string.isRequired,
   status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error'])
 };

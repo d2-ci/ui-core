@@ -11,8 +11,6 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _classnames = _interopRequireDefault(require("classnames"));
-
 var _Input = require("../Input");
 
 var _FieldLabel = require("../FieldLabel");
@@ -22,8 +20,6 @@ var _theme = require("../theme");
 var _constants = require("../icons/constants");
 
 var _constants2 = require("../forms/constants");
-
-var _Help = require("../Help");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -49,8 +45,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var styles = [".base.jsx-3338623497{display:inline-block;width:100%;color:".concat(_theme.colors.grey700, ";}")];
-styles.__hash = "3338623497";
 var types = {
   TEXT: 'text',
   EMAIL: 'email',
@@ -120,11 +114,7 @@ function (_React$Component) {
       var isFilled = this.props.kind === _constants2.inputKinds.FILLED;
       var isDense = this.props.size === _constants2.inputSizes.DENSE;
       var Container = this.props.kind === _constants2.inputKinds.FILLED ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
-      return _react.default.createElement("div", {
-        className: "jsx-".concat(styles.__hash) + " " + _style.default.dynamic([["2004200063", [_theme.colors.grey500]]]) + " " + ((0, _classnames.default)('base', this.props.className, {
-          disabled: this.props.disabled
-        }) || "")
-      }, _react.default.createElement(Container, {
+      return _react.default.createElement(Container, {
         label: this.props.label,
         isFocused: this.state.focused,
         hasValue: !!this.props.value || this.props.placeholder,
@@ -133,7 +123,7 @@ function (_React$Component) {
         disabled: this.props.disabled,
         status: this.props.status,
         size: this.props.size,
-        className: "jsx-".concat(styles.__hash) + " " + _style.default.dynamic([["2004200063", [_theme.colors.grey500]]])
+        className: _style.default.dynamic([["2004200063", [_theme.colors.grey500]]])
       }, _react.default.createElement(_Input.Input, {
         name: this.props.name,
         type: this.props.type,
@@ -147,15 +137,10 @@ function (_React$Component) {
         onFocus: this.onFocus,
         onBlur: this.onBlur,
         onChange: this.onChange
-      })), this.props.help && _react.default.createElement(_Help.Help, {
-        text: this.props.help,
-        status: this.props.status
       }), _react.default.createElement(_style.default, {
         id: "2004200063",
         dynamic: [_theme.colors.grey500]
-      }, ["div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}")]), _react.default.createElement(_style.default, {
-        id: styles.__hash
-      }, styles));
+      }, ["div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}")]));
     }
   }]);
 
@@ -178,7 +163,6 @@ InputField.propTypes = {
   onChange: _propTypes.default.func.isRequired,
   label: _propTypes.default.string.isRequired,
   value: _propTypes.default.string.isRequired,
-  help: _propTypes.default.string,
   className: _propTypes.default.string,
   disabled: _propTypes.default.bool,
   required: _propTypes.default.bool,

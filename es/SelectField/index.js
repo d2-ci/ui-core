@@ -4,16 +4,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 import propTypes from 'prop-types';
 import React, { Fragment } from 'react';
-import cx from 'classnames';
 import { ArrowDown } from '../icons/Arrow';
 import { LabelFilled, LabelOutlined } from '../FieldLabel';
 import { Select } from './Select';
 import { colors } from '../theme';
 import { iconStatusPropType, iconStatuses } from '../icons/constants';
 import { inputKinds, inputSizes } from '../forms/constants';
-import { Help } from '../Help';
-const styles = new String(`.base.jsx-2528058342{display:inline-block;position:relative;width:100%;background-color:inherit;color:${colors.grey700};pointer-events:all;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}.disabled.jsx-2528058342{cursor:not-allowed;opacity:1;}`);
-styles.__hash = "2528058342";
 
 var _ref =
 /*#__PURE__*/
@@ -75,13 +71,7 @@ class SelectField extends React.Component {
     const isFilled = this.props.kind === inputKinds.FILLED;
     const isDense = this.props.size === inputSizes.DENSE;
     const Container = this.props.kind === inputKinds.FILLED ? LabelFilled : LabelOutlined;
-    return React.createElement("div", {
-      className: `jsx-${styles.__hash}` + " " + (cx('base', this.props.className, {
-        selected: !!this.props.value,
-        disabled: this.props.disabled,
-        [`size-${this.props.size}`]: true
-      }) || "")
-    }, React.createElement(Container, {
+    return React.createElement(Container, {
       label: this.props.label,
       isFocused: this.isFocused(),
       hasValue: true,
@@ -90,8 +80,7 @@ class SelectField extends React.Component {
       disabled: this.props.disabled,
       status: this.props.status,
       size: this.props.size,
-      onClick: this.onFocus,
-      className: `jsx-${styles.__hash}`
+      onClick: this.onFocus
     }, React.createElement(Select, {
       value: this.props.value,
       disabled: this.props.disabled,
@@ -101,12 +90,7 @@ class SelectField extends React.Component {
       onChange: this.onChange,
       onFocus: this.onFocus,
       onBlur: this.onBlur
-    }), _ref2), this.props.help && React.createElement(Help, {
-      text: this.props.help,
-      status: this.props.status
-    }), React.createElement(_JSXStyle, {
-      id: styles.__hash
-    }, styles));
+    }), _ref2);
   }
 
 }
@@ -115,7 +99,6 @@ SelectField.defaultProps = {
   size: inputSizes.DEFAULT,
   kind: inputKinds.FILLED,
   status: iconStatuses.DEFAULT,
-  help: '',
   className: '',
   disabled: false,
   required: false
@@ -126,7 +109,6 @@ SelectField.propTypes = {
   label: propTypes.string.isRequired,
   value: propTypes.string.isRequired,
   list: Select.propTypes.list,
-  help: propTypes.string,
   className: propTypes.string,
   disabled: propTypes.bool,
   required: propTypes.bool,

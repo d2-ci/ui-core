@@ -11,8 +11,6 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _classnames = _interopRequireDefault(require("classnames"));
-
 var _Arrow = require("../icons/Arrow");
 
 var _FieldLabel = require("../FieldLabel");
@@ -24,8 +22,6 @@ var _theme = require("../theme");
 var _constants = require("../icons/constants");
 
 var _constants2 = require("../forms/constants");
-
-var _Help = require("../Help");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -50,9 +46,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var styles = [".base.jsx-2528058342{display:inline-block;position:relative;width:100%;background-color:inherit;color:".concat(_theme.colors.grey700, ";pointer-events:all;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}"), ".disabled.jsx-2528058342{cursor:not-allowed;opacity:1;}"];
-styles.__hash = "2528058342";
 
 var _ref =
 /*#__PURE__*/
@@ -127,12 +120,7 @@ function (_React$Component) {
       var isFilled = this.props.kind === _constants2.inputKinds.FILLED;
       var isDense = this.props.size === _constants2.inputSizes.DENSE;
       var Container = this.props.kind === _constants2.inputKinds.FILLED ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
-      return _react.default.createElement("div", {
-        className: "jsx-".concat(styles.__hash) + " " + ((0, _classnames.default)('base', this.props.className, _defineProperty({
-          selected: !!this.props.value,
-          disabled: this.props.disabled
-        }, "size-".concat(this.props.size), true)) || "")
-      }, _react.default.createElement(Container, {
+      return _react.default.createElement(Container, {
         label: this.props.label,
         isFocused: this.isFocused(),
         hasValue: true,
@@ -141,8 +129,7 @@ function (_React$Component) {
         disabled: this.props.disabled,
         status: this.props.status,
         size: this.props.size,
-        onClick: this.onFocus,
-        className: "jsx-".concat(styles.__hash)
+        onClick: this.onFocus
       }, _react.default.createElement(_Select.Select, {
         value: this.props.value,
         disabled: this.props.disabled,
@@ -152,12 +139,7 @@ function (_React$Component) {
         onChange: this.onChange,
         onFocus: this.onFocus,
         onBlur: this.onBlur
-      }), _ref2), this.props.help && _react.default.createElement(_Help.Help, {
-        text: this.props.help,
-        status: this.props.status
-      }), _react.default.createElement(_style.default, {
-        id: styles.__hash
-      }, styles));
+      }), _ref2);
     }
   }]);
 
@@ -169,7 +151,6 @@ SelectField.defaultProps = {
   size: _constants2.inputSizes.DEFAULT,
   kind: _constants2.inputKinds.FILLED,
   status: _constants.iconStatuses.DEFAULT,
-  help: '',
   className: '',
   disabled: false,
   required: false
@@ -180,7 +161,6 @@ SelectField.propTypes = {
   label: _propTypes.default.string.isRequired,
   value: _propTypes.default.string.isRequired,
   list: _Select.Select.propTypes.list,
-  help: _propTypes.default.string,
   className: _propTypes.default.string,
   disabled: _propTypes.default.bool,
   required: _propTypes.default.bool,

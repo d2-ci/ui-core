@@ -10,13 +10,13 @@ import { Label } from './Label';
 import { StatusIconNoDefault } from '../../icons/Status';
 import { borderRadius, inputHeight, inputHeightDense } from '../constants';
 import { children } from '../../utils/react';
-import { colors } from '../../theme';
+import { colors, theme } from '../../theme';
 import { iconStatusPropType, iconStatuses, statusColors } from '../../icons/constants';
 import { innerSpacingSides, inputSizes, inputSizesPropTypes } from '../../forms/constants';
-const styles = new String(`.label-outlined.jsx-2953596136{height:${inputHeight + 10}px;position:relative;}.label-outlined.disabled.jsx-2953596136{cursor:not-allowed;}.label-outlined.dense.jsx-2953596136{height:${inputHeightDense + 10}px;}.label-outlined.jsx-2953596136:before{border:1px solid ${statusColors[iconStatuses.DEFAULT]};border-top:0;border-radius:0 0 ${borderRadius} ${borderRadius};box-sizing:border-box;bottom:0;content:'';height:75%;left:0;position:absolute;width:100%;}.label-outlined.valid.jsx-2953596136:before{border-color:${statusColors[iconStatuses.VALID]};}.label-outlined.warning.jsx-2953596136:before{border-color:${statusColors[iconStatuses.WARNING]};}.label-outlined.error.jsx-2953596136:before{border-color:${statusColors[iconStatuses.ERROR]};}.content.jsx-2953596136{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:54px;left:1px;position:relative;top:11px;width:calc(100% - 1px);}.dense.jsx-2953596136 .content.jsx-2953596136{height:42px;}.status-icon.jsx-2953596136{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:24px;height:24px;margin-right:4px;}.status-icon.jsx-2953596136:empty{display:none;}.status-icon.jsx-2953596136:last-child{margin-right:10px;}`);
-styles.__hash = "2953596136";
+const styles = new String(`.label-outlined.jsx-2074715656{height:${inputHeight + 10}px;position:relative;color:${colors.grey700};}.label-outlined.disabled.jsx-2074715656{cursor:not-allowed;}.label-outlined.dense.jsx-2074715656{height:${inputHeightDense + 10}px;}.label-outlined.jsx-2074715656:before{border:1px solid ${statusColors[iconStatuses.DEFAULT]};border-top:0;border-radius:0 0 ${borderRadius} ${borderRadius};box-sizing:border-box;bottom:0;content:'';height:75%;left:0;position:absolute;width:100%;}.label-outlined.valid.jsx-2074715656:before{border-color:${statusColors[iconStatuses.VALID]};}.label-outlined.warning.jsx-2074715656:before{border-color:${statusColors[iconStatuses.WARNING]};}.label-outlined.error.jsx-2074715656:before{border-color:${statusColors[iconStatuses.ERROR]};}.content.jsx-2074715656{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:54px;left:1px;position:relative;top:11px;width:calc(100% - 1px);}.dense.jsx-2074715656 .content.jsx-2074715656{height:42px;}.status-icon.jsx-2074715656{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:24px;height:24px;margin-right:4px;}.status-icon.jsx-2074715656:empty{display:none;}.status-icon.jsx-2074715656:last-child{margin-right:10px;}`);
+styles.__hash = "2074715656";
 
-const createLabelOutlinedClassName = props => cx('label-outlined', {
+const createLabelOutlinedClassName = props => cx('label-outlined', props.className, {
   focused: props.isFocused,
   dense: props.size === inputSizes.DENSE,
   valid: props.status === iconStatuses.VALID,
