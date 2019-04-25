@@ -60,8 +60,7 @@ function CircularProgress(_ref2) {
 }
 
 CircularProgress.defaultProps = {
-  overlay: false,
-  size: 'medium'
+  overlay: false
 };
 CircularProgress.propTypes = {
   className: _propTypes.default.string,

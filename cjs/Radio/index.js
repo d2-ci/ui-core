@@ -42,36 +42,10 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var icons = {
-  default: {
-    styles: _react.default.createElement(_style.default, {
-      id: "40145635"
-    }, ["svg.jsx-40145635{fill:".concat(_theme.colors.grey600, ";height:24px;width:24px;}")]),
-    className: "jsx-40145635"
-  },
-  checked: {
-    styles: _react.default.createElement(_style.default, {
-      id: "3230514506"
-    }, ["svg.jsx-3230514506{fill:".concat(_theme.colors.teal400, ";height:24px;width:24px;}")]),
-    className: "jsx-3230514506"
-  },
-  valid: {
-    styles: _react.default.createElement(_style.default, {
-      id: "1378458444"
-    }, ["svg.jsx-1378458444{fill:".concat(_theme.colors.blue600, ";height:24px;width:24px;}")]),
-    className: "jsx-1378458444"
-  },
-  warning: {
-    styles: _react.default.createElement(_style.default, {
-      id: "3220898470"
-    }, ["svg.jsx-3220898470{fill:".concat(_theme.colors.yellow500, ";height:24px;width:24px;}")]),
-    className: "jsx-3220898470"
-  },
-  error: {
-    styles: _react.default.createElement(_style.default, {
-      id: "2028575264"
-    }, ["svg.jsx-2028575264{fill:".concat(_theme.colors.red500, ";height:24px;width:24px;}")]),
-    className: "jsx-2028575264"
-  }
+  styles: _react.default.createElement(_style.default, {
+    id: "782643521"
+  }, ["svg.jsx-782643521{height:24px;width:24px;fill:".concat(_theme.theme.default, ";}"), ".checked.jsx-782643521{fill:".concat(_theme.colors.teal400, ";}"), ".disabled.jsx-782643521{fill:".concat(_theme.colors.grey500, ";}"), ".error.jsx-782643521{fill:".concat(_theme.theme.error, ";}"), ".valid.jsx-782643521{fill:".concat(_theme.theme.valid, ";}"), ".warning.jsx-782643521{fill:".concat(_theme.theme.warning, ";}")]),
+  className: "jsx-782643521"
 };
 
 var Radio =
@@ -104,18 +78,27 @@ function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           required = _this$props.required,
-          status = _this$props.status,
+          valid = _this$props.valid,
+          error = _this$props.error,
+          warning = _this$props.warning,
           checked = _this$props.checked,
-          className = _this$props.className;
-      var state = status === 'default' && checked ? 'checked' : status;
-      var icon = this.props.checked ? _react.default.createElement(_Radio.Checked, {
-        className: icons[state].className
+          className = _this$props.className,
+          disabled = _this$props.disabled;
+      var classes = (0, _classnames.default)(icons.className, {
+        checked: checked && !valid && !error && !warning,
+        disabled: disabled,
+        valid: valid,
+        error: error,
+        warning: warning
+      });
+      var icon = checked ? _react.default.createElement(_Radio.Checked, {
+        className: classes
       }) : _react.default.createElement(_Radio.Unchecked, {
-        className: icons[state].className
+        className: classes
       });
       return _react.default.createElement("label", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className, {
-          disabled: this.props.disabled
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, {
+          disabled: disabled
         }) || "")
       }, _react.default.createElement("input", {
         type: "radio",
@@ -126,10 +109,10 @@ function (_React$Component) {
         onChange: this.onChange,
         className: "jsx-".concat(_styles.default.__hash)
       }), icon, _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)({
           required: required
         }) || "")
-      }, this.props.label), icons[state].styles, _react.default.createElement(_style.default, {
+      }, this.props.label), icons.styles, _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default));
     }
@@ -139,18 +122,16 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.Radio = Radio;
-Radio.defaultProps = {
-  checked: false,
-  status: 'default',
-  disabled: false
-};
 Radio.propTypes = {
-  className: _propTypes.default.string,
   onChange: _propTypes.default.func.isRequired,
   name: _propTypes.default.string.isRequired,
   value: _propTypes.default.string.isRequired,
+  className: _propTypes.default.string,
   label: _propTypes.default.string,
+  required: _propTypes.default.bool,
   checked: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
-  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error'])
+  valid: _propTypes.default.bool,
+  warning: _propTypes.default.bool,
+  error: _propTypes.default.bool
 };

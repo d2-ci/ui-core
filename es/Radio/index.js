@@ -4,40 +4,14 @@ import _JSXStyle from "styled-jsx/style";
 import React from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
-import { colors } from '../theme.js';
+import { colors, theme } from '../theme.js';
 import styles from './styles.js';
 import { Checked, Unchecked } from '../icons/Radio.js';
 const icons = {
-  default: {
-    styles: React.createElement(_JSXStyle, {
-      id: "40145635"
-    }, `svg.jsx-40145635{fill:${colors.grey600};height:24px;width:24px;}`),
-    className: "jsx-40145635"
-  },
-  checked: {
-    styles: React.createElement(_JSXStyle, {
-      id: "3230514506"
-    }, `svg.jsx-3230514506{fill:${colors.teal400};height:24px;width:24px;}`),
-    className: "jsx-3230514506"
-  },
-  valid: {
-    styles: React.createElement(_JSXStyle, {
-      id: "1378458444"
-    }, `svg.jsx-1378458444{fill:${colors.blue600};height:24px;width:24px;}`),
-    className: "jsx-1378458444"
-  },
-  warning: {
-    styles: React.createElement(_JSXStyle, {
-      id: "3220898470"
-    }, `svg.jsx-3220898470{fill:${colors.yellow500};height:24px;width:24px;}`),
-    className: "jsx-3220898470"
-  },
-  error: {
-    styles: React.createElement(_JSXStyle, {
-      id: "2028575264"
-    }, `svg.jsx-2028575264{fill:${colors.red500};height:24px;width:24px;}`),
-    className: "jsx-2028575264"
-  }
+  styles: React.createElement(_JSXStyle, {
+    id: "782643521"
+  }, `svg.jsx-782643521{height:24px;width:24px;fill:${theme.default};}.checked.jsx-782643521{fill:${colors.teal400};}.disabled.jsx-782643521{fill:${colors.grey500};}.error.jsx-782643521{fill:${theme.error};}.valid.jsx-782643521{fill:${theme.valid};}.warning.jsx-782643521{fill:${theme.warning};}`),
+  className: "jsx-782643521"
 };
 
 class Radio extends React.Component {
@@ -50,19 +24,28 @@ class Radio extends React.Component {
   render() {
     const {
       required,
-      status,
+      valid,
+      error,
+      warning,
       checked,
-      className
+      className,
+      disabled
     } = this.props;
-    const state = status === 'default' && checked ? 'checked' : status;
-    const icon = this.props.checked ? React.createElement(Checked, {
-      className: icons[state].className
+    const classes = cx(icons.className, {
+      checked: checked && !valid && !error && !warning,
+      disabled,
+      valid,
+      error,
+      warning
+    });
+    const icon = checked ? React.createElement(Checked, {
+      className: classes
     }) : React.createElement(Unchecked, {
-      className: icons[state].className
+      className: classes
     });
     return React.createElement("label", {
-      className: `jsx-${styles.__hash}` + " " + (cx('base', className, {
-        disabled: this.props.disabled
+      className: `jsx-${styles.__hash}` + " " + (cx(className, {
+        disabled
       }) || "")
     }, React.createElement("input", {
       type: "radio",
@@ -73,29 +56,27 @@ class Radio extends React.Component {
       onChange: this.onChange,
       className: `jsx-${styles.__hash}`
     }), icon, React.createElement("span", {
-      className: `jsx-${styles.__hash}` + " " + (cx('label', {
+      className: `jsx-${styles.__hash}` + " " + (cx({
         required
       }) || "")
-    }, this.props.label), icons[state].styles, React.createElement(_JSXStyle, {
+    }, this.props.label), icons.styles, React.createElement(_JSXStyle, {
       id: styles.__hash
     }, styles));
   }
 
 }
 
-Radio.defaultProps = {
-  checked: false,
-  status: 'default',
-  disabled: false
-};
 Radio.propTypes = {
-  className: propTypes.string,
   onChange: propTypes.func.isRequired,
   name: propTypes.string.isRequired,
   value: propTypes.string.isRequired,
+  className: propTypes.string,
   label: propTypes.string,
+  required: propTypes.bool,
   checked: propTypes.bool,
   disabled: propTypes.bool,
-  status: propTypes.oneOf(['default', 'valid', 'warning', 'error'])
+  valid: propTypes.bool,
+  warning: propTypes.bool,
+  error: propTypes.bool
 };
 export { Radio };

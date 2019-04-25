@@ -85,7 +85,7 @@ MenuItem.defaultProps = {
 MenuItem.propTypes = {
   label: _propTypes.default.oneOf([_propTypes.default.string, _propTypes.default.element]).isRequired,
   value: _propTypes.default.any.isRequired,
-  dense: _propTypes.default.boolean,
+  dense: _propTypes.default.bool,
   className: _propTypes.default.string,
   icon: _propTypes.default.element,
   children: _propTypes.default.element,

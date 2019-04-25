@@ -1,5 +1,7 @@
 import _JSXStyle from "styled-jsx/style";
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 import React, { Component } from 'react';
@@ -7,7 +9,7 @@ import propTypes from 'prop-types';
 import cx from 'classnames';
 import { ArrowUp, ArrowDown } from '../icons/Arrow.js';
 import { DropMenu } from '../DropMenu';
-import buttons from '../Button/styles.js';
+import { Button } from '../Button';
 
 var _ref =
 /*#__PURE__*/
@@ -59,39 +61,28 @@ class DropdownButton extends Component {
     const ArrowIcon = open ? _ref : _ref2;
     return React.createElement("div", {
       ref: c => this.elContainer = c,
-      className: "jsx-3163060161 " + `jsx-${buttons.__hash}`
-    }, React.createElement("button", {
-      disabled: this.props.disabled,
+      className: "jsx-3163060161"
+    }, React.createElement(Button, _extends({}, this.props, {
       onClick: this.onToggle,
-      className: "jsx-3163060161 " + `jsx-${buttons.__hash}` + " " + (cx('base', `kind-${this.props.kind}`, `size-${this.props.size}`, this.props.className, {
-        'icon-only': this.props.icon && !this.props.children,
-        icon: this.props.icon
-      }) || "")
-    }, this.props.icon && React.createElement("span", {
-      className: "jsx-3163060161 " + `jsx-${buttons.__hash}` + " " + "button-icon"
-    }, this.props.icon), this.props.children, ArrowIcon), open && React.createElement(DropMenu, {
+      className: this.props.className,
+      icon: this.props.icon
+    }), this.props.children, ArrowIcon), open && React.createElement(DropMenu, {
       component: this.props.component
-    }), React.createElement(_JSXStyle, {
-      id: buttons.__hash
-    }, buttons), _ref3);
+    }), _ref3);
   }
 
 }
 
-DropdownButton.defaultProps = {
-  size: 'medium',
-  kind: 'basic',
-  disabled: false
-};
 DropdownButton.propTypes = {
   className: propTypes.string,
   component: propTypes.element.isRequired,
-  width: propTypes.string,
   icon: propTypes.element,
   children: propTypes.string,
-  kind: propTypes.oneOf(['basic', 'primary', 'secondary', 'destructive']),
-  type: propTypes.oneOf(['submit', 'reset', 'button']),
-  size: propTypes.oneOf(['small', 'medium', 'large']),
+  small: propTypes.bool,
+  large: propTypes.bool,
+  primary: propTypes.bool,
+  secondary: propTypes.bool,
+  destructive: propTypes.bool,
   disabled: propTypes.bool,
   onClick: propTypes.func
 };

@@ -17,26 +17,30 @@ var _theme = require("../theme.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var Help = function Help(_ref) {
   var children = _ref.children,
-      status = _ref.status,
+      valid = _ref.valid,
+      error = _ref.error,
+      warning = _ref.warning,
       className = _ref.className;
   return _react.default.createElement("p", {
-    className: _style.default.dynamic([["3259763296", [_theme.theme.default, _theme.theme.default, _theme.theme.valid, _theme.theme.error, _theme.theme.warning]]]) + " " + ((0, _classnames.default)(className, _defineProperty({}, "status-".concat(status), true)) || "")
+    className: _style.default.dynamic([["1415559217", [_theme.theme.default, _theme.theme.valid, _theme.theme.error, _theme.theme.warning]]]) + " " + ((0, _classnames.default)(className, {
+      valid: valid,
+      error: error,
+      warning: warning
+    }) || "")
   }, children, _react.default.createElement(_style.default, {
-    id: "3259763296",
-    dynamic: [_theme.theme.default, _theme.theme.default, _theme.theme.valid, _theme.theme.error, _theme.theme.warning]
-  }, ["p.__jsx-style-dynamic-selector{height:12px;padding-top:8px;padding-left:12px;font-size:12px;margin:0;line-height:12px;cursor:help;color:".concat(_theme.theme.default, ";}"), ".status-default.__jsx-style-dynamic-selector{color:".concat(_theme.theme.default, ";}"), ".status-valid.__jsx-style-dynamic-selector{color:".concat(_theme.theme.valid, ";}"), ".status-error.__jsx-style-dynamic-selector{color:".concat(_theme.theme.error, ";}"), ".status-warning.__jsx-style-dynamic-selector{color:".concat(_theme.theme.warning, ";}")]));
+    id: "1415559217",
+    dynamic: [_theme.theme.default, _theme.theme.valid, _theme.theme.error, _theme.theme.warning]
+  }, ["p.__jsx-style-dynamic-selector{height:12px;padding-top:8px;padding-left:12px;font-size:12px;margin:0;line-height:12px;cursor:help;color:".concat(_theme.theme.default, ";}"), ".valid.__jsx-style-dynamic-selector{color:".concat(_theme.theme.valid, ";}"), ".error.__jsx-style-dynamic-selector{color:".concat(_theme.theme.error, ";}"), ".warning.__jsx-style-dynamic-selector{color:".concat(_theme.theme.warning, ";}")]));
 };
 
 exports.Help = Help;
-Help.defaultProps = {
-  status: 'default'
-};
+Help.defaultProps = {};
 Help.propTypes = {
   className: _propTypes.default.string,
   children: _propTypes.default.string.isRequired,
-  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error'])
+  error: _propTypes.default.bool,
+  valid: _propTypes.default.bool,
+  warning: _propTypes.default.bool
 };

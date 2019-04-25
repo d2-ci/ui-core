@@ -17,13 +17,15 @@ var _Arrow = require("../icons/Arrow.js");
 
 var _DropMenu = require("../DropMenu");
 
-var _styles = _interopRequireDefault(require("../Button/styles.js"));
+var _Button = require("../Button");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -111,21 +113,14 @@ function (_Component) {
         ref: function ref(c) {
           return _this2.elContainer = c;
         },
-        className: "jsx-3163060161 " + "jsx-".concat(_styles.default.__hash)
-      }, _react.default.createElement("button", {
-        disabled: this.props.disabled,
+        className: "jsx-3163060161"
+      }, _react.default.createElement(_Button.Button, _extends({}, this.props, {
         onClick: this.onToggle,
-        className: "jsx-3163060161 " + "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size), this.props.className, {
-          'icon-only': this.props.icon && !this.props.children,
-          icon: this.props.icon
-        }) || "")
-      }, this.props.icon && _react.default.createElement("span", {
-        className: "jsx-3163060161 " + "jsx-".concat(_styles.default.__hash) + " " + "button-icon"
-      }, this.props.icon), this.props.children, ArrowIcon), open && _react.default.createElement(_DropMenu.DropMenu, {
+        className: this.props.className,
+        icon: this.props.icon
+      }), this.props.children, ArrowIcon), open && _react.default.createElement(_DropMenu.DropMenu, {
         component: this.props.component
       }), _react.default.createElement(_style.default, {
-        id: _styles.default.__hash
-      }, _styles.default), _react.default.createElement(_style.default, {
         id: "3163060161"
       }, ["div.jsx-3163060161{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}"]));
     }
@@ -135,20 +130,16 @@ function (_Component) {
 }(_react.Component);
 
 exports.DropdownButton = DropdownButton;
-DropdownButton.defaultProps = {
-  size: 'medium',
-  kind: 'basic',
-  disabled: false
-};
 DropdownButton.propTypes = {
   className: _propTypes.default.string,
   component: _propTypes.default.element.isRequired,
-  width: _propTypes.default.string,
   icon: _propTypes.default.element,
   children: _propTypes.default.string,
-  kind: _propTypes.default.oneOf(['basic', 'primary', 'secondary', 'destructive']),
-  type: _propTypes.default.oneOf(['submit', 'reset', 'button']),
-  size: _propTypes.default.oneOf(['small', 'medium', 'large']),
+  small: _propTypes.default.bool,
+  large: _propTypes.default.bool,
+  primary: _propTypes.default.bool,
+  secondary: _propTypes.default.bool,
+  destructive: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   onClick: _propTypes.default.func
 };

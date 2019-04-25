@@ -107,8 +107,11 @@ Switch.propTypes = {
   name: _propTypes.default.string.isRequired,
   onChange: _propTypes.default.func.isRequired,
   className: _propTypes.default.string,
-  checked: _propTypes.default.bool,
   label: _propTypes.default.string,
+  required: _propTypes.default.bool,
+  checked: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
-  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error'])
+  valid: _propTypes.default.bool,
+  warning: _propTypes.default.bool,
+  error: _propTypes.default.bool
 };
