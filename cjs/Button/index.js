@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Button = Button;
+exports.Button = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -17,7 +17,7 @@ var _styles = _interopRequireDefault(require("./styles.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Button(_ref) {
+var Button = function Button(_ref) {
   var type = _ref.type,
       children = _ref.children,
       kind = _ref.kind,
@@ -45,8 +45,9 @@ function Button(_ref) {
   }, icon), children, _react.default.createElement(_style.default, {
     id: _styles.default.__hash
   }, _styles.default));
-}
+};
 
+exports.Button = Button;
 Button.defaultProps = {
   name: '',
   value: '',

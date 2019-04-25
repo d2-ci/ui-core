@@ -17,18 +17,16 @@ const subMenu = {
   className: "jsx-2242740484"
 };
 
-function SubMenu({
+const SubMenu = ({
   size,
   children,
   onClick,
   className
-}) {
-  return React.createElement("div", {
-    className: className
-  }, children);
-}
+}) => React.createElement("div", {
+  className: className
+}, children);
 
-function MenuItem({
+const MenuItem = ({
   value,
   label,
   icon,
@@ -38,7 +36,7 @@ function MenuItem({
   size,
   onClick,
   className
-}) {
+}) => {
   const hasMenu = !!children;
   return React.createElement("li", {
     onClick: evt => {
@@ -62,7 +60,7 @@ function MenuItem({
   }, children), subMenu.styles, React.createElement(_JSXStyle, {
     id: styles.__hash
   }, styles));
-}
+};
 
 MenuItem.defaultProps = {
   size: 'default',

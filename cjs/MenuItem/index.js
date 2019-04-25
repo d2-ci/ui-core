@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.MenuItem = MenuItem;
+exports.MenuItem = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -32,7 +32,7 @@ var subMenu = {
   className: "jsx-2242740484"
 };
 
-function SubMenu(_ref) {
+var SubMenu = function SubMenu(_ref) {
   var size = _ref.size,
       children = _ref.children,
       onClick = _ref.onClick,
@@ -40,9 +40,9 @@ function SubMenu(_ref) {
   return _react.default.createElement("div", {
     className: className
   }, children);
-}
+};
 
-function MenuItem(_ref2) {
+var MenuItem = function MenuItem(_ref2) {
   var value = _ref2.value,
       label = _ref2.label,
       icon = _ref2.icon,
@@ -76,8 +76,9 @@ function MenuItem(_ref2) {
   }, children), subMenu.styles, _react.default.createElement(_style.default, {
     id: _styles.default.__hash
   }, _styles.default));
-}
+};
 
+exports.MenuItem = MenuItem;
 MenuItem.defaultProps = {
   size: 'default',
   active: false,

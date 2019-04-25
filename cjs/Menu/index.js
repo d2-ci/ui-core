@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Menu = Menu;
+exports.Menu = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -19,7 +19,7 @@ var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Menu(_ref) {
+var Menu = function Menu(_ref) {
   var size = _ref.size,
       children = _ref.children,
       className = _ref.className;
@@ -28,8 +28,9 @@ function Menu(_ref) {
   }, children), _react.default.createElement(_style.default, {
     id: _styles.default.__hash
   }, _styles.default));
-}
+};
 
+exports.Menu = Menu;
 Menu.defaultProps = {
   size: 'default'
 };

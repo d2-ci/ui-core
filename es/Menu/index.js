@@ -5,17 +5,15 @@ import { Card } from '../Card';
 import cx from 'classnames';
 import styles from './styles';
 
-function Menu({
+const Menu = ({
   size,
   children,
   className
-}) {
-  return React.createElement(Card, null, React.createElement("ul", {
-    className: `jsx-${styles.__hash}` + " " + (cx('base', size, className) || "")
-  }, children), React.createElement(_JSXStyle, {
-    id: styles.__hash
-  }, styles));
-}
+}) => React.createElement(Card, null, React.createElement("ul", {
+  className: `jsx-${styles.__hash}` + " " + (cx('base', size, className) || "")
+}, children), React.createElement(_JSXStyle, {
+  id: styles.__hash
+}, styles));
 
 Menu.defaultProps = {
   size: 'default'

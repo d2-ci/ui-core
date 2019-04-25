@@ -4,7 +4,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import styles from './styles.js';
 
-function Button({
+const Button = ({
   type,
   children,
   kind,
@@ -15,23 +15,21 @@ function Button({
   disabled,
   onClick,
   className
-}) {
-  return React.createElement("button", {
-    disabled: disabled,
-    onClick: evt => onClick && onClick(name, value),
-    type: type,
-    name: name,
-    value: value,
-    className: `jsx-${styles.__hash}` + " " + (cx('base', `kind-${kind}`, `size-${size}`, className, {
-      'icon-only': icon && !children,
-      icon
-    }) || "")
-  }, icon && React.createElement("span", {
-    className: `jsx-${styles.__hash}` + " " + "button-icon"
-  }, icon), children, React.createElement(_JSXStyle, {
-    id: styles.__hash
-  }, styles));
-}
+}) => React.createElement("button", {
+  disabled: disabled,
+  onClick: evt => onClick && onClick(name, value),
+  type: type,
+  name: name,
+  value: value,
+  className: `jsx-${styles.__hash}` + " " + (cx('base', `kind-${kind}`, `size-${size}`, className, {
+    'icon-only': icon && !children,
+    icon
+  }) || "")
+}, icon && React.createElement("span", {
+  className: `jsx-${styles.__hash}` + " " + "button-icon"
+}, icon), children, React.createElement(_JSXStyle, {
+  id: styles.__hash
+}, styles));
 
 Button.defaultProps = {
   name: '',

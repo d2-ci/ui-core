@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.LinearProgress = LinearProgress;
+exports.LinearProgress = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -17,7 +17,7 @@ var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function LinearProgress(_ref) {
+var LinearProgress = function LinearProgress(_ref) {
   var amount = _ref.amount,
       margin = _ref.margin,
       className = _ref.className;
@@ -37,8 +37,9 @@ function LinearProgress(_ref) {
   }), _react.default.createElement(_style.default, {
     id: _styles.default.__hash
   }, _styles.default));
-}
+};
 
+exports.LinearProgress = LinearProgress;
 LinearProgress.propTypes = {
   className: _propTypes.default.string,
   amount: _propTypes.default.number,
