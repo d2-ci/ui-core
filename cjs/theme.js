@@ -83,6 +83,7 @@ var colors = {
 exports.colors = colors;
 var theme = {
   /* theme */
+  fonts: 'Roboto, sans-serif',
 
   /*primary*/
   primary900: colors.blue900,
