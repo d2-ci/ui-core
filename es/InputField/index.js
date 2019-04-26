@@ -13,7 +13,8 @@ class InputField extends React.Component {
     super(props);
 
     _defineProperty(this, "state", {
-      focus: false
+      focus: false,
+      value: ''
     });
 
     _defineProperty(this, "onFocus", evt => {
@@ -41,11 +42,15 @@ class InputField extends React.Component {
         return;
       }
 
+      this.setState({
+        value: evt.target.value
+      });
       this.props.onChange(this.props.name, evt.target.value);
     });
 
     this.state = {
-      focus: props.focus
+      focus: props.focus,
+      value: props.value || ''
     };
   }
 
@@ -70,7 +75,7 @@ class InputField extends React.Component {
     return React.createElement(Container, {
       focus: this.state.focus,
       label: label,
-      value: !!value || placeholder,
+      value: !!this.state.value || !!placeholder,
       htmlFor: name,
       required: required,
       disabled: disabled,
@@ -87,7 +92,7 @@ class InputField extends React.Component {
       onChange: this.onChange,
       name: name,
       type: type,
-      value: value,
+      value: this.state.value,
       placeholder: placeholder,
       filled: filled,
       disabled: disabled,
@@ -111,7 +116,7 @@ InputField.propTypes = {
   name: propTypes.string.isRequired,
   onChange: propTypes.func.isRequired,
   label: propTypes.string.isRequired,
-  value: propTypes.string.isRequired,
+  value: propTypes.string,
   className: propTypes.string,
   required: propTypes.bool,
   disabled: propTypes.bool,

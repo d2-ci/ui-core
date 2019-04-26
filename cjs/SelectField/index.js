@@ -71,9 +71,18 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SelectField).call(this, props));
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      focus: false,
+      value: ''
+    });
+
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (event) {
       if (!_this.props.disabled) {
         var value = event.target.value;
+
+        _this.setState({
+          value: value
+        });
 
         _this.props.onChange(_this.props.name, value);
       }
@@ -100,7 +109,8 @@ function (_React$Component) {
     });
 
     _this.state = {
-      focused: props.focused
+      focused: props.focused,
+      value: props.value
     };
     return _this;
   }
@@ -122,7 +132,6 @@ function (_React$Component) {
           required = _this$props.required,
           label = _this$props.label,
           disabled = _this$props.disabled,
-          placeholder = _this$props.placeholder,
           value = _this$props.value,
           name = _this$props.name,
           valid = _this$props.valid,
@@ -134,7 +143,7 @@ function (_React$Component) {
         onClick: this.onFocus,
         focus: this.state.focus,
         label: label,
-        value: !!value || placeholder,
+        value: !!this.state.value,
         htmlFor: name,
         required: required,
         disabled: disabled,
@@ -144,7 +153,7 @@ function (_React$Component) {
         loading: loading,
         dense: dense
       }, _react.default.createElement(_Select.Select, {
-        value: value,
+        value: this.state.value,
         disabled: disabled,
         list: list,
         filled: filled,
@@ -164,7 +173,7 @@ SelectField.propTypes = {
   name: _propTypes.default.string.isRequired,
   onChange: _propTypes.default.func.isRequired,
   label: _propTypes.default.string.isRequired,
-  value: _propTypes.default.string.isRequired,
+  value: _propTypes.default.string,
   list: _Select.Select.propTypes.list,
   className: _propTypes.default.string,
   required: _propTypes.default.bool,

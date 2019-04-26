@@ -59,12 +59,22 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Switch)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      checked: _this.props.checked
+    });
+
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function () {
       if (_this.props.disabled) {
         return;
       }
 
-      _this.props.onChange(!_this.props.checked);
+      var checked = !_this.state.checked;
+
+      _this.setState({
+        checked: checked
+      });
+
+      _this.props.onChange(_this.props.name, checked);
     });
 
     return _this;
@@ -90,11 +100,11 @@ function (_React$Component) {
         type: "checkbox",
         disabled: disabled,
         name: name,
-        checked: checked,
+        checked: this.state.checked,
         onChange: this.onChange,
         className: "jsx-".concat(_styles.default.__hash)
       }), _react.default.createElement(_Switch.SwitchIcon, {
-        checked: checked,
+        checked: this.state.checked,
         disabled: disabled,
         valid: valid,
         warning: warning,

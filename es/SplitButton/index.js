@@ -73,13 +73,13 @@ class SplitButton extends Component {
     return React.createElement("div", {
       ref: c => this.elContainer = c,
       className: "jsx-3163060161"
-    }, React.createElement(Button, _extends({
-      onClick: evt => this.props.onClick && this.props.onClick(this.props.name, this.props.value),
+    }, React.createElement(Button, _extends({}, this.props, {
+      onClick: evt => this.props.onClick(this.props.name, this.props.value),
       className: cx(this.props.className, leftButton.className)
-    }, this.props), this.props.children), React.createElement(Button, _extends({
-      onClick: this.onToggle,
-      className: cx(this.props.className, rightButton.className)
-    }, this.props), icon), open && React.createElement(DropMenu, {
+    }), this.props.children), React.createElement(Button, _extends({}, this.props, {
+      className: cx(this.props.className, rightButton.className),
+      onClick: this.onToggle
+    }), icon), open && React.createElement(DropMenu, {
       component: this.props.component
     }), leftButton.styles, rightButton.styles, _ref3);
   }
@@ -90,7 +90,6 @@ SplitButton.propTypes = {
   component: propTypes.element.isRequired,
   onClick: propTypes.func.isRequired,
   className: propTypes.string,
-  children: propTypes.string,
   name: propTypes.string,
   value: propTypes.string,
   icon: propTypes.element,

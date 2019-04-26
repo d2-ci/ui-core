@@ -42,7 +42,7 @@ export class Select extends Component {
     });
     return React.createElement("select", {
       onChange: onChange,
-      value: value,
+      value: value || -1,
       disabled: disabled,
       onFocus: onFocus,
       onBlur: onBlur,
@@ -50,8 +50,7 @@ export class Select extends Component {
     }, React.createElement("option", {
       hidden: true,
       disabled: true,
-      selected: true,
-      value: true,
+      value: "-1",
       className: `jsx-${styles.__hash}`
     }), this.props.list.map(({
       value,
@@ -82,14 +81,14 @@ Select.propTypes = {
   onChange: propTypes.func.isRequired,
   onFocus: propTypes.func,
   onBlur: propTypes.func,
-  list: propTypes.shape({
+  list: propTypes.arrayOf(propTypes.shape({
     value: propTypes.string.isRequired,
     label: propTypes.string.isRequired,
     list: propTypes.shape({
       value: propTypes.string.isRequired,
       label: propTypes.string.isRequired
     })
-  }).isRequired,
+  })).isRequired,
   disabled: propTypes.bool,
   filled: propTypes.bool,
   dense: propTypes.bool

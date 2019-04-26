@@ -63,7 +63,7 @@ Outlined.propTypes = {
   htmlFor: propTypes.string.isRequired,
   onClick: propTypes.func,
   focus: propTypes.bool,
-  value: propTypes.string,
+  value: propTypes.bool,
   disabled: propTypes.bool,
   required: propTypes.bool,
   valid: propTypes.bool,

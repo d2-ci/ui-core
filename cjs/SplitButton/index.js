@@ -127,15 +127,15 @@ function (_Component) {
           return _this2.elContainer = c;
         },
         className: "jsx-3163060161"
-      }, _react.default.createElement(_Button.Button, _extends({
+      }, _react.default.createElement(_Button.Button, _extends({}, this.props, {
         onClick: function onClick(evt) {
-          return _this2.props.onClick && _this2.props.onClick(_this2.props.name, _this2.props.value);
+          return _this2.props.onClick(_this2.props.name, _this2.props.value);
         },
         className: (0, _classnames.default)(this.props.className, leftButton.className)
-      }, this.props), this.props.children), _react.default.createElement(_Button.Button, _extends({
-        onClick: this.onToggle,
-        className: (0, _classnames.default)(this.props.className, rightButton.className)
-      }, this.props), icon), open && _react.default.createElement(_DropMenu.DropMenu, {
+      }), this.props.children), _react.default.createElement(_Button.Button, _extends({}, this.props, {
+        className: (0, _classnames.default)(this.props.className, rightButton.className),
+        onClick: this.onToggle
+      }), icon), open && _react.default.createElement(_DropMenu.DropMenu, {
         component: this.props.component
       }), leftButton.styles, rightButton.styles, _react.default.createElement(_style.default, {
         id: "3163060161"
@@ -151,7 +151,6 @@ SplitButton.propTypes = {
   component: _propTypes.default.element.isRequired,
   onClick: _propTypes.default.func.isRequired,
   className: _propTypes.default.string,
-  children: _propTypes.default.string,
   name: _propTypes.default.string,
   value: _propTypes.default.string,
   icon: _propTypes.default.element,

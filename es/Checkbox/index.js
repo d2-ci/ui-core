@@ -19,24 +19,24 @@ class Checkbox extends React.Component {
     super(...args);
 
     _defineProperty(this, "state", {
-      indeterminate: this.props.indeterminate
+      indeterminate: this.props.indeterminate,
+      checked: this.props.checked
     });
 
-    _defineProperty(this, "onChange", () => {
-      this.props.onChange(this.props.name, !this.props.checked);
-
-      if (this.state.indeterminate) {
-        this.setState({
-          indeterminate: false
-        });
-      }
+    _defineProperty(this, "onChange", evt => {
+      const checked = !this.state.checked;
+      const indeterminate = this.state.indeterminate ? false : null;
+      this.setState({
+        checked,
+        indeterminate
+      });
+      this.props.onChange(this.props.name, evt.target.checked);
     });
   }
 
   render() {
     const {
       required,
-      checked,
       className,
       disabled,
       valid,
@@ -44,7 +44,7 @@ class Checkbox extends React.Component {
       warning
     } = this.props;
     const classes = cx(icons.className, {
-      checked: checked && !valid && !error && !warning,
+      checked: this.state.checked && !valid && !error && !warning,
       disabled,
       valid,
       error,
@@ -58,7 +58,7 @@ class Checkbox extends React.Component {
       icon = React.createElement(Indeterminate, {
         className: classes
       });
-    } else if (this.props.checked) {
+    } else if (this.state.checked) {
       icon = React.createElement(Checked, {
         className: classes
       });
@@ -71,7 +71,7 @@ class Checkbox extends React.Component {
     }, React.createElement("input", {
       type: "checkbox",
       onChange: this.onChange,
-      checked: this.props.checked,
+      checked: this.state.checked,
       disabled: this.props.disabled,
       className: `jsx-${styles.__hash}`
     }), icon, React.createElement("span", {

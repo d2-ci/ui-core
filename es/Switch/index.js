@@ -13,12 +13,20 @@ class Switch extends React.Component {
   constructor(...args) {
     super(...args);
 
+    _defineProperty(this, "state", {
+      checked: this.props.checked
+    });
+
     _defineProperty(this, "onChange", () => {
       if (this.props.disabled) {
         return;
       }
 
-      this.props.onChange(!this.props.checked);
+      const checked = !this.state.checked;
+      this.setState({
+        checked
+      });
+      this.props.onChange(this.props.name, checked);
     });
   }
 
@@ -41,11 +49,11 @@ class Switch extends React.Component {
       type: "checkbox",
       disabled: disabled,
       name: name,
-      checked: checked,
+      checked: this.state.checked,
       onChange: this.onChange,
       className: `jsx-${styles.__hash}`
     }), React.createElement(SwitchIcon, {
-      checked: checked,
+      checked: this.state.checked,
       disabled: disabled,
       valid: valid,
       warning: warning,

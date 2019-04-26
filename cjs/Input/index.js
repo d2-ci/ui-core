@@ -115,10 +115,10 @@ exports.Input = Input;
 Input.propTypes = {
   name: _propTypes.default.string.isRequired,
   type: _propTypes.default.string.isRequired,
-  value: _propTypes.default.string.isRequired,
   onFocus: _propTypes.default.func.isRequired,
   onBlur: _propTypes.default.func.isRequired,
   onChange: _propTypes.default.func.isRequired,
+  value: _propTypes.default.string,
   placeholder: _propTypes.default.string,
   focus: _propTypes.default.bool,
   disabled: _propTypes.default.bool,

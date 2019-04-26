@@ -94,7 +94,7 @@ function (_Component) {
       });
       return _react.default.createElement("select", {
         onChange: onChange,
-        value: value,
+        value: value || -1,
         disabled: disabled,
         onFocus: onFocus,
         onBlur: onBlur,
@@ -102,8 +102,7 @@ function (_Component) {
       }, _react.default.createElement("option", {
         hidden: true,
         disabled: true,
-        selected: true,
-        value: true,
+        value: "-1",
         className: "jsx-".concat(styles.__hash)
       }), this.props.list.map(function (_ref) {
         var value = _ref.value,
@@ -140,14 +139,14 @@ Select.propTypes = {
   onChange: _propTypes.default.func.isRequired,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func,
-  list: _propTypes.default.shape({
+  list: _propTypes.default.arrayOf(_propTypes.default.shape({
     value: _propTypes.default.string.isRequired,
     label: _propTypes.default.string.isRequired,
     list: _propTypes.default.shape({
       value: _propTypes.default.string.isRequired,
       label: _propTypes.default.string.isRequired
     })
-  }).isRequired,
+  })).isRequired,
   disabled: _propTypes.default.bool,
   filled: _propTypes.default.bool,
   dense: _propTypes.default.bool

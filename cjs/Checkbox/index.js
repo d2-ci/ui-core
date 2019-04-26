@@ -67,17 +67,20 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Checkbox)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      indeterminate: _this.props.indeterminate
+      indeterminate: _this.props.indeterminate,
+      checked: _this.props.checked
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function () {
-      _this.props.onChange(_this.props.name, !_this.props.checked);
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
+      var checked = !_this.state.checked;
+      var indeterminate = _this.state.indeterminate ? false : null;
 
-      if (_this.state.indeterminate) {
-        _this.setState({
-          indeterminate: false
-        });
-      }
+      _this.setState({
+        checked: checked,
+        indeterminate: indeterminate
+      });
+
+      _this.props.onChange(_this.props.name, evt.target.checked);
     });
 
     return _this;
@@ -88,14 +91,13 @@ function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           required = _this$props.required,
-          checked = _this$props.checked,
           className = _this$props.className,
           disabled = _this$props.disabled,
           valid = _this$props.valid,
           error = _this$props.error,
           warning = _this$props.warning;
       var classes = (0, _classnames.default)(icons.className, {
-        checked: checked && !valid && !error && !warning,
+        checked: this.state.checked && !valid && !error && !warning,
         disabled: disabled,
         valid: valid,
         error: error,
@@ -110,7 +112,7 @@ function (_React$Component) {
         icon = _react.default.createElement(_Checkbox.Indeterminate, {
           className: classes
         });
-      } else if (this.props.checked) {
+      } else if (this.state.checked) {
         icon = _react.default.createElement(_Checkbox.Checked, {
           className: classes
         });
@@ -123,7 +125,7 @@ function (_React$Component) {
       }, _react.default.createElement("input", {
         type: "checkbox",
         onChange: this.onChange,
-        checked: this.props.checked,
+        checked: this.state.checked,
         disabled: this.props.disabled,
         className: "jsx-".concat(_styles.default.__hash)
       }), icon, _react.default.createElement("span", {

@@ -54,7 +54,8 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(InputField).call(this, props));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      focus: false
+      focus: false,
+      value: ''
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (evt) {
@@ -82,11 +83,16 @@ function (_React$Component) {
         return;
       }
 
+      _this.setState({
+        value: evt.target.value
+      });
+
       _this.props.onChange(_this.props.name, evt.target.value);
     });
 
     _this.state = {
-      focus: props.focus
+      focus: props.focus,
+      value: props.value || ''
     };
     return _this;
   }
@@ -113,7 +119,7 @@ function (_React$Component) {
       return _react.default.createElement(Container, {
         focus: this.state.focus,
         label: label,
-        value: !!value || placeholder,
+        value: !!this.state.value || !!placeholder,
         htmlFor: name,
         required: required,
         disabled: disabled,
@@ -130,7 +136,7 @@ function (_React$Component) {
         onChange: this.onChange,
         name: name,
         type: type,
-        value: value,
+        value: this.state.value,
         placeholder: placeholder,
         filled: filled,
         disabled: disabled,
@@ -157,7 +163,7 @@ InputField.propTypes = {
   name: _propTypes.default.string.isRequired,
   onChange: _propTypes.default.func.isRequired,
   label: _propTypes.default.string.isRequired,
-  value: _propTypes.default.string.isRequired,
+  value: _propTypes.default.string,
   className: _propTypes.default.string,
   required: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
