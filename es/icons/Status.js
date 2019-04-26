@@ -2,18 +2,11 @@ import _JSXStyle from "styled-jsx/style";
 import propTypes from 'prop-types';
 import React from 'react';
 import { theme, colors } from '../theme';
-import { iconStatusPropType, iconStatuses } from './constants';
-export const statusToIcon = {
-  [iconStatuses.VALID]: Valid,
-  [iconStatuses.WARNING]: Warning,
-  [iconStatuses.ERROR]: Error,
-  [iconStatuses.LOADING]: Loading
-  /**
-   * Icon: Valid
-   * =============
-   */
+/**
+ * Icon: Valid
+ * =============
+ */
 
-};
 const iconStyleValid = new String(`svg.jsx-294723437{fill:${colors.blue600};width:24px;height:24px;margin-right:4px;}`);
 /**
  * @param {Object} props
@@ -161,21 +154,24 @@ Loading.propTypes = {
 
 };
 export const StatusIconNoDefault = ({
-  status,
+  error,
+  warning,
+  valid,
+  loading,
   className
-}) => status === iconStatuses.VALID ? React.createElement(Valid, {
+}) => valid ? React.createElement(Valid, {
   className: className
-}) : status === iconStatuses.WARNING ? React.createElement(Warning, {
+}) : warning ? React.createElement(Warning, {
   className: className
-}) : status === iconStatuses.ERROR ? React.createElement(Error, {
+}) : error ? React.createElement(Error, {
   className: className
-}) : status === iconStatuses.LOADING ? React.createElement(Loading, {
+}) : loading ? React.createElement(Loading, {
   className: className
 }) : null;
 StatusIconNoDefault.propTypes = {
-  status: iconStatusPropType,
+  valid: propTypes.bool,
+  error: propTypes.bool,
+  warning: propTypes.bool,
+  loading: propTypes.bool,
   className: propTypes.string
-};
-StatusIconNoDefault.defaultProps = {
-  className: ''
 };

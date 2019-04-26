@@ -19,10 +19,6 @@ var _Select = require("./Select");
 
 var _theme = require("../theme");
 
-var _constants = require("../icons/constants");
-
-var _constants2 = require("../forms/constants");
-
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -117,25 +113,42 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var isFilled = this.props.kind === _constants2.inputKinds.FILLED;
-      var isDense = this.props.size === _constants2.inputSizes.DENSE;
-      var Container = this.props.kind === _constants2.inputKinds.FILLED ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
+      var _this$props = this.props,
+          type = _this$props.type,
+          list = _this$props.list,
+          filled = _this$props.filled,
+          focus = _this$props.focus,
+          dense = _this$props.dense,
+          required = _this$props.required,
+          label = _this$props.label,
+          disabled = _this$props.disabled,
+          placeholder = _this$props.placeholder,
+          value = _this$props.value,
+          name = _this$props.name,
+          valid = _this$props.valid,
+          error = _this$props.error,
+          warning = _this$props.warning,
+          loading = _this$props.loading;
+      var Container = filled ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
       return _react.default.createElement(Container, {
-        label: this.props.label,
-        isFocused: this.isFocused(),
-        hasValue: true,
-        htmlFor: this.props.name,
-        required: this.props.required,
-        disabled: this.props.disabled,
-        status: this.props.status,
-        size: this.props.size,
-        onClick: this.onFocus
+        onClick: this.onFocus,
+        focus: this.state.focus,
+        label: label,
+        value: !!value || placeholder,
+        htmlFor: name,
+        required: required,
+        disabled: disabled,
+        valid: valid,
+        warning: warning,
+        error: error,
+        loading: loading,
+        dense: dense
       }, _react.default.createElement(_Select.Select, {
-        value: this.props.value,
-        disabled: this.props.disabled,
-        list: this.props.list,
-        kind: this.props.kind,
-        size: this.props.size,
+        value: value,
+        disabled: disabled,
+        list: list,
+        filled: filled,
+        dense: dense,
         onChange: this.onChange,
         onFocus: this.onFocus,
         onBlur: this.onBlur
@@ -147,14 +160,6 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.SelectField = SelectField;
-SelectField.defaultProps = {
-  size: _constants2.inputSizes.DEFAULT,
-  kind: _constants2.inputKinds.FILLED,
-  status: _constants.iconStatuses.DEFAULT,
-  className: '',
-  disabled: false,
-  required: false
-};
 SelectField.propTypes = {
   name: _propTypes.default.string.isRequired,
   onChange: _propTypes.default.func.isRequired,
@@ -162,12 +167,15 @@ SelectField.propTypes = {
   value: _propTypes.default.string.isRequired,
   list: _Select.Select.propTypes.list,
   className: _propTypes.default.string,
-  disabled: _propTypes.default.bool,
   required: _propTypes.default.bool,
+  disabled: _propTypes.default.bool,
+  filled: _propTypes.default.bool,
+  dense: _propTypes.default.bool,
   focus: _propTypes.default.bool,
-  size: _propTypes.default.oneOf([_constants2.inputSizes.DEFAULT, _constants2.inputSizes.DENSE]),
-  kind: _propTypes.default.oneOf([_constants2.inputKinds.FILLED, _constants2.inputKinds.OUTLINED]),
-  status: _constants.iconStatusPropType,
+  valid: _propTypes.default.bool,
+  warning: _propTypes.default.bool,
+  error: _propTypes.default.bool,
+  loading: _propTypes.default.bool,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func
 };

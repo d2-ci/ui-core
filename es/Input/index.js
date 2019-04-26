@@ -5,15 +5,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import propTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import cx from 'classnames';
-import { colors } from '../theme';
-import { innerSpacingSides, inputFontSizeValue, inputKinds } from '../forms/constants';
+import { colors, theme } from '../theme';
 
 const calculatePaddingTop = props => props.filled ? '14px' : '18.5px';
 
-const styles = new String(`input.jsx-2970721706{color:black;background-color:transparent;border:0;box-sizing:border-box;font-size:${inputFontSizeValue};height:100%;line-height:16px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}.filled.jsx-2970721706{padding:32px 0 8px 16px;}.outlined.jsx-2970721706{padding:18px 0 18px 16px;}.disabled.jsx-2970721706{color:${colors.grey500};cursor:not-allowed;}${
-/** 15px => 16px inner spacing - 1px for border**/
-''}.jsx-2970721706 .outlined.jsx-2970721706{padding-left:15px;}.filled.dense.jsx-2970721706{font-size:14px;padding:25px 0 5px 16px;}.outlined.dense.jsx-2970721706{padding-top:12px;padding-bottom:12px;}`);
-styles.__hash = "2970721706";
+const styles = new String(`input.jsx-1683562470{color:black;background-color:transparent;border:0;box-sizing:border-box;font-size:16px;height:100%;line-height:16px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;padding:18px 0 15px 16px;}.dense.jsx-1683562470{padding-top:12px;padding-bottom:12px;font-size:14px;}.disabled.jsx-1683562470{color:${theme.disabled};cursor:not-allowed;}.filled.jsx-1683562470{padding:32px 0 8px 16px;}.filled.dense.jsx-1683562470{padding:25px 0 5px 16px;}`);
+styles.__hash = "1683562470";
 export class Input extends Component {
   constructor(...args) {
     super(...args);
@@ -29,11 +26,16 @@ export class Input extends Component {
 
   render() {
     const paddingTop = calculatePaddingTop(this.props);
-    const className = cx({
-      dense: this.props.isDense,
-      filled: this.props.kind === inputKinds.FILLED,
-      outlined: this.props.kind === inputKinds.OUTLINED,
-      disabled: this.props.disabled
+    const {
+      dense,
+      filled,
+      disabled
+    } = this.props;
+    const classes = cx({
+      dense,
+      filled,
+      outlined: !filled,
+      disabled
     });
     return React.createElement(Fragment, null, React.createElement("input", {
       id: this.props.name,
@@ -41,12 +43,12 @@ export class Input extends Component {
       placeholder: this.props.placeholder,
       ref: this.inputRef,
       type: this.props.type,
-      disabled: this.props.disabled,
       value: this.props.value,
+      disabled: disabled,
       onFocus: this.props.onFocus,
       onBlur: this.props.onBlur,
       onChange: this.props.onChange,
-      className: `jsx-${styles.__hash}` + " " + (className || "")
+      className: `jsx-${styles.__hash}` + " " + (classes || "")
     }), React.createElement(_JSXStyle, {
       id: styles.__hash
     }, styles));
@@ -57,11 +59,12 @@ Input.propTypes = {
   name: propTypes.string.isRequired,
   type: propTypes.string.isRequired,
   value: propTypes.string.isRequired,
-  disabled: propTypes.bool.isRequired,
-  isFocused: propTypes.bool.isRequired,
   onFocus: propTypes.func.isRequired,
   onBlur: propTypes.func.isRequired,
   onChange: propTypes.func.isRequired,
-  placeholder: propTypes.string.isRequired,
-  kind: propTypes.arrayOf([inputKinds.FILLED, inputKinds.OUTLINED]).isRequired
+  placeholder: propTypes.string,
+  focus: propTypes.bool,
+  disabled: propTypes.bool,
+  filled: propTypes.bool,
+  dense: propTypes.bool
 };

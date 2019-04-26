@@ -6,28 +6,19 @@ import propTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import { Input } from '../Input';
 import { LabelFilled, LabelOutlined } from '../FieldLabel';
-import { colors } from '../theme';
-import { iconStatusPropType, iconStatuses } from '../icons/constants';
-import { inputKinds, inputSizes } from '../forms/constants';
-const types = {
-  TEXT: 'text',
-  EMAIL: 'email',
-  NUMBER: 'number',
-  PASSWORD: 'password',
-  URL: 'url'
-};
+import { theme } from '../theme';
 
 class InputField extends React.Component {
   constructor(props) {
     super(props);
 
     _defineProperty(this, "state", {
-      focused: false
+      focus: false
     });
 
     _defineProperty(this, "onFocus", evt => {
       this.setState({
-        focused: true
+        focus: true
       });
 
       if (this.props.onFocus) {
@@ -37,7 +28,7 @@ class InputField extends React.Component {
 
     _defineProperty(this, "onBlur", evt => {
       this.setState({
-        focused: false
+        focus: false
       });
 
       if (this.props.onBlur) {
@@ -54,58 +45,67 @@ class InputField extends React.Component {
     });
 
     this.state = {
-      focused: props.focus
+      focus: props.focus
     };
   }
 
-  isFocused() {
-    return this.state.focused;
-  }
-
   render() {
-    const isFilled = this.props.kind === inputKinds.FILLED;
-    const isDense = this.props.size === inputSizes.DENSE;
-    const Container = this.props.kind === inputKinds.FILLED ? LabelFilled : LabelOutlined;
+    const {
+      type,
+      filled,
+      focus,
+      dense,
+      required,
+      label,
+      disabled,
+      placeholder,
+      value,
+      name,
+      valid,
+      error,
+      warning,
+      loading
+    } = this.props;
+    const Container = filled ? LabelFilled : LabelOutlined;
     return React.createElement(Container, {
-      label: this.props.label,
-      isFocused: this.state.focused,
-      hasValue: !!this.props.value || this.props.placeholder,
-      htmlFor: this.props.name,
-      required: this.props.required,
-      disabled: this.props.disabled,
-      status: this.props.status,
-      size: this.props.size,
-      className: _JSXStyle.dynamic([["2004200063", [colors.grey500]]])
+      focus: this.state.focus,
+      label: label,
+      value: !!value || placeholder,
+      htmlFor: name,
+      required: required,
+      disabled: disabled,
+      valid: valid,
+      warning: warning,
+      error: error,
+      loading: loading,
+      dense: dense,
+      className: _JSXStyle.dynamic([["349714766", [theme.disabled]]])
     }, React.createElement(Input, {
-      name: this.props.name,
-      type: this.props.type,
-      kind: this.props.kind,
-      value: this.props.value,
-      placeholder: this.props.placeholder,
-      isFocused: this.state.focused,
-      disabled: this.props.disabled,
-      isFilled: isFilled,
-      isDense: isDense,
+      focus: this.state.focused,
       onFocus: this.onFocus,
       onBlur: this.onBlur,
-      onChange: this.onChange
+      onChange: this.onChange,
+      name: name,
+      type: type,
+      value: value,
+      placeholder: placeholder,
+      filled: filled,
+      disabled: disabled,
+      valid: valid,
+      warning: warning,
+      error: error,
+      loading: loading,
+      dense: dense
     }), React.createElement(_JSXStyle, {
-      id: "2004200063",
-      dynamic: [colors.grey500]
-    }, `div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:${colors.grey500};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:${colors.grey500};cursor:not-allowed;}`));
+      id: "349714766",
+      dynamic: [theme.disabled]
+    }, `div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:${theme.disabled};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:${theme.disabled};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:${theme.disabled};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:${theme.disabled};cursor:not-allowed;}`));
   }
 
 }
 
 InputField.defaultProps = {
-  status: iconStatuses.DEFAULT,
-  size: inputSizes.DEFAULT,
-  kind: inputKinds.FILLED,
-  type: types.TEXT,
-  focus: false,
-  disabled: false,
-  required: false,
-  placeholder: ''
+  type: 'text'
 };
 InputField.propTypes = {
   name: propTypes.string.isRequired,
@@ -113,15 +113,18 @@ InputField.propTypes = {
   label: propTypes.string.isRequired,
   value: propTypes.string.isRequired,
   className: propTypes.string,
-  disabled: propTypes.bool,
   required: propTypes.bool,
+  disabled: propTypes.bool,
+  filled: propTypes.bool,
+  dense: propTypes.bool,
   focus: propTypes.bool,
-  status: iconStatusPropType,
-  size: propTypes.oneOf([inputSizes.DEFAULT, inputSizes.DENSE]),
-  kind: propTypes.oneOf([inputKinds.FILLED, inputKinds.OUTLINED]),
+  valid: propTypes.bool,
+  warning: propTypes.bool,
+  error: propTypes.bool,
+  loading: propTypes.bool,
   onFocus: propTypes.func,
   onBlur: propTypes.func,
   placeholder: propTypes.string,
-  type: propTypes.oneOf([types.TEXT, types.EMAIL, types.NUMBER, types.PASSWORD, types.URL])
+  type: propTypes.oneOf(['text', 'email', 'number', 'password', 'url'])
 };
 export { InputField };

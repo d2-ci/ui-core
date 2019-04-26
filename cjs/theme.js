@@ -113,6 +113,7 @@ var theme = {
   default: colors.grey700,
   error: colors.red500,
   valid: colors.blue600,
-  warning: colors.yellow500
+  warning: colors.yellow500,
+  disabled: colors.grey500
 };
 exports.theme = theme;

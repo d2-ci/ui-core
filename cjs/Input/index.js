@@ -15,8 +15,6 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _theme = require("../theme");
 
-var _constants = require("../forms/constants");
-
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -45,8 +43,8 @@ var calculatePaddingTop = function calculatePaddingTop(props) {
   return props.filled ? '14px' : '18.5px';
 };
 
-var styles = ["input.jsx-2970721706{color:black;background-color:transparent;border:0;box-sizing:border-box;font-size:".concat(_constants.inputFontSizeValue, ";height:100%;line-height:16px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;}"), ".filled.jsx-2970721706{padding:32px 0 8px 16px;}", ".outlined.jsx-2970721706{padding:18px 0 18px 16px;}", ".disabled.jsx-2970721706{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), ".jsx-2970721706 .outlined.jsx-2970721706{padding-left:15px;}", ".filled.dense.jsx-2970721706{font-size:14px;padding:25px 0 5px 16px;}", ".outlined.dense.jsx-2970721706{padding-top:12px;padding-bottom:12px;}"];
-styles.__hash = "2970721706";
+var styles = ["input.jsx-1683562470{color:black;background-color:transparent;border:0;box-sizing:border-box;font-size:16px;height:100%;line-height:16px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;padding:18px 0 15px 16px;}", ".dense.jsx-1683562470{padding-top:12px;padding-bottom:12px;font-size:14px;}", ".disabled.jsx-1683562470{color:".concat(_theme.theme.disabled, ";cursor:not-allowed;}"), ".filled.jsx-1683562470{padding:32px 0 8px 16px;}", ".filled.dense.jsx-1683562470{padding:25px 0 5px 16px;}"];
+styles.__hash = "1683562470";
 
 var Input =
 /*#__PURE__*/
@@ -82,11 +80,15 @@ function (_Component) {
     key: "render",
     value: function render() {
       var paddingTop = calculatePaddingTop(this.props);
-      var className = (0, _classnames.default)({
-        dense: this.props.isDense,
-        filled: this.props.kind === _constants.inputKinds.FILLED,
-        outlined: this.props.kind === _constants.inputKinds.OUTLINED,
-        disabled: this.props.disabled
+      var _this$props = this.props,
+          dense = _this$props.dense,
+          filled = _this$props.filled,
+          disabled = _this$props.disabled;
+      var classes = (0, _classnames.default)({
+        dense: dense,
+        filled: filled,
+        outlined: !filled,
+        disabled: disabled
       });
       return _react.default.createElement(_react.Fragment, null, _react.default.createElement("input", {
         id: this.props.name,
@@ -94,12 +96,12 @@ function (_Component) {
         placeholder: this.props.placeholder,
         ref: this.inputRef,
         type: this.props.type,
-        disabled: this.props.disabled,
         value: this.props.value,
+        disabled: disabled,
         onFocus: this.props.onFocus,
         onBlur: this.props.onBlur,
         onChange: this.props.onChange,
-        className: "jsx-".concat(styles.__hash) + " " + (className || "")
+        className: "jsx-".concat(styles.__hash) + " " + (classes || "")
       }), _react.default.createElement(_style.default, {
         id: styles.__hash
       }, styles));
@@ -114,11 +116,12 @@ Input.propTypes = {
   name: _propTypes.default.string.isRequired,
   type: _propTypes.default.string.isRequired,
   value: _propTypes.default.string.isRequired,
-  disabled: _propTypes.default.bool.isRequired,
-  isFocused: _propTypes.default.bool.isRequired,
   onFocus: _propTypes.default.func.isRequired,
   onBlur: _propTypes.default.func.isRequired,
   onChange: _propTypes.default.func.isRequired,
-  placeholder: _propTypes.default.string.isRequired,
-  kind: _propTypes.default.arrayOf([_constants.inputKinds.FILLED, _constants.inputKinds.OUTLINED]).isRequired
+  placeholder: _propTypes.default.string,
+  focus: _propTypes.default.bool,
+  disabled: _propTypes.default.bool,
+  filled: _propTypes.default.bool,
+  dense: _propTypes.default.bool
 };

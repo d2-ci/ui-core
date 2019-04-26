@@ -17,10 +17,6 @@ var _FieldLabel = require("../FieldLabel");
 
 var _theme = require("../theme");
 
-var _constants = require("../icons/constants");
-
-var _constants2 = require("../forms/constants");
-
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -45,14 +41,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var types = {
-  TEXT: 'text',
-  EMAIL: 'email',
-  NUMBER: 'number',
-  PASSWORD: 'password',
-  URL: 'url'
-};
-
 var InputField =
 /*#__PURE__*/
 function (_React$Component) {
@@ -66,12 +54,12 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(InputField).call(this, props));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      focused: false
+      focus: false
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (evt) {
       _this.setState({
-        focused: true
+        focus: true
       });
 
       if (_this.props.onFocus) {
@@ -81,7 +69,7 @@ function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function (evt) {
       _this.setState({
-        focused: false
+        focus: false
       });
 
       if (_this.props.onBlur) {
@@ -98,49 +86,63 @@ function (_React$Component) {
     });
 
     _this.state = {
-      focused: props.focus
+      focus: props.focus
     };
     return _this;
   }
 
   _createClass(InputField, [{
-    key: "isFocused",
-    value: function isFocused() {
-      return this.state.focused;
-    }
-  }, {
     key: "render",
     value: function render() {
-      var isFilled = this.props.kind === _constants2.inputKinds.FILLED;
-      var isDense = this.props.size === _constants2.inputSizes.DENSE;
-      var Container = this.props.kind === _constants2.inputKinds.FILLED ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
+      var _this$props = this.props,
+          type = _this$props.type,
+          filled = _this$props.filled,
+          focus = _this$props.focus,
+          dense = _this$props.dense,
+          required = _this$props.required,
+          label = _this$props.label,
+          disabled = _this$props.disabled,
+          placeholder = _this$props.placeholder,
+          value = _this$props.value,
+          name = _this$props.name,
+          valid = _this$props.valid,
+          error = _this$props.error,
+          warning = _this$props.warning,
+          loading = _this$props.loading;
+      var Container = filled ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
       return _react.default.createElement(Container, {
-        label: this.props.label,
-        isFocused: this.state.focused,
-        hasValue: !!this.props.value || this.props.placeholder,
-        htmlFor: this.props.name,
-        required: this.props.required,
-        disabled: this.props.disabled,
-        status: this.props.status,
-        size: this.props.size,
-        className: _style.default.dynamic([["2004200063", [_theme.colors.grey500]]])
+        focus: this.state.focus,
+        label: label,
+        value: !!value || placeholder,
+        htmlFor: name,
+        required: required,
+        disabled: disabled,
+        valid: valid,
+        warning: warning,
+        error: error,
+        loading: loading,
+        dense: dense,
+        className: _style.default.dynamic([["349714766", [_theme.theme.disabled]]])
       }, _react.default.createElement(_Input.Input, {
-        name: this.props.name,
-        type: this.props.type,
-        kind: this.props.kind,
-        value: this.props.value,
-        placeholder: this.props.placeholder,
-        isFocused: this.state.focused,
-        disabled: this.props.disabled,
-        isFilled: isFilled,
-        isDense: isDense,
+        focus: this.state.focused,
         onFocus: this.onFocus,
         onBlur: this.onBlur,
-        onChange: this.onChange
+        onChange: this.onChange,
+        name: name,
+        type: type,
+        value: value,
+        placeholder: placeholder,
+        filled: filled,
+        disabled: disabled,
+        valid: valid,
+        warning: warning,
+        error: error,
+        loading: loading,
+        dense: dense
       }), _react.default.createElement(_style.default, {
-        id: "2004200063",
-        dynamic: [_theme.colors.grey500]
-      }, ["div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}")]));
+        id: "349714766",
+        dynamic: [_theme.theme.disabled]
+      }, ["div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:".concat(_theme.theme.disabled, ";cursor:not-allowed;}"), "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:".concat(_theme.theme.disabled, ";cursor:not-allowed;}"), "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:".concat(_theme.theme.disabled, ";cursor:not-allowed;}"), "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:".concat(_theme.theme.disabled, ";cursor:not-allowed;}")]));
     }
   }]);
 
@@ -149,14 +151,7 @@ function (_React$Component) {
 
 exports.InputField = InputField;
 InputField.defaultProps = {
-  status: _constants.iconStatuses.DEFAULT,
-  size: _constants2.inputSizes.DEFAULT,
-  kind: _constants2.inputKinds.FILLED,
-  type: types.TEXT,
-  focus: false,
-  disabled: false,
-  required: false,
-  placeholder: ''
+  type: 'text'
 };
 InputField.propTypes = {
   name: _propTypes.default.string.isRequired,
@@ -164,14 +159,17 @@ InputField.propTypes = {
   label: _propTypes.default.string.isRequired,
   value: _propTypes.default.string.isRequired,
   className: _propTypes.default.string,
-  disabled: _propTypes.default.bool,
   required: _propTypes.default.bool,
+  disabled: _propTypes.default.bool,
+  filled: _propTypes.default.bool,
+  dense: _propTypes.default.bool,
   focus: _propTypes.default.bool,
-  status: _constants.iconStatusPropType,
-  size: _propTypes.default.oneOf([_constants2.inputSizes.DEFAULT, _constants2.inputSizes.DENSE]),
-  kind: _propTypes.default.oneOf([_constants2.inputKinds.FILLED, _constants2.inputKinds.OUTLINED]),
+  valid: _propTypes.default.bool,
+  warning: _propTypes.default.bool,
+  error: _propTypes.default.bool,
+  loading: _propTypes.default.bool,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func,
   placeholder: _propTypes.default.string,
-  type: _propTypes.default.oneOf([types.TEXT, types.EMAIL, types.NUMBER, types.PASSWORD, types.URL])
+  type: _propTypes.default.oneOf(['text', 'email', 'number', 'password', 'url'])
 };

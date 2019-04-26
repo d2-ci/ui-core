@@ -7,7 +7,7 @@ exports.Valid = Valid;
 exports.Warning = Warning;
 exports.Error = Error;
 exports.Loading = Loading;
-exports.StatusIconNoDefault = exports.statusToIcon = void 0;
+exports.StatusIconNoDefault = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -17,21 +17,12 @@ var _react = _interopRequireDefault(require("react"));
 
 var _theme = require("../theme");
 
-var _constants = require("./constants");
-
-var _statusToIcon;
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var statusToIcon = (_statusToIcon = {}, _defineProperty(_statusToIcon, _constants.iconStatuses.VALID, Valid), _defineProperty(_statusToIcon, _constants.iconStatuses.WARNING, Warning), _defineProperty(_statusToIcon, _constants.iconStatuses.ERROR, Error), _defineProperty(_statusToIcon, _constants.iconStatuses.LOADING, Loading), _statusToIcon);
 /**
  * Icon: Valid
  * =============
  */
-
-exports.statusToIcon = statusToIcon;
 var iconStyleValid = ["svg.jsx-294723437{fill:".concat(_theme.colors.blue600, ";width:24px;height:24px;margin-right:4px;}")];
 /**
  * @param {Object} props
@@ -184,24 +175,27 @@ Loading.propTypes = {
 };
 
 var StatusIconNoDefault = function StatusIconNoDefault(_ref5) {
-  var status = _ref5.status,
+  var error = _ref5.error,
+      warning = _ref5.warning,
+      valid = _ref5.valid,
+      loading = _ref5.loading,
       className = _ref5.className;
-  return status === _constants.iconStatuses.VALID ? _react.default.createElement(Valid, {
+  return valid ? _react.default.createElement(Valid, {
     className: className
-  }) : status === _constants.iconStatuses.WARNING ? _react.default.createElement(Warning, {
+  }) : warning ? _react.default.createElement(Warning, {
     className: className
-  }) : status === _constants.iconStatuses.ERROR ? _react.default.createElement(Error, {
+  }) : error ? _react.default.createElement(Error, {
     className: className
-  }) : status === _constants.iconStatuses.LOADING ? _react.default.createElement(Loading, {
+  }) : loading ? _react.default.createElement(Loading, {
     className: className
   }) : null;
 };
 
 exports.StatusIconNoDefault = StatusIconNoDefault;
 StatusIconNoDefault.propTypes = {
-  status: _constants.iconStatusPropType,
+  valid: _propTypes.default.bool,
+  error: _propTypes.default.bool,
+  warning: _propTypes.default.bool,
+  loading: _propTypes.default.bool,
   className: _propTypes.default.string
-};
-StatusIconNoDefault.defaultProps = {
-  className: ''
 };

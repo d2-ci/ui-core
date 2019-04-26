@@ -5,12 +5,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import propTypes from 'prop-types';
 import React, { Component, Fragment, createRef } from 'react';
 import cx from 'classnames';
-import { colors } from '../theme';
-import { innerSpacingSides, inputFontSizeValue, inputKinds, inputSizes } from '../forms/constants';
-const styles = new String(`select.jsx-2468634884{background:none;border:0;color:black;font-size:${inputFontSizeValue};height:100%;left:0;outline:0;padding:0 12px 0 16px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}select.disabled.jsx-2468634884{color:${colors.grey500};cursor:not-allowed;}select.dense.jsx-2468634884{font-size:14px;}select.outlined.jsx-2468634884{${
-/** 15px => 16px inner spacing - 1px of the border**/
-''} padding-left:15px;}select.filled.jsx-2468634884{padding-top:24px;}select.filled.dense.jsx-2468634884{padding-top:20px;}option.jsx-2468634884:not(:checked){color:black;}select.jsx-2468634884:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}`);
-styles.__hash = "2468634884";
+import { theme } from '../theme';
+const styles = new String(`select.jsx-1780803264{background:none;border:0;color:black;font-size:16px;height:100%;left:0;outline:0;padding:0 12px 0 15px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}.disabled.jsx-1780803264{color:${theme.disabled};cursor:not-allowed;}.dense.jsx-1780803264{font-size:14px;}.filled.jsx-1780803264{padding-top:24px;padding-left:16px;}.filled.dense.jsx-1780803264{padding-top:20px;}option.jsx-1780803264:not(:checked){color:black;}select.jsx-1780803264:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}`);
+styles.__hash = "1780803264";
 export class Select extends Component {
   constructor(...args) {
     super(...args);
@@ -29,20 +26,34 @@ export class Select extends Component {
   }
 
   render() {
+    const {
+      dense,
+      filled,
+      disabled,
+      onChange,
+      onFocus,
+      onBlur,
+      value
+    } = this.props;
     const className = cx({
-      dense: this.props.size === inputSizes.DENSE,
-      filled: this.props.kind === inputKinds.FILLED,
-      outlined: this.props.kind === inputKinds.OUTLINED,
-      disabled: this.props.disabled
+      dense,
+      filled,
+      disabled
     });
     return React.createElement("select", {
-      onChange: this.props.onChange,
-      value: this.props.value,
-      disabled: this.props.disabled,
-      onFocus: this.props.onFocus,
-      onBlur: this.props.onBlur,
+      onChange: onChange,
+      value: value,
+      disabled: disabled,
+      onFocus: onFocus,
+      onBlur: onBlur,
       className: `jsx-${styles.__hash}` + " " + (className || "")
-    }, this.props.list.map(({
+    }, React.createElement("option", {
+      hidden: true,
+      disabled: true,
+      selected: true,
+      value: true,
+      className: `jsx-${styles.__hash}`
+    }), this.props.list.map(({
       value,
       label,
       list
@@ -67,10 +78,10 @@ export class Select extends Component {
 
 }
 Select.propTypes = {
-  value: propTypes.string.isRequired,
+  value: propTypes.string,
   onChange: propTypes.func.isRequired,
-  size: propTypes.arrayOf([inputSizes.DEFAULT, inputSizes.DENSE]).isRequired,
-  kind: propTypes.arrayOf([inputKinds.FILLED, inputKinds.OUTLINED]).isRequired,
+  onFocus: propTypes.func,
+  onBlur: propTypes.func,
   list: propTypes.shape({
     value: propTypes.string.isRequired,
     label: propTypes.string.isRequired,
@@ -80,8 +91,8 @@ Select.propTypes = {
     })
   }).isRequired,
   disabled: propTypes.bool,
-  onFocus: propTypes.func,
-  onBlur: propTypes.func
+  filled: propTypes.bool,
+  dense: propTypes.bool
 };
 Select.defaultProps = {
   disabled: false

@@ -15,8 +15,6 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _theme = require("../theme");
 
-var _constants = require("../forms/constants");
-
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -41,8 +39,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var styles = ["select.jsx-2468634884{background:none;border:0;color:black;font-size:".concat(_constants.inputFontSizeValue, ";height:100%;left:0;outline:0;padding:0 12px 0 16px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}"), "select.disabled.jsx-2468634884{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), "select.dense.jsx-2468634884{font-size:14px;}", "select.outlined.jsx-2468634884{".concat(" padding-left:15px;}"), "select.filled.jsx-2468634884{padding-top:24px;}", "select.filled.dense.jsx-2468634884{padding-top:20px;}", "option.jsx-2468634884:not(:checked){color:black;}", "select.jsx-2468634884:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}"];
-styles.__hash = "2468634884";
+var styles = ["select.jsx-1780803264{background:none;border:0;color:black;font-size:16px;height:100%;left:0;outline:0;padding:0 12px 0 15px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}", ".disabled.jsx-1780803264{color:".concat(_theme.theme.disabled, ";cursor:not-allowed;}"), ".dense.jsx-1780803264{font-size:14px;}", ".filled.jsx-1780803264{padding-top:24px;padding-left:16px;}", ".filled.dense.jsx-1780803264{padding-top:20px;}", "option.jsx-1780803264:not(:checked){color:black;}", "select.jsx-1780803264:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}"];
+styles.__hash = "1780803264";
 
 var Select =
 /*#__PURE__*/
@@ -81,20 +79,33 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this$props = this.props,
+          dense = _this$props.dense,
+          filled = _this$props.filled,
+          disabled = _this$props.disabled,
+          onChange = _this$props.onChange,
+          onFocus = _this$props.onFocus,
+          onBlur = _this$props.onBlur,
+          value = _this$props.value;
       var className = (0, _classnames.default)({
-        dense: this.props.size === _constants.inputSizes.DENSE,
-        filled: this.props.kind === _constants.inputKinds.FILLED,
-        outlined: this.props.kind === _constants.inputKinds.OUTLINED,
-        disabled: this.props.disabled
+        dense: dense,
+        filled: filled,
+        disabled: disabled
       });
       return _react.default.createElement("select", {
-        onChange: this.props.onChange,
-        value: this.props.value,
-        disabled: this.props.disabled,
-        onFocus: this.props.onFocus,
-        onBlur: this.props.onBlur,
+        onChange: onChange,
+        value: value,
+        disabled: disabled,
+        onFocus: onFocus,
+        onBlur: onBlur,
         className: "jsx-".concat(styles.__hash) + " " + (className || "")
-      }, this.props.list.map(function (_ref) {
+      }, _react.default.createElement("option", {
+        hidden: true,
+        disabled: true,
+        selected: true,
+        value: true,
+        className: "jsx-".concat(styles.__hash)
+      }), this.props.list.map(function (_ref) {
         var value = _ref.value,
             label = _ref.label,
             list = _ref.list;
@@ -125,10 +136,10 @@ function (_Component) {
 
 exports.Select = Select;
 Select.propTypes = {
-  value: _propTypes.default.string.isRequired,
+  value: _propTypes.default.string,
   onChange: _propTypes.default.func.isRequired,
-  size: _propTypes.default.arrayOf([_constants.inputSizes.DEFAULT, _constants.inputSizes.DENSE]).isRequired,
-  kind: _propTypes.default.arrayOf([_constants.inputKinds.FILLED, _constants.inputKinds.OUTLINED]).isRequired,
+  onFocus: _propTypes.default.func,
+  onBlur: _propTypes.default.func,
   list: _propTypes.default.shape({
     value: _propTypes.default.string.isRequired,
     label: _propTypes.default.string.isRequired,
@@ -138,8 +149,8 @@ Select.propTypes = {
     })
   }).isRequired,
   disabled: _propTypes.default.bool,
-  onFocus: _propTypes.default.func,
-  onBlur: _propTypes.default.func
+  filled: _propTypes.default.bool,
+  dense: _propTypes.default.bool
 };
 Select.defaultProps = {
   disabled: false

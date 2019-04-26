@@ -43,9 +43,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var icons = {
   styles: _react.default.createElement(_style.default, {
-    id: "782643521"
-  }, ["svg.jsx-782643521{height:24px;width:24px;fill:".concat(_theme.theme.default, ";}"), ".checked.jsx-782643521{fill:".concat(_theme.colors.teal400, ";}"), ".disabled.jsx-782643521{fill:".concat(_theme.colors.grey500, ";}"), ".error.jsx-782643521{fill:".concat(_theme.theme.error, ";}"), ".valid.jsx-782643521{fill:".concat(_theme.theme.valid, ";}"), ".warning.jsx-782643521{fill:".concat(_theme.theme.warning, ";}")]),
-  className: "jsx-782643521"
+    id: "3627497902"
+  }, ["svg.jsx-3627497902{height:24px;width:24px;fill:".concat(_theme.theme.default, ";}"), ".checked.jsx-3627497902{fill:".concat(_theme.colors.teal400, ";}"), ".disabled.jsx-3627497902{fill:".concat(_theme.theme.disabled, ";}"), ".error.jsx-3627497902{fill:".concat(_theme.theme.error, ";}"), ".valid.jsx-3627497902{fill:".concat(_theme.theme.valid, ";}"), ".warning.jsx-3627497902{fill:".concat(_theme.theme.warning, ";}")]),
+  className: "jsx-3627497902"
 };
 
 var Checkbox =

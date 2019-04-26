@@ -9,9 +9,9 @@ import styles from './styles.js';
 import { Indeterminate, Checked, Unchecked } from '../icons/Checkbox.js';
 const icons = {
   styles: React.createElement(_JSXStyle, {
-    id: "782643521"
-  }, `svg.jsx-782643521{height:24px;width:24px;fill:${theme.default};}.checked.jsx-782643521{fill:${colors.teal400};}.disabled.jsx-782643521{fill:${colors.grey500};}.error.jsx-782643521{fill:${theme.error};}.valid.jsx-782643521{fill:${theme.valid};}.warning.jsx-782643521{fill:${theme.warning};}`),
-  className: "jsx-782643521"
+    id: "3627497902"
+  }, `svg.jsx-3627497902{height:24px;width:24px;fill:${theme.default};}.checked.jsx-3627497902{fill:${colors.teal400};}.disabled.jsx-3627497902{fill:${theme.disabled};}.error.jsx-3627497902{fill:${theme.error};}.valid.jsx-3627497902{fill:${theme.valid};}.warning.jsx-3627497902{fill:${theme.warning};}`),
+  className: "jsx-3627497902"
 };
 
 class Checkbox extends React.Component {
