@@ -49,9 +49,6 @@ function CircularProgress({
   return loader;
 }
 
-CircularProgress.defaultProps = {
-  overlay: false
-};
 CircularProgress.propTypes = {
   className: propTypes.string,
   overlay: propTypes.bool,

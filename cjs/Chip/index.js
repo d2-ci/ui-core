@@ -138,20 +138,14 @@ function (_React$PureComponent) {
 }(_react.default.PureComponent);
 
 exports.Chip = Chip;
-Chip.defaultProps = {
-  selected: false,
-  disabled: false,
-  dragging: false,
-  overflow: true
-};
 Chip.propTypes = {
   children: _propTypes.default.string.isRequired,
   className: _propTypes.default.string,
   icon: _propTypes.default.element,
+  onClick: _propTypes.default.func,
+  onRemove: _propTypes.default.func,
   selected: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   dragging: _propTypes.default.bool,
-  overflow: _propTypes.default.bool,
-  onClick: _propTypes.default.func,
-  onRemove: _propTypes.default.func
+  overflow: _propTypes.default.bool
 };

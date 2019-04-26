@@ -62,11 +62,9 @@ class DropdownButton extends Component {
     return React.createElement("div", {
       ref: c => this.elContainer = c,
       className: "jsx-3163060161"
-    }, React.createElement(Button, _extends({}, this.props, {
-      onClick: this.onToggle,
-      className: this.props.className,
-      icon: this.props.icon
-    }), this.props.children, ArrowIcon), open && React.createElement(DropMenu, {
+    }, React.createElement(Button, _extends({
+      onClick: this.onToggle
+    }, this.props), this.props.children, ArrowIcon), open && React.createElement(DropMenu, {
       component: this.props.component
     }), _ref3);
   }

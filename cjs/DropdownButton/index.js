@@ -114,11 +114,9 @@ function (_Component) {
           return _this2.elContainer = c;
         },
         className: "jsx-3163060161"
-      }, _react.default.createElement(_Button.Button, _extends({}, this.props, {
-        onClick: this.onToggle,
-        className: this.props.className,
-        icon: this.props.icon
-      }), this.props.children, ArrowIcon), open && _react.default.createElement(_DropMenu.DropMenu, {
+      }, _react.default.createElement(_Button.Button, _extends({
+        onClick: this.onToggle
+      }, this.props), this.props.children, ArrowIcon), open && _react.default.createElement(_DropMenu.DropMenu, {
         component: this.props.component
       }), _react.default.createElement(_style.default, {
         id: "3163060161"

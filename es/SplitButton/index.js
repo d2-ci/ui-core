@@ -1,13 +1,26 @@
-import _JSXStyle from "styled-jsx/style";
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+import _JSXStyle from "styled-jsx/style";
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import buttons from '../Button/styles.js';
 import { ArrowUp, ArrowDown } from '../icons/Arrow.js';
 import { DropMenu } from '../DropMenu';
+import { Button } from '../Button';
 import cx from 'classnames';
+const leftButton = {
+  styles: React.createElement(_JSXStyle, {
+    id: "1525662562"
+  }, "button.jsx-1525662562{border-top-right-radius:0;border-bottom-right-radius:0;}"),
+  className: "jsx-1525662562"
+};
+const rightButton = {
+  styles: React.createElement(_JSXStyle, {
+    id: "2744160004"
+  }, "button.jsx-2744160004{padding:0 9px;border-top-left-radius:0;border-bottom-left-radius:0;}"),
+  className: "jsx-2744160004"
+};
 
 var _ref =
 /*#__PURE__*/
@@ -20,8 +33,8 @@ React.createElement(ArrowDown, null);
 var _ref3 =
 /*#__PURE__*/
 React.createElement(_JSXStyle, {
-  id: "686802189"
-}, "div.jsx-686802189{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}button.jsx-686802189:first-child{border-top-right-radius:0;border-bottom-right-radius:0;}button.jsx-686802189:nth-child(2){padding:0 9px;border-top-left-radius:0;border-bottom-left-radius:0;}");
+  id: "3163060161"
+}, "div.jsx-3163060161{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}");
 
 class SplitButton extends Component {
   constructor(...args) {
@@ -59,48 +72,33 @@ class SplitButton extends Component {
     const icon = open ? _ref : _ref2;
     return React.createElement("div", {
       ref: c => this.elContainer = c,
-      className: "jsx-686802189 " + `jsx-${buttons.__hash}`
-    }, React.createElement("button", {
-      name: this.props.name,
-      value: this.props.value,
-      disabled: this.props.disabled,
+      className: "jsx-3163060161"
+    }, React.createElement(Button, _extends({
       onClick: evt => this.props.onClick && this.props.onClick(this.props.name, this.props.value),
-      className: "jsx-686802189 " + `jsx-${buttons.__hash}` + " " + (cx('base', `kind-${this.props.kind}`, `size-${this.props.size}`, this.props.className, {
-        'icon-only': this.props.icon && !this.props.children,
-        icon: this.props.icon
-      }) || "")
-    }, this.props.icon && React.createElement("span", {
-      className: "jsx-686802189 " + `jsx-${buttons.__hash}` + " " + "button-icon"
-    }, this.props.icon), this.props.children), React.createElement("button", {
-      disabled: this.props.disabled,
+      className: cx(this.props.className, leftButton.className)
+    }, this.props), this.props.children), React.createElement(Button, _extends({
       onClick: this.onToggle,
-      className: "jsx-686802189 " + `jsx-${buttons.__hash}` + " " + (cx('base', `kind-${this.props.kind}`, `size-${this.props.size}`) || "")
-    }, icon), open && React.createElement(DropMenu, {
+      className: cx(this.props.className, rightButton.className)
+    }, this.props), icon), open && React.createElement(DropMenu, {
       component: this.props.component
-    }), React.createElement(_JSXStyle, {
-      id: buttons.__hash
-    }, buttons), _ref3);
+    }), leftButton.styles, rightButton.styles, _ref3);
   }
 
 }
 
-SplitButton.defaultProps = {
-  size: 'medium',
-  kind: 'basic',
-  disabled: false,
-  name: '',
-  value: ''
-};
 SplitButton.propTypes = {
   component: propTypes.element.isRequired,
   onClick: propTypes.func.isRequired,
+  className: propTypes.string,
   children: propTypes.string,
   name: propTypes.string,
   value: propTypes.string,
-  className: propTypes.string,
-  kind: propTypes.oneOf(['basic', 'primary']),
   icon: propTypes.element,
-  disabled: propTypes.bool,
-  size: propTypes.oneOf(['small', 'medium', 'large'])
+  small: propTypes.bool,
+  large: propTypes.bool,
+  primary: propTypes.bool,
+  secondary: propTypes.bool,
+  destructive: propTypes.bool,
+  disabled: propTypes.bool
 };
 export { SplitButton };

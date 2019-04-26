@@ -88,21 +88,15 @@ class Chip extends React.PureComponent {
 
 }
 
-Chip.defaultProps = {
-  selected: false,
-  disabled: false,
-  dragging: false,
-  overflow: true
-};
 Chip.propTypes = {
   children: propTypes.string.isRequired,
   className: propTypes.string,
   icon: propTypes.element,
+  onClick: propTypes.func,
+  onRemove: propTypes.func,
   selected: propTypes.bool,
   disabled: propTypes.bool,
   dragging: propTypes.bool,
-  overflow: propTypes.bool,
-  onClick: propTypes.func,
-  onRemove: propTypes.func
+  overflow: propTypes.bool
 };
 export { Chip };

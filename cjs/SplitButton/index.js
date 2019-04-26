@@ -1,5 +1,7 @@
 "use strict";
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -11,11 +13,11 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _styles = _interopRequireDefault(require("../Button/styles.js"));
-
 var _Arrow = require("../icons/Arrow.js");
 
 var _DropMenu = require("../DropMenu");
+
+var _Button = require("../Button");
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
@@ -23,7 +25,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -42,6 +44,19 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var leftButton = {
+  styles: _react.default.createElement(_style.default, {
+    id: "1525662562"
+  }, ["button.jsx-1525662562{border-top-right-radius:0;border-bottom-right-radius:0;}"]),
+  className: "jsx-1525662562"
+};
+var rightButton = {
+  styles: _react.default.createElement(_style.default, {
+    id: "2744160004"
+  }, ["button.jsx-2744160004{padding:0 9px;border-top-left-radius:0;border-bottom-left-radius:0;}"]),
+  className: "jsx-2744160004"
+};
 
 var _ref =
 /*#__PURE__*/
@@ -111,31 +126,20 @@ function (_Component) {
         ref: function ref(c) {
           return _this2.elContainer = c;
         },
-        className: "jsx-686802189 " + "jsx-".concat(_styles.default.__hash)
-      }, _react.default.createElement("button", {
-        name: this.props.name,
-        value: this.props.value,
-        disabled: this.props.disabled,
+        className: "jsx-3163060161"
+      }, _react.default.createElement(_Button.Button, _extends({
         onClick: function onClick(evt) {
           return _this2.props.onClick && _this2.props.onClick(_this2.props.name, _this2.props.value);
         },
-        className: "jsx-686802189 " + "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size), this.props.className, {
-          'icon-only': this.props.icon && !this.props.children,
-          icon: this.props.icon
-        }) || "")
-      }, this.props.icon && _react.default.createElement("span", {
-        className: "jsx-686802189 " + "jsx-".concat(_styles.default.__hash) + " " + "button-icon"
-      }, this.props.icon), this.props.children), _react.default.createElement("button", {
-        disabled: this.props.disabled,
+        className: (0, _classnames.default)(this.props.className, leftButton.className)
+      }, this.props), this.props.children), _react.default.createElement(_Button.Button, _extends({
         onClick: this.onToggle,
-        className: "jsx-686802189 " + "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size)) || "")
-      }, icon), open && _react.default.createElement(_DropMenu.DropMenu, {
+        className: (0, _classnames.default)(this.props.className, rightButton.className)
+      }, this.props), icon), open && _react.default.createElement(_DropMenu.DropMenu, {
         component: this.props.component
-      }), _react.default.createElement(_style.default, {
-        id: _styles.default.__hash
-      }, _styles.default), _react.default.createElement(_style.default, {
-        id: "686802189"
-      }, ["div.jsx-686802189{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}", "button.jsx-686802189:first-child{border-top-right-radius:0;border-bottom-right-radius:0;}", "button.jsx-686802189:nth-child(2){padding:0 9px;border-top-left-radius:0;border-bottom-left-radius:0;}"]));
+      }), leftButton.styles, rightButton.styles, _react.default.createElement(_style.default, {
+        id: "3163060161"
+      }, ["div.jsx-3163060161{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}"]));
     }
   }]);
 
@@ -143,22 +147,18 @@ function (_Component) {
 }(_react.Component);
 
 exports.SplitButton = SplitButton;
-SplitButton.defaultProps = {
-  size: 'medium',
-  kind: 'basic',
-  disabled: false,
-  name: '',
-  value: ''
-};
 SplitButton.propTypes = {
   component: _propTypes.default.element.isRequired,
   onClick: _propTypes.default.func.isRequired,
+  className: _propTypes.default.string,
   children: _propTypes.default.string,
   name: _propTypes.default.string,
   value: _propTypes.default.string,
-  className: _propTypes.default.string,
-  kind: _propTypes.default.oneOf(['basic', 'primary']),
   icon: _propTypes.default.element,
-  disabled: _propTypes.default.bool,
-  size: _propTypes.default.oneOf(['small', 'medium', 'large'])
+  small: _propTypes.default.bool,
+  large: _propTypes.default.bool,
+  primary: _propTypes.default.bool,
+  secondary: _propTypes.default.bool,
+  destructive: _propTypes.default.bool,
+  disabled: _propTypes.default.bool
 };

@@ -9,9 +9,9 @@ import styles from './styles.js';
 import { Checked, Unchecked } from '../icons/Radio.js';
 const icons = {
   styles: React.createElement(_JSXStyle, {
-    id: "782643521"
-  }, `svg.jsx-782643521{height:24px;width:24px;fill:${theme.default};}.checked.jsx-782643521{fill:${colors.teal400};}.disabled.jsx-782643521{fill:${colors.grey500};}.error.jsx-782643521{fill:${theme.error};}.valid.jsx-782643521{fill:${theme.valid};}.warning.jsx-782643521{fill:${theme.warning};}`),
-  className: "jsx-782643521"
+    id: "814919498"
+  }, `svg.jsx-814919498{height:24px;width:24px;fill:${theme.default};}.checked.jsx-814919498{fill:${colors.teal400};}.disabled.jsx-814919498{fill:${colors.grey500};}.error.jsx-814919498{fill:${theme.error};}.valid.jsx-814919498{fill:${theme.valid};}.warning.jsx-814919498{fill:${theme.warning};}`),
+  className: "jsx-814919498"
 };
 
 class Radio extends React.Component {

@@ -78,18 +78,14 @@ var MenuItem = function MenuItem(_ref2) {
 };
 
 exports.MenuItem = MenuItem;
-MenuItem.defaultProps = {
-  active: false,
-  disabled: false
-};
 MenuItem.propTypes = {
   label: _propTypes.default.oneOf([_propTypes.default.string, _propTypes.default.element]).isRequired,
   value: _propTypes.default.any.isRequired,
-  dense: _propTypes.default.bool,
+  onClick: _propTypes.default.func,
   className: _propTypes.default.string,
-  icon: _propTypes.default.element,
   children: _propTypes.default.element,
+  icon: _propTypes.default.element,
+  dense: _propTypes.default.bool,
   active: _propTypes.default.bool,
-  disabled: _propTypes.default.bool,
-  onClick: _propTypes.default.func
+  disabled: _propTypes.default.bool
 };

@@ -13,6 +13,10 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
+var _theme = require("../theme.js");
+
+var _Switch = require("../icons/Switch.js");
+
 var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -70,25 +74,37 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var _this$props = this.props,
-          status = _this$props.status,
+          required = _this$props.required,
+          valid = _this$props.valid,
+          error = _this$props.error,
+          warning = _this$props.warning,
+          checked = _this$props.checked,
+          className = _this$props.className,
           disabled = _this$props.disabled,
-          className = _this$props.className;
+          name = _this$props.name;
       return _react.default.createElement("label", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(status, className, {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, {
           disabled: disabled
         }) || "")
       }, _react.default.createElement("input", {
         type: "checkbox",
         disabled: disabled,
-        name: this.props.name,
-        checked: this.props.checked,
+        name: name,
+        checked: checked,
         onChange: this.onChange,
         className: "jsx-".concat(_styles.default.__hash)
+      }), _react.default.createElement(_Switch.SwitchIcon, {
+        checked: checked,
+        disabled: disabled,
+        valid: valid,
+        warning: warning,
+        error: error
       }), _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', _defineProperty({}, "status-".concat(status), true)) || "")
-      }, this.props.label), this.props.required && _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + "required"
-      }), _react.default.createElement(_style.default, {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)({
+          required: required,
+          disabled: disabled
+        }) || "")
+      }, this.props.label), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default));
     }
@@ -98,11 +114,6 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.Switch = Switch;
-Switch.defaultProps = {
-  checked: false,
-  disabled: false,
-  status: 'default'
-};
 Switch.propTypes = {
   name: _propTypes.default.string.isRequired,
   onChange: _propTypes.default.func.isRequired,

@@ -5,6 +5,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import React from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
+import { colors, theme } from '../theme.js';
+import { SwitchIcon } from '../icons/Switch.js';
 import styles from './styles';
 
 class Switch extends React.Component {
@@ -22,39 +24,44 @@ class Switch extends React.Component {
 
   render() {
     const {
-      status,
+      required,
+      valid,
+      error,
+      warning,
+      checked,
+      className,
       disabled,
-      className
+      name
     } = this.props;
     return React.createElement("label", {
-      className: `jsx-${styles.__hash}` + " " + (cx(status, className, {
+      className: `jsx-${styles.__hash}` + " " + (cx(className, {
         disabled
       }) || "")
     }, React.createElement("input", {
       type: "checkbox",
       disabled: disabled,
-      name: this.props.name,
-      checked: this.props.checked,
+      name: name,
+      checked: checked,
       onChange: this.onChange,
       className: `jsx-${styles.__hash}`
+    }), React.createElement(SwitchIcon, {
+      checked: checked,
+      disabled: disabled,
+      valid: valid,
+      warning: warning,
+      error: error
     }), React.createElement("span", {
-      className: `jsx-${styles.__hash}` + " " + (cx('label', {
-        [`status-${status}`]: true
+      className: `jsx-${styles.__hash}` + " " + (cx({
+        required,
+        disabled
       }) || "")
-    }, this.props.label), this.props.required && React.createElement("span", {
-      className: `jsx-${styles.__hash}` + " " + "required"
-    }), React.createElement(_JSXStyle, {
+    }, this.props.label), React.createElement(_JSXStyle, {
       id: styles.__hash
     }, styles));
   }
 
 }
 
-Switch.defaultProps = {
-  checked: false,
-  disabled: false,
-  status: 'default'
-};
 Switch.propTypes = {
   name: propTypes.string.isRequired,
   onChange: propTypes.func.isRequired,
