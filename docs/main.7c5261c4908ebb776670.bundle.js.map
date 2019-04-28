@@ -1,0 +1,1 @@
+{"version":3,"file":"main.7c5261c4908ebb776670.bundle.js","sources":["webpack:///./src/utils/html.js"],"sourcesContent":["/**\n * get <html> or the <body> element in document\n * @returns {HTMLElement}\n */\nexport function getDoc() {\n    return document.documentElement || document.body\n}\n"],"mappings":"AAIA","sourceRoot":""}
