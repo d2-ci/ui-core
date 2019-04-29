@@ -64,16 +64,22 @@ var SelectField =
 function (_React$Component) {
   _inherits(SelectField, _React$Component);
 
-  function SelectField(props) {
+  function SelectField() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, SelectField);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(SelectField).call(this, props));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SelectField)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      focus: false,
-      value: ''
+      focus: _this.props.focused,
+      value: _this.props.defaultValue
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (event) {
@@ -108,10 +114,6 @@ function (_React$Component) {
       }
     });
 
-    _this.state = {
-      focused: props.focused,
-      value: props.value
-    };
     return _this;
   }
 
@@ -132,18 +134,19 @@ function (_React$Component) {
           required = _this$props.required,
           label = _this$props.label,
           disabled = _this$props.disabled,
-          value = _this$props.value,
           name = _this$props.name,
           valid = _this$props.valid,
           error = _this$props.error,
           warning = _this$props.warning,
-          loading = _this$props.loading;
+          loading = _this$props.loading,
+          _this$props$value = _this$props.value,
+          value = _this$props$value === void 0 ? this.state.value : _this$props$value;
       var Container = filled ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
       return _react.default.createElement(Container, {
         onClick: this.onFocus,
         focus: this.state.focus,
         label: label,
-        value: !!this.state.value,
+        value: !!value,
         htmlFor: name,
         required: required,
         disabled: disabled,
@@ -153,7 +156,7 @@ function (_React$Component) {
         loading: loading,
         dense: dense
       }, _react.default.createElement(_Select.Select, {
-        value: this.state.value,
+        value: value,
         disabled: disabled,
         list: list,
         filled: filled,
@@ -173,6 +176,7 @@ SelectField.propTypes = {
   name: _propTypes.default.string.isRequired,
   onChange: _propTypes.default.func.isRequired,
   label: _propTypes.default.string.isRequired,
+  defaultValue: _propTypes.default.string,
   value: _propTypes.default.string,
   list: _Select.Select.propTypes.list,
   className: _propTypes.default.string,

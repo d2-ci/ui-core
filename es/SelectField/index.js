@@ -24,12 +24,12 @@ var _ref2 =
 React.createElement(TailIcon, null);
 
 class SelectField extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(...args) {
+    super(...args);
 
     _defineProperty(this, "state", {
-      focus: false,
-      value: ''
+      focus: this.props.focused,
+      value: this.props.defaultValue
     });
 
     _defineProperty(this, "onChange", event => {
@@ -63,11 +63,6 @@ class SelectField extends React.Component {
         this.props.onBlur(e);
       }
     });
-
-    this.state = {
-      focused: props.focused,
-      value: props.value
-    };
   }
 
   isFocused() {
@@ -84,19 +79,19 @@ class SelectField extends React.Component {
       required,
       label,
       disabled,
-      value,
       name,
       valid,
       error,
       warning,
-      loading
+      loading,
+      value = this.state.value
     } = this.props;
     const Container = filled ? LabelFilled : LabelOutlined;
     return React.createElement(Container, {
       onClick: this.onFocus,
       focus: this.state.focus,
       label: label,
-      value: !!this.state.value,
+      value: !!value,
       htmlFor: name,
       required: required,
       disabled: disabled,
@@ -106,7 +101,7 @@ class SelectField extends React.Component {
       loading: loading,
       dense: dense
     }, React.createElement(Select, {
-      value: this.state.value,
+      value: value,
       disabled: disabled,
       list: list,
       filled: filled,
@@ -123,6 +118,7 @@ SelectField.propTypes = {
   name: propTypes.string.isRequired,
   onChange: propTypes.func.isRequired,
   label: propTypes.string.isRequired,
+  defaultValue: propTypes.string,
   value: propTypes.string,
   list: Select.propTypes.list,
   className: propTypes.string,

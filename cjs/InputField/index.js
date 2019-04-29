@@ -46,16 +46,22 @@ var InputField =
 function (_React$Component) {
   _inherits(InputField, _React$Component);
 
-  function InputField(props) {
+  function InputField() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, InputField);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(InputField).call(this, props));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(InputField)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      focus: false,
-      value: ''
+      focus: _this.props.focus,
+      value: _this.props.defaultValue
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (evt) {
@@ -63,9 +69,7 @@ function (_React$Component) {
         focus: true
       });
 
-      if (_this.props.onFocus) {
-        _this.props.onFocus(evt);
-      }
+      _this.props.onFocus(_this.props.name, evt.target.value);
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function (evt) {
@@ -73,9 +77,7 @@ function (_React$Component) {
         focus: false
       });
 
-      if (_this.props.onBlur) {
-        _this.props.onBlur(evt);
-      }
+      _this.props.onBlur(_this.props.name, evt.target.value);
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
@@ -90,10 +92,6 @@ function (_React$Component) {
       _this.props.onChange(_this.props.name, evt.target.value);
     });
 
-    _this.state = {
-      focus: props.focus,
-      value: props.value || ''
-    };
     return _this;
   }
 
@@ -109,17 +107,18 @@ function (_React$Component) {
           label = _this$props.label,
           disabled = _this$props.disabled,
           placeholder = _this$props.placeholder,
-          value = _this$props.value,
           name = _this$props.name,
           valid = _this$props.valid,
           error = _this$props.error,
           warning = _this$props.warning,
-          loading = _this$props.loading;
+          loading = _this$props.loading,
+          _this$props$value = _this$props.value,
+          value = _this$props$value === void 0 ? this.state.value : _this$props$value;
       var Container = filled ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
       return _react.default.createElement(Container, {
         focus: this.state.focus,
         label: label,
-        value: !!this.state.value || !!placeholder,
+        value: !!value || !!placeholder,
         htmlFor: name,
         required: required,
         disabled: disabled,
@@ -136,7 +135,7 @@ function (_React$Component) {
         onChange: this.onChange,
         name: name,
         type: type,
-        value: this.state.value,
+        value: value,
         placeholder: placeholder,
         filled: filled,
         disabled: disabled,
@@ -157,14 +156,20 @@ function (_React$Component) {
 
 exports.InputField = InputField;
 InputField.defaultProps = {
-  type: 'text'
+  type: 'text',
+  onChange: function onChange() {},
+  onBlur: function onBlur() {},
+  onFocus: function onFocus() {}
 };
 InputField.propTypes = {
   name: _propTypes.default.string.isRequired,
-  onChange: _propTypes.default.func.isRequired,
   label: _propTypes.default.string.isRequired,
-  value: _propTypes.default.string,
   className: _propTypes.default.string,
+  placeholder: _propTypes.default.string,
+
+  /** Controls the value from the outside, bypassing internal state. */
+  value: _propTypes.default.string,
+  defaultValue: _propTypes.default.string,
   required: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   filled: _propTypes.default.bool,
@@ -174,8 +179,14 @@ InputField.propTypes = {
   warning: _propTypes.default.bool,
   error: _propTypes.default.bool,
   loading: _propTypes.default.bool,
-  onFocus: _propTypes.default.func,
+
+  /** Handler function which is called with arguments: name, value */
   onBlur: _propTypes.default.func,
-  placeholder: _propTypes.default.string,
+
+  /** Handler function which is called with arguments: name, value */
+  onChange: _propTypes.default.func,
+
+  /** Handler function which is called with arguments: name, value */
+  onFocus: _propTypes.default.func,
   type: _propTypes.default.oneOf(['text', 'email', 'number', 'password', 'url'])
 };
