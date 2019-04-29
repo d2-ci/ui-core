@@ -80,7 +80,7 @@ function (_React$Component) {
         indeterminate: indeterminate
       });
 
-      _this.props.onChange(_this.props.name, evt.target.checked);
+      _this.props.onChange(_this.props.name, checked);
     });
 
     return _this;

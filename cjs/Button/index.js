@@ -62,7 +62,6 @@ Button.defaultProps = {
   type: 'button'
 };
 Button.propTypes = {
-  children: _propTypes.default.string,
   className: _propTypes.default.string,
   icon: _propTypes.default.element,
   name: _propTypes.default.string,

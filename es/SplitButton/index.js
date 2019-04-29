@@ -44,25 +44,9 @@ class SplitButton extends Component {
       open: false
     });
 
-    _defineProperty(this, "onDocClick", evt => {
-      if (this.elContainer && !this.elContainer.contains(evt.target)) {
-        this.setState({
-          open: false
-        });
-      }
-    });
-
     _defineProperty(this, "onToggle", () => this.setState({
       open: !this.state.open
     }));
-  }
-
-  componentDidMount() {
-    document.addEventListener('click', this.onDocClick);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('click', this.onDocClick);
   }
 
   render() {
@@ -71,7 +55,6 @@ class SplitButton extends Component {
     } = this.state;
     const icon = open ? _ref : _ref2;
     return React.createElement("div", {
-      ref: c => this.elContainer = c,
       className: "jsx-3163060161"
     }, React.createElement(Button, _extends({}, this.props, {
       onClick: evt => this.props.onClick(this.props.name, this.props.value),
@@ -80,7 +63,10 @@ class SplitButton extends Component {
       className: cx(this.props.className, rightButton.className),
       onClick: this.onToggle
     }), icon), open && React.createElement(DropMenu, {
-      component: this.props.component
+      component: this.props.component,
+      onClose: () => this.setState({
+        open: false
+      })
     }), leftButton.styles, rightButton.styles, _ref3);
   }
 

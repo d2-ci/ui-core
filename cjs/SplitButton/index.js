@@ -88,14 +88,6 @@ function (_Component) {
       open: false
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
-      if (_this.elContainer && !_this.elContainer.contains(evt.target)) {
-        _this.setState({
-          open: false
-        });
-      }
-    });
-
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onToggle", function () {
       return _this.setState({
         open: !_this.state.open
@@ -106,16 +98,6 @@ function (_Component) {
   }
 
   _createClass(SplitButton, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      document.addEventListener('click', this.onDocClick);
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      document.removeEventListener('click', this.onDocClick);
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -123,9 +105,6 @@ function (_Component) {
       var open = this.state.open;
       var icon = open ? _ref : _ref2;
       return _react.default.createElement("div", {
-        ref: function ref(c) {
-          return _this2.elContainer = c;
-        },
         className: "jsx-3163060161"
       }, _react.default.createElement(_Button.Button, _extends({}, this.props, {
         onClick: function onClick(evt) {
@@ -136,7 +115,12 @@ function (_Component) {
         className: (0, _classnames.default)(this.props.className, rightButton.className),
         onClick: this.onToggle
       }), icon), open && _react.default.createElement(_DropMenu.DropMenu, {
-        component: this.props.component
+        component: this.props.component,
+        onClose: function onClose() {
+          return _this2.setState({
+            open: false
+          });
+        }
       }), leftButton.styles, rightButton.styles, _react.default.createElement(_style.default, {
         id: "3163060161"
       }, ["div.jsx-3163060161{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}"]));

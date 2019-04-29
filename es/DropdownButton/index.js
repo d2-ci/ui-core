@@ -33,25 +33,9 @@ class DropdownButton extends Component {
       open: false
     });
 
-    _defineProperty(this, "onDocClick", evt => {
-      if (this.elContainer && !this.elContainer.contains(evt.target)) {
-        this.setState({
-          open: false
-        });
-      }
-    });
-
     _defineProperty(this, "onToggle", () => this.setState({
       open: !this.state.open
     }));
-  }
-
-  componentDidMount() {
-    document.addEventListener('click', this.onDocClick);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('click', this.onDocClick);
   }
 
   render() {
@@ -60,12 +44,14 @@ class DropdownButton extends Component {
     } = this.state;
     const ArrowIcon = open ? _ref : _ref2;
     return React.createElement("div", {
-      ref: c => this.elContainer = c,
       className: "jsx-3163060161"
     }, React.createElement(Button, _extends({
       onClick: this.onToggle
     }, this.props), this.props.children, ArrowIcon), open && React.createElement(DropMenu, {
-      component: this.props.component
+      component: this.props.component,
+      onClose: () => this.setState({
+        open: false
+      })
     }), _ref3);
   }
 

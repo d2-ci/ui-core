@@ -30,7 +30,7 @@ class Checkbox extends React.Component {
         checked,
         indeterminate
       });
-      this.props.onChange(this.props.name, evt.target.checked);
+      this.props.onChange(this.props.name, checked);
     });
   }
 

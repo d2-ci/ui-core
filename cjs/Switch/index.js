@@ -88,7 +88,6 @@ function (_React$Component) {
           valid = _this$props.valid,
           error = _this$props.error,
           warning = _this$props.warning,
-          checked = _this$props.checked,
           className = _this$props.className,
           disabled = _this$props.disabled,
           name = _this$props.name;
