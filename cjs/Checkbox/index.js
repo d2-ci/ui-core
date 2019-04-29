@@ -68,11 +68,11 @@ function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       indeterminate: _this.props.indeterminate,
-      checked: _this.props.checked
+      checked: _this.props.defaultChecked || false
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
-      var checked = !_this.state.checked;
+      var checked = evt.target.checked;
       var indeterminate = _this.state.indeterminate ? false : null;
 
       _this.setState({
@@ -95,9 +95,11 @@ function (_React$Component) {
           disabled = _this$props.disabled,
           valid = _this$props.valid,
           error = _this$props.error,
-          warning = _this$props.warning;
+          warning = _this$props.warning,
+          _this$props$checked = _this$props.checked,
+          checked = _this$props$checked === void 0 ? this.state.checked : _this$props$checked;
       var classes = (0, _classnames.default)(icons.className, {
-        checked: this.state.checked && !valid && !error && !warning,
+        checked: checked && !valid && !error && !warning,
         disabled: disabled,
         valid: valid,
         error: error,
@@ -112,7 +114,7 @@ function (_React$Component) {
         icon = _react.default.createElement(_Checkbox.Indeterminate, {
           className: classes
         });
-      } else if (this.state.checked) {
+      } else if (checked) {
         icon = _react.default.createElement(_Checkbox.Checked, {
           className: classes
         });
@@ -125,7 +127,7 @@ function (_React$Component) {
       }, _react.default.createElement("input", {
         type: "checkbox",
         onChange: this.onChange,
-        checked: this.state.checked,
+        checked: checked,
         disabled: this.props.disabled,
         className: "jsx-".concat(_styles.default.__hash)
       }), icon, _react.default.createElement("span", {
@@ -143,15 +145,16 @@ function (_React$Component) {
 
 exports.Checkbox = Checkbox;
 Checkbox.propTypes = {
-  onChange: _propTypes.default.func.isRequired,
   name: _propTypes.default.string.isRequired,
   className: _propTypes.default.string,
   label: _propTypes.default.string,
   indeterminate: _propTypes.default.bool,
   required: _propTypes.default.bool,
   checked: _propTypes.default.bool,
+  defaultChecked: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   valid: _propTypes.default.bool,
   warning: _propTypes.default.bool,
-  error: _propTypes.default.bool
+  error: _propTypes.default.bool,
+  onChange: _propTypes.default.func
 };

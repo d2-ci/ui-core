@@ -61,7 +61,7 @@ function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       focus: _this.props.focus,
-      value: _this.props.defaultValue
+      value: _this.props.defaultValue || ''
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (evt) {

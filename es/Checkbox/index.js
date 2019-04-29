@@ -20,11 +20,13 @@ class Checkbox extends React.Component {
 
     _defineProperty(this, "state", {
       indeterminate: this.props.indeterminate,
-      checked: this.props.checked
+      checked: this.props.defaultChecked || false
     });
 
     _defineProperty(this, "onChange", evt => {
-      const checked = !this.state.checked;
+      const {
+        checked
+      } = evt.target;
       const indeterminate = this.state.indeterminate ? false : null;
       this.setState({
         checked,
@@ -41,10 +43,11 @@ class Checkbox extends React.Component {
       disabled,
       valid,
       error,
-      warning
+      warning,
+      checked = this.state.checked
     } = this.props;
     const classes = cx(icons.className, {
-      checked: this.state.checked && !valid && !error && !warning,
+      checked: checked && !valid && !error && !warning,
       disabled,
       valid,
       error,
@@ -58,7 +61,7 @@ class Checkbox extends React.Component {
       icon = React.createElement(Indeterminate, {
         className: classes
       });
-    } else if (this.state.checked) {
+    } else if (checked) {
       icon = React.createElement(Checked, {
         className: classes
       });
@@ -71,7 +74,7 @@ class Checkbox extends React.Component {
     }, React.createElement("input", {
       type: "checkbox",
       onChange: this.onChange,
-      checked: this.state.checked,
+      checked: checked,
       disabled: this.props.disabled,
       className: `jsx-${styles.__hash}`
     }), icon, React.createElement("span", {
@@ -86,16 +89,17 @@ class Checkbox extends React.Component {
 }
 
 Checkbox.propTypes = {
-  onChange: propTypes.func.isRequired,
   name: propTypes.string.isRequired,
   className: propTypes.string,
   label: propTypes.string,
   indeterminate: propTypes.bool,
   required: propTypes.bool,
   checked: propTypes.bool,
+  defaultChecked: propTypes.bool,
   disabled: propTypes.bool,
   valid: propTypes.bool,
   warning: propTypes.bool,
-  error: propTypes.bool
+  error: propTypes.bool,
+  onChange: propTypes.func
 };
 export { Checkbox };

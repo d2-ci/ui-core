@@ -14,7 +14,7 @@ class InputField extends React.Component {
 
     _defineProperty(this, "state", {
       focus: this.props.focus,
-      value: this.props.defaultValue
+      value: this.props.defaultValue || ''
     });
 
     _defineProperty(this, "onFocus", evt => {
