@@ -19,19 +19,17 @@ class Radio extends React.Component {
     super(...args);
 
     _defineProperty(this, "state", {
-      checked: this.props.checked
+      checked: this.props.defaultChecked || false
     });
 
-    _defineProperty(this, "onChange", () => {
-      if (this.props.disabled) {
-        return;
-      }
-
-      const checked = !this.state.checked;
+    _defineProperty(this, "onChange", evt => {
+      const {
+        checked
+      } = evt.target;
       this.setState({
         checked
       });
-      this.props.onChange(this.props.name, this.props.value);
+      this.props.onChange(this.props.name, checked);
     });
   }
 
@@ -42,16 +40,17 @@ class Radio extends React.Component {
       error,
       warning,
       className,
-      disabled
+      disabled,
+      checked = this.state.checked
     } = this.props;
     const classes = cx(icons.className, {
-      checked: this.state.checked && !valid && !error && !warning,
+      checked: checked && !valid && !error && !warning,
       disabled,
       valid,
       error,
       warning
     });
-    const icon = this.state.checked ? React.createElement(Checked, {
+    const icon = checked ? React.createElement(Checked, {
       className: classes
     }) : React.createElement(Unchecked, {
       className: classes
@@ -64,7 +63,7 @@ class Radio extends React.Component {
       type: "radio",
       name: this.props.name,
       value: this.props.value,
-      checked: this.state.checked,
+      checked: checked,
       disabled: this.props.disabled,
       onChange: this.onChange,
       className: `jsx-${styles.__hash}`
@@ -87,6 +86,7 @@ Radio.propTypes = {
   label: propTypes.string,
   required: propTypes.bool,
   checked: propTypes.bool,
+  defaultChecked: propTypes.bool,
   disabled: propTypes.bool,
   valid: propTypes.bool,
   warning: propTypes.bool,

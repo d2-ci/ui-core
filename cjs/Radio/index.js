@@ -67,21 +67,17 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Radio)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      checked: _this.props.checked
+      checked: _this.props.defaultChecked || false
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function () {
-      if (_this.props.disabled) {
-        return;
-      }
-
-      var checked = !_this.state.checked;
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
+      var checked = evt.target.checked;
 
       _this.setState({
         checked: checked
       });
 
-      _this.props.onChange(_this.props.name, _this.props.value);
+      _this.props.onChange(_this.props.name, checked);
     });
 
     return _this;
@@ -96,15 +92,17 @@ function (_React$Component) {
           error = _this$props.error,
           warning = _this$props.warning,
           className = _this$props.className,
-          disabled = _this$props.disabled;
+          disabled = _this$props.disabled,
+          _this$props$checked = _this$props.checked,
+          checked = _this$props$checked === void 0 ? this.state.checked : _this$props$checked;
       var classes = (0, _classnames.default)(icons.className, {
-        checked: this.state.checked && !valid && !error && !warning,
+        checked: checked && !valid && !error && !warning,
         disabled: disabled,
         valid: valid,
         error: error,
         warning: warning
       });
-      var icon = this.state.checked ? _react.default.createElement(_Radio.Checked, {
+      var icon = checked ? _react.default.createElement(_Radio.Checked, {
         className: classes
       }) : _react.default.createElement(_Radio.Unchecked, {
         className: classes
@@ -117,7 +115,7 @@ function (_React$Component) {
         type: "radio",
         name: this.props.name,
         value: this.props.value,
-        checked: this.state.checked,
+        checked: checked,
         disabled: this.props.disabled,
         onChange: this.onChange,
         className: "jsx-".concat(_styles.default.__hash)
@@ -143,6 +141,7 @@ Radio.propTypes = {
   label: _propTypes.default.string,
   required: _propTypes.default.bool,
   checked: _propTypes.default.bool,
+  defaultChecked: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   valid: _propTypes.default.bool,
   warning: _propTypes.default.bool,
