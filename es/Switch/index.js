@@ -14,15 +14,13 @@ class Switch extends React.Component {
     super(...args);
 
     _defineProperty(this, "state", {
-      checked: this.props.checked
+      checked: this.props.defaultChecked || false
     });
 
-    _defineProperty(this, "onChange", () => {
-      if (this.props.disabled) {
-        return;
-      }
-
-      const checked = !this.state.checked;
+    _defineProperty(this, "onChange", evt => {
+      const {
+        checked
+      } = evt.target;
       this.setState({
         checked
       });
@@ -38,7 +36,8 @@ class Switch extends React.Component {
       warning,
       className,
       disabled,
-      name
+      name,
+      checked = this.state.checked
     } = this.props;
     return React.createElement("label", {
       className: `jsx-${styles.__hash}` + " " + (cx(className, {
@@ -48,11 +47,11 @@ class Switch extends React.Component {
       type: "checkbox",
       disabled: disabled,
       name: name,
-      checked: this.state.checked,
+      checked: checked,
       onChange: this.onChange,
       className: `jsx-${styles.__hash}`
     }), React.createElement(SwitchIcon, {
-      checked: this.state.checked,
+      checked: checked,
       disabled: disabled,
       valid: valid,
       warning: warning,
@@ -69,12 +68,16 @@ class Switch extends React.Component {
 
 }
 
+Switch.defaultProps = {
+  onChange: () => {}
+};
 Switch.propTypes = {
   name: propTypes.string.isRequired,
-  onChange: propTypes.func.isRequired,
+  onChange: propTypes.func,
   className: propTypes.string,
   label: propTypes.string,
   required: propTypes.bool,
+  defaultChecked: propTypes.bool,
   checked: propTypes.bool,
   disabled: propTypes.bool,
   valid: propTypes.bool,

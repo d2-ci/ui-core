@@ -60,15 +60,11 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Switch)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      checked: _this.props.checked
+      checked: _this.props.defaultChecked || false
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function () {
-      if (_this.props.disabled) {
-        return;
-      }
-
-      var checked = !_this.state.checked;
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
+      var checked = evt.target.checked;
 
       _this.setState({
         checked: checked
@@ -90,7 +86,9 @@ function (_React$Component) {
           warning = _this$props.warning,
           className = _this$props.className,
           disabled = _this$props.disabled,
-          name = _this$props.name;
+          name = _this$props.name,
+          _this$props$checked = _this$props.checked,
+          checked = _this$props$checked === void 0 ? this.state.checked : _this$props$checked;
       return _react.default.createElement("label", {
         className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, {
           disabled: disabled
@@ -99,11 +97,11 @@ function (_React$Component) {
         type: "checkbox",
         disabled: disabled,
         name: name,
-        checked: this.state.checked,
+        checked: checked,
         onChange: this.onChange,
         className: "jsx-".concat(_styles.default.__hash)
       }), _react.default.createElement(_Switch.SwitchIcon, {
-        checked: this.state.checked,
+        checked: checked,
         disabled: disabled,
         valid: valid,
         warning: warning,
@@ -123,12 +121,16 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.Switch = Switch;
+Switch.defaultProps = {
+  onChange: function onChange() {}
+};
 Switch.propTypes = {
   name: _propTypes.default.string.isRequired,
-  onChange: _propTypes.default.func.isRequired,
+  onChange: _propTypes.default.func,
   className: _propTypes.default.string,
   label: _propTypes.default.string,
   required: _propTypes.default.bool,
+  defaultChecked: _propTypes.default.bool,
   checked: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   valid: _propTypes.default.bool,
