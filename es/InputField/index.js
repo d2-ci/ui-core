@@ -75,7 +75,7 @@ class InputField extends React.Component {
       dense: dense,
       className: _JSXStyle.dynamic([["349714766", [theme.disabled]]])
     }, React.createElement(Input, {
-      focus: this.state.focused,
+      focus: this.state.focus,
       onFocus: this.onFocus,
       onBlur: this.onBlur,
       onChange: this.onChange,

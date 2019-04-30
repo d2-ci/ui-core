@@ -79,7 +79,7 @@ var MenuItem = function MenuItem(_ref2) {
 
 exports.MenuItem = MenuItem;
 MenuItem.propTypes = {
-  label: _propTypes.default.oneOf([_propTypes.default.string, _propTypes.default.element]).isRequired,
+  label: _propTypes.default.string.isRequired,
   value: _propTypes.default.any.isRequired,
   onClick: _propTypes.default.func,
   className: _propTypes.default.string,

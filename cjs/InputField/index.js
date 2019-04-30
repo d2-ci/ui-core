@@ -129,7 +129,7 @@ function (_React$Component) {
         dense: dense,
         className: _style.default.dynamic([["349714766", [_theme.theme.disabled]]])
       }, _react.default.createElement(_Input.Input, {
-        focus: this.state.focused,
+        focus: this.state.focus,
         onFocus: this.onFocus,
         onBlur: this.onBlur,
         onChange: this.onChange,
