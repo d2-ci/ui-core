@@ -72,7 +72,7 @@ function (_Component) {
   _createClass(Input, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      if (this.props.isFocused) {
+      if (this.props.focus) {
         this.inputRef.current.focus();
       }
     }

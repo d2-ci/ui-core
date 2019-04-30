@@ -101,7 +101,6 @@ function (_React$Component) {
       var _this$props = this.props,
           type = _this$props.type,
           filled = _this$props.filled,
-          focus = _this$props.focus,
           dense = _this$props.dense,
           required = _this$props.required,
           label = _this$props.label,
@@ -112,6 +111,8 @@ function (_React$Component) {
           error = _this$props.error,
           warning = _this$props.warning,
           loading = _this$props.loading,
+          _this$props$focus = _this$props.focus,
+          focus = _this$props$focus === void 0 ? this.state.focus : _this$props$focus,
           _this$props$value = _this$props.value,
           value = _this$props$value === void 0 ? this.state.value : _this$props$value;
       var Container = filled ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
