@@ -70,7 +70,7 @@ class SplitButton extends Component {
       onClose: () => this.setState({
         open: false
       }),
-      anchorRef: this.anchorRef
+      anchorEl: this.anchorRef.current
     }), leftButton.styles, rightButton.styles, _ref3);
   }
 

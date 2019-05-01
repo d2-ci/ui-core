@@ -27,7 +27,7 @@ class DropMenu extends PureComponent {
 
   componentDidMount() {
     document.addEventListener('click', this.onDocClick);
-    this.setState(getPosition(this.props.anchorRef.current));
+    this.setState(getPosition(this.props.anchorEl));
   }
 
   componentWillUnmount() {
@@ -66,9 +66,7 @@ DropMenu.propTypes = {
   /** Decides if the menu should call the onClose function or not */
   stayOpen: propTypes.bool,
 
-  /** Ref to DOM node to position itself against */
-  anchorRef: propTypes.shape({
-    current: propTypes.instanceOf(Element)
-  })
+  /** DOM node to position itself against */
+  anchorEl: propTypes.instanceOf(Element)
 };
 export { DropMenu };

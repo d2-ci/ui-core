@@ -55,7 +55,7 @@ class DropdownButton extends Component {
       onClose: () => this.setState({
         open: false
       }),
-      anchorRef: this.anchorRef
+      anchorEl: this.anchorRef.current
     }), _ref3);
   }
 

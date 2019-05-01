@@ -124,7 +124,7 @@ function (_Component) {
             open: false
           });
         },
-        anchorRef: this.anchorRef
+        anchorEl: this.anchorRef.current
       }), leftButton.styles, rightButton.styles, _react.default.createElement(_style.default, {
         id: "3163060161"
       }, ["div.jsx-3163060161{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}"]));
