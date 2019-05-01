@@ -18,6 +18,10 @@ class DropMenu extends PureComponent {
 
     _defineProperty(this, "elContainer", React.createRef());
 
+    _defineProperty(this, "updatePosition", () => {
+      this.setState(getPosition(this.props.anchorEl));
+    });
+
     _defineProperty(this, "onDocClick", evt => {
       if (this.elContainer.current && !this.elContainer.current.contains(evt.target) && !this.props.stayOpen) {
         this.props.onClose();
@@ -27,11 +31,13 @@ class DropMenu extends PureComponent {
 
   componentDidMount() {
     document.addEventListener('click', this.onDocClick);
-    this.setState(getPosition(this.props.anchorEl));
+    window.addEventListener('resize', this.updatePosition);
+    this.updatePosition();
   }
 
   componentWillUnmount() {
     document.removeEventListener('click', this.onDocClick);
+    window.removeEventListener('resize', this.updatePosition);
   }
 
   render() {

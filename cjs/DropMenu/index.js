@@ -64,6 +64,10 @@ function (_PureComponent) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "elContainer", _react.default.createRef());
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updatePosition", function () {
+      _this.setState((0, _getPosition.getPosition)(_this.props.anchorEl));
+    });
+
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
       if (_this.elContainer.current && !_this.elContainer.current.contains(evt.target) && !_this.props.stayOpen) {
         _this.props.onClose();
@@ -77,12 +81,14 @@ function (_PureComponent) {
     key: "componentDidMount",
     value: function componentDidMount() {
       document.addEventListener('click', this.onDocClick);
-      this.setState((0, _getPosition.getPosition)(this.props.anchorEl));
+      window.addEventListener('resize', this.updatePosition);
+      this.updatePosition();
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       document.removeEventListener('click', this.onDocClick);
+      window.removeEventListener('resize', this.updatePosition);
     }
   }, {
     key: "render",
