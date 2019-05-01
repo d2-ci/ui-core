@@ -107,13 +107,13 @@ function (_Component) {
       var open = this.state.open;
       var icon = open ? _ref : _ref2;
       return _react.default.createElement("div", {
+        ref: this.anchorRef,
         className: "jsx-3163060161"
       }, _react.default.createElement(_Button.Button, _extends({}, this.props, {
         onClick: function onClick(evt) {
           return _this2.props.onClick(_this2.props.name, _this2.props.value);
         },
-        className: (0, _classnames.default)(this.props.className, leftButton.className),
-        ref: this.anchorRef
+        className: (0, _classnames.default)(this.props.className, leftButton.className)
       }), this.props.children), _react.default.createElement(_Button.Button, _extends({}, this.props, {
         className: (0, _classnames.default)(this.props.className, rightButton.className),
         onClick: this.onToggle

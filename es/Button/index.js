@@ -3,7 +3,8 @@ import cx from 'classnames';
 import React from 'react';
 import propTypes from 'prop-types';
 import styles from './styles.js';
-const Button = React.forwardRef(({
+
+const Button = ({
   type,
   children,
   icon,
@@ -17,13 +18,12 @@ const Button = React.forwardRef(({
   destructive,
   small,
   large
-}, ref) => React.createElement("button", {
+}) => React.createElement("button", {
   disabled: disabled,
   onClick: evt => onClick && onClick(name, value),
   type: type,
   name: name,
   value: value,
-  ref: ref,
   className: `jsx-${styles.__hash}` + " " + (cx(className, {
     primary,
     secondary,
@@ -37,7 +37,8 @@ const Button = React.forwardRef(({
   className: `jsx-${styles.__hash}` + " " + "button-icon"
 }, icon), children, React.createElement(_JSXStyle, {
   id: styles.__hash
-}, styles)));
+}, styles));
+
 Button.defaultProps = {
   type: 'button'
 };

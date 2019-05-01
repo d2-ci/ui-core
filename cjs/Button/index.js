@@ -17,7 +17,7 @@ var _styles = _interopRequireDefault(require("./styles.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Button = _react.default.forwardRef(function (_ref, ref) {
+var Button = function Button(_ref) {
   var type = _ref.type,
       children = _ref.children,
       icon = _ref.icon,
@@ -39,7 +39,6 @@ var Button = _react.default.forwardRef(function (_ref, ref) {
     type: type,
     name: name,
     value: value,
-    ref: ref,
     className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, {
       primary: primary,
       secondary: secondary,
@@ -54,7 +53,7 @@ var Button = _react.default.forwardRef(function (_ref, ref) {
   }, icon), children, _react.default.createElement(_style.default, {
     id: _styles.default.__hash
   }, _styles.default));
-});
+};
 
 exports.Button = Button;
 Button.defaultProps = {

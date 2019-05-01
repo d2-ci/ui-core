@@ -94,9 +94,9 @@ function (_Component) {
       var open = this.state.open;
       var ArrowIcon = open ? _ref : _ref2;
       return _react.default.createElement("div", {
+        ref: this.anchorRef,
         className: "jsx-3163060161"
       }, _react.default.createElement(_Button.Button, _extends({
-        ref: this.anchorRef,
         onClick: this.onToggle
       }, this.props), this.props.children, ArrowIcon), open && _react.default.createElement(_DropMenu.DropMenu, {
         component: this.props.component,

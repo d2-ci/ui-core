@@ -46,9 +46,9 @@ class DropdownButton extends Component {
     } = this.state;
     const ArrowIcon = open ? _ref : _ref2;
     return React.createElement("div", {
+      ref: this.anchorRef,
       className: "jsx-3163060161"
     }, React.createElement(Button, _extends({
-      ref: this.anchorRef,
       onClick: this.onToggle
     }, this.props), this.props.children, ArrowIcon), open && React.createElement(DropMenu, {
       component: this.props.component,

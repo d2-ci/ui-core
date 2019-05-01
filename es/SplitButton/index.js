@@ -57,11 +57,11 @@ class SplitButton extends Component {
     } = this.state;
     const icon = open ? _ref : _ref2;
     return React.createElement("div", {
+      ref: this.anchorRef,
       className: "jsx-3163060161"
     }, React.createElement(Button, _extends({}, this.props, {
       onClick: evt => this.props.onClick(this.props.name, this.props.value),
-      className: cx(this.props.className, leftButton.className),
-      ref: this.anchorRef
+      className: cx(this.props.className, leftButton.className)
     }), this.props.children), React.createElement(Button, _extends({}, this.props, {
       className: cx(this.props.className, rightButton.className),
       onClick: this.onToggle
