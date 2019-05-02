@@ -127,7 +127,6 @@ function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           type = _this$props.type,
-          list = _this$props.list,
           filled = _this$props.filled,
           focus = _this$props.focus,
           dense = _this$props.dense,
@@ -139,6 +138,7 @@ function (_React$Component) {
           error = _this$props.error,
           warning = _this$props.warning,
           loading = _this$props.loading,
+          children = _this$props.children,
           _this$props$value = _this$props.value,
           value = _this$props$value === void 0 ? this.state.value : _this$props$value;
       var Container = filled ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
@@ -158,13 +158,12 @@ function (_React$Component) {
       }, _react.default.createElement(_Select.Select, {
         value: value,
         disabled: disabled,
-        list: list,
         filled: filled,
         dense: dense,
         onChange: this.onChange,
         onFocus: this.onFocus,
         onBlur: this.onBlur
-      }), _ref2);
+      }, children), _ref2);
     }
   }]);
 
@@ -178,8 +177,12 @@ SelectField.propTypes = {
   label: _propTypes.default.string.isRequired,
   defaultValue: _propTypes.default.string,
   value: _propTypes.default.string,
-  list: _Select.Select.propTypes.list,
   className: _propTypes.default.string,
+  children: _propTypes.default.oneOfType([_propTypes.default.arrayOf(_propTypes.default.shape({
+    tagName: _propTypes.default.oneOf(['OPTION', 'OPTGROUP'])
+  })), _propTypes.default.shape({
+    tagName: _propTypes.default.oneOf(['OPTION', 'OPTGROUP'])
+  })]),
   required: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   filled: _propTypes.default.bool,

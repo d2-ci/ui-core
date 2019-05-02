@@ -33,7 +33,8 @@ export class Select extends Component {
       onChange,
       onFocus,
       onBlur,
-      value
+      value,
+      children
     } = this.props;
     const className = cx({
       dense,
@@ -48,29 +49,12 @@ export class Select extends Component {
       onBlur: onBlur,
       className: `jsx-${styles.__hash}` + " " + (className || "")
     }, React.createElement("option", {
+      key: "hidden-default-value",
       hidden: true,
       disabled: true,
       value: "-1",
       className: `jsx-${styles.__hash}`
-    }), this.props.list.map(({
-      value,
-      label,
-      list
-    }) => React.createElement(Fragment, null, React.createElement("option", {
-      key: label,
-      value: value,
-      className: `jsx-${styles.__hash}`
-    }, label), list && list.length && React.createElement("optgroup", {
-      label: label,
-      className: `jsx-${styles.__hash}`
-    }, list.map(({
-      value,
-      label
-    }) => React.createElement("option", {
-      key: label,
-      value: value,
-      className: `jsx-${styles.__hash}`
-    }, label))))), React.createElement(_JSXStyle, {
+    }), children, React.createElement(_JSXStyle, {
       id: styles.__hash
     }, styles));
   }
@@ -81,18 +65,12 @@ Select.propTypes = {
   onChange: propTypes.func.isRequired,
   onFocus: propTypes.func,
   onBlur: propTypes.func,
-  list: propTypes.arrayOf(propTypes.shape({
-    value: propTypes.string.isRequired,
-    label: propTypes.string.isRequired,
-    list: propTypes.shape({
-      value: propTypes.string.isRequired,
-      label: propTypes.string.isRequired
-    })
-  })).isRequired,
+  children: propTypes.oneOfType([propTypes.arrayOf(propTypes.shape({
+    tagName: propTypes.oneOf(['OPTION', 'OPTGROUP'])
+  })), propTypes.shape({
+    tagName: propTypes.oneOf(['OPTION', 'OPTGROUP'])
+  })]),
   disabled: propTypes.bool,
   filled: propTypes.bool,
   dense: propTypes.bool
-};
-Select.defaultProps = {
-  disabled: false
 };

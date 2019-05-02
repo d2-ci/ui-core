@@ -86,7 +86,8 @@ function (_Component) {
           onChange = _this$props.onChange,
           onFocus = _this$props.onFocus,
           onBlur = _this$props.onBlur,
-          value = _this$props.value;
+          value = _this$props.value,
+          children = _this$props.children;
       var className = (0, _classnames.default)({
         dense: dense,
         filled: filled,
@@ -100,31 +101,12 @@ function (_Component) {
         onBlur: onBlur,
         className: "jsx-".concat(styles.__hash) + " " + (className || "")
       }, _react.default.createElement("option", {
+        key: "hidden-default-value",
         hidden: true,
         disabled: true,
         value: "-1",
         className: "jsx-".concat(styles.__hash)
-      }), this.props.list.map(function (_ref) {
-        var value = _ref.value,
-            label = _ref.label,
-            list = _ref.list;
-        return _react.default.createElement(_react.Fragment, null, _react.default.createElement("option", {
-          key: label,
-          value: value,
-          className: "jsx-".concat(styles.__hash)
-        }, label), list && list.length && _react.default.createElement("optgroup", {
-          label: label,
-          className: "jsx-".concat(styles.__hash)
-        }, list.map(function (_ref2) {
-          var value = _ref2.value,
-              label = _ref2.label;
-          return _react.default.createElement("option", {
-            key: label,
-            value: value,
-            className: "jsx-".concat(styles.__hash)
-          }, label);
-        })));
-      }), _react.default.createElement(_style.default, {
+      }), children, _react.default.createElement(_style.default, {
         id: styles.__hash
       }, styles));
     }
@@ -139,18 +121,12 @@ Select.propTypes = {
   onChange: _propTypes.default.func.isRequired,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func,
-  list: _propTypes.default.arrayOf(_propTypes.default.shape({
-    value: _propTypes.default.string.isRequired,
-    label: _propTypes.default.string.isRequired,
-    list: _propTypes.default.shape({
-      value: _propTypes.default.string.isRequired,
-      label: _propTypes.default.string.isRequired
-    })
-  })).isRequired,
+  children: _propTypes.default.oneOfType([_propTypes.default.arrayOf(_propTypes.default.shape({
+    tagName: _propTypes.default.oneOf(['OPTION', 'OPTGROUP'])
+  })), _propTypes.default.shape({
+    tagName: _propTypes.default.oneOf(['OPTION', 'OPTGROUP'])
+  })]),
   disabled: _propTypes.default.bool,
   filled: _propTypes.default.bool,
   dense: _propTypes.default.bool
-};
-Select.defaultProps = {
-  disabled: false
 };

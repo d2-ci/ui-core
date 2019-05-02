@@ -28,5 +28,5 @@ var Menu = function Menu(_ref) {
 exports.Menu = Menu;
 Menu.propTypes = {
   className: _propTypes.default.string,
-  children: _propTypes.default.arrayOf(_propTypes.default.element).isRequired
+  children: _propTypes.default.any.isRequired
 };

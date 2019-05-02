@@ -135,9 +135,11 @@ function (_Component) {
 }(_react.Component);
 
 exports.SplitButton = SplitButton;
+SplitButton.defaultProps = {
+  onClick: function onClick() {}
+};
 SplitButton.propTypes = {
   component: _propTypes.default.element.isRequired,
-  onClick: _propTypes.default.func.isRequired,
   className: _propTypes.default.string,
   name: _propTypes.default.string,
   value: _propTypes.default.string,
