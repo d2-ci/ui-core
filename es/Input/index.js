@@ -9,8 +9,8 @@ import { colors, theme } from '../theme';
 
 const calculatePaddingTop = props => props.filled ? '14px' : '18.5px';
 
-const styles = new String(`input.jsx-1683562470{color:black;background-color:transparent;border:0;box-sizing:border-box;font-size:16px;height:100%;line-height:16px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;padding:18px 0 15px 16px;}.dense.jsx-1683562470{padding-top:12px;padding-bottom:12px;font-size:14px;}.disabled.jsx-1683562470{color:${theme.disabled};cursor:not-allowed;}.filled.jsx-1683562470{padding:32px 0 8px 16px;}.filled.dense.jsx-1683562470{padding:25px 0 5px 16px;}`);
-styles.__hash = "1683562470";
+const styles = new String(`input.jsx-3935505702{color:${colors.grey900};background-color:transparent;border:0;box-sizing:border-box;font-size:16px;height:100%;line-height:16px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;padding:18px 0 15px 16px;}.dense.jsx-3935505702{padding-top:12px;padding-bottom:12px;font-size:14px;}.disabled.jsx-3935505702{color:${theme.disabled};cursor:not-allowed;}.filled.jsx-3935505702{padding:32px 0 8px 16px;}.filled.dense.jsx-3935505702{padding:25px 0 5px 16px;}`);
+styles.__hash = "3935505702";
 export class Input extends Component {
   constructor(...args) {
     super(...args);

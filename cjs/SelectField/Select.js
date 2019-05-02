@@ -39,8 +39,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var styles = ["select.jsx-1780803264{background:none;border:0;color:black;font-size:16px;height:100%;left:0;outline:0;padding:0 12px 0 15px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}", ".disabled.jsx-1780803264{color:".concat(_theme.theme.disabled, ";cursor:not-allowed;}"), ".dense.jsx-1780803264{font-size:14px;}", ".filled.jsx-1780803264{padding-top:24px;padding-left:16px;}", ".filled.dense.jsx-1780803264{padding-top:20px;}", "option.jsx-1780803264:not(:checked){color:black;}", "select.jsx-1780803264:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}"];
-styles.__hash = "1780803264";
+var styles = ["select.jsx-4198221289{background:none;border:0;color:".concat(_theme.colors.grey900, ";font-size:16px;height:100%;left:0;outline:0;padding:0 12px 0 15px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}"), ".disabled.jsx-4198221289{color:".concat(_theme.theme.disabled, ";cursor:not-allowed;}"), ".dense.jsx-4198221289{font-size:14px;}", ".filled.jsx-4198221289{padding-top:24px;padding-left:16px;}", ".filled.dense.jsx-4198221289{padding-top:20px;}", "option.jsx-4198221289:not(:checked){color:black;}", "select.jsx-4198221289:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}"];
+styles.__hash = "4198221289";
 
 var Select =
 /*#__PURE__*/
