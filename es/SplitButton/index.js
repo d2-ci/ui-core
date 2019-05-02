@@ -44,6 +44,8 @@ class SplitButton extends Component {
       open: false
     });
 
+    _defineProperty(this, "anchorRef", React.createRef());
+
     _defineProperty(this, "onToggle", () => this.setState({
       open: !this.state.open
     }));
@@ -55,6 +57,7 @@ class SplitButton extends Component {
     } = this.state;
     const icon = open ? _ref : _ref2;
     return React.createElement("div", {
+      ref: this.anchorRef,
       className: "jsx-3163060161"
     }, React.createElement(Button, _extends({}, this.props, {
       onClick: evt => this.props.onClick(this.props.name, this.props.value),
@@ -66,7 +69,8 @@ class SplitButton extends Component {
       component: this.props.component,
       onClose: () => this.setState({
         open: false
-      })
+      }),
+      anchorEl: this.anchorRef.current
     }), leftButton.styles, rightButton.styles, _ref3);
   }
 

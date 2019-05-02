@@ -26,12 +26,10 @@ var Button = function Button(_ref) {
       disabled = _ref.disabled,
       _onClick = _ref.onClick,
       className = _ref.className,
-      basic = _ref.basic,
       primary = _ref.primary,
       secondary = _ref.secondary,
       destructive = _ref.destructive,
       small = _ref.small,
-      medium = _ref.medium,
       large = _ref.large;
   return _react.default.createElement("button", {
     disabled: disabled,

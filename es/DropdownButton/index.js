@@ -33,6 +33,8 @@ class DropdownButton extends Component {
       open: false
     });
 
+    _defineProperty(this, "anchorRef", React.createRef());
+
     _defineProperty(this, "onToggle", () => this.setState({
       open: !this.state.open
     }));
@@ -44,6 +46,7 @@ class DropdownButton extends Component {
     } = this.state;
     const ArrowIcon = open ? _ref : _ref2;
     return React.createElement("div", {
+      ref: this.anchorRef,
       className: "jsx-3163060161"
     }, React.createElement(Button, _extends({
       onClick: this.onToggle
@@ -51,7 +54,8 @@ class DropdownButton extends Component {
       component: this.props.component,
       onClose: () => this.setState({
         open: false
-      })
+      }),
+      anchorEl: this.anchorRef.current
     }), _ref3);
   }
 

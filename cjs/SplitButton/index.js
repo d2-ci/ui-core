@@ -88,6 +88,8 @@ function (_Component) {
       open: false
     });
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "anchorRef", _react.default.createRef());
+
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onToggle", function () {
       return _this.setState({
         open: !_this.state.open
@@ -105,6 +107,7 @@ function (_Component) {
       var open = this.state.open;
       var icon = open ? _ref : _ref2;
       return _react.default.createElement("div", {
+        ref: this.anchorRef,
         className: "jsx-3163060161"
       }, _react.default.createElement(_Button.Button, _extends({}, this.props, {
         onClick: function onClick(evt) {
@@ -120,7 +123,8 @@ function (_Component) {
           return _this2.setState({
             open: false
           });
-        }
+        },
+        anchorEl: this.anchorRef.current
       }), leftButton.styles, rightButton.styles, _react.default.createElement(_style.default, {
         id: "3163060161"
       }, ["div.jsx-3163060161{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}"]));

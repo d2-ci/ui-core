@@ -13,6 +13,8 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
+var _getPosition = require("./getPosition");
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -39,8 +41,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var DropMenu =
 /*#__PURE__*/
-function (_Component) {
-  _inherits(DropMenu, _Component);
+function (_PureComponent) {
+  _inherits(DropMenu, _PureComponent);
 
   function DropMenu() {
     var _getPrototypeOf2;
@@ -55,8 +57,19 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(DropMenu)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      top: 'auto',
+      left: 'auto'
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "elContainer", _react.default.createRef());
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updatePosition", function () {
+      _this.setState((0, _getPosition.getPosition)(_this.props.anchorEl));
+    });
+
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
-      if (_this.elContainer && !_this.elContainer.contains(evt.target) && !_this.props.stayOpen) {
+      if (_this.elContainer.current && !_this.elContainer.current.contains(evt.target) && !_this.props.stayOpen) {
         _this.props.onClose();
       }
     });
@@ -68,33 +81,36 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       document.addEventListener('click', this.onDocClick);
+      window.addEventListener('resize', this.updatePosition);
+      this.updatePosition();
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       document.removeEventListener('click', this.onDocClick);
+      window.removeEventListener('resize', this.updatePosition);
     }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       var _this$props = this.props,
           className = _this$props.className,
           component = _this$props.component;
+      var _this$state = this.state,
+          top = _this$state.top,
+          left = _this$state.left;
       return _reactDom.default.createPortal(_react.default.createElement("div", {
-        ref: function ref(c) {
-          return _this2.elContainer = c;
-        },
-        className: "jsx-4254054870" + " " + (className || "")
+        ref: this.elContainer,
+        className: _style.default.dynamic([["891399372", [top, left]]]) + " " + (className || "")
       }, component, _react.default.createElement(_style.default, {
-        id: "4254054870"
-      }, ["div.jsx-4254054870{z-index:1000;position:absolute;}"])), document.body);
+        id: "891399372",
+        dynamic: [top, left]
+      }, ["div.__jsx-style-dynamic-selector{z-index:1000;position:absolute;top:".concat(top, ";left:").concat(left, ";}")])), document.body);
     }
   }]);
 
   return DropMenu;
-}(_react.Component);
+}(_react.PureComponent);
 
 exports.DropMenu = DropMenu;
 DropMenu.propTypes = {
@@ -107,5 +123,8 @@ DropMenu.propTypes = {
   onClose: _propTypes.default.func,
 
   /** Decides if the menu should call the onClose function or not */
-  stayOpen: _propTypes.default.bool
+  stayOpen: _propTypes.default.bool,
+
+  /** DOM node to position itself against */
+  anchorEl: _propTypes.default.instanceOf(Element)
 };

@@ -13,12 +13,10 @@ const Button = ({
   disabled,
   onClick,
   className,
-  basic,
   primary,
   secondary,
   destructive,
   small,
-  medium,
   large
 }) => React.createElement("button", {
   disabled: disabled,
