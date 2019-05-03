@@ -22,5 +22,4 @@ export { theme, colors } from './theme.js';
  * are kept internal for now until the API stabilizes
  */
 // export { DropMenu } from './DropMenu'
-// export { Input } from './Input'
 // export { LabelFilled, LabelOutlined } from './FieldLabel'

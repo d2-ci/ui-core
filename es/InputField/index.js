@@ -4,7 +4,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 import propTypes from 'prop-types';
 import React, { Fragment } from 'react';
-import { Input } from '../Input';
+import { Input } from './Input.js';
 import { LabelFilled, LabelOutlined } from '../FieldLabel';
 import { theme } from '../theme';
 

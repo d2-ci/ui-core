@@ -11,7 +11,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _Input = require("../Input");
+var _Input = require("./Input.js");
 
 var _FieldLabel = require("../FieldLabel");
 
