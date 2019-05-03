@@ -66,16 +66,16 @@ function (_React$PureComponent) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Chip)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function (e) {
       if (!_this.props.disabled && _this.props.onClick) {
-        return _this.props.onClick();
+        _this.props.onClick(e);
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onRemove", function (evt) {
-      evt.stopPropagation(); // stop onRemove from triggering onClick on container
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onRemove", function (e) {
+      e.stopPropagation(); // stop onRemove from triggering onClick on container
 
-      _this.props.onRemove();
+      _this.props.onRemove(e);
     });
 
     return _this;
@@ -100,9 +100,10 @@ function (_React$PureComponent) {
     key: "showRemove",
     value: function showRemove() {
       if (this.props.onRemove) {
-        return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Cancel.Cancel, {
-          className: removeIcon.className,
+        return _react.default.createElement("span", {
           onClick: this.onRemove
+        }, _react.default.createElement(_Cancel.Cancel, {
+          className: removeIcon.className
         }), removeIcon.styles);
       }
     }
@@ -121,8 +122,7 @@ function (_React$PureComponent) {
         className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, {
           selected: selected,
           disabled: disabled,
-          dragging: dragging,
-          static: !this.props.onClick
+          dragging: dragging
         }) || "")
       }, this.showIcon(), _react.default.createElement("span", {
         className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)({

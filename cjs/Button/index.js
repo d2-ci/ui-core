@@ -33,8 +33,8 @@ var Button = function Button(_ref) {
       large = _ref.large;
   return _react.default.createElement("button", {
     disabled: disabled,
-    onClick: function onClick(evt) {
-      return _onClick(name, value);
+    onClick: function onClick(e) {
+      return _onClick(e);
     },
     type: type,
     name: name,
@@ -57,10 +57,10 @@ var Button = function Button(_ref) {
 
 exports.Button = Button;
 Button.defaultProps = {
-  type: 'button',
-  onClick: function onClick() {}
+  type: 'button'
 };
 Button.propTypes = {
+  onClick: _propTypes.default.func.isRequired,
   className: _propTypes.default.string,
   icon: _propTypes.default.element,
   name: _propTypes.default.string,
@@ -71,6 +71,5 @@ Button.propTypes = {
   primary: _propTypes.default.bool,
   secondary: _propTypes.default.bool,
   destructive: _propTypes.default.bool,
-  disabled: _propTypes.default.bool,
-  onClick: _propTypes.default.func
+  disabled: _propTypes.default.bool
 };

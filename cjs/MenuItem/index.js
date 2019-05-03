@@ -34,7 +34,6 @@ var subMenu = {
 
 var SubMenu = function SubMenu(_ref) {
   var children = _ref.children,
-      onClick = _ref.onClick,
       className = _ref.className;
   return _react.default.createElement("div", {
     className: className
@@ -81,6 +80,8 @@ exports.MenuItem = MenuItem;
 MenuItem.propTypes = {
   label: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]).isRequired,
   value: _propTypes.default.any,
+
+  /** handler function called with `value` as the sole argument */
   onClick: _propTypes.default.func,
   className: _propTypes.default.string,
   children: _propTypes.default.element,

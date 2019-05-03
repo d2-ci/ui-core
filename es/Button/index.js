@@ -20,7 +20,7 @@ const Button = ({
   large
 }) => React.createElement("button", {
   disabled: disabled,
-  onClick: evt => onClick(name, value),
+  onClick: e => onClick(e),
   type: type,
   name: name,
   value: value,
@@ -40,10 +40,10 @@ const Button = ({
 }, styles));
 
 Button.defaultProps = {
-  type: 'button',
-  onClick: () => {}
+  type: 'button'
 };
 Button.propTypes = {
+  onClick: propTypes.func.isRequired,
   className: propTypes.string,
   icon: propTypes.element,
   name: propTypes.string,
@@ -54,7 +54,6 @@ Button.propTypes = {
   primary: propTypes.bool,
   secondary: propTypes.bool,
   destructive: propTypes.bool,
-  disabled: propTypes.bool,
-  onClick: propTypes.func
+  disabled: propTypes.bool
 };
 export { Button };

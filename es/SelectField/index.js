@@ -28,20 +28,7 @@ class SelectField extends React.Component {
     super(...args);
 
     _defineProperty(this, "state", {
-      focus: this.props.focused,
-      value: this.props.defaultValue
-    });
-
-    _defineProperty(this, "onChange", event => {
-      if (!this.props.disabled) {
-        const {
-          value
-        } = event.target;
-        this.setState({
-          value
-        });
-        this.props.onChange(this.props.name, value);
-      }
+      focus: this.props.focused
     });
 
     _defineProperty(this, "onFocus", e => {
@@ -84,7 +71,8 @@ class SelectField extends React.Component {
       warning,
       loading,
       children,
-      value = this.state.value
+      value,
+      onChange
     } = this.props;
     const Container = filled ? LabelFilled : LabelOutlined;
     return React.createElement(Container, {
@@ -101,11 +89,12 @@ class SelectField extends React.Component {
       loading: loading,
       dense: dense
     }, React.createElement(Select, {
+      name: name,
       value: value,
       disabled: disabled,
       filled: filled,
       dense: dense,
-      onChange: this.onChange,
+      onChange: e => onChange(e),
       onFocus: this.onFocus,
       onBlur: this.onBlur
     }, children), _ref2);
@@ -117,7 +106,6 @@ SelectField.propTypes = {
   name: propTypes.string.isRequired,
   onChange: propTypes.func.isRequired,
   label: propTypes.string.isRequired,
-  defaultValue: propTypes.string,
   value: propTypes.string,
   className: propTypes.string,
   children: propTypes.oneOfType([propTypes.arrayOf(propTypes.shape({

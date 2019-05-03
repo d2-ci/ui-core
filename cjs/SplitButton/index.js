@@ -110,13 +110,10 @@ function (_Component) {
         ref: this.anchorRef,
         className: "jsx-3163060161"
       }, _react.default.createElement(_Button.Button, _extends({}, this.props, {
-        onClick: function onClick(evt) {
-          return _this2.props.onClick(_this2.props.name, _this2.props.value);
-        },
         className: (0, _classnames.default)(this.props.className, leftButton.className)
       }), this.props.children), _react.default.createElement(_Button.Button, _extends({}, this.props, {
-        className: (0, _classnames.default)(this.props.className, rightButton.className),
-        onClick: this.onToggle
+        onClick: this.onToggle,
+        className: (0, _classnames.default)(this.props.className, rightButton.className)
       }), icon), open && _react.default.createElement(_DropMenu.DropMenu, {
         component: this.props.component,
         onClose: function onClose() {
@@ -135,10 +132,8 @@ function (_Component) {
 }(_react.Component);
 
 exports.SplitButton = SplitButton;
-SplitButton.defaultProps = {
-  onClick: function onClick() {}
-};
 SplitButton.propTypes = {
+  onClick: _propTypes.default.func.isRequired,
   component: _propTypes.default.element.isRequired,
   className: _propTypes.default.string,
   name: _propTypes.default.string,

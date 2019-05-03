@@ -78,20 +78,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SelectField)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      focus: _this.props.focused,
-      value: _this.props.defaultValue
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (event) {
-      if (!_this.props.disabled) {
-        var value = event.target.value;
-
-        _this.setState({
-          value: value
-        });
-
-        _this.props.onChange(_this.props.name, value);
-      }
+      focus: _this.props.focused
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (e) {
@@ -139,8 +126,8 @@ function (_React$Component) {
           warning = _this$props.warning,
           loading = _this$props.loading,
           children = _this$props.children,
-          _this$props$value = _this$props.value,
-          value = _this$props$value === void 0 ? this.state.value : _this$props$value;
+          value = _this$props.value,
+          _onChange = _this$props.onChange;
       var Container = filled ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
       return _react.default.createElement(Container, {
         onClick: this.onFocus,
@@ -156,11 +143,14 @@ function (_React$Component) {
         loading: loading,
         dense: dense
       }, _react.default.createElement(_Select.Select, {
+        name: name,
         value: value,
         disabled: disabled,
         filled: filled,
         dense: dense,
-        onChange: this.onChange,
+        onChange: function onChange(e) {
+          return _onChange(e);
+        },
         onFocus: this.onFocus,
         onBlur: this.onBlur
       }, children), _ref2);
@@ -175,7 +165,6 @@ SelectField.propTypes = {
   name: _propTypes.default.string.isRequired,
   onChange: _propTypes.default.func.isRequired,
   label: _propTypes.default.string.isRequired,
-  defaultValue: _propTypes.default.string,
   value: _propTypes.default.string,
   className: _propTypes.default.string,
   children: _propTypes.default.oneOfType([_propTypes.default.arrayOf(_propTypes.default.shape({

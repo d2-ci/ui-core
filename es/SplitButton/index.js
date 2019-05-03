@@ -60,11 +60,10 @@ class SplitButton extends Component {
       ref: this.anchorRef,
       className: "jsx-3163060161"
     }, React.createElement(Button, _extends({}, this.props, {
-      onClick: evt => this.props.onClick(this.props.name, this.props.value),
       className: cx(this.props.className, leftButton.className)
     }), this.props.children), React.createElement(Button, _extends({}, this.props, {
-      className: cx(this.props.className, rightButton.className),
-      onClick: this.onToggle
+      onClick: this.onToggle,
+      className: cx(this.props.className, rightButton.className)
     }), icon), open && React.createElement(DropMenu, {
       component: this.props.component,
       onClose: () => this.setState({
@@ -76,10 +75,8 @@ class SplitButton extends Component {
 
 }
 
-SplitButton.defaultProps = {
-  onClick: () => {}
-};
 SplitButton.propTypes = {
+  onClick: propTypes.func.isRequired,
   component: propTypes.element.isRequired,
   className: propTypes.string,
   name: propTypes.string,

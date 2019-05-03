@@ -34,7 +34,8 @@ export class Select extends Component {
       onFocus,
       onBlur,
       value,
-      children
+      children,
+      name
     } = this.props;
     const className = cx({
       dense,
@@ -47,6 +48,7 @@ export class Select extends Component {
       disabled: disabled,
       onFocus: onFocus,
       onBlur: onBlur,
+      name: name,
       className: `jsx-${styles.__hash}` + " " + (className || "")
     }, React.createElement("option", {
       key: "hidden-default-value",
@@ -61,8 +63,9 @@ export class Select extends Component {
 
 }
 Select.propTypes = {
-  value: propTypes.string,
+  name: propTypes.string.isRequired,
   onChange: propTypes.func.isRequired,
+  value: propTypes.string,
   onFocus: propTypes.func,
   onBlur: propTypes.func,
   children: propTypes.oneOfType([propTypes.arrayOf(propTypes.shape({

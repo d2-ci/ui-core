@@ -19,7 +19,6 @@ const subMenu = {
 
 const SubMenu = ({
   children,
-  onClick,
   className
 }) => React.createElement("div", {
   className: className
@@ -64,6 +63,8 @@ const MenuItem = ({
 MenuItem.propTypes = {
   label: propTypes.oneOfType([propTypes.string, propTypes.object]).isRequired,
   value: propTypes.any,
+
+  /** handler function called with `value` as the sole argument */
   onClick: propTypes.func,
   className: propTypes.string,
   children: propTypes.element,

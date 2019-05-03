@@ -24,16 +24,16 @@ class Chip extends React.PureComponent {
   constructor(...args) {
     super(...args);
 
-    _defineProperty(this, "onClick", () => {
+    _defineProperty(this, "onClick", e => {
       if (!this.props.disabled && this.props.onClick) {
-        return this.props.onClick();
+        this.props.onClick(e);
       }
     });
 
-    _defineProperty(this, "onRemove", evt => {
-      evt.stopPropagation(); // stop onRemove from triggering onClick on container
+    _defineProperty(this, "onRemove", e => {
+      e.stopPropagation(); // stop onRemove from triggering onClick on container
 
-      this.props.onRemove();
+      this.props.onRemove(e);
     });
   }
 
@@ -53,9 +53,10 @@ class Chip extends React.PureComponent {
 
   showRemove() {
     if (this.props.onRemove) {
-      return React.createElement(React.Fragment, null, React.createElement(Cancel, {
-        className: removeIcon.className,
+      return React.createElement("span", {
         onClick: this.onRemove
+      }, React.createElement(Cancel, {
+        className: removeIcon.className
       }), removeIcon.styles);
     }
   }
@@ -74,8 +75,7 @@ class Chip extends React.PureComponent {
       className: `jsx-${styles.__hash}` + " " + (cx(className, {
         selected,
         disabled,
-        dragging,
-        static: !this.props.onClick
+        dragging
       }) || "")
     }, this.showIcon(), React.createElement("span", {
       className: `jsx-${styles.__hash}` + " " + (cx({

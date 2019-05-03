@@ -1,6 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 var _ref =
 /*#__PURE__*/
@@ -11,16 +11,19 @@ React.createElement(_JSXStyle, {
 export const Input = ({
   onChange,
   checked,
-  disabled
+  disabled,
+  name
 }) => React.createElement(Fragment, null, React.createElement("input", {
   type: "checkbox",
+  name: name,
   onChange: onChange,
   checked: checked,
   disabled: disabled,
   className: "jsx-1568741591"
 }), _ref);
 Input.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  checked: PropTypes.bool,
-  disabled: PropTypes.bool
+  onChange: propTypes.func.isRequired,
+  name: propTypes.string.isRequired,
+  checked: propTypes.bool,
+  disabled: propTypes.bool
 };
