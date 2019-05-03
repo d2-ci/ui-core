@@ -22,7 +22,7 @@ var _styles = _interopRequireDefault(require("./styles"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Switch = function Switch(_ref) {
-  var _onChange = _ref.onChange,
+  var onChange = _ref.onChange,
       name = _ref.name,
       className = _ref.className,
       label = _ref.label,
@@ -42,9 +42,7 @@ var Switch = function Switch(_ref) {
     disabled: disabled,
     name: name,
     checked: checked,
-    onChange: function onChange(e) {
-      return _onChange(e);
-    },
+    onChange: onChange,
     className: "jsx-".concat(_styles.default.__hash)
   }), _react.default.createElement(_Switch.SwitchIcon, {
     checked: checked,

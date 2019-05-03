@@ -86,7 +86,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var _this$props = this.props,
-          _onChange = _this$props.onChange,
+          onChange = _this$props.onChange,
           type = _this$props.type,
           filled = _this$props.filled,
           dense = _this$props.dense,
@@ -120,9 +120,7 @@ function (_React$Component) {
         focus: focus,
         onFocus: this.onFocus,
         onBlur: this.onBlur,
-        onChange: function onChange(e) {
-          return _onChange(e);
-        },
+        onChange: onChange,
         name: name,
         type: type,
         value: value || '',

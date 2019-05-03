@@ -47,7 +47,7 @@ const Radio = ({
     value: value,
     checked: checked,
     disabled: disabled,
-    onChange: e => onChange(e),
+    onChange: onChange,
     className: `jsx-${styles.__hash}`
   }), icon, React.createElement("span", {
     className: `jsx-${styles.__hash}` + " " + (cx({

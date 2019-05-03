@@ -29,7 +29,7 @@ var icons = {
 };
 
 var Radio = function Radio(_ref) {
-  var _onChange = _ref.onChange,
+  var onChange = _ref.onChange,
       name = _ref.name,
       value = _ref.value,
       className = _ref.className,
@@ -63,9 +63,7 @@ var Radio = function Radio(_ref) {
     value: value,
     checked: checked,
     disabled: disabled,
-    onChange: function onChange(e) {
-      return _onChange(e);
-    },
+    onChange: onChange,
     className: "jsx-".concat(_styles.default.__hash)
   }), icon, _react.default.createElement("span", {
     className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)({

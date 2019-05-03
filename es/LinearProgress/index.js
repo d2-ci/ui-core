@@ -26,18 +26,18 @@ const Progress = ({
 
 const LinearProgress = ({
   amount,
-  margin,
+  margin = '0px',
   className
 }) => {
   return React.createElement("div", {
     role: "progressbar",
-    className: _JSXStyle.dynamic([["555193088", [theme.primary050]], ["3886587682", [margin]]]) + " " + (className || "")
+    className: _JSXStyle.dynamic([["2716878465", [theme.primary050]], ["3886587682", [margin]]]) + " " + (className || "")
   }, React.createElement(Progress, {
     amount: amount
   }), React.createElement(_JSXStyle, {
-    id: "555193088",
+    id: "2716878465",
     dynamic: [theme.primary050]
-  }, `div.__jsx-style-dynamic-selector{display:block;position:relative;width:100%;height:4px;margin:0;overflow:hidden;overflow-x:hidden;overflow-y:hidden;background-color:${theme.primary050};}`), React.createElement(_JSXStyle, {
+  }, `div.__jsx-style-dynamic-selector{display:block;position:relative;width:100%;height:4px;overflow:hidden;overflow-x:hidden;overflow-y:hidden;background-color:${theme.primary050};}`), React.createElement(_JSXStyle, {
     id: "3886587682",
     dynamic: [margin]
   }, `.__jsx-style-dynamic-selector{margin:${margin};}`));

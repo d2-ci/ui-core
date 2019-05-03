@@ -20,7 +20,7 @@ const Button = ({
   large
 }) => React.createElement("button", {
   disabled: disabled,
-  onClick: e => onClick(e),
+  onClick: onClick,
   type: type,
   name: name,
   value: value,

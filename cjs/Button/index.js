@@ -24,7 +24,7 @@ var Button = function Button(_ref) {
       name = _ref.name,
       value = _ref.value,
       disabled = _ref.disabled,
-      _onClick = _ref.onClick,
+      onClick = _ref.onClick,
       className = _ref.className,
       primary = _ref.primary,
       secondary = _ref.secondary,
@@ -33,9 +33,7 @@ var Button = function Button(_ref) {
       large = _ref.large;
   return _react.default.createElement("button", {
     disabled: disabled,
-    onClick: function onClick(e) {
-      return _onClick(e);
-    },
+    onClick: onClick,
     type: type,
     name: name,
     value: value,

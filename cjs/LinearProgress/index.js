@@ -39,17 +39,18 @@ var Progress = function Progress(_ref) {
 
 var LinearProgress = function LinearProgress(_ref2) {
   var amount = _ref2.amount,
-      margin = _ref2.margin,
+      _ref2$margin = _ref2.margin,
+      margin = _ref2$margin === void 0 ? '0px' : _ref2$margin,
       className = _ref2.className;
   return _react.default.createElement("div", {
     role: "progressbar",
-    className: _style.default.dynamic([["555193088", [_theme.theme.primary050]], ["3886587682", [margin]]]) + " " + (className || "")
+    className: _style.default.dynamic([["2716878465", [_theme.theme.primary050]], ["3886587682", [margin]]]) + " " + (className || "")
   }, _react.default.createElement(Progress, {
     amount: amount
   }), _react.default.createElement(_style.default, {
-    id: "555193088",
+    id: "2716878465",
     dynamic: [_theme.theme.primary050]
-  }, ["div.__jsx-style-dynamic-selector{display:block;position:relative;width:100%;height:4px;margin:0;overflow:hidden;overflow-x:hidden;overflow-y:hidden;background-color:".concat(_theme.theme.primary050, ";}")]), _react.default.createElement(_style.default, {
+  }, ["div.__jsx-style-dynamic-selector{display:block;position:relative;width:100%;height:4px;overflow:hidden;overflow-x:hidden;overflow-y:hidden;background-color:".concat(_theme.theme.primary050, ";}")]), _react.default.createElement(_style.default, {
     id: "3886587682",
     dynamic: [margin]
   }, [".__jsx-style-dynamic-selector{margin:".concat(margin, ";}")]));

@@ -28,7 +28,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Checkbox = function Checkbox(_ref) {
-  var _onChange = _ref.onChange,
+  var onChange = _ref.onChange,
       name = _ref.name,
       label = _ref.label,
       className = _ref.className,
@@ -46,9 +46,7 @@ var Checkbox = function Checkbox(_ref) {
     }) || "")
   }, _react.default.createElement(_Input.Input, {
     name: name,
-    onChange: function onChange(e) {
-      return _onChange(e);
-    },
+    onChange: onChange,
     checked: checked,
     disabled: disabled
   }), _react.default.createElement(_Icon.Icon, {

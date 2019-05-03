@@ -26,7 +26,7 @@ const Checkbox = ({
   }) || "")
 }, React.createElement(Input, {
   name: name,
-  onChange: e => onChange(e),
+  onChange: onChange,
   checked: checked,
   disabled: disabled
 }), React.createElement(Icon, {

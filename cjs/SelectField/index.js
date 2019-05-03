@@ -127,7 +127,7 @@ function (_React$Component) {
           loading = _this$props.loading,
           children = _this$props.children,
           value = _this$props.value,
-          _onChange = _this$props.onChange;
+          onChange = _this$props.onChange;
       var Container = filled ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
       return _react.default.createElement(Container, {
         onClick: this.onFocus,
@@ -148,9 +148,7 @@ function (_React$Component) {
         disabled: disabled,
         filled: filled,
         dense: dense,
-        onChange: function onChange(e) {
-          return _onChange(e);
-        },
+        onChange: onChange,
         onFocus: this.onFocus,
         onBlur: this.onBlur
       }, children), _ref2);
