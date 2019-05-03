@@ -1,7 +1,5 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -9,19 +7,27 @@ exports.Checkbox = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _theme = require("../theme.js");
+var _theme = require("../theme");
 
-var _styles = _interopRequireDefault(require("./styles.js"));
+var _Checkbox = require("../icons/Checkbox");
 
-var _Checkbox = require("../icons/Checkbox.js");
+var _Icon = require("./Icon");
+
+var _Label = require("./Label");
+
+var _Input = require("./Input");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -40,13 +46,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var icons = {
-  styles: _react.default.createElement(_style.default, {
-    id: "3627497902"
-  }, ["svg.jsx-3627497902{height:24px;width:24px;fill:".concat(_theme.theme.default, ";}"), ".checked.jsx-3627497902{fill:".concat(_theme.colors.teal400, ";}"), ".disabled.jsx-3627497902{fill:".concat(_theme.theme.disabled, ";}"), ".error.jsx-3627497902{fill:".concat(_theme.theme.error, ";}"), ".valid.jsx-3627497902{fill:".concat(_theme.theme.valid, ";}"), ".warning.jsx-3627497902{fill:".concat(_theme.theme.warning, ";}")]),
-  className: "jsx-3627497902"
-};
 
 var Checkbox =
 /*#__PURE__*/
@@ -67,17 +66,14 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Checkbox)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      indeterminate: _this.props.indeterminate,
       checked: _this.props.defaultChecked || false
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
       var checked = evt.target.checked;
-      var indeterminate = _this.state.indeterminate ? false : null;
 
       _this.setState({
-        checked: checked,
-        indeterminate: indeterminate
+        checked: checked
       });
 
       _this.props.onChange(_this.props.name, checked);
@@ -96,47 +92,30 @@ function (_React$Component) {
           valid = _this$props.valid,
           error = _this$props.error,
           warning = _this$props.warning,
+          indeterminate = _this$props.indeterminate,
           _this$props$checked = _this$props.checked,
           checked = _this$props$checked === void 0 ? this.state.checked : _this$props$checked;
-      var classes = (0, _classnames.default)(icons.className, {
-        checked: checked && !valid && !error && !warning,
+      return _react.default.createElement("label", {
+        className: _style.default.dynamic([["3608855937", [_theme.theme.disabled]]]) + " " + ((0, _classnames.default)('base', className, {
+          disabled: this.props.disabled
+        }) || "")
+      }, _react.default.createElement(_Input.Input, {
+        onChange: this.onChange,
+        checked: checked,
+        disabled: this.props.disabled
+      }), _react.default.createElement(_Icon.Icon, {
+        checked: checked,
         disabled: disabled,
         valid: valid,
         error: error,
-        warning: warning
-      });
-
-      var icon = _react.default.createElement(_Checkbox.Unchecked, {
-        className: classes
-      });
-
-      if (this.state.indeterminate) {
-        icon = _react.default.createElement(_Checkbox.Indeterminate, {
-          className: classes
-        });
-      } else if (checked) {
-        icon = _react.default.createElement(_Checkbox.Checked, {
-          className: classes
-        });
-      }
-
-      return _react.default.createElement("label", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className, {
-          disabled: this.props.disabled
-        }) || "")
-      }, _react.default.createElement("input", {
-        type: "checkbox",
-        onChange: this.onChange,
-        checked: checked,
-        disabled: this.props.disabled,
-        className: "jsx-".concat(_styles.default.__hash)
-      }), icon, _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', {
-          required: required
-        }) || "")
-      }, this.props.label), icons.styles, _react.default.createElement(_style.default, {
-        id: _styles.default.__hash
-      }, _styles.default));
+        warning: warning,
+        indeterminate: indeterminate
+      }), _react.default.createElement(_Label.Label, {
+        required: required
+      }, this.props.label), _react.default.createElement(_style.default, {
+        id: "3608855937",
+        dynamic: [_theme.theme.disabled]
+      }, ["label.__jsx-style-dynamic-selector{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:start;-webkit-justify-content:flex-start;-ms-flex-pack:start;justify-content:flex-start;cursor:pointer;pointer-events:all;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}", ".disabled.__jsx-style-dynamic-selector{cursor:not-allowed;color:".concat(_theme.theme.disabled, ";}")]));
     }
   }]);
 

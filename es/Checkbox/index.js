@@ -1,25 +1,21 @@
+import _JSXStyle from "styled-jsx/style";
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import _JSXStyle from "styled-jsx/style";
-import React from 'react';
+import React, { Fragment } from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
-import { colors, theme } from '../theme.js';
-import styles from './styles.js';
-import { Indeterminate, Checked, Unchecked } from '../icons/Checkbox.js';
-const icons = {
-  styles: React.createElement(_JSXStyle, {
-    id: "3627497902"
-  }, `svg.jsx-3627497902{height:24px;width:24px;fill:${theme.default};}.checked.jsx-3627497902{fill:${colors.teal400};}.disabled.jsx-3627497902{fill:${theme.disabled};}.error.jsx-3627497902{fill:${theme.error};}.valid.jsx-3627497902{fill:${theme.valid};}.warning.jsx-3627497902{fill:${theme.warning};}`),
-  className: "jsx-3627497902"
-};
+import { colors, theme } from '../theme';
+import { Indeterminate, Checked, Unchecked } from '../icons/Checkbox';
+import { Icon } from './Icon';
+import { Label } from './Label';
+import { Input } from './Input';
 
 class Checkbox extends React.Component {
   constructor(...args) {
     super(...args);
 
     _defineProperty(this, "state", {
-      indeterminate: this.props.indeterminate,
       checked: this.props.defaultChecked || false
     });
 
@@ -27,10 +23,8 @@ class Checkbox extends React.Component {
       const {
         checked
       } = evt.target;
-      const indeterminate = this.state.indeterminate ? false : null;
       this.setState({
-        checked,
-        indeterminate
+        checked
       });
       this.props.onChange(this.props.name, checked);
     });
@@ -44,46 +38,30 @@ class Checkbox extends React.Component {
       valid,
       error,
       warning,
+      indeterminate,
       checked = this.state.checked
     } = this.props;
-    const classes = cx(icons.className, {
-      checked: checked && !valid && !error && !warning,
-      disabled,
-      valid,
-      error,
-      warning
-    });
-    let icon = React.createElement(Unchecked, {
-      className: classes
-    });
-
-    if (this.state.indeterminate) {
-      icon = React.createElement(Indeterminate, {
-        className: classes
-      });
-    } else if (checked) {
-      icon = React.createElement(Checked, {
-        className: classes
-      });
-    }
-
     return React.createElement("label", {
-      className: `jsx-${styles.__hash}` + " " + (cx('base', className, {
+      className: _JSXStyle.dynamic([["3608855937", [theme.disabled]]]) + " " + (cx('base', className, {
         disabled: this.props.disabled
       }) || "")
-    }, React.createElement("input", {
-      type: "checkbox",
+    }, React.createElement(Input, {
       onChange: this.onChange,
       checked: checked,
-      disabled: this.props.disabled,
-      className: `jsx-${styles.__hash}`
-    }), icon, React.createElement("span", {
-      className: `jsx-${styles.__hash}` + " " + (cx('label', {
-        required
-      }) || "")
-    }, this.props.label), icons.styles, React.createElement(_JSXStyle, {
-      id: styles.__hash
-    }, styles));
+      disabled: this.props.disabled
+    }), React.createElement(Icon, {
+      checked: checked,
+      disabled: disabled,
+      valid: valid,
+      error: error,
+      warning: warning,
+      indeterminate: indeterminate
+    }), React.createElement(Label, {
+      required: required
+    }, this.props.label), React.createElement(_JSXStyle, {
+      id: "3608855937",
+      dynamic: [theme.disabled]
+    }, `label.__jsx-style-dynamic-selector{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:start;-webkit-justify-content:flex-start;-ms-flex-pack:start;justify-content:flex-start;cursor:pointer;pointer-events:all;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}.disabled.__jsx-style-dynamic-selector{cursor:not-allowed;color:${theme.disabled};}`));
   }
 
 }
