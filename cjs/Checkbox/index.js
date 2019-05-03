@@ -66,17 +66,14 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Checkbox)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      indeterminate: _this.props.indeterminate,
       checked: _this.props.defaultChecked || false
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
       var checked = evt.target.checked;
-      var indeterminate = false;
 
       _this.setState({
-        checked: checked,
-        indeterminate: indeterminate
+        checked: checked
       });
 
       _this.props.onChange(_this.props.name, checked);
@@ -95,6 +92,7 @@ function (_React$Component) {
           valid = _this$props.valid,
           error = _this$props.error,
           warning = _this$props.warning,
+          indeterminate = _this$props.indeterminate,
           _this$props$checked = _this$props.checked,
           checked = _this$props$checked === void 0 ? this.state.checked : _this$props$checked;
       return _react.default.createElement("label", {
@@ -111,7 +109,7 @@ function (_React$Component) {
         valid: valid,
         error: error,
         warning: warning,
-        indeterminate: this.state.indeterminate
+        indeterminate: indeterminate
       }), _react.default.createElement(_Label.Label, {
         required: required
       }, this.props.label), _react.default.createElement(_style.default, {

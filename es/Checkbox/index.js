@@ -16,7 +16,6 @@ class Checkbox extends React.Component {
     super(...args);
 
     _defineProperty(this, "state", {
-      indeterminate: this.props.indeterminate,
       checked: this.props.defaultChecked || false
     });
 
@@ -24,10 +23,8 @@ class Checkbox extends React.Component {
       const {
         checked
       } = evt.target;
-      const indeterminate = false;
       this.setState({
-        checked,
-        indeterminate
+        checked
       });
       this.props.onChange(this.props.name, checked);
     });
@@ -41,6 +38,7 @@ class Checkbox extends React.Component {
       valid,
       error,
       warning,
+      indeterminate,
       checked = this.state.checked
     } = this.props;
     return React.createElement("label", {
@@ -57,7 +55,7 @@ class Checkbox extends React.Component {
       valid: valid,
       error: error,
       warning: warning,
-      indeterminate: this.state.indeterminate
+      indeterminate: indeterminate
     }), React.createElement(Label, {
       required: required
     }, this.props.label), React.createElement(_JSXStyle, {
