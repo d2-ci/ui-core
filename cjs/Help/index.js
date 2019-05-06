@@ -3,8 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Help = Help;
-exports.default = void 0;
+exports.Help = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -18,27 +17,30 @@ var _theme = require("../theme.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function Help(_ref) {
-  var text = _ref.text,
-      status = _ref.status,
+var Help = function Help(_ref) {
+  var children = _ref.children,
+      valid = _ref.valid,
+      error = _ref.error,
+      warning = _ref.warning,
       className = _ref.className;
   return _react.default.createElement("p", {
-    className: _style.default.dynamic([["3335312656", [_theme.colors.grey700, _theme.colors.blue600, _theme.colors.red500, _theme.colors.yellow500]]]) + " " + ((0, _classnames.default)('base', className, _defineProperty({}, "status-".concat(status), true)) || "")
-  }, text, _react.default.createElement(_style.default, {
-    id: "3335312656",
-    dynamic: [_theme.colors.grey700, _theme.colors.blue600, _theme.colors.red500, _theme.colors.yellow500]
-  }, ".base.__jsx-style-dynamic-selector{height:12px;padding-top:8px;padding-left:14px;font-size:12px;line-height:12px;cursor:help;}.status-default.__jsx-style-dynamic-selector{color:".concat(_theme.colors.grey700, ";}.status-valid.__jsx-style-dynamic-selector{color:").concat(_theme.colors.blue600, ";}.status-error.__jsx-style-dynamic-selector{color:").concat(_theme.colors.red500, ";}.status-warning.__jsx-style-dynamic-selector{color:").concat(_theme.colors.yellow500, ";}")));
-}
-
-Help.defaultProps = {
-  status: 'default'
+    className: _style.default.dynamic([["3965396203", [_theme.theme.default, _theme.theme.valid, _theme.theme.error, _theme.theme.warning]]]) + " " + ((0, _classnames.default)(className, {
+      valid: valid,
+      error: error,
+      warning: warning
+    }) || "")
+  }, children, _react.default.createElement(_style.default, {
+    id: "3965396203",
+    dynamic: [_theme.theme.default, _theme.theme.valid, _theme.theme.error, _theme.theme.warning]
+  }, ["p.__jsx-style-dynamic-selector{height:12px;padding-top:8px;padding-left:16px;font-size:12px;margin:0;line-height:12px;cursor:help;color:".concat(_theme.theme.default, ";}"), ".valid.__jsx-style-dynamic-selector{color:".concat(_theme.theme.valid, ";}"), ".error.__jsx-style-dynamic-selector{color:".concat(_theme.theme.error, ";}"), ".warning.__jsx-style-dynamic-selector{color:".concat(_theme.theme.warning, ";}")]));
 };
+
+exports.Help = Help;
+Help.defaultProps = {};
 Help.propTypes = {
   className: _propTypes.default.string,
-  text: _propTypes.default.string.isRequired,
-  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error'])
+  children: _propTypes.default.string.isRequired,
+  error: _propTypes.default.bool,
+  valid: _propTypes.default.bool,
+  warning: _propTypes.default.bool
 };
-var _default = Help;
-exports.default = _default;

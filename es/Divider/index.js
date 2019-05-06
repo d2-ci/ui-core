@@ -1,28 +1,26 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
+import propTypes from 'prop-types';
 import { colors } from '../theme.js';
-export function Divider({
+
+const Divider = ({
   margin,
   className
-}) {
-  const style = {
-    margin
-  };
-  return React.createElement("div", {
-    style: style,
-    className: _JSXStyle.dynamic([["3843445062", [colors.grey300]]]) + " " + (cx('base', className) || "")
-  }, React.createElement(_JSXStyle, {
-    id: "3843445062",
-    dynamic: [colors.grey300]
-  }, `.base.__jsx-style-dynamic-selector{display:inline-block;width:100%;height:1px;background-color:${colors.grey300};}`));
-}
+}) => React.createElement("div", {
+  className: _JSXStyle.dynamic([["3889267139", [colors.grey300]], ["4237085572", [margin]]]) + " " + (className || "")
+}, React.createElement(_JSXStyle, {
+  id: "3889267139",
+  dynamic: [colors.grey300]
+}, `div.__jsx-style-dynamic-selector{display:inline-block;width:100%;height:1px;background-color:${colors.grey300};}`), React.createElement(_JSXStyle, {
+  id: "4237085572",
+  dynamic: [margin]
+}, `div.__jsx-style-dynamic-selector{margin:${margin};}`));
+
 Divider.defaultProps = {
   margin: '8px 0'
 };
 Divider.propTypes = {
-  className: PropTypes.string,
-  margin: PropTypes.string
+  className: propTypes.string,
+  margin: propTypes.string
 };
-export default Divider;
+export { Divider };

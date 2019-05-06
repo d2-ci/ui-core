@@ -1,67 +1,23 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-import PropTypes from 'prop-types';
-import Card from '../Card';
-import MenuItem from './MenuItem';
-import Divider from '../Divider';
-import cx from 'classnames';
-import styles from './styles';
-export function Menu({
-  size,
-  width,
-  list,
-  onClick,
-  className
-}) {
-  return React.createElement(Card, null, React.createElement("ul", {
-    className: `jsx-${styles.__hash}` + " " + (cx('base', size, className) || "")
-  }, list.map(({
-    label,
-    value,
-    icon,
-    list,
-    active,
-    type,
-    disabled
-  }, i) => {
-    if (type === 'divider') {
-      return React.createElement(Divider, {
-        key: `mid-${i}`
-      });
-    }
+import propTypes from 'prop-types';
+import { Card } from '../Card';
 
-    return React.createElement(MenuItem, {
-      key: `mi-${value}`,
-      label: label,
-      value: value,
-      icon: icon,
-      list: list,
-      type: type,
-      size: size,
-      disabled: disabled,
-      active: active,
-      onClick: onClick
-    });
-  })), React.createElement(_JSXStyle, {
-    id: styles.__hash
-  }, styles));
-}
-Menu.defaultProps = {
-  size: 'default'
-};
+var _ref =
+/*#__PURE__*/
+React.createElement(_JSXStyle, {
+  id: "1286685313"
+}, "ul.jsx-1286685313{display:block;position:relative;width:100%;margin:0;padding:4px 0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}");
+
+const Menu = ({
+  children,
+  className
+}) => React.createElement(Card, null, React.createElement("ul", {
+  className: "jsx-1286685313" + " " + (className || "")
+}, children), _ref);
+
 Menu.propTypes = {
-  className: PropTypes.string,
-  list: PropTypes.arrayOf(PropTypes.shape({
-    type: PropTypes.oneOf(['divider']),
-    label: PropTypes.string,
-    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    list: PropTypes.array,
-    icon: PropTypes.element,
-    active: PropTypes.bool,
-    disabled: PropTypes.bool
-  })).isRequired,
-  onClick: PropTypes.func.isRequired,
-  size: PropTypes.oneOf(['default', 'dense'])
+  className: propTypes.string,
+  children: propTypes.any.isRequired
 };
-export { MenuItem };
-export default Menu;
+export { Menu };

@@ -1,11 +1,9 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.DropdownButton = void 0;
+exports.DropdownButton = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -15,21 +13,19 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _Button = _interopRequireDefault(require("../Button"));
-
-var _Menu = _interopRequireDefault(require("../Menu"));
-
-var _utils = require("../utils");
-
 var _Arrow = require("../icons/Arrow.js");
 
-var _styles = _interopRequireDefault(require("../Button/styles.js"));
+var _DropMenu = require("../DropMenu");
 
-var _styles2 = _interopRequireDefault(require("./styles.js"));
+var _Button = require("../Button");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -49,12 +45,13 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var ArrowIcon = {
-  styles: _react.default.createElement(_style.default, {
-    id: "1039571365"
-  }, "svg.jsx-1039571365{fill:inherit;height:24px;width:24px;vertical-align:middle;pointer-events:none;}"),
-  className: "jsx-1039571365"
-};
+var _ref =
+/*#__PURE__*/
+_react.default.createElement(_Arrow.ArrowUp, null);
+
+var _ref2 =
+/*#__PURE__*/
+_react.default.createElement(_Arrow.ArrowDown, null);
 
 var DropdownButton =
 /*#__PURE__*/
@@ -78,24 +75,7 @@ function (_Component) {
       open: false
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
-      if (_this.elContainer && _this.elMenu) {
-        var target = {
-          x: evt.clientX,
-          y: evt.clientY
-        };
-
-        var menu = _this.elMenu.getBoundingClientRect();
-
-        var container = _this.elContainer.getBoundingClientRect();
-
-        if (!(0, _utils.isPointInRect)(target, menu) && !(0, _utils.isPointInRect)(target, container)) {
-          _this.setState({
-            open: false
-          });
-        }
-      }
-    });
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "anchorRef", _react.default.createRef());
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onToggle", function () {
       return _this.setState({
@@ -107,61 +87,28 @@ function (_Component) {
   }
 
   _createClass(DropdownButton, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      document.addEventListener('click', this.onDocClick);
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      document.removeEventListener('click', this.onDocClick);
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
       var open = this.state.open;
-      var width = this.props.width;
-
-      if (!width) {
-        width = this.elContainer ? this.elContainer.getBoundingClientRect()['width'] : 'inherit';
-      }
-
-      var icon = open ? _react.default.createElement(_Arrow.ArrowUp, {
-        className: ArrowIcon.className
-      }) : _react.default.createElement(_Arrow.ArrowDown, {
-        className: ArrowIcon.className
-      });
+      var ArrowIcon = open ? _ref : _ref2;
       return _react.default.createElement("div", {
-        ref: function ref(c) {
-          return _this2.elContainer = c;
+        ref: this.anchorRef,
+        className: "jsx-3163060161"
+      }, _react.default.createElement(_Button.Button, _extends({
+        onClick: this.onToggle
+      }, this.props), this.props.children, ArrowIcon), open && _react.default.createElement(_DropMenu.DropMenu, {
+        component: this.props.component,
+        onClose: function onClose() {
+          return _this2.setState({
+            open: false
+          });
         },
-        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash)
-      }, _react.default.createElement("button", {
-        disabled: this.props.disabled,
-        onClick: this.onToggle,
-        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size), this.props.className, {
-          'icon-only': this.props.icon && !this.props.label && !this.props.children,
-          icon: this.props.icon
-        }) || "")
-      }, this.props.icon && _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "button-icon"
-      }, this.props.icon), _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "menu-label"
-      }, this.props.label), icon), open && _react.default.createElement("div", {
-        ref: function ref(c) {
-          return _this2.elMenu = c;
-        },
-        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "menu"
-      }, _react.default.createElement(_Menu.default, {
-        list: this.props.list,
-        onClick: this.props.onClick
-      })), ArrowIcon.styles, _react.default.createElement(_style.default, {
-        id: _styles.default.__hash
-      }, _styles.default), _react.default.createElement(_style.default, {
-        id: _styles2.default.__hash
-      }, _styles2.default));
+        anchorEl: this.anchorRef.current
+      }), _react.default.createElement(_style.default, {
+        id: "3163060161"
+      }, ["div.jsx-3163060161{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}"]));
     }
   }]);
 
@@ -169,22 +116,15 @@ function (_Component) {
 }(_react.Component);
 
 exports.DropdownButton = DropdownButton;
-DropdownButton.defaultProps = {
-  size: 'medium',
-  kind: 'basic',
-  disabled: false
-};
 DropdownButton.propTypes = {
   className: _propTypes.default.string,
-  list: _propTypes.default.array.isRequired,
-  width: _propTypes.default.string,
+  component: _propTypes.default.element.isRequired,
   icon: _propTypes.default.element,
-  label: _propTypes.default.string,
-  kind: _propTypes.default.oneOf(['basic', 'primary', 'secondary', 'destructive']),
-  type: _propTypes.default.oneOf(['submit', 'reset', 'button']),
-  size: _propTypes.default.oneOf(['small', 'medium', 'large']),
-  disabled: _propTypes.default.bool,
-  onClick: _propTypes.default.func
+  children: _propTypes.default.string,
+  small: _propTypes.default.bool,
+  large: _propTypes.default.bool,
+  primary: _propTypes.default.bool,
+  secondary: _propTypes.default.bool,
+  destructive: _propTypes.default.bool,
+  disabled: _propTypes.default.bool
 };
-var _default = DropdownButton;
-exports.default = _default;

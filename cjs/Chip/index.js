@@ -5,7 +5,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.Chip = void 0;
+exports.Chip = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -43,16 +43,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var removeIcon = {
   styles: _react.default.createElement(_style.default, {
-    id: "495350568"
-  }, "svg.jsx-495350568{margin-right:4px;color:".concat(_theme.colors.grey700, ";height:18px;width:18px;cursor:pointer;opacity:1;pointer-events:all;}svg.jsx-495350568 hover.jsx-495350568{opacity:0.82;}")),
-  className: "jsx-495350568"
+    id: "1693149603"
+  }, ["svg.jsx-1693149603{margin-right:4px;color:".concat(_theme.colors.grey700, ";height:18px;width:18px;cursor:pointer;opacity:1;pointer-events:all;}"), "svg.jsx-1693149603:hover{opacity:0.82;}"]),
+  className: "jsx-1693149603"
 };
-
-var _ref =
-/*#__PURE__*/
-_react.default.createElement(_style.default, {
-  id: "3458732931"
-}, "span.jsx-3458732931{width:24px;height:24px;margin-left:4px;border-radius:50%;overflow:hidden;}");
 
 var Chip =
 /*#__PURE__*/
@@ -72,16 +66,16 @@ function (_React$PureComponent) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Chip)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function (e) {
       if (!_this.props.disabled && _this.props.onClick) {
-        return _this.props.onClick();
+        _this.props.onClick(e);
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onRemove", function (evt) {
-      evt.stopPropagation(); // stop onRemove from triggering onClick on container
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onRemove", function (e) {
+      e.stopPropagation(); // stop onRemove from triggering onClick on container
 
-      _this.props.onRemove();
+      _this.props.onRemove(e);
     });
 
     return _this;
@@ -98,15 +92,18 @@ function (_React$PureComponent) {
 
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("span", {
         className: "jsx-3458732931"
-      }, icon), _ref);
+      }, icon), _react.default.createElement(_style.default, {
+        id: "3458732931"
+      }, ["span.jsx-3458732931{width:24px;height:24px;margin-left:4px;border-radius:50%;overflow:hidden;}"]));
     }
   }, {
     key: "showRemove",
     value: function showRemove() {
       if (this.props.onRemove) {
-        return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Cancel.Cancel, {
-          className: removeIcon.className,
+        return _react.default.createElement("span", {
           onClick: this.onRemove
+        }, _react.default.createElement(_Cancel.Cancel, {
+          className: removeIcon.className
         }), removeIcon.styles);
       }
     }
@@ -114,7 +111,6 @@ function (_React$PureComponent) {
     key: "render",
     value: function render() {
       var _this$props = this.props,
-          label = _this$props.label,
           selected = _this$props.selected,
           disabled = _this$props.disabled,
           dragging = _this$props.dragging,
@@ -123,17 +119,16 @@ function (_React$PureComponent) {
           children = _this$props.children;
       return _react.default.createElement("div", {
         onClick: this.onClick,
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className, {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, {
           selected: selected,
           disabled: disabled,
-          dragging: dragging,
-          static: !this.props.onClick
+          dragging: dragging
         }) || "")
       }, this.showIcon(), _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)({
           overflow: overflow
         }) || "")
-      }, label || children), this.showRemove(), _react.default.createElement(_style.default, {
+      }, children), this.showRemove(), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default));
     }
@@ -143,22 +138,14 @@ function (_React$PureComponent) {
 }(_react.default.PureComponent);
 
 exports.Chip = Chip;
-Chip.defaultProps = {
-  selected: false,
-  disabled: false,
-  dragging: false,
-  overflow: true
-};
 Chip.propTypes = {
+  children: _propTypes.default.string.isRequired,
   className: _propTypes.default.string,
-  label: _propTypes.default.string.isRequired,
   icon: _propTypes.default.element,
+  onClick: _propTypes.default.func,
+  onRemove: _propTypes.default.func,
   selected: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   dragging: _propTypes.default.bool,
-  overflow: _propTypes.default.bool,
-  onClick: _propTypes.default.func,
-  onRemove: _propTypes.default.func
+  overflow: _propTypes.default.bool
 };
-var _default = Chip;
-exports.default = _default;

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.InputField = void 0;
+exports.InputField = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -11,21 +11,11 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _classnames = _interopRequireDefault(require("classnames"));
+var _Input = require("./Input.js");
 
-var _Status = require("../icons/Status.js");
+var _FieldLabel = require("../FieldLabel");
 
-var _theme = require("../theme.js");
-
-var _helpers = require("../icons/helpers");
-
-var _constants = require("../icons/constants");
-
-var _constants2 = require("../forms/constants");
-
-var _Help = _interopRequireDefault(require("../Help"));
-
-var _styles = _interopRequireDefault(require("./styles.js"));
+var _theme = require("../theme");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -51,129 +41,102 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var types = {
-  TEXT: 'text',
-  EMAIL: 'email',
-  NUMBER: 'number',
-  PASSWORD: 'password',
-  URL: 'url'
-};
-
-function createTrailIcon(status, trail, fn) {
-  return status !== 'default' ? (0, _helpers.createIcon)(_constants.statusToIcon[status], {
-    action: fn
-  }) : trail;
-}
-
 var InputField =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(InputField, _React$Component);
 
-  function InputField(props) {
+  function InputField() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, InputField);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(InputField).call(this, props));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(InputField)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      focused: false,
-      labelWidth: 0
+      focus: _this.props.focus
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (evt) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (e) {
       _this.setState({
-        focused: true
+        focus: true
       });
+
+      _this.props.onFocus(e);
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function (evt) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function (e) {
       _this.setState({
-        focused: false
+        focus: false
       });
+
+      _this.props.onBlur(e);
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
-      if (_this.props.disabled) {
-        return;
-      }
-
-      _this.props.onChange(_this.props.name, evt.target.value);
-    });
-
-    _this.labelRef = _react.default.createRef();
-    _this.inputRef = _react.default.createRef();
     return _this;
   }
 
   _createClass(InputField, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.setState({
-        labelWidth: this.labelRef.current.offsetWidth,
-        focused: this.props.focus
-      });
-
-      if (this.props.focus) {
-        this.inputRef.current.focus();
-      }
-    }
-  }, {
-    key: "isFocused",
-    value: function isFocused() {
-      return this.state.focused;
-    }
-  }, {
-    key: "shrink",
-    value: function shrink() {
-      return !!(this.isFocused() || this.props.value || this.props.placeholder);
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _cx, _cx2, _cx3;
-
-      var legendWidth = this.shrink() ? {
-        width: "".concat(this.state.labelWidth, "px")
-      } : {
-        width: '0.01px'
-      };
-      return _react.default.createElement("div", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', this.props.className, {
-          focused: this.isFocused(),
-          disabled: this.props.disabled
-        }) || "")
-      }, _react.default.createElement("div", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('field', (_cx = {}, _defineProperty(_cx, "size-".concat(this.props.size), true), _defineProperty(_cx, "status-".concat(this.props.status), true), _defineProperty(_cx, "kind-".concat(this.props.kind), true), _defineProperty(_cx, "focused", this.isFocused()), _defineProperty(_cx, "filled", this.props.value), _defineProperty(_cx, "disabled", this.props.disabled), _cx)) || "")
-      }, _react.default.createElement("label", {
-        ref: this.labelRef,
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', (_cx2 = {}, _defineProperty(_cx2, "".concat(this.props.status), true), _defineProperty(_cx2, "".concat(this.props.size), true), _defineProperty(_cx2, "".concat(this.props.kind), true), _defineProperty(_cx2, 'has-icon', !!this.props.icon), _defineProperty(_cx2, "required", this.props.required), _defineProperty(_cx2, "disabled", this.props.disabled), _defineProperty(_cx2, "focused", this.isFocused()), _defineProperty(_cx2, "shrink", this.shrink()), _cx2)) || "")
-      }, this.props.label), this.props.kind === 'outlined' && _react.default.createElement("fieldset", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('flatline', (_cx3 = {}, _defineProperty(_cx3, "".concat(this.props.status), true), _defineProperty(_cx3, "focused", this.isFocused()), _defineProperty(_cx3, "idle", !this.isFocused()), _defineProperty(_cx3, "filled", this.props.value), _cx3)) || "")
-      }, _react.default.createElement("legend", {
-        style: legendWidth,
-        className: "jsx-".concat(_styles.default.__hash) + " " + "legend"
-      }, _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash)
-      }, "\u200B"))), (0, _helpers.createIcon)(this.props.icon), _react.default.createElement("input", {
-        ref: this.inputRef,
-        type: this.props.type,
-        placeholder: this.props.placeholder,
-        disabled: this.props.disabled,
-        value: this.props.value,
+      var _this$props = this.props,
+          className = _this$props.className,
+          onChange = _this$props.onChange,
+          type = _this$props.type,
+          filled = _this$props.filled,
+          dense = _this$props.dense,
+          required = _this$props.required,
+          label = _this$props.label,
+          disabled = _this$props.disabled,
+          placeholder = _this$props.placeholder,
+          name = _this$props.name,
+          valid = _this$props.valid,
+          error = _this$props.error,
+          warning = _this$props.warning,
+          loading = _this$props.loading,
+          value = _this$props.value,
+          _this$props$focus = _this$props.focus,
+          focus = _this$props$focus === void 0 ? this.state.focus : _this$props$focus;
+      var Container = filled ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
+      return _react.default.createElement(Container, {
+        focus: focus,
+        label: label,
+        value: !!value || !!placeholder,
+        htmlFor: name,
+        required: required,
+        disabled: disabled,
+        valid: valid,
+        warning: warning,
+        error: error,
+        loading: loading,
+        dense: dense,
+        className: _style.default.dynamic([["349714766", [_theme.theme.disabled]]]) + " " + (className || "")
+      }, _react.default.createElement(_Input.Input, {
+        focus: focus,
         onFocus: this.onFocus,
         onBlur: this.onBlur,
-        onChange: this.onChange,
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)({
-          disabled: this.props.disabled
-        }) || "")
-      }), createTrailIcon(this.props.status, this.props.trailIcon)), this.props.help && _react.default.createElement(_Help.default, {
-        text: this.props.help,
-        status: this.props.status
+        onChange: onChange,
+        name: name,
+        type: type,
+        value: value || '',
+        placeholder: placeholder,
+        filled: filled,
+        disabled: disabled,
+        valid: valid,
+        warning: warning,
+        error: error,
+        loading: loading,
+        dense: dense
       }), _react.default.createElement(_style.default, {
-        id: _styles.default.__hash
-      }, _styles.default));
+        id: "349714766",
+        dynamic: [_theme.theme.disabled]
+      }, ["div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:".concat(_theme.theme.disabled, ";cursor:not-allowed;}"), "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:".concat(_theme.theme.disabled, ";cursor:not-allowed;}"), "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:".concat(_theme.theme.disabled, ";cursor:not-allowed;}"), "div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:".concat(_theme.theme.disabled, ";cursor:not-allowed;}")]));
     }
   }]);
 
@@ -182,31 +145,27 @@ function (_React$Component) {
 
 exports.InputField = InputField;
 InputField.defaultProps = {
-  status: _constants.iconStatuses.DEFAULT,
-  size: _constants2.inputSizes.DEFAULT,
-  kind: _constants2.inputKinds.FILLED,
-  type: types.TEXT,
-  focus: false,
-  disabled: false,
-  required: false
+  type: 'text',
+  onBlur: function onBlur() {},
+  onFocus: function onFocus() {}
 };
 InputField.propTypes = {
-  className: _propTypes.default.string,
-  name: _propTypes.default.string.isRequired,
   onChange: _propTypes.default.func.isRequired,
-  value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
-  label: _propTypes.default.string,
+  name: _propTypes.default.string.isRequired,
+  label: _propTypes.default.string.isRequired,
+  className: _propTypes.default.string,
   placeholder: _propTypes.default.string,
-  help: _propTypes.default.string,
-  icon: _propTypes.default.element,
-  trailIcon: _propTypes.default.element,
-  status: _constants.iconStatusPropType,
-  size: _propTypes.default.oneOf([_constants2.inputSizes.DEFAULT, _constants2.inputSizes.DENSE]),
-  kind: _propTypes.default.oneOf([_constants2.inputKinds.FILLED, _constants2.inputKinds.OUTLINED]),
-  type: _propTypes.default.oneOf([types.TEXT, types.EMAIL, types.NUMBER, types.PASSWORD, types.URL]),
-  focus: _propTypes.default.bool,
+  value: _propTypes.default.string,
+  required: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
-  required: _propTypes.default.bool
+  filled: _propTypes.default.bool,
+  dense: _propTypes.default.bool,
+  focus: _propTypes.default.bool,
+  valid: _propTypes.default.bool,
+  warning: _propTypes.default.bool,
+  error: _propTypes.default.bool,
+  loading: _propTypes.default.bool,
+  onBlur: _propTypes.default.func,
+  onFocus: _propTypes.default.func,
+  type: _propTypes.default.oneOf(['text', 'email', 'number', 'password', 'url'])
 };
-var _default = InputField;
-exports.default = _default;

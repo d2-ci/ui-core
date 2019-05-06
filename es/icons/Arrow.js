@@ -1,51 +1,40 @@
+import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-
-var _ref =
-/*#__PURE__*/
-React.createElement("path", {
-  d: "M14 20l10 10 10-10z"
-});
-
-var _ref2 =
-/*#__PURE__*/
-React.createElement("path", {
-  d: "M0 0h48v48H0z",
-  fill: "none"
-});
-
-export function ArrowDown({
-  className
-}) {
+export const styles = new String("svg.jsx-1039571365{fill:inherit;height:24px;width:24px;vertical-align:middle;pointer-events:none;}");
+styles.__hash = "1039571365";
+export function ArrowDown() {
   return React.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     width: "48",
     height: "48",
     viewBox: "0 0 48 48",
-    className: className
-  }, _ref, _ref2);
+    className: `jsx-${styles.__hash}`
+  }, React.createElement("path", {
+    d: "M14 20l10 10 10-10z",
+    className: `jsx-${styles.__hash}`
+  }), React.createElement("path", {
+    d: "M0 0h48v48H0z",
+    fill: "none",
+    className: `jsx-${styles.__hash}`
+  }), React.createElement(_JSXStyle, {
+    id: styles.__hash
+  }, styles));
 }
-
-var _ref3 =
-/*#__PURE__*/
-React.createElement("path", {
-  d: "M14 28l10-10 10 10z"
-});
-
-var _ref4 =
-/*#__PURE__*/
-React.createElement("path", {
-  d: "M0 0h48v48H0z",
-  fill: "none"
-});
-
-export function ArrowUp({
-  className
-}) {
+export function ArrowUp() {
   return React.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     width: "48",
     height: "48",
     viewBox: "0 0 48 48",
-    className: className
-  }, _ref3, _ref4);
+    className: `jsx-${styles.__hash}`
+  }, React.createElement("path", {
+    d: "M14 28l10-10 10 10z",
+    className: `jsx-${styles.__hash}`
+  }), React.createElement("path", {
+    d: "M0 0h48v48H0z",
+    fill: "none",
+    className: `jsx-${styles.__hash}`
+  }), React.createElement(_JSXStyle, {
+    id: styles.__hash
+  }, styles));
 }

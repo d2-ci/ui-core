@@ -3,8 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Button = Button;
-exports.default = void 0;
+exports.Button = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -18,47 +17,57 @@ var _styles = _interopRequireDefault(require("./styles.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Button(_ref) {
+var Button = function Button(_ref) {
   var type = _ref.type,
       children = _ref.children,
-      kind = _ref.kind,
-      size = _ref.size,
       icon = _ref.icon,
-      label = _ref.label,
+      name = _ref.name,
+      value = _ref.value,
       disabled = _ref.disabled,
       onClick = _ref.onClick,
-      className = _ref.className;
+      className = _ref.className,
+      primary = _ref.primary,
+      secondary = _ref.secondary,
+      destructive = _ref.destructive,
+      small = _ref.small,
+      large = _ref.large;
   return _react.default.createElement("button", {
     disabled: disabled,
     onClick: onClick,
     type: type,
-    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(kind), "size-".concat(size), className, {
-      'icon-only': icon && !label && !children,
+    name: name,
+    value: value,
+    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, {
+      primary: primary,
+      secondary: secondary,
+      destructive: destructive,
+      small: small,
+      large: large,
+      'icon-only': icon && !children,
       icon: icon
     }) || "")
   }, icon && _react.default.createElement("span", {
     className: "jsx-".concat(_styles.default.__hash) + " " + "button-icon"
-  }, icon), label || children, _react.default.createElement(_style.default, {
+  }, icon), children, _react.default.createElement(_style.default, {
     id: _styles.default.__hash
   }, _styles.default));
-}
+};
 
+exports.Button = Button;
 Button.defaultProps = {
-  kind: 'basic',
-  type: 'button',
-  size: 'medium',
-  disabled: false,
-  onClick: undefined
+  type: 'button'
 };
 Button.propTypes = {
+  onClick: _propTypes.default.func.isRequired,
   className: _propTypes.default.string,
   icon: _propTypes.default.element,
-  label: _propTypes.default.string,
-  kind: _propTypes.default.oneOf(['basic', 'primary', 'secondary', 'destructive']),
+  name: _propTypes.default.string,
+  value: _propTypes.default.string,
   type: _propTypes.default.oneOf(['submit', 'reset', 'button']),
-  size: _propTypes.default.oneOf(['small', 'medium', 'large']),
-  disabled: _propTypes.default.bool,
-  onClick: _propTypes.default.func
+  small: _propTypes.default.bool,
+  large: _propTypes.default.bool,
+  primary: _propTypes.default.bool,
+  secondary: _propTypes.default.bool,
+  destructive: _propTypes.default.bool,
+  disabled: _propTypes.default.bool
 };
-var _default = Button;
-exports.default = _default;
