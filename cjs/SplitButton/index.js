@@ -133,8 +133,8 @@ function (_Component) {
 
 exports.SplitButton = SplitButton;
 SplitButton.propTypes = {
-  onClick: _propTypes.default.func.isRequired,
   component: _propTypes.default.element.isRequired,
+  onClick: _propTypes.default.func,
   className: _propTypes.default.string,
   name: _propTypes.default.string,
   value: _propTypes.default.string,

@@ -58,7 +58,7 @@ Button.defaultProps = {
   type: 'button'
 };
 Button.propTypes = {
-  onClick: _propTypes.default.func.isRequired,
+  onClick: _propTypes.default.func,
   className: _propTypes.default.string,
   icon: _propTypes.default.element,
   name: _propTypes.default.string,

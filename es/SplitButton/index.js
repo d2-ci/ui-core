@@ -76,8 +76,8 @@ class SplitButton extends Component {
 }
 
 SplitButton.propTypes = {
-  onClick: propTypes.func.isRequired,
   component: propTypes.element.isRequired,
+  onClick: propTypes.func,
   className: propTypes.string,
   name: propTypes.string,
   value: propTypes.string,
