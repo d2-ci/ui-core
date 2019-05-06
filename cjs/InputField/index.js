@@ -86,6 +86,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var _this$props = this.props,
+          className = _this$props.className,
           onChange = _this$props.onChange,
           type = _this$props.type,
           filled = _this$props.filled,
@@ -115,7 +116,7 @@ function (_React$Component) {
         error: error,
         loading: loading,
         dense: dense,
-        className: _style.default.dynamic([["349714766", [_theme.theme.disabled]]])
+        className: _style.default.dynamic([["349714766", [_theme.theme.disabled]]]) + " " + (className || "")
       }, _react.default.createElement(_Input.Input, {
         focus: focus,
         onFocus: this.onFocus,

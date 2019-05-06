@@ -33,6 +33,7 @@ class InputField extends React.Component {
 
   render() {
     const {
+      className,
       onChange,
       type,
       filled,
@@ -62,7 +63,7 @@ class InputField extends React.Component {
       error: error,
       loading: loading,
       dense: dense,
-      className: _JSXStyle.dynamic([["349714766", [theme.disabled]]])
+      className: _JSXStyle.dynamic([["349714766", [theme.disabled]]]) + " " + (className || "")
     }, React.createElement(Input, {
       focus: focus,
       onFocus: this.onFocus,

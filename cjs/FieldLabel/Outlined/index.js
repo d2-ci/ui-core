@@ -43,9 +43,10 @@ var Outlined = function Outlined(_ref) {
       value = _ref.value,
       required = _ref.required,
       label = _ref.label,
-      loading = _ref.loading;
+      loading = _ref.loading,
+      className = _ref.className;
   return _react.default.createElement("div", {
-    className: "jsx-".concat(styles.__hash) + " " + ((0, _classnames.default)('label-outlined', {
+    className: "jsx-".concat(styles.__hash) + " " + ((0, _classnames.default)('label-outlined', className, {
       disabled: disabled,
       focus: focus,
       dense: dense,
@@ -94,5 +95,6 @@ Outlined.propTypes = {
   error: _propTypes.default.bool,
   warning: _propTypes.default.bool,
   loading: _propTypes.default.bool,
-  dense: _propTypes.default.bool
+  dense: _propTypes.default.bool,
+  className: _propTypes.default.string
 };

@@ -41,10 +41,11 @@ var Filled = function Filled(_ref) {
       value = _ref.value,
       required = _ref.required,
       label = _ref.label,
-      loading = _ref.loading;
+      loading = _ref.loading,
+      className = _ref.className;
   return _react.default.createElement("div", {
     onClick: onClick,
-    className: "jsx-".concat(styles.__hash) + " " + ((0, _classnames.default)('label-filled', {
+    className: "jsx-".concat(styles.__hash) + " " + ((0, _classnames.default)('label-filled', className, {
       disabled: disabled,
       focus: focus,
       dense: dense,
@@ -95,5 +96,6 @@ Filled.propTypes = {
   error: _propTypes.default.bool,
   warning: _propTypes.default.bool,
   loading: _propTypes.default.bool,
-  dense: _propTypes.default.bool
+  dense: _propTypes.default.bool,
+  className: _propTypes.default.string
 };

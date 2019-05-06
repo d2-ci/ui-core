@@ -19,10 +19,10 @@ var Menu = function Menu(_ref) {
   var children = _ref.children,
       className = _ref.className;
   return _react.default.createElement(_Card.Card, null, _react.default.createElement("ul", {
-    className: "jsx-3549878755" + " " + (className || "")
+    className: "jsx-1286685313" + " " + (className || "")
   }, children), _react.default.createElement(_style.default, {
-    id: "3549878755"
-  }, ["ul.jsx-3549878755{display:block;position:relative;width:100%;margin:0;padding:0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}"]));
+    id: "1286685313"
+  }, ["ul.jsx-1286685313{display:block;position:relative;width:100%;margin:0;padding:4px 0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}"]));
 };
 
 exports.Menu = Menu;

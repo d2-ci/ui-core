@@ -21,10 +21,11 @@ export const Filled = ({
   value,
   required,
   label,
-  loading
+  loading,
+  className
 }) => React.createElement("div", {
   onClick: onClick,
-  className: `jsx-${styles.__hash}` + " " + (cx('label-filled', {
+  className: `jsx-${styles.__hash}` + " " + (cx('label-filled', className, {
     disabled,
     focus,
     dense,
@@ -72,5 +73,6 @@ Filled.propTypes = {
   error: propTypes.bool,
   warning: propTypes.bool,
   loading: propTypes.bool,
-  dense: propTypes.bool
+  dense: propTypes.bool,
+  className: propTypes.string
 };

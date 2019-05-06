@@ -22,9 +22,10 @@ export const Outlined = ({
   value,
   required,
   label,
-  loading
+  loading,
+  className
 }) => React.createElement("div", {
-  className: `jsx-${styles.__hash}` + " " + (cx('label-outlined', {
+  className: `jsx-${styles.__hash}` + " " + (cx('label-outlined', className, {
     disabled,
     focus,
     dense,
@@ -70,5 +71,6 @@ Outlined.propTypes = {
   error: propTypes.bool,
   warning: propTypes.bool,
   loading: propTypes.bool,
-  dense: propTypes.bool
+  dense: propTypes.bool,
+  className: propTypes.string
 };
