@@ -4,17 +4,13 @@ import propTypes from 'prop-types';
 import cx from 'classnames';
 import styles from './styles.js';
 
-var _ref =
-/*#__PURE__*/
-React.createElement(_JSXStyle, {
-  id: "2065676653"
-}, "div.jsx-2065676653{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:absolute;top:0;right:0;bottom:0;left:0;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;background:rgba(0,0,0,0.08);}");
-
 const Overlay = ({
   children
 }) => React.createElement("div", {
   className: "jsx-2065676653"
-}, children, _ref);
+}, children, React.createElement(_JSXStyle, {
+  id: "2065676653"
+}, ["div.jsx-2065676653{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:absolute;top:0;right:0;bottom:0;left:0;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;background:rgba(0,0,0,0.08);}"]));
 
 function CircularProgress({
   small,

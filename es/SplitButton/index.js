@@ -12,13 +12,13 @@ import cx from 'classnames';
 const leftButton = {
   styles: React.createElement(_JSXStyle, {
     id: "1525662562"
-  }, "button.jsx-1525662562{border-top-right-radius:0;border-bottom-right-radius:0;}"),
+  }, ["button.jsx-1525662562{border-top-right-radius:0;border-bottom-right-radius:0;}"]),
   className: "jsx-1525662562"
 };
 const rightButton = {
   styles: React.createElement(_JSXStyle, {
     id: "2744160004"
-  }, "button.jsx-2744160004{padding:0 9px;border-top-left-radius:0;border-bottom-left-radius:0;}"),
+  }, ["button.jsx-2744160004{padding:0 9px;border-top-left-radius:0;border-bottom-left-radius:0;}"]),
   className: "jsx-2744160004"
 };
 
@@ -29,12 +29,6 @@ React.createElement(ArrowUp, null);
 var _ref2 =
 /*#__PURE__*/
 React.createElement(ArrowDown, null);
-
-var _ref3 =
-/*#__PURE__*/
-React.createElement(_JSXStyle, {
-  id: "3163060161"
-}, "div.jsx-3163060161{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}");
 
 class SplitButton extends Component {
   constructor(...args) {
@@ -70,7 +64,9 @@ class SplitButton extends Component {
         open: false
       }),
       anchorEl: this.anchorRef.current
-    }), leftButton.styles, rightButton.styles, _ref3);
+    }), leftButton.styles, rightButton.styles, React.createElement(_JSXStyle, {
+      id: "3163060161"
+    }, ["div.jsx-3163060161{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}"]));
   }
 
 }

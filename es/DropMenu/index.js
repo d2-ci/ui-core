@@ -55,7 +55,7 @@ class DropMenu extends PureComponent {
     }, component, React.createElement(_JSXStyle, {
       id: "891399372",
       dynamic: [top, left]
-    }, `div.__jsx-style-dynamic-selector{z-index:1000;position:absolute;top:${top};left:${left};}`)), document.body);
+    }, [`div.__jsx-style-dynamic-selector{z-index:1000;position:absolute;top:${top};left:${left};}`])), document.body);
   }
 
 }

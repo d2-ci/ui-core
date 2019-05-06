@@ -83,7 +83,7 @@ class InputField extends React.Component {
     }), React.createElement(_JSXStyle, {
       id: "349714766",
       dynamic: [theme.disabled]
-    }, `div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:${theme.disabled};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:${theme.disabled};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:${theme.disabled};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:${theme.disabled};cursor:not-allowed;}`));
+    }, [`div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:${theme.disabled};cursor:not-allowed;}`, `div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:${theme.disabled};cursor:not-allowed;}`, `div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:${theme.disabled};cursor:not-allowed;}`, `div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:${theme.disabled};cursor:not-allowed;}`]));
   }
 
 }

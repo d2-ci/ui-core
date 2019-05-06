@@ -11,13 +11,13 @@ import { colors } from '../theme';
 
 var _ref =
 /*#__PURE__*/
-React.createElement("div", {
-  className: "jsx-3487810764"
-}, React.createElement(ArrowDown, null), React.createElement(_JSXStyle, {
-  id: "3487810764"
-}, "div.jsx-3487810764{pointer-events:none;position:absolute;right:4px;}"));
+React.createElement(ArrowDown, null);
 
-const TailIcon = () => _ref;
+const TailIcon = () => React.createElement("div", {
+  className: "jsx-3487810764"
+}, _ref, React.createElement(_JSXStyle, {
+  id: "3487810764"
+}, ["div.jsx-3487810764{pointer-events:none;position:absolute;right:4px;}"]));
 
 var _ref2 =
 /*#__PURE__*/

@@ -1,13 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React, { Fragment } from 'react';
 import propTypes from 'prop-types';
-
-var _ref =
-/*#__PURE__*/
-React.createElement(_JSXStyle, {
-  id: "1568741591"
-}, "input.jsx-1568741591{display:none;}");
-
 export const Input = ({
   onChange,
   checked,
@@ -20,7 +13,9 @@ export const Input = ({
   checked: checked,
   disabled: disabled,
   className: "jsx-1568741591"
-}), _ref);
+}), React.createElement(_JSXStyle, {
+  id: "1568741591"
+}, ["input.jsx-1568741591{display:none;}"]));
 Input.propTypes = {
   onChange: propTypes.func.isRequired,
   name: propTypes.string.isRequired,

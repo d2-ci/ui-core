@@ -1,6 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-export const styles = new String("svg.jsx-1039571365{fill:inherit;height:24px;width:24px;vertical-align:middle;pointer-events:none;}");
+export const styles = ["svg.jsx-1039571365{fill:inherit;height:24px;width:24px;vertical-align:middle;pointer-events:none;}"];
 styles.__hash = "1039571365";
 export function ArrowDown() {
   return React.createElement("svg", {

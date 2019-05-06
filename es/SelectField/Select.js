@@ -6,7 +6,7 @@ import propTypes from 'prop-types';
 import React, { Component, Fragment, createRef } from 'react';
 import cx from 'classnames';
 import { colors, theme } from '../theme';
-const styles = new String(`select.jsx-4198221289{background:none;border:0;color:${colors.grey900};font-size:16px;height:100%;left:0;outline:0;padding:0 12px 0 15px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}.disabled.jsx-4198221289{color:${theme.disabled};cursor:not-allowed;}.dense.jsx-4198221289{font-size:14px;}.filled.jsx-4198221289{padding-top:24px;padding-left:16px;}.filled.dense.jsx-4198221289{padding-top:20px;}option.jsx-4198221289:not(:checked){color:black;}select.jsx-4198221289:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}`);
+const styles = [`select.jsx-4198221289{background:none;border:0;color:${colors.grey900};font-size:16px;height:100%;left:0;outline:0;padding:0 12px 0 15px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}`, `.disabled.jsx-4198221289{color:${theme.disabled};cursor:not-allowed;}`, ".dense.jsx-4198221289{font-size:14px;}", ".filled.jsx-4198221289{padding-top:24px;padding-left:16px;}", ".filled.dense.jsx-4198221289{padding-top:20px;}", "option.jsx-4198221289:not(:checked){color:black;}", "select.jsx-4198221289:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}"];
 styles.__hash = "4198221289";
 export class Select extends Component {
   constructor(...args) {

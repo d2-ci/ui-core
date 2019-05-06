@@ -1,6 +1,4 @@
 import { theme } from '../theme.js';
-
-const _defaultExport = new String("");
-
+const _defaultExport = [];
 _defaultExport.__hash = "2085888330";
 export default _defaultExport;

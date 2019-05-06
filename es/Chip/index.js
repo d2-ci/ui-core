@@ -10,15 +10,9 @@ import { Cancel } from '../icons/Cancel.js';
 const removeIcon = {
   styles: React.createElement(_JSXStyle, {
     id: "1693149603"
-  }, `svg.jsx-1693149603{margin-right:4px;color:${colors.grey700};height:18px;width:18px;cursor:pointer;opacity:1;pointer-events:all;}svg.jsx-1693149603:hover{opacity:0.82;}`),
+  }, [`svg.jsx-1693149603{margin-right:4px;color:${colors.grey700};height:18px;width:18px;cursor:pointer;opacity:1;pointer-events:all;}`, "svg.jsx-1693149603:hover{opacity:0.82;}"]),
   className: "jsx-1693149603"
 };
-
-var _ref =
-/*#__PURE__*/
-React.createElement(_JSXStyle, {
-  id: "3458732931"
-}, "span.jsx-3458732931{width:24px;height:24px;margin-left:4px;border-radius:50%;overflow:hidden;}");
 
 class Chip extends React.PureComponent {
   constructor(...args) {
@@ -48,7 +42,9 @@ class Chip extends React.PureComponent {
 
     return React.createElement(React.Fragment, null, React.createElement("span", {
       className: "jsx-3458732931"
-    }, icon), _ref);
+    }, icon), React.createElement(_JSXStyle, {
+      id: "3458732931"
+    }, ["span.jsx-3458732931{width:24px;height:24px;margin-left:4px;border-radius:50%;overflow:hidden;}"]));
   }
 
   showRemove() {

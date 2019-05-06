@@ -19,12 +19,6 @@ var _ref2 =
 /*#__PURE__*/
 React.createElement(ArrowDown, null);
 
-var _ref3 =
-/*#__PURE__*/
-React.createElement(_JSXStyle, {
-  id: "3163060161"
-}, "div.jsx-3163060161{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}");
-
 class DropdownButton extends Component {
   constructor(...args) {
     super(...args);
@@ -56,7 +50,9 @@ class DropdownButton extends Component {
         open: false
       }),
       anchorEl: this.anchorRef.current
-    }), _ref3);
+    }), React.createElement(_JSXStyle, {
+      id: "3163060161"
+    }, ["div.jsx-3163060161{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}"]));
   }
 
 }

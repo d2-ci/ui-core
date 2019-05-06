@@ -17,7 +17,7 @@ export const Label = ({
   }, children, React.createElement(_JSXStyle, {
     id: "1664474787",
     dynamic: [colors.grey900, theme.disabled]
-  }, `.label.__jsx-style-dynamic-selector{margin:0 0 0 8px;color:${colors.grey900};cursor:pointer;}.required.__jsx-style-dynamic-selector:after{padding-left:4px;content:'*';}.disabled.__jsx-style-dynamic-selector{cursor:not-allowed;color:${theme.disabled};}`));
+  }, [`.label.__jsx-style-dynamic-selector{margin:0 0 0 8px;color:${colors.grey900};cursor:pointer;}`, ".required.__jsx-style-dynamic-selector:after{padding-left:4px;content:'*';}", `.disabled.__jsx-style-dynamic-selector{cursor:not-allowed;color:${theme.disabled};}`]));
 };
 Label.propTypes = {
   disabled: PropTypes.bool,

@@ -7,7 +7,7 @@ import { Indeterminate, Checked, Unchecked } from '../icons/Checkbox';
 const icons = {
   styles: React.createElement(_JSXStyle, {
     id: "871975739"
-  }, `svg.jsx-871975739{height:24px;width:24px;fill:${theme.default};}.checked.jsx-871975739{fill:${colors.teal400};}.disabled.jsx-871975739{fill:${theme.disabled};}.error.jsx-871975739{fill:${theme.error};}.valid.jsx-871975739{fill:${theme.valid};}.warning.jsx-871975739{fill:${theme.warning};}`),
+  }, [`svg.jsx-871975739{height:24px;width:24px;fill:${theme.default};}`, `.checked.jsx-871975739{fill:${colors.teal400};}`, `.disabled.jsx-871975739{fill:${theme.disabled};}`, `.error.jsx-871975739{fill:${theme.error};}`, `.valid.jsx-871975739{fill:${theme.valid};}`, `.warning.jsx-871975739{fill:${theme.warning};}`]),
   className: "jsx-871975739"
 };
 export const Icon = ({
