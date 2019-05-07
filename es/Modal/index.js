@@ -25,7 +25,7 @@ export const Modal = ({
   scrollable
 }) => {
   return React.createElement("div", {
-    className: "jsx-776077390" + " " + "modal"
+    className: "jsx-2117478159" + " " + "modal"
   }, React.createElement(ScreenCover, {
     onClick: onClose
   }), React.createElement(ModalCard, {
@@ -34,8 +34,8 @@ export const Modal = ({
   }, React.Children.map(children, child => React.cloneElement(child, {
     scrollable
   }))), React.createElement(_JSXStyle, {
-    id: "776077390"
-  }, [".modal.jsx-776077390{height:100%;left:0;position:fixed;top:0;width:100%;}"]));
+    id: "2117478159"
+  }, [".modal.jsx-2117478159{height:100%;left:0;position:fixed;top:0;width:100%;z-index:99999999;}"]));
 };
 Modal.Title = Title;
 Modal.Content = Content;

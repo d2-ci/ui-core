@@ -44,7 +44,7 @@ var Modal = function Modal(_ref) {
       size = _ref.size,
       scrollable = _ref.scrollable;
   return _react.default.createElement("div", {
-    className: "jsx-776077390" + " " + "modal"
+    className: "jsx-2117478159" + " " + "modal"
   }, _react.default.createElement(_ScreenCover.ScreenCover, {
     onClick: onClose
   }), _react.default.createElement(_ModalCard.ModalCard, {
@@ -55,8 +55,8 @@ var Modal = function Modal(_ref) {
       scrollable: scrollable
     });
   })), _react.default.createElement(_style.default, {
-    id: "776077390"
-  }, [".modal.jsx-776077390{height:100%;left:0;position:fixed;top:0;width:100%;}"]));
+    id: "2117478159"
+  }, [".modal.jsx-2117478159{height:100%;left:0;position:fixed;top:0;width:100%;z-index:99999999;}"]));
 };
 
 exports.Modal = Modal;
