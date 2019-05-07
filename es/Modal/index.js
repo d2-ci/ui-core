@@ -22,14 +22,16 @@ const outerSpacing = 24;
 export const Modal = ({
   children,
   onClose,
-  size
+  small,
+  large
 }) => {
   return createPortal(React.createElement("div", {
     className: "jsx-2117478159" + " " + "modal"
   }, React.createElement(ScreenCover, {
     onClick: onClose
   }), React.createElement(ModalCard, {
-    size: size
+    small: small,
+    large: large
   }, children), React.createElement(_JSXStyle, {
     id: "2117478159"
   }, [".modal.jsx-2117478159{height:100%;left:0;position:fixed;top:0;width:100%;z-index:99999999;}"])), document.body);
@@ -38,12 +40,10 @@ Modal.Title = Title;
 Modal.Content = Content;
 Modal.Actions = Actions;
 Modal.propTypes = {
-  // Can be Modal.Title; Must be Modal.Content and Modal.Actions
+  // Can contain Modal.Title; Must contain Modal.Content and Modal.Actions
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
   // Callback used when clicking on the screen cover
   onClose: PropTypes.func,
-  size: PropTypes.oneOf(['small', 'medium', 'large'])
-};
-Modal.defaultProps = {
-  size: 'small'
+  small: PropTypes.bool,
+  large: PropTypes.bool
 };

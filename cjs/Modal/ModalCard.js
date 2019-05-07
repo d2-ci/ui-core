@@ -22,18 +22,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var outerSpacing = 24;
 var cardBoxStyle = {
   styles: _react.default.createElement(_style.default, {
-    id: "261220870"
-  }, [".modal-card.jsx-261220870{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:auto;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;left:50%;max-width:calc(100vw - ".concat(2 * outerSpacing, "px);max-height:calc(100vh - ").concat(2 * outerSpacing, "px);position:absolute;top:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}"), ".size-small.jsx-261220870{width:400px;}", ".size-medium.jsx-261220870{width:600px;}", ".size-large.jsx-261220870{width:800px;}"]),
-  className: "jsx-261220870"
+    id: "3758132841"
+  }, [".modal-card.jsx-3758132841{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:auto;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;left:50%;max-width:calc(100vw - ".concat(2 * outerSpacing, "px);max-height:calc(100vh - ").concat(2 * outerSpacing, "px);position:absolute;top:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);width:600px;}"), ".small.jsx-3758132841{width:400px;}", ".large.jsx-3758132841{width:800px;}"]),
+  className: "jsx-3758132841"
 };
 
 var ModalCard = function ModalCard(_ref) {
   var children = _ref.children,
-      scrollable = _ref.scrollable,
-      size = _ref.size;
-  console.log('scrollable', scrollable);
+      small = _ref.small,
+      large = _ref.large;
   return _react.default.createElement(_Card.Card, {
-    className: (0, _classnames.default)(cardBoxStyle.className, 'modal-card', "size-".concat(size))
+    className: (0, _classnames.default)(cardBoxStyle.className, 'modal-card', {
+      small: small,
+      large: large
+    })
   }, children, cardBoxStyle.styles);
 };
 
@@ -41,9 +43,6 @@ exports.ModalCard = ModalCard;
 ModalCard.propTypes = {
   // Can be Modal.Title; Must be Modal.Content and Modal.Actions
   children: _propTypes.default.arrayOf(_propTypes.default.element).isRequired,
-  size: _propTypes.default.oneOf(['small', 'medium', 'large']),
-  scrollable: _propTypes.default.bool
-};
-ModalCard.defaultProps = {
-  size: 'small'
+  small: _propTypes.default.bool,
+  large: _propTypes.default.bool
 };

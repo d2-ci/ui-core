@@ -43,13 +43,15 @@ var outerSpacing = 24;
 var Modal = function Modal(_ref) {
   var children = _ref.children,
       onClose = _ref.onClose,
-      size = _ref.size;
+      small = _ref.small,
+      large = _ref.large;
   return (0, _reactDom.createPortal)(_react.default.createElement("div", {
     className: "jsx-2117478159" + " " + "modal"
   }, _react.default.createElement(_ScreenCover.ScreenCover, {
     onClick: onClose
   }), _react.default.createElement(_ModalCard.ModalCard, {
-    size: size
+    small: small,
+    large: large
   }, children), _react.default.createElement(_style.default, {
     id: "2117478159"
   }, [".modal.jsx-2117478159{height:100%;left:0;position:fixed;top:0;width:100%;z-index:99999999;}"])), document.body);
@@ -60,12 +62,10 @@ Modal.Title = _Title.Title;
 Modal.Content = _Content.Content;
 Modal.Actions = _Actions.Actions;
 Modal.propTypes = {
-  // Can be Modal.Title; Must be Modal.Content and Modal.Actions
+  // Can contain Modal.Title; Must contain Modal.Content and Modal.Actions
   children: _propTypes.default.arrayOf(_propTypes.default.element).isRequired,
   // Callback used when clicking on the screen cover
   onClose: _propTypes.default.func,
-  size: _propTypes.default.oneOf(['small', 'medium', 'large'])
-};
-Modal.defaultProps = {
-  size: 'small'
+  small: _propTypes.default.bool,
+  large: _propTypes.default.bool
 };
