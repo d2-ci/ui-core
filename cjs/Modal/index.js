@@ -9,6 +9,8 @@ var _style = _interopRequireDefault(require("styled-jsx/style"));
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactDom = require("react-dom");
+
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
@@ -41,22 +43,16 @@ var outerSpacing = 24;
 var Modal = function Modal(_ref) {
   var children = _ref.children,
       onClose = _ref.onClose,
-      size = _ref.size,
-      scrollable = _ref.scrollable;
-  return _react.default.createElement("div", {
+      size = _ref.size;
+  return (0, _reactDom.createPortal)(_react.default.createElement("div", {
     className: "jsx-2117478159" + " " + "modal"
   }, _react.default.createElement(_ScreenCover.ScreenCover, {
     onClick: onClose
   }), _react.default.createElement(_ModalCard.ModalCard, {
-    size: size,
-    scrollable: scrollable
-  }, _react.default.Children.map(children, function (child) {
-    return _react.default.cloneElement(child, {
-      scrollable: scrollable
-    });
-  })), _react.default.createElement(_style.default, {
+    size: size
+  }, children), _react.default.createElement(_style.default, {
     id: "2117478159"
-  }, [".modal.jsx-2117478159{height:100%;left:0;position:fixed;top:0;width:100%;z-index:99999999;}"]));
+  }, [".modal.jsx-2117478159{height:100%;left:0;position:fixed;top:0;width:100%;z-index:99999999;}"])), document.body);
 };
 
 exports.Modal = Modal;
@@ -68,9 +64,7 @@ Modal.propTypes = {
   children: _propTypes.default.arrayOf(_propTypes.default.element).isRequired,
   // Callback used when clicking on the screen cover
   onClose: _propTypes.default.func,
-  size: _propTypes.default.oneOf(['small', 'medium', 'large']),
-  // Needs to b set in order to make the content scrollable!
-  scrollable: _propTypes.default.bool
+  size: _propTypes.default.oneOf(['small', 'medium', 'large'])
 };
 Modal.defaultProps = {
   size: 'small'

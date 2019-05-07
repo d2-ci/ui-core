@@ -22,9 +22,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var outerSpacing = 24;
 var cardBoxStyle = {
   styles: _react.default.createElement(_style.default, {
-    id: "2275384749"
-  }, [".modal-card.jsx-2275384749{height:auto;left:50%;max-width:calc(100vw - ".concat(2 * outerSpacing, "px);max-height:calc(100vh - ").concat(2 * outerSpacing, "px);position:absolute;top:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}"), ".modal-card.scrollable.jsx-2275384749{height:100%;}", ".size-small.jsx-2275384749{width:400px;}", ".size-medium.jsx-2275384749{width:600px;}", ".size-large.jsx-2275384749{width:800px;}"]),
-  className: "jsx-2275384749"
+    id: "261220870"
+  }, [".modal-card.jsx-261220870{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:auto;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;left:50%;max-width:calc(100vw - ".concat(2 * outerSpacing, "px);max-height:calc(100vh - ").concat(2 * outerSpacing, "px);position:absolute;top:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}"), ".size-small.jsx-261220870{width:400px;}", ".size-medium.jsx-261220870{width:600px;}", ".size-large.jsx-261220870{width:800px;}"]),
+  className: "jsx-261220870"
 };
 
 var ModalCard = function ModalCard(_ref) {
@@ -33,16 +33,8 @@ var ModalCard = function ModalCard(_ref) {
       size = _ref.size;
   console.log('scrollable', scrollable);
   return _react.default.createElement(_Card.Card, {
-    className: (0, _classnames.default)(cardBoxStyle.className, 'modal-card', "size-".concat(size), {
-      scrollable: scrollable
-    })
-  }, _react.default.createElement("div", {
-    style: {
-      height: '100%',
-      display: 'flex',
-      flexDirection: 'column'
-    }
-  }, children), cardBoxStyle.styles);
+    className: (0, _classnames.default)(cardBoxStyle.className, 'modal-card', "size-".concat(size))
+  }, children, cardBoxStyle.styles);
 };
 
 exports.ModalCard = ModalCard;

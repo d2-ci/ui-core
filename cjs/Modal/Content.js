@@ -21,19 +21,15 @@ var Content = function Content(_ref) {
   var children = _ref.children,
       scrollable = _ref.scrollable;
   return _react.default.createElement("div", {
-    className: "jsx-2811276750" + " " + ((0, _classnames.default)('content', {
+    className: "jsx-3567242057" + " " + ((0, _classnames.default)('content', {
       scrollable: scrollable
     }) || "")
   }, children, _react.default.createElement(_style.default, {
-    id: "2811276750"
-  }, [".content.jsx-2811276750{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;margin-bottom:35px;padding:0 24px;}", ".content.jsx-2811276750:first-child{padding-top:20px;}", ".scrollable.jsx-2811276750{overflow-y:scroll;}"]));
+    id: "3567242057"
+  }, [".content.jsx-3567242057{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;margin-bottom:35px;overflow-y:auto;padding:0 24px;}", ".content.jsx-3567242057:first-child{padding-top:20px;}"]));
 };
 
 exports.Content = Content;
 Content.propTypes = {
-  children: _propTypes.default.node.isRequired,
-  scrollable: _propTypes.default.bool
-};
-Content.defaultProps = {
-  scrollable: false
+  children: _propTypes.default.node.isRequired
 };

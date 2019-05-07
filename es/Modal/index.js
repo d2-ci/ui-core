@@ -1,5 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React, { Fragment } from 'react';
+import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { Actions } from './Actions';
@@ -21,21 +22,17 @@ const outerSpacing = 24;
 export const Modal = ({
   children,
   onClose,
-  size,
-  scrollable
+  size
 }) => {
-  return React.createElement("div", {
+  return createPortal(React.createElement("div", {
     className: "jsx-2117478159" + " " + "modal"
   }, React.createElement(ScreenCover, {
     onClick: onClose
   }), React.createElement(ModalCard, {
-    size: size,
-    scrollable: scrollable
-  }, React.Children.map(children, child => React.cloneElement(child, {
-    scrollable
-  }))), React.createElement(_JSXStyle, {
+    size: size
+  }, children), React.createElement(_JSXStyle, {
     id: "2117478159"
-  }, [".modal.jsx-2117478159{height:100%;left:0;position:fixed;top:0;width:100%;z-index:99999999;}"]));
+  }, [".modal.jsx-2117478159{height:100%;left:0;position:fixed;top:0;width:100%;z-index:99999999;}"])), document.body);
 };
 Modal.Title = Title;
 Modal.Content = Content;
@@ -45,9 +42,7 @@ Modal.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
   // Callback used when clicking on the screen cover
   onClose: PropTypes.func,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  // Needs to b set in order to make the content scrollable!
-  scrollable: PropTypes.bool
+  size: PropTypes.oneOf(['small', 'medium', 'large'])
 };
 Modal.defaultProps = {
   size: 'small'

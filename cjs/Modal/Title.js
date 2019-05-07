@@ -20,10 +20,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Title = function Title(_ref) {
   var children = _ref.children;
   return _react.default.createElement("h1", {
-    className: "jsx-3869016876" + " " + ((0, _classnames.default)('title') || "")
+    className: "jsx-3311424108" + " " + ((0, _classnames.default)('title') || "")
   }, children, _react.default.createElement(_style.default, {
-    id: "3869016876"
-  }, [".title.jsx-3869016876{font-size:20px;font-weight:500;line-height:24px;padding:20px 24px 0;margin-bottom:17px;}"]));
+    id: "3311424108"
+  }, [".title.jsx-3311424108{font-size:20px;font-weight:500;line-height:24px;padding:20px 24px 0;margin:0 0 17px;}"]));
 };
 
 exports.Title = Title;

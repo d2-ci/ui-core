@@ -6,16 +6,12 @@ export const Content = ({
   children,
   scrollable
 }) => React.createElement("div", {
-  className: "jsx-2811276750" + " " + (cx('content', {
+  className: "jsx-3567242057" + " " + (cx('content', {
     scrollable
   }) || "")
 }, children, React.createElement(_JSXStyle, {
-  id: "2811276750"
-}, [".content.jsx-2811276750{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;margin-bottom:35px;padding:0 24px;}", ".content.jsx-2811276750:first-child{padding-top:20px;}", ".scrollable.jsx-2811276750{overflow-y:scroll;}"]));
+  id: "3567242057"
+}, [".content.jsx-3567242057{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;margin-bottom:35px;overflow-y:auto;padding:0 24px;}", ".content.jsx-3567242057:first-child{padding-top:20px;}"]));
 Content.propTypes = {
-  children: PropTypes.node.isRequired,
-  scrollable: PropTypes.bool
-};
-Content.defaultProps = {
-  scrollable: false
+  children: PropTypes.node.isRequired
 };
