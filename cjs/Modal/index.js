@@ -15,13 +15,13 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
+var _ScreenCover = require("../ScreenCover");
+
 var _Actions = require("./Actions");
 
 var _Content = require("./Content");
 
 var _ModalCard = require("./ModalCard");
-
-var _ScreenCover = require("./ScreenCover");
 
 var _Title = require("./Title");
 
