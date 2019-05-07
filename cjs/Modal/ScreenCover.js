@@ -21,10 +21,10 @@ var ScreenCover = function ScreenCover(_ref) {
   var onClick = _ref.onClick;
   return _react.default.createElement("div", {
     onClick: onClick,
-    className: "jsx-3567969760" + " " + "screen-cover"
+    className: "jsx-928972940" + " " + "screen-cover"
   }, _react.default.createElement(_style.default, {
-    id: "3567969760"
-  }, [".screen-cover.jsx-3567969760{background:rgba(200,200,200,0.6);height:100%;left:0;position:absolute;top:0;width:100%;}"]));
+    id: "928972940"
+  }, ["div.jsx-928972940{background:rgba(200,200,200,0.6);height:100%;left:0;position:absolute;top:0;width:100%;}"]));
 };
 
 exports.ScreenCover = ScreenCover;

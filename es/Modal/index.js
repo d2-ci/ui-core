@@ -26,15 +26,15 @@ export const Modal = ({
   large
 }) => {
   return createPortal(React.createElement("div", {
-    className: "jsx-2117478159" + " " + "modal"
+    className: "jsx-3576433837" + " " + "modal"
   }, React.createElement(ScreenCover, {
     onClick: onClose
   }), React.createElement(ModalCard, {
     small: small,
     large: large
   }, children), React.createElement(_JSXStyle, {
-    id: "2117478159"
-  }, [".modal.jsx-2117478159{height:100%;left:0;position:fixed;top:0;width:100%;z-index:99999999;}"])), document.body);
+    id: "3576433837"
+  }, ["div.jsx-3576433837{height:100%;left:0;position:fixed;top:0;width:100%;z-index:99999999;}"])), document.body);
 };
 Modal.Title = Title;
 Modal.Content = Content;
