@@ -43,7 +43,7 @@ Modal.Content = Content;
 Modal.Actions = Actions;
 Modal.propTypes = {
   // Can contain Modal.Title; Must contain Modal.Content and Modal.Actions
-  children: propTypes.arrayOf(propTypes.element).isRequired,
+  children: propTypes.oneOfType([propTypes.element, propTypes.arrayOf(propTypes.element)]).isRequired,
   // Callback used when clicking on the screen cover
   onClose: propTypes.func,
   open: propTypes.bool,

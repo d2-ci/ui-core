@@ -42,7 +42,7 @@ var ModalCard = function ModalCard(_ref) {
 exports.ModalCard = ModalCard;
 ModalCard.propTypes = {
   // Can be Modal.Title; Must be Modal.Content and Modal.Actions
-  children: _propTypes.default.arrayOf(_propTypes.default.element).isRequired,
+  children: _propTypes.default.oneOfType([_propTypes.default.element, _propTypes.default.arrayOf(_propTypes.default.element)]).isRequired,
   small: _propTypes.default.bool,
   large: _propTypes.default.bool
 };
