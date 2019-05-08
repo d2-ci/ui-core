@@ -19,12 +19,12 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var outerSpacing = 24;
+var OUTER_SPACING = 24;
 var cardBoxStyle = {
   styles: _react.default.createElement(_style.default, {
-    id: "3758132841"
-  }, [".modal-card.jsx-3758132841{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:auto;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;left:50%;max-width:calc(100vw - ".concat(2 * outerSpacing, "px);max-height:calc(100vh - ").concat(2 * outerSpacing, "px);position:absolute;top:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);width:600px;}"), ".small.jsx-3758132841{width:400px;}", ".large.jsx-3758132841{width:800px;}"]),
-  className: "jsx-3758132841"
+    id: "1375009442"
+  }, [".modal-card.jsx-1375009442{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:auto;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;left:50%;max-width:calc(100vw - ".concat(2 * OUTER_SPACING, "px);max-height:calc(100vh - ").concat(2 * OUTER_SPACING, "px);position:absolute;top:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);width:600px;}"), ".small.jsx-1375009442{width:400px;}", ".large.jsx-1375009442{width:800px;}"]),
+  className: "jsx-1375009442"
 };
 
 var ModalCard = function ModalCard(_ref) {

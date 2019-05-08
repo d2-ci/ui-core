@@ -29,7 +29,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var outerSpacing = 24;
 /**
  * Modal provides a UI to prompt the user to respond to a question
  * or a note to the user.
@@ -39,22 +38,24 @@ var outerSpacing = 24;
  * Model.Content (required)
  * Model.Actions (required)
  */
-
 var Modal = function Modal(_ref) {
   var children = _ref.children,
       onClose = _ref.onClose,
       small = _ref.small,
-      large = _ref.large;
+      large = _ref.large,
+      open = _ref.open;
   return (0, _reactDom.createPortal)(_react.default.createElement("div", {
-    className: "jsx-3576433837" + " " + "modal"
+    className: "jsx-1520348043" + " " + ((0, _classnames.default)({
+      open: open
+    }) || "")
   }, _react.default.createElement(_ScreenCover.ScreenCover, {
     onClick: onClose
   }), _react.default.createElement(_ModalCard.ModalCard, {
     small: small,
     large: large
   }, children), _react.default.createElement(_style.default, {
-    id: "3576433837"
-  }, ["div.jsx-3576433837{height:100%;left:0;position:fixed;top:0;width:100%;z-index:99999999;}"])), document.body);
+    id: "1520348043"
+  }, ["div.jsx-1520348043{display:none;height:100%;left:0;position:fixed;top:0;width:100%;z-index:99999999;}", ".open.jsx-1520348043{display:block;}"])), document.body);
 };
 
 exports.Modal = Modal;
@@ -66,6 +67,7 @@ Modal.propTypes = {
   children: _propTypes.default.arrayOf(_propTypes.default.element).isRequired,
   // Callback used when clicking on the screen cover
   onClose: _propTypes.default.func,
+  open: _propTypes.default.bool,
   small: _propTypes.default.bool,
   large: _propTypes.default.bool
 };
