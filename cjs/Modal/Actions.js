@@ -22,10 +22,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Actions = function Actions(_ref) {
   var children = _ref.children;
   return _react.default.createElement("div", {
-    className: "jsx-1565630915" + " " + ((0, _classnames.default)('actions') || "")
+    className: "jsx-1953267682"
   }, children, _react.default.createElement(_style.default, {
-    id: "1565630915"
-  }, [".actions.jsx-1565630915{padding:0 24px 20px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;}"]));
+    id: "1953267682"
+  }, ["div.jsx-1953267682{padding:0 24px 20px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;}"]));
 };
 
 exports.Actions = Actions;
