@@ -17,7 +17,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Icon = function Icon(_ref) {
   var icon = _ref.icon;
-  if (!icon) return;
+  if (!icon) return null;
   return _react.default.createElement("span", {
     className: "jsx-3691124138"
   }, icon, _react.default.createElement(_style.default, {

@@ -13,6 +13,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
+var _Cancel = require("../icons/Cancel");
+
 var _theme = require("../theme");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -75,10 +77,10 @@ function (_PureComponent) {
     key: "render",
     value: function render() {
       var onRemove = this.props.onRemove;
-      if (!onRemove) return;
+      if (!onRemove) return null;
       return _react.default.createElement("span", {
         onClick: this.onRemove
-      }, _react.default.createElement(Cancel, {
+      }, _react.default.createElement(_Cancel.Cancel, {
         className: removeIcon.className
       }), removeIcon.styles);
     }

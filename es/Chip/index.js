@@ -6,7 +6,6 @@ import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
 import { colors, theme } from '../theme';
-import { Cancel } from '../icons/Cancel';
 import { Content } from './Content';
 import { Icon } from './Icon';
 import { Remove } from './Remove';

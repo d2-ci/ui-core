@@ -15,8 +15,6 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _theme = require("../theme");
 
-var _Cancel = require("../icons/Cancel");
-
 var _Content = require("./Content");
 
 var _Icon = require("./Icon");

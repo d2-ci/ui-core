@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 export const Icon = ({
   icon
 }) => {
-  if (!icon) return;
+  if (!icon) return null;
   return React.createElement("span", {
     className: "jsx-3691124138"
   }, icon, React.createElement(_JSXStyle, {

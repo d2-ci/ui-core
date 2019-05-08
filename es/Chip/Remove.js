@@ -3,6 +3,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import _JSXStyle from "styled-jsx/style";
 import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
+import { Cancel } from '../icons/Cancel';
 import { colors } from '../theme';
 const removeIcon = {
   styles: React.createElement(_JSXStyle, {
@@ -23,7 +24,7 @@ export class Remove extends PureComponent {
 
   render() {
     const onRemove = this.props.onRemove;
-    if (!onRemove) return;
+    if (!onRemove) return null;
     return React.createElement("span", {
       onClick: this.onRemove
     }, React.createElement(Cancel, {
