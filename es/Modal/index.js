@@ -25,8 +25,8 @@ export const Modal = ({
   large,
   open
 }) => {
-  return createPortal(React.createElement("div", {
-    className: "jsx-1520348043" + " " + (cx({
+  return createPortal(React.createElement("aside", {
+    className: "jsx-2472542028" + " " + (cx({
       open
     }) || "")
   }, React.createElement(ScreenCover, {
@@ -35,8 +35,8 @@ export const Modal = ({
     small: small,
     large: large
   }, children), React.createElement(_JSXStyle, {
-    id: "1520348043"
-  }, ["div.jsx-1520348043{display:none;height:100%;left:0;position:fixed;top:0;width:100%;z-index:99999999;}", ".open.jsx-1520348043{display:block;}"])), document.body);
+    id: "2472542028"
+  }, ["aside.jsx-2472542028{display:none;height:100%;left:0;position:fixed;top:0;width:100%;z-index:99999999;}", ".open.jsx-2472542028{display:block;}"])), document.body);
 };
 Modal.Title = Title;
 Modal.Content = Content;

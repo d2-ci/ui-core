@@ -44,8 +44,8 @@ var Modal = function Modal(_ref) {
       small = _ref.small,
       large = _ref.large,
       open = _ref.open;
-  return (0, _reactDom.createPortal)(_react.default.createElement("div", {
-    className: "jsx-1520348043" + " " + ((0, _classnames.default)({
+  return (0, _reactDom.createPortal)(_react.default.createElement("aside", {
+    className: "jsx-2472542028" + " " + ((0, _classnames.default)({
       open: open
     }) || "")
   }, _react.default.createElement(_ScreenCover.ScreenCover, {
@@ -54,8 +54,8 @@ var Modal = function Modal(_ref) {
     small: small,
     large: large
   }, children), _react.default.createElement(_style.default, {
-    id: "1520348043"
-  }, ["div.jsx-1520348043{display:none;height:100%;left:0;position:fixed;top:0;width:100%;z-index:99999999;}", ".open.jsx-1520348043{display:block;}"])), document.body);
+    id: "2472542028"
+  }, ["aside.jsx-2472542028{display:none;height:100%;left:0;position:fixed;top:0;width:100%;z-index:99999999;}", ".open.jsx-2472542028{display:block;}"])), document.body);
 };
 
 exports.Modal = Modal;
