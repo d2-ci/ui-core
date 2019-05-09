@@ -1,6 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import cx from 'classnames';
 import { colors, theme } from '../theme';
 import { Indeterminate, Checked, Unchecked } from '../icons/Checkbox';
@@ -34,10 +34,10 @@ export const Icon = ({
   }), icons.styles);
 };
 Icon.propTypes = {
-  checked: PropTypes.bool,
-  disabled: PropTypes.bool,
-  valid: PropTypes.bool,
-  error: PropTypes.bool,
-  warning: PropTypes.bool,
-  indeterminate: PropTypes.bool
+  checked: propTypes.bool,
+  disabled: propTypes.bool,
+  valid: propTypes.bool,
+  error: propTypes.bool,
+  warning: propTypes.bool,
+  indeterminate: propTypes.bool
 };
