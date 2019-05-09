@@ -1,20 +1,16 @@
+import _JSXStyle from "styled-jsx/style";
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import _JSXStyle from "styled-jsx/style";
-import React from 'react';
+import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
-import { colors } from '../theme.js';
-import styles from './styles.js';
-import { Cancel } from '../icons/Cancel.js';
-const removeIcon = {
-  styles: React.createElement(_JSXStyle, {
-    id: "1693149603"
-  }, [`svg.jsx-1693149603{margin-right:4px;color:${colors.grey700};height:18px;width:18px;cursor:pointer;opacity:1;pointer-events:all;}`, "svg.jsx-1693149603:hover{opacity:0.82;}"]),
-  className: "jsx-1693149603"
-};
+import { colors, theme } from '../theme';
+import { Content } from './Content';
+import { Icon } from './Icon';
+import { Remove } from './Remove';
 
-class Chip extends React.PureComponent {
+class Chip extends PureComponent {
   constructor(...args) {
     super(...args);
 
@@ -23,38 +19,6 @@ class Chip extends React.PureComponent {
         this.props.onClick(e);
       }
     });
-
-    _defineProperty(this, "onRemove", e => {
-      e.stopPropagation(); // stop onRemove from triggering onClick on container
-
-      this.props.onRemove(e);
-    });
-  }
-
-  showIcon() {
-    const {
-      icon
-    } = this.props;
-
-    if (!icon) {
-      return;
-    }
-
-    return React.createElement(React.Fragment, null, React.createElement("span", {
-      className: "jsx-3458732931"
-    }, icon), React.createElement(_JSXStyle, {
-      id: "3458732931"
-    }, ["span.jsx-3458732931{width:24px;height:24px;margin-left:4px;border-radius:50%;overflow:hidden;}"]));
-  }
-
-  showRemove() {
-    if (this.props.onRemove) {
-      return React.createElement("span", {
-        onClick: this.onRemove
-      }, React.createElement(Cancel, {
-        className: removeIcon.className
-      }), removeIcon.styles);
-    }
   }
 
   render() {
@@ -66,20 +30,24 @@ class Chip extends React.PureComponent {
       className,
       children
     } = this.props;
-    return React.createElement("div", {
+    return React.createElement("span", {
       onClick: this.onClick,
-      className: `jsx-${styles.__hash}` + " " + (cx(className, {
+      className: _JSXStyle.dynamic([["3024631939", [colors.grey200, colors.grey900, colors.grey300, theme.secondary600, colors.white]]]) + " " + (cx(className, {
         selected,
         disabled,
         dragging
       }) || "")
-    }, this.showIcon(), React.createElement("span", {
-      className: `jsx-${styles.__hash}` + " " + (cx({
-        overflow
-      }) || "")
-    }, children), this.showRemove(), React.createElement(_JSXStyle, {
-      id: styles.__hash
-    }, styles));
+    }, React.createElement(Icon, {
+      icon: this.props.icon
+    }), React.createElement(Content, {
+      overflow: overflow,
+      children: children
+    }), React.createElement(Remove, {
+      onRemove: this.props.onRemove
+    }), React.createElement(_JSXStyle, {
+      id: "3024631939",
+      dynamic: [colors.grey200, colors.grey900, colors.grey300, theme.secondary600, colors.white]
+    }, [`span.__jsx-style-dynamic-selector{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:32px;margin:4px;border-radius:16px;background-color:${colors.grey200};font-size:14px;line-height:16px;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;color:${colors.grey900};}`, `span.__jsx-style-dynamic-selector:hover{background-color:${colors.grey300};}`, `.selected.__jsx-style-dynamic-selector{background-color:${theme.secondary600};font-weight:500;}`, ".selected.__jsx-style-dynamic-selector:hover{background-color:#00695c;}", `.selected.__jsx-style-dynamic-selector,.selected.__jsx-style-dynamic-selector .icon.__jsx-style-dynamic-selector,.selected.__jsx-style-dynamic-selector .remove-icon.__jsx-style-dynamic-selector{color:${colors.white};}`, ".disabled.__jsx-style-dynamic-selector{cursor:not-allowed;opacity:0.3;}", ".disabled.__jsx-style-dynamic-selector .remove-icon.__jsx-style-dynamic-selector{pointer-events:none;}", ".dragging.__jsx-style-dynamic-selector{box-shadow:0 3px 1px -2px rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12);}"]));
   }
 
 }
