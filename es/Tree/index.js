@@ -20,6 +20,13 @@ const Contents = ({
   id: "3677374542"
 }, ["div.jsx-3677374542{height:0;overflow:hidden;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}", ".open.jsx-3677374542{height:auto;}"]));
 
+const arrowStyle = {
+  styles: React.createElement(_JSXStyle, {
+    id: "2568580958"
+  }, ["div.jsx-2568580958>svg{fill:#e2e2e2;}"]),
+  className: "jsx-2568580958"
+};
+
 var _ref =
 /*#__PURE__*/
 React.createElement(ArrowDown, null);
@@ -35,16 +42,16 @@ const Arrow = ({
 }) => {
   const arrowIcon = hasLeafes ? _ref : _ref2;
   return React.createElement("div", {
-    className: "jsx-2720529281" + " " + (cx('arrow', {
+    className: "jsx-316501532" + " " + (cx('arrow', arrowStyle.className, {
       open,
       'has-leafes': hasLeafes
     }) || "")
   }, React.createElement("span", {
     onClick: onToggleOpen,
-    className: "jsx-2720529281"
+    className: "jsx-316501532"
   }, arrowIcon), React.createElement(_JSXStyle, {
-    id: "2720529281"
-  }, ["div.jsx-2720529281{width:24px;}", "span.jsx-2720529281{display:block;-webkit-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg);}", ".open.jsx-2720529281 span.jsx-2720529281{-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);}"]));
+    id: "316501532"
+  }, ["div.jsx-316501532{width:24px;position:relative;}", "div.jsx-316501532:after{content:'';background:#e2e2e2;height:calc(100% - 24px);left:12px;position:absolute;top:12px;width:1px;z-index:1;}", "span.jsx-316501532{display:block;position:relative;-webkit-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg);z-index:2;}", ".open.jsx-316501532 span.jsx-316501532{-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);}"]), arrowStyle.styles);
 };
 
 const Content = ({
