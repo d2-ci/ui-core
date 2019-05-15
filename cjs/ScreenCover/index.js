@@ -81,12 +81,12 @@ function (_PureComponent) {
     value: function render() {
       return _react.default.createElement("div", {
         ref: this.elContainer,
-        className: "jsx-1867075725" + " " + "screen-cover"
+        className: "jsx-3284545258" + " " + "screen-cover"
       }, _react.default.createElement("div", {
-        className: "jsx-1867075725" + " " + "children"
+        className: "jsx-3284545258" + " " + "children"
       }, this.props.children), _react.default.createElement(_style.default, {
-        id: "1867075725"
-      }, [".screen-cover.jsx-1867075725{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;position:fixed;height:100%;width:100%;left:0;top:0;background:rgba(200,200,200,0.6);}", ".children.jsx-1867075725{z-index:99999999;}"]));
+        id: "3284545258"
+      }, [".screen-cover.jsx-3284545258{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;position:fixed;height:100%;width:100%;left:0;top:0;z-index:10000;background:rgba(200,200,200,0.6);}"]));
     }
   }]);
 
