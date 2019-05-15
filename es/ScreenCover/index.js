@@ -13,8 +13,6 @@ class ScreenCover extends PureComponent {
     _defineProperty(this, "elContainer", React.createRef());
 
     _defineProperty(this, "onDocClick", evt => {
-      console.log(this.elContainer, evt);
-
       if (this.elContainer.current && this.elContainer.current === evt.target) {
         this.props.onClick();
       }

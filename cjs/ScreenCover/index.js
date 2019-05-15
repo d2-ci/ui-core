@@ -58,8 +58,6 @@ function (_PureComponent) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "elContainer", _react.default.createRef());
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
-      console.log(_this.elContainer, evt);
-
       if (_this.elContainer.current && _this.elContainer.current === evt.target) {
         _this.props.onClick();
       }
