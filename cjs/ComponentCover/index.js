@@ -18,10 +18,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ComponentCover = function ComponentCover(_ref) {
-  var onClick = _ref.onClick,
-      children = _ref.children;
+  var children = _ref.children;
   return _react.default.createElement("div", {
-    onClick: onClick,
     className: "jsx-4027115939" + " " + "component-cover"
   }, children, _react.default.createElement(_style.default, {
     id: "4027115939"
@@ -30,5 +28,5 @@ var ComponentCover = function ComponentCover(_ref) {
 
 exports.ComponentCover = ComponentCover;
 ComponentCover.propTypes = {
-  onClick: _propTypes.default.func
+  children: _propTypes.default.node
 };
