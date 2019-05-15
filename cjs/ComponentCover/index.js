@@ -20,10 +20,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var ComponentCover = function ComponentCover(_ref) {
   var children = _ref.children;
   return _react.default.createElement("div", {
-    className: "jsx-4027115939" + " " + "component-cover"
+    className: "jsx-1242714437" + " " + "component-cover"
   }, children, _react.default.createElement(_style.default, {
-    id: "4027115939"
-  }, ["div.jsx-4027115939{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;position:relative;left:0;top:0;height:100%;width:100%;background:rgba(200,200,200,0.6);}"]));
+    id: "1242714437"
+  }, ["div.jsx-1242714437{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;position:relative;left:0;top:0;height:100%;width:100%;z-index:900;background:rgba(200,200,200,0.6);}"]));
 };
 
 exports.ComponentCover = ComponentCover;
