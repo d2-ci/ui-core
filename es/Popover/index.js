@@ -56,8 +56,7 @@ class Popover extends Component {
   }
 
   disableScroll() {
-    this.extractBodyStyles();
-    disableScroll();
+    this.extractBodyStyles(); //disableScroll()
   }
 
   enableScroll() {
@@ -97,17 +96,14 @@ class Popover extends Component {
      */
 
     return createPortal(React.createElement("div", {
-      style: {
-        top: containerTop
-      },
-      className: _JSXStyle.dynamic([["22002151", [containerTop, 99999999 + this.props.level]]])
+      className: _JSXStyle.dynamic([["585911297", [99999999 + this.props.level]]])
     }, React.createElement(ScreenCover, {
       withoutBackgroundColor: true,
       onClick: onClose
     }), content, React.createElement(_JSXStyle, {
-      id: "22002151",
-      dynamic: [containerTop, 99999999 + this.props.level]
-    }, [`div.__jsx-style-dynamic-selector{left:0;height:100vh;position:absolute;top:${containerTop};width:100vw;z-index:${99999999 + this.props.level};}`])), document.body);
+      id: "585911297",
+      dynamic: [99999999 + this.props.level]
+    }, [`div.__jsx-style-dynamic-selector{left:0;height:100vh;position:fixed;top:0;width:100vw;z-index:${99999999 + this.props.level};}`])), document.body);
   }
 
 }

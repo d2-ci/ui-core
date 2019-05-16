@@ -113,8 +113,7 @@ function (_Component) {
   }, {
     key: "disableScroll",
     value: function disableScroll() {
-      this.extractBodyStyles();
-      (0, _helpers.disableScroll)();
+      this.extractBodyStyles(); //disableScroll()
     }
   }, {
     key: "enableScroll",
@@ -156,17 +155,14 @@ function (_Component) {
        */
 
       return (0, _reactDom.createPortal)(_react.default.createElement("div", {
-        style: {
-          top: containerTop
-        },
-        className: _style.default.dynamic([["22002151", [containerTop, 99999999 + this.props.level]]])
+        className: _style.default.dynamic([["585911297", [99999999 + this.props.level]]])
       }, _react.default.createElement(_ScreenCover.ScreenCover, {
         withoutBackgroundColor: true,
         onClick: onClose
       }), content, _react.default.createElement(_style.default, {
-        id: "22002151",
-        dynamic: [containerTop, 99999999 + this.props.level]
-      }, ["div.__jsx-style-dynamic-selector{left:0;height:100vh;position:absolute;top:".concat(containerTop, ";width:100vw;z-index:").concat(99999999 + this.props.level, ";}")])), document.body);
+        id: "585911297",
+        dynamic: [99999999 + this.props.level]
+      }, ["div.__jsx-style-dynamic-selector{left:0;height:100vh;position:fixed;top:0;width:100vw;z-index:".concat(99999999 + this.props.level, ";}")])), document.body);
     }
   }]);
 

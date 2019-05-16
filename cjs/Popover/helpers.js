@@ -22,11 +22,11 @@ var Content = _react.default.forwardRef(function (_ref, ref) {
   return _react.default.createElement("div", {
     ref: ref,
     style: position,
-    className: _style.default.dynamic([["2278630921", [level + 99999999 || 1]]])
+    className: _style.default.dynamic([["1214024287", [level + 99999999 || 1]]])
   }, children, _react.default.createElement(_style.default, {
-    id: "2278630921",
+    id: "1214024287",
     dynamic: [level + 99999999 || 1]
-  }, ["div.__jsx-style-dynamic-selector{background:white;box-shadow:0 0 3px rgba(0,0,0,0.6);max-height:100vh;overflow-y:auto;position:absolute;z-index:".concat(level + 99999999 || 1, ";}")]));
+  }, ["div.__jsx-style-dynamic-selector{background:white;box-shadow:0 0 3px rgba(0,0,0,0.6);max-height:100vh;overflow-y:auto;position:fixed;z-index:".concat(level + 99999999 || 1, ";}")]));
 });
 
 exports.Content = Content;
@@ -69,6 +69,8 @@ var getScrollAndClientOffset = function getScrollAndClientOffset() {
 exports.getScrollAndClientOffset = getScrollAndClientOffset;
 
 var getPosition = function getPosition(anchor, popover, hasScreencover) {
+  console.log('asdf', anchor, popover);
+
   if (!anchor || !popover) {
     return {
       left: 0,
