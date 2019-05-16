@@ -73,52 +73,13 @@ function (_Component) {
   }
 
   _createClass(Popover, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      if (this.props.alwaysOpen || this.props.open) {
-        this.disableScroll();
-      }
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      if (this.props.open || this.props.alwaysOpen) {
-        this.enableScroll();
-      }
-    }
-  }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (prevProps.open !== this.props.open) {
-        this.handleScroll();
+        // Weird hack.. please help?
+        // needs to be done so this component can use it's own reference
+        this.forceUpdate();
       }
-    }
-  }, {
-    key: "handleScroll",
-    value: function handleScroll() {
-      if (this.props.open) {
-        this.disableScroll();
-      } else {
-        this.enableScroll();
-      }
-    }
-  }, {
-    key: "extractBodyStyles",
-    value: function extractBodyStyles() {
-      var bodyStyles = (0, _helpers.extractBodyStyles)();
-      this.setState({
-        bodyStyles: bodyStyles
-      });
-    }
-  }, {
-    key: "disableScroll",
-    value: function disableScroll() {
-      this.extractBodyStyles(); //disableScroll()
-    }
-  }, {
-    key: "enableScroll",
-    value: function enableScroll() {
-      (0, _helpers.setBodyStyles)(this.state.bodyStyles);
     }
   }, {
     key: "render",

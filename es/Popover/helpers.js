@@ -17,19 +17,6 @@ export const Content = React.forwardRef(({
   id: "1214024287",
   dynamic: [level + 99999999 || 1]
 }, [`div.__jsx-style-dynamic-selector{background:white;box-shadow:0 0 3px rgba(0,0,0,0.6);max-height:100vh;overflow-y:auto;position:fixed;z-index:${level + 99999999 || 1};}`])));
-export const extractBodyStyles = () => ({
-  overflow: document.body.style.overflow,
-  overflowX: document.body.style.overflowX,
-  overflowY: document.body.style.overflowY
-});
-export const disableScroll = () => {
-  document.body.style.overflow = 'hidden';
-  document.body.style.overflowX = 'hidden';
-  document.body.style.overflowY = 'hidden';
-};
-export const setBodyStyles = styles => {
-  Object.assign(document.body.style, styles);
-};
 export const getScrollAndClientOffset = () => {
   const body = document.body;
   const docEl = document.documentElement;
@@ -41,8 +28,6 @@ export const getScrollAndClientOffset = () => {
   };
 };
 export const getPosition = (anchor, popover, hasScreencover) => {
-  console.log('asdf', anchor, popover);
-
   if (!anchor || !popover) {
     return {
       left: 0,

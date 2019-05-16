@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getPosition = exports.getScrollAndClientOffset = exports.setBodyStyles = exports.disableScroll = exports.extractBodyStyles = exports.Content = void 0;
+exports.getPosition = exports.getScrollAndClientOffset = exports.Content = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -31,30 +31,6 @@ var Content = _react.default.forwardRef(function (_ref, ref) {
 
 exports.Content = Content;
 
-var extractBodyStyles = function extractBodyStyles() {
-  return {
-    overflow: document.body.style.overflow,
-    overflowX: document.body.style.overflowX,
-    overflowY: document.body.style.overflowY
-  };
-};
-
-exports.extractBodyStyles = extractBodyStyles;
-
-var disableScroll = function disableScroll() {
-  document.body.style.overflow = 'hidden';
-  document.body.style.overflowX = 'hidden';
-  document.body.style.overflowY = 'hidden';
-};
-
-exports.disableScroll = disableScroll;
-
-var setBodyStyles = function setBodyStyles(styles) {
-  Object.assign(document.body.style, styles);
-};
-
-exports.setBodyStyles = setBodyStyles;
-
 var getScrollAndClientOffset = function getScrollAndClientOffset() {
   var body = document.body;
   var docEl = document.documentElement;
@@ -69,8 +45,6 @@ var getScrollAndClientOffset = function getScrollAndClientOffset() {
 exports.getScrollAndClientOffset = getScrollAndClientOffset;
 
 var getPosition = function getPosition(anchor, popover, hasScreencover) {
-  console.log('asdf', anchor, popover);
-
   if (!anchor || !popover) {
     return {
       left: 0,
