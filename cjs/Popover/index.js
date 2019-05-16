@@ -67,36 +67,53 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Popover)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "ref", _react.default.createRef());
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "ref", (0, _react.createRef)());
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      position: {}
+    });
 
     return _this;
   }
 
   _createClass(Popover, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.open) {
+        this.updatePosition();
+      }
+    }
+  }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      if (prevProps.open !== this.props.open) {
-        // Weird hack.. please help?
-        // needs to be done so this component can use it's own reference
-        this.forceUpdate();
+    value: function componentDidUpdate() {
+      this.updatePosition();
+    }
+  }, {
+    key: "updatePosition",
+    value: function updatePosition() {
+      if (this.ref.current) {
+        var position = (0, _helpers.getPosition)(this.props.anchorRef.current, this.ref.current, this.props.screencover);
+
+        if (!(0, _helpers.arePositionsEqual)(position, this.state.position)) {
+          this.setState({
+            position: position
+          });
+        }
       }
     }
   }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
-          alwaysOpen = _this$props.alwaysOpen,
-          anchorEl = _this$props.anchorEl,
           children = _this$props.children,
           onClose = _this$props.onClose,
           open = _this$props.open,
           screencover = _this$props.screencover;
-      if (!open && !alwaysOpen) return null;
-      var position = (0, _helpers.getPosition)(anchorEl, this.ref.current, screencover);
+      if (!open) return null;
 
       var content = _react.default.createElement(_helpers.Content, {
         ref: this.ref,
-        position: position,
+        position: this.state.position,
         children: children,
         level: this.props.level
       });
@@ -122,12 +139,13 @@ function (_Component) {
 
 exports.Popover = Popover;
 Popover.propTypes = {
-  /* Element the popover should be positioned against */
-  anchorEl: _propTypes.default.element.isRequired,
+  /* Needs to be created with `React.createRef()` */
+  anchorRef: _propTypes.default.shape({
+    current: _propTypes.default.element
+  }).isRequired,
   screencover: _propTypes.default.bool,
   level: _propTypes.default.number,
   open: _propTypes.default.bool,
-  alwaysOpen: _propTypes.default.bool,
   onClose: _propTypes.default.func
 };
 Popover.defaultProps = {

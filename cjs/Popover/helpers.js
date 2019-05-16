@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getPosition = exports.getScrollAndClientOffset = exports.Content = void 0;
+exports.arePositionsEqual = exports.getPosition = exports.getScrollAndClientOffset = exports.Content = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -98,3 +98,9 @@ var getPositionHorizontal = function getPositionHorizontal(anchorRect, popoverRe
     bottom: 'auto'
   };
 };
+
+var arePositionsEqual = function arePositionsEqual(left, right) {
+  return left.left === right.left && left.top === right.top && left.bottom === right.bottom;
+};
+
+exports.arePositionsEqual = arePositionsEqual;
