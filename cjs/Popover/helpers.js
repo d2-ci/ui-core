@@ -3,7 +3,33 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getPosition = exports.getScrollAndClientOffset = exports.setBodyStyles = exports.disableScroll = exports.extractBodyStyles = void 0;
+exports.getPosition = exports.getScrollAndClientOffset = exports.setBodyStyles = exports.disableScroll = exports.extractBodyStyles = exports.Content = void 0;
+
+var _style = _interopRequireDefault(require("styled-jsx/style"));
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Content = _react.default.forwardRef(function (_ref, ref) {
+  var children = _ref.children,
+      position = _ref.position,
+      level = _ref.level;
+  return _react.default.createElement("div", {
+    ref: ref,
+    style: position,
+    className: _style.default.dynamic([["2278630921", [level + 99999999 || 1]]])
+  }, children, _react.default.createElement(_style.default, {
+    id: "2278630921",
+    dynamic: [level + 99999999 || 1]
+  }, ["div.__jsx-style-dynamic-selector{background:white;box-shadow:0 0 3px rgba(0,0,0,0.6);max-height:100vh;overflow-y:auto;position:absolute;z-index:".concat(level + 99999999 || 1, ";}")]));
+});
+
+exports.Content = Content;
 
 var extractBodyStyles = function extractBodyStyles() {
   return {
@@ -42,47 +68,57 @@ var getScrollAndClientOffset = function getScrollAndClientOffset() {
 
 exports.getScrollAndClientOffset = getScrollAndClientOffset;
 
-var getPosition = function getPosition(anchorHorizontal, anchorVertical, popover, hasScreencover) {
-  if (!anchorHorizontal || !anchorVertical || !popover) {
+var getPosition = function getPosition(anchor, popover, hasScreencover) {
+  if (!anchor || !popover) {
     return {
       left: 0,
       top: 0
     };
   }
 
-  var styles = {};
-  var viewportWidth = window.innerWidth;
-  var viewportHeight = window.innerHeight;
-
-  var _getScrollAndClientOf = getScrollAndClientOffset(),
-      scrollTop = _getScrollAndClientOf.scrollTop,
-      clientTop = _getScrollAndClientOf.clientTop;
-
-  var anchorRectHorizontal = anchorHorizontal.getBoundingClientRect();
-  var anchorRectVertical = anchorVertical.getBoundingClientRect();
+  var anchorRect = anchor.getBoundingClientRect();
   var popoverRect = popover.getBoundingClientRect();
-  var leftOffset = anchorRectHorizontal.x + anchorRectHorizontal.width;
-  var rightOffset = anchorRectHorizontal.x - popoverRect.width;
-  var fitsToTheLeft = viewportWidth - leftOffset - popoverRect.width > 0;
-  var fitsToTheRight = rightOffset > 0;
-  var fitsToTheTop = viewportHeight - anchorRectHorizontal.y > popoverRect.height;
-  var left = fitsToTheLeft ? leftOffset : rightOffset;
-  styles.left = left + 'px';
-
-  if (fitsToTheTop) {
-    if (hasScreencover) {
-      styles.top = (scrollTop || clientTop) + anchorRectVertical.y + 'px';
-    } else {
-      styles.top = anchorRectVertical.y + 'px';
-    }
-
-    styles.bottom = 'auto';
-  } else {
-    styles.bottom = 0;
-    styles.top = 'auto';
-  }
-
+  return _objectSpread({}, getPositionVertical(anchorRect, popoverRect), getPositionHorizontal(anchorRect, popoverRect, hasScreencover));
   return styles;
 };
 
 exports.getPosition = getPosition;
+
+var getPositionVertical = function getPositionVertical(anchorRect, popoverRect) {
+  var viewportWidth = window.innerWidth;
+  var leftOffset = anchorRect.x + anchorRect.width;
+  var rightOffset = anchorRect.x - popoverRect.width;
+  var fitsToTheLeft = viewportWidth - leftOffset - popoverRect.width > 0;
+  var left = fitsToTheLeft ? leftOffset : rightOffset;
+  return {
+    left: left
+  };
+};
+
+var getPositionHorizontal = function getPositionHorizontal(anchorRect, popoverRect, hasScreencover) {
+  var _getScrollAndClientOf = getScrollAndClientOffset(),
+      scrollTop = _getScrollAndClientOf.scrollTop,
+      clientTop = _getScrollAndClientOf.clientTop;
+
+  var viewportHeight = window.innerHeight;
+  var fitsToTheTop = viewportHeight - anchorRect.y > popoverRect.height;
+
+  if (!fitsToTheTop) {
+    return {
+      bottom: 0,
+      top: 'auto'
+    };
+  }
+
+  if (hasScreencover) {
+    return {
+      top: (scrollTop || clientTop) + anchorRect.y + 'px',
+      bottom: 'auto'
+    };
+  }
+
+  return {
+    top: anchorRect.y + 'px',
+    bottom: 'auto'
+  };
+};

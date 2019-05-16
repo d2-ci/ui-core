@@ -43,27 +43,12 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var Content = _react.default.forwardRef(function (_ref, ref) {
-  var children = _ref.children,
-      position = _ref.position,
-      level = _ref.level;
-  return _react.default.createElement("div", {
-    ref: ref,
-    style: position,
-    className: _style.default.dynamic([["4080441091", [level + 99999999 || 1]]])
-  }, children, _react.default.createElement(_style.default, {
-    id: "4080441091",
-    dynamic: [level + 99999999 || 1]
-  }, ["div.__jsx-style-dynamic-selector{background:white;box-shadow:0 0 3px rgba(0,0,0,0.6);max-height:100vh;overflow-y:auto;position:absolute;z-index:".concat(level + 99999999 || 1, ";}")]));
-});
 /**
  * This popover is a content container that behaves like a context menu
  * container. It can be used to create multi level context menus that
  * won't be displayed off-screen by wrapping each level with the Popover
  * component.
  */
-
-
 var Popover =
 /*#__PURE__*/
 function (_Component) {
@@ -141,16 +126,15 @@ function (_Component) {
     value: function render() {
       var _this$props = this.props,
           alwaysOpen = _this$props.alwaysOpen,
-          anchorElHorizontal = _this$props.anchorElHorizontal,
-          anchorElVertical = _this$props.anchorElVertical,
+          anchorEl = _this$props.anchorEl,
           children = _this$props.children,
           onClose = _this$props.onClose,
           open = _this$props.open,
           screencover = _this$props.screencover;
       if (!open && !alwaysOpen) return null;
-      var position = (0, _helpers.getPosition)(anchorElHorizontal, anchorElVertical, this.ref.current, screencover);
+      var position = (0, _helpers.getPosition)(anchorEl, this.ref.current, screencover);
 
-      var content = _react.default.createElement(Content, {
+      var content = _react.default.createElement(_helpers.Content, {
         ref: this.ref,
         position: position,
         children: children,
@@ -192,8 +176,7 @@ function (_Component) {
 exports.Popover = Popover;
 Popover.propTypes = {
   /* Element the popover should be positioned against */
-  anchorElHorizontal: _propTypes.default.element.isRequired,
-  anchorElVertical: _propTypes.default.element.isRequired,
+  anchorEl: _propTypes.default.element.isRequired,
   screencover: _propTypes.default.bool,
   level: _propTypes.default.number,
   open: _propTypes.default.bool,

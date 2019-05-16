@@ -7,19 +7,7 @@ import React, { Component, createRef } from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
 import { ScreenCover } from '../ScreenCover';
-import { disableScroll, extractBodyStyles, setBodyStyles, getPosition, getScrollAndClientOffset } from './helpers';
-const Content = React.forwardRef(({
-  children,
-  position,
-  level
-}, ref) => React.createElement("div", {
-  ref: ref,
-  style: position,
-  className: _JSXStyle.dynamic([["4080441091", [level + 99999999 || 1]]])
-}, children, React.createElement(_JSXStyle, {
-  id: "4080441091",
-  dynamic: [level + 99999999 || 1]
-}, [`div.__jsx-style-dynamic-selector{background:white;box-shadow:0 0 3px rgba(0,0,0,0.6);max-height:100vh;overflow-y:auto;position:absolute;z-index:${level + 99999999 || 1};}`])));
+import { Content, disableScroll, extractBodyStyles, setBodyStyles, getPosition, getScrollAndClientOffset } from './helpers';
 /**
  * This popover is a content container that behaves like a context menu
  * container. It can be used to create multi level context menus that
@@ -79,15 +67,14 @@ class Popover extends Component {
   render() {
     const {
       alwaysOpen,
-      anchorElHorizontal,
-      anchorElVertical,
+      anchorEl,
       children,
       onClose,
       open,
       screencover
     } = this.props;
     if (!open && !alwaysOpen) return null;
-    const position = getPosition(anchorElHorizontal, anchorElVertical, this.ref.current, screencover);
+    const position = getPosition(anchorEl, this.ref.current, screencover);
     const content = React.createElement(Content, {
       ref: this.ref,
       position: position,
@@ -127,8 +114,7 @@ class Popover extends Component {
 
 Popover.propTypes = {
   /* Element the popover should be positioned against */
-  anchorElHorizontal: propTypes.element.isRequired,
-  anchorElVertical: propTypes.element.isRequired,
+  anchorEl: propTypes.element.isRequired,
   screencover: propTypes.bool,
   level: propTypes.number,
   open: propTypes.bool,
