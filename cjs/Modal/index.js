@@ -45,17 +45,17 @@ var Modal = function Modal(_ref) {
       large = _ref.large,
       open = _ref.open;
   return (0, _reactDom.createPortal)(_react.default.createElement("aside", {
-    className: "jsx-2472542028" + " " + ((0, _classnames.default)({
+    className: "jsx-1183424492" + " " + ((0, _classnames.default)({
       open: open
     }) || "")
   }, _react.default.createElement(_ScreenCover.ScreenCover, {
     onClick: onClose
-  }), _react.default.createElement(_ModalCard.ModalCard, {
+  }, _react.default.createElement(_ModalCard.ModalCard, {
     small: small,
     large: large
-  }, children), _react.default.createElement(_style.default, {
-    id: "2472542028"
-  }, ["aside.jsx-2472542028{display:none;height:100%;left:0;position:fixed;top:0;width:100%;z-index:99999999;}", ".open.jsx-2472542028{display:block;}"])), document.body);
+  }, children)), _react.default.createElement(_style.default, {
+    id: "1183424492"
+  }, ["aside.jsx-1183424492{display:none;}", ".open.jsx-1183424492{display:block;}"])), document.body);
 };
 
 exports.Modal = Modal;
