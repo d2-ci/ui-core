@@ -18,15 +18,17 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ComponentCover = function ComponentCover(_ref) {
-  var children = _ref.children;
+  var children = _ref.children,
+      className = _ref.className;
   return _react.default.createElement("div", {
-    className: "jsx-1242714437" + " " + "component-cover"
+    className: "jsx-935926640" + " " + (className || "")
   }, children, _react.default.createElement(_style.default, {
-    id: "1242714437"
-  }, ["div.jsx-1242714437{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;position:relative;left:0;top:0;height:100%;width:100%;z-index:900;background:rgba(200,200,200,0.6);}"]));
+    id: "935926640"
+  }, ["div.jsx-935926640{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;position:absolute;height:inherit;width:inherit;z-index:900;background:rgba(200,200,200,0.6);}"]));
 };
 
 exports.ComponentCover = ComponentCover;
 ComponentCover.propTypes = {
-  children: _propTypes.default.node
+  children: _propTypes.default.node,
+  className: _propTypes.default.string
 };
