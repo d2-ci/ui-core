@@ -149,6 +149,13 @@ function (_Component) {
       }
     }
   }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      if (this.props.open || this.props.alwaysOpen) {
+        this.enableScroll();
+      }
+    }
+  }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (prevProps.open !== this.props.open) this.handleScroll();
@@ -201,15 +208,7 @@ function (_Component) {
           open = _this$props.open,
           screencover = _this$props.screencover;
       if (!open && !alwaysOpen) return null;
-
-      var _getScrollAndClientOf2 = getScrollAndClientOffset(),
-          scrollTop = _getScrollAndClientOf2.scrollTop,
-          clientTop = _getScrollAndClientOf2.clientTop;
-
       var position = getPosition(anchorElHorizontal, anchorElVertical, this.ref.current, screencover);
-      var containerTop = "".concat(scrollTop || clientTop, "px");
-      var containerHeight = '100vh';
-      var containerWidth = '100vw';
 
       if (!screencover) {
         return (0, _reactDom.createPortal)(_react.default.createElement(Content, {
@@ -220,6 +219,13 @@ function (_Component) {
         }), document.body);
       }
 
+      var _getScrollAndClientOf2 = getScrollAndClientOffset(),
+          scrollTop = _getScrollAndClientOf2.scrollTop,
+          clientTop = _getScrollAndClientOf2.clientTop;
+
+      var containerTop = "".concat(scrollTop || clientTop, "px");
+      var containerHeight = '100vh';
+      var containerWidth = '100vw';
       return (0, _reactDom.createPortal)(_react.default.createElement("div", {
         style: {
           top: containerTop,
