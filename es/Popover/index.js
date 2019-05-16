@@ -7,61 +7,7 @@ import React, { Component, createRef } from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
 import { ScreenCover } from '../ScreenCover';
-const CONTENT_MIN_HEIGHT = 200;
-
-const getScrollAndClientOffset = () => {
-  const body = document.body;
-  const docEl = document.documentElement;
-  return {
-    scrollTop: window.pageYOffset || docEl.scrollTop || body.scrollTop,
-    scrollLeft: window.pageXOffset || docEl.scrollLeft || body.scrollLeft,
-    clientTop: docEl.clientTop || body.clientTop || 0,
-    clientLeft: docEl.clientLeft || body.clientLeft || 0
-  };
-};
-
-const getPosition = (anchorHorizontal, anchorVertical, popover, hasScreencover) => {
-  if (!anchorHorizontal || !anchorVertical || !popover) {
-    return {
-      left: 0,
-      top: 0
-    };
-  }
-
-  const styles = {};
-  const viewportWidth = window.innerWidth;
-  const viewportHeight = window.innerHeight;
-  const {
-    scrollTop,
-    clientTop
-  } = getScrollAndClientOffset();
-  const anchorRectHorizontal = anchorHorizontal.getBoundingClientRect();
-  const anchorRectVertical = anchorVertical.getBoundingClientRect();
-  const popoverRect = popover.getBoundingClientRect();
-  const leftOffset = anchorRectHorizontal.x + anchorRectHorizontal.width;
-  const rightOffset = anchorRectHorizontal.x - popoverRect.width;
-  const fitsToTheLeft = viewportWidth - leftOffset - popoverRect.width > 0;
-  const fitsToTheRight = rightOffset > 0;
-  const fitsToTheTop = viewportHeight - anchorRectHorizontal.y > popoverRect.height;
-  const left = fitsToTheLeft ? leftOffset : rightOffset;
-  styles.left = left + 'px';
-
-  if (fitsToTheTop) {
-    if (hasScreencover) {
-      styles.top = (scrollTop || clientTop) + anchorRectVertical.y + 'px';
-    } else {
-      styles.top = anchorRectVertical.y + 'px';
-    }
-
-    styles.bottom = 'auto';
-  } else {
-    styles.bottom = 0;
-    styles.top = 'auto';
-  }
-
-  return styles;
-};
-
+import { disableScroll, extractBodyStyles, setBodyStyles, getPosition, getScrollAndClientOffset } from './helpers';
 const Content = React.forwardRef(({
   children,
   position,
@@ -101,18 +47,9 @@ class Popover extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.open !== this.props.open) this.handleScroll();
-  }
-
-  extractBodyStyles() {
-    const overflowX = document.body.style.overflowX;
-    const overflowY = document.body.style.overflowY;
-    const overflow = document.body.style.overflow;
-    this.setState({
-      overflowX,
-      overflowY,
-      overflow
-    });
+    if (prevProps.open !== this.props.open) {
+      this.handleScroll();
+    }
   }
 
   handleScroll() {
@@ -123,17 +60,20 @@ class Popover extends Component {
     }
   }
 
+  extractBodyStyles() {
+    const bodyStyles = extractBodyStyles();
+    this.setState({
+      bodyStyles
+    });
+  }
+
   disableScroll() {
     this.extractBodyStyles();
-    document.body.style.overflow = 'hidden';
-    document.body.style.overflowX = 'hidden';
-    document.body.style.overflowY = 'hidden';
+    disableScroll();
   }
 
   enableScroll() {
-    document.body.style.overflow = this.state.overflow;
-    document.body.style.overflowX = this.state.overflowX;
-    document.body.style.overflowY = this.state.overflowY;
+    setBodyStyles(this.state.bodyStyles);
   }
 
   render() {
@@ -148,14 +88,15 @@ class Popover extends Component {
     } = this.props;
     if (!open && !alwaysOpen) return null;
     const position = getPosition(anchorElHorizontal, anchorElVertical, this.ref.current, screencover);
+    const content = React.createElement(Content, {
+      ref: this.ref,
+      position: position,
+      children: children,
+      level: this.props.level
+    });
 
     if (!screencover) {
-      return createPortal(React.createElement(Content, {
-        ref: this.ref,
-        position: position,
-        children: children,
-        level: this.props.level
-      }), document.body);
+      return createPortal(content, document.body);
     }
 
     const {
@@ -163,26 +104,23 @@ class Popover extends Component {
       clientTop
     } = getScrollAndClientOffset();
     const containerTop = `${scrollTop || clientTop}px`;
-    const containerHeight = '100vh';
-    const containerWidth = '100vw';
+    /**
+     * For whatever reason, when setting "top" with styled-jsx,
+     * the calculated value is wrong, so it's set a style directly
+     */
+
     return createPortal(React.createElement("div", {
       style: {
-        top: containerTop,
-        height: containerHeight,
-        width: containerWidth
+        top: containerTop
       },
-      className: _JSXStyle.dynamic([["532243724", [99999999 + this.props.level]]])
-    }, screencover && React.createElement(ScreenCover, {
+      className: _JSXStyle.dynamic([["22002151", [containerTop, 99999999 + this.props.level]]])
+    }, React.createElement(ScreenCover, {
       withoutBackgroundColor: true,
       onClick: onClose
-    }), React.createElement(Content, {
-      ref: this.ref,
-      position: position,
-      children: children
-    }), React.createElement(_JSXStyle, {
-      id: "532243724",
-      dynamic: [99999999 + this.props.level]
-    }, [`div.__jsx-style-dynamic-selector{left:0;position:absolute;z-index:${99999999 + this.props.level};}`])), document.body);
+    }), content, React.createElement(_JSXStyle, {
+      id: "22002151",
+      dynamic: [containerTop, 99999999 + this.props.level]
+    }, [`div.__jsx-style-dynamic-selector{left:0;height:100vh;position:absolute;top:${containerTop};width:100vw;z-index:${99999999 + this.props.level};}`])), document.body);
   }
 
 }
