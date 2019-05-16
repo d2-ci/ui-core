@@ -52,16 +52,6 @@ class Popover extends Component {
       return createPortal(content, document.body);
     }
 
-    const {
-      scrollTop,
-      clientTop
-    } = getScrollAndClientOffset();
-    const containerTop = `${scrollTop || clientTop}px`;
-    /**
-     * For whatever reason, when setting "top" with styled-jsx,
-     * the calculated value is wrong, so it's set a style directly
-     */
-
     return createPortal(React.createElement("div", {
       className: _JSXStyle.dynamic([["585911297", [99999999 + this.props.level]]])
     }, React.createElement(ScreenCover, {

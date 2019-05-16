@@ -105,16 +105,6 @@ function (_Component) {
         return (0, _reactDom.createPortal)(content, document.body);
       }
 
-      var _getScrollAndClientOf = (0, _helpers.getScrollAndClientOffset)(),
-          scrollTop = _getScrollAndClientOf.scrollTop,
-          clientTop = _getScrollAndClientOf.clientTop;
-
-      var containerTop = "".concat(scrollTop || clientTop, "px");
-      /**
-       * For whatever reason, when setting "top" with styled-jsx,
-       * the calculated value is wrong, so it's set a style directly
-       */
-
       return (0, _reactDom.createPortal)(_react.default.createElement("div", {
         className: _style.default.dynamic([["585911297", [99999999 + this.props.level]]])
       }, _react.default.createElement(_ScreenCover.ScreenCover, {
