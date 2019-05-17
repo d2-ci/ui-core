@@ -37,11 +37,11 @@ export const getPosition = (anchor, popover, hasScreencover) => {
 
   const anchorRect = anchor.getBoundingClientRect();
   const popoverRect = popover.getBoundingClientRect();
-  return _objectSpread({}, getPositionVertical(anchorRect, popoverRect), getPositionHorizontal(anchorRect, popoverRect, hasScreencover));
+  return _objectSpread({}, getPositionHorizontal(anchorRect, popoverRect), getPositionVertical(anchorRect, popoverRect, hasScreencover));
   return styles;
 };
 
-const getPositionVertical = (anchorRect, popoverRect) => {
+const getPositionHorizontal = (anchorRect, popoverRect) => {
   const viewportWidth = window.innerWidth;
   const leftOffset = anchorRect.x + anchorRect.width;
   const rightOffset = anchorRect.x - popoverRect.width;
@@ -52,7 +52,7 @@ const getPositionVertical = (anchorRect, popoverRect) => {
   };
 };
 
-const getPositionHorizontal = (anchorRect, popoverRect, hasScreencover) => {
+const getPositionVertical = (anchorRect, popoverRect, hasScreencover) => {
   const {
     scrollTop,
     clientTop

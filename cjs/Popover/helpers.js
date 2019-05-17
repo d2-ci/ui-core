@@ -54,13 +54,13 @@ var getPosition = function getPosition(anchor, popover, hasScreencover) {
 
   var anchorRect = anchor.getBoundingClientRect();
   var popoverRect = popover.getBoundingClientRect();
-  return _objectSpread({}, getPositionVertical(anchorRect, popoverRect), getPositionHorizontal(anchorRect, popoverRect, hasScreencover));
+  return _objectSpread({}, getPositionHorizontal(anchorRect, popoverRect), getPositionVertical(anchorRect, popoverRect, hasScreencover));
   return styles;
 };
 
 exports.getPosition = getPosition;
 
-var getPositionVertical = function getPositionVertical(anchorRect, popoverRect) {
+var getPositionHorizontal = function getPositionHorizontal(anchorRect, popoverRect) {
   var viewportWidth = window.innerWidth;
   var leftOffset = anchorRect.x + anchorRect.width;
   var rightOffset = anchorRect.x - popoverRect.width;
@@ -71,7 +71,7 @@ var getPositionVertical = function getPositionVertical(anchorRect, popoverRect) 
   };
 };
 
-var getPositionHorizontal = function getPositionHorizontal(anchorRect, popoverRect, hasScreencover) {
+var getPositionVertical = function getPositionVertical(anchorRect, popoverRect, hasScreencover) {
   var _getScrollAndClientOf = getScrollAndClientOffset(),
       scrollTop = _getScrollAndClientOf.scrollTop,
       clientTop = _getScrollAndClientOf.clientTop;
