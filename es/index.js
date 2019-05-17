@@ -13,12 +13,13 @@ export { Menu } from './Menu';
 export { MenuItem } from './MenuItem';
 export { Modal } from './Modal';
 export { Radio } from './Radio';
-export { ScreenCover } from './ScreenCover';
 export { SelectField } from './SelectField';
 export { SplitButton } from './SplitButton';
 export { Switch } from './Switch';
 export { CssReset } from './CssReset';
 export { theme, colors } from './theme.js';
+export { ComponentCover } from './ComponentCover';
+export { ScreenCover } from './ScreenCover';
 /*
  * Components below are internal and may be exposed at some point, but
  * are kept internal for now until the API stabilizes
