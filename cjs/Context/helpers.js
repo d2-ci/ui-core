@@ -44,7 +44,7 @@ var getScrollAndClientOffset = function getScrollAndClientOffset() {
 
 exports.getScrollAndClientOffset = getScrollAndClientOffset;
 
-var getPosition = function getPosition(anchor, popover, hasScreencover) {
+var getPosition = function getPosition(anchor, popover, isNotRootLevel) {
   if (!anchor || !popover) {
     return {
       left: 0,
@@ -54,7 +54,7 @@ var getPosition = function getPosition(anchor, popover, hasScreencover) {
 
   var anchorRect = anchor.getBoundingClientRect();
   var popoverRect = popover.getBoundingClientRect();
-  return _objectSpread({}, getPositionHorizontal(anchorRect, popoverRect), getPositionVertical(anchorRect, popoverRect, hasScreencover));
+  return _objectSpread({}, getPositionHorizontal(anchorRect, popoverRect), getPositionVertical(anchorRect, popoverRect, isNotRootLevel));
   return styles;
 };
 
@@ -71,7 +71,7 @@ var getPositionHorizontal = function getPositionHorizontal(anchorRect, popoverRe
   };
 };
 
-var getPositionVertical = function getPositionVertical(anchorRect, popoverRect, hasScreencover) {
+var getPositionVertical = function getPositionVertical(anchorRect, popoverRect, isNotRootLevel) {
   var _getScrollAndClientOf = getScrollAndClientOffset(),
       scrollTop = _getScrollAndClientOf.scrollTop,
       clientTop = _getScrollAndClientOf.clientTop;
@@ -86,7 +86,7 @@ var getPositionVertical = function getPositionVertical(anchorRect, popoverRect, 
     };
   }
 
-  if (hasScreencover) {
+  if (isNotRootLevel) {
     return {
       top: (scrollTop || clientTop) + anchorRect.y + 'px',
       bottom: 'auto'

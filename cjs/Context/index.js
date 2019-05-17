@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Popover = void 0;
+exports.Context = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -44,28 +44,27 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /**
- * This popover is a content container that behaves like a context menu
- * container. It can be used to create multi level context menus that
- * won't be displayed off-screen by wrapping each level with the Popover
- * component.
+ * The Context component is a content container that behaves like a context menu
+ * container. It can be used to create multi level context menus that won't be
+ * displayed off-screen by wrapping each level with the Context component.
  */
-var Popover =
+var Context =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Popover, _Component);
+  _inherits(Context, _Component);
 
-  function Popover() {
+  function Context() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _classCallCheck(this, Popover);
+    _classCallCheck(this, Context);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Popover)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Context)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "ref", (0, _react.createRef)());
 
@@ -76,7 +75,7 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(Popover, [{
+  _createClass(Context, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       if (this.props.open) {
@@ -92,7 +91,7 @@ function (_Component) {
     key: "updatePosition",
     value: function updatePosition() {
       if (this.ref.current) {
-        var position = (0, _helpers.getPosition)(this.props.anchorRef.current, this.ref.current, this.props.screencover);
+        var position = (0, _helpers.getPosition)(this.props.anchorRef.current, this.ref.current, !!this.props.level);
 
         if (!(0, _helpers.arePositionsEqual)(position, this.state.position)) {
           this.setState({
@@ -108,17 +107,18 @@ function (_Component) {
           children = _this$props.children,
           onClose = _this$props.onClose,
           open = _this$props.open,
-          screencover = _this$props.screencover;
+          level = _this$props.level;
+      var position = this.state.position;
       if (!open) return null;
 
       var content = _react.default.createElement(_helpers.Content, {
         ref: this.ref,
-        position: this.state.position,
+        position: position,
         children: children,
-        level: this.props.level
+        level: level
       });
 
-      if (!screencover) {
+      if (!level) {
         return (0, _reactDom.createPortal)(content, document.body);
       }
 
@@ -134,20 +134,21 @@ function (_Component) {
     }
   }]);
 
-  return Popover;
+  return Context;
 }(_react.Component);
 
-exports.Popover = Popover;
-Popover.propTypes = {
+exports.Context = Context;
+Context.propTypes = {
   /* Needs to be created with `React.createRef()` */
   anchorRef: _propTypes.default.shape({
     current: _propTypes.default.element
   }).isRequired,
-  screencover: _propTypes.default.bool,
+
+  /* Is required for Context components that are not the root level */
   level: _propTypes.default.number,
   open: _propTypes.default.bool,
   onClose: _propTypes.default.func
 };
-Popover.defaultProps = {
+Context.defaultProps = {
   level: 0
 };

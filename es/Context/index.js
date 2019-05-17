@@ -9,13 +9,12 @@ import cx from 'classnames';
 import { ScreenCover } from '../ScreenCover';
 import { Content, arePositionsEqual, getPosition, getScrollAndClientOffset } from './helpers';
 /**
- * This popover is a content container that behaves like a context menu
- * container. It can be used to create multi level context menus that
- * won't be displayed off-screen by wrapping each level with the Popover
- * component.
+ * The Context component is a content container that behaves like a context menu
+ * container. It can be used to create multi level context menus that won't be
+ * displayed off-screen by wrapping each level with the Context component.
  */
 
-class Popover extends Component {
+class Context extends Component {
   constructor(...args) {
     super(...args);
 
@@ -38,7 +37,7 @@ class Popover extends Component {
 
   updatePosition() {
     if (this.ref.current) {
-      const position = getPosition(this.props.anchorRef.current, this.ref.current, this.props.screencover);
+      const position = getPosition(this.props.anchorRef.current, this.ref.current, !!this.props.level);
 
       if (!arePositionsEqual(position, this.state.position)) {
         this.setState({
@@ -53,17 +52,20 @@ class Popover extends Component {
       children,
       onClose,
       open,
-      screencover
+      level
     } = this.props;
+    const {
+      position
+    } = this.state;
     if (!open) return null;
     const content = React.createElement(Content, {
       ref: this.ref,
-      position: this.state.position,
+      position: position,
       children: children,
-      level: this.props.level
+      level: level
     });
 
-    if (!screencover) {
+    if (!level) {
       return createPortal(content, document.body);
     }
 
@@ -80,17 +82,18 @@ class Popover extends Component {
 
 }
 
-Popover.propTypes = {
+Context.propTypes = {
   /* Needs to be created with `React.createRef()` */
   anchorRef: propTypes.shape({
     current: propTypes.element
   }).isRequired,
-  screencover: propTypes.bool,
+
+  /* Is required for Context components that are not the root level */
   level: propTypes.number,
   open: propTypes.bool,
   onClose: propTypes.func
 };
-Popover.defaultProps = {
+Context.defaultProps = {
   level: 0
 };
-export { Popover };
+export { Context };

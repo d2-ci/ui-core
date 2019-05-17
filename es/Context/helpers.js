@@ -27,7 +27,7 @@ export const getScrollAndClientOffset = () => {
     clientLeft: docEl.clientLeft || body.clientLeft || 0
   };
 };
-export const getPosition = (anchor, popover, hasScreencover) => {
+export const getPosition = (anchor, popover, isNotRootLevel) => {
   if (!anchor || !popover) {
     return {
       left: 0,
@@ -37,7 +37,7 @@ export const getPosition = (anchor, popover, hasScreencover) => {
 
   const anchorRect = anchor.getBoundingClientRect();
   const popoverRect = popover.getBoundingClientRect();
-  return _objectSpread({}, getPositionHorizontal(anchorRect, popoverRect), getPositionVertical(anchorRect, popoverRect, hasScreencover));
+  return _objectSpread({}, getPositionHorizontal(anchorRect, popoverRect), getPositionVertical(anchorRect, popoverRect, isNotRootLevel));
   return styles;
 };
 
@@ -52,7 +52,7 @@ const getPositionHorizontal = (anchorRect, popoverRect) => {
   };
 };
 
-const getPositionVertical = (anchorRect, popoverRect, hasScreencover) => {
+const getPositionVertical = (anchorRect, popoverRect, isNotRootLevel) => {
   const {
     scrollTop,
     clientTop
@@ -67,7 +67,7 @@ const getPositionVertical = (anchorRect, popoverRect, hasScreencover) => {
     };
   }
 
-  if (hasScreencover) {
+  if (isNotRootLevel) {
     return {
       top: (scrollTop || clientTop) + anchorRect.y + 'px',
       bottom: 'auto'
