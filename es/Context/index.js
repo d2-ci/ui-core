@@ -70,14 +70,14 @@ class Context extends Component {
     }
 
     return createPortal(React.createElement("div", {
-      className: _JSXStyle.dynamic([["585911297", [99999999 + this.props.level]]])
+      className: _JSXStyle.dynamic([["2553022475", [99999999 + level]]])
     }, React.createElement(ScreenCover, {
       withoutBackgroundColor: true,
       onClick: onClose
     }), content, React.createElement(_JSXStyle, {
-      id: "585911297",
-      dynamic: [99999999 + this.props.level]
-    }, [`div.__jsx-style-dynamic-selector{left:0;height:100vh;position:fixed;top:0;width:100vw;z-index:${99999999 + this.props.level};}`])), document.body);
+      id: "2553022475",
+      dynamic: [99999999 + level]
+    }, [`div.__jsx-style-dynamic-selector{left:0;height:100vh;position:fixed;top:0;width:100vw;z-index:${99999999 + level};}`])), document.body);
   }
 
 }

@@ -123,14 +123,14 @@ function (_Component) {
       }
 
       return (0, _reactDom.createPortal)(_react.default.createElement("div", {
-        className: _style.default.dynamic([["585911297", [99999999 + this.props.level]]])
+        className: _style.default.dynamic([["2553022475", [99999999 + level]]])
       }, _react.default.createElement(_ScreenCover.ScreenCover, {
         withoutBackgroundColor: true,
         onClick: onClose
       }), content, _react.default.createElement(_style.default, {
-        id: "585911297",
-        dynamic: [99999999 + this.props.level]
-      }, ["div.__jsx-style-dynamic-selector{left:0;height:100vh;position:fixed;top:0;width:100vw;z-index:".concat(99999999 + this.props.level, ";}")])), document.body);
+        id: "2553022475",
+        dynamic: [99999999 + level]
+      }, ["div.__jsx-style-dynamic-selector{left:0;height:100vh;position:fixed;top:0;width:100vw;z-index:".concat(99999999 + level, ";}")])), document.body);
     }
   }]);
 
