@@ -111,12 +111,6 @@ Object.defineProperty(exports, "Radio", {
     return _Radio.Radio;
   }
 });
-Object.defineProperty(exports, "ScreenCover", {
-  enumerable: true,
-  get: function get() {
-    return _ScreenCover.ScreenCover;
-  }
-});
 Object.defineProperty(exports, "SelectField", {
   enumerable: true,
   get: function get() {
@@ -153,6 +147,18 @@ Object.defineProperty(exports, "colors", {
     return _theme.colors;
   }
 });
+Object.defineProperty(exports, "ComponentCover", {
+  enumerable: true,
+  get: function get() {
+    return _ComponentCover.ComponentCover;
+  }
+});
+Object.defineProperty(exports, "ScreenCover", {
+  enumerable: true,
+  get: function get() {
+    return _ScreenCover.ScreenCover;
+  }
+});
 
 var _Button = require("./Button");
 
@@ -184,8 +190,6 @@ var _Modal = require("./Modal");
 
 var _Radio = require("./Radio");
 
-var _ScreenCover = require("./ScreenCover");
-
 var _SelectField = require("./SelectField");
 
 var _SplitButton = require("./SplitButton");
@@ -195,3 +199,7 @@ var _Switch = require("./Switch");
 var _CssReset = require("./CssReset");
 
 var _theme = require("./theme.js");
+
+var _ComponentCover = require("./ComponentCover");
+
+var _ScreenCover = require("./ScreenCover");
