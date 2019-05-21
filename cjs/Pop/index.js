@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Context = void 0;
+exports.Pop = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -44,27 +44,27 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /**
- * The Context component is a content container that behaves like a context menu
+ * The Pop component is a content container that behaves like a context menu
  * container. It can be used to create multi level context menus that won't be
- * displayed off-screen by wrapping each level with the Context component.
+ * displayed off-screen by wrapping each level with the Pop component.
  */
-var Context =
+var Pop =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Context, _Component);
+  _inherits(Pop, _Component);
 
-  function Context() {
+  function Pop() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _classCallCheck(this, Context);
+    _classCallCheck(this, Pop);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Context)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Pop)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "ref", (0, _react.createRef)());
 
@@ -75,7 +75,7 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(Context, [{
+  _createClass(Pop, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       if (this.props.open) {
@@ -134,21 +134,21 @@ function (_Component) {
     }
   }]);
 
-  return Context;
+  return Pop;
 }(_react.Component);
 
-exports.Context = Context;
-Context.propTypes = {
+exports.Pop = Pop;
+Pop.propTypes = {
   /* Needs to be created with `React.createRef()` */
   anchorRef: _propTypes.default.shape({
     current: _propTypes.default.element
   }).isRequired,
 
-  /* Is required for Context components that are not the root level */
+  /* Is required for Pop components that are not the root level */
   level: _propTypes.default.number,
   open: _propTypes.default.bool,
   onClose: _propTypes.default.func
 };
-Context.defaultProps = {
+Pop.defaultProps = {
   level: 0
 };
