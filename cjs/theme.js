@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.theme = exports.colors = void 0;
+exports.layers = exports.theme = exports.colors = void 0;
 var colors = {
   /* colors */
 
@@ -117,3 +117,9 @@ var theme = {
   disabled: colors.grey500
 };
 exports.theme = theme;
+var layers = {
+  applicationTop: 2000,
+  blocking: 3000,
+  alert: 9999
+};
+exports.layers = layers;

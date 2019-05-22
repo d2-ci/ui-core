@@ -109,3 +109,8 @@ export const theme = {
   warning: colors.yellow500,
   disabled: colors.grey500
 };
+export const layers = {
+  applicationTop: 2000,
+  blocking: 3000,
+  alert: 9999
+};
