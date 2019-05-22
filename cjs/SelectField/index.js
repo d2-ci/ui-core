@@ -78,12 +78,12 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SelectField)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      focus: _this.props.focused
+      focus: _this.props.focus
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (e) {
       _this.setState({
-        focused: true
+        focus: true
       });
 
       if (_this.props.onFocus) {
@@ -93,7 +93,7 @@ function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function (e) {
       _this.setState({
-        focused: false
+        focus: false
       });
 
       if (_this.props.onBlur) {
@@ -115,7 +115,6 @@ function (_React$Component) {
       var _this$props = this.props,
           type = _this$props.type,
           filled = _this$props.filled,
-          focus = _this$props.focus,
           dense = _this$props.dense,
           required = _this$props.required,
           label = _this$props.label,
@@ -127,11 +126,12 @@ function (_React$Component) {
           loading = _this$props.loading,
           children = _this$props.children,
           value = _this$props.value,
-          onChange = _this$props.onChange;
+          onChange = _this$props.onChange,
+          _this$props$focus = _this$props.focus,
+          focus = _this$props$focus === void 0 ? this.state.focus : _this$props$focus;
       var Container = filled ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
       return _react.default.createElement(Container, {
-        onClick: this.onFocus,
-        focus: this.state.focus,
+        focus: focus,
         label: label,
         value: !!value,
         htmlFor: name,

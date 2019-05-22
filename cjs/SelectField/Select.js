@@ -66,6 +66,13 @@ function (_Component) {
   }
 
   _createClass(Select, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.focus) {
+        this.selectRef.current.focus();
+      }
+    }
+  }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (prevProps.focused !== this.props.focused) {

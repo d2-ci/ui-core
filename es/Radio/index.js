@@ -1,5 +1,7 @@
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 import _JSXStyle from "styled-jsx/style";
-import React from 'react';
+import React, { Component, createRef } from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
 import { colors, theme } from '../theme.js';
@@ -7,57 +9,103 @@ import styles from './styles.js';
 import { Checked, Unchecked } from '../icons/Radio.js';
 const icons = {
   styles: React.createElement(_JSXStyle, {
-    id: "871975739"
-  }, [`svg.jsx-871975739{height:24px;width:24px;fill:${theme.default};}`, `.checked.jsx-871975739{fill:${colors.teal400};}`, `.disabled.jsx-871975739{fill:${theme.disabled};}`, `.error.jsx-871975739{fill:${theme.error};}`, `.valid.jsx-871975739{fill:${theme.valid};}`, `.warning.jsx-871975739{fill:${theme.warning};}`]),
-  className: "jsx-871975739"
+    id: "931218017"
+  }, [`svg.jsx-931218017{height:24px;width:24px;fill:${theme.default};}`, ".focus.jsx-931218017 path{stroke:#646464;stroke-width:2px;}", `.checked.jsx-931218017{fill:${colors.teal400};}`, `.disabled.jsx-931218017{fill:${theme.disabled};}`, `.error.jsx-931218017{fill:${theme.error};}`, `.valid.jsx-931218017{fill:${theme.valid};}`, `.warning.jsx-931218017{fill:${theme.warning};}`]),
+  className: "jsx-931218017"
 };
 
-const Radio = ({
-  onChange,
-  name,
-  value,
-  className,
-  label,
-  required,
-  checked = false,
-  disabled,
-  valid,
-  warning,
-  error
-}) => {
-  console.log(`Radio checked (${value})`, checked);
-  const classes = cx(icons.className, {
-    checked: checked && !valid && !error && !warning,
-    disabled,
-    valid,
-    error,
-    warning
-  });
-  const icon = checked ? React.createElement(Checked, {
-    className: classes
-  }) : React.createElement(Unchecked, {
-    className: classes
-  });
-  return React.createElement("label", {
-    className: `jsx-${styles.__hash}` + " " + (cx(className, {
-      disabled
-    }) || "")
-  }, React.createElement("input", {
-    type: "radio",
-    name: name,
-    value: value,
-    checked: checked,
-    disabled: disabled,
-    onChange: onChange,
-    className: `jsx-${styles.__hash}`
-  }), icon, React.createElement("span", {
-    className: `jsx-${styles.__hash}` + " " + (cx({
-      required
-    }) || "")
-  }, label), icons.styles, React.createElement(_JSXStyle, {
-    id: styles.__hash
-  }, styles));
-};
+class Radio extends Component {
+  constructor(props) {
+    super(props);
+
+    _defineProperty(this, "ref", createRef());
+
+    _defineProperty(this, "onFocus", e => {
+      this.setState({
+        focus: true
+      });
+
+      if (this.props.onFocus) {
+        this.props.onFocus(e);
+      }
+    });
+
+    _defineProperty(this, "onBlur", e => {
+      this.setState({
+        focus: false
+      });
+
+      if (this.props.onBlur) {
+        this.props.onBlur(e);
+      }
+    });
+
+    this.state = {
+      focus: props.focus
+    };
+  }
+
+  componentDidMount() {
+    if (this.props.focus) {
+      this.ref.current.focus();
+    }
+  }
+
+  render() {
+    const {
+      onChange,
+      name,
+      value,
+      className,
+      label,
+      required,
+      checked = false,
+      disabled,
+      valid,
+      warning,
+      error,
+      focus = this.state.focus
+    } = this.props;
+    const classes = cx(icons.className, {
+      checked: checked && !valid && !error && !warning,
+      disabled,
+      valid,
+      error,
+      warning,
+      focus
+    });
+    const icon = checked ? React.createElement(Checked, {
+      className: classes
+    }) : React.createElement(Unchecked, {
+      className: classes
+    });
+    return React.createElement("label", {
+      className: `jsx-${styles.__hash}` + " " + (cx(className, {
+        disabled
+      }) || "")
+    }, React.createElement("input", {
+      tabIndex: "0",
+      ref: this.ref,
+      type: "radio",
+      name: name,
+      value: value,
+      focus: focus,
+      checked: checked,
+      disabled: disabled,
+      onChange: onChange,
+      onFocus: this.onFocus,
+      onBlur: this.onBlur,
+      className: `jsx-${styles.__hash}`
+    }), icon, React.createElement("span", {
+      className: `jsx-${styles.__hash}` + " " + (cx({
+        required
+      }) || "")
+    }, label), icons.styles, React.createElement(_JSXStyle, {
+      id: styles.__hash
+    }, styles));
+  }
+
+}
 
 Radio.propTypes = {
   onChange: propTypes.func.isRequired,
@@ -65,6 +113,8 @@ Radio.propTypes = {
   value: propTypes.string.isRequired,
   className: propTypes.string,
   label: propTypes.string,
+  onFocus: propTypes.func,
+  onBlur: propTypes.func,
   required: propTypes.bool,
   checked: propTypes.bool,
   disabled: propTypes.bool,

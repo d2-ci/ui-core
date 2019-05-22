@@ -28,12 +28,12 @@ class SelectField extends React.Component {
     super(...args);
 
     _defineProperty(this, "state", {
-      focus: this.props.focused
+      focus: this.props.focus
     });
 
     _defineProperty(this, "onFocus", e => {
       this.setState({
-        focused: true
+        focus: true
       });
 
       if (this.props.onFocus) {
@@ -43,7 +43,7 @@ class SelectField extends React.Component {
 
     _defineProperty(this, "onBlur", e => {
       this.setState({
-        focused: false
+        focus: false
       });
 
       if (this.props.onBlur) {
@@ -60,7 +60,6 @@ class SelectField extends React.Component {
     const {
       type,
       filled,
-      focus,
       dense,
       required,
       label,
@@ -72,12 +71,12 @@ class SelectField extends React.Component {
       loading,
       children,
       value,
-      onChange
+      onChange,
+      focus = this.state.focus
     } = this.props;
     const Container = filled ? LabelFilled : LabelOutlined;
     return React.createElement(Container, {
-      onClick: this.onFocus,
-      focus: this.state.focus,
+      focus: focus,
       label: label,
       value: !!value,
       htmlFor: name,

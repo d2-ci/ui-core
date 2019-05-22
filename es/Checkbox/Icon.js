@@ -6,11 +6,12 @@ import { colors, theme } from '../theme';
 import { Indeterminate, Checked, Unchecked } from '../icons/Checkbox';
 const icons = {
   styles: React.createElement(_JSXStyle, {
-    id: "871975739"
-  }, [`svg.jsx-871975739{height:24px;width:24px;fill:${theme.default};}`, `.checked.jsx-871975739{fill:${colors.teal400};}`, `.disabled.jsx-871975739{fill:${theme.disabled};}`, `.error.jsx-871975739{fill:${theme.error};}`, `.valid.jsx-871975739{fill:${theme.valid};}`, `.warning.jsx-871975739{fill:${theme.warning};}`]),
-  className: "jsx-871975739"
+    id: "931218017"
+  }, [`svg.jsx-931218017{height:24px;width:24px;fill:${theme.default};}`, ".focus.jsx-931218017 path{stroke:#646464;stroke-width:2px;}", `.checked.jsx-931218017{fill:${colors.teal400};}`, `.disabled.jsx-931218017{fill:${theme.disabled};}`, `.error.jsx-931218017{fill:${theme.error};}`, `.valid.jsx-931218017{fill:${theme.valid};}`, `.warning.jsx-931218017{fill:${theme.warning};}`]),
+  className: "jsx-931218017"
 };
 export const Icon = ({
+  focus,
   checked,
   disabled,
   valid,
@@ -20,6 +21,7 @@ export const Icon = ({
 }) => {
   const classes = cx(icons.className, {
     checked: checked && !valid && !error && !warning,
+    focus,
     disabled,
     valid,
     error,

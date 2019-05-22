@@ -15,6 +15,12 @@ export class Select extends Component {
     _defineProperty(this, "selectRef", createRef());
   }
 
+  componentDidMount() {
+    if (this.props.focus) {
+      this.selectRef.current.focus();
+    }
+  }
+
   componentDidUpdate(prevProps) {
     if (prevProps.focused !== this.props.focused) {
       if (this.props.focused) {
