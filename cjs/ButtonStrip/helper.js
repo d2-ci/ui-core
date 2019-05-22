@@ -14,19 +14,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var buttonArrayPropType = function buttonArrayPropType(props, propName, componentName) {
   var prop = props[propName];
   var error = null;
-  var count = 0;
+
+  if (_react.default.Children.count(prop) < 2) {
+    error = new Error("".concat(componentName, " should have at least 2 children."));
+  }
 
   _react.default.Children.forEach(prop, function (child) {
-    count++;
-
     if (child.type !== _Button.Button) {
       error = new Error("".concat(componentName, " children should be of type 'Button'."));
     }
   });
-
-  if (count < 2) {
-    error = new Error("".concat(componentName, " should have at least 2 children."));
-  }
 
   return error;
 };
