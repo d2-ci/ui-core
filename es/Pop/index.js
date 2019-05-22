@@ -7,7 +7,7 @@ import React, { Component, createRef } from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
 import { ScreenCover } from '../ScreenCover';
-import { Content, arePositionsEqual, getPosition, getScrollAndClientOffset } from './helpers';
+import { Content, arePositionsEqual, getPosition, getScrollAndClientOffset, propPosition } from './helpers';
 /**
  * The Pop component is a content container that behaves like a context menu
  * container. It can be used to create multi level context menus that won't be
@@ -37,7 +37,18 @@ class Pop extends Component {
 
   updatePosition() {
     if (this.ref.current) {
-      const position = getPosition(this.props.anchorRef.current, this.ref.current, !!this.props.level);
+      const {
+        anchorRef,
+        anchorPoint,
+        popPoint
+      } = this.props;
+      const position = getPosition({
+        popPoint,
+        anchorPoint,
+        pop: this.ref.current,
+        anchor: anchorRef.current,
+        isNotRoot: !!this.props.level
+      });
 
       if (!arePositionsEqual(position, this.state.position)) {
         this.setState({
@@ -87,6 +98,8 @@ Pop.propTypes = {
   anchorRef: propTypes.shape({
     current: propTypes.element
   }).isRequired,
+  anchorPoint: propPosition,
+  popPoint: propPosition,
 
   /* Is required for Pop components that are not the root level */
   level: propTypes.number,
@@ -94,6 +107,14 @@ Pop.propTypes = {
   onClose: propTypes.func
 };
 Pop.defaultProps = {
+  anchorPoint: {
+    vertical: 'top',
+    horizontal: 'right'
+  },
+  popPoint: {
+    vertical: 'top',
+    horizontal: 'left'
+  },
   level: 0
 };
 export { Pop };

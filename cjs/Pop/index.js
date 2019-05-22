@@ -91,7 +91,17 @@ function (_Component) {
     key: "updatePosition",
     value: function updatePosition() {
       if (this.ref.current) {
-        var position = (0, _helpers.getPosition)(this.props.anchorRef.current, this.ref.current, !!this.props.level);
+        var _this$props = this.props,
+            anchorRef = _this$props.anchorRef,
+            anchorPoint = _this$props.anchorPoint,
+            popPoint = _this$props.popPoint;
+        var position = (0, _helpers.getPosition)({
+          popPoint: popPoint,
+          anchorPoint: anchorPoint,
+          pop: this.ref.current,
+          anchor: anchorRef.current,
+          isNotRoot: !!this.props.level
+        });
 
         if (!(0, _helpers.arePositionsEqual)(position, this.state.position)) {
           this.setState({
@@ -103,11 +113,11 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          children = _this$props.children,
-          onClose = _this$props.onClose,
-          open = _this$props.open,
-          level = _this$props.level;
+      var _this$props2 = this.props,
+          children = _this$props2.children,
+          onClose = _this$props2.onClose,
+          open = _this$props2.open,
+          level = _this$props2.level;
       var position = this.state.position;
       if (!open) return null;
 
@@ -143,6 +153,8 @@ Pop.propTypes = {
   anchorRef: _propTypes.default.shape({
     current: _propTypes.default.element
   }).isRequired,
+  anchorPoint: _helpers.propPosition,
+  popPoint: _helpers.propPosition,
 
   /* Is required for Pop components that are not the root level */
   level: _propTypes.default.number,
@@ -150,5 +162,13 @@ Pop.propTypes = {
   onClose: _propTypes.default.func
 };
 Pop.defaultProps = {
+  anchorPoint: {
+    vertical: 'top',
+    horizontal: 'right'
+  },
+  popPoint: {
+    vertical: 'top',
+    horizontal: 'left'
+  },
   level: 0
 };
