@@ -13,6 +13,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
+var _theme = require("../theme.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Backdrop = function Backdrop(_ref) {
@@ -39,12 +41,13 @@ var ScreenCover = function ScreenCover(_ref3) {
       onClick = _ref3.onClick,
       className = _ref3.className;
   return _react.default.createElement("div", {
-    className: "jsx-3477031661" + " " + (className || "")
+    className: _style.default.dynamic([["3490552007", [_theme.layers.blocking]]]) + " " + (className || "")
   }, _react.default.createElement(Backdrop, {
     onClick: onClick
   }), _react.default.createElement(Content, null, children), _react.default.createElement(_style.default, {
-    id: "3477031661"
-  }, ["div.jsx-3477031661{position:fixed;height:100%;width:100%;left:0;top:0;z-index:10000;}"]));
+    id: "3490552007",
+    dynamic: [_theme.layers.blocking]
+  }, ["div.__jsx-style-dynamic-selector{position:fixed;height:100%;width:100%;left:0;top:0;z-index:".concat(_theme.layers.blocking, ";}")]));
 };
 
 exports.ScreenCover = ScreenCover;
