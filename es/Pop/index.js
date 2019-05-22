@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom';
 import React, { Component, createRef } from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
-import { ScreenCover } from '../ScreenCover';
+import { BackgroundCover } from './BackgroundCover';
 import { Content, arePositionsEqual, getPosition, getScrollAndClientOffset, propPosition } from './helpers';
 /**
  * The Pop component is a content container that behaves like a context menu
@@ -76,19 +76,18 @@ class Pop extends Component {
       level: level
     });
 
-    if (!level) {
+    if (!!level) {
       return createPortal(content, document.body);
     }
 
     return createPortal(React.createElement("div", {
-      className: _JSXStyle.dynamic([["2553022475", [99999999 + level]]])
-    }, React.createElement(ScreenCover, {
-      withoutBackgroundColor: true,
+      className: _JSXStyle.dynamic([["1709285359", [2000 + level]]])
+    }, React.createElement(BackgroundCover, {
       onClick: onClose
     }), content, React.createElement(_JSXStyle, {
-      id: "2553022475",
-      dynamic: [99999999 + level]
-    }, [`div.__jsx-style-dynamic-selector{left:0;height:100vh;position:fixed;top:0;width:100vw;z-index:${99999999 + level};}`])), document.body);
+      id: "1709285359",
+      dynamic: [2000 + level]
+    }, [`div.__jsx-style-dynamic-selector{left:0;height:100vh;position:fixed;top:0;width:100vw;z-index:${2000 + level};}`])), document.body);
   }
 
 }

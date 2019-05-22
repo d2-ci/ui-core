@@ -15,7 +15,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _ScreenCover = require("../ScreenCover");
+var _BackgroundCover = require("./BackgroundCover");
 
 var _helpers = require("./helpers");
 
@@ -128,19 +128,18 @@ function (_Component) {
         level: level
       });
 
-      if (!level) {
+      if (!!level) {
         return (0, _reactDom.createPortal)(content, document.body);
       }
 
       return (0, _reactDom.createPortal)(_react.default.createElement("div", {
-        className: _style.default.dynamic([["2553022475", [99999999 + level]]])
-      }, _react.default.createElement(_ScreenCover.ScreenCover, {
-        withoutBackgroundColor: true,
+        className: _style.default.dynamic([["1709285359", [2000 + level]]])
+      }, _react.default.createElement(_BackgroundCover.BackgroundCover, {
         onClick: onClose
       }), content, _react.default.createElement(_style.default, {
-        id: "2553022475",
-        dynamic: [99999999 + level]
-      }, ["div.__jsx-style-dynamic-selector{left:0;height:100vh;position:fixed;top:0;width:100vw;z-index:".concat(99999999 + level, ";}")])), document.body);
+        id: "1709285359",
+        dynamic: [2000 + level]
+      }, ["div.__jsx-style-dynamic-selector{left:0;height:100vh;position:fixed;top:0;width:100vw;z-index:".concat(2000 + level, ";}")])), document.body);
     }
   }]);
 

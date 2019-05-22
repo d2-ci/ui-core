@@ -14,11 +14,11 @@ export const Content = React.forwardRef(({
 }, ref) => React.createElement("div", {
   ref: ref,
   style: position,
-  className: _JSXStyle.dynamic([["1214024287", [level + 99999999 || 1]]])
+  className: _JSXStyle.dynamic([["4007642236", [level + 2000 || 1]]])
 }, children, React.createElement(_JSXStyle, {
-  id: "1214024287",
-  dynamic: [level + 99999999 || 1]
-}, [`div.__jsx-style-dynamic-selector{background:white;box-shadow:0 0 3px rgba(0,0,0,0.6);max-height:100vh;overflow-y:auto;position:fixed;z-index:${level + 99999999 || 1};}`])));
+  id: "4007642236",
+  dynamic: [level + 2000 || 1]
+}, [`div.__jsx-style-dynamic-selector{background:white;box-shadow:0 0 3px rgba(0,0,0,0.6);max-height:100vh;overflow-y:auto;position:fixed;z-index:${level + 2000 || 1};}`])));
 export const getScrollAndClientOffset = () => {
   const body = document.body;
   const docEl = document.documentElement;
