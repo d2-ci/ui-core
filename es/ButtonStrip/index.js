@@ -31,7 +31,4 @@ ButtonStrip.propTypes = {
   middle: propTypes.bool,
   end: propTypes.bool
 };
-ButtonStrip.defaultProps = {
-  start: true
-};
 export { ButtonStrip };
