@@ -23,11 +23,15 @@ var ButtonStrip = function ButtonStrip(_ref) {
   var className = _ref.className,
       children = _ref.children,
       compact = _ref.compact,
-      alignEnd = _ref.alignEnd;
+      start = _ref.start,
+      middle = _ref.middle,
+      end = _ref.end;
   return _react.default.createElement("div", {
     className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, {
       compact: compact,
-      'align-end': alignEnd
+      start: start,
+      middle: middle,
+      end: end
     }) || "")
   }, children, _react.default.createElement(_style.default, {
     id: _styles.default.__hash
@@ -39,5 +43,10 @@ ButtonStrip.propTypes = {
   className: _propTypes.default.string,
   children: _helper.buttonArrayPropType.isRequired,
   compact: _propTypes.default.bool,
-  alignEnd: _propTypes.default.bool
+  start: _propTypes.default.bool,
+  middle: _propTypes.default.bool,
+  end: _propTypes.default.bool
+};
+ButtonStrip.defaultProps = {
+  start: true
 };

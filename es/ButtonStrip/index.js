@@ -9,11 +9,15 @@ const ButtonStrip = ({
   className,
   children,
   compact,
-  alignEnd
+  start,
+  middle,
+  end
 }) => React.createElement("div", {
   className: `jsx-${styles.__hash}` + " " + (cx(className, {
     compact,
-    'align-end': alignEnd
+    start,
+    middle,
+    end
   }) || "")
 }, children, React.createElement(_JSXStyle, {
   id: styles.__hash
@@ -23,6 +27,11 @@ ButtonStrip.propTypes = {
   className: propTypes.string,
   children: buttonArrayPropType.isRequired,
   compact: propTypes.bool,
-  alignEnd: propTypes.bool
+  start: propTypes.bool,
+  middle: propTypes.bool,
+  end: propTypes.bool
+};
+ButtonStrip.defaultProps = {
+  start: true
 };
 export { ButtonStrip };
