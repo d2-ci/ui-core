@@ -19,6 +19,8 @@ var _DropMenu = require("../DropMenu");
 
 var _Button = require("../Button");
 
+var _ButtonStrip = require("../ButtonStrip");
+
 var _classnames = _interopRequireDefault(require("classnames"));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -45,17 +47,11 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var leftButton = {
-  styles: _react.default.createElement(_style.default, {
-    id: "1525662562"
-  }, ["button.jsx-1525662562{border-top-right-radius:0;border-bottom-right-radius:0;}"]),
-  className: "jsx-1525662562"
-};
 var rightButton = {
   styles: _react.default.createElement(_style.default, {
-    id: "2744160004"
-  }, ["button.jsx-2744160004{padding:0 9px;border-top-left-radius:0;border-bottom-left-radius:0;}"]),
-  className: "jsx-2744160004"
+    id: "554730144"
+  }, ["button.jsx-554730144{padding:0 9px;}"]),
+  className: "jsx-554730144"
 };
 
 var _ref =
@@ -109,12 +105,14 @@ function (_Component) {
       return _react.default.createElement("div", {
         ref: this.anchorRef,
         className: "jsx-3163060161"
+      }, _react.default.createElement(_ButtonStrip.ButtonStrip, {
+        compact: true
       }, _react.default.createElement(_Button.Button, _extends({}, this.props, {
-        className: (0, _classnames.default)(this.props.className, leftButton.className)
+        className: (0, _classnames.default)(this.props.className)
       }), this.props.children), _react.default.createElement(_Button.Button, _extends({}, this.props, {
         onClick: this.onToggle,
         className: (0, _classnames.default)(this.props.className, rightButton.className)
-      }), icon), open && _react.default.createElement(_DropMenu.DropMenu, {
+      }), icon)), open && _react.default.createElement(_DropMenu.DropMenu, {
         component: this.props.component,
         onClose: function onClose() {
           return _this2.setState({
@@ -122,7 +120,7 @@ function (_Component) {
           });
         },
         anchorEl: this.anchorRef.current
-      }), leftButton.styles, rightButton.styles, _react.default.createElement(_style.default, {
+      }), rightButton.styles, _react.default.createElement(_style.default, {
         id: "3163060161"
       }, ["div.jsx-3163060161{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}"]));
     }
