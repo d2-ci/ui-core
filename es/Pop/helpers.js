@@ -6,7 +6,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 import React from 'react';
 import propTypes from 'prop-types';
-import { ROTATION } from './rotation';
+import { FALLBACKS } from './fallbacks';
 export const Content = React.forwardRef(({
   children,
   position,
@@ -34,7 +34,8 @@ export const getPosition = ({
   anchor,
   popPoint,
   anchorPoint,
-  isNotRoot
+  isNotRoot,
+  fallbackPoints
 }) => {
   if (!anchor || !pop) {
     return {
@@ -45,29 +46,33 @@ export const getPosition = ({
 
   const anchorRect = anchor.getBoundingClientRect();
   const popRect = pop.getBoundingClientRect();
-  const relativePosition = getRelativePosition(anchorRect, popRect, anchorPoint, popPoint);
+  const relativePosition = getRelativePosition(anchorRect, popRect, anchorPoint, popPoint, fallbackPoints);
   const [realAnchorPoint, realPopPoint] = relativePosition;
   return _objectSpread({}, getPositionHorizontal(anchorRect, popRect, realAnchorPoint, realPopPoint), getPositionVertical(anchorRect, popRect, realAnchorPoint, realPopPoint, isNotRoot));
   return styles;
 };
 
-const getRelativePosition = (anchorRect, popRect, anchorPoint, popPoint) => {
-  const startRotation = [anchorPoint, popPoint];
-  const startRotationIndex = ROTATION.findIndex(([anchor, pop]) => anchor.vertical === startRotation[0].vertical && anchor.horizontal === startRotation[0].horizontal && pop.vertical === startRotation[1].vertical && pop.horizontal === startRotation[1].horizontal);
-  const updatedRotation = startRotationIndex === 0 ? ROTATION : [...ROTATION.slice(startRotationIndex), ...ROTATION.slice(0, startRotationIndex)];
-  let relativePosition = startRotation;
+const getRelativePosition = (anchorRect, popRect, anchorPoint, popPoint, fallbackPoints) => {
+  let positionsToTry;
+  const startPosition = [anchorPoint, popPoint];
 
-  for (let i = 0, l = updatedRotation.length; i < l; ++i) {
-    let curRotation = updatedRotation[i];
-    let [curAnchorPoint, curPopPoint] = curRotation;
-
-    if (doesPositionFitOnScreen(anchorRect, popRect, curAnchorPoint, curPopPoint)) {
-      relativePosition = curRotation;
-      break;
-    }
+  if (fallbackPoints) {
+    positionsToTry = [startPosition, ...fallbackPoints];
+  } else {
+    const startPositionIndex = FALLBACKS.findIndex(([anchor, pop]) => anchor.vertical === startPosition[0].vertical && anchor.horizontal === startPosition[0].horizontal && pop.vertical === startPosition[1].vertical && pop.horizontal === startPosition[1].horizontal);
+    positionsToTry = [startPosition, ...FALLBACKS[startPositionIndex][2]];
   }
 
-  return relativePosition;
+  return positionsToTry.reduce((finalPosition, curPosition) => {
+    if (finalPosition) return finalPosition;
+    let [curAnchorPoint, curPopPoint] = curPosition;
+
+    if (doesPositionFitOnScreen(anchorRect, popRect, curAnchorPoint, curPopPoint)) {
+      return curPosition;
+    }
+
+    return finalPosition;
+  }, null) || startPosition;
 };
 
 const doesPositionFitOnScreen = (anchor, pop, anchorPoint, popPoint) => doesPositionFitOnScreenVertically(anchor, pop, anchorPoint, popPoint) && doesPositionFitOnScreenHorizontally(anchor, pop, anchorPoint, popPoint);

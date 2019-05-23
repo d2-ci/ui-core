@@ -94,13 +94,15 @@ function (_Component) {
         var _this$props = this.props,
             anchorRef = _this$props.anchorRef,
             anchorPoint = _this$props.anchorPoint,
-            popPoint = _this$props.popPoint;
+            popPoint = _this$props.popPoint,
+            fallbackPoints = _this$props.fallbackPoints;
         var position = (0, _helpers.getPosition)({
           popPoint: popPoint,
           anchorPoint: anchorPoint,
           pop: this.ref.current,
           anchor: anchorRef.current,
-          isNotRoot: !!this.props.level
+          isNotRoot: !!this.props.level,
+          fallbackPoints: fallbackPoints
         });
 
         if (!(0, _helpers.arePositionsEqual)(position, this.state.position)) {
@@ -154,6 +156,7 @@ Pop.propTypes = {
   }).isRequired,
   anchorPoint: _helpers.propPosition,
   popPoint: _helpers.propPosition,
+  fallbackPoints: _propTypes.default.arrayOf([_propTypes.default.arrayOf([_helpers.propPosition])]),
 
   /* Is required for Pop components that are not the root level */
   level: _propTypes.default.number,

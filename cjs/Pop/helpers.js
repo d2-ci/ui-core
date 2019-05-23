@@ -11,7 +11,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _rotation = require("./rotation");
+var _fallbacks = require("./fallbacks");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -69,7 +69,8 @@ var getPosition = function getPosition(_ref2) {
       anchor = _ref2.anchor,
       popPoint = _ref2.popPoint,
       anchorPoint = _ref2.anchorPoint,
-      isNotRoot = _ref2.isNotRoot;
+      isNotRoot = _ref2.isNotRoot,
+      fallbackPoints = _ref2.fallbackPoints;
 
   if (!anchor || !pop) {
     return {
@@ -80,7 +81,7 @@ var getPosition = function getPosition(_ref2) {
 
   var anchorRect = anchor.getBoundingClientRect();
   var popRect = pop.getBoundingClientRect();
-  var relativePosition = getRelativePosition(anchorRect, popRect, anchorPoint, popPoint);
+  var relativePosition = getRelativePosition(anchorRect, popRect, anchorPoint, popPoint, fallbackPoints);
 
   var _relativePosition = _slicedToArray(relativePosition, 2),
       realAnchorPoint = _relativePosition[0],
@@ -92,34 +93,37 @@ var getPosition = function getPosition(_ref2) {
 
 exports.getPosition = getPosition;
 
-var getRelativePosition = function getRelativePosition(anchorRect, popRect, anchorPoint, popPoint) {
-  var startRotation = [anchorPoint, popPoint];
+var getRelativePosition = function getRelativePosition(anchorRect, popRect, anchorPoint, popPoint, fallbackPoints) {
+  var positionsToTry;
+  var startPosition = [anchorPoint, popPoint];
 
-  var startRotationIndex = _rotation.ROTATION.findIndex(function (_ref3) {
-    var _ref4 = _slicedToArray(_ref3, 2),
-        anchor = _ref4[0],
-        pop = _ref4[1];
+  if (fallbackPoints) {
+    positionsToTry = [startPosition].concat(_toConsumableArray(fallbackPoints));
+  } else {
+    var startPositionIndex = _fallbacks.FALLBACKS.findIndex(function (_ref3) {
+      var _ref4 = _slicedToArray(_ref3, 2),
+          anchor = _ref4[0],
+          pop = _ref4[1];
 
-    return anchor.vertical === startRotation[0].vertical && anchor.horizontal === startRotation[0].horizontal && pop.vertical === startRotation[1].vertical && pop.horizontal === startRotation[1].horizontal;
-  });
+      return anchor.vertical === startPosition[0].vertical && anchor.horizontal === startPosition[0].horizontal && pop.vertical === startPosition[1].vertical && pop.horizontal === startPosition[1].horizontal;
+    });
 
-  var updatedRotation = startRotationIndex === 0 ? _rotation.ROTATION : [].concat(_toConsumableArray(_rotation.ROTATION.slice(startRotationIndex)), _toConsumableArray(_rotation.ROTATION.slice(0, startRotationIndex)));
-  var relativePosition = startRotation;
-
-  for (var i = 0, l = updatedRotation.length; i < l; ++i) {
-    var curRotation = updatedRotation[i];
-
-    var _curRotation = _slicedToArray(curRotation, 2),
-        curAnchorPoint = _curRotation[0],
-        curPopPoint = _curRotation[1];
-
-    if (doesPositionFitOnScreen(anchorRect, popRect, curAnchorPoint, curPopPoint)) {
-      relativePosition = curRotation;
-      break;
-    }
+    positionsToTry = [startPosition].concat(_toConsumableArray(_fallbacks.FALLBACKS[startPositionIndex][2]));
   }
 
-  return relativePosition;
+  return positionsToTry.reduce(function (finalPosition, curPosition) {
+    if (finalPosition) return finalPosition;
+
+    var _curPosition = _slicedToArray(curPosition, 2),
+        curAnchorPoint = _curPosition[0],
+        curPopPoint = _curPosition[1];
+
+    if (doesPositionFitOnScreen(anchorRect, popRect, curAnchorPoint, curPopPoint)) {
+      return curPosition;
+    }
+
+    return finalPosition;
+  }, null) || startPosition;
 };
 
 var doesPositionFitOnScreen = function doesPositionFitOnScreen(anchor, pop, anchorPoint, popPoint) {
