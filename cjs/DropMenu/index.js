@@ -128,5 +128,7 @@ DropMenu.propTypes = {
   stayOpen: _propTypes.default.bool,
 
   /** DOM node to position itself against */
-  anchorEl: _propTypes.default.instanceOf(Element)
+  anchorEl: _propTypes.default.shape({
+    getBoundingClientRect: _propTypes.default.func.isRequired
+  })
 };
