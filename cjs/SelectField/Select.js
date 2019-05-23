@@ -129,8 +129,8 @@ Select.propTypes = {
   name: _propTypes.default.string.isRequired,
   onChange: _propTypes.default.func.isRequired,
   value: _propTypes.default.string,
-  onFocus: _propTypes.default.func,
-  onBlur: _propTypes.default.func,
+  onFocus: _propTypes.default.func.isRequired,
+  onBlur: _propTypes.default.func.isRequired,
   children: _propTypes.default.oneOfType([_propTypes.default.arrayOf(_propTypes.default.shape({
     tagName: _propTypes.default.oneOf(['OPTION', 'OPTGROUP'])
   })), _propTypes.default.shape({
