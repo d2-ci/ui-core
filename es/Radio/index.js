@@ -64,6 +64,10 @@ class Radio extends Component {
       valid,
       warning,
       error,
+      autocomplete,
+      autofocus,
+      readonly,
+      tabIndex,
       focus = this.state.focus
     } = this.props;
     const classes = cx(icons.className, {
@@ -84,7 +88,6 @@ class Radio extends Component {
         disabled
       }) || "")
     }, React.createElement("input", {
-      tabIndex: "0",
       ref: this.ref,
       type: "radio",
       name: name,
@@ -92,6 +95,10 @@ class Radio extends Component {
       focus: focus,
       checked: checked,
       disabled: disabled,
+      autocomplete: autocomplete,
+      autofocus: autofocus,
+      tabIndex: tabIndex,
+      readonly: readonly,
       onChange: onChange,
       onFocus: this.onFocus,
       onBlur: this.onBlur,
@@ -113,6 +120,8 @@ Radio.propTypes = {
   value: propTypes.string.isRequired,
   className: propTypes.string,
   label: propTypes.string,
+  autocomplete: propTypes.string,
+  tabIndex: propTypes.string,
   onFocus: propTypes.func,
   onBlur: propTypes.func,
   required: propTypes.bool,
@@ -120,6 +129,11 @@ Radio.propTypes = {
   disabled: propTypes.bool,
   valid: propTypes.bool,
   warning: propTypes.bool,
-  error: propTypes.bool
+  error: propTypes.bool,
+  autofocus: propTypes.bool,
+  readonly: propTypes.bool
+};
+Radio.defaultProps = {
+  tabIndex: '0'
 };
 export { Radio };

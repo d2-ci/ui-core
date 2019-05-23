@@ -102,6 +102,10 @@ function (_Component) {
           valid = _this$props.valid,
           warning = _this$props.warning,
           error = _this$props.error,
+          autocomplete = _this$props.autocomplete,
+          autofocus = _this$props.autofocus,
+          tabIndex = _this$props.tabIndex,
+          readonly = _this$props.readonly,
           _this$props$focus = _this$props.focus,
           focus = _this$props$focus === void 0 ? this.state.focus : _this$props$focus;
       return _react.default.createElement(_react.Fragment, null, _react.default.createElement("label", {
@@ -117,7 +121,11 @@ function (_Component) {
         focus: focus,
         onChange: onChange,
         onFocus: this.onFocus,
-        onBlur: this.onBlur
+        onBlur: this.onBlur,
+        autocomplete: autocomplete,
+        autofocus: autofocus,
+        tabIndex: tabIndex,
+        readonly: readonly
       }), _react.default.createElement(_Icon.Icon, {
         focus: focus,
         checked: checked,
@@ -144,6 +152,8 @@ Checkbox.propTypes = {
   value: _propTypes.default.string.isRequired,
   name: _propTypes.default.string.isRequired,
   label: _propTypes.default.string.isRequired,
+  autocomplete: _propTypes.default.string,
+  tabIndex: _propTypes.default.string,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func,
   className: _propTypes.default.string,
@@ -153,5 +163,7 @@ Checkbox.propTypes = {
   disabled: _propTypes.default.bool,
   valid: _propTypes.default.bool,
   warning: _propTypes.default.bool,
-  error: _propTypes.default.bool
+  error: _propTypes.default.bool,
+  autofocus: _propTypes.default.bool,
+  readonly: _propTypes.default.bool
 };

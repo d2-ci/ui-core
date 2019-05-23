@@ -101,6 +101,10 @@ function (_React$Component) {
           warning = _this$props.warning,
           loading = _this$props.loading,
           value = _this$props.value,
+          autocomplete = _this$props.autocomplete,
+          autofocus = _this$props.autofocus,
+          readonly = _this$props.readonly,
+          tabIndex = _this$props.tabIndex,
           _this$props$focus = _this$props.focus,
           focus = _this$props$focus === void 0 ? this.state.focus : _this$props$focus;
       var Container = filled ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
@@ -132,7 +136,11 @@ function (_React$Component) {
         warning: warning,
         error: error,
         loading: loading,
-        dense: dense
+        dense: dense,
+        autocomplete: autocomplete,
+        autofocus: autofocus,
+        tabIndex: tabIndex,
+        readonly: readonly
       }), _react.default.createElement(_style.default, {
         id: "349714766",
         dynamic: [_theme.theme.disabled]
@@ -156,6 +164,8 @@ InputField.propTypes = {
   className: _propTypes.default.string,
   placeholder: _propTypes.default.string,
   value: _propTypes.default.string,
+  autocomplete: _propTypes.default.string,
+  tabIndex: _propTypes.default.string,
   required: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   filled: _propTypes.default.bool,
@@ -165,6 +175,8 @@ InputField.propTypes = {
   warning: _propTypes.default.bool,
   error: _propTypes.default.bool,
   loading: _propTypes.default.bool,
+  autofocus: _propTypes.default.bool,
+  readonly: _propTypes.default.bool,
   onBlur: _propTypes.default.func,
   onFocus: _propTypes.default.func,
   type: _propTypes.default.oneOf(['text', 'email', 'number', 'password', 'url'])

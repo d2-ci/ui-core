@@ -48,6 +48,10 @@ class InputField extends React.Component {
       warning,
       loading,
       value,
+      autocomplete,
+      autofocus,
+      readonly,
+      tabIndex,
       focus = this.state.focus
     } = this.props;
     const Container = filled ? LabelFilled : LabelOutlined;
@@ -79,7 +83,11 @@ class InputField extends React.Component {
       warning: warning,
       error: error,
       loading: loading,
-      dense: dense
+      dense: dense,
+      autocomplete: autocomplete,
+      autofocus: autofocus,
+      tabIndex: tabIndex,
+      readonly: readonly
     }), React.createElement(_JSXStyle, {
       id: "349714766",
       dynamic: [theme.disabled]
@@ -100,6 +108,8 @@ InputField.propTypes = {
   className: propTypes.string,
   placeholder: propTypes.string,
   value: propTypes.string,
+  autocomplete: propTypes.string,
+  tabIndex: propTypes.string,
   required: propTypes.bool,
   disabled: propTypes.bool,
   filled: propTypes.bool,
@@ -109,6 +119,8 @@ InputField.propTypes = {
   warning: propTypes.bool,
   error: propTypes.bool,
   loading: propTypes.bool,
+  autofocus: propTypes.bool,
+  readonly: propTypes.bool,
   onBlur: propTypes.func,
   onFocus: propTypes.func,
   type: propTypes.oneOf(['text', 'email', 'number', 'password', 'url'])

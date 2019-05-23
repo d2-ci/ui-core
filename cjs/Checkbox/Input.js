@@ -68,6 +68,8 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _React$createElement;
+
       var _this$props = this.props,
           onChange = _this$props.onChange,
           checked = _this$props.checked,
@@ -75,8 +77,12 @@ function (_Component) {
           name = _this$props.name,
           value = _this$props.value,
           onFocus = _this$props.onFocus,
-          onBlur = _this$props.onBlur;
-      return _react.default.createElement(_react.Fragment, null, _react.default.createElement("input", {
+          onBlur = _this$props.onBlur,
+          autocomplete = _this$props.autocomplete,
+          autofocus = _this$props.autofocus,
+          tabIndex = _this$props.tabIndex,
+          readonly = _this$props.readonly;
+      return _react.default.createElement(_react.Fragment, null, _react.default.createElement("input", (_React$createElement = {
         tabIndex: "0",
         ref: this.ref,
         type: "checkbox",
@@ -87,8 +93,9 @@ function (_Component) {
         onBlur: onBlur,
         checked: checked,
         disabled: disabled,
-        className: "jsx-227425587"
-      }), _react.default.createElement(_style.default, {
+        autocomplete: autocomplete,
+        autofocus: autofocus
+      }, _defineProperty(_React$createElement, "tabIndex", tabIndex), _defineProperty(_React$createElement, "readonly", readonly), _defineProperty(_React$createElement, "className", "jsx-227425587"), _React$createElement)), _react.default.createElement(_style.default, {
         id: "227425587"
       }, ["input.jsx-227425587{display:block;opacity:0;width:0;height:0;outline:0;}"]));
     }
@@ -101,8 +108,12 @@ exports.Input = Input;
 Input.propTypes = {
   onChange: _propTypes.default.func.isRequired,
   name: _propTypes.default.string.isRequired,
+  autocomplete: _propTypes.default.string,
+  tabIndex: _propTypes.default.string,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func,
   checked: _propTypes.default.bool,
-  disabled: _propTypes.default.bool
+  disabled: _propTypes.default.bool,
+  autofocus: _propTypes.default.bool,
+  readonly: _propTypes.default.bool
 };

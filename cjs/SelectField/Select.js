@@ -95,7 +95,11 @@ function (_Component) {
           onBlur = _this$props.onBlur,
           value = _this$props.value,
           children = _this$props.children,
-          name = _this$props.name;
+          name = _this$props.name,
+          autocomplete = _this$props.autocomplete,
+          autofocus = _this$props.autofocus,
+          tabIndex = _this$props.tabIndex,
+          readonly = _this$props.readonly;
       var className = (0, _classnames.default)({
         dense: dense,
         filled: filled,
@@ -108,6 +112,10 @@ function (_Component) {
         onFocus: onFocus,
         onBlur: onBlur,
         name: name,
+        autocomplete: autocomplete,
+        autofocus: autofocus,
+        tabIndex: tabIndex,
+        readonly: readonly,
         className: "jsx-".concat(styles.__hash) + " " + (className || "")
       }, _react.default.createElement("option", {
         key: "hidden-default-value",
@@ -129,6 +137,8 @@ Select.propTypes = {
   name: _propTypes.default.string.isRequired,
   onChange: _propTypes.default.func.isRequired,
   value: _propTypes.default.string,
+  autocomplete: _propTypes.default.string,
+  tabIndex: _propTypes.default.string,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func,
   children: _propTypes.default.oneOfType([_propTypes.default.arrayOf(_propTypes.default.shape({
@@ -138,5 +148,7 @@ Select.propTypes = {
   })]),
   disabled: _propTypes.default.bool,
   filled: _propTypes.default.bool,
-  dense: _propTypes.default.bool
+  dense: _propTypes.default.bool,
+  autofocus: _propTypes.default.bool,
+  readonly: _propTypes.default.bool
 };

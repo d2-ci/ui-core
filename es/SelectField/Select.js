@@ -41,7 +41,11 @@ export class Select extends Component {
       onBlur,
       value,
       children,
-      name
+      name,
+      autocomplete,
+      autofocus,
+      tabIndex,
+      readonly
     } = this.props;
     const className = cx({
       dense,
@@ -55,6 +59,10 @@ export class Select extends Component {
       onFocus: onFocus,
       onBlur: onBlur,
       name: name,
+      autocomplete: autocomplete,
+      autofocus: autofocus,
+      tabIndex: tabIndex,
+      readonly: readonly,
       className: `jsx-${styles.__hash}` + " " + (className || "")
     }, React.createElement("option", {
       key: "hidden-default-value",
@@ -72,6 +80,8 @@ Select.propTypes = {
   name: propTypes.string.isRequired,
   onChange: propTypes.func.isRequired,
   value: propTypes.string,
+  autocomplete: propTypes.string,
+  tabIndex: propTypes.string,
   onFocus: propTypes.func,
   onBlur: propTypes.func,
   children: propTypes.oneOfType([propTypes.arrayOf(propTypes.shape({
@@ -81,5 +91,7 @@ Select.propTypes = {
   })]),
   disabled: propTypes.bool,
   filled: propTypes.bool,
-  dense: propTypes.bool
+  dense: propTypes.bool,
+  autofocus: propTypes.bool,
+  readonly: propTypes.bool
 };
