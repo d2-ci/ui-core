@@ -100,9 +100,9 @@ function (_Component) {
 exports.Input = Input;
 Input.propTypes = {
   onChange: _propTypes.default.func.isRequired,
-  onFocus: _propTypes.default.func.isRequired,
-  onBlur: _propTypes.default.func.isRequired,
   name: _propTypes.default.string.isRequired,
+  onFocus: _propTypes.default.func,
+  onBlur: _propTypes.default.func,
   checked: _propTypes.default.bool,
   disabled: _propTypes.default.bool
 };

@@ -72,8 +72,8 @@ Select.propTypes = {
   name: propTypes.string.isRequired,
   onChange: propTypes.func.isRequired,
   value: propTypes.string,
-  onFocus: propTypes.func.isRequired,
-  onBlur: propTypes.func.isRequired,
+  onFocus: propTypes.func,
+  onBlur: propTypes.func,
   children: propTypes.oneOfType([propTypes.arrayOf(propTypes.shape({
     tagName: propTypes.oneOf(['OPTION', 'OPTGROUP'])
   })), propTypes.shape({
