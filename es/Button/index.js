@@ -2,6 +2,7 @@ import _JSXStyle from "styled-jsx/style";
 import cx from 'classnames';
 import React from 'react';
 import propTypes from 'prop-types';
+import { mutuallyExclusive } from '../prop-validators';
 import styles from './styles.js';
 
 const Button = ({
@@ -42,6 +43,8 @@ const Button = ({
 Button.defaultProps = {
   type: 'button'
 };
+const variantPropType = mutuallyExclusive(['primary', 'secondary', 'destructive'], propTypes.bool);
+const sizePropType = mutuallyExclusive(['small', 'large'], propTypes.bool);
 Button.propTypes = {
   onClick: propTypes.func,
   className: propTypes.string,
@@ -49,11 +52,11 @@ Button.propTypes = {
   name: propTypes.string,
   value: propTypes.string,
   type: propTypes.oneOf(['submit', 'reset', 'button']),
-  small: propTypes.bool,
-  large: propTypes.bool,
-  primary: propTypes.bool,
-  secondary: propTypes.bool,
-  destructive: propTypes.bool,
+  small: sizePropType,
+  large: sizePropType,
+  primary: variantPropType,
+  secondary: variantPropType,
+  destructive: variantPropType,
   disabled: propTypes.bool
 };
 export { Button };
