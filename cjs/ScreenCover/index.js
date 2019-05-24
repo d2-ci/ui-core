@@ -21,10 +21,10 @@ var Backdrop = function Backdrop(_ref) {
   var onClick = _ref.onClick;
   return _react.default.createElement("div", {
     onClick: onClick,
-    className: "jsx-1699153514" + " " + "backdrop"
+    className: "jsx-3800920199" + " " + "backdrop"
   }, _react.default.createElement(_style.default, {
-    id: "1699153514"
-  }, ["div.jsx-1699153514{height:100%;width:100%;background:rgba(200,200,200,0.6);}"]));
+    id: "3800920199"
+  }, ["div.jsx-3800920199{height:100%;width:100%;background:rgba(33,43,54,0.4);}"]));
 };
 
 var Content = function Content(_ref2) {

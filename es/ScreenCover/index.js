@@ -8,10 +8,10 @@ const Backdrop = ({
   onClick
 }) => React.createElement("div", {
   onClick: onClick,
-  className: "jsx-1699153514" + " " + "backdrop"
+  className: "jsx-3800920199" + " " + "backdrop"
 }, React.createElement(_JSXStyle, {
-  id: "1699153514"
-}, ["div.jsx-1699153514{height:100%;width:100%;background:rgba(200,200,200,0.6);}"]));
+  id: "3800920199"
+}, ["div.jsx-3800920199{height:100%;width:100%;background:rgba(33,43,54,0.4);}"]));
 
 const Content = ({
   children
