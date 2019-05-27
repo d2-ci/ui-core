@@ -23,9 +23,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var icons = {
   styles: _react.default.createElement(_style.default, {
-    id: "931218017"
-  }, ["svg.jsx-931218017{height:24px;width:24px;fill:".concat(_theme.theme.default, ";}"), ".focus.jsx-931218017 path{stroke:#646464;stroke-width:2px;}", ".checked.jsx-931218017{fill:".concat(_theme.colors.teal400, ";}"), ".disabled.jsx-931218017{fill:".concat(_theme.theme.disabled, ";}"), ".error.jsx-931218017{fill:".concat(_theme.theme.error, ";}"), ".valid.jsx-931218017{fill:".concat(_theme.theme.valid, ";}"), ".warning.jsx-931218017{fill:".concat(_theme.theme.warning, ";}")]),
-  className: "jsx-931218017"
+    id: "63432708"
+  }, ["svg.jsx-63432708{display:block;height:24px;width:24px;fill:".concat(_theme.theme.default, ";}"), ".focus.jsx-63432708{fill:".concat(_theme.colors.grey800, ";}"), ".checked.jsx-63432708{fill:".concat(_theme.colors.teal400, ";}"), ".disabled.jsx-63432708{fill:".concat(_theme.theme.disabled, ";}"), ".error.jsx-63432708{fill:".concat(_theme.theme.error, ";}"), ".valid.jsx-63432708{fill:".concat(_theme.theme.valid, ";}"), ".warning.jsx-63432708{fill:".concat(_theme.theme.warning, ";}")]),
+  className: "jsx-63432708"
 };
 
 var Icon = function Icon(_ref) {
@@ -44,13 +44,20 @@ var Icon = function Icon(_ref) {
     error: error,
     warning: warning
   });
-  return _react.default.createElement(_react.Fragment, null, indeterminate ? _react.default.createElement(_Checkbox.Indeterminate, {
+  return _react.default.createElement("div", {
+    className: _style.default.dynamic([["2159585572", [_theme.colors.blue400]]]) + " " + ((0, _classnames.default)({
+      focus: focus
+    }) || "")
+  }, indeterminate ? _react.default.createElement(_Checkbox.Indeterminate, {
     className: classes
   }) : checked ? _react.default.createElement(_Checkbox.Checked, {
     className: classes
   }) : _react.default.createElement(_Checkbox.Unchecked, {
     className: classes
-  }), icons.styles);
+  }), icons.styles, _react.default.createElement(_style.default, {
+    id: "2159585572",
+    dynamic: [_theme.colors.blue400]
+  }, ["div.__jsx-style-dynamic-selector{position:relative;}", ".focus.__jsx-style-dynamic-selector:before{content:'';position:absolute;border:2px solid ".concat(_theme.colors.blue400, ";border-radius:4px;width:100%;height:100%;}")]));
 };
 
 exports.Icon = Icon;

@@ -6,9 +6,9 @@ import { colors, theme } from '../theme';
 import { Indeterminate, Checked, Unchecked } from '../icons/Checkbox';
 const icons = {
   styles: React.createElement(_JSXStyle, {
-    id: "931218017"
-  }, [`svg.jsx-931218017{height:24px;width:24px;fill:${theme.default};}`, ".focus.jsx-931218017 path{stroke:#646464;stroke-width:2px;}", `.checked.jsx-931218017{fill:${colors.teal400};}`, `.disabled.jsx-931218017{fill:${theme.disabled};}`, `.error.jsx-931218017{fill:${theme.error};}`, `.valid.jsx-931218017{fill:${theme.valid};}`, `.warning.jsx-931218017{fill:${theme.warning};}`]),
-  className: "jsx-931218017"
+    id: "63432708"
+  }, [`svg.jsx-63432708{display:block;height:24px;width:24px;fill:${theme.default};}`, `.focus.jsx-63432708{fill:${colors.grey800};}`, `.checked.jsx-63432708{fill:${colors.teal400};}`, `.disabled.jsx-63432708{fill:${theme.disabled};}`, `.error.jsx-63432708{fill:${theme.error};}`, `.valid.jsx-63432708{fill:${theme.valid};}`, `.warning.jsx-63432708{fill:${theme.warning};}`]),
+  className: "jsx-63432708"
 };
 export const Icon = ({
   focus,
@@ -27,13 +27,20 @@ export const Icon = ({
     error,
     warning
   });
-  return React.createElement(Fragment, null, indeterminate ? React.createElement(Indeterminate, {
+  return React.createElement("div", {
+    className: _JSXStyle.dynamic([["2159585572", [colors.blue400]]]) + " " + (cx({
+      focus
+    }) || "")
+  }, indeterminate ? React.createElement(Indeterminate, {
     className: classes
   }) : checked ? React.createElement(Checked, {
     className: classes
   }) : React.createElement(Unchecked, {
     className: classes
-  }), icons.styles);
+  }), icons.styles, React.createElement(_JSXStyle, {
+    id: "2159585572",
+    dynamic: [colors.blue400]
+  }, ["div.__jsx-style-dynamic-selector{position:relative;}", `.focus.__jsx-style-dynamic-selector:before{content:'';position:absolute;border:2px solid ${colors.blue400};border-radius:4px;width:100%;height:100%;}`]));
 };
 Icon.propTypes = {
   checked: propTypes.bool,

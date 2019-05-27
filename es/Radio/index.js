@@ -9,9 +9,9 @@ import styles from './styles.js';
 import { Checked, Unchecked } from '../icons/Radio.js';
 const icons = {
   styles: React.createElement(_JSXStyle, {
-    id: "931218017"
-  }, [`svg.jsx-931218017{height:24px;width:24px;fill:${theme.default};}`, ".focus.jsx-931218017 path{stroke:#646464;stroke-width:2px;}", `.checked.jsx-931218017{fill:${colors.teal400};}`, `.disabled.jsx-931218017{fill:${theme.disabled};}`, `.error.jsx-931218017{fill:${theme.error};}`, `.valid.jsx-931218017{fill:${theme.valid};}`, `.warning.jsx-931218017{fill:${theme.warning};}`]),
-  className: "jsx-931218017"
+    id: "1822073958"
+  }, [`svg.jsx-1822073958{display:block;height:24px;width:24px;fill:${theme.default};}`, `.focus.jsx-1822073958{fill:${colors.grey800};}`, `.checked.jsx-1822073958{fill:${colors.teal400};}`, `.disabled.jsx-1822073958{fill:${theme.disabled};}`, `.error.jsx-1822073958{fill:${theme.error};}`, `.valid.jsx-1822073958{fill:${theme.valid};}`, `.warning.jsx-1822073958{fill:${theme.warning};}`]),
+  className: "jsx-1822073958"
 };
 
 class Radio extends Component {
@@ -84,7 +84,7 @@ class Radio extends Component {
       className: classes
     });
     return React.createElement("label", {
-      className: `jsx-${styles.__hash}` + " " + (cx(className, {
+      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["1171835330", [colors.blue400]]]) + " " + (cx(className, {
         disabled
       }) || "")
     }, React.createElement("input", {
@@ -102,14 +102,21 @@ class Radio extends Component {
       onChange: onChange,
       onFocus: this.onFocus,
       onBlur: this.onBlur,
-      className: `jsx-${styles.__hash}`
-    }), icon, React.createElement("span", {
-      className: `jsx-${styles.__hash}` + " " + (cx({
+      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["1171835330", [colors.blue400]]])
+    }), React.createElement("div", {
+      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["1171835330", [colors.blue400]]]) + " " + (cx({
+        focus
+      }) || "")
+    }, icon), React.createElement("span", {
+      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["1171835330", [colors.blue400]]]) + " " + (cx({
         required
       }) || "")
     }, label), icons.styles, React.createElement(_JSXStyle, {
       id: styles.__hash
-    }, styles));
+    }, styles), React.createElement(_JSXStyle, {
+      id: "1171835330",
+      dynamic: [colors.blue400]
+    }, ["div.__jsx-style-dynamic-selector{position:relative;}", `.focus.__jsx-style-dynamic-selector:before{content:'';position:absolute;border:2px solid ${colors.blue400};border-radius:50%;width:calc(100% + 2px);height:calc(100% + 2px);top:-1px;left:-1px;}`]));
   }
 
 }

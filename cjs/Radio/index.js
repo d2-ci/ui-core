@@ -45,9 +45,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var icons = {
   styles: _react.default.createElement(_style.default, {
-    id: "931218017"
-  }, ["svg.jsx-931218017{height:24px;width:24px;fill:".concat(_theme.theme.default, ";}"), ".focus.jsx-931218017 path{stroke:#646464;stroke-width:2px;}", ".checked.jsx-931218017{fill:".concat(_theme.colors.teal400, ";}"), ".disabled.jsx-931218017{fill:".concat(_theme.theme.disabled, ";}"), ".error.jsx-931218017{fill:".concat(_theme.theme.error, ";}"), ".valid.jsx-931218017{fill:".concat(_theme.theme.valid, ";}"), ".warning.jsx-931218017{fill:".concat(_theme.theme.warning, ";}")]),
-  className: "jsx-931218017"
+    id: "1822073958"
+  }, ["svg.jsx-1822073958{display:block;height:24px;width:24px;fill:".concat(_theme.theme.default, ";}"), ".focus.jsx-1822073958{fill:".concat(_theme.colors.grey800, ";}"), ".checked.jsx-1822073958{fill:".concat(_theme.colors.teal400, ";}"), ".disabled.jsx-1822073958{fill:".concat(_theme.theme.disabled, ";}"), ".error.jsx-1822073958{fill:".concat(_theme.theme.error, ";}"), ".valid.jsx-1822073958{fill:".concat(_theme.theme.valid, ";}"), ".warning.jsx-1822073958{fill:".concat(_theme.theme.warning, ";}")]),
+  className: "jsx-1822073958"
 };
 
 var Radio =
@@ -133,7 +133,7 @@ function (_Component) {
         className: classes
       });
       return _react.default.createElement("label", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, {
+        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1171835330", [_theme.colors.blue400]]]) + " " + ((0, _classnames.default)(className, {
           disabled: disabled
         }) || "")
       }, _react.default.createElement("input", {
@@ -151,14 +151,21 @@ function (_Component) {
         onChange: onChange,
         onFocus: this.onFocus,
         onBlur: this.onBlur,
-        className: "jsx-".concat(_styles.default.__hash)
-      }), icon, _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)({
+        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1171835330", [_theme.colors.blue400]]])
+      }), _react.default.createElement("div", {
+        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1171835330", [_theme.colors.blue400]]]) + " " + ((0, _classnames.default)({
+          focus: focus
+        }) || "")
+      }, icon), _react.default.createElement("span", {
+        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1171835330", [_theme.colors.blue400]]]) + " " + ((0, _classnames.default)({
           required: required
         }) || "")
       }, label), icons.styles, _react.default.createElement(_style.default, {
         id: _styles.default.__hash
-      }, _styles.default));
+      }, _styles.default), _react.default.createElement(_style.default, {
+        id: "1171835330",
+        dynamic: [_theme.colors.blue400]
+      }, ["div.__jsx-style-dynamic-selector{position:relative;}", ".focus.__jsx-style-dynamic-selector:before{content:'';position:absolute;border:2px solid ".concat(_theme.colors.blue400, ";border-radius:50%;width:calc(100% + 2px);height:calc(100% + 2px);top:-1px;left:-1px;}")]));
     }
   }]);
 
