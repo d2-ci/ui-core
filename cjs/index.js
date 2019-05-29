@@ -9,6 +9,12 @@ Object.defineProperty(exports, "Button", {
     return _Button.Button;
   }
 });
+Object.defineProperty(exports, "ButtonStrip", {
+  enumerable: true,
+  get: function get() {
+    return _ButtonStrip.ButtonStrip;
+  }
+});
 Object.defineProperty(exports, "Card", {
   enumerable: true,
   get: function get() {
@@ -167,6 +173,8 @@ Object.defineProperty(exports, "ScreenCover", {
 });
 
 var _Button = require("./Button");
+
+var _ButtonStrip = require("./ButtonStrip");
 
 var _Card = require("./Card");
 
