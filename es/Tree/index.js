@@ -42,16 +42,16 @@ const Arrow = ({
 }) => {
   const arrowIcon = hasLeafes ? _ref : _ref2;
   return React.createElement("div", {
-    className: "jsx-316501532" + " " + (cx('arrow', arrowStyle.className, {
+    className: "jsx-343169057" + " " + (cx('arrow', arrowStyle.className, {
       open,
       'has-leafes': hasLeafes
     }) || "")
   }, React.createElement("span", {
     onClick: onToggleOpen,
-    className: "jsx-316501532"
+    className: "jsx-343169057"
   }, arrowIcon), React.createElement(_JSXStyle, {
-    id: "316501532"
-  }, ["div.jsx-316501532{width:24px;position:relative;}", "div.jsx-316501532:after{content:'';background:#e2e2e2;height:calc(100% - 24px);left:12px;position:absolute;top:12px;width:1px;z-index:1;}", "span.jsx-316501532{display:block;position:relative;-webkit-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg);z-index:2;}", ".open.jsx-316501532 span.jsx-316501532{-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);}"]), arrowStyle.styles);
+    id: "343169057"
+  }, ["div.jsx-343169057{width:24px;position:relative;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;}", "div.jsx-343169057:after{content:'';background:#e2e2e2;height:calc(100% - 24px);left:12px;position:absolute;top:12px;width:1px;z-index:1;}", "span.jsx-343169057{display:block;position:relative;-webkit-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg);z-index:2;}", ".open.jsx-343169057 span.jsx-343169057{-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);}"]), arrowStyle.styles);
 };
 
 const Content = ({
