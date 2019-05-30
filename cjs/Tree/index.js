@@ -15,12 +15,18 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _Arrow = require("../icons/Arrow");
 
+var _theme = require("../theme");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Label = function Label(_ref) {
   var icon = _ref.icon,
       children = _ref.children;
-  return _react.default.createElement("div", null, children);
+  return _react.default.createElement("div", {
+    className: "jsx-187745036"
+  }, children, _react.default.createElement(_style.default, {
+    id: "187745036"
+  }, ["div.jsx-187745036{min-height:24px;padding:3px 0;}"]));
 };
 
 var Contents = function Contents(_ref2) {
@@ -53,19 +59,21 @@ _react.default.createElement("span", null);
 var Arrow = function Arrow(_ref3) {
   var hasLeafes = _ref3.hasLeafes,
       open = _ref3.open,
-      onToggleOpen = _ref3.onToggleOpen;
+      onToggleOpen = _ref3.onToggleOpen,
+      arrowTopOffset = _ref3.arrowTopOffset;
   var arrowIcon = hasLeafes ? _ref4 : _ref5;
   return _react.default.createElement("div", {
-    className: "jsx-343169057" + " " + ((0, _classnames.default)('arrow', arrowStyle.className, {
+    className: _style.default.dynamic([["3487599391", [_theme.colors.grey400, arrowTopOffset, _theme.colors.grey700]]]) + " " + ((0, _classnames.default)('arrow', arrowStyle.className, {
       open: open,
       'has-leafes': hasLeafes
     }) || "")
   }, _react.default.createElement("span", {
     onClick: onToggleOpen,
-    className: "jsx-343169057"
+    className: _style.default.dynamic([["3487599391", [_theme.colors.grey400, arrowTopOffset, _theme.colors.grey700]]])
   }, arrowIcon), _react.default.createElement(_style.default, {
-    id: "343169057"
-  }, ["div.jsx-343169057{width:24px;position:relative;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;}", "div.jsx-343169057:after{content:'';background:#e2e2e2;height:calc(100% - 24px);left:12px;position:absolute;top:12px;width:1px;z-index:1;}", "span.jsx-343169057{display:block;position:relative;-webkit-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg);z-index:2;}", ".open.jsx-343169057 span.jsx-343169057{-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);}"]), arrowStyle.styles);
+    id: "3487599391",
+    dynamic: [_theme.colors.grey400, arrowTopOffset, _theme.colors.grey700]
+  }, ["div.__jsx-style-dynamic-selector{width:24px;position:relative;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;}", "div.__jsx-style-dynamic-selector:after{content:'';background:".concat(_theme.colors.grey400, ";height:calc(100% - 24px);left:12px;position:absolute;top:15px;width:1px;z-index:1;}"), "span.__jsx-style-dynamic-selector{display:block;padding-top:".concat(arrowTopOffset, ";position:relative;-webkit-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg);z-index:2;fill:").concat(_theme.colors.grey700, ";}"), ".open.__jsx-style-dynamic-selector span.__jsx-style-dynamic-selector{-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);}"]), arrowStyle.styles);
 };
 
 var Content = function Content(_ref6) {
@@ -77,7 +85,8 @@ var Tree = function Tree(_ref7) {
   var children = _ref7.children,
       hasLeafes = _ref7.hasLeafes,
       open = _ref7.open,
-      onToggleOpen = _ref7.onToggleOpen;
+      onToggleOpen = _ref7.onToggleOpen,
+      arrowTopOffset = _ref7.arrowTopOffset;
   var className = (0, _classnames.default)('tree', {
     open: open,
     'has-leafes': hasLeafes
@@ -87,7 +96,8 @@ var Tree = function Tree(_ref7) {
   }, _react.default.createElement(Arrow, {
     open: open,
     hasLeafes: hasLeafes,
-    onToggleOpen: onToggleOpen
+    onToggleOpen: onToggleOpen,
+    arrowTopOffset: arrowTopOffset
   }), _react.default.createElement(Content, {
     children: children
   }), _react.default.createElement(_style.default, {
@@ -97,9 +107,13 @@ var Tree = function Tree(_ref7) {
 
 exports.Tree = Tree;
 Tree.propTypes = {
+  open: _propTypes.default.bool,
   hasLeafes: _propTypes.default.bool,
   onToggleOpen: _propTypes.default.func,
-  open: _propTypes.default.bool
+  arrowTopOffset: _propTypes.default.string
+};
+Tree.defaultProps = {
+  arrowTopOffset: '4px'
 };
 Tree.Label = Label;
 Tree.Contents = Contents;
