@@ -48,17 +48,17 @@ const Arrow = ({
 }) => {
   const arrowIcon = hasLeafes ? _ref : _ref2;
   return React.createElement("div", {
-    className: _JSXStyle.dynamic([["3487599391", [colors.grey400, arrowTopOffset, colors.grey700]]]) + " " + (cx('arrow', arrowStyle.className, {
+    className: _JSXStyle.dynamic([["2351483053", [colors.grey400, arrowTopOffset, colors.grey700]]]) + " " + (cx('arrow', arrowStyle.className, {
       open,
       'has-leafes': hasLeafes
     }) || "")
   }, React.createElement("span", {
     onClick: onToggleOpen,
-    className: _JSXStyle.dynamic([["3487599391", [colors.grey400, arrowTopOffset, colors.grey700]]])
+    className: _JSXStyle.dynamic([["2351483053", [colors.grey400, arrowTopOffset, colors.grey700]]])
   }, arrowIcon), React.createElement(_JSXStyle, {
-    id: "3487599391",
+    id: "2351483053",
     dynamic: [colors.grey400, arrowTopOffset, colors.grey700]
-  }, ["div.__jsx-style-dynamic-selector{width:24px;position:relative;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;}", `div.__jsx-style-dynamic-selector:after{content:'';background:${colors.grey400};height:calc(100% - 24px);left:12px;position:absolute;top:15px;width:1px;z-index:1;}`, `span.__jsx-style-dynamic-selector{display:block;padding-top:${arrowTopOffset};position:relative;-webkit-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg);z-index:2;fill:${colors.grey700};}`, ".open.__jsx-style-dynamic-selector span.__jsx-style-dynamic-selector{-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);}"]), arrowStyle.styles);
+  }, ["div.__jsx-style-dynamic-selector{width:24px;position:relative;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;}", `.has-leafes.open.__jsx-style-dynamic-selector:after{content:'';background:${colors.grey400};height:calc(100% - 24px);left:12px;position:absolute;top:15px;width:1px;z-index:1;}`, `span.__jsx-style-dynamic-selector{display:block;padding-top:${arrowTopOffset};position:relative;-webkit-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg);z-index:2;fill:${colors.grey700};}`, ".open.__jsx-style-dynamic-selector span.__jsx-style-dynamic-selector{-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);}"]), arrowStyle.styles);
 };
 
 const Content = ({

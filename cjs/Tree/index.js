@@ -63,17 +63,17 @@ var Arrow = function Arrow(_ref3) {
       arrowTopOffset = _ref3.arrowTopOffset;
   var arrowIcon = hasLeafes ? _ref4 : _ref5;
   return _react.default.createElement("div", {
-    className: _style.default.dynamic([["3487599391", [_theme.colors.grey400, arrowTopOffset, _theme.colors.grey700]]]) + " " + ((0, _classnames.default)('arrow', arrowStyle.className, {
+    className: _style.default.dynamic([["2351483053", [_theme.colors.grey400, arrowTopOffset, _theme.colors.grey700]]]) + " " + ((0, _classnames.default)('arrow', arrowStyle.className, {
       open: open,
       'has-leafes': hasLeafes
     }) || "")
   }, _react.default.createElement("span", {
     onClick: onToggleOpen,
-    className: _style.default.dynamic([["3487599391", [_theme.colors.grey400, arrowTopOffset, _theme.colors.grey700]]])
+    className: _style.default.dynamic([["2351483053", [_theme.colors.grey400, arrowTopOffset, _theme.colors.grey700]]])
   }, arrowIcon), _react.default.createElement(_style.default, {
-    id: "3487599391",
+    id: "2351483053",
     dynamic: [_theme.colors.grey400, arrowTopOffset, _theme.colors.grey700]
-  }, ["div.__jsx-style-dynamic-selector{width:24px;position:relative;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;}", "div.__jsx-style-dynamic-selector:after{content:'';background:".concat(_theme.colors.grey400, ";height:calc(100% - 24px);left:12px;position:absolute;top:15px;width:1px;z-index:1;}"), "span.__jsx-style-dynamic-selector{display:block;padding-top:".concat(arrowTopOffset, ";position:relative;-webkit-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg);z-index:2;fill:").concat(_theme.colors.grey700, ";}"), ".open.__jsx-style-dynamic-selector span.__jsx-style-dynamic-selector{-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);}"]), arrowStyle.styles);
+  }, ["div.__jsx-style-dynamic-selector{width:24px;position:relative;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;}", ".has-leafes.open.__jsx-style-dynamic-selector:after{content:'';background:".concat(_theme.colors.grey400, ";height:calc(100% - 24px);left:12px;position:absolute;top:15px;width:1px;z-index:1;}"), "span.__jsx-style-dynamic-selector{display:block;padding-top:".concat(arrowTopOffset, ";position:relative;-webkit-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg);z-index:2;fill:").concat(_theme.colors.grey700, ";}"), ".open.__jsx-style-dynamic-selector span.__jsx-style-dynamic-selector{-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);}"]), arrowStyle.styles);
 };
 
 var Content = function Content(_ref6) {
