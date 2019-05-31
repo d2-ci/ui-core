@@ -17,6 +17,7 @@ export { Radio } from './Radio';
 export { SelectField } from './SelectField';
 export { SplitButton } from './SplitButton';
 export { Switch } from './Switch';
+export { Node } from './Node';
 export { CssReset } from './CssReset';
 export { theme, colors } from './theme.js';
 export { ComponentCover } from './ComponentCover';
