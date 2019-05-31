@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Tree = void 0;
+exports.Node = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -77,7 +77,7 @@ var Content = function Content(_ref6) {
   }, children));
 };
 
-var Tree = function Tree(_ref7) {
+var Node = function Node(_ref7) {
   var open = _ref7.open,
       label = _ref7.label,
       children = _ref7.children,
@@ -102,8 +102,8 @@ var Tree = function Tree(_ref7) {
   }, ["div.jsx-446742573{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}"]));
 };
 
-exports.Tree = Tree;
-Tree.propTypes = {
+exports.Node = Node;
+Node.propTypes = {
   label: _propTypes.default.func.isRequired,
   open: _propTypes.default.bool,
   onToggleOpen: _propTypes.default.func

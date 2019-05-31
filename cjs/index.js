@@ -135,10 +135,10 @@ Object.defineProperty(exports, "Switch", {
     return _Switch.Switch;
   }
 });
-Object.defineProperty(exports, "Tree", {
+Object.defineProperty(exports, "Node", {
   enumerable: true,
   get: function get() {
-    return _Tree.Tree;
+    return _Node.Node;
   }
 });
 Object.defineProperty(exports, "CssReset", {
@@ -210,7 +210,7 @@ var _SplitButton = require("./SplitButton");
 
 var _Switch = require("./Switch");
 
-var _Tree = require("./Tree");
+var _Node = require("./Node");
 
 var _CssReset = require("./CssReset");
 

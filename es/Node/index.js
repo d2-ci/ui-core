@@ -61,7 +61,7 @@ const Content = ({
   open: open
 }, children));
 
-export const Tree = ({
+export const Node = ({
   open,
   label,
   children,
@@ -86,7 +86,7 @@ export const Tree = ({
     id: "446742573"
   }, ["div.jsx-446742573{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}"]));
 };
-Tree.propTypes = {
+Node.propTypes = {
   label: propTypes.func.isRequired,
   open: propTypes.bool,
   onToggleOpen: propTypes.func
