@@ -84,7 +84,7 @@ class Radio extends Component {
       className: classes
     });
     return React.createElement("label", {
-      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["1171835330", [colors.blue400]]]) + " " + (cx(className, {
+      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["1090951208", [colors.blue600]]]) + " " + (cx(className, {
         disabled
       }) || "")
     }, React.createElement("input", {
@@ -102,21 +102,21 @@ class Radio extends Component {
       onChange: onChange,
       onFocus: this.onFocus,
       onBlur: this.onBlur,
-      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["1171835330", [colors.blue400]]])
+      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["1090951208", [colors.blue600]]])
     }), React.createElement("div", {
-      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["1171835330", [colors.blue400]]]) + " " + (cx({
+      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["1090951208", [colors.blue600]]]) + " " + (cx({
         focus
       }) || "")
     }, icon), React.createElement("span", {
-      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["1171835330", [colors.blue400]]]) + " " + (cx({
+      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["1090951208", [colors.blue600]]]) + " " + (cx({
         required
       }) || "")
     }, label), icons.styles, React.createElement(_JSXStyle, {
       id: styles.__hash
     }, styles), React.createElement(_JSXStyle, {
-      id: "1171835330",
-      dynamic: [colors.blue400]
-    }, ["div.__jsx-style-dynamic-selector{position:relative;}", `.focus.__jsx-style-dynamic-selector:before{content:'';position:absolute;border:2px solid ${colors.blue400};border-radius:50%;width:calc(100% + 2px);height:calc(100% + 2px);top:-1px;left:-1px;}`]));
+      id: "1090951208",
+      dynamic: [colors.blue600]
+    }, ["div.__jsx-style-dynamic-selector{position:relative;}", `.focus.__jsx-style-dynamic-selector:before{content:'';position:absolute;border:2px solid ${colors.blue600};border-radius:50%;width:calc(100% + 2px);height:calc(100% + 2px);top:-1px;left:-1px;}`]));
   }
 
 }

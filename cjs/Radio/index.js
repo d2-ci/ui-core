@@ -133,7 +133,7 @@ function (_Component) {
         className: classes
       });
       return _react.default.createElement("label", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1171835330", [_theme.colors.blue400]]]) + " " + ((0, _classnames.default)(className, {
+        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1090951208", [_theme.colors.blue600]]]) + " " + ((0, _classnames.default)(className, {
           disabled: disabled
         }) || "")
       }, _react.default.createElement("input", {
@@ -151,21 +151,21 @@ function (_Component) {
         onChange: onChange,
         onFocus: this.onFocus,
         onBlur: this.onBlur,
-        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1171835330", [_theme.colors.blue400]]])
+        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1090951208", [_theme.colors.blue600]]])
       }), _react.default.createElement("div", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1171835330", [_theme.colors.blue400]]]) + " " + ((0, _classnames.default)({
+        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1090951208", [_theme.colors.blue600]]]) + " " + ((0, _classnames.default)({
           focus: focus
         }) || "")
       }, icon), _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1171835330", [_theme.colors.blue400]]]) + " " + ((0, _classnames.default)({
+        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1090951208", [_theme.colors.blue600]]]) + " " + ((0, _classnames.default)({
           required: required
         }) || "")
       }, label), icons.styles, _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default), _react.default.createElement(_style.default, {
-        id: "1171835330",
-        dynamic: [_theme.colors.blue400]
-      }, ["div.__jsx-style-dynamic-selector{position:relative;}", ".focus.__jsx-style-dynamic-selector:before{content:'';position:absolute;border:2px solid ".concat(_theme.colors.blue400, ";border-radius:50%;width:calc(100% + 2px);height:calc(100% + 2px);top:-1px;left:-1px;}")]));
+        id: "1090951208",
+        dynamic: [_theme.colors.blue600]
+      }, ["div.__jsx-style-dynamic-selector{position:relative;}", ".focus.__jsx-style-dynamic-selector:before{content:'';position:absolute;border:2px solid ".concat(_theme.colors.blue600, ";border-radius:50%;width:calc(100% + 2px);height:calc(100% + 2px);top:-1px;left:-1px;}")]));
     }
   }]);
 

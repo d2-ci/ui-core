@@ -45,7 +45,7 @@ var Icon = function Icon(_ref) {
     warning: warning
   });
   return _react.default.createElement("div", {
-    className: _style.default.dynamic([["2159585572", [_theme.colors.blue400]]]) + " " + ((0, _classnames.default)({
+    className: _style.default.dynamic([["3840453251", [_theme.colors.blue600]]]) + " " + ((0, _classnames.default)({
       focus: focus
     }) || "")
   }, indeterminate ? _react.default.createElement(_Checkbox.Indeterminate, {
@@ -55,9 +55,9 @@ var Icon = function Icon(_ref) {
   }) : _react.default.createElement(_Checkbox.Unchecked, {
     className: classes
   }), icons.styles, _react.default.createElement(_style.default, {
-    id: "2159585572",
-    dynamic: [_theme.colors.blue400]
-  }, ["div.__jsx-style-dynamic-selector{position:relative;}", ".focus.__jsx-style-dynamic-selector:before{content:'';position:absolute;border:2px solid ".concat(_theme.colors.blue400, ";border-radius:4px;width:100%;height:100%;}")]));
+    id: "3840453251",
+    dynamic: [_theme.colors.blue600]
+  }, ["div.__jsx-style-dynamic-selector{position:relative;}", ".focus.__jsx-style-dynamic-selector:before{content:'';position:absolute;border:2px solid ".concat(_theme.colors.blue600, ";border-radius:4px;width:100%;height:100%;}")]));
 };
 
 exports.Icon = Icon;
