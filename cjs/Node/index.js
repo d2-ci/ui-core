@@ -73,15 +73,15 @@ var Arrow = function Arrow(_ref3) {
 var Content = function Content(_ref6) {
   var open = _ref6.open,
       children = _ref6.children,
-      Label = _ref6.label;
-  return _react.default.createElement("div", null, _react.default.createElement(Label, null), _react.default.createElement(Contents, {
+      label = _ref6.label;
+  return _react.default.createElement("div", null, label, _react.default.createElement(Contents, {
     open: open
   }, children));
 };
 
 var Node = function Node(_ref7) {
   var open = _ref7.open,
-      label = _ref7.label,
+      component = _ref7.component,
       children = _ref7.children,
       onOpen = _ref7.onOpen,
       onClose = _ref7.onClose;
@@ -99,7 +99,7 @@ var Node = function Node(_ref7) {
     onClose: onClose
   }), _react.default.createElement(Content, {
     open: open,
-    label: label,
+    label: component,
     children: children
   }), _react.default.createElement(_style.default, {
     id: "446742573"
@@ -108,7 +108,7 @@ var Node = function Node(_ref7) {
 
 exports.Node = Node;
 Node.propTypes = {
-  label: _propTypes.default.func.isRequired,
+  component: _propTypes.default.element.isRequired,
   open: _propTypes.default.bool,
   onOpen: _propTypes.default.func,
   onClose: _propTypes.default.func

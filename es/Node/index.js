@@ -58,14 +58,14 @@ const Arrow = ({
 const Content = ({
   open,
   children,
-  label: Label
-}) => React.createElement("div", null, React.createElement(Label, null), React.createElement(Contents, {
+  label
+}) => React.createElement("div", null, label, React.createElement(Contents, {
   open: open
 }, children));
 
 export const Node = ({
   open,
-  label,
+  component,
   children,
   onOpen,
   onClose
@@ -84,14 +84,14 @@ export const Node = ({
     onClose: onClose
   }), React.createElement(Content, {
     open: open,
-    label: label,
+    label: component,
     children: children
   }), React.createElement(_JSXStyle, {
     id: "446742573"
   }, ["div.jsx-446742573{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}"]));
 };
 Node.propTypes = {
-  label: propTypes.func.isRequired,
+  component: propTypes.element.isRequired,
   open: propTypes.bool,
   onOpen: propTypes.func,
   onClose: propTypes.func
