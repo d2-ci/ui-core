@@ -36,16 +36,18 @@ React.createElement("span", null);
 const Arrow = ({
   hasLeaves,
   open,
-  onToggleOpen
+  onOpen,
+  onClose
 }) => {
   const arrowIcon = hasLeaves ? _ref : _ref2;
+  const onClick = open ? onClose : onOpen;
   return React.createElement("div", {
     className: _JSXStyle.dynamic([["930079085", [colors.grey400, colors.grey700]]]) + " " + (cx('tree__arrow', {
       open,
       'has-leaves': hasLeaves
     }) || "")
   }, React.createElement("span", {
-    onClick: onToggleOpen,
+    onClick: onClick,
     className: _JSXStyle.dynamic([["930079085", [colors.grey400, colors.grey700]]])
   }, arrowIcon), React.createElement(_JSXStyle, {
     id: "930079085",
@@ -65,7 +67,8 @@ export const Node = ({
   open,
   label,
   children,
-  onToggleOpen
+  onOpen,
+  onClose
 }) => {
   const hasLeaves = !!React.Children.count(children);
   const className = cx('tree', {
@@ -77,7 +80,8 @@ export const Node = ({
   }, React.createElement(Arrow, {
     open: open,
     hasLeaves: hasLeaves,
-    onToggleOpen: onToggleOpen
+    onOpen: onOpen,
+    onClose: onClose
   }), React.createElement(Content, {
     open: open,
     label: label,
@@ -89,5 +93,6 @@ export const Node = ({
 Node.propTypes = {
   label: propTypes.func.isRequired,
   open: propTypes.bool,
-  onToggleOpen: propTypes.func
+  onOpen: propTypes.func,
+  onClose: propTypes.func
 };

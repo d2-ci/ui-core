@@ -52,15 +52,17 @@ _react.default.createElement("span", null);
 var Arrow = function Arrow(_ref3) {
   var hasLeaves = _ref3.hasLeaves,
       open = _ref3.open,
-      onToggleOpen = _ref3.onToggleOpen;
+      onOpen = _ref3.onOpen,
+      onClose = _ref3.onClose;
   var arrowIcon = hasLeaves ? _ref4 : _ref5;
+  var onClick = open ? onClose : onOpen;
   return _react.default.createElement("div", {
     className: _style.default.dynamic([["930079085", [_theme.colors.grey400, _theme.colors.grey700]]]) + " " + ((0, _classnames.default)('tree__arrow', {
       open: open,
       'has-leaves': hasLeaves
     }) || "")
   }, _react.default.createElement("span", {
-    onClick: onToggleOpen,
+    onClick: onClick,
     className: _style.default.dynamic([["930079085", [_theme.colors.grey400, _theme.colors.grey700]]])
   }, arrowIcon), _react.default.createElement(_style.default, {
     id: "930079085",
@@ -81,7 +83,8 @@ var Node = function Node(_ref7) {
   var open = _ref7.open,
       label = _ref7.label,
       children = _ref7.children,
-      onToggleOpen = _ref7.onToggleOpen;
+      onOpen = _ref7.onOpen,
+      onClose = _ref7.onClose;
   var hasLeaves = !!_react.default.Children.count(children);
   var className = (0, _classnames.default)('tree', {
     open: open,
@@ -92,7 +95,8 @@ var Node = function Node(_ref7) {
   }, _react.default.createElement(Arrow, {
     open: open,
     hasLeaves: hasLeaves,
-    onToggleOpen: onToggleOpen
+    onOpen: onOpen,
+    onClose: onClose
   }), _react.default.createElement(Content, {
     open: open,
     label: label,
@@ -106,5 +110,6 @@ exports.Node = Node;
 Node.propTypes = {
   label: _propTypes.default.func.isRequired,
   open: _propTypes.default.bool,
-  onToggleOpen: _propTypes.default.func
+  onOpen: _propTypes.default.func,
+  onClose: _propTypes.default.func
 };
