@@ -85,7 +85,9 @@ var Node = function Node(_ref7) {
       children = _ref7.children,
       onOpen = _ref7.onOpen,
       onClose = _ref7.onClose;
-  var hasLeaves = !!_react.default.Children.count(children);
+  var hasLeaves = !!_react.default.Children.toArray(children).filter(function (i) {
+    return i;
+  }).length;
   var className = (0, _classnames.default)('tree', {
     open: open,
     'has-leaves': hasLeaves
