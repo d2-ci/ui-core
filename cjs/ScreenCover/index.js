@@ -13,18 +13,18 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
+var _theme = require("../theme.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Backdrop = function Backdrop(_ref) {
-  var onClick = _ref.onClick,
-      withoutBackgroundColor = _ref.withoutBackgroundColor;
+  var onClick = _ref.onClick;
   return _react.default.createElement("div", {
     onClick: onClick,
-    className: _style.default.dynamic([["3379163213", [withoutBackgroundColor ? 'none' : 'rgba(200, 200, 200, 0.6)']]]) + " " + "backdrop"
+    className: "jsx-3800920199" + " " + "backdrop"
   }, _react.default.createElement(_style.default, {
-    id: "3379163213",
-    dynamic: [withoutBackgroundColor ? 'none' : 'rgba(200, 200, 200, 0.6)']
-  }, ["div.__jsx-style-dynamic-selector{height:100%;width:100%;background:".concat(withoutBackgroundColor ? 'none' : 'rgba(200, 200, 200, 0.6)', ";}")]));
+    id: "3800920199"
+  }, ["div.jsx-3800920199{height:100%;width:100%;background:rgba(33,43,54,0.4);}"]));
 };
 
 var Content = function Content(_ref2) {
@@ -39,22 +39,20 @@ var Content = function Content(_ref2) {
 var ScreenCover = function ScreenCover(_ref3) {
   var children = _ref3.children,
       onClick = _ref3.onClick,
-      className = _ref3.className,
-      withoutBackgroundColor = _ref3.withoutBackgroundColor;
+      className = _ref3.className;
   return _react.default.createElement("div", {
-    className: "jsx-3477031661" + " " + (className || "")
+    className: _style.default.dynamic([["3490552007", [_theme.layers.blocking]]]) + " " + (className || "")
   }, _react.default.createElement(Backdrop, {
-    onClick: onClick,
-    withoutBackgroundColor: withoutBackgroundColor
+    onClick: onClick
   }), _react.default.createElement(Content, null, children), _react.default.createElement(_style.default, {
-    id: "3477031661"
-  }, ["div.jsx-3477031661{position:fixed;height:100%;width:100%;left:0;top:0;z-index:10000;}"]));
+    id: "3490552007",
+    dynamic: [_theme.layers.blocking]
+  }, ["div.__jsx-style-dynamic-selector{position:fixed;height:100%;width:100%;left:0;top:0;z-index:".concat(_theme.layers.blocking, ";}")]));
 };
 
 exports.ScreenCover = ScreenCover;
 ScreenCover.propTypes = {
   onClick: _propTypes.default.func,
   className: _propTypes.default.string,
-  children: _propTypes.default.node,
-  withoutBackgroundColor: _propTypes.default.bool
+  children: _propTypes.default.node
 };

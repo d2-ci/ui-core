@@ -2,17 +2,16 @@ import _JSXStyle from "styled-jsx/style";
 import React from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
+import { layers } from '../theme.js';
 
 const Backdrop = ({
-  onClick,
-  withoutBackgroundColor
+  onClick
 }) => React.createElement("div", {
   onClick: onClick,
-  className: _JSXStyle.dynamic([["3379163213", [withoutBackgroundColor ? 'none' : 'rgba(200, 200, 200, 0.6)']]]) + " " + "backdrop"
+  className: "jsx-3800920199" + " " + "backdrop"
 }, React.createElement(_JSXStyle, {
-  id: "3379163213",
-  dynamic: [withoutBackgroundColor ? 'none' : 'rgba(200, 200, 200, 0.6)']
-}, [`div.__jsx-style-dynamic-selector{height:100%;width:100%;background:${withoutBackgroundColor ? 'none' : 'rgba(200, 200, 200, 0.6)'};}`]));
+  id: "3800920199"
+}, ["div.jsx-3800920199{height:100%;width:100%;background:rgba(33,43,54,0.4);}"]));
 
 const Content = ({
   children
@@ -25,21 +24,19 @@ const Content = ({
 const ScreenCover = ({
   children,
   onClick,
-  className,
-  withoutBackgroundColor
+  className
 }) => React.createElement("div", {
-  className: "jsx-3477031661" + " " + (className || "")
+  className: _JSXStyle.dynamic([["3490552007", [layers.blocking]]]) + " " + (className || "")
 }, React.createElement(Backdrop, {
-  onClick: onClick,
-  withoutBackgroundColor: withoutBackgroundColor
+  onClick: onClick
 }), React.createElement(Content, null, children), React.createElement(_JSXStyle, {
-  id: "3477031661"
-}, ["div.jsx-3477031661{position:fixed;height:100%;width:100%;left:0;top:0;z-index:10000;}"]));
+  id: "3490552007",
+  dynamic: [layers.blocking]
+}, [`div.__jsx-style-dynamic-selector{position:fixed;height:100%;width:100%;left:0;top:0;z-index:${layers.blocking};}`]));
 
 ScreenCover.propTypes = {
   onClick: propTypes.func,
   className: propTypes.string,
-  children: propTypes.node,
-  withoutBackgroundColor: propTypes.bool
+  children: propTypes.node
 };
 export { ScreenCover };
