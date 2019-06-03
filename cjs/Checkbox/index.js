@@ -105,9 +105,8 @@ function (_Component) {
           autocomplete = _this$props.autocomplete,
           autofocus = _this$props.autofocus,
           tabIndex = _this$props.tabIndex,
-          readonly = _this$props.readonly,
-          _this$props$focus = _this$props.focus,
-          focus = _this$props$focus === void 0 ? this.state.focus : _this$props$focus;
+          readonly = _this$props.readonly;
+      var focus = this.state.focus;
       return _react.default.createElement(_react.Fragment, null, _react.default.createElement("label", {
         className: _style.default.dynamic([["261820537", [_theme.theme.disabled]]]) + " " + ((0, _classnames.default)('base', className, {
           disabled: disabled,

@@ -30,6 +30,7 @@ class Switch extends Component {
     });
 
     _defineProperty(this, "onBlur", e => {
+      console.log('on blur!');
       this.setState({
         focus: false
       });
@@ -57,9 +58,11 @@ class Switch extends Component {
       disabled,
       valid,
       warning,
-      error,
-      focus = this.state.focus
+      error
     } = this.props;
+    const {
+      focus
+    } = this.state;
     return React.createElement("label", {
       className: `jsx-${styles.__hash}` + " " + (cx(className, {
         disabled,

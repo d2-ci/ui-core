@@ -51,9 +51,11 @@ class InputField extends React.Component {
       autocomplete,
       autofocus,
       readonly,
-      tabIndex,
-      focus = this.state.focus
+      tabIndex
     } = this.props;
+    const {
+      focus
+    } = this.state;
     const Container = filled ? LabelFilled : LabelOutlined;
     return React.createElement(Container, {
       focus: focus,

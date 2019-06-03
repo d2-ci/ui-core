@@ -75,9 +75,11 @@ class SelectField extends React.Component {
       autofocus,
       readonly,
       tabIndex,
-      onChange,
-      focus = this.state.focus
+      onChange
     } = this.props;
+    const {
+      focus
+    } = this.state;
     const Container = filled ? LabelFilled : LabelOutlined;
     return React.createElement(Container, {
       focus: focus,

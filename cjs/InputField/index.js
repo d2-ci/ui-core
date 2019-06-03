@@ -104,9 +104,8 @@ function (_React$Component) {
           autocomplete = _this$props.autocomplete,
           autofocus = _this$props.autofocus,
           readonly = _this$props.readonly,
-          tabIndex = _this$props.tabIndex,
-          _this$props$focus = _this$props.focus,
-          focus = _this$props$focus === void 0 ? this.state.focus : _this$props$focus;
+          tabIndex = _this$props.tabIndex;
+      var focus = this.state.focus;
       var Container = filled ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
       return _react.default.createElement(Container, {
         focus: focus,

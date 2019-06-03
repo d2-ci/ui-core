@@ -57,9 +57,11 @@ class Checkbox extends Component {
       autocomplete,
       autofocus,
       tabIndex,
-      readonly,
-      focus = this.state.focus
+      readonly
     } = this.props;
+    const {
+      focus
+    } = this.state;
     return React.createElement(Fragment, null, React.createElement("label", {
       className: _JSXStyle.dynamic([["261820537", [theme.disabled]]]) + " " + (cx('base', className, {
         disabled,

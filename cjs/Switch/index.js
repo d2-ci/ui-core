@@ -78,6 +78,8 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function (e) {
+      console.log('on blur!');
+
       _this.setState({
         focus: false
       });
@@ -111,9 +113,8 @@ function (_Component) {
           disabled = _this$props.disabled,
           valid = _this$props.valid,
           warning = _this$props.warning,
-          error = _this$props.error,
-          _this$props$focus = _this$props.focus,
-          focus = _this$props$focus === void 0 ? this.state.focus : _this$props$focus;
+          error = _this$props.error;
+      var focus = this.state.focus;
       return _react.default.createElement("label", {
         className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, {
           disabled: disabled,
