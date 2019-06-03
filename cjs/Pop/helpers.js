@@ -83,6 +83,14 @@ var getPosition = function getPosition(_ref2) {
   var popRect = pop.getBoundingClientRect();
   var relativePosition = getRelativePosition(anchorRect, popRect, anchorPoint, popPoint, fallbackPoints);
 
+  if (relativePosition === null) {
+    return {
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)'
+    };
+  }
+
   var _relativePosition = _slicedToArray(relativePosition, 2),
       realAnchorPoint = _relativePosition[0],
       realPopPoint = _relativePosition[1];
@@ -118,12 +126,9 @@ var getRelativePosition = function getRelativePosition(anchorRect, popRect, anch
         curAnchorPoint = _curPosition[0],
         curPopPoint = _curPosition[1];
 
-    if (doesPositionFitOnScreen(anchorRect, popRect, curAnchorPoint, curPopPoint)) {
-      return curPosition;
-    }
-
-    return finalPosition;
-  }, null) || startPosition;
+    var fitsOnScreen = doesPositionFitOnScreen(anchorRect, popRect, curAnchorPoint, curPopPoint);
+    return fitsOnScreen ? curPosition : finalPosition;
+  }, null);
 };
 
 var doesPositionFitOnScreen = function doesPositionFitOnScreen(anchor, pop, anchorPoint, popPoint) {

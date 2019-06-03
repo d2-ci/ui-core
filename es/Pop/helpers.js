@@ -47,6 +47,15 @@ export const getPosition = ({
   const anchorRect = anchor.getBoundingClientRect();
   const popRect = pop.getBoundingClientRect();
   const relativePosition = getRelativePosition(anchorRect, popRect, anchorPoint, popPoint, fallbackPoints);
+
+  if (relativePosition === null) {
+    return {
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)'
+    };
+  }
+
   const [realAnchorPoint, realPopPoint] = relativePosition;
   return _objectSpread({}, getPositionHorizontal(anchorRect, popRect, realAnchorPoint, realPopPoint), getPositionVertical(anchorRect, popRect, realAnchorPoint, realPopPoint, isNotRoot));
   return styles;
@@ -65,14 +74,10 @@ const getRelativePosition = (anchorRect, popRect, anchorPoint, popPoint, fallbac
 
   return positionsToTry.reduce((finalPosition, curPosition) => {
     if (finalPosition) return finalPosition;
-    let [curAnchorPoint, curPopPoint] = curPosition;
-
-    if (doesPositionFitOnScreen(anchorRect, popRect, curAnchorPoint, curPopPoint)) {
-      return curPosition;
-    }
-
-    return finalPosition;
-  }, null) || startPosition;
+    const [curAnchorPoint, curPopPoint] = curPosition;
+    const fitsOnScreen = doesPositionFitOnScreen(anchorRect, popRect, curAnchorPoint, curPopPoint);
+    return fitsOnScreen ? curPosition : finalPosition;
+  }, null);
 };
 
 const doesPositionFitOnScreen = (anchor, pop, anchorPoint, popPoint) => doesPositionFitOnScreenVertically(anchor, pop, anchorPoint, popPoint) && doesPositionFitOnScreenHorizontally(anchor, pop, anchorPoint, popPoint);
