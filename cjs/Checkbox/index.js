@@ -102,10 +102,7 @@ function (_Component) {
           valid = _this$props.valid,
           warning = _this$props.warning,
           error = _this$props.error,
-          autocomplete = _this$props.autocomplete,
-          autofocus = _this$props.autofocus,
-          tabIndex = _this$props.tabIndex,
-          readonly = _this$props.readonly;
+          tabIndex = _this$props.tabIndex;
       var focus = this.state.focus;
       return _react.default.createElement(_react.Fragment, null, _react.default.createElement("label", {
         className: _style.default.dynamic([["261820537", [_theme.theme.disabled]]]) + " " + ((0, _classnames.default)('base', className, {
@@ -121,10 +118,7 @@ function (_Component) {
         onChange: onChange,
         onFocus: this.onFocus,
         onBlur: this.onBlur,
-        autocomplete: autocomplete,
-        autofocus: autofocus,
-        tabIndex: tabIndex,
-        readonly: readonly
+        tabIndex: tabIndex
       }), _react.default.createElement(_Icon.Icon, {
         focus: focus,
         checked: checked,
@@ -151,7 +145,6 @@ Checkbox.propTypes = {
   value: _propTypes.default.string.isRequired,
   name: _propTypes.default.string.isRequired,
   label: _propTypes.default.string.isRequired,
-  autocomplete: _propTypes.default.string,
   tabIndex: _propTypes.default.string,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func,
@@ -163,7 +156,5 @@ Checkbox.propTypes = {
   valid: _propTypes.default.bool,
   warning: _propTypes.default.bool,
   error: _propTypes.default.bool,
-  autofocus: _propTypes.default.bool,
-  readonly: _propTypes.default.bool,
   initialFocus: _propTypes.default.bool
 };

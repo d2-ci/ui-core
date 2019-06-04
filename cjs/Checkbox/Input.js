@@ -76,10 +76,7 @@ function (_Component) {
           value = _this$props.value,
           onFocus = _this$props.onFocus,
           onBlur = _this$props.onBlur,
-          autocomplete = _this$props.autocomplete,
-          autofocus = _this$props.autofocus,
-          tabIndex = _this$props.tabIndex,
-          readonly = _this$props.readonly;
+          tabIndex = _this$props.tabIndex;
       return _react.default.createElement(_react.Fragment, null, _react.default.createElement("input", {
         ref: this.ref,
         type: "checkbox",
@@ -90,10 +87,7 @@ function (_Component) {
         onBlur: onBlur,
         checked: checked,
         disabled: disabled,
-        autocomplete: autocomplete,
-        autofocus: autofocus,
         tabIndex: tabIndex,
-        readonly: readonly,
         className: "jsx-227425587"
       }), _react.default.createElement(_style.default, {
         id: "227425587"
@@ -108,12 +102,9 @@ exports.Input = Input;
 Input.propTypes = {
   onChange: _propTypes.default.func.isRequired,
   name: _propTypes.default.string.isRequired,
-  autocomplete: _propTypes.default.string,
   tabIndex: _propTypes.default.string,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func,
   checked: _propTypes.default.bool,
-  disabled: _propTypes.default.bool,
-  autofocus: _propTypes.default.bool,
-  readonly: _propTypes.default.bool
+  disabled: _propTypes.default.bool
 };

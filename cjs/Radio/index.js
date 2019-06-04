@@ -113,9 +113,6 @@ function (_Component) {
           valid = _this$props.valid,
           warning = _this$props.warning,
           error = _this$props.error,
-          autocomplete = _this$props.autocomplete,
-          autofocus = _this$props.autofocus,
-          readonly = _this$props.readonly,
           tabIndex = _this$props.tabIndex;
       var focus = this.state.focus;
       var classes = (0, _classnames.default)(icons.className, {
@@ -143,10 +140,7 @@ function (_Component) {
         focus: focus,
         checked: checked,
         disabled: disabled,
-        autocomplete: autocomplete,
-        autofocus: autofocus,
         tabIndex: tabIndex,
-        readonly: readonly,
         onChange: onChange,
         onFocus: this.onFocus,
         onBlur: this.onBlur,
@@ -178,7 +172,6 @@ Radio.propTypes = {
   value: _propTypes.default.string.isRequired,
   className: _propTypes.default.string,
   label: _propTypes.default.string,
-  autocomplete: _propTypes.default.string,
   tabIndex: _propTypes.default.string,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func,
@@ -188,7 +181,5 @@ Radio.propTypes = {
   valid: _propTypes.default.bool,
   warning: _propTypes.default.bool,
   error: _propTypes.default.bool,
-  autofocus: _propTypes.default.bool,
-  readonly: _propTypes.default.bool,
   initialFocus: _propTypes.default.bool
 };

@@ -71,9 +71,6 @@ class SelectField extends React.Component {
       loading,
       children,
       value,
-      autocomplete,
-      autofocus,
-      readonly,
       tabIndex,
       onChange
     } = this.props;
@@ -99,10 +96,7 @@ class SelectField extends React.Component {
       disabled: disabled,
       filled: filled,
       dense: dense,
-      autocomplete: autocomplete,
-      autofocus: autofocus,
       tabIndex: tabIndex,
-      readonly: readonly,
       onChange: onChange,
       onFocus: this.onFocus,
       onBlur: this.onBlur
@@ -117,7 +111,6 @@ SelectField.propTypes = {
   label: propTypes.string.isRequired,
   value: propTypes.string,
   className: propTypes.string,
-  autocomplete: propTypes.string,
   tabIndex: propTypes.string,
   children: propTypes.oneOfType([propTypes.arrayOf(propTypes.shape({
     tagName: propTypes.oneOf(['OPTION', 'OPTGROUP'])
@@ -132,8 +125,6 @@ SelectField.propTypes = {
   warning: propTypes.bool,
   error: propTypes.bool,
   loading: propTypes.bool,
-  autofocus: propTypes.bool,
-  readonly: propTypes.bool,
   initialFocus: propTypes.bool,
   onFocus: propTypes.func,
   onBlur: propTypes.func

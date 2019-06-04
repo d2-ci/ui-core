@@ -126,9 +126,6 @@ function (_React$Component) {
           loading = _this$props.loading,
           children = _this$props.children,
           value = _this$props.value,
-          autocomplete = _this$props.autocomplete,
-          autofocus = _this$props.autofocus,
-          readonly = _this$props.readonly,
           tabIndex = _this$props.tabIndex,
           onChange = _this$props.onChange;
       var focus = this.state.focus;
@@ -151,10 +148,7 @@ function (_React$Component) {
         disabled: disabled,
         filled: filled,
         dense: dense,
-        autocomplete: autocomplete,
-        autofocus: autofocus,
         tabIndex: tabIndex,
-        readonly: readonly,
         onChange: onChange,
         onFocus: this.onFocus,
         onBlur: this.onBlur
@@ -172,7 +166,6 @@ SelectField.propTypes = {
   label: _propTypes.default.string.isRequired,
   value: _propTypes.default.string,
   className: _propTypes.default.string,
-  autocomplete: _propTypes.default.string,
   tabIndex: _propTypes.default.string,
   children: _propTypes.default.oneOfType([_propTypes.default.arrayOf(_propTypes.default.shape({
     tagName: _propTypes.default.oneOf(['OPTION', 'OPTGROUP'])
@@ -187,8 +180,6 @@ SelectField.propTypes = {
   warning: _propTypes.default.bool,
   error: _propTypes.default.bool,
   loading: _propTypes.default.bool,
-  autofocus: _propTypes.default.bool,
-  readonly: _propTypes.default.bool,
   initialFocus: _propTypes.default.bool,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func

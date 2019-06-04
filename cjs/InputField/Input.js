@@ -98,10 +98,7 @@ function (_Component) {
         type: this.props.type,
         value: this.props.value,
         disabled: disabled,
-        autocomplete: this.props.autocomplete,
-        autofocus: this.props.autofocus,
         tabIndex: this.props.tabIndex,
-        readonly: this.props.readonly,
         onFocus: this.props.onFocus,
         onBlur: this.props.onBlur,
         onChange: this.props.onChange,
@@ -122,14 +119,11 @@ Input.propTypes = {
   onChange: _propTypes.default.func.isRequired,
   value: _propTypes.default.string,
   placeholder: _propTypes.default.string,
-  autocomplete: _propTypes.default.string,
   tabIndex: _propTypes.default.string,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func,
   focus: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   filled: _propTypes.default.bool,
-  dense: _propTypes.default.bool,
-  autofocus: _propTypes.default.bool,
-  readonly: _propTypes.default.bool
+  dense: _propTypes.default.bool
 };
