@@ -45,6 +45,10 @@ export class Input extends Component {
       type: this.props.type,
       value: this.props.value,
       disabled: disabled,
+      autocomplete: this.props.autocomplete,
+      autofocus: this.props.autofocus,
+      tabIndex: this.props.tabIndex,
+      readonly: this.props.readonly,
       onFocus: this.props.onFocus,
       onBlur: this.props.onBlur,
       onChange: this.props.onChange,
@@ -58,13 +62,17 @@ export class Input extends Component {
 Input.propTypes = {
   name: propTypes.string.isRequired,
   type: propTypes.string.isRequired,
-  onFocus: propTypes.func.isRequired,
-  onBlur: propTypes.func.isRequired,
   onChange: propTypes.func.isRequired,
   value: propTypes.string,
   placeholder: propTypes.string,
+  autocomplete: propTypes.string,
+  tabIndex: propTypes.string,
+  onFocus: propTypes.func,
+  onBlur: propTypes.func,
   focus: propTypes.bool,
   disabled: propTypes.bool,
   filled: propTypes.bool,
-  dense: propTypes.bool
+  dense: propTypes.bool,
+  autofocus: propTypes.bool,
+  readonly: propTypes.bool
 };

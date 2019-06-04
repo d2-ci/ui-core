@@ -6,11 +6,12 @@ import { colors, theme } from '../theme';
 import { Indeterminate, Checked, Unchecked } from '../icons/Checkbox';
 const icons = {
   styles: React.createElement(_JSXStyle, {
-    id: "871975739"
-  }, [`svg.jsx-871975739{height:24px;width:24px;fill:${theme.default};}`, `.checked.jsx-871975739{fill:${colors.teal400};}`, `.disabled.jsx-871975739{fill:${theme.disabled};}`, `.error.jsx-871975739{fill:${theme.error};}`, `.valid.jsx-871975739{fill:${theme.valid};}`, `.warning.jsx-871975739{fill:${theme.warning};}`]),
-  className: "jsx-871975739"
+    id: "63432708"
+  }, [`svg.jsx-63432708{display:block;height:24px;width:24px;fill:${theme.default};}`, `.focus.jsx-63432708{fill:${colors.grey800};}`, `.checked.jsx-63432708{fill:${colors.teal400};}`, `.disabled.jsx-63432708{fill:${theme.disabled};}`, `.error.jsx-63432708{fill:${theme.error};}`, `.valid.jsx-63432708{fill:${theme.valid};}`, `.warning.jsx-63432708{fill:${theme.warning};}`]),
+  className: "jsx-63432708"
 };
 export const Icon = ({
+  focus,
   checked,
   disabled,
   valid,
@@ -20,18 +21,26 @@ export const Icon = ({
 }) => {
   const classes = cx(icons.className, {
     checked: checked && !valid && !error && !warning,
+    focus,
     disabled,
     valid,
     error,
     warning
   });
-  return React.createElement(Fragment, null, indeterminate ? React.createElement(Indeterminate, {
+  return React.createElement("div", {
+    className: _JSXStyle.dynamic([["3840453251", [colors.blue600]]]) + " " + (cx({
+      focus
+    }) || "")
+  }, indeterminate ? React.createElement(Indeterminate, {
     className: classes
   }) : checked ? React.createElement(Checked, {
     className: classes
   }) : React.createElement(Unchecked, {
     className: classes
-  }), icons.styles);
+  }), icons.styles, React.createElement(_JSXStyle, {
+    id: "3840453251",
+    dynamic: [colors.blue600]
+  }, ["div.__jsx-style-dynamic-selector{position:relative;}", `.focus.__jsx-style-dynamic-selector:before{content:'';position:absolute;border:2px solid ${colors.blue600};border-radius:4px;width:100%;height:100%;}`]));
 };
 Icon.propTypes = {
   checked: propTypes.bool,
