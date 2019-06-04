@@ -85,7 +85,7 @@ function (_Component) {
     });
 
     _this.state = {
-      focus: !!props.initialFocus
+      focus: props.initialFocus
     };
     return _this;
   }
@@ -93,7 +93,7 @@ function (_Component) {
   _createClass(Radio, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      if (this.props.focus) {
+      if (this.state.focus) {
         this.ref.current.focus();
       }
     }
@@ -137,7 +137,6 @@ function (_Component) {
         type: "radio",
         name: name,
         value: value,
-        focus: focus,
         checked: checked,
         disabled: disabled,
         tabIndex: tabIndex,

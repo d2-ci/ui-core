@@ -73,17 +73,6 @@ function (_Component) {
       }
     }
   }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      if (prevProps.focused !== this.props.focused) {
-        if (this.props.focused) {
-          this.selectRef.focus();
-        } else {
-          this.selectRef.blur();
-        }
-      }
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -108,6 +97,7 @@ function (_Component) {
         disabled: disabled,
         onFocus: onFocus,
         onBlur: onBlur,
+        ref: this.selectRef,
         name: name,
         tabIndex: tabIndex,
         className: "jsx-".concat(styles.__hash) + " " + (className || "")
@@ -141,5 +131,6 @@ Select.propTypes = {
   })]),
   disabled: _propTypes.default.bool,
   filled: _propTypes.default.bool,
-  dense: _propTypes.default.bool
+  dense: _propTypes.default.bool,
+  focus: _propTypes.default.bool
 };

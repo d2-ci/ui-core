@@ -107,7 +107,7 @@ function (_React$Component) {
   _createClass(SelectField, [{
     key: "isFocused",
     value: function isFocused() {
-      return this.state.focused;
+      return this.state.focus;
     }
   }, {
     key: "render",
@@ -143,6 +143,7 @@ function (_React$Component) {
         loading: loading,
         dense: dense
       }, _react.default.createElement(_Select.Select, {
+        focus: focus,
         name: name,
         value: value,
         disabled: disabled,

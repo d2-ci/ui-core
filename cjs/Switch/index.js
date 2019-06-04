@@ -93,7 +93,7 @@ function (_Component) {
   _createClass(Switch, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      if (this.props.focus) {
+      if (this.state.focus) {
         this.ref.current.focus();
       }
     }

@@ -53,5 +53,6 @@ Input.propTypes = {
   onFocus: propTypes.func,
   onBlur: propTypes.func,
   checked: propTypes.bool,
-  disabled: propTypes.bool
+  disabled: propTypes.bool,
+  focus: propTypes.bool
 };

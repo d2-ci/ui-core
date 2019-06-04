@@ -21,16 +21,6 @@ export class Select extends Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.focused !== this.props.focused) {
-      if (this.props.focused) {
-        this.selectRef.focus();
-      } else {
-        this.selectRef.blur();
-      }
-    }
-  }
-
   render() {
     const {
       dense,
@@ -55,6 +45,7 @@ export class Select extends Component {
       disabled: disabled,
       onFocus: onFocus,
       onBlur: onBlur,
+      ref: this.selectRef,
       name: name,
       tabIndex: tabIndex,
       className: `jsx-${styles.__hash}` + " " + (className || "")
@@ -84,5 +75,6 @@ Select.propTypes = {
   })]),
   disabled: propTypes.bool,
   filled: propTypes.bool,
-  dense: propTypes.bool
+  dense: propTypes.bool,
+  focus: propTypes.bool
 };
