@@ -25,7 +25,7 @@ const ButtonStrip = ({
 
 ButtonStrip.propTypes = {
   className: propTypes.string,
-  children: buttonArrayPropType.isRequired,
+  children: buttonArrayPropType,
   compact: propTypes.bool,
   start: propTypes.bool,
   middle: propTypes.bool,

@@ -41,7 +41,7 @@ var ButtonStrip = function ButtonStrip(_ref) {
 exports.ButtonStrip = ButtonStrip;
 ButtonStrip.propTypes = {
   className: _propTypes.default.string,
-  children: _helper.buttonArrayPropType.isRequired,
+  children: _helper.buttonArrayPropType,
   compact: _propTypes.default.bool,
   start: _propTypes.default.bool,
   middle: _propTypes.default.bool,
