@@ -78,8 +78,6 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function (e) {
-      console.log('on blur!');
-
       _this.setState({
         focus: false
       });

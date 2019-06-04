@@ -68,8 +68,6 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _React$createElement;
-
       var _this$props = this.props,
           onChange = _this$props.onChange,
           checked = _this$props.checked,
@@ -82,8 +80,7 @@ function (_Component) {
           autofocus = _this$props.autofocus,
           tabIndex = _this$props.tabIndex,
           readonly = _this$props.readonly;
-      return _react.default.createElement(_react.Fragment, null, _react.default.createElement("input", (_React$createElement = {
-        tabIndex: "0",
+      return _react.default.createElement(_react.Fragment, null, _react.default.createElement("input", {
         ref: this.ref,
         type: "checkbox",
         name: name,
@@ -94,8 +91,11 @@ function (_Component) {
         checked: checked,
         disabled: disabled,
         autocomplete: autocomplete,
-        autofocus: autofocus
-      }, _defineProperty(_React$createElement, "tabIndex", tabIndex), _defineProperty(_React$createElement, "readonly", readonly), _defineProperty(_React$createElement, "className", "jsx-227425587"), _React$createElement)), _react.default.createElement(_style.default, {
+        autofocus: autofocus,
+        tabIndex: tabIndex,
+        readonly: readonly,
+        className: "jsx-227425587"
+      }), _react.default.createElement(_style.default, {
         id: "227425587"
       }, ["input.jsx-227425587{display:block;opacity:0;width:0;height:0;outline:0;}"]));
     }

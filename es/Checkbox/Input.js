@@ -32,7 +32,6 @@ export class Input extends Component {
       readonly
     } = this.props;
     return React.createElement(Fragment, null, React.createElement("input", {
-      tabIndex: "0",
       ref: this.ref,
       type: "checkbox",
       name: name,

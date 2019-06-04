@@ -30,7 +30,6 @@ class Switch extends Component {
     });
 
     _defineProperty(this, "onBlur", e => {
-      console.log('on blur!');
       this.setState({
         focus: false
       });

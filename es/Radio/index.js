@@ -142,7 +142,4 @@ Radio.propTypes = {
   autofocus: propTypes.bool,
   readonly: propTypes.bool
 };
-Radio.defaultProps = {
-  tabIndex: '0'
-};
 export { Radio };
