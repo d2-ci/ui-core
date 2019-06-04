@@ -16,7 +16,7 @@ class Switch extends Component {
     _defineProperty(this, "ref", createRef());
 
     _defineProperty(this, "state", {
-      focus: this.props.focus
+      focus: this.props.initialFocus
     });
 
     _defineProperty(this, "onFocus", e => {
@@ -107,7 +107,7 @@ Switch.propTypes = {
   valid: propTypes.bool,
   warning: propTypes.bool,
   error: propTypes.bool,
-  focus: propTypes.bool,
+  initialFocus: propTypes.bool,
   onFocus: propTypes.func,
   onBlur: propTypes.func
 };

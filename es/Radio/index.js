@@ -41,7 +41,7 @@ class Radio extends Component {
     });
 
     this.state = {
-      focus: props.focus
+      focus: props.initialFocus
     };
   }
 
@@ -140,6 +140,7 @@ Radio.propTypes = {
   warning: propTypes.bool,
   error: propTypes.bool,
   autofocus: propTypes.bool,
-  readonly: propTypes.bool
+  readonly: propTypes.bool,
+  initialFocus: propTypes.bool
 };
 export { Radio };

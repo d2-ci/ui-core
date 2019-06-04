@@ -64,7 +64,7 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "ref", (0, _react.createRef)());
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      focus: _this.props.focus
+      focus: _this.props.initialFocus
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (e) {
@@ -161,7 +161,7 @@ Switch.propTypes = {
   valid: _propTypes.default.bool,
   warning: _propTypes.default.bool,
   error: _propTypes.default.bool,
-  focus: _propTypes.default.bool,
+  initialFocus: _propTypes.default.bool,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func
 };

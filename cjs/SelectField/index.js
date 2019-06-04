@@ -78,7 +78,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SelectField)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      focus: _this.props.focus
+      focus: _this.props.initialFocus
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (e) {
@@ -183,13 +183,13 @@ SelectField.propTypes = {
   disabled: _propTypes.default.bool,
   filled: _propTypes.default.bool,
   dense: _propTypes.default.bool,
-  focus: _propTypes.default.bool,
   valid: _propTypes.default.bool,
   warning: _propTypes.default.bool,
   error: _propTypes.default.bool,
   loading: _propTypes.default.bool,
   autofocus: _propTypes.default.bool,
   readonly: _propTypes.default.bool,
+  initialFocus: _propTypes.default.bool,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func
 };

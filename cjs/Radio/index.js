@@ -85,7 +85,7 @@ function (_Component) {
     });
 
     _this.state = {
-      focus: props.focus
+      focus: props.initialFocus
     };
     return _this;
   }
@@ -189,5 +189,6 @@ Radio.propTypes = {
   warning: _propTypes.default.bool,
   error: _propTypes.default.bool,
   autofocus: _propTypes.default.bool,
-  readonly: _propTypes.default.bool
+  readonly: _propTypes.default.bool,
+  initialFocus: _propTypes.default.bool
 };
