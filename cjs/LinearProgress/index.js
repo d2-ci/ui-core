@@ -50,6 +50,7 @@ var LinearProgress = function LinearProgress(_ref2) {
 
 exports.LinearProgress = LinearProgress;
 LinearProgress.defaultProps = {
+  amount: 0,
   margin: '10px',
   width: '300px'
 };
