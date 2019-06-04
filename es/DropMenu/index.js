@@ -6,6 +6,7 @@ import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import propTypes from 'prop-types';
 import { getPosition } from './getPosition';
+import { layers } from '../theme.js';
 
 class DropMenu extends PureComponent {
   constructor(...args) {
@@ -51,11 +52,11 @@ class DropMenu extends PureComponent {
     } = this.state;
     return ReactDOM.createPortal(React.createElement("div", {
       ref: this.elContainer,
-      className: _JSXStyle.dynamic([["891399372", [top, left]]]) + " " + (className || "")
+      className: _JSXStyle.dynamic([["2447591424", [layers.applicationTop, top, left]]]) + " " + (className || "")
     }, component, React.createElement(_JSXStyle, {
-      id: "891399372",
-      dynamic: [top, left]
-    }, `div.__jsx-style-dynamic-selector{z-index:1000;position:absolute;top:${top};left:${left};}`)), document.body);
+      id: "2447591424",
+      dynamic: [layers.applicationTop, top, left]
+    }, [`div.__jsx-style-dynamic-selector{z-index:${layers.applicationTop};position:absolute;top:${top};left:${left};}`])), document.body);
   }
 
 }
@@ -73,6 +74,8 @@ DropMenu.propTypes = {
   stayOpen: propTypes.bool,
 
   /** DOM node to position itself against */
-  anchorEl: propTypes.instanceOf(Element)
+  anchorEl: propTypes.shape({
+    getBoundingClientRect: propTypes.func.isRequired
+  })
 };
 export { DropMenu };

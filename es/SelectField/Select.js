@@ -6,13 +6,19 @@ import propTypes from 'prop-types';
 import React, { Component, Fragment, createRef } from 'react';
 import cx from 'classnames';
 import { colors, theme } from '../theme';
-const styles = new String(`select.jsx-4198221289{background:none;border:0;color:${colors.grey900};font-size:16px;height:100%;left:0;outline:0;padding:0 12px 0 15px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}.disabled.jsx-4198221289{color:${theme.disabled};cursor:not-allowed;}.dense.jsx-4198221289{font-size:14px;}.filled.jsx-4198221289{padding-top:24px;padding-left:16px;}.filled.dense.jsx-4198221289{padding-top:20px;}option.jsx-4198221289:not(:checked){color:black;}select.jsx-4198221289:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}`);
+const styles = [`select.jsx-4198221289{background:none;border:0;color:${colors.grey900};font-size:16px;height:100%;left:0;outline:0;padding:0 12px 0 15px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}`, `.disabled.jsx-4198221289{color:${theme.disabled};cursor:not-allowed;}`, ".dense.jsx-4198221289{font-size:14px;}", ".filled.jsx-4198221289{padding-top:24px;padding-left:16px;}", ".filled.dense.jsx-4198221289{padding-top:20px;}", "option.jsx-4198221289:not(:checked){color:black;}", "select.jsx-4198221289:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}"];
 styles.__hash = "4198221289";
 export class Select extends Component {
   constructor(...args) {
     super(...args);
 
     _defineProperty(this, "selectRef", createRef());
+  }
+
+  componentDidMount() {
+    if (this.props.focus) {
+      this.selectRef.current.focus();
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -35,7 +41,11 @@ export class Select extends Component {
       onBlur,
       value,
       children,
-      name
+      name,
+      autocomplete,
+      autofocus,
+      tabIndex,
+      readonly
     } = this.props;
     const className = cx({
       dense,
@@ -49,6 +59,10 @@ export class Select extends Component {
       onFocus: onFocus,
       onBlur: onBlur,
       name: name,
+      autocomplete: autocomplete,
+      autofocus: autofocus,
+      tabIndex: tabIndex,
+      readonly: readonly,
       className: `jsx-${styles.__hash}` + " " + (className || "")
     }, React.createElement("option", {
       key: "hidden-default-value",
@@ -66,6 +80,8 @@ Select.propTypes = {
   name: propTypes.string.isRequired,
   onChange: propTypes.func.isRequired,
   value: propTypes.string,
+  autocomplete: propTypes.string,
+  tabIndex: propTypes.string,
   onFocus: propTypes.func,
   onBlur: propTypes.func,
   children: propTypes.oneOfType([propTypes.arrayOf(propTypes.shape({
@@ -75,5 +91,7 @@ Select.propTypes = {
   })]),
   disabled: propTypes.bool,
   filled: propTypes.bool,
-  dense: propTypes.bool
+  dense: propTypes.bool,
+  autofocus: propTypes.bool,
+  readonly: propTypes.bool
 };

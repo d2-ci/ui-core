@@ -8,18 +8,13 @@ import propTypes from 'prop-types';
 import { ArrowUp, ArrowDown } from '../icons/Arrow.js';
 import { DropMenu } from '../DropMenu';
 import { Button } from '../Button';
+import { ButtonStrip } from '../ButtonStrip';
 import cx from 'classnames';
-const leftButton = {
-  styles: React.createElement(_JSXStyle, {
-    id: "1525662562"
-  }, "button.jsx-1525662562{border-top-right-radius:0;border-bottom-right-radius:0;}"),
-  className: "jsx-1525662562"
-};
 const rightButton = {
   styles: React.createElement(_JSXStyle, {
-    id: "2744160004"
-  }, "button.jsx-2744160004{padding:0 9px;border-top-left-radius:0;border-bottom-left-radius:0;}"),
-  className: "jsx-2744160004"
+    id: "554730144"
+  }, ["button.jsx-554730144{padding:0 9px;}"]),
+  className: "jsx-554730144"
 };
 
 var _ref =
@@ -29,12 +24,6 @@ React.createElement(ArrowUp, null);
 var _ref2 =
 /*#__PURE__*/
 React.createElement(ArrowDown, null);
-
-var _ref3 =
-/*#__PURE__*/
-React.createElement(_JSXStyle, {
-  id: "3163060161"
-}, "div.jsx-3163060161{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}");
 
 class SplitButton extends Component {
   constructor(...args) {
@@ -59,25 +48,29 @@ class SplitButton extends Component {
     return React.createElement("div", {
       ref: this.anchorRef,
       className: "jsx-3163060161"
+    }, React.createElement(ButtonStrip, {
+      compact: true
     }, React.createElement(Button, _extends({}, this.props, {
-      className: cx(this.props.className, leftButton.className)
+      className: cx(this.props.className)
     }), this.props.children), React.createElement(Button, _extends({}, this.props, {
       onClick: this.onToggle,
       className: cx(this.props.className, rightButton.className)
-    }), icon), open && React.createElement(DropMenu, {
+    }), icon)), open && React.createElement(DropMenu, {
       component: this.props.component,
       onClose: () => this.setState({
         open: false
       }),
       anchorEl: this.anchorRef.current
-    }), leftButton.styles, rightButton.styles, _ref3);
+    }), rightButton.styles, React.createElement(_JSXStyle, {
+      id: "3163060161"
+    }, ["div.jsx-3163060161{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;color:inherit;white-space:nowrap;}"]));
   }
 
 }
 
 SplitButton.propTypes = {
-  onClick: propTypes.func.isRequired,
   component: propTypes.element.isRequired,
+  onClick: propTypes.func,
   className: propTypes.string,
   name: propTypes.string,
   value: propTypes.string,

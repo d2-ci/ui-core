@@ -27,7 +27,7 @@ export function Valid({
   }), React.createElement(_JSXStyle, {
     id: "2015794830",
     dynamic: [theme.valid]
-  }, `svg.__jsx-style-dynamic-selector{fill:${theme.valid};width:24px;height:24px;margin-right:4px;}`));
+  }, [`svg.__jsx-style-dynamic-selector{fill:${theme.valid};width:24px;height:24px;margin-right:4px;}`]));
 }
 Valid.propTypes = {
   className: propTypes.string
@@ -57,7 +57,7 @@ export function Warning({
   }), React.createElement(_JSXStyle, {
     id: "917642367",
     dynamic: [theme.warning]
-  }, `svg.__jsx-style-dynamic-selector{fill:${theme.warning};width:24px;height:24px;margin-right:4px;}`));
+  }, [`svg.__jsx-style-dynamic-selector{fill:${theme.warning};width:24px;height:24px;margin-right:4px;}`]));
 }
 Warning.propTypes = {
   className: propTypes.string
@@ -87,7 +87,7 @@ export function Error({
   }), React.createElement(_JSXStyle, {
     id: "211362018",
     dynamic: [theme.error]
-  }, `svg.__jsx-style-dynamic-selector{fill:${theme.error};width:24px;height:24px;margin-right:4px;}`));
+  }, [`svg.__jsx-style-dynamic-selector{fill:${theme.error};width:24px;height:24px;margin-right:4px;}`]));
 }
 Error.propTypes = {
   className: propTypes.string
@@ -117,7 +117,7 @@ export function Loading({
   }), React.createElement(_JSXStyle, {
     id: "1814361195",
     dynamic: [theme.primary600, theme.primary600]
-  }, `svg.__jsx-style-dynamic-selector{fill:${theme.primary600};color:${theme.primary600};width:24px;height:24px;margin-right:4px;-webkit-animation:anim-rotate-__jsx-style-dynamic-selector 1.4s linear infinite;animation:anim-rotate-__jsx-style-dynamic-selector 1.4s linear infinite;}.circle.__jsx-style-dynamic-selector{stroke:currentColor;stroke-dasharray:80px,200px;stroke-dashoffset:0;-webkit-animation:anim-dash-__jsx-style-dynamic-selector 1.4s ease-in-out infinite;animation:anim-dash-__jsx-style-dynamic-selector 1.4s ease-in-out infinite;}@-webkit-keyframes anim-rotate-__jsx-style-dynamic-selector{100%{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}@keyframes anim-rotate-__jsx-style-dynamic-selector{100%{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}@-webkit-keyframes anim-dash-__jsx-style-dynamic-selector{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-120px;}}@keyframes anim-dash-__jsx-style-dynamic-selector{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-120px;}}`));
+  }, [`svg.__jsx-style-dynamic-selector{fill:${theme.primary600};color:${theme.primary600};width:24px;height:24px;margin-right:4px;-webkit-animation:anim-rotate-__jsx-style-dynamic-selector 1.4s linear infinite;animation:anim-rotate-__jsx-style-dynamic-selector 1.4s linear infinite;}`, ".circle.__jsx-style-dynamic-selector{stroke:currentColor;stroke-dasharray:80px,200px;stroke-dashoffset:0;-webkit-animation:anim-dash-__jsx-style-dynamic-selector 1.4s ease-in-out infinite;animation:anim-dash-__jsx-style-dynamic-selector 1.4s ease-in-out infinite;}", "@-webkit-keyframes anim-rotate-__jsx-style-dynamic-selector{100%{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}", "@keyframes anim-rotate-__jsx-style-dynamic-selector{100%{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}", "@-webkit-keyframes anim-dash-__jsx-style-dynamic-selector{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-120px;}}", "@keyframes anim-dash-__jsx-style-dynamic-selector{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-120px;}}"]));
 }
 Loading.propTypes = {
   className: propTypes.string

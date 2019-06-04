@@ -1,7 +1,5 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -9,19 +7,25 @@ exports.Chip = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _theme = require("../theme.js");
+var _theme = require("../theme");
 
-var _styles = _interopRequireDefault(require("./styles.js"));
+var _Content = require("./Content");
 
-var _Cancel = require("../icons/Cancel.js");
+var _Icon = require("./Icon");
+
+var _Remove = require("./Remove");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -33,25 +37,18 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var removeIcon = {
-  styles: _react.default.createElement(_style.default, {
-    id: "1693149603"
-  }, ["svg.jsx-1693149603{margin-right:4px;color:".concat(_theme.colors.grey700, ";height:18px;width:18px;cursor:pointer;opacity:1;pointer-events:all;}"), "svg.jsx-1693149603:hover{opacity:0.82;}"]),
-  className: "jsx-1693149603"
-};
 
 var Chip =
 /*#__PURE__*/
-function (_React$PureComponent) {
-  _inherits(Chip, _React$PureComponent);
+function (_PureComponent) {
+  _inherits(Chip, _PureComponent);
 
   function Chip() {
     var _getPrototypeOf2;
@@ -66,48 +63,16 @@ function (_React$PureComponent) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Chip)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "onClick", function (e) {
       if (!_this.props.disabled && _this.props.onClick) {
         _this.props.onClick(e);
       }
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onRemove", function (e) {
-      e.stopPropagation(); // stop onRemove from triggering onClick on container
-
-      _this.props.onRemove(e);
     });
 
     return _this;
   }
 
   _createClass(Chip, [{
-    key: "showIcon",
-    value: function showIcon() {
-      var icon = this.props.icon;
-
-      if (!icon) {
-        return;
-      }
-
-      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("span", {
-        className: "jsx-3458732931"
-      }, icon), _react.default.createElement(_style.default, {
-        id: "3458732931"
-      }, ["span.jsx-3458732931{width:24px;height:24px;margin-left:4px;border-radius:50%;overflow:hidden;}"]));
-    }
-  }, {
-    key: "showRemove",
-    value: function showRemove() {
-      if (this.props.onRemove) {
-        return _react.default.createElement("span", {
-          onClick: this.onRemove
-        }, _react.default.createElement(_Cancel.Cancel, {
-          className: removeIcon.className
-        }), removeIcon.styles);
-      }
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -117,25 +82,29 @@ function (_React$PureComponent) {
           overflow = _this$props.overflow,
           className = _this$props.className,
           children = _this$props.children;
-      return _react.default.createElement("div", {
+      return _react.default.createElement("span", {
         onClick: this.onClick,
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, {
+        className: _style.default.dynamic([["3024631939", [_theme.colors.grey200, _theme.colors.grey900, _theme.colors.grey300, _theme.theme.secondary600, _theme.colors.white]]]) + " " + ((0, _classnames.default)(className, {
           selected: selected,
           disabled: disabled,
           dragging: dragging
         }) || "")
-      }, this.showIcon(), _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)({
-          overflow: overflow
-        }) || "")
-      }, children), this.showRemove(), _react.default.createElement(_style.default, {
-        id: _styles.default.__hash
-      }, _styles.default));
+      }, _react.default.createElement(_Icon.Icon, {
+        icon: this.props.icon
+      }), _react.default.createElement(_Content.Content, {
+        overflow: overflow,
+        children: children
+      }), _react.default.createElement(_Remove.Remove, {
+        onRemove: this.props.onRemove
+      }), _react.default.createElement(_style.default, {
+        id: "3024631939",
+        dynamic: [_theme.colors.grey200, _theme.colors.grey900, _theme.colors.grey300, _theme.theme.secondary600, _theme.colors.white]
+      }, ["span.__jsx-style-dynamic-selector{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:32px;margin:4px;border-radius:16px;background-color:".concat(_theme.colors.grey200, ";font-size:14px;line-height:16px;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;color:").concat(_theme.colors.grey900, ";}"), "span.__jsx-style-dynamic-selector:hover{background-color:".concat(_theme.colors.grey300, ";}"), ".selected.__jsx-style-dynamic-selector{background-color:".concat(_theme.theme.secondary600, ";font-weight:500;}"), ".selected.__jsx-style-dynamic-selector:hover{background-color:#00695c;}", ".selected.__jsx-style-dynamic-selector,.selected.__jsx-style-dynamic-selector .icon.__jsx-style-dynamic-selector,.selected.__jsx-style-dynamic-selector .remove-icon.__jsx-style-dynamic-selector{color:".concat(_theme.colors.white, ";}"), ".disabled.__jsx-style-dynamic-selector{cursor:not-allowed;opacity:0.3;}", ".disabled.__jsx-style-dynamic-selector .remove-icon.__jsx-style-dynamic-selector{pointer-events:none;}", ".dragging.__jsx-style-dynamic-selector{box-shadow:0 3px 1px -2px rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12);}"]));
     }
   }]);
 
   return Chip;
-}(_react.default.PureComponent);
+}(_react.PureComponent);
 
 exports.Chip = Chip;
 Chip.propTypes = {

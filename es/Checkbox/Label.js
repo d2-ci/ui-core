@@ -1,6 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import cx from 'classnames';
 import { colors, theme } from '../theme';
 export const Label = ({
@@ -17,9 +17,9 @@ export const Label = ({
   }, children, React.createElement(_JSXStyle, {
     id: "1664474787",
     dynamic: [colors.grey900, theme.disabled]
-  }, `.label.__jsx-style-dynamic-selector{margin:0 0 0 8px;color:${colors.grey900};cursor:pointer;}.required.__jsx-style-dynamic-selector:after{padding-left:4px;content:'*';}.disabled.__jsx-style-dynamic-selector{cursor:not-allowed;color:${theme.disabled};}`));
+  }, [`.label.__jsx-style-dynamic-selector{margin:0 0 0 8px;color:${colors.grey900};cursor:pointer;}`, ".required.__jsx-style-dynamic-selector:after{padding-left:4px;content:'*';}", `.disabled.__jsx-style-dynamic-selector{cursor:not-allowed;color:${theme.disabled};}`]));
 };
 Label.propTypes = {
-  disabled: PropTypes.bool,
-  required: PropTypes.bool
+  disabled: propTypes.bool,
+  required: propTypes.bool
 };

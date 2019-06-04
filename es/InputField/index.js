@@ -13,7 +13,7 @@ class InputField extends React.Component {
     super(...args);
 
     _defineProperty(this, "state", {
-      focus: this.props.focus
+      focus: this.props.initialFocus
     });
 
     _defineProperty(this, "onFocus", e => {
@@ -48,8 +48,14 @@ class InputField extends React.Component {
       warning,
       loading,
       value,
-      focus = this.state.focus
+      autocomplete,
+      autofocus,
+      readonly,
+      tabIndex
     } = this.props;
+    const {
+      focus
+    } = this.state;
     const Container = filled ? LabelFilled : LabelOutlined;
     return React.createElement(Container, {
       focus: focus,
@@ -79,11 +85,15 @@ class InputField extends React.Component {
       warning: warning,
       error: error,
       loading: loading,
-      dense: dense
+      dense: dense,
+      autocomplete: autocomplete,
+      autofocus: autofocus,
+      tabIndex: tabIndex,
+      readonly: readonly
     }), React.createElement(_JSXStyle, {
       id: "349714766",
       dynamic: [theme.disabled]
-    }, `div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:${theme.disabled};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:${theme.disabled};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:${theme.disabled};cursor:not-allowed;}div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:${theme.disabled};cursor:not-allowed;}`));
+    }, [`div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-webkit-input-placeholder{color:${theme.disabled};cursor:not-allowed;}`, `div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::-moz-placeholder{color:${theme.disabled};cursor:not-allowed;}`, `div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled:-ms-input-placeholder{color:${theme.disabled};cursor:not-allowed;}`, `div.__jsx-style-dynamic-selector .disabled,div.__jsx-style-dynamic-selector .disabled::placeholder{color:${theme.disabled};cursor:not-allowed;}`]));
   }
 
 }
@@ -100,15 +110,19 @@ InputField.propTypes = {
   className: propTypes.string,
   placeholder: propTypes.string,
   value: propTypes.string,
+  autocomplete: propTypes.string,
+  tabIndex: propTypes.string,
   required: propTypes.bool,
   disabled: propTypes.bool,
   filled: propTypes.bool,
   dense: propTypes.bool,
-  focus: propTypes.bool,
   valid: propTypes.bool,
   warning: propTypes.bool,
   error: propTypes.bool,
   loading: propTypes.bool,
+  autofocus: propTypes.bool,
+  readonly: propTypes.bool,
+  initialFocus: propTypes.bool,
   onBlur: propTypes.func,
   onFocus: propTypes.func,
   type: propTypes.oneOf(['text', 'email', 'number', 'password', 'url'])

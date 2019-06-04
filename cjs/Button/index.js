@@ -13,6 +13,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
+var _propValidators = require("../prop-validators");
+
 var _styles = _interopRequireDefault(require("./styles.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -57,17 +59,19 @@ exports.Button = Button;
 Button.defaultProps = {
   type: 'button'
 };
+var variantPropType = (0, _propValidators.mutuallyExclusive)(['primary', 'secondary', 'destructive'], _propTypes.default.bool);
+var sizePropType = (0, _propValidators.mutuallyExclusive)(['small', 'large'], _propTypes.default.bool);
 Button.propTypes = {
-  onClick: _propTypes.default.func.isRequired,
+  onClick: _propTypes.default.func,
   className: _propTypes.default.string,
   icon: _propTypes.default.element,
   name: _propTypes.default.string,
   value: _propTypes.default.string,
   type: _propTypes.default.oneOf(['submit', 'reset', 'button']),
-  small: _propTypes.default.bool,
-  large: _propTypes.default.bool,
-  primary: _propTypes.default.bool,
-  secondary: _propTypes.default.bool,
-  destructive: _propTypes.default.bool,
+  small: sizePropType,
+  large: sizePropType,
+  primary: variantPropType,
+  secondary: variantPropType,
+  destructive: variantPropType,
   disabled: _propTypes.default.bool
 };

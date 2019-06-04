@@ -15,6 +15,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _getPosition = require("./getPosition");
 
+var _theme = require("../theme.js");
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -31,11 +33,11 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -57,18 +59,18 @@ function (_PureComponent) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(DropMenu)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+    _defineProperty(_assertThisInitialized(_this), "state", {
       top: 'auto',
       left: 'auto'
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "elContainer", _react.default.createRef());
+    _defineProperty(_assertThisInitialized(_this), "elContainer", _react.default.createRef());
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updatePosition", function () {
+    _defineProperty(_assertThisInitialized(_this), "updatePosition", function () {
       _this.setState((0, _getPosition.getPosition)(_this.props.anchorEl));
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
+    _defineProperty(_assertThisInitialized(_this), "onDocClick", function (evt) {
       if (_this.elContainer.current && !_this.elContainer.current.contains(evt.target) && !_this.props.stayOpen) {
         _this.props.onClose();
       }
@@ -101,11 +103,11 @@ function (_PureComponent) {
           left = _this$state.left;
       return _reactDom.default.createPortal(_react.default.createElement("div", {
         ref: this.elContainer,
-        className: _style.default.dynamic([["891399372", [top, left]]]) + " " + (className || "")
+        className: _style.default.dynamic([["2447591424", [_theme.layers.applicationTop, top, left]]]) + " " + (className || "")
       }, component, _react.default.createElement(_style.default, {
-        id: "891399372",
-        dynamic: [top, left]
-      }, ["div.__jsx-style-dynamic-selector{z-index:1000;position:absolute;top:".concat(top, ";left:").concat(left, ";}")])), document.body);
+        id: "2447591424",
+        dynamic: [_theme.layers.applicationTop, top, left]
+      }, ["div.__jsx-style-dynamic-selector{z-index:".concat(_theme.layers.applicationTop, ";position:absolute;top:").concat(top, ";left:").concat(left, ";}")])), document.body);
     }
   }]);
 
@@ -126,5 +128,7 @@ DropMenu.propTypes = {
   stayOpen: _propTypes.default.bool,
 
   /** DOM node to position itself against */
-  anchorEl: _propTypes.default.instanceOf(Element)
+  anchorEl: _propTypes.default.shape({
+    getBoundingClientRect: _propTypes.default.func.isRequired
+  })
 };

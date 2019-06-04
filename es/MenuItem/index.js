@@ -7,13 +7,13 @@ import { ChevronRight } from '../icons/Chevron.js';
 const subChevron = {
   styles: React.createElement(_JSXStyle, {
     id: "2023721407"
-  }, "svg.jsx-2023721407{margin:0 -14px 0 auto;width:18px;height:18px;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}"),
+  }, ["svg.jsx-2023721407{margin:0 -14px 0 auto;width:18px;height:18px;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}"]),
   className: "jsx-2023721407"
 };
 const subMenu = {
   styles: React.createElement(_JSXStyle, {
     id: "2069506860"
-  }, "div.jsx-2069506860{display:none;position:absolute;top:0;left:100%;white-space:nowrap;}li.jsx-2069506860:hover>div.jsx-2069506860{display:block;}"),
+  }, ["div.jsx-2069506860{display:none;position:absolute;top:0;left:100%;white-space:nowrap;}", "li.jsx-2069506860:hover>div.jsx-2069506860{display:block;}"]),
   className: "jsx-2069506860"
 };
 
