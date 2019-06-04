@@ -85,7 +85,7 @@ function (_Component) {
     });
 
     _this.state = {
-      focus: props.initialFocus
+      focus: !!props.initialFocus
     };
     return _this;
   }

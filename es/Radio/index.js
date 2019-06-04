@@ -41,7 +41,7 @@ class Radio extends Component {
     });
 
     this.state = {
-      focus: props.initialFocus
+      focus: !!props.initialFocus
     };
   }
 
