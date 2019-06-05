@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.mutuallyExclusive = void 0;
+exports.reactRef = exports.mutuallyExclusive = void 0;
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
@@ -36,3 +36,9 @@ var mutuallyExclusive = function mutuallyExclusive(exlusivePropNames, propType) 
 };
 
 exports.mutuallyExclusive = mutuallyExclusive;
+
+var reactRef = _propTypes.default.shape({
+  current: _propTypes.default.element
+});
+
+exports.reactRef = reactRef;

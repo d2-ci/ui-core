@@ -6,6 +6,7 @@ import { createPortal } from 'react-dom';
 import React, { Component, createRef } from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
+import { reactRef } from '../prop-validators';
 import { BackgroundCover } from './BackgroundCover';
 import { Content, arePositionsEqual, getPosition, getScrollAndClientOffset, propPosition } from './helpers';
 /**
@@ -23,100 +24,64 @@ class Pop extends Component {
     _defineProperty(this, "state", {
       position: {}
     });
+
+    _defineProperty(this, "updatePosition", () => {
+      if (this.props.open && this.ref.current) {
+        const {
+          anchorRef,
+          side
+        } = this.props;
+        const position = getPosition({
+          pop: this.ref.current,
+          anchor: anchorRef.current,
+          side
+        });
+
+        if (!arePositionsEqual(position, this.state.position)) {
+          this.setState({
+            position
+          });
+        }
+      }
+    });
   }
 
   componentDidMount() {
-    if (this.props.open) {
-      this.updatePosition();
-    }
-  }
-
-  componentDidUpdate() {
     this.updatePosition();
-  }
-
-  updatePosition() {
-    if (this.ref.current) {
-      const {
-        anchorRef,
-        anchorPoint,
-        popPoint,
-        fallbackPoints
-      } = this.props;
-      const position = getPosition({
-        popPoint,
-        anchorPoint,
-        pop: this.ref.current,
-        anchor: anchorRef.current,
-        isNotRoot: !!this.props.level,
-        fallbackPoints
-      });
-
-      if (!arePositionsEqual(position, this.state.position)) {
-        this.setState({
-          position
-        });
-      }
-    }
+    window.addEventListener('resize', this.updatePosition);
   }
 
   render() {
+    if (!this.props.open) return null;
     const {
       children,
-      onClose,
-      open,
-      level
+      onClose
     } = this.props;
     const {
       position
     } = this.state;
-    if (!open) return null;
-    const content = React.createElement(Content, {
-      ref: this.ref,
-      position: position,
-      children: children,
-      level: level
-    });
-
-    if (!!level) {
-      return createPortal(content, document.body);
-    }
-
     return createPortal(React.createElement("div", {
-      className: _JSXStyle.dynamic([["1709285359", [2000 + level]]])
+      className: "jsx-2814193699"
     }, React.createElement(BackgroundCover, {
       onClick: onClose
-    }), content, React.createElement(_JSXStyle, {
-      id: "1709285359",
-      dynamic: [2000 + level]
-    }, [`div.__jsx-style-dynamic-selector{left:0;height:100vh;position:fixed;top:0;width:100vw;z-index:${2000 + level};}`])), document.body);
+    }), React.createElement(Content, {
+      ref: this.ref,
+      position: position,
+      children: children
+    }), React.createElement(_JSXStyle, {
+      id: "2814193699"
+    }, ["div.jsx-2814193699{left:0;height:100%;position:fixed;top:0;width:100%;z-index:2000;}"])), document.body);
   }
 
 }
 
 Pop.propTypes = {
-  /* Needs to be created with `React.createRef()` */
-  anchorRef: propTypes.shape({
-    current: propTypes.element
-  }).isRequired,
-  anchorPoint: propPosition,
-  popPoint: propPosition,
-  fallbackPoints: propTypes.arrayOf([propTypes.arrayOf([propPosition])]),
+  /* Must be created with `React.createRef()` */
+  anchorRef: reactRef.isRequired,
 
-  /* Is required for Pop components that are not the root level */
-  level: propTypes.number,
+  /* Pop will always be centered to the center of the anchor's side */
+  side: propTypes.oneOf(['top', 'right', 'bottom', 'left']).isRequired,
   open: propTypes.bool,
   onClose: propTypes.func
-};
-Pop.defaultProps = {
-  anchorPoint: {
-    vertical: 'top',
-    horizontal: 'right'
-  },
-  popPoint: {
-    vertical: 'top',
-    horizontal: 'left'
-  },
-  level: 0
 };
 export { Pop };

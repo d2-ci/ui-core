@@ -1,41 +1,23 @@
 import _JSXStyle from "styled-jsx/style";
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 import React from 'react';
 import propTypes from 'prop-types';
+import { doesElementFitInsideContainer, getElementInnerDimension, getElementOffset } from '../helpers/isElementInsideContainer';
 import { FALLBACKS } from './fallbacks';
+export const arePositionsEqual = (left, right) => left.right === right.right && left.left === right.left && left.top === right.top && left.bottom === right.bottom;
 export const Content = React.forwardRef(({
   children,
-  position,
-  level
+  position
 }, ref) => React.createElement("div", {
   ref: ref,
   style: position,
-  className: _JSXStyle.dynamic([["4007642236", [level + 2000 || 1]]])
+  className: "jsx-3531606191"
 }, children, React.createElement(_JSXStyle, {
-  id: "4007642236",
-  dynamic: [level + 2000 || 1]
-}, [`div.__jsx-style-dynamic-selector{background:white;box-shadow:0 0 3px rgba(0,0,0,0.6);max-height:100vh;overflow-y:auto;position:fixed;z-index:${level + 2000 || 1};}`])));
-export const getScrollAndClientOffset = () => {
-  const body = document.body;
-  const docEl = document.documentElement;
-  return {
-    scrollTop: window.pageYOffset || docEl.scrollTop || body.scrollTop,
-    scrollLeft: window.pageXOffset || docEl.scrollLeft || body.scrollLeft,
-    clientTop: docEl.clientTop || body.clientTop || 0,
-    clientLeft: docEl.clientLeft || body.clientLeft || 0
-  };
-};
+  id: "3531606191"
+}, ["div.jsx-3531606191{background:white;box-shadow:0 0 3px rgba(0,0,0,0.6);max-height:100vh;overflow-y:auto;position:fixed;}"])));
 export const getPosition = ({
   pop,
   anchor,
-  popPoint,
-  anchorPoint,
-  isNotRoot,
-  fallbackPoints
+  side
 }) => {
   if (!anchor || !pop) {
     return {
@@ -44,11 +26,9 @@ export const getPosition = ({
     };
   }
 
-  const anchorRect = anchor.getBoundingClientRect();
-  const popRect = pop.getBoundingClientRect();
-  const relativePosition = getRelativePosition(anchorRect, popRect, anchorPoint, popPoint, fallbackPoints);
+  const styles = getRelativePosition(anchor, pop, side);
 
-  if (relativePosition === null) {
+  if (styles === null) {
     return {
       top: '50%',
       left: '50%',
@@ -56,264 +36,62 @@ export const getPosition = ({
     };
   }
 
-  const [realAnchorPoint, realPopPoint] = relativePosition;
-  return _objectSpread({}, getPositionHorizontal(anchorRect, popRect, realAnchorPoint, realPopPoint), getPositionVertical(anchorRect, popRect, realAnchorPoint, realPopPoint, isNotRoot));
   return styles;
 };
 
-const getRelativePosition = (anchorRect, popRect, anchorPoint, popPoint, fallbackPoints) => {
-  let positionsToTry;
-  const startPosition = [anchorPoint, popPoint];
+const getRelativePosition = (anchor, pop, side) => {
+  let top, left, adjustmentVertical, adjustmentHorizontal;
+  const bodyWidth = getElementInnerDimension(document.body, 'horizontal');
+  const bodyHeight = getElementInnerDimension(document.body, 'vertical');
+  const anchorWidth = getElementInnerDimension(anchor, 'horizontal');
+  const anchorHeight = getElementInnerDimension(anchor, 'vertical');
+  const anchorOffset = getElementOffset(anchor);
+  const popWidth = getElementInnerDimension(pop, 'horizontal');
+  const popHeight = getElementInnerDimension(pop, 'vertical');
+  if (!doesElementFitInsideContainer(pop, document.body)) return null;
 
-  if (fallbackPoints) {
-    positionsToTry = [startPosition, ...fallbackPoints];
-  } else {
-    const startPositionIndex = FALLBACKS.findIndex(([anchor, pop]) => anchor.vertical === startPosition[0].vertical && anchor.horizontal === startPosition[0].horizontal && pop.vertical === startPosition[1].vertical && pop.horizontal === startPosition[1].horizontal);
-    positionsToTry = [startPosition, ...FALLBACKS[startPositionIndex][2]];
+  if (side === 'left') {
+    left = anchorOffset.left - popWidth;
+    top = anchorOffset.top + anchorHeight / 2 - popHeight / 2;
+    adjustmentVertical = top + popHeight > bodyHeight ? top + popHeight - bodyHeight : top < 0 ? 0 : top;
+    return {
+      left: left < 0 ? 0 : left,
+      top: top - adjustmentVertical
+    };
   }
 
-  return positionsToTry.reduce((finalPosition, curPosition) => {
-    if (finalPosition) return finalPosition;
-    const [curAnchorPoint, curPopPoint] = curPosition;
-    const fitsOnScreen = doesPositionFitOnScreen(anchorRect, popRect, curAnchorPoint, curPopPoint);
-    return fitsOnScreen ? curPosition : finalPosition;
-  }, null);
+  if (side === 'right') {
+    left = anchorOffset.left + anchorWidth;
+    top = anchorOffset.top + anchorHeight / 2 - popHeight / 2;
+    adjustmentHorizontal = Math.max(0, left + popWidth - bodyWidth);
+    adjustmentVertical = top + popHeight > bodyHeight ? top + popHeight - bodyHeight : top < 0 ? 0 : top;
+    return {
+      left: left - adjustmentHorizontal,
+      top: top - adjustmentVertical
+    };
+  }
+
+  if (side === 'top') {
+    left = anchorOffset.left + anchorWidth / 2 - popWidth / 2;
+    top = anchorOffset.top - popHeight;
+    adjustmentHorizontal = left + popWidth > bodyWidth ? left + popWidth - bodyWidth : left < 0 ? left : 0;
+    adjustmentVertical = top < 0 ? top : 0;
+    return {
+      left: left - adjustmentHorizontal,
+      top: top - adjustmentVertical
+    };
+  }
+
+  if (side === 'bottom') {
+    left = anchorOffset.left + anchorWidth / 2 - popWidth / 2;
+    top = anchorOffset.top + anchorHeight;
+    adjustmentHorizontal = left + popWidth > bodyWidth ? left + popWidth - bodyWidth : left < 0 ? left : 0;
+    adjustmentVertical = Math.max(0, top + popHeight - bodyHeight);
+    return {
+      left: left - adjustmentHorizontal,
+      top: top - adjustmentVertical
+    };
+  }
+
+  throw new Error(`Position provided to getPosition must be "top", "right", "bottom" or "left", but got ${side}`);
 };
-
-const doesPositionFitOnScreen = (anchor, pop, anchorPoint, popPoint) => doesPositionFitOnScreenVertically(anchor, pop, anchorPoint, popPoint) && doesPositionFitOnScreenHorizontally(anchor, pop, anchorPoint, popPoint);
-
-const doesPositionFitOnScreenHorizontally = (anchor, pop, anchorPoint, popPoint) => {
-  const viewportWidth = window.innerWidth;
-  const {
-    x: anchorX,
-    width: anchorWidth
-  } = anchor;
-  const {
-    x: popX,
-    width: popWidth
-  } = pop;
-  const {
-    horizontal: aHorizontal
-  } = anchorPoint;
-  const {
-    horizontal: pHorizontal
-  } = popPoint;
-
-  if (aHorizontal === 'left' && pHorizontal === 'right') {
-    return anchorX - popWidth >= 0;
-  }
-
-  if (aHorizontal === 'center' && pHorizontal === 'right') {
-    return anchorX + anchorWidth / 2 - popWidth >= 0;
-  }
-
-  if (aHorizontal === 'right' && pHorizontal === 'right') {
-    return anchorX + anchorWidth - popWidth >= 0;
-  }
-
-  if (aHorizontal === 'left' && pHorizontal === 'left') {
-    return anchorX + popWidth <= viewportWidth;
-  }
-
-  if (aHorizontal === 'center' && pHorizontal === 'left') {
-    return anchorX + anchorWidth / 2 + popWidth <= viewportWidth;
-  }
-
-  if (aHorizontal === 'right' && pHorizontal === 'left') {
-    return anchorWidth + anchorX + popWidth <= viewportWidth;
-  }
-
-  if (aHorizontal === 'left' && pHorizontal === 'center') {
-    return anchorX + popWidth / 2 <= viewportWidth;
-  }
-
-  if (aHorizontal === 'center' && pHorizontal === 'center') {
-    return anchorX + anchorWidth / 2 + popWidth / 2 <= viewportWidth;
-  }
-
-  if (aHorizontal === 'right' && pHorizontal === 'center') {
-    return anchorWidth + anchorX + popWidth / 2 <= viewportWidth;
-  }
-
-  return false;
-};
-
-const doesPositionFitOnScreenVertically = (anchor, pop, anchorPoint, popPoint) => {
-  const viewportHeight = window.innerHeight;
-  const {
-    y: anchorY,
-    width: anchorHeight
-  } = anchor;
-  const {
-    y: popY,
-    width: popHeight
-  } = pop;
-  const {
-    vertical: aVertical
-  } = anchorPoint;
-  const {
-    vertical: pVertical
-  } = popPoint;
-
-  if (aVertical === 'top' && pVertical === 'bottom') {
-    return anchorY - popHeight >= 0;
-  }
-
-  if (aVertical === 'center' && pVertical === 'bottom') {
-    return anchorY + anchorHeight / 2 - popHeight >= 0;
-  }
-
-  if (aVertical === 'bottom' && pVertical === 'bottom') {
-    return anchorY + anchorHeight - popHeight >= 0;
-  }
-
-  if (aVertical === 'top' && pVertical === 'top') {
-    return anchorY + popHeight <= viewportHeight;
-  }
-
-  if (aVertical === 'center' && pVertical === 'top') {
-    return anchorY + anchorHeight / 2 + popHeight <= viewportHeight;
-  }
-
-  if (aVertical === 'bottom' && pVertical === 'top') {
-    return anchorHeight + anchorY + popHeight <= viewportHeight;
-  }
-
-  if (aVertical === 'top' && pVertical === 'center') {
-    return anchorY + popHeight / 2 <= viewportHeight;
-  }
-
-  if (aVertical === 'center' && pVertical === 'center') {
-    return anchorY + anchorHeight / 2 + popHeight / 2 <= viewportHeight;
-  }
-
-  if (aVertical === 'bottom' && pVertical === 'center') {
-    return anchorHeight + anchorY + popHeight / 2 <= viewportHeight;
-  }
-
-  return false;
-};
-
-const getPositionHorizontal = (anchorRect, popRect, anchorPoint, popPoint) => {
-  let left;
-  const viewportWidth = window.innerWidth;
-  const {
-    x: anchorX,
-    width: anchorWidth
-  } = anchorRect;
-  const {
-    x: popX,
-    width: popWidth
-  } = popRect;
-  const {
-    horizontal: aHorizontal
-  } = anchorPoint;
-  const {
-    horizontal: pHorizontal
-  } = popPoint;
-
-  if (aHorizontal === 'left' && pHorizontal === 'right') {
-    left = anchorX - popWidth;
-  }
-
-  if (aHorizontal === 'center' && pHorizontal === 'right') {
-    left = anchorX + anchorWidth / 2 - popWidth;
-  }
-
-  if (aHorizontal === 'right' && pHorizontal === 'right') {
-    left = anchorX + anchorWidth - popWidth;
-  }
-
-  if (aHorizontal === 'left' && pHorizontal === 'left') {
-    left = anchorX;
-  }
-
-  if (aHorizontal === 'center' && pHorizontal === 'left') {
-    left = anchorX + anchorWidth / 2;
-  }
-
-  if (aHorizontal === 'right' && pHorizontal === 'left') {
-    left = anchorWidth + anchorX;
-  }
-
-  if (aHorizontal === 'left' && pHorizontal === 'center') {
-    return anchorX - popWidth / 2;
-  }
-
-  if (aHorizontal === 'center' && pHorizontal === 'center') {
-    return anchorX + anchorWidth / 2 - popWidth / 2;
-  }
-
-  if (aHorizontal === 'right' && pHorizontal === 'center') {
-    return anchorWidth + anchorX - popWidth / 2;
-  }
-
-  return {
-    left: left || 0
-  };
-};
-
-const getPositionVertical = (anchorRect, popRect, anchorPoint, popPoint, isNotRootLevel) => {
-  let top = 'auto';
-  const viewportHeight = window.innerHeight;
-  const {
-    y: anchorY,
-    height: anchorHeight
-  } = anchorRect;
-  const {
-    y: popY,
-    height: popHeight
-  } = popRect;
-  const {
-    vertical: aVertical
-  } = anchorPoint;
-  const {
-    vertical: pVertical
-  } = popPoint;
-
-  if (aVertical === 'top' && pVertical === 'bottom') {
-    top = anchorY - popHeight;
-  }
-
-  if (aVertical === 'center' && pVertical === 'bottom') {
-    top = anchorY + anchorHeight / 2 - popHeight;
-  }
-
-  if (aVertical === 'bottom' && pVertical === 'bottom') {
-    top = anchorY + anchorHeight - popHeight;
-  }
-
-  if (aVertical === 'top' && pVertical === 'top') {
-    top = anchorY;
-  }
-
-  if (aVertical === 'center' && pVertical === 'top') {
-    top = anchorY + anchorHeight / 2;
-  }
-
-  if (aVertical === 'bottom' && pVertical === 'top') {
-    top = viewportHeight + anchorY;
-  }
-
-  if (aVertical === 'top' && pVertical === 'center') {
-    top = anchorY - popHeight / 2;
-  }
-
-  if (aVertical === 'center' && pVertical === 'center') {
-    top = anchorY + anchorHeight / 2 - popHeight / 2;
-  }
-
-  if (aVertical === 'bottom' && pVertical === 'center') {
-    top = anchorWidth + anchorY - popHeight / 2;
-  }
-
-  return {
-    top: top || 0
-  };
-};
-
-export const arePositionsEqual = (left, right) => left.left === right.left && left.top === right.top && left.bottom === right.bottom;
-export const propPosition = propTypes.shape({
-  vertical: propTypes.oneOf(['top', 'center', 'bottom']),
-  horizontal: propTypes.oneOf(['left', 'center', 'right'])
-});

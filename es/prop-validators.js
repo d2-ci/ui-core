@@ -20,3 +20,6 @@ export const mutuallyExclusive = (exlusivePropNames, propType) => (props, propNa
 
   return null;
 };
+export const reactRef = propTypes.shape({
+  current: propTypes.element
+});

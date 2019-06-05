@@ -15,6 +15,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
+var _propValidators = require("../prop-validators");
+
 var _BackgroundCover = require("./BackgroundCover");
 
 var _helpers = require("./helpers");
@@ -72,76 +74,53 @@ function (_Component) {
       position: {}
     });
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updatePosition", function () {
+      if (_this.props.open && _this.ref.current) {
+        var _this$props = _this.props,
+            anchorRef = _this$props.anchorRef,
+            side = _this$props.side;
+        var position = (0, _helpers.getPosition)({
+          pop: _this.ref.current,
+          anchor: anchorRef.current,
+          side: side
+        });
+
+        if (!(0, _helpers.arePositionsEqual)(position, _this.state.position)) {
+          _this.setState({
+            position: position
+          });
+        }
+      }
+    });
+
     return _this;
   }
 
   _createClass(Pop, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      if (this.props.open) {
-        this.updatePosition();
-      }
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
       this.updatePosition();
-    }
-  }, {
-    key: "updatePosition",
-    value: function updatePosition() {
-      if (this.ref.current) {
-        var _this$props = this.props,
-            anchorRef = _this$props.anchorRef,
-            anchorPoint = _this$props.anchorPoint,
-            popPoint = _this$props.popPoint,
-            fallbackPoints = _this$props.fallbackPoints;
-        var position = (0, _helpers.getPosition)({
-          popPoint: popPoint,
-          anchorPoint: anchorPoint,
-          pop: this.ref.current,
-          anchor: anchorRef.current,
-          isNotRoot: !!this.props.level,
-          fallbackPoints: fallbackPoints
-        });
-
-        if (!(0, _helpers.arePositionsEqual)(position, this.state.position)) {
-          this.setState({
-            position: position
-          });
-        }
-      }
+      window.addEventListener('resize', this.updatePosition);
     }
   }, {
     key: "render",
     value: function render() {
+      if (!this.props.open) return null;
       var _this$props2 = this.props,
           children = _this$props2.children,
-          onClose = _this$props2.onClose,
-          open = _this$props2.open,
-          level = _this$props2.level;
+          onClose = _this$props2.onClose;
       var position = this.state.position;
-      if (!open) return null;
-
-      var content = _react.default.createElement(_helpers.Content, {
-        ref: this.ref,
-        position: position,
-        children: children,
-        level: level
-      });
-
-      if (!!level) {
-        return (0, _reactDom.createPortal)(content, document.body);
-      }
-
       return (0, _reactDom.createPortal)(_react.default.createElement("div", {
-        className: _style.default.dynamic([["1709285359", [2000 + level]]])
+        className: "jsx-2814193699"
       }, _react.default.createElement(_BackgroundCover.BackgroundCover, {
         onClick: onClose
-      }), content, _react.default.createElement(_style.default, {
-        id: "1709285359",
-        dynamic: [2000 + level]
-      }, ["div.__jsx-style-dynamic-selector{left:0;height:100vh;position:fixed;top:0;width:100vw;z-index:".concat(2000 + level, ";}")])), document.body);
+      }), _react.default.createElement(_helpers.Content, {
+        ref: this.ref,
+        position: position,
+        children: children
+      }), _react.default.createElement(_style.default, {
+        id: "2814193699"
+      }, ["div.jsx-2814193699{left:0;height:100%;position:fixed;top:0;width:100%;z-index:2000;}"])), document.body);
     }
   }]);
 
@@ -150,27 +129,11 @@ function (_Component) {
 
 exports.Pop = Pop;
 Pop.propTypes = {
-  /* Needs to be created with `React.createRef()` */
-  anchorRef: _propTypes.default.shape({
-    current: _propTypes.default.element
-  }).isRequired,
-  anchorPoint: _helpers.propPosition,
-  popPoint: _helpers.propPosition,
-  fallbackPoints: _propTypes.default.arrayOf([_propTypes.default.arrayOf([_helpers.propPosition])]),
+  /* Must be created with `React.createRef()` */
+  anchorRef: _propValidators.reactRef.isRequired,
 
-  /* Is required for Pop components that are not the root level */
-  level: _propTypes.default.number,
+  /* Pop will always be centered to the center of the anchor's side */
+  side: _propTypes.default.oneOf(['top', 'right', 'bottom', 'left']).isRequired,
   open: _propTypes.default.bool,
   onClose: _propTypes.default.func
-};
-Pop.defaultProps = {
-  anchorPoint: {
-    vertical: 'top',
-    horizontal: 'right'
-  },
-  popPoint: {
-    vertical: 'top',
-    horizontal: 'left'
-  },
-  level: 0
 };
