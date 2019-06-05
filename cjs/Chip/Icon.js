@@ -19,10 +19,10 @@ var Icon = function Icon(_ref) {
   var icon = _ref.icon;
   if (!icon) return null;
   return _react.default.createElement("span", {
-    className: "jsx-3691124138"
+    className: "jsx-1357096397"
   }, icon, _react.default.createElement(_style.default, {
-    id: "3691124138"
-  }, ["span.jsx-3691124138{width:24px;height:24px;margin-left:4px;border-radius:50%;overflow:hidden;}"]));
+    id: "1357096397"
+  }, ["span.jsx-1357096397{width:24px;height:24px;margin-left:4px;margin-right:-6px;border-radius:50%;overflow:hidden;}", "span.jsx-1357096397>*{width:24px;height:24px;}"]));
 };
 
 exports.Icon = Icon;
