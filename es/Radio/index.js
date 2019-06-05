@@ -41,12 +41,12 @@ class Radio extends Component {
     });
 
     this.state = {
-      focus: props.initialFocus
+      focus: !!props.initialFocus
     };
   }
 
   componentDidMount() {
-    if (this.state.focus) {
+    if (this.props.focus) {
       this.ref.current.focus();
     }
   }
@@ -64,6 +64,9 @@ class Radio extends Component {
       valid,
       warning,
       error,
+      autocomplete,
+      autofocus,
+      readonly,
       tabIndex
     } = this.props;
     const {
@@ -91,9 +94,13 @@ class Radio extends Component {
       type: "radio",
       name: name,
       value: value,
+      focus: focus,
       checked: checked,
       disabled: disabled,
+      autocomplete: autocomplete,
+      autofocus: autofocus,
       tabIndex: tabIndex,
+      readonly: readonly,
       onChange: onChange,
       onFocus: this.onFocus,
       onBlur: this.onBlur,
@@ -122,6 +129,7 @@ Radio.propTypes = {
   value: propTypes.string.isRequired,
   className: propTypes.string,
   label: propTypes.string,
+  autocomplete: propTypes.string,
   tabIndex: propTypes.string,
   onFocus: propTypes.func,
   onBlur: propTypes.func,
@@ -131,6 +139,8 @@ Radio.propTypes = {
   valid: propTypes.bool,
   warning: propTypes.bool,
   error: propTypes.bool,
+  autofocus: propTypes.bool,
+  readonly: propTypes.bool,
   initialFocus: propTypes.bool
 };
 export { Radio };

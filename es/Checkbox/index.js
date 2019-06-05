@@ -54,7 +54,10 @@ class Checkbox extends Component {
       valid,
       warning,
       error,
-      tabIndex
+      autocomplete,
+      autofocus,
+      tabIndex,
+      readonly
     } = this.props;
     const {
       focus
@@ -73,7 +76,10 @@ class Checkbox extends Component {
       onChange: onChange,
       onFocus: this.onFocus,
       onBlur: this.onBlur,
-      tabIndex: tabIndex
+      autocomplete: autocomplete,
+      autofocus: autofocus,
+      tabIndex: tabIndex,
+      readonly: readonly
     }), React.createElement(Icon, {
       focus: focus,
       checked: checked,
@@ -97,6 +103,7 @@ Checkbox.propTypes = {
   value: propTypes.string.isRequired,
   name: propTypes.string.isRequired,
   label: propTypes.string.isRequired,
+  autocomplete: propTypes.string,
   tabIndex: propTypes.string,
   onFocus: propTypes.func,
   onBlur: propTypes.func,
@@ -108,6 +115,8 @@ Checkbox.propTypes = {
   valid: propTypes.bool,
   warning: propTypes.bool,
   error: propTypes.bool,
+  autofocus: propTypes.bool,
+  readonly: propTypes.bool,
   initialFocus: propTypes.bool
 };
 export { Checkbox };

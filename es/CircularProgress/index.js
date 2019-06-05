@@ -5,7 +5,7 @@ import propTypes from 'prop-types';
 import cx from 'classnames';
 import styles from './styles.js';
 
-const CircularLoader = ({
+const CircularProgress = ({
   small,
   large,
   className
@@ -29,9 +29,9 @@ const CircularLoader = ({
   id: styles.__hash
 }, styles));
 
-CircularLoader.propTypes = {
+CircularProgress.propTypes = {
   className: propTypes.string,
   small: propTypes.bool,
   large: propTypes.bool
 };
-export { CircularLoader };
+export { CircularProgress };

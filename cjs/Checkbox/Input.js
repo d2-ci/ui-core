@@ -27,11 +27,11 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -53,7 +53,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Input)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_this), "ref", (0, _react.createRef)());
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "ref", (0, _react.createRef)());
 
     return _this;
   }
@@ -76,7 +76,10 @@ function (_Component) {
           value = _this$props.value,
           onFocus = _this$props.onFocus,
           onBlur = _this$props.onBlur,
-          tabIndex = _this$props.tabIndex;
+          autocomplete = _this$props.autocomplete,
+          autofocus = _this$props.autofocus,
+          tabIndex = _this$props.tabIndex,
+          readonly = _this$props.readonly;
       return _react.default.createElement(_react.Fragment, null, _react.default.createElement("input", {
         ref: this.ref,
         type: "checkbox",
@@ -87,7 +90,10 @@ function (_Component) {
         onBlur: onBlur,
         checked: checked,
         disabled: disabled,
+        autocomplete: autocomplete,
+        autofocus: autofocus,
         tabIndex: tabIndex,
+        readonly: readonly,
         className: "jsx-227425587"
       }), _react.default.createElement(_style.default, {
         id: "227425587"
@@ -102,10 +108,12 @@ exports.Input = Input;
 Input.propTypes = {
   onChange: _propTypes.default.func.isRequired,
   name: _propTypes.default.string.isRequired,
+  autocomplete: _propTypes.default.string,
   tabIndex: _propTypes.default.string,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func,
   checked: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
-  focus: _propTypes.default.bool
+  autofocus: _propTypes.default.bool,
+  readonly: _propTypes.default.bool
 };

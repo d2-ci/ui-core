@@ -31,11 +31,11 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -60,7 +60,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Select)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_this), "selectRef", (0, _react.createRef)());
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "selectRef", (0, _react.createRef)());
 
     return _this;
   }
@@ -70,6 +70,17 @@ function (_Component) {
     value: function componentDidMount() {
       if (this.props.focus) {
         this.selectRef.current.focus();
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.focused !== this.props.focused) {
+        if (this.props.focused) {
+          this.selectRef.focus();
+        } else {
+          this.selectRef.blur();
+        }
       }
     }
   }, {
@@ -85,7 +96,10 @@ function (_Component) {
           value = _this$props.value,
           children = _this$props.children,
           name = _this$props.name,
-          tabIndex = _this$props.tabIndex;
+          autocomplete = _this$props.autocomplete,
+          autofocus = _this$props.autofocus,
+          tabIndex = _this$props.tabIndex,
+          readonly = _this$props.readonly;
       var className = (0, _classnames.default)({
         dense: dense,
         filled: filled,
@@ -97,9 +111,11 @@ function (_Component) {
         disabled: disabled,
         onFocus: onFocus,
         onBlur: onBlur,
-        ref: this.selectRef,
         name: name,
+        autocomplete: autocomplete,
+        autofocus: autofocus,
         tabIndex: tabIndex,
+        readonly: readonly,
         className: "jsx-".concat(styles.__hash) + " " + (className || "")
       }, _react.default.createElement("option", {
         key: "hidden-default-value",
@@ -121,6 +137,7 @@ Select.propTypes = {
   name: _propTypes.default.string.isRequired,
   onChange: _propTypes.default.func.isRequired,
   value: _propTypes.default.string,
+  autocomplete: _propTypes.default.string,
   tabIndex: _propTypes.default.string,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func,
@@ -132,5 +149,6 @@ Select.propTypes = {
   disabled: _propTypes.default.bool,
   filled: _propTypes.default.bool,
   dense: _propTypes.default.bool,
-  focus: _propTypes.default.bool
+  autofocus: _propTypes.default.bool,
+  readonly: _propTypes.default.bool
 };

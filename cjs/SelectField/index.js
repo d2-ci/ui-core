@@ -35,11 +35,11 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -77,11 +77,11 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SelectField)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_this), "state", {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       focus: _this.props.initialFocus
     });
 
-    _defineProperty(_assertThisInitialized(_this), "onFocus", function (e) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (e) {
       _this.setState({
         focus: true
       });
@@ -91,7 +91,7 @@ function (_React$Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "onBlur", function (e) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function (e) {
       _this.setState({
         focus: false
       });
@@ -107,7 +107,7 @@ function (_React$Component) {
   _createClass(SelectField, [{
     key: "isFocused",
     value: function isFocused() {
-      return this.state.focus;
+      return this.state.focused;
     }
   }, {
     key: "render",
@@ -126,6 +126,9 @@ function (_React$Component) {
           loading = _this$props.loading,
           children = _this$props.children,
           value = _this$props.value,
+          autocomplete = _this$props.autocomplete,
+          autofocus = _this$props.autofocus,
+          readonly = _this$props.readonly,
           tabIndex = _this$props.tabIndex,
           onChange = _this$props.onChange;
       var focus = this.state.focus;
@@ -143,13 +146,15 @@ function (_React$Component) {
         loading: loading,
         dense: dense
       }, _react.default.createElement(_Select.Select, {
-        focus: focus,
         name: name,
         value: value,
         disabled: disabled,
         filled: filled,
         dense: dense,
+        autocomplete: autocomplete,
+        autofocus: autofocus,
         tabIndex: tabIndex,
+        readonly: readonly,
         onChange: onChange,
         onFocus: this.onFocus,
         onBlur: this.onBlur
@@ -167,6 +172,7 @@ SelectField.propTypes = {
   label: _propTypes.default.string.isRequired,
   value: _propTypes.default.string,
   className: _propTypes.default.string,
+  autocomplete: _propTypes.default.string,
   tabIndex: _propTypes.default.string,
   children: _propTypes.default.oneOfType([_propTypes.default.arrayOf(_propTypes.default.shape({
     tagName: _propTypes.default.oneOf(['OPTION', 'OPTGROUP'])
@@ -181,6 +187,8 @@ SelectField.propTypes = {
   warning: _propTypes.default.bool,
   error: _propTypes.default.bool,
   loading: _propTypes.default.bool,
+  autofocus: _propTypes.default.bool,
+  readonly: _propTypes.default.bool,
   initialFocus: _propTypes.default.bool,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func

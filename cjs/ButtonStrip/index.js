@@ -13,9 +13,9 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _Button = require("../Button");
-
 var _propValidators = require("../prop-validators");
+
+var _Button = require("../Button");
 
 var _styles = _interopRequireDefault(require("./styles"));
 
@@ -43,7 +43,7 @@ var ButtonStrip = function ButtonStrip(_ref) {
 exports.ButtonStrip = ButtonStrip;
 ButtonStrip.propTypes = {
   className: _propTypes.default.string,
-  children: _propTypes.default.arrayOf((0, _propValidators.instanceOfComponent)(_Button.Button)).isRequired,
+  children: _propTypes.default.arrayOf((0, _propValidators.instanceOfComponent)(_Button.Button)),
   compact: _propTypes.default.bool,
   start: _propTypes.default.bool,
   middle: _propTypes.default.bool,
