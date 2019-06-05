@@ -15,13 +15,9 @@ export class Select extends Component {
     _defineProperty(this, "selectRef", createRef());
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.focused !== this.props.focused) {
-      if (this.props.focused) {
-        this.selectRef.focus();
-      } else {
-        this.selectRef.blur();
-      }
+  componentDidMount() {
+    if (this.props.focus) {
+      this.selectRef.current.focus();
     }
   }
 
@@ -35,7 +31,8 @@ export class Select extends Component {
       onBlur,
       value,
       children,
-      name
+      name,
+      tabIndex
     } = this.props;
     const className = cx({
       dense,
@@ -48,7 +45,9 @@ export class Select extends Component {
       disabled: disabled,
       onFocus: onFocus,
       onBlur: onBlur,
+      ref: this.selectRef,
       name: name,
+      tabIndex: tabIndex,
       className: `jsx-${styles.__hash}` + " " + (className || "")
     }, React.createElement("option", {
       key: "hidden-default-value",
@@ -66,6 +65,7 @@ Select.propTypes = {
   name: propTypes.string.isRequired,
   onChange: propTypes.func.isRequired,
   value: propTypes.string,
+  tabIndex: propTypes.string,
   onFocus: propTypes.func,
   onBlur: propTypes.func,
   children: propTypes.oneOfType([propTypes.arrayOf(propTypes.shape({
@@ -75,5 +75,6 @@ Select.propTypes = {
   })]),
   disabled: propTypes.bool,
   filled: propTypes.bool,
-  dense: propTypes.bool
+  dense: propTypes.bool,
+  focus: propTypes.bool
 };

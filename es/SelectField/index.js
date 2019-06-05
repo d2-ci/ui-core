@@ -28,12 +28,12 @@ class SelectField extends React.Component {
     super(...args);
 
     _defineProperty(this, "state", {
-      focus: this.props.focused
+      focus: this.props.initialFocus
     });
 
     _defineProperty(this, "onFocus", e => {
       this.setState({
-        focused: true
+        focus: true
       });
 
       if (this.props.onFocus) {
@@ -43,7 +43,7 @@ class SelectField extends React.Component {
 
     _defineProperty(this, "onBlur", e => {
       this.setState({
-        focused: false
+        focus: false
       });
 
       if (this.props.onBlur) {
@@ -53,14 +53,13 @@ class SelectField extends React.Component {
   }
 
   isFocused() {
-    return this.state.focused;
+    return this.state.focus;
   }
 
   render() {
     const {
       type,
       filled,
-      focus,
       dense,
       required,
       label,
@@ -72,12 +71,15 @@ class SelectField extends React.Component {
       loading,
       children,
       value,
+      tabIndex,
       onChange
     } = this.props;
+    const {
+      focus
+    } = this.state;
     const Container = filled ? LabelFilled : LabelOutlined;
     return React.createElement(Container, {
-      onClick: this.onFocus,
-      focus: this.state.focus,
+      focus: focus,
       label: label,
       value: !!value,
       htmlFor: name,
@@ -89,11 +91,13 @@ class SelectField extends React.Component {
       loading: loading,
       dense: dense
     }, React.createElement(Select, {
+      focus: focus,
       name: name,
       value: value,
       disabled: disabled,
       filled: filled,
       dense: dense,
+      tabIndex: tabIndex,
       onChange: onChange,
       onFocus: this.onFocus,
       onBlur: this.onBlur
@@ -108,6 +112,7 @@ SelectField.propTypes = {
   label: propTypes.string.isRequired,
   value: propTypes.string,
   className: propTypes.string,
+  tabIndex: propTypes.string,
   children: propTypes.oneOfType([propTypes.arrayOf(propTypes.shape({
     tagName: propTypes.oneOf(['OPTION', 'OPTGROUP'])
   })), propTypes.shape({
@@ -117,11 +122,11 @@ SelectField.propTypes = {
   disabled: propTypes.bool,
   filled: propTypes.bool,
   dense: propTypes.bool,
-  focus: propTypes.bool,
   valid: propTypes.bool,
   warning: propTypes.bool,
   error: propTypes.bool,
   loading: propTypes.bool,
+  initialFocus: propTypes.bool,
   onFocus: propTypes.func,
   onBlur: propTypes.func
 };
