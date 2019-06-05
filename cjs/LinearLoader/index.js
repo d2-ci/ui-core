@@ -20,12 +20,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Progress = function Progress(_ref) {
   var amount = _ref.amount;
   return _react.default.createElement("div", {
-    className: _style.default.dynamic([["686723300", [amount]], ["1637603713", [_theme.theme.primary600]]])
+    className: _style.default.dynamic([["686723300", [amount]], ["3243380718", [_theme.theme.primary600]]])
   }, _react.default.createElement(_style.default, {
     id: "686723300",
     dynamic: [amount]
   }, ["div.__jsx-style-dynamic-selector{width:".concat(amount, "%;}")]), _react.default.createElement(_style.default, {
-    id: "1637603713",
+    id: "3243380718",
     dynamic: [_theme.theme.primary600]
   }, ["div.__jsx-style-dynamic-selector{background-color:".concat(_theme.theme.primary600, ";-webkit-transition:width 0.3s linear;transition:width 0.3s linear;height:4px;}")]));
 };
@@ -50,7 +50,6 @@ var LinearLoader = function LinearLoader(_ref2) {
 
 exports.LinearLoader = LinearLoader;
 LinearLoader.defaultProps = {
-  amount: 0,
   margin: '10px',
   width: '300px'
 };
@@ -58,7 +57,9 @@ LinearLoader.propTypes = {
   className: _propTypes.default.string,
 
   /** set the progression in percentage (without the % suffix) */
-  amount: _propTypes.default.number,
+  amount: _propTypes.default.number.isRequired,
+
+  /** set the margin around the loader, can be a full shorthand */
   margin: _propTypes.default.string,
 
   /** set the width of the entire indicator, e.g. '100%' or '300px'. */
