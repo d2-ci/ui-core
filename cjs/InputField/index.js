@@ -60,7 +60,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(InputField)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      focus: _this.props.focus
+      focus: _this.props.initialFocus
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (e) {
@@ -101,8 +101,11 @@ function (_React$Component) {
           warning = _this$props.warning,
           loading = _this$props.loading,
           value = _this$props.value,
-          _this$props$focus = _this$props.focus,
-          focus = _this$props$focus === void 0 ? this.state.focus : _this$props$focus;
+          autocomplete = _this$props.autocomplete,
+          autofocus = _this$props.autofocus,
+          readonly = _this$props.readonly,
+          tabIndex = _this$props.tabIndex;
+      var focus = this.state.focus;
       var Container = filled ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
       return _react.default.createElement(Container, {
         focus: focus,
@@ -132,7 +135,11 @@ function (_React$Component) {
         warning: warning,
         error: error,
         loading: loading,
-        dense: dense
+        dense: dense,
+        autocomplete: autocomplete,
+        autofocus: autofocus,
+        tabIndex: tabIndex,
+        readonly: readonly
       }), _react.default.createElement(_style.default, {
         id: "349714766",
         dynamic: [_theme.theme.disabled]
@@ -156,15 +163,19 @@ InputField.propTypes = {
   className: _propTypes.default.string,
   placeholder: _propTypes.default.string,
   value: _propTypes.default.string,
+  autocomplete: _propTypes.default.string,
+  tabIndex: _propTypes.default.string,
   required: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   filled: _propTypes.default.bool,
   dense: _propTypes.default.bool,
-  focus: _propTypes.default.bool,
   valid: _propTypes.default.bool,
   warning: _propTypes.default.bool,
   error: _propTypes.default.bool,
   loading: _propTypes.default.bool,
+  autofocus: _propTypes.default.bool,
+  readonly: _propTypes.default.bool,
+  initialFocus: _propTypes.default.bool,
   onBlur: _propTypes.default.func,
   onFocus: _propTypes.default.func,
   type: _propTypes.default.oneOf(['text', 'email', 'number', 'password', 'url'])
