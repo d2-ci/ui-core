@@ -1,7 +1,12 @@
 import propTypes from 'prop-types';
-export const mutuallyExclusive = (exlusivePropNames, propType) => (props, propName, componentName) => {
+
+const mutuallyExclusiveFactory = (exlusivePropNames, propType, isRequired) => (props, propName, componentName) => {
   if (exlusivePropNames.length === 0) {
     return new Error(`mutuallyExclusive was called without any arguments for property '${propName}'.`);
+  }
+
+  if (isRequired && typeof props[propName] === 'undefined') {
+    return new Error(`${propName} is required.`);
   } // This is how to programatically invoke a propTypes check
   // https://github.com/facebook/prop-types#proptypescheckproptypes
 
@@ -19,4 +24,10 @@ export const mutuallyExclusive = (exlusivePropNames, propType) => (props, propNa
   }
 
   return null;
+};
+
+export const mutuallyExclusive = (exlusivePropNames, propType) => {
+  const fn = mutuallyExclusiveFactory(exlusivePropNames, propType, false);
+  fn.isRequired = mutuallyExclusiveFactory(exlusivePropNames, propType, true);
+  return fn;
 };
