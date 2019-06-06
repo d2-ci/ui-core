@@ -35,11 +35,11 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -62,9 +62,9 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Radio).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "ref", (0, _react.createRef)());
+    _defineProperty(_assertThisInitialized(_this), "ref", (0, _react.createRef)());
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "onFocus", function (e) {
       _this.setState({
         focus: true
       });
@@ -74,7 +74,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "onBlur", function (e) {
       _this.setState({
         focus: false
       });
@@ -85,7 +85,7 @@ function (_Component) {
     });
 
     _this.state = {
-      focus: !!props.initialFocus
+      focus: props.initialFocus
     };
     return _this;
   }
@@ -93,7 +93,7 @@ function (_Component) {
   _createClass(Radio, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      if (this.props.focus) {
+      if (this.state.focus) {
         this.ref.current.focus();
       }
     }
@@ -113,9 +113,6 @@ function (_Component) {
           valid = _this$props.valid,
           warning = _this$props.warning,
           error = _this$props.error,
-          autocomplete = _this$props.autocomplete,
-          autofocus = _this$props.autofocus,
-          readonly = _this$props.readonly,
           tabIndex = _this$props.tabIndex;
       var focus = this.state.focus;
       var classes = (0, _classnames.default)(icons.className, {
@@ -140,13 +137,9 @@ function (_Component) {
         type: "radio",
         name: name,
         value: value,
-        focus: focus,
         checked: checked,
         disabled: disabled,
-        autocomplete: autocomplete,
-        autofocus: autofocus,
         tabIndex: tabIndex,
-        readonly: readonly,
         onChange: onChange,
         onFocus: this.onFocus,
         onBlur: this.onBlur,
@@ -178,7 +171,6 @@ Radio.propTypes = {
   value: _propTypes.default.string.isRequired,
   className: _propTypes.default.string,
   label: _propTypes.default.string,
-  autocomplete: _propTypes.default.string,
   tabIndex: _propTypes.default.string,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func,
@@ -188,7 +180,5 @@ Radio.propTypes = {
   valid: _propTypes.default.bool,
   warning: _propTypes.default.bool,
   error: _propTypes.default.bool,
-  autofocus: _propTypes.default.bool,
-  readonly: _propTypes.default.bool,
   initialFocus: _propTypes.default.bool
 };

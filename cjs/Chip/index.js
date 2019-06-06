@@ -13,7 +13,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _theme = require("../theme");
+var _theme = require("../theme.js");
 
 var _Content = require("./Content");
 
@@ -37,11 +37,11 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -63,7 +63,7 @@ function (_PureComponent) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Chip)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "onClick", function (e) {
       if (!_this.props.disabled && _this.props.onClick) {
         _this.props.onClick(e);
       }
@@ -84,7 +84,7 @@ function (_PureComponent) {
           children = _this$props.children;
       return _react.default.createElement("span", {
         onClick: this.onClick,
-        className: _style.default.dynamic([["3024631939", [_theme.colors.grey200, _theme.colors.grey900, _theme.colors.grey300, _theme.theme.secondary600, _theme.colors.white]]]) + " " + ((0, _classnames.default)(className, {
+        className: _style.default.dynamic([["3311306814", [_theme.spacers.dp4, _theme.colors.grey200, _theme.colors.grey900, _theme.colors.grey300, _theme.theme.secondary600, _theme.colors.white]]]) + " " + ((0, _classnames.default)(className, {
           selected: selected,
           disabled: disabled,
           dragging: dragging
@@ -97,9 +97,9 @@ function (_PureComponent) {
       }), _react.default.createElement(_Remove.Remove, {
         onRemove: this.props.onRemove
       }), _react.default.createElement(_style.default, {
-        id: "3024631939",
-        dynamic: [_theme.colors.grey200, _theme.colors.grey900, _theme.colors.grey300, _theme.theme.secondary600, _theme.colors.white]
-      }, ["span.__jsx-style-dynamic-selector{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:32px;margin:4px;border-radius:16px;background-color:".concat(_theme.colors.grey200, ";font-size:14px;line-height:16px;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;color:").concat(_theme.colors.grey900, ";}"), "span.__jsx-style-dynamic-selector:hover{background-color:".concat(_theme.colors.grey300, ";}"), ".selected.__jsx-style-dynamic-selector{background-color:".concat(_theme.theme.secondary600, ";font-weight:500;}"), ".selected.__jsx-style-dynamic-selector:hover{background-color:#00695c;}", ".selected.__jsx-style-dynamic-selector,.selected.__jsx-style-dynamic-selector .icon.__jsx-style-dynamic-selector,.selected.__jsx-style-dynamic-selector .remove-icon.__jsx-style-dynamic-selector{color:".concat(_theme.colors.white, ";}"), ".disabled.__jsx-style-dynamic-selector{cursor:not-allowed;opacity:0.3;}", ".disabled.__jsx-style-dynamic-selector .remove-icon.__jsx-style-dynamic-selector{pointer-events:none;}", ".dragging.__jsx-style-dynamic-selector{box-shadow:0 3px 1px -2px rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12);}"]));
+        id: "3311306814",
+        dynamic: [_theme.spacers.dp4, _theme.colors.grey200, _theme.colors.grey900, _theme.colors.grey300, _theme.theme.secondary600, _theme.colors.white]
+      }, ["span.__jsx-style-dynamic-selector{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:32px;margin:".concat(_theme.spacers.dp4, ";border-radius:16px;background-color:").concat(_theme.colors.grey200, ";font-size:14px;line-height:16px;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;color:").concat(_theme.colors.grey900, ";}"), "span.__jsx-style-dynamic-selector:hover{background-color:".concat(_theme.colors.grey300, ";}"), ".selected.__jsx-style-dynamic-selector{background-color:".concat(_theme.theme.secondary600, ";font-weight:500;}"), ".selected.__jsx-style-dynamic-selector:hover{background-color:#00695c;}", ".selected.__jsx-style-dynamic-selector,.selected.__jsx-style-dynamic-selector .icon.__jsx-style-dynamic-selector,.selected.__jsx-style-dynamic-selector .remove-icon.__jsx-style-dynamic-selector{color:".concat(_theme.colors.white, ";}"), ".disabled.__jsx-style-dynamic-selector{cursor:not-allowed;opacity:0.3;}", ".disabled.__jsx-style-dynamic-selector .remove-icon.__jsx-style-dynamic-selector{pointer-events:none;}", ".dragging.__jsx-style-dynamic-selector{box-shadow:0 3px 1px -2px rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12);}"]));
     }
   }]);
 

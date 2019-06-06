@@ -6,7 +6,7 @@ import propTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import { Input } from './Input.js';
 import { LabelFilled, LabelOutlined } from '../FieldLabel';
-import { theme } from '../theme';
+import { theme } from '../theme.js';
 
 class InputField extends React.Component {
   constructor(...args) {
@@ -48,9 +48,6 @@ class InputField extends React.Component {
       warning,
       loading,
       value,
-      autocomplete,
-      autofocus,
-      readonly,
       tabIndex
     } = this.props;
     const {
@@ -86,10 +83,7 @@ class InputField extends React.Component {
       error: error,
       loading: loading,
       dense: dense,
-      autocomplete: autocomplete,
-      autofocus: autofocus,
-      tabIndex: tabIndex,
-      readonly: readonly
+      tabIndex: tabIndex
     }), React.createElement(_JSXStyle, {
       id: "349714766",
       dynamic: [theme.disabled]
@@ -110,7 +104,6 @@ InputField.propTypes = {
   className: propTypes.string,
   placeholder: propTypes.string,
   value: propTypes.string,
-  autocomplete: propTypes.string,
   tabIndex: propTypes.string,
   required: propTypes.bool,
   disabled: propTypes.bool,
@@ -120,8 +113,6 @@ InputField.propTypes = {
   warning: propTypes.bool,
   error: propTypes.bool,
   loading: propTypes.bool,
-  autofocus: propTypes.bool,
-  readonly: propTypes.bool,
   initialFocus: propTypes.bool,
   onBlur: propTypes.func,
   onFocus: propTypes.func,

@@ -2,7 +2,7 @@ import _JSXStyle from "styled-jsx/style";
 import React, { Fragment } from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
-import { colors, theme } from '../theme';
+import { colors, theme } from '../theme.js';
 import { Indeterminate, Checked, Unchecked } from '../icons/Checkbox';
 const icons = {
   styles: React.createElement(_JSXStyle, {
@@ -48,5 +48,6 @@ Icon.propTypes = {
   valid: propTypes.bool,
   error: propTypes.bool,
   warning: propTypes.bool,
-  indeterminate: propTypes.bool
+  indeterminate: propTypes.bool,
+  focus: propTypes.bool
 };

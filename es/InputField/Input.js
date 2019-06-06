@@ -5,12 +5,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import propTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import cx from 'classnames';
-import { colors, theme } from '../theme';
+import { colors, theme, spacers } from '../theme.js';
 
 const calculatePaddingTop = props => props.filled ? '14px' : '18.5px';
 
-const styles = [`input.jsx-3935505702{color:${colors.grey900};background-color:transparent;border:0;box-sizing:border-box;font-size:16px;height:100%;line-height:16px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;padding:18px 0 15px 16px;}`, ".dense.jsx-3935505702{padding-top:12px;padding-bottom:12px;font-size:14px;}", `.disabled.jsx-3935505702{color:${theme.disabled};cursor:not-allowed;}`, ".filled.jsx-3935505702{padding:32px 0 8px 16px;}", ".filled.dense.jsx-3935505702{padding:25px 0 5px 16px;}"];
-styles.__hash = "3935505702";
+const styles = [`input.jsx-3753428802{color:${colors.grey900};background-color:transparent;border:0;box-sizing:border-box;font-size:16px;height:100%;line-height:16px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;padding:18px 0 15px 16px;}`, `.dense.jsx-3753428802{padding-top:${spacers.dp12};padding-bottom:${spacers.dp12};font-size:14px;}`, `.disabled.jsx-3753428802{color:${theme.disabled};cursor:not-allowed;}`, `.filled.jsx-3753428802{padding:${spacers.dp32} 0 ${spacers.dp8} ${spacers.dp16};}`, `.filled.dense.jsx-3753428802{padding:${spacers.dp24} 0 ${spacers.dp4} ${spacers.dp16};}`];
+styles.__hash = "3753428802";
 export class Input extends Component {
   constructor(...args) {
     super(...args);
@@ -45,10 +45,7 @@ export class Input extends Component {
       type: this.props.type,
       value: this.props.value,
       disabled: disabled,
-      autocomplete: this.props.autocomplete,
-      autofocus: this.props.autofocus,
       tabIndex: this.props.tabIndex,
-      readonly: this.props.readonly,
       onFocus: this.props.onFocus,
       onBlur: this.props.onBlur,
       onChange: this.props.onChange,
@@ -65,14 +62,11 @@ Input.propTypes = {
   onChange: propTypes.func.isRequired,
   value: propTypes.string,
   placeholder: propTypes.string,
-  autocomplete: propTypes.string,
   tabIndex: propTypes.string,
   onFocus: propTypes.func,
   onBlur: propTypes.func,
   focus: propTypes.bool,
   disabled: propTypes.bool,
   filled: propTypes.bool,
-  dense: propTypes.bool,
-  autofocus: propTypes.bool,
-  readonly: propTypes.bool
+  dense: propTypes.bool
 };

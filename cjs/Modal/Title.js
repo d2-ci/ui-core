@@ -13,6 +13,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
+var _theme = require("../theme.js");
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -20,10 +22,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Title = function Title(_ref) {
   var children = _ref.children;
   return _react.default.createElement("h1", {
-    className: "jsx-4098266882" + " " + ((0, _classnames.default)('title') || "")
+    className: _style.default.dynamic([["608308278", [_theme.spacers.dp24, _theme.spacers.dp24, _theme.spacers.dp16]]]) + " " + ((0, _classnames.default)('title') || "")
   }, children, _react.default.createElement(_style.default, {
-    id: "4098266882"
-  }, ["h1.jsx-4098266882{font-size:20px;font-weight:500;line-height:24px;padding:20px 24px 0;margin:0 0 17px;}"]));
+    id: "608308278",
+    dynamic: [_theme.spacers.dp24, _theme.spacers.dp24, _theme.spacers.dp16]
+  }, ["h1.__jsx-style-dynamic-selector{font-size:20px;font-weight:500;line-height:24px;padding:".concat(_theme.spacers.dp24, " ").concat(_theme.spacers.dp24, " 0;margin:0 0 ").concat(_theme.spacers.dp16, ";}")]));
 };
 
 exports.Title = Title;

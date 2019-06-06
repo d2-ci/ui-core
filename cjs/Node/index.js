@@ -15,7 +15,7 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _Arrow = require("../icons/Arrow");
 
-var _theme = require("../theme");
+var _theme = require("../theme.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23,10 +23,11 @@ var Label = function Label(_ref) {
   var icon = _ref.icon,
       children = _ref.children;
   return _react.default.createElement("div", {
-    className: "jsx-187745036" + " " + "tree__label"
+    className: _style.default.dynamic([["3830157399", [_theme.spacers.dp4]]]) + " " + "tree__label"
   }, children, _react.default.createElement(_style.default, {
-    id: "187745036"
-  }, ["div.jsx-187745036{min-height:24px;padding:3px 0;}"]));
+    id: "3830157399",
+    dynamic: [_theme.spacers.dp4]
+  }, ["div.__jsx-style-dynamic-selector{min-height:24px;padding:".concat(_theme.spacers.dp4, " 0;}")]));
 };
 
 var Contents = function Contents(_ref2) {

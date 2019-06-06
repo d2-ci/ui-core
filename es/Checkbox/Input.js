@@ -26,10 +26,7 @@ export class Input extends Component {
       value,
       onFocus,
       onBlur,
-      autocomplete,
-      autofocus,
-      tabIndex,
-      readonly
+      tabIndex
     } = this.props;
     return React.createElement(Fragment, null, React.createElement("input", {
       ref: this.ref,
@@ -41,10 +38,7 @@ export class Input extends Component {
       onBlur: onBlur,
       checked: checked,
       disabled: disabled,
-      autocomplete: autocomplete,
-      autofocus: autofocus,
       tabIndex: tabIndex,
-      readonly: readonly,
       className: "jsx-227425587"
     }), React.createElement(_JSXStyle, {
       id: "227425587"
@@ -55,12 +49,10 @@ export class Input extends Component {
 Input.propTypes = {
   onChange: propTypes.func.isRequired,
   name: propTypes.string.isRequired,
-  autocomplete: propTypes.string,
   tabIndex: propTypes.string,
   onFocus: propTypes.func,
   onBlur: propTypes.func,
   checked: propTypes.bool,
   disabled: propTypes.bool,
-  autofocus: propTypes.bool,
-  readonly: propTypes.bool
+  focus: propTypes.bool
 };

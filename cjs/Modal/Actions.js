@@ -13,7 +13,9 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _index = require("../index");
+var _index = require("../index.js");
+
+var _theme = require("../theme.js");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -22,10 +24,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Actions = function Actions(_ref) {
   var children = _ref.children;
   return _react.default.createElement("div", {
-    className: "jsx-1953267682"
+    className: _style.default.dynamic([["3709975811", [_theme.spacers.dp24, _theme.spacers.dp24]]])
   }, children, _react.default.createElement(_style.default, {
-    id: "1953267682"
-  }, ["div.jsx-1953267682{padding:0 24px 20px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;}"]));
+    id: "3709975811",
+    dynamic: [_theme.spacers.dp24, _theme.spacers.dp24]
+  }, ["div.__jsx-style-dynamic-selector{padding:0 ".concat(_theme.spacers.dp24, " ").concat(_theme.spacers.dp24, ";display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;}")]));
 };
 
 exports.Actions = Actions;

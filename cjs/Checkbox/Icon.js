@@ -13,7 +13,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _theme = require("../theme");
+var _theme = require("../theme.js");
 
 var _Checkbox = require("../icons/Checkbox");
 
@@ -67,5 +67,6 @@ Icon.propTypes = {
   valid: _propTypes.default.bool,
   error: _propTypes.default.bool,
   warning: _propTypes.default.bool,
-  indeterminate: _propTypes.default.bool
+  indeterminate: _propTypes.default.bool,
+  focus: _propTypes.default.bool
 };
