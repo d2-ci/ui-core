@@ -10,10 +10,10 @@ export const Content = React.forwardRef(({
 }, ref) => React.createElement("div", {
   ref: ref,
   style: position,
-  className: "jsx-3531606191"
+  className: "jsx-4279786422"
 }, children, React.createElement(_JSXStyle, {
-  id: "3531606191"
-}, ["div.jsx-3531606191{background:white;box-shadow:0 0 3px rgba(0,0,0,0.6);max-height:100vh;overflow-y:auto;position:fixed;}"])));
+  id: "4279786422"
+}, ["div.jsx-4279786422{background:white;box-shadow:0 0 3px rgba(0,0,0,0.6);max-height:100vh;overflow-y:auto;position:absolute;}"])));
 export const getPosition = ({
   pop,
   anchor,

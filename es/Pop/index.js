@@ -61,7 +61,7 @@ class Pop extends Component {
       position
     } = this.state;
     return createPortal(React.createElement("div", {
-      className: "jsx-2814193699"
+      className: "jsx-1869453644"
     }, React.createElement(BackgroundCover, {
       onClick: onClose
     }), React.createElement(Content, {
@@ -69,8 +69,8 @@ class Pop extends Component {
       position: position,
       children: children
     }), React.createElement(_JSXStyle, {
-      id: "2814193699"
-    }, ["div.jsx-2814193699{left:0;height:100%;position:fixed;top:0;width:100%;z-index:2000;}"])), document.body);
+      id: "1869453644"
+    }, ["div.jsx-1869453644{left:0;height:100%;position:absolute;top:0;width:100%;z-index:2000;}"])), document.body);
   }
 
 }

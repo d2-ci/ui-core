@@ -111,7 +111,7 @@ function (_Component) {
           onClose = _this$props2.onClose;
       var position = this.state.position;
       return (0, _reactDom.createPortal)(_react.default.createElement("div", {
-        className: "jsx-2814193699"
+        className: "jsx-1869453644"
       }, _react.default.createElement(_BackgroundCover.BackgroundCover, {
         onClick: onClose
       }), _react.default.createElement(_helpers.Content, {
@@ -119,8 +119,8 @@ function (_Component) {
         position: position,
         children: children
       }), _react.default.createElement(_style.default, {
-        id: "2814193699"
-      }, ["div.jsx-2814193699{left:0;height:100%;position:fixed;top:0;width:100%;z-index:2000;}"])), document.body);
+        id: "1869453644"
+      }, ["div.jsx-1869453644{left:0;height:100%;position:absolute;top:0;width:100%;z-index:2000;}"])), document.body);
     }
   }]);
 
