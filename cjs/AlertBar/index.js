@@ -23,6 +23,8 @@ var _Icon = require("./Icon");
 
 var _Message = require("./Message");
 
+var _propValidators = require("../prop-validators");
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -175,12 +177,13 @@ function (_PureComponent) {
 }(_react.PureComponent);
 
 exports.AlertBar = AlertBar;
+var variantPropType = (0, _propValidators.mutuallyExclusive)(['success', 'warning', 'critical'], _propTypes.default.bool);
 AlertBar.propTypes = {
   className: _propTypes.default.string,
   children: _propTypes.default.string.isRequired,
-  success: _propTypes.default.bool,
-  warning: _propTypes.default.bool,
-  critical: _propTypes.default.bool,
+  success: variantPropType,
+  warning: variantPropType,
+  critical: variantPropType,
   icon: _Icon.iconPropType,
   duration: _propTypes.default.number,
   actions: _Actions.actionsPropType,
