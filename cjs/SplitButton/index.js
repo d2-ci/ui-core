@@ -13,6 +13,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
+var _classnames = _interopRequireDefault(require("classnames"));
+
 var _Arrow = require("../icons/Arrow.js");
 
 var _DropMenu = require("../DropMenu");
@@ -21,7 +23,7 @@ var _Button = require("../Button");
 
 var _ButtonStrip = require("../ButtonStrip");
 
-var _classnames = _interopRequireDefault(require("classnames"));
+var _theme = require("../theme.js");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -49,9 +51,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var rightButton = {
   styles: _react.default.createElement(_style.default, {
-    id: "554730144"
-  }, ["button.jsx-554730144{padding:0 9px;}"]),
-  className: "jsx-554730144"
+    id: "2614859619"
+  }, ["button.jsx-2614859619{padding:0 ".concat(_theme.spacers.dp8, ";}")]),
+  className: "jsx-2614859619"
 };
 
 var _ref =

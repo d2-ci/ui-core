@@ -13,7 +13,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _theme = require("../theme");
+var _theme = require("../theme.js");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -43,8 +43,8 @@ var calculatePaddingTop = function calculatePaddingTop(props) {
   return props.filled ? '14px' : '18.5px';
 };
 
-var styles = ["input.jsx-3935505702{color:".concat(_theme.colors.grey900, ";background-color:transparent;border:0;box-sizing:border-box;font-size:16px;height:100%;line-height:16px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;padding:18px 0 15px 16px;}"), ".dense.jsx-3935505702{padding-top:12px;padding-bottom:12px;font-size:14px;}", ".disabled.jsx-3935505702{color:".concat(_theme.theme.disabled, ";cursor:not-allowed;}"), ".filled.jsx-3935505702{padding:32px 0 8px 16px;}", ".filled.dense.jsx-3935505702{padding:25px 0 5px 16px;}"];
-styles.__hash = "3935505702";
+var styles = ["input.jsx-3753428802{color:".concat(_theme.colors.grey900, ";background-color:transparent;border:0;box-sizing:border-box;font-size:16px;height:100%;line-height:16px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;padding:18px 0 15px 16px;}"), ".dense.jsx-3753428802{padding-top:".concat(_theme.spacers.dp12, ";padding-bottom:").concat(_theme.spacers.dp12, ";font-size:14px;}"), ".disabled.jsx-3753428802{color:".concat(_theme.theme.disabled, ";cursor:not-allowed;}"), ".filled.jsx-3753428802{padding:".concat(_theme.spacers.dp32, " 0 ").concat(_theme.spacers.dp8, " ").concat(_theme.spacers.dp16, ";}"), ".filled.dense.jsx-3753428802{padding:".concat(_theme.spacers.dp24, " 0 ").concat(_theme.spacers.dp4, " ").concat(_theme.spacers.dp16, ";}")];
+styles.__hash = "3753428802";
 
 var Input =
 /*#__PURE__*/

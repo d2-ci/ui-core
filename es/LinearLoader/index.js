@@ -2,7 +2,7 @@ import _JSXStyle from "styled-jsx/style";
 import React from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
-import { theme } from '../theme.js';
+import { theme, spacers } from '../theme.js';
 
 const Progress = ({
   amount
@@ -26,19 +26,19 @@ const LinearLoader = ({
 }) => {
   return React.createElement("div", {
     role: "progressbar",
-    className: "jsx-1195089001 " + _JSXStyle.dynamic([["1108775591", [width, margin]]]) + " " + (className || "")
+    className: "jsx-1195089001 " + _JSXStyle.dynamic([["2979463364", [width, margin]]]) + " " + (className || "")
   }, React.createElement(Progress, {
     amount: amount
   }), React.createElement(_JSXStyle, {
     id: "1195089001"
   }, ["div.jsx-1195089001{display:block;overflow:hidden;overflow-x:hidden;overflow-y:hidden;background-color:rgba(110,122,138,0.2);}"]), React.createElement(_JSXStyle, {
-    id: "1108775591",
+    id: "2979463364",
     dynamic: [width, margin]
-  }, [`.__jsx-style-dynamic-selector{width:${width};margin:${margin};}`]));
+  }, [`div.__jsx-style-dynamic-selector{width:${width};margin:${margin};}`]));
 };
 
 LinearLoader.defaultProps = {
-  margin: '10px',
+  margin: spacers.dp12,
   width: '300px'
 };
 LinearLoader.propTypes = {
