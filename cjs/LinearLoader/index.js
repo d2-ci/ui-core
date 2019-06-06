@@ -37,20 +37,20 @@ var LinearLoader = function LinearLoader(_ref2) {
       className = _ref2.className;
   return _react.default.createElement("div", {
     role: "progressbar",
-    className: "jsx-1195089001 " + _style.default.dynamic([["1108775591", [width, margin]]]) + " " + (className || "")
+    className: "jsx-1195089001 " + _style.default.dynamic([["2979463364", [width, margin]]]) + " " + (className || "")
   }, _react.default.createElement(Progress, {
     amount: amount
   }), _react.default.createElement(_style.default, {
     id: "1195089001"
   }, ["div.jsx-1195089001{display:block;overflow:hidden;overflow-x:hidden;overflow-y:hidden;background-color:rgba(110,122,138,0.2);}"]), _react.default.createElement(_style.default, {
-    id: "1108775591",
+    id: "2979463364",
     dynamic: [width, margin]
-  }, [".__jsx-style-dynamic-selector{width:".concat(width, ";margin:").concat(margin, ";}")]));
+  }, ["div.__jsx-style-dynamic-selector{width:".concat(width, ";margin:").concat(margin, ";}")]));
 };
 
 exports.LinearLoader = LinearLoader;
 LinearLoader.defaultProps = {
-  margin: '10px',
+  margin: _theme.spacers.dp12,
   width: '300px'
 };
 LinearLoader.propTypes = {

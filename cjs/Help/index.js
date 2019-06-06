@@ -24,15 +24,15 @@ var Help = function Help(_ref) {
       warning = _ref.warning,
       className = _ref.className;
   return _react.default.createElement("p", {
-    className: _style.default.dynamic([["3965396203", [_theme.theme.default, _theme.theme.valid, _theme.theme.error, _theme.theme.warning]]]) + " " + ((0, _classnames.default)(className, {
+    className: _style.default.dynamic([["616122286", [_theme.spacers.dp8, _theme.spacers.dp16, _theme.theme.default, _theme.theme.valid, _theme.theme.error, _theme.theme.warning]]]) + " " + ((0, _classnames.default)(className, {
       valid: valid,
       error: error,
       warning: warning
     }) || "")
   }, children, _react.default.createElement(_style.default, {
-    id: "3965396203",
-    dynamic: [_theme.theme.default, _theme.theme.valid, _theme.theme.error, _theme.theme.warning]
-  }, ["p.__jsx-style-dynamic-selector{height:12px;padding-top:8px;padding-left:16px;font-size:12px;margin:0;line-height:12px;cursor:help;color:".concat(_theme.theme.default, ";}"), ".valid.__jsx-style-dynamic-selector{color:".concat(_theme.theme.valid, ";}"), ".error.__jsx-style-dynamic-selector{color:".concat(_theme.theme.error, ";}"), ".warning.__jsx-style-dynamic-selector{color:".concat(_theme.theme.warning, ";}")]));
+    id: "616122286",
+    dynamic: [_theme.spacers.dp8, _theme.spacers.dp16, _theme.theme.default, _theme.theme.valid, _theme.theme.error, _theme.theme.warning]
+  }, ["p.__jsx-style-dynamic-selector{height:12px;padding-top:".concat(_theme.spacers.dp8, ";padding-left:").concat(_theme.spacers.dp16, ";font-size:12px;margin:0;line-height:12px;cursor:help;color:").concat(_theme.theme.default, ";}"), ".valid.__jsx-style-dynamic-selector{color:".concat(_theme.theme.valid, ";}"), ".error.__jsx-style-dynamic-selector{color:".concat(_theme.theme.error, ";}"), ".warning.__jsx-style-dynamic-selector{color:".concat(_theme.theme.warning, ";}")]));
 };
 
 exports.Help = Help;

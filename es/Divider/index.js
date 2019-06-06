@@ -1,7 +1,7 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
 import propTypes from 'prop-types';
-import { colors } from '../theme.js';
+import { colors, spacers } from '../theme.js';
 
 const Divider = ({
   margin,
@@ -17,7 +17,7 @@ const Divider = ({
 }, [`div.__jsx-style-dynamic-selector{margin:${margin};}`]));
 
 Divider.defaultProps = {
-  margin: '8px 0'
+  margin: `${spacers.dp8} 0`
 };
 Divider.propTypes = {
   className: propTypes.string,
