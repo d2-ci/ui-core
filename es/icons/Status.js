@@ -1,7 +1,7 @@
 import _JSXStyle from "styled-jsx/style";
 import propTypes from 'prop-types';
 import React from 'react';
-import { theme, colors, spacers } from '../theme.js';
+import { theme, spacers } from '../theme.js';
 /**
  * @param {Object} props
  * @param {string} props.className
