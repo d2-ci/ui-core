@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.CircularProgress = void 0;
+exports.CircularLoader = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -19,7 +19,7 @@ var _styles = _interopRequireDefault(require("./styles.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var CircularProgress = function CircularProgress(_ref) {
+var CircularLoader = function CircularLoader(_ref) {
   var small = _ref.small,
       large = _ref.large,
       className = _ref.className;
@@ -44,8 +44,8 @@ var CircularProgress = function CircularProgress(_ref) {
   }, _styles.default));
 };
 
-exports.CircularProgress = CircularProgress;
-CircularProgress.propTypes = {
+exports.CircularLoader = CircularLoader;
+CircularLoader.propTypes = {
   className: _propTypes.default.string,
   small: _propTypes.default.bool,
   large: _propTypes.default.bool
