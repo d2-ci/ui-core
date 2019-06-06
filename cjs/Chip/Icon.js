@@ -21,11 +21,11 @@ var Icon = function Icon(_ref) {
   var icon = _ref.icon;
   if (!icon) return null;
   return _react.default.createElement("span", {
-    className: _style.default.dynamic([["3288399969", [_theme.spacers.dp4]]])
+    className: _style.default.dynamic([["2159848327", [_theme.spacers.dp4]]])
   }, icon, _react.default.createElement(_style.default, {
-    id: "3288399969",
+    id: "2159848327",
     dynamic: [_theme.spacers.dp4]
-  }, ["span.__jsx-style-dynamic-selector{width:24px;height:24px;margin-left:".concat(_theme.spacers.dp4, ";margin-right:-6px;border-radius:50%;overflow:hidden;}"), "span.__jsx-style-dynamic-selector>*{height:24px;}"]));
+  }, ["span.__jsx-style-dynamic-selector{width:24px;height:24px;margin-left:".concat(_theme.spacers.dp4, ";margin-right:-6px;border-radius:50%;overflow:hidden;}"), "span.__jsx-style-dynamic-selector>*{max-height:24px;max-width:24px;}"]));
 };
 
 exports.Icon = Icon;
