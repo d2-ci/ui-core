@@ -2,126 +2,64 @@ import _JSXStyle from "styled-jsx/style";
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-import React, { PureComponent, isValidElement } from 'react';
+import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
-import { arrayWithLength } from '../prop-validators';
-import { Close } from '../icons/Close';
-import { Valid, Warning, Error, Info } from '../icons/Status';
-import styles from './styles';
-
-var _ref =
-/*#__PURE__*/
-React.createElement(Valid, null);
-
-var _ref2 =
-/*#__PURE__*/
-React.createElement(Warning, null);
-
-var _ref3 =
-/*#__PURE__*/
-React.createElement(Error, null);
-
-var _ref4 =
-/*#__PURE__*/
-React.createElement(Info, null);
-
-const defaultIcons = {
-  success: () => _ref,
-  warning: () => _ref2,
-  critical: () => _ref3,
-  info: () => _ref4
-};
-
-const Icon = ({
-  icon,
-  variant
-}) => {
-  if (icon === false) {
-    return null;
-  }
-
-  return React.createElement("div", {
-    className: variant
-  }, isValidElement(icon) ? icon : defaultIcons[variant]());
-};
-
-const Message = ({
-  children
-}) => React.createElement("div", null, children);
-
-const Actions = ({
-  actions
-}) => {
-  if (!actions) {
-    return null;
-  }
-
-  return React.createElement("div", null, actions.map(action => React.createElement(Action, _extends({
-    key: action.label
-  }, action))));
-};
-
-const Action = ({
-  label,
-  onClick
-}) => React.createElement("span", {
-  onClick: onClick
-}, label);
-
-var _ref5 =
-/*#__PURE__*/
-React.createElement(Close, null);
-
-const Dismiss = ({
-  variant,
-  onClick
-}) => React.createElement("div", {
-  className: variant,
-  onClick: onClick
-}, _ref5);
+import styles, { ANIMATION_TIME } from './styles';
+import { Actions, actionsPropType } from './Actions';
+import { Dismiss } from './Dismiss';
+import { Icon, iconPropType } from './Icon';
+import { Message } from './Message';
 
 class AlertBar extends PureComponent {
   constructor(...args) {
     super(...args);
 
-    _defineProperty(this, "startHideTimeout", () => {
-      this.timeout = setTimeout(() => {
+    _defineProperty(this, "state", {
+      visible: false
+    });
+
+    _defineProperty(this, "startDisplayTimeout", () => {
+      this.displayTimeout = setTimeout(() => {
         this.hide();
       }, this.timeRemaining);
     });
 
-    _defineProperty(this, "stopHideTimeOut", () => {
+    _defineProperty(this, "stopDisplayTimeOut", () => {
       this.timeRemaining = this.timeRemaining - (Date.now() - this.startTime);
-      clearTimeout(this.timeout);
+      clearTimeout(this.displayTimeout);
     });
 
     _defineProperty(this, "hide", () => {
-      console.log('hiding');
-      clearTimeout(this.timeout);
+      clearTimeout(this.displayTimeout);
+      this.setState({
+        visible: false
+      });
+
+      if (this.props.onHidden) {
+        this.onHiddenTimeout = setTimeout(this.props.onHidden, ANIMATION_TIME);
+      }
     });
   }
 
   componentDidMount() {
     this.startTime = Date.now();
     this.timeRemaining = this.props.duration;
-    this.startHideTimeout();
+    this.startDisplayTimeout();
+    this.show();
   }
 
   componentWillUnmount() {
-    clearTimeout(this.timeout);
+    clearTimeout(this.displayTimeout);
+    clearTimeout(this.onHiddenTimeout);
   }
 
-  variant(status) {
-    for (const key in status) {
-      if (status[key]) {
-        return key;
-      }
-    }
-
-    return 'info';
+  show() {
+    setTimeout(() => {
+      this.setState({
+        visible: true
+      });
+    }, 0);
   }
 
   render() {
@@ -134,19 +72,27 @@ class AlertBar extends PureComponent {
       icon,
       actions
     } = this.props;
-    const variant = this.variant({
+    const {
+      visible
+    } = this.state;
+    const info = !critical && !success && !warning;
+    const iconProps = {
+      icon,
+      critical,
       success,
-      warning,
-      critical
-    });
+      warning
+    };
     return React.createElement("div", {
-      onMouseEnter: this.stopHideTimeOut,
-      onMouseLeave: this.startHideTimeout,
-      className: `jsx-${styles.__hash}` + " " + (cx(className, variant) || "")
-    }, React.createElement(Icon, {
-      icon: icon,
-      variant: variant
-    }), React.createElement(Message, null, children), React.createElement(Actions, {
+      onMouseEnter: this.stopDisplayTimeOut,
+      onMouseLeave: this.startDisplayTimeout,
+      className: `jsx-${styles.__hash}` + " " + (cx(className, {
+        info,
+        success,
+        warning,
+        critical,
+        visible
+      }) || "")
+    }, React.createElement(Icon, iconProps), React.createElement(Message, null, children), React.createElement(Actions, {
       actions: actions
     }), React.createElement(Dismiss, {
       onClick: this.hide
@@ -158,20 +104,18 @@ class AlertBar extends PureComponent {
 }
 
 AlertBar.propTypes = {
+  className: propTypes.string,
   children: propTypes.string.isRequired,
   success: propTypes.bool,
   warning: propTypes.bool,
   critical: propTypes.bool,
-  icon: propTypes.oneOfType([propTypes.bool, propTypes.element]),
+  icon: iconPropType,
   duration: propTypes.number,
-  actions: arrayWithLength(0, 2, propTypes.shape({
-    label: propTypes.string.isRequired,
-    onClick: propTypes.func.isRequired
-  })),
+  actions: actionsPropType,
   onHidden: propTypes.func
 };
 AlertBar.defaultProps = {
   icon: true,
-  duration: 15000
+  duration: 8000
 };
 export { AlertBar };

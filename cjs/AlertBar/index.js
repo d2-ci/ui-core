@@ -13,13 +13,15 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _propValidators = require("../prop-validators");
+var _styles = _interopRequireWildcard(require("./styles"));
 
-var _Close = require("../icons/Close");
+var _Actions = require("./Actions");
 
-var _Status = require("../icons/Status");
+var _Dismiss = require("./Dismiss");
 
-var _styles = _interopRequireDefault(require("./styles"));
+var _Icon = require("./Icon");
+
+var _Message = require("./Message");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -45,92 +47,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-var _ref =
-/*#__PURE__*/
-_react.default.createElement(_Status.Valid, null);
-
-var _ref2 =
-/*#__PURE__*/
-_react.default.createElement(_Status.Warning, null);
-
-var _ref3 =
-/*#__PURE__*/
-_react.default.createElement(_Status.Error, null);
-
-var _ref4 =
-/*#__PURE__*/
-_react.default.createElement(_Status.Info, null);
-
-var defaultIcons = {
-  success: function success() {
-    return _ref;
-  },
-  warning: function warning() {
-    return _ref2;
-  },
-  critical: function critical() {
-    return _ref3;
-  },
-  info: function info() {
-    return _ref4;
-  }
-};
-
-var Icon = function Icon(_ref5) {
-  var icon = _ref5.icon,
-      variant = _ref5.variant;
-
-  if (icon === false) {
-    return null;
-  }
-
-  return _react.default.createElement("div", {
-    className: variant
-  }, (0, _react.isValidElement)(icon) ? icon : defaultIcons[variant]());
-};
-
-var Message = function Message(_ref6) {
-  var children = _ref6.children;
-  return _react.default.createElement("div", null, children);
-};
-
-var Actions = function Actions(_ref7) {
-  var actions = _ref7.actions;
-
-  if (!actions) {
-    return null;
-  }
-
-  return _react.default.createElement("div", null, actions.map(function (action) {
-    return _react.default.createElement(Action, _extends({
-      key: action.label
-    }, action));
-  }));
-};
-
-var Action = function Action(_ref8) {
-  var label = _ref8.label,
-      onClick = _ref8.onClick;
-  return _react.default.createElement("span", {
-    onClick: onClick
-  }, label);
-};
-
-var _ref10 =
-/*#__PURE__*/
-_react.default.createElement(_Close.Close, null);
-
-var Dismiss = function Dismiss(_ref9) {
-  var variant = _ref9.variant,
-      onClick = _ref9.onClick;
-  return _react.default.createElement("div", {
-    className: variant,
-    onClick: onClick
-  }, _ref10);
-};
-
 var AlertBar =
 /*#__PURE__*/
 function (_PureComponent) {
@@ -149,20 +65,31 @@ function (_PureComponent) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AlertBar)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_this), "startHideTimeout", function () {
-      _this.timeout = setTimeout(function () {
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      visible: false
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "startDisplayTimeout", function () {
+      _this.displayTimeout = setTimeout(function () {
         _this.hide();
       }, _this.timeRemaining);
     });
 
-    _defineProperty(_assertThisInitialized(_this), "stopHideTimeOut", function () {
+    _defineProperty(_assertThisInitialized(_this), "stopDisplayTimeOut", function () {
       _this.timeRemaining = _this.timeRemaining - (Date.now() - _this.startTime);
-      clearTimeout(_this.timeout);
+      clearTimeout(_this.displayTimeout);
     });
 
     _defineProperty(_assertThisInitialized(_this), "hide", function () {
-      console.log('hiding');
-      clearTimeout(_this.timeout);
+      clearTimeout(_this.displayTimeout);
+
+      _this.setState({
+        visible: false
+      });
+
+      if (_this.props.onHidden) {
+        _this.onHiddenTimeout = setTimeout(_this.props.onHidden, _styles.ANIMATION_TIME);
+      }
     });
 
     return _this;
@@ -173,23 +100,25 @@ function (_PureComponent) {
     value: function componentDidMount() {
       this.startTime = Date.now();
       this.timeRemaining = this.props.duration;
-      this.startHideTimeout();
+      this.startDisplayTimeout();
+      this.show();
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      clearTimeout(this.timeout);
+      clearTimeout(this.displayTimeout);
+      clearTimeout(this.onHiddenTimeout);
     }
   }, {
-    key: "variant",
-    value: function variant(status) {
-      for (var key in status) {
-        if (status[key]) {
-          return key;
-        }
-      }
+    key: "show",
+    value: function show() {
+      var _this2 = this;
 
-      return 'info';
+      setTimeout(function () {
+        _this2.setState({
+          visible: true
+        });
+      }, 0);
     }
   }, {
     key: "render",
@@ -202,21 +131,27 @@ function (_PureComponent) {
           critical = _this$props.critical,
           icon = _this$props.icon,
           actions = _this$props.actions;
-      var variant = this.variant({
-        success: success,
-        warning: warning,
-        critical: critical
-      });
-      return _react.default.createElement("div", {
-        onMouseEnter: this.stopHideTimeOut,
-        onMouseLeave: this.startHideTimeout,
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, variant) || "")
-      }, _react.default.createElement(Icon, {
+      var visible = this.state.visible;
+      var info = !critical && !success && !warning;
+      var iconProps = {
         icon: icon,
-        variant: variant
-      }), _react.default.createElement(Message, null, children), _react.default.createElement(Actions, {
+        critical: critical,
+        success: success,
+        warning: warning
+      };
+      return _react.default.createElement("div", {
+        onMouseEnter: this.stopDisplayTimeOut,
+        onMouseLeave: this.startDisplayTimeout,
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, {
+          info: info,
+          success: success,
+          warning: warning,
+          critical: critical,
+          visible: visible
+        }) || "")
+      }, _react.default.createElement(_Icon.Icon, iconProps), _react.default.createElement(_Message.Message, null, children), _react.default.createElement(_Actions.Actions, {
         actions: actions
-      }), _react.default.createElement(Dismiss, {
+      }), _react.default.createElement(_Dismiss.Dismiss, {
         onClick: this.hide
       }), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
@@ -229,19 +164,17 @@ function (_PureComponent) {
 
 exports.AlertBar = AlertBar;
 AlertBar.propTypes = {
+  className: _propTypes.default.string,
   children: _propTypes.default.string.isRequired,
   success: _propTypes.default.bool,
   warning: _propTypes.default.bool,
   critical: _propTypes.default.bool,
-  icon: _propTypes.default.oneOfType([_propTypes.default.bool, _propTypes.default.element]),
+  icon: _Icon.iconPropType,
   duration: _propTypes.default.number,
-  actions: (0, _propValidators.arrayWithLength)(0, 2, _propTypes.default.shape({
-    label: _propTypes.default.string.isRequired,
-    onClick: _propTypes.default.func.isRequired
-  })),
+  actions: _Actions.actionsPropType,
   onHidden: _propTypes.default.func
 };
 AlertBar.defaultProps = {
   icon: true,
-  duration: 15000
+  duration: 8000
 };

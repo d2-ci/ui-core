@@ -18,10 +18,6 @@ export function Valid({
     viewBox: "0 0 48 48",
     className: _JSXStyle.dynamic([["3622499308", [theme.valid, spacers.dp4]]]) + " " + (className || "")
   }, React.createElement("path", {
-    d: "M0 0h48v48H0z",
-    fill: "none",
-    className: _JSXStyle.dynamic([["3622499308", [theme.valid, spacers.dp4]]])
-  }), React.createElement("path", {
     d: "M24 4C12.95 4 4 12.95 4 24c0 11.04 8.95 20 20 20 11.04 0 20-8.96 20-20 0-11.05-8.96-20-20-20zm-4 30L10 24l2.83-2.83L20 28.34l15.17-15.17L38 16 20 34z",
     className: _JSXStyle.dynamic([["3622499308", [theme.valid, spacers.dp4]]])
   }), React.createElement(_JSXStyle, {
@@ -48,10 +44,6 @@ export function Warning({
     viewBox: "0 0 48 48",
     className: _JSXStyle.dynamic([["3829333422", [theme.warning, spacers.dp4]]]) + " " + (className || "")
   }, React.createElement("path", {
-    d: "M0 0h48v48H0z",
-    fill: "none",
-    className: _JSXStyle.dynamic([["3829333422", [theme.warning, spacers.dp4]]])
-  }), React.createElement("path", {
     d: "M2 42h44L24 4 2 42zm24-6h-4v-4h4v4zm0-8h-4v-8h4v8z",
     className: _JSXStyle.dynamic([["3829333422", [theme.warning, spacers.dp4]]])
   }), React.createElement(_JSXStyle, {
@@ -78,10 +70,6 @@ export function Error({
     viewBox: "0 0 48 48",
     className: _JSXStyle.dynamic([["2400738350", [theme.error, spacers.dp4]]]) + " " + (className || "")
   }, React.createElement("path", {
-    d: "M0 0h48v48H0z",
-    fill: "none",
-    className: _JSXStyle.dynamic([["2400738350", [theme.error, spacers.dp4]]])
-  }), React.createElement("path", {
     d: "M24 4C12.96 4 4 12.95 4 24s8.96 20 20 20 20-8.95 20-20S35.04 4 24 4zm2 30h-4v-4h4v4zm0-8h-4V14h4v12z",
     className: _JSXStyle.dynamic([["2400738350", [theme.error, spacers.dp4]]])
   }), React.createElement(_JSXStyle, {
@@ -105,10 +93,6 @@ export function Info({
     viewBox: "0 0 48 48",
     className: _JSXStyle.dynamic([["2422113446", [theme.info]]]) + " " + (className || "")
   }, React.createElement("path", {
-    d: "M0 0h48v48H0z",
-    fill: "none",
-    className: _JSXStyle.dynamic([["2422113446", [theme.info]]])
-  }), React.createElement("path", {
     d: "M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm2 30h-4V22h4v12zm0-16h-4v-4h4v4z",
     className: _JSXStyle.dynamic([["2422113446", [theme.info]]])
   }), React.createElement(_JSXStyle, {
