@@ -2,7 +2,6 @@ import _JSXStyle from "styled-jsx/style";
 import React from 'react';
 import propTypes from 'prop-types';
 import { doesElementFitInsideContainer, getElementInnerDimension, getElementOffset } from '../helpers/isElementInsideContainer';
-import { FALLBACKS } from './fallbacks';
 export const arePositionsEqual = (left, right) => left.right === right.right && left.left === right.left && left.top === right.top && left.bottom === right.bottom;
 export const Content = React.forwardRef(({
   children,

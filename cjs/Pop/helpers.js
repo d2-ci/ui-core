@@ -13,8 +13,6 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _isElementInsideContainer = require("../helpers/isElementInsideContainer");
 
-var _fallbacks = require("./fallbacks");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var arePositionsEqual = function arePositionsEqual(left, right) {
