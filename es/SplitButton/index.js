@@ -5,16 +5,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import _JSXStyle from "styled-jsx/style";
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
+import cx from 'classnames';
 import { ArrowUp, ArrowDown } from '../icons/Arrow.js';
 import { DropMenu } from '../DropMenu';
 import { Button } from '../Button';
 import { ButtonStrip } from '../ButtonStrip';
-import cx from 'classnames';
+import { spacers } from '../theme.js';
 const rightButton = {
   styles: React.createElement(_JSXStyle, {
-    id: "554730144"
-  }, ["button.jsx-554730144{padding:0 9px;}"]),
-  className: "jsx-554730144"
+    id: "2614859619"
+  }, [`button.jsx-2614859619{padding:0 ${spacers.dp8};}`]),
+  className: "jsx-2614859619"
 };
 
 var _ref =

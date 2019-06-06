@@ -4,12 +4,12 @@ import _JSXStyle from "styled-jsx/style";
 import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
 import { Cancel } from '../icons/Cancel';
-import { colors } from '../theme';
+import { colors, spacers } from '../theme.js';
 const removeIcon = {
   styles: React.createElement(_JSXStyle, {
-    id: "1693149603"
-  }, [`svg.jsx-1693149603{margin-right:4px;color:${colors.grey700};height:18px;width:18px;cursor:pointer;opacity:1;pointer-events:all;}`, "svg.jsx-1693149603:hover{opacity:0.82;}"]),
-  className: "jsx-1693149603"
+    id: "1204490597"
+  }, [`svg.jsx-1204490597{margin-right:${spacers.dp4};color:${colors.grey700};height:18px;width:18px;cursor:pointer;opacity:1;pointer-events:all;}`, "svg.jsx-1204490597:hover{opacity:0.82;}"]),
+  className: "jsx-1204490597"
 };
 export class Remove extends PureComponent {
   constructor(...args) {

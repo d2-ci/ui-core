@@ -15,7 +15,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _Cancel = require("../icons/Cancel");
 
-var _theme = require("../theme");
+var _theme = require("../theme.js");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -41,9 +41,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var removeIcon = {
   styles: _react.default.createElement(_style.default, {
-    id: "1693149603"
-  }, ["svg.jsx-1693149603{margin-right:4px;color:".concat(_theme.colors.grey700, ";height:18px;width:18px;cursor:pointer;opacity:1;pointer-events:all;}"), "svg.jsx-1693149603:hover{opacity:0.82;}"]),
-  className: "jsx-1693149603"
+    id: "1204490597"
+  }, ["svg.jsx-1204490597{margin-right:".concat(_theme.spacers.dp4, ";color:").concat(_theme.colors.grey700, ";height:18px;width:18px;cursor:pointer;opacity:1;pointer-events:all;}"), "svg.jsx-1204490597:hover{opacity:0.82;}"]),
+  className: "jsx-1204490597"
 };
 
 var Remove =

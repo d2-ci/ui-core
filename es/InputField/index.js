@@ -6,7 +6,7 @@ import propTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import { Input } from './Input.js';
 import { LabelFilled, LabelOutlined } from '../FieldLabel';
-import { theme } from '../theme';
+import { theme } from '../theme.js';
 
 class InputField extends React.Component {
   constructor(...args) {

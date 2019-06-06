@@ -31,7 +31,7 @@ var Divider = function Divider(_ref) {
 
 exports.Divider = Divider;
 Divider.defaultProps = {
-  margin: '8px 0'
+  margin: "".concat(_theme.spacers.dp8, " 0")
 };
 Divider.propTypes = {
   className: _propTypes.default.string,

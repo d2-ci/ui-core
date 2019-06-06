@@ -13,18 +13,19 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
+var _theme = require("../theme.js");
+
 var _Card = require("../Card");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var OUTER_SPACING = 24;
 var cardBoxStyle = {
   styles: _react.default.createElement(_style.default, {
-    id: "1375009442"
-  }, [".modal-card.jsx-1375009442{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:auto;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;left:50%;max-width:calc(100vw - ".concat(2 * OUTER_SPACING, "px);max-height:calc(100vh - ").concat(2 * OUTER_SPACING, "px);position:absolute;top:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);width:600px;}"), ".small.jsx-1375009442{width:400px;}", ".large.jsx-1375009442{width:800px;}"]),
-  className: "jsx-1375009442"
+    id: "3900320195"
+  }, [".modal-card.jsx-3900320195{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:auto;max-height:95vh;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;left:50%;max-width:calc(100vw - ".concat(2 * _theme.spacers.dp24, "px);max-height:calc(100vh - ").concat(2 * _theme.spacers.dp24, "px);position:absolute;top:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);width:600px;}"), ".small.jsx-3900320195{width:400px;}", ".large.jsx-3900320195{width:800px;}"]),
+  className: "jsx-3900320195"
 };
 
 var ModalCard = function ModalCard(_ref) {
