@@ -5,7 +5,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import propTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import cx from 'classnames';
-import { colors, theme, spacers } from '../theme';
+import { colors, theme, spacers } from '../theme.js';
 
 const calculatePaddingTop = props => props.filled ? '14px' : '18.5px';
 

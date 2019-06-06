@@ -5,7 +5,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import propTypes from 'prop-types';
 import React, { Component, Fragment, createRef } from 'react';
 import cx from 'classnames';
-import { colors, theme, spacers } from '../theme';
+import { colors, theme, spacers } from '../theme.js';
 const styles = [`select.jsx-2367090762{background:none;border:0;color:${colors.grey900};font-size:16px;height:100%;left:0;outline:0;padding:0 12px 0 15px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}`, `.disabled.jsx-2367090762{color:${theme.disabled};cursor:not-allowed;}`, ".dense.jsx-2367090762{font-size:14px;}", `.filled.jsx-2367090762{padding-top:${spacers.dp24};padding-left:${spacers.dp16};}`, `.filled.dense.jsx-2367090762{padding-top:${spacers.dp24};}`, "option.jsx-2367090762:not(:checked){color:black;}", "select.jsx-2367090762:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}"];
 styles.__hash = "2367090762";
 export class Select extends Component {

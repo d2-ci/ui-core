@@ -5,7 +5,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
-import { colors, theme, spacers } from '../theme';
+import { colors, theme, spacers } from '../theme.js';
 import { Content } from './Content';
 import { Icon } from './Icon';
 import { Remove } from './Remove';

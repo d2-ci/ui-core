@@ -5,7 +5,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import React, { Component, Fragment } from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
-import { colors, theme } from '../theme';
+import { colors, theme } from '../theme.js';
 import { Indeterminate, Checked, Unchecked } from '../icons/Checkbox';
 import { Icon } from './Icon';
 import { Label } from './Label';

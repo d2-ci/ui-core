@@ -3,7 +3,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
 import { ArrowDown } from '../icons/Arrow';
-import { colors, spacers } from '../theme';
+import { colors, spacers } from '../theme.js';
 
 const Label = ({
   icon,
