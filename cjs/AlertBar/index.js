@@ -73,14 +73,20 @@ function (_PureComponent) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "startDisplayTimeout", function () {
-      _this.displayTimeout = setTimeout(function () {
-        _this.hide();
-      }, _this.timeRemaining);
+      if (_this.shouldAutoHide()) {
+        _this.displayTimeout = setTimeout(function () {
+          _this.hide();
+        }, _this.timeRemaining);
+      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "stopDisplayTimeOut", function () {
-      _this.timeRemaining = _this.timeRemaining - (Date.now() - _this.startTime);
-      clearTimeout(_this.displayTimeout);
+      if (_this.shouldAutoHide()) {
+        var elapsedTime = Date.now() - _this.startTime;
+
+        _this.timeRemaining = _this.timeRemaining - elapsedTime;
+        clearTimeout(_this.displayTimeout);
+      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "hide", function () {
@@ -128,16 +134,25 @@ function (_PureComponent) {
       });
     }
   }, {
+    key: "shouldAutoHide",
+    value: function shouldAutoHide() {
+      var _this$props = this.props,
+          permanent = _this$props.permanent,
+          warning = _this$props.warning,
+          critical = _this$props.critical;
+      return !(permanent || warning || critical);
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          className = _this$props.className,
-          children = _this$props.children,
-          success = _this$props.success,
-          warning = _this$props.warning,
-          critical = _this$props.critical,
-          icon = _this$props.icon,
-          actions = _this$props.actions;
+      var _this$props2 = this.props,
+          className = _this$props2.className,
+          children = _this$props2.children,
+          success = _this$props2.success,
+          warning = _this$props2.warning,
+          critical = _this$props2.critical,
+          icon = _this$props2.icon,
+          actions = _this$props2.actions;
       var _this$state = this.state,
           visible = _this$state.visible,
           hidden = _this$state.hidden;
@@ -186,6 +201,7 @@ AlertBar.propTypes = {
   critical: variantPropType,
   icon: _Icon.iconPropType,
   duration: _propTypes.default.number,
+  permanent: _propTypes.default.bool,
   actions: _Actions.actionsPropType,
   onHidden: _propTypes.default.func
 };
