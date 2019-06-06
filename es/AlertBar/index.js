@@ -16,7 +16,8 @@ class AlertBar extends PureComponent {
     super(...args);
 
     _defineProperty(this, "state", {
-      visible: false
+      visible: false,
+      hidden: false
     });
 
     _defineProperty(this, "startDisplayTimeout", () => {
@@ -35,10 +36,12 @@ class AlertBar extends PureComponent {
       this.setState({
         visible: false
       });
-
-      if (this.props.onHidden) {
-        this.onHiddenTimeout = setTimeout(this.props.onHidden, ANIMATION_TIME);
-      }
+      this.onHiddenTimeout = setTimeout(() => {
+        this.setState({
+          hidden: true
+        });
+        this.props.onHidden && this.props.onHidden();
+      }, ANIMATION_TIME);
     });
   }
 
@@ -55,11 +58,11 @@ class AlertBar extends PureComponent {
   }
 
   show() {
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       this.setState({
         visible: true
       });
-    }, 0);
+    });
   }
 
   render() {
@@ -73,8 +76,14 @@ class AlertBar extends PureComponent {
       actions
     } = this.props;
     const {
-      visible
+      visible,
+      hidden
     } = this.state;
+
+    if (hidden) {
+      return null;
+    }
+
     const info = !critical && !success && !warning;
     const iconProps = {
       icon,

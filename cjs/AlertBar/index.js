@@ -66,7 +66,8 @@ function (_PureComponent) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AlertBar)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      visible: false
+      visible: false,
+      hidden: false
     });
 
     _defineProperty(_assertThisInitialized(_this), "startDisplayTimeout", function () {
@@ -87,9 +88,13 @@ function (_PureComponent) {
         visible: false
       });
 
-      if (_this.props.onHidden) {
-        _this.onHiddenTimeout = setTimeout(_this.props.onHidden, _styles.ANIMATION_TIME);
-      }
+      _this.onHiddenTimeout = setTimeout(function () {
+        _this.setState({
+          hidden: true
+        });
+
+        _this.props.onHidden && _this.props.onHidden();
+      }, _styles.ANIMATION_TIME);
     });
 
     return _this;
@@ -114,11 +119,11 @@ function (_PureComponent) {
     value: function show() {
       var _this2 = this;
 
-      setTimeout(function () {
+      requestAnimationFrame(function () {
         _this2.setState({
           visible: true
         });
-      }, 0);
+      });
     }
   }, {
     key: "render",
@@ -131,7 +136,14 @@ function (_PureComponent) {
           critical = _this$props.critical,
           icon = _this$props.icon,
           actions = _this$props.actions;
-      var visible = this.state.visible;
+      var _this$state = this.state,
+          visible = _this$state.visible,
+          hidden = _this$state.hidden;
+
+      if (hidden) {
+        return null;
+      }
+
       var info = !critical && !success && !warning;
       var iconProps = {
         icon: icon,
