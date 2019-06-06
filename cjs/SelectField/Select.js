@@ -13,7 +13,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _theme = require("../theme");
+var _theme = require("../theme.js");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -39,8 +39,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var styles = ["select.jsx-4198221289{background:none;border:0;color:".concat(_theme.colors.grey900, ";font-size:16px;height:100%;left:0;outline:0;padding:0 12px 0 15px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}"), ".disabled.jsx-4198221289{color:".concat(_theme.theme.disabled, ";cursor:not-allowed;}"), ".dense.jsx-4198221289{font-size:14px;}", ".filled.jsx-4198221289{padding-top:24px;padding-left:16px;}", ".filled.dense.jsx-4198221289{padding-top:20px;}", "option.jsx-4198221289:not(:checked){color:black;}", "select.jsx-4198221289:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}"];
-styles.__hash = "4198221289";
+var styles = ["select.jsx-2367090762{background:none;border:0;color:".concat(_theme.colors.grey900, ";font-size:16px;height:100%;left:0;outline:0;padding:0 12px 0 15px;position:absolute;top:0;width:100%;-webkit-appearance:none;-moz-appearance:none;}"), ".disabled.jsx-2367090762{color:".concat(_theme.theme.disabled, ";cursor:not-allowed;}"), ".dense.jsx-2367090762{font-size:14px;}", ".filled.jsx-2367090762{padding-top:".concat(_theme.spacers.dp24, ";padding-left:").concat(_theme.spacers.dp16, ";}"), ".filled.dense.jsx-2367090762{padding-top:".concat(_theme.spacers.dp24, ";}"), "option.jsx-2367090762:not(:checked){color:black;}", "select.jsx-2367090762:-moz-focusring{color:transparent;text-shadow:0 0 0 #000;}"];
+styles.__hash = "2367090762";
 
 var Select =
 /*#__PURE__*/
