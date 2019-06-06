@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.Valid = Valid;
 exports.Warning = Warning;
 exports.Error = Error;
+exports.Info = Info;
 exports.Loading = Loading;
 exports.StatusIconNoDefault = void 0;
 
@@ -106,6 +107,33 @@ function Error(_ref3) {
     dynamic: [_theme.theme.error]
   }, ["svg.__jsx-style-dynamic-selector{fill:".concat(_theme.theme.error, ";width:24px;height:24px;margin-right:4px;}")]));
 }
+/**
+ * @param {Object} props
+ * @param {string} props.className
+ * @returns {ReactNode}
+ */
+
+
+function Info(_ref4) {
+  var className = _ref4.className;
+  return _react.default.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "48",
+    height: "48",
+    viewBox: "0 0 48 48",
+    className: _style.default.dynamic([["2422113446", [_theme.theme.info]]]) + " " + (className || "")
+  }, _react.default.createElement("path", {
+    d: "M0 0h48v48H0z",
+    fill: "none",
+    className: _style.default.dynamic([["2422113446", [_theme.theme.info]]])
+  }), _react.default.createElement("path", {
+    d: "M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm2 30h-4V22h4v12zm0-16h-4v-4h4v4z",
+    className: _style.default.dynamic([["2422113446", [_theme.theme.info]]])
+  }), _react.default.createElement(_style.default, {
+    id: "2422113446",
+    dynamic: [_theme.theme.info]
+  }, ["svg.__jsx-style-dynamic-selector{fill:".concat(_theme.theme.info, ";width:24px;height:24px;margin-right:4px;}")]));
+}
 
 Error.propTypes = {
   className: _propTypes.default.string
@@ -117,8 +145,8 @@ Error.propTypes = {
 
 };
 
-function Loading(_ref4) {
-  var className = _ref4.className;
+function Loading(_ref5) {
+  var className = _ref5.className;
   return _react.default.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     width: "48",
@@ -149,12 +177,12 @@ Loading.propTypes = {
 
 };
 
-var StatusIconNoDefault = function StatusIconNoDefault(_ref5) {
-  var error = _ref5.error,
-      warning = _ref5.warning,
-      valid = _ref5.valid,
-      loading = _ref5.loading,
-      className = _ref5.className;
+var StatusIconNoDefault = function StatusIconNoDefault(_ref6) {
+  var error = _ref6.error,
+      warning = _ref6.warning,
+      valid = _ref6.valid,
+      loading = _ref6.loading,
+      className = _ref6.className;
   return valid ? _react.default.createElement(Valid, {
     className: className
   }) : warning ? _react.default.createElement(Warning, {
