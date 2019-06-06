@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.reactRef = exports.mutuallyExclusive = void 0;
+exports.mutuallyExclusive = void 0;
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
@@ -11,10 +11,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var mutuallyExclusive = function mutuallyExclusive(exlusivePropNames, propType) {
+var mutuallyExclusiveFactory = function mutuallyExclusiveFactory(exlusivePropNames, propType, isRequired) {
   return function (props, propName, componentName) {
     if (exlusivePropNames.length === 0) {
       return new Error("mutuallyExclusive was called without any arguments for property '".concat(propName, "'."));
+    }
+
+    if (isRequired && typeof props[propName] === 'undefined') {
+      return new Error("".concat(propName, " is required."));
     } // This is how to programatically invoke a propTypes check
     // https://github.com/facebook/prop-types#proptypescheckproptypes
 
@@ -35,10 +39,10 @@ var mutuallyExclusive = function mutuallyExclusive(exlusivePropNames, propType) 
   };
 };
 
+var mutuallyExclusive = function mutuallyExclusive(exlusivePropNames, propType) {
+  var fn = mutuallyExclusiveFactory(exlusivePropNames, propType, false);
+  fn.isRequired = mutuallyExclusiveFactory(exlusivePropNames, propType, true);
+  return fn;
+};
+
 exports.mutuallyExclusive = mutuallyExclusive;
-
-var reactRef = _propTypes.default.shape({
-  current: _propTypes.default.element
-});
-
-exports.reactRef = reactRef;

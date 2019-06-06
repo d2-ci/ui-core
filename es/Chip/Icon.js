@@ -6,11 +6,12 @@ export const Icon = ({
 }) => {
   if (!icon) return null;
   return React.createElement("span", {
-    className: "jsx-3691124138"
+    className: "jsx-1519260970"
   }, icon, React.createElement(_JSXStyle, {
-    id: "3691124138"
-  }, ["span.jsx-3691124138{width:24px;height:24px;margin-left:4px;border-radius:50%;overflow:hidden;}"]));
+    id: "1519260970"
+  }, ["span.jsx-1519260970{width:24px;height:24px;margin-left:4px;margin-right:-6px;border-radius:50%;overflow:hidden;}"]));
 };
 Icon.propTypes = {
+  /** the slot for an icon is 24x24px, bigger elements will be clipped */
   icon: propTypes.element
 };

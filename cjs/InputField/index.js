@@ -33,11 +33,11 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -59,11 +59,11 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(InputField)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+    _defineProperty(_assertThisInitialized(_this), "state", {
       focus: _this.props.initialFocus
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "onFocus", function (e) {
       _this.setState({
         focus: true
       });
@@ -71,7 +71,7 @@ function (_React$Component) {
       _this.props.onFocus(e);
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "onBlur", function (e) {
       _this.setState({
         focus: false
       });
@@ -101,9 +101,6 @@ function (_React$Component) {
           warning = _this$props.warning,
           loading = _this$props.loading,
           value = _this$props.value,
-          autocomplete = _this$props.autocomplete,
-          autofocus = _this$props.autofocus,
-          readonly = _this$props.readonly,
           tabIndex = _this$props.tabIndex;
       var focus = this.state.focus;
       var Container = filled ? _FieldLabel.LabelFilled : _FieldLabel.LabelOutlined;
@@ -136,10 +133,7 @@ function (_React$Component) {
         error: error,
         loading: loading,
         dense: dense,
-        autocomplete: autocomplete,
-        autofocus: autofocus,
-        tabIndex: tabIndex,
-        readonly: readonly
+        tabIndex: tabIndex
       }), _react.default.createElement(_style.default, {
         id: "349714766",
         dynamic: [_theme.theme.disabled]
@@ -163,7 +157,6 @@ InputField.propTypes = {
   className: _propTypes.default.string,
   placeholder: _propTypes.default.string,
   value: _propTypes.default.string,
-  autocomplete: _propTypes.default.string,
   tabIndex: _propTypes.default.string,
   required: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
@@ -173,8 +166,6 @@ InputField.propTypes = {
   warning: _propTypes.default.bool,
   error: _propTypes.default.bool,
   loading: _propTypes.default.bool,
-  autofocus: _propTypes.default.bool,
-  readonly: _propTypes.default.bool,
   initialFocus: _propTypes.default.bool,
   onBlur: _propTypes.default.func,
   onFocus: _propTypes.default.func,

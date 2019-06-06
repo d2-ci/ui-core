@@ -48,5 +48,6 @@ Icon.propTypes = {
   valid: propTypes.bool,
   error: propTypes.bool,
   warning: propTypes.bool,
-  indeterminate: propTypes.bool
+  indeterminate: propTypes.bool,
+  focus: propTypes.bool
 };

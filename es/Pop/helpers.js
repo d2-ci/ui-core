@@ -53,7 +53,8 @@ const getRelativePosition = (anchor, pop, side) => {
   if (side === 'left') {
     left = anchorOffset.left - popWidth;
     top = anchorOffset.top + anchorHeight / 2 - popHeight / 2;
-    adjustmentVertical = top + popHeight > bodyHeight ? top + popHeight - bodyHeight : top < 0 ? 0 : top;
+    adjustmentVertical = top + popHeight > bodyHeight ? // The "+ 1" is due to a chrome calculation error
+    top + popHeight - bodyHeight + 1 : top < 0 ? top : 0;
     return {
       left: left < 0 ? 0 : left,
       top: top - adjustmentVertical
@@ -63,8 +64,10 @@ const getRelativePosition = (anchor, pop, side) => {
   if (side === 'right') {
     left = anchorOffset.left + anchorWidth;
     top = anchorOffset.top + anchorHeight / 2 - popHeight / 2;
-    adjustmentHorizontal = Math.max(0, left + popWidth - bodyWidth);
-    adjustmentVertical = top + popHeight > bodyHeight ? top + popHeight - bodyHeight : top < 0 ? 0 : top;
+    adjustmentHorizontal = Math.max(0, // The "+ 1" is due to a chrome calculation error
+    left + popWidth - bodyWidth + 1);
+    adjustmentVertical = top + popHeight > bodyHeight ? // The "+ 1" is due to a chrome calculation error
+    top + popHeight - bodyHeight + 1 : top < 0 ? top : 0;
     return {
       left: left - adjustmentHorizontal,
       top: top - adjustmentVertical
@@ -74,7 +77,8 @@ const getRelativePosition = (anchor, pop, side) => {
   if (side === 'top') {
     left = anchorOffset.left + anchorWidth / 2 - popWidth / 2;
     top = anchorOffset.top - popHeight;
-    adjustmentHorizontal = left + popWidth > bodyWidth ? left + popWidth - bodyWidth : left < 0 ? left : 0;
+    adjustmentHorizontal = left + popWidth > bodyWidth ? // The "+ 1" is due to a chrome calculation error
+    left + popWidth - bodyWidth + 1 : left < 0 ? left : 0;
     adjustmentVertical = top < 0 ? top : 0;
     return {
       left: left - adjustmentHorizontal,
@@ -85,8 +89,10 @@ const getRelativePosition = (anchor, pop, side) => {
   if (side === 'bottom') {
     left = anchorOffset.left + anchorWidth / 2 - popWidth / 2;
     top = anchorOffset.top + anchorHeight;
-    adjustmentHorizontal = left + popWidth > bodyWidth ? left + popWidth - bodyWidth : left < 0 ? left : 0;
-    adjustmentVertical = Math.max(0, top + popHeight - bodyHeight);
+    adjustmentHorizontal = left + popWidth > bodyWidth ? // The "+ 1" is due to a chrome calculation error
+    left + popWidth - bodyWidth + 1 : left < 0 ? left : 0;
+    adjustmentVertical = Math.max(0, // The "+ 1" is due to a chrome calculation error
+    top + popHeight - bodyHeight + 1);
     return {
       left: left - adjustmentHorizontal,
       top: top - adjustmentVertical

@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom';
 import React, { Component, createRef } from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
-import { reactRef } from '../prop-validators';
+import { reactRef } from '../prop-validators/reactRef';
 import { BackgroundCover } from './BackgroundCover';
 import { Content, arePositionsEqual, getPosition, getScrollAndClientOffset, propPosition } from './helpers';
 /**

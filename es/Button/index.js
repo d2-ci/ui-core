@@ -2,7 +2,7 @@ import _JSXStyle from "styled-jsx/style";
 import cx from 'classnames';
 import React from 'react';
 import propTypes from 'prop-types';
-import { mutuallyExclusive } from '../prop-validators';
+import { mutuallyExclusive } from '../prop-validators/mutuallyExclusive';
 import styles from './styles.js';
 
 const Button = ({
