@@ -78,11 +78,13 @@ function (_Component) {
       if (_this.props.open && _this.ref.current) {
         var _this$props = _this.props,
             anchorRef = _this$props.anchorRef,
-            side = _this$props.side;
+            side = _this$props.side,
+            spacing = _this$props.spacing;
         var position = (0, _helpers.getPosition)({
           pop: _this.ref.current,
           anchor: anchorRef.current,
-          side: side
+          side: side,
+          spacing: spacing
         });
 
         if (!(0, _helpers.arePositionsEqual)(position, _this.state.position)) {
@@ -134,6 +136,12 @@ Pop.propTypes = {
 
   /* Pop will always be centered to the center of the anchor's side */
   side: _propTypes.default.oneOf(['top', 'right', 'bottom', 'left']).isRequired,
-  open: _propTypes.default.bool,
-  onClose: _propTypes.default.func
+  open: _propTypes.default.bool.isRequired,
+  onClose: _propTypes.default.func.isRequired,
+
+  /* Spacing between anchor and pop in pixels */
+  spacing: _propTypes.default.number
+};
+Pop.defaultProps = {
+  spacing: 0
 };

@@ -16,6 +16,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var BackgroundCover = function BackgroundCover(_ref) {
   var onClick = _ref.onClick;
   return _react.default.createElement("div", {
+    onClick: onClick,
     className: "jsx-2997242272"
   }, _react.default.createElement(_style.default, {
     id: "2997242272"

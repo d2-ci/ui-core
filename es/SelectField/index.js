@@ -7,7 +7,7 @@ import React, { Fragment } from 'react';
 import { ArrowDown } from '../icons/Arrow';
 import { LabelFilled, LabelOutlined } from '../FieldLabel';
 import { Select } from './Select';
-import { colors } from '../theme';
+import { colors } from '../theme.js';
 
 var _ref =
 /*#__PURE__*/
