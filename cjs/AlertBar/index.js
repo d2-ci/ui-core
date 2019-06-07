@@ -179,7 +179,8 @@ function (_PureComponent) {
           visible: visible
         }) || "")
       }, _react.default.createElement(_Icon.Icon, iconProps), _react.default.createElement(_Message.Message, null, children), _react.default.createElement(_Actions.Actions, {
-        actions: actions
+        actions: actions,
+        hide: this.hide
       }), _react.default.createElement(_Dismiss.Dismiss, {
         onClick: this.hide
       }), _react.default.createElement(_style.default, {

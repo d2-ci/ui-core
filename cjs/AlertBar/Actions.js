@@ -22,7 +22,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var Actions = function Actions(_ref) {
-  var actions = _ref.actions;
+  var actions = _ref.actions,
+      hide = _ref.hide;
 
   if (!actions) {
     return null;
@@ -33,7 +34,9 @@ var Actions = function Actions(_ref) {
   }, actions.map(function (action) {
     return _react.default.createElement(_Action.Action, _extends({
       key: action.label
-    }, action));
+    }, action, {
+      hide: hide
+    }));
   }), _react.default.createElement(_style.default, {
     id: "961263490",
     dynamic: [_theme.spacers.dp48, _theme.spacers.dp12]
@@ -47,5 +50,6 @@ var actionsPropType = (0, _propValidators.arrayWithLength)(0, 2, _propTypes.defa
 }));
 exports.actionsPropType = actionsPropType;
 Actions.propTypes = {
-  actions: actionsPropType
+  actions: actionsPropType,
+  hide: _propTypes.default.func.isRequired
 };

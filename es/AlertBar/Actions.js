@@ -9,7 +9,8 @@ import { Action } from './Action';
 import { spacers } from '../theme.js';
 
 const Actions = ({
-  actions
+  actions,
+  hide
 }) => {
   if (!actions) {
     return null;
@@ -19,7 +20,9 @@ const Actions = ({
     className: _JSXStyle.dynamic([["961263490", [spacers.dp48, spacers.dp12]]])
   }, actions.map(action => React.createElement(Action, _extends({
     key: action.label
-  }, action))), React.createElement(_JSXStyle, {
+  }, action, {
+    hide: hide
+  }))), React.createElement(_JSXStyle, {
     id: "961263490",
     dynamic: [spacers.dp48, spacers.dp12]
   }, [`div.__jsx-style-dynamic-selector{margin-left:${spacers.dp48};margin-right:-${spacers.dp12};}`]));
@@ -30,6 +33,7 @@ const actionsPropType = arrayWithLength(0, 2, propTypes.shape({
   onClick: propTypes.func.isRequired
 }));
 Actions.propTypes = {
-  actions: actionsPropType
+  actions: actionsPropType,
+  hide: propTypes.func.isRequired
 };
 export { Actions, actionsPropType };

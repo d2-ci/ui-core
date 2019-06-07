@@ -117,7 +117,8 @@ class AlertBar extends PureComponent {
         visible
       }) || "")
     }, React.createElement(Icon, iconProps), React.createElement(Message, null, children), React.createElement(Actions, {
-      actions: actions
+      actions: actions,
+      hide: this.hide
     }), React.createElement(Dismiss, {
       onClick: this.hide
     }), React.createElement(_JSXStyle, {
