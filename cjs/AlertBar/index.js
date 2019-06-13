@@ -111,16 +111,29 @@ function (_PureComponent) {
   _createClass(AlertBar, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.startTime = Date.now();
-      this.timeRemaining = this.props.duration;
-      this.startDisplayTimeout();
-      this.show();
+      this.init();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(_prevProps, prevState) {
+      // Only re-init when props change, ignore state changes
+      if (prevState.visible === this.state.visible && prevState.hidden === this.state.hidden) {
+        this.init();
+      }
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       clearTimeout(this.displayTimeout);
       clearTimeout(this.onHiddenTimeout);
+    }
+  }, {
+    key: "init",
+    value: function init() {
+      this.startTime = Date.now();
+      this.timeRemaining = this.props.duration;
+      this.startDisplayTimeout();
+      this.show();
     }
   }, {
     key: "show",

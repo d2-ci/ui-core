@@ -30,11 +30,13 @@ var arrayWithLengthFactory = function arrayWithLengthFactory(_ref) {
     }
 
     if (arr && arr.length > max) {
-      return new Error("".concat(propName, " array exceeds the maximum length of ").concat(max));
+      return new Error( // prettier-ignore
+      "".concat(propName, " array has a length of ").concat(arr.length, ", but the maximum is ").concat(max));
     }
 
     if (arr && arr.length < min) {
-      return new Error("".concat(propName, " array length lower than the minimum of ").concat(min));
+      return new Error( // prettier-ignore
+      "".concat(propName, " array has a length of ").concat(arr.length, ", but the minimum is ").concat(min));
     }
 
     if (arr && propType) {
