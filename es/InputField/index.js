@@ -3,7 +3,7 @@ import _JSXStyle from "styled-jsx/style";
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 import propTypes from 'prop-types';
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Input } from './Input.js';
 import { LabelFilled, LabelOutlined } from '../FieldLabel';
 import { theme } from '../theme.js';

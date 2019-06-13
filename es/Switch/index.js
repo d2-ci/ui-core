@@ -5,7 +5,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import React, { Component, createRef } from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
-import { colors, theme } from '../theme.js';
 import { SwitchIcon } from '../icons/Switch.js';
 import styles from './styles';
 
