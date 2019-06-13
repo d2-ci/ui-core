@@ -6,6 +6,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
+import cx from 'classnames';
 import { ArrowUp, ArrowDown } from '../icons/Arrow.js';
 import { DropMenu } from '../DropMenu';
 import { Button } from '../Button';
