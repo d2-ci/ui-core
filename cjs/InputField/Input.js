@@ -39,6 +39,10 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var calculatePaddingTop = function calculatePaddingTop(props) {
+  return props.filled ? '14px' : '18.5px';
+};
+
 var styles = ["input.jsx-3753428802{color:".concat(_theme.colors.grey900, ";background-color:transparent;border:0;box-sizing:border-box;font-size:16px;height:100%;line-height:16px;outline:0;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%;padding:18px 0 15px 16px;}"), ".dense.jsx-3753428802{padding-top:".concat(_theme.spacers.dp12, ";padding-bottom:").concat(_theme.spacers.dp12, ";font-size:14px;}"), ".disabled.jsx-3753428802{color:".concat(_theme.theme.disabled, ";cursor:not-allowed;}"), ".filled.jsx-3753428802{padding:".concat(_theme.spacers.dp32, " 0 ").concat(_theme.spacers.dp8, " ").concat(_theme.spacers.dp16, ";}"), ".filled.dense.jsx-3753428802{padding:".concat(_theme.spacers.dp24, " 0 ").concat(_theme.spacers.dp4, " ").concat(_theme.spacers.dp16, ";}")];
 styles.__hash = "3753428802";
 
@@ -75,6 +79,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var paddingTop = calculatePaddingTop(this.props);
       var _this$props = this.props,
           dense = _this$props.dense,
           filled = _this$props.filled,
