@@ -11,8 +11,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _classnames = _interopRequireDefault(require("classnames"));
-
 var _Arrow = require("../icons/Arrow.js");
 
 var _DropMenu = require("../DropMenu");
