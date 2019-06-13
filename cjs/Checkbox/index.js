@@ -15,8 +15,6 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _theme = require("../theme.js");
 
-var _Checkbox = require("../icons/Checkbox");
-
 var _Icon = require("./Icon");
 
 var _Label = require("./Label");
