@@ -1,6 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import propTypes from 'prop-types';
-import React, { Fragment } from 'react';
+import React from 'react';
 import cx from 'classnames';
 import { InputContainer } from './InputContainer';
 import { Label } from './Label';
