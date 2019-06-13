@@ -1,5 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
+import { createPortal } from 'react-dom';
 import propTypes from 'prop-types';
 import cx from 'classnames';
 import styles from './styles.js';
