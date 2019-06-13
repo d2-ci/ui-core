@@ -1,7 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
 import propTypes from 'prop-types';
-import cx from 'classnames';
 import { layers } from '../theme.js';
 
 const Backdrop = ({
