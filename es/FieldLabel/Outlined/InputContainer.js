@@ -1,6 +1,5 @@
 import _JSXStyle from "styled-jsx/style";
-import propTypes from 'prop-types';
-import React, { Fragment } from 'react';
+import React from 'react';
 import cx from 'classnames';
 import { inputHeight, inputHeightDense } from '../constants.js';
 const styles = [`div.jsx-617431840{height:100%;line-height:${inputHeight}px;min-width:0;overflow:hidden;padding:0;position:relative;width:100%;}`, `.dense.jsx-617431840{line-height:${inputHeightDense}px;}`];
