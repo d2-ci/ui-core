@@ -7,8 +7,6 @@ exports.LogoWhite = exports.Logo = exports.LogoIconWhite = exports.LogoIcon = vo
 
 var _react = _interopRequireDefault(require("react"));
 
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _LogoSvg = require("./LogoSvg");
 
 var _LogoIconSvg = require("./LogoIconSvg");
