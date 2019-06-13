@@ -3,17 +3,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
 import { ArrowDown } from '../icons/Arrow';
-import { colors, spacers } from '../theme.js';
-
-const Label = ({
-  icon,
-  children
-}) => React.createElement("div", {
-  className: _JSXStyle.dynamic([["3830157399", [spacers.dp4]]]) + " " + "tree__label"
-}, children, React.createElement(_JSXStyle, {
-  id: "3830157399",
-  dynamic: [spacers.dp4]
-}, [`div.__jsx-style-dynamic-selector{min-height:24px;padding:${spacers.dp4} 0;}`]));
+import { colors } from '../theme.js';
 
 const Contents = ({
   children,

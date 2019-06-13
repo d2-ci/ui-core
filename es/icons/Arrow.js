@@ -12,10 +12,6 @@ export function ArrowDown() {
   }, React.createElement("path", {
     d: "M14 20l10 10 10-10z",
     className: `jsx-${styles.__hash}`
-  }), React.createElement("path", {
-    d: "M0 0h48v48H0z",
-    fill: "none",
-    className: `jsx-${styles.__hash}`
   }), React.createElement(_JSXStyle, {
     id: styles.__hash
   }, styles));
@@ -29,10 +25,6 @@ export function ArrowUp() {
     className: `jsx-${styles.__hash}`
   }, React.createElement("path", {
     d: "M14 28l10-10 10 10z",
-    className: `jsx-${styles.__hash}`
-  }), React.createElement("path", {
-    d: "M0 0h48v48H0z",
-    fill: "none",
     className: `jsx-${styles.__hash}`
   }), React.createElement(_JSXStyle, {
     id: styles.__hash
