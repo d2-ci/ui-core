@@ -3,10 +3,11 @@ import _JSXStyle from "styled-jsx/style";
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 import propTypes from 'prop-types';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { ArrowDown } from '../icons/Arrow';
 import { LabelFilled, LabelOutlined } from '../FieldLabel';
 import { Select } from './Select';
+import { colors } from '../theme.js';
 
 var _ref =
 /*#__PURE__*/
@@ -57,6 +58,7 @@ class SelectField extends React.Component {
 
   render() {
     const {
+      type,
       filled,
       dense,
       required,
