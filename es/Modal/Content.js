@@ -1,5 +1,5 @@
 import _JSXStyle from "styled-jsx/style";
-import React from 'react';
+import React, { Fragment } from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
 import { spacers } from '../theme.js';
