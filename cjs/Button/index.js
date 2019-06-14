@@ -13,7 +13,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _mutuallyExclusive = require("../prop-validators/mutuallyExclusive");
+var _propValidators = require("../prop-validators");
 
 var _styles = _interopRequireDefault(require("./styles.js"));
 
@@ -59,8 +59,8 @@ exports.Button = Button;
 Button.defaultProps = {
   type: 'button'
 };
-var variantPropType = (0, _mutuallyExclusive.mutuallyExclusive)(['primary', 'secondary', 'destructive'], _propTypes.default.bool);
-var sizePropType = (0, _mutuallyExclusive.mutuallyExclusive)(['small', 'large'], _propTypes.default.bool);
+var variantPropType = (0, _propValidators.mutuallyExclusive)(['primary', 'secondary', 'destructive'], _propTypes.default.bool);
+var sizePropType = (0, _propValidators.mutuallyExclusive)(['small', 'large'], _propTypes.default.bool);
 Button.propTypes = {
   onClick: _propTypes.default.func,
   className: _propTypes.default.string,
