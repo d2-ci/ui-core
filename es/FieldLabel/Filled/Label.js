@@ -1,6 +1,5 @@
 import _JSXStyle from "styled-jsx/style";
-import propTypes from 'prop-types';
-import React, { Fragment } from 'react';
+import React from 'react';
 import cx from 'classnames';
 import { colors, theme, spacers } from '../../theme.js';
 import { inputHeight, inputHeightDense } from '../constants.js';
