@@ -28,7 +28,9 @@ export class Input extends Component {
       onBlur,
       tabIndex
     } = this.props;
-    return React.createElement(Fragment, null, React.createElement("input", {
+    return React.createElement("div", {
+      className: "jsx-3255790221"
+    }, React.createElement("input", {
       ref: this.ref,
       type: "checkbox",
       name: name,
@@ -39,10 +41,10 @@ export class Input extends Component {
       checked: checked,
       disabled: disabled,
       tabIndex: tabIndex,
-      className: "jsx-227425587"
+      className: "jsx-3255790221"
     }), React.createElement(_JSXStyle, {
-      id: "227425587"
-    }, ["input.jsx-227425587{display:block;opacity:0;width:0;height:0;outline:0;}"]));
+      id: "3255790221"
+    }, ["div.jsx-3255790221{width:0;height:0;overflow:hidden;}"]));
   }
 
 }
