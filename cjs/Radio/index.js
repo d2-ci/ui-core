@@ -50,6 +50,34 @@ var icons = {
   className: "jsx-1822073958"
 };
 
+var Input = _react.default.forwardRef(function (_ref, ref) {
+  var name = _ref.name,
+      value = _ref.value,
+      checked = _ref.checked,
+      disabled = _ref.disabled,
+      tabIndex = _ref.tabIndex,
+      onChange = _ref.onChange,
+      onFocus = _ref.onFocus,
+      onBlur = _ref.onBlur;
+  return _react.default.createElement("div", {
+    className: "jsx-1102028186"
+  }, _react.default.createElement("input", {
+    type: "radio",
+    ref: ref,
+    name: name,
+    value: value,
+    checked: checked,
+    disabled: disabled,
+    tabIndex: tabIndex,
+    onChange: onChange,
+    onFocus: onFocus,
+    onBlur: onBlur,
+    className: "jsx-1102028186"
+  }), _react.default.createElement(_style.default, {
+    id: "1102028186"
+  }, ["div.jsx-1102028186{height:0;width:0;overflow:hidden;}"]));
+});
+
 var Radio =
 /*#__PURE__*/
 function (_Component) {
@@ -132,9 +160,8 @@ function (_Component) {
         className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1090951208", [_theme.colors.blue600]]]) + " " + ((0, _classnames.default)(className, {
           disabled: disabled
         }) || "")
-      }, _react.default.createElement("input", {
+      }, _react.default.createElement(Input, {
         ref: this.ref,
-        type: "radio",
         name: name,
         value: value,
         checked: checked,
@@ -142,8 +169,7 @@ function (_Component) {
         tabIndex: tabIndex,
         onChange: onChange,
         onFocus: this.onFocus,
-        onBlur: this.onBlur,
-        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1090951208", [_theme.colors.blue600]]])
+        onBlur: this.onBlur
       }), _react.default.createElement("div", {
         className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1090951208", [_theme.colors.blue600]]]) + " " + ((0, _classnames.default)({
           focus: focus

@@ -7,6 +7,28 @@ import propTypes from 'prop-types';
 import cx from 'classnames';
 import { SwitchIcon } from '../icons/Switch.js';
 import styles from './styles';
+const Input = React.forwardRef(({
+  name,
+  disabled,
+  checked,
+  onChange,
+  onFocus,
+  onBlur
+}, ref) => React.createElement("div", {
+  className: "jsx-1102028186"
+}, React.createElement("input", {
+  type: "checkbox",
+  ref: ref,
+  name: name,
+  disabled: disabled,
+  checked: checked,
+  onChange: onChange,
+  onFocus: onFocus,
+  onBlur: onBlur,
+  className: "jsx-1102028186"
+}), React.createElement(_JSXStyle, {
+  id: "1102028186"
+}, ["div.jsx-1102028186{height:0;width:0;overflow:hidden;}"])));
 
 class Switch extends Component {
   constructor(...args) {
@@ -66,16 +88,14 @@ class Switch extends Component {
         disabled,
         focus
       }) || "")
-    }, React.createElement("input", {
+    }, React.createElement(Input, {
       ref: this.ref,
-      type: "checkbox",
-      disabled: disabled,
       name: name,
-      checked: checked,
-      onChange: onChange,
-      onFocus: this.onFocus,
       onBlur: this.onBlur,
-      className: `jsx-${styles.__hash}`
+      onFocus: this.onFocus,
+      checked: checked,
+      disabled: disabled,
+      onChange: onChange
     }), React.createElement(SwitchIcon, {
       checked: checked,
       disabled: disabled,
