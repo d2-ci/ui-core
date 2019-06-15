@@ -77,7 +77,9 @@ function (_Component) {
           onFocus = _this$props.onFocus,
           onBlur = _this$props.onBlur,
           tabIndex = _this$props.tabIndex;
-      return _react.default.createElement(_react.Fragment, null, _react.default.createElement("input", {
+      return _react.default.createElement("div", {
+        className: "jsx-3255790221"
+      }, _react.default.createElement("input", {
         ref: this.ref,
         type: "checkbox",
         name: name,
@@ -88,10 +90,10 @@ function (_Component) {
         checked: checked,
         disabled: disabled,
         tabIndex: tabIndex,
-        className: "jsx-227425587"
+        className: "jsx-3255790221"
       }), _react.default.createElement(_style.default, {
-        id: "227425587"
-      }, ["input.jsx-227425587{display:block;opacity:0;width:0;height:0;outline:0;}"]));
+        id: "3255790221"
+      }, ["div.jsx-3255790221{width:0;height:0;overflow:hidden;}"]));
     }
   }]);
 
