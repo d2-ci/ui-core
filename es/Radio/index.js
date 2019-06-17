@@ -79,18 +79,19 @@ class Radio extends Component {
 
   render() {
     const {
-      onChange,
-      name,
-      value,
-      className,
-      label,
-      required,
       checked = false,
+      className,
       disabled,
-      valid,
-      warning,
       error,
-      tabIndex
+      icon,
+      label,
+      name,
+      onChange,
+      required,
+      tabIndex,
+      valid,
+      value,
+      warning
     } = this.props;
     const {
       focus
@@ -103,13 +104,8 @@ class Radio extends Component {
       warning,
       focus
     });
-    const icon = checked ? React.createElement(Checked, {
-      className: classes
-    }) : React.createElement(Unchecked, {
-      className: classes
-    });
     return React.createElement("label", {
-      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["1090951208", [colors.blue600]]]) + " " + (cx(className, {
+      className: `jsx-${styles.__hash}` + " " + (cx(className, {
         disabled
       }) || "")
     }, React.createElement(Input, {
@@ -123,19 +119,20 @@ class Radio extends Component {
       onFocus: this.onFocus,
       onBlur: this.onBlur
     }), React.createElement("div", {
-      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["1090951208", [colors.blue600]]]) + " " + (cx({
+      className: `jsx-${styles.__hash}` + " " + (cx('icon', {
         focus
       }) || "")
-    }, icon), React.createElement("span", {
-      className: `jsx-${styles.__hash}` + " " + _JSXStyle.dynamic([["1090951208", [colors.blue600]]]) + " " + (cx({
+    }, checked ? React.createElement(Checked, {
+      className: classes
+    }) : React.createElement(Unchecked, {
+      className: classes
+    })), icon, React.createElement("span", {
+      className: `jsx-${styles.__hash}` + " " + (cx({
         required
       }) || "")
     }, label), icons.styles, React.createElement(_JSXStyle, {
       id: styles.__hash
-    }, styles), React.createElement(_JSXStyle, {
-      id: "1090951208",
-      dynamic: [colors.blue600]
-    }, ["div.__jsx-style-dynamic-selector{position:relative;}", `.focus.__jsx-style-dynamic-selector:before{content:'';position:absolute;border:2px solid ${colors.blue600};border-radius:50%;width:calc(100% + 2px);height:calc(100% + 2px);top:-1px;left:-1px;}`]));
+    }, styles));
   }
 
 }
@@ -147,6 +144,7 @@ Radio.propTypes = {
   className: propTypes.string,
   label: propTypes.string,
   tabIndex: propTypes.string,
+  icon: propTypes.element,
   onFocus: propTypes.func,
   onBlur: propTypes.func,
   required: propTypes.bool,

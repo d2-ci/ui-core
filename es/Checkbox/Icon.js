@@ -28,7 +28,7 @@ export const Icon = ({
     warning
   });
   return React.createElement("div", {
-    className: _JSXStyle.dynamic([["3840453251", [colors.blue600]]]) + " " + (cx({
+    className: _JSXStyle.dynamic([["1369204040", [colors.blue600]]]) + " " + (cx({
       focus
     }) || "")
   }, indeterminate ? React.createElement(Indeterminate, {
@@ -38,9 +38,9 @@ export const Icon = ({
   }) : React.createElement(Unchecked, {
     className: classes
   }), icons.styles, React.createElement(_JSXStyle, {
-    id: "3840453251",
+    id: "1369204040",
     dynamic: [colors.blue600]
-  }, ["div.__jsx-style-dynamic-selector{position:relative;}", `.focus.__jsx-style-dynamic-selector:before{content:'';position:absolute;border:2px solid ${colors.blue600};border-radius:4px;width:100%;height:100%;}`]));
+  }, ["div.__jsx-style-dynamic-selector{position:relative;margin:0 6px 0 0;}", `.focus.__jsx-style-dynamic-selector:before{content:'';position:absolute;border:2px solid ${colors.blue600};border-radius:4px;width:100%;height:100%;}`]));
 };
 Icon.propTypes = {
   checked: propTypes.bool,
