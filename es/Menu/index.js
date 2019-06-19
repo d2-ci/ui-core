@@ -8,14 +8,17 @@ import { spacers } from '../theme.js';
 const Menu = ({
   children,
   className
-}) => React.createElement(Card, null, React.createElement("div", {
-  className: _JSXStyle.dynamic([["3466106094", [spacers.dp4]]])
-}, React.createElement(MenuList, {
-  className: className
-}, children)), React.createElement(_JSXStyle, {
-  id: "3466106094",
+}) => React.createElement("div", {
+  className: _JSXStyle.dynamic([["2220475694", [spacers.dp4]]]) + " " + (className || "")
+}, React.createElement(Card, null, React.createElement("div", {
+  className: _JSXStyle.dynamic([["2220475694", [spacers.dp4]]]) + " " + "menu-list-wrapper"
+}, React.createElement(MenuList, null, children))), React.createElement(_JSXStyle, {
+  id: "2220475694",
   dynamic: [spacers.dp4]
-}, [`div.__jsx-style-dynamic-selector{padding:${spacers.dp4} 0;}`]));
+}, [`.menu-list-wrapper.__jsx-style-dynamic-selector{padding:${spacers.dp4} 0;}`]));
 
-Menu.propTypes = MenuList.propTypes;
+Menu.propTypes = {
+  children: MenuList.propTypes.children,
+  className: propTypes.string
+};
 export { Menu };
