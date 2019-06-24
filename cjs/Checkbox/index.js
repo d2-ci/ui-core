@@ -15,8 +15,6 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _theme = require("../theme.js");
 
-var _Checkbox = require("../icons/Checkbox");
-
 var _Icon = require("./Icon");
 
 var _Label = require("./Label");
@@ -89,20 +87,21 @@ function (_Component) {
     key: "render",
     value: function render() {
       var _this$props = this.props,
-          onChange = _this$props.onChange,
-          name = _this$props.name,
-          value = _this$props.value,
-          label = _this$props.label,
-          className = _this$props.className,
-          indeterminate = _this$props.indeterminate,
-          required = _this$props.required,
           _this$props$checked = _this$props.checked,
           checked = _this$props$checked === void 0 ? false : _this$props$checked,
+          className = _this$props.className,
           disabled = _this$props.disabled,
-          valid = _this$props.valid,
-          warning = _this$props.warning,
           error = _this$props.error,
-          tabIndex = _this$props.tabIndex;
+          icon = _this$props.icon,
+          indeterminate = _this$props.indeterminate,
+          label = _this$props.label,
+          name = _this$props.name,
+          onChange = _this$props.onChange,
+          required = _this$props.required,
+          tabIndex = _this$props.tabIndex,
+          valid = _this$props.valid,
+          value = _this$props.value,
+          warning = _this$props.warning;
       var focus = this.state.focus;
       return _react.default.createElement(_react.Fragment, null, _react.default.createElement("label", {
         className: _style.default.dynamic([["261820537", [_theme.theme.disabled]]]) + " " + ((0, _classnames.default)('base', className, {
@@ -127,7 +126,7 @@ function (_Component) {
         error: error,
         warning: warning,
         indeterminate: indeterminate
-      }), _react.default.createElement(_Label.Label, {
+      }), icon, _react.default.createElement(_Label.Label, {
         required: required
       }, label), _react.default.createElement(_style.default, {
         id: "261820537",
@@ -146,9 +145,10 @@ Checkbox.propTypes = {
   name: _propTypes.default.string.isRequired,
   label: _propTypes.default.string.isRequired,
   tabIndex: _propTypes.default.string,
+  className: _propTypes.default.string,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func,
-  className: _propTypes.default.string,
+  icon: _propTypes.default.element,
   indeterminate: _propTypes.default.bool,
   required: _propTypes.default.bool,
   checked: _propTypes.default.bool,

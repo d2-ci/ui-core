@@ -13,8 +13,6 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _theme = require("../theme.js");
-
 var _Switch = require("../icons/Switch.js");
 
 var _styles = _interopRequireDefault(require("./styles"));
@@ -42,6 +40,30 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Input = _react.default.forwardRef(function (_ref, ref) {
+  var name = _ref.name,
+      disabled = _ref.disabled,
+      checked = _ref.checked,
+      onChange = _ref.onChange,
+      onFocus = _ref.onFocus,
+      onBlur = _ref.onBlur;
+  return _react.default.createElement("div", {
+    className: "jsx-1102028186"
+  }, _react.default.createElement("input", {
+    type: "checkbox",
+    ref: ref,
+    name: name,
+    disabled: disabled,
+    checked: checked,
+    onChange: onChange,
+    onFocus: onFocus,
+    onBlur: onBlur,
+    className: "jsx-1102028186"
+  }), _react.default.createElement(_style.default, {
+    id: "1102028186"
+  }, ["div.jsx-1102028186{height:0;width:0;overflow:hidden;}"]));
+});
 
 var Switch =
 /*#__PURE__*/
@@ -118,16 +140,14 @@ function (_Component) {
           disabled: disabled,
           focus: focus
         }) || "")
-      }, _react.default.createElement("input", {
+      }, _react.default.createElement(Input, {
         ref: this.ref,
-        type: "checkbox",
-        disabled: disabled,
         name: name,
-        checked: checked,
-        onChange: onChange,
-        onFocus: this.onFocus,
         onBlur: this.onBlur,
-        className: "jsx-".concat(_styles.default.__hash)
+        onFocus: this.onFocus,
+        checked: checked,
+        disabled: disabled,
+        onChange: onChange
       }), _react.default.createElement(_Switch.SwitchIcon, {
         checked: checked,
         disabled: disabled,

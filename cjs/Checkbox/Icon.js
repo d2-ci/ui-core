@@ -7,7 +7,7 @@ exports.Icon = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
@@ -16,8 +16,6 @@ var _classnames = _interopRequireDefault(require("classnames"));
 var _theme = require("../theme.js");
 
 var _Checkbox = require("../icons/Checkbox");
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -45,7 +43,7 @@ var Icon = function Icon(_ref) {
     warning: warning
   });
   return _react.default.createElement("div", {
-    className: _style.default.dynamic([["3840453251", [_theme.colors.blue600]]]) + " " + ((0, _classnames.default)({
+    className: _style.default.dynamic([["1369204040", [_theme.colors.blue600]]]) + " " + ((0, _classnames.default)({
       focus: focus
     }) || "")
   }, indeterminate ? _react.default.createElement(_Checkbox.Indeterminate, {
@@ -55,9 +53,9 @@ var Icon = function Icon(_ref) {
   }) : _react.default.createElement(_Checkbox.Unchecked, {
     className: classes
   }), icons.styles, _react.default.createElement(_style.default, {
-    id: "3840453251",
+    id: "1369204040",
     dynamic: [_theme.colors.blue600]
-  }, ["div.__jsx-style-dynamic-selector{position:relative;}", ".focus.__jsx-style-dynamic-selector:before{content:'';position:absolute;border:2px solid ".concat(_theme.colors.blue600, ";border-radius:4px;width:100%;height:100%;}")]));
+  }, ["div.__jsx-style-dynamic-selector{position:relative;margin:0 6px 0 0;}", ".focus.__jsx-style-dynamic-selector:before{content:'';position:absolute;border:2px solid ".concat(_theme.colors.blue600, ";border-radius:4px;width:100%;height:100%;}")]));
 };
 
 exports.Icon = Icon;

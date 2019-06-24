@@ -1,6 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-import { theme } from '..';
+import { theme } from '../theme.js';
 /*
  * Normalize CSS
  * - https://github.com/necolas/normalize.css

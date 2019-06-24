@@ -50,6 +50,34 @@ var icons = {
   className: "jsx-1822073958"
 };
 
+var Input = _react.default.forwardRef(function (_ref, ref) {
+  var name = _ref.name,
+      value = _ref.value,
+      checked = _ref.checked,
+      disabled = _ref.disabled,
+      tabIndex = _ref.tabIndex,
+      onChange = _ref.onChange,
+      onFocus = _ref.onFocus,
+      onBlur = _ref.onBlur;
+  return _react.default.createElement("div", {
+    className: "jsx-1102028186"
+  }, _react.default.createElement("input", {
+    type: "radio",
+    ref: ref,
+    name: name,
+    value: value,
+    checked: checked,
+    disabled: disabled,
+    tabIndex: tabIndex,
+    onChange: onChange,
+    onFocus: onFocus,
+    onBlur: onBlur,
+    className: "jsx-1102028186"
+  }), _react.default.createElement(_style.default, {
+    id: "1102028186"
+  }, ["div.jsx-1102028186{height:0;width:0;overflow:hidden;}"]));
+});
+
 var Radio =
 /*#__PURE__*/
 function (_Component) {
@@ -101,19 +129,20 @@ function (_Component) {
     key: "render",
     value: function render() {
       var _this$props = this.props,
-          onChange = _this$props.onChange,
-          name = _this$props.name,
-          value = _this$props.value,
-          className = _this$props.className,
-          label = _this$props.label,
-          required = _this$props.required,
           _this$props$checked = _this$props.checked,
           checked = _this$props$checked === void 0 ? false : _this$props$checked,
+          className = _this$props.className,
           disabled = _this$props.disabled,
-          valid = _this$props.valid,
-          warning = _this$props.warning,
           error = _this$props.error,
-          tabIndex = _this$props.tabIndex;
+          icon = _this$props.icon,
+          label = _this$props.label,
+          name = _this$props.name,
+          onChange = _this$props.onChange,
+          required = _this$props.required,
+          tabIndex = _this$props.tabIndex,
+          valid = _this$props.valid,
+          value = _this$props.value,
+          warning = _this$props.warning;
       var focus = this.state.focus;
       var classes = (0, _classnames.default)(icons.className, {
         checked: checked && !valid && !error && !warning,
@@ -123,18 +152,12 @@ function (_Component) {
         warning: warning,
         focus: focus
       });
-      var icon = checked ? _react.default.createElement(_Radio.Checked, {
-        className: classes
-      }) : _react.default.createElement(_Radio.Unchecked, {
-        className: classes
-      });
       return _react.default.createElement("label", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1090951208", [_theme.colors.blue600]]]) + " " + ((0, _classnames.default)(className, {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, {
           disabled: disabled
         }) || "")
-      }, _react.default.createElement("input", {
+      }, _react.default.createElement(Input, {
         ref: this.ref,
-        type: "radio",
         name: name,
         value: value,
         checked: checked,
@@ -142,22 +165,22 @@ function (_Component) {
         tabIndex: tabIndex,
         onChange: onChange,
         onFocus: this.onFocus,
-        onBlur: this.onBlur,
-        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1090951208", [_theme.colors.blue600]]])
+        onBlur: this.onBlur
       }), _react.default.createElement("div", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1090951208", [_theme.colors.blue600]]]) + " " + ((0, _classnames.default)({
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('icon', {
           focus: focus
         }) || "")
-      }, icon), _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + _style.default.dynamic([["1090951208", [_theme.colors.blue600]]]) + " " + ((0, _classnames.default)({
+      }, checked ? _react.default.createElement(_Radio.Checked, {
+        className: classes
+      }) : _react.default.createElement(_Radio.Unchecked, {
+        className: classes
+      })), icon, _react.default.createElement("span", {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)({
           required: required
         }) || "")
       }, label), icons.styles, _react.default.createElement(_style.default, {
         id: _styles.default.__hash
-      }, _styles.default), _react.default.createElement(_style.default, {
-        id: "1090951208",
-        dynamic: [_theme.colors.blue600]
-      }, ["div.__jsx-style-dynamic-selector{position:relative;}", ".focus.__jsx-style-dynamic-selector:before{content:'';position:absolute;border:2px solid ".concat(_theme.colors.blue600, ";border-radius:50%;width:calc(100% + 2px);height:calc(100% + 2px);top:-1px;left:-1px;}")]));
+      }, _styles.default));
     }
   }]);
 
@@ -172,6 +195,7 @@ Radio.propTypes = {
   className: _propTypes.default.string,
   label: _propTypes.default.string,
   tabIndex: _propTypes.default.string,
+  icon: _propTypes.default.element,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func,
   required: _propTypes.default.bool,

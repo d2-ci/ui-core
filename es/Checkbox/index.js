@@ -5,8 +5,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import React, { Component, Fragment } from 'react';
 import propTypes from 'prop-types';
 import cx from 'classnames';
-import { colors, theme } from '../theme.js';
-import { Indeterminate, Checked, Unchecked } from '../icons/Checkbox';
+import { theme } from '../theme.js';
 import { Icon } from './Icon';
 import { Label } from './Label';
 import { Input } from './Input';
@@ -42,19 +41,20 @@ class Checkbox extends Component {
 
   render() {
     const {
-      onChange,
-      name,
-      value,
-      label,
-      className,
-      indeterminate,
-      required,
       checked = false,
+      className,
       disabled,
-      valid,
-      warning,
       error,
-      tabIndex
+      icon,
+      indeterminate,
+      label,
+      name,
+      onChange,
+      required,
+      tabIndex,
+      valid,
+      value,
+      warning
     } = this.props;
     const {
       focus
@@ -82,7 +82,7 @@ class Checkbox extends Component {
       error: error,
       warning: warning,
       indeterminate: indeterminate
-    }), React.createElement(Label, {
+    }), icon, React.createElement(Label, {
       required: required
     }, label), React.createElement(_JSXStyle, {
       id: "261820537",
@@ -98,9 +98,10 @@ Checkbox.propTypes = {
   name: propTypes.string.isRequired,
   label: propTypes.string.isRequired,
   tabIndex: propTypes.string,
+  className: propTypes.string,
   onFocus: propTypes.func,
   onBlur: propTypes.func,
-  className: propTypes.string,
+  icon: propTypes.element,
   indeterminate: propTypes.bool,
   required: propTypes.bool,
   checked: propTypes.bool,
