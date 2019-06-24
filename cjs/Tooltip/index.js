@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Pop = void 0;
+exports.Tooltip = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -19,6 +19,8 @@ var _reactRef = require("../prop-validators/reactRef");
 
 var _BackgroundCover = require("./BackgroundCover");
 
+var _Content = require("./Content");
+
 var _helpers = require("./helpers");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -26,6 +28,14 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -46,32 +56,33 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /**
- * The Pop component is a content container that behaves like a context menu
+ * The Tooltip component is a content container that behaves like a context menu
  * container. It can be used to create multi level context menus that won't be
- * displayed off-screen by wrapping each level with the Pop component.
+ * displayed off-screen by wrapping each level with the Tooltip component.
  */
-var Pop =
+var Tooltip =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Pop, _Component);
+  _inherits(Tooltip, _Component);
 
-  function Pop() {
+  function Tooltip() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _classCallCheck(this, Pop);
+    _classCallCheck(this, Tooltip);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Pop)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Tooltip)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_this), "ref", (0, _react.createRef)());
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      position: {}
+      position: {},
+      adjustment: {}
     });
 
     _defineProperty(_assertThisInitialized(_this), "updatePosition", function () {
@@ -80,16 +91,21 @@ function (_Component) {
             anchorRef = _this$props.anchorRef,
             side = _this$props.side,
             spacing = _this$props.spacing;
-        var position = (0, _helpers.getPosition)({
+
+        var _getPosition = (0, _helpers.getPosition)({
           pop: _this.ref.current,
           anchor: anchorRef.current,
           side: side,
           spacing: spacing
-        });
+        }),
+            _getPosition2 = _slicedToArray(_getPosition, 2),
+            position = _getPosition2[0],
+            adjustment = _getPosition2[1];
 
         if (!(0, _helpers.arePositionsEqual)(position, _this.state.position)) {
           _this.setState({
-            position: position
+            position: position,
+            adjustment: adjustment
           });
         }
       }
@@ -98,7 +114,7 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(Pop, [{
+  _createClass(Tooltip, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.updatePosition();
@@ -109,39 +125,65 @@ function (_Component) {
     value: function render() {
       if (!this.props.open) return null;
       var _this$props2 = this.props,
+          side = _this$props2.side,
           children = _this$props2.children,
-          onClose = _this$props2.onClose;
-      var position = this.state.position;
+          onClose = _this$props2.onClose,
+          withArrow = _this$props2.withArrow;
+      var _this$state = this.state,
+          position = _this$state.position,
+          adjustment = _this$state.adjustment;
       return (0, _reactDom.createPortal)(_react.default.createElement("div", {
         className: "jsx-1869453644"
       }, _react.default.createElement(_BackgroundCover.BackgroundCover, {
         onClick: onClose
-      }), _react.default.createElement(_helpers.Content, {
+      }), _react.default.createElement(_Content.Content, {
         ref: this.ref,
+        side: side,
         position: position,
-        children: children
+        children: children,
+        withArrow: withArrow,
+        adjustment: adjustment
       }), _react.default.createElement(_style.default, {
         id: "1869453644"
       }, ["div.jsx-1869453644{left:0;height:100%;position:absolute;top:0;width:100%;z-index:2000;}"])), document.body);
     }
   }]);
 
-  return Pop;
+  return Tooltip;
 }(_react.Component);
 
-exports.Pop = Pop;
-Pop.propTypes = {
-  /* Must be created with `React.createRef()` */
+exports.Tooltip = Tooltip;
+Tooltip.propTypes = {
+  /**
+   * Must be created with `React.createRef()`
+   */
   anchorRef: _reactRef.reactRef.isRequired,
 
-  /* Pop will always be centered to the center of the anchor's side */
+  /**
+   * Tooltip will always be centered to the center of the anchor's side
+   */
   side: _propTypes.default.oneOf(['top', 'right', 'bottom', 'left']).isRequired,
+
+  /**
+   * When false, the component will return null, effectively rendering nothing
+   */
   open: _propTypes.default.bool.isRequired,
+
+  /**
+   * This callback will only be called when clicking on the backdrop
+   */
   onClose: _propTypes.default.func.isRequired,
 
-  /* Spacing between anchor and pop in pixels */
-  spacing: _propTypes.default.number
+  /**
+   * Spacing between anchor and pop in pixels
+   */
+  spacing: _propTypes.default.number,
+
+  /**
+   * Will add a triangular arrow icon to the opposite side of "props.side"
+   */
+  withArrow: _propTypes.default.bool
 };
-Pop.defaultProps = {
+Tooltip.defaultProps = {
   spacing: 0
 };

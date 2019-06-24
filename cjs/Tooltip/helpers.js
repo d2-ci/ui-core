@@ -3,43 +3,26 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getPosition = exports.Content = exports.arePositionsEqual = void 0;
-
-var _style = _interopRequireDefault(require("styled-jsx/style"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
+exports.invertSide = exports.getPosition = exports.arePositionsEqual = void 0;
 
 var _isElementInsideContainer = require("../helpers/isElementInsideContainer");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 var arePositionsEqual = function arePositionsEqual(left, right) {
-  return left.right === right.right && left.left === right.left && left.top === right.top && left.bottom === right.bottom;
+  return left.left === right.left && left.top === right.top;
 };
 
 exports.arePositionsEqual = arePositionsEqual;
+var defaultStyles = {
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)'
+};
 
-var Content = _react.default.forwardRef(function (_ref, ref) {
-  var children = _ref.children,
-      position = _ref.position;
-  return _react.default.createElement("div", {
-    ref: ref,
-    style: position,
-    className: "jsx-4279786422"
-  }, children, _react.default.createElement(_style.default, {
-    id: "4279786422"
-  }, ["div.jsx-4279786422{background:white;box-shadow:0 0 3px rgba(0,0,0,0.6);max-height:100vh;overflow-y:auto;position:absolute;}"]));
-});
-
-exports.Content = Content;
-
-var getPosition = function getPosition(_ref2) {
-  var pop = _ref2.pop,
-      anchor = _ref2.anchor,
-      side = _ref2.side,
-      spacing = _ref2.spacing;
+var getPosition = function getPosition(_ref) {
+  var pop = _ref.pop,
+      anchor = _ref.anchor,
+      side = _ref.side,
+      spacing = _ref.spacing;
 
   if (!anchor || !pop) {
     return {
@@ -51,14 +34,19 @@ var getPosition = function getPosition(_ref2) {
   var styles = getRelativePosition(anchor, pop, side, spacing);
 
   if (styles === null) {
-    return {
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)'
-    };
+    return [defaultStyles, {
+      adjustmentVertical: 0,
+      adjustmentHorizontal: 0
+    }];
   }
 
-  return styles;
+  return [{
+    left: styles.left,
+    top: styles.top
+  }, {
+    adjustmentVertical: styles.adjustmentVertical,
+    adjustmentHorizontal: styles.adjustmentHorizontal
+  }];
 };
 
 exports.getPosition = getPosition;
@@ -81,7 +69,9 @@ var getRelativePosition = function getRelativePosition(anchor, pop, side, spacin
     top + popHeight - bodyHeight + 1 : top < 0 ? top : 0;
     return {
       left: left < 0 ? 0 : left,
-      top: top - adjustmentVertical
+      top: top - adjustmentVertical,
+      adjustmentVertical: adjustmentVertical,
+      adjustmentHorizontal: 0
     };
   }
 
@@ -94,7 +84,9 @@ var getRelativePosition = function getRelativePosition(anchor, pop, side, spacin
     top + popHeight - bodyHeight + 1 : top < 0 ? top : 0;
     return {
       left: left - adjustmentHorizontal,
-      top: top - adjustmentVertical
+      top: top - adjustmentVertical,
+      adjustmentVertical: adjustmentVertical,
+      adjustmentHorizontal: adjustmentHorizontal
     };
   }
 
@@ -106,7 +98,9 @@ var getRelativePosition = function getRelativePosition(anchor, pop, side, spacin
     adjustmentVertical = top < 0 ? top : 0;
     return {
       left: left - adjustmentHorizontal,
-      top: top - adjustmentVertical
+      top: top - adjustmentVertical,
+      adjustmentVertical: adjustmentVertical,
+      adjustmentHorizontal: adjustmentHorizontal
     };
   }
 
@@ -119,9 +113,20 @@ var getRelativePosition = function getRelativePosition(anchor, pop, side, spacin
     top + popHeight - bodyHeight + 1);
     return {
       left: left - adjustmentHorizontal,
-      top: top - adjustmentVertical
+      top: top - adjustmentVertical,
+      adjustmentVertical: adjustmentVertical,
+      adjustmentHorizontal: adjustmentHorizontal
     };
   }
 
   throw new Error("Position provided to getPosition must be \"top\", \"right\", \"bottom\" or \"left\", but got ".concat(side));
 };
+
+var invertSide = function invertSide(side) {
+  if (side === 'right') return 'left';
+  if (side === 'left') return 'right';
+  if (side === 'top') return 'bottom';
+  return 'top';
+};
+
+exports.invertSide = invertSide;

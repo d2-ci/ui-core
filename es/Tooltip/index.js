@@ -8,21 +8,23 @@ import propTypes from 'prop-types';
 import cx from 'classnames';
 import { reactRef } from '../prop-validators/reactRef';
 import { BackgroundCover } from './BackgroundCover';
-import { Content, arePositionsEqual, getPosition, getScrollAndClientOffset, propPosition } from './helpers';
+import { Content } from './Content';
+import { arePositionsEqual, getPosition, getScrollAndClientOffset, propPosition } from './helpers';
 /**
- * The Pop component is a content container that behaves like a context menu
+ * The Tooltip component is a content container that behaves like a context menu
  * container. It can be used to create multi level context menus that won't be
- * displayed off-screen by wrapping each level with the Pop component.
+ * displayed off-screen by wrapping each level with the Tooltip component.
  */
 
-class Pop extends Component {
+class Tooltip extends Component {
   constructor(...args) {
     super(...args);
 
     _defineProperty(this, "ref", createRef());
 
     _defineProperty(this, "state", {
-      position: {}
+      position: {},
+      adjustment: {}
     });
 
     _defineProperty(this, "updatePosition", () => {
@@ -32,7 +34,7 @@ class Pop extends Component {
           side,
           spacing
         } = this.props;
-        const position = getPosition({
+        const [position, adjustment] = getPosition({
           pop: this.ref.current,
           anchor: anchorRef.current,
           side,
@@ -41,7 +43,8 @@ class Pop extends Component {
 
         if (!arePositionsEqual(position, this.state.position)) {
           this.setState({
-            position
+            position,
+            adjustment
           });
         }
       }
@@ -56,11 +59,14 @@ class Pop extends Component {
   render() {
     if (!this.props.open) return null;
     const {
+      side,
       children,
-      onClose
+      onClose,
+      withArrow
     } = this.props;
     const {
-      position
+      position,
+      adjustment
     } = this.state;
     return createPortal(React.createElement("div", {
       className: "jsx-1869453644"
@@ -68,8 +74,11 @@ class Pop extends Component {
       onClick: onClose
     }), React.createElement(Content, {
       ref: this.ref,
+      side: side,
       position: position,
-      children: children
+      children: children,
+      withArrow: withArrow,
+      adjustment: adjustment
     }), React.createElement(_JSXStyle, {
       id: "1869453644"
     }, ["div.jsx-1869453644{left:0;height:100%;position:absolute;top:0;width:100%;z-index:2000;}"])), document.body);
@@ -77,19 +86,38 @@ class Pop extends Component {
 
 }
 
-Pop.propTypes = {
-  /* Must be created with `React.createRef()` */
+Tooltip.propTypes = {
+  /**
+   * Must be created with `React.createRef()`
+   */
   anchorRef: reactRef.isRequired,
 
-  /* Pop will always be centered to the center of the anchor's side */
+  /**
+   * Tooltip will always be centered to the center of the anchor's side
+   */
   side: propTypes.oneOf(['top', 'right', 'bottom', 'left']).isRequired,
+
+  /**
+   * When false, the component will return null, effectively rendering nothing
+   */
   open: propTypes.bool.isRequired,
+
+  /**
+   * This callback will only be called when clicking on the backdrop
+   */
   onClose: propTypes.func.isRequired,
 
-  /* Spacing between anchor and pop in pixels */
-  spacing: propTypes.number
+  /**
+   * Spacing between anchor and pop in pixels
+   */
+  spacing: propTypes.number,
+
+  /**
+   * Will add a triangular arrow icon to the opposite side of "props.side"
+   */
+  withArrow: propTypes.bool
 };
-Pop.defaultProps = {
+Tooltip.defaultProps = {
   spacing: 0
 };
-export { Pop };
+export { Tooltip };
