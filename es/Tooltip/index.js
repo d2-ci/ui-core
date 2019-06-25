@@ -10,11 +10,7 @@ import { reactRef } from '../prop-validators/reactRef';
 import { BackgroundCover } from './BackgroundCover';
 import { Content } from './Content';
 import { arePositionsEqual, getPosition, getScrollAndClientOffset, propPosition } from './helpers';
-/**
- * The Tooltip component is a content container that behaves like a context menu
- * container. It can be used to create multi level context menus that won't be
- * displayed off-screen by wrapping each level with the Tooltip component.
- */
+import { layers } from '../theme';
 
 class Tooltip extends Component {
   constructor(...args) {
@@ -62,14 +58,14 @@ class Tooltip extends Component {
       side,
       children,
       onClose,
-      withArrow
+      noArrow
     } = this.props;
     const {
       position,
       adjustment
     } = this.state;
     return createPortal(React.createElement("div", {
-      className: "jsx-1869453644"
+      className: _JSXStyle.dynamic([["3523804534", [layers.applicationTop]]])
     }, React.createElement(BackgroundCover, {
       onClick: onClose
     }), React.createElement(Content, {
@@ -77,11 +73,12 @@ class Tooltip extends Component {
       side: side,
       position: position,
       children: children,
-      withArrow: withArrow,
+      noArrow: noArrow,
       adjustment: adjustment
     }), React.createElement(_JSXStyle, {
-      id: "1869453644"
-    }, ["div.jsx-1869453644{left:0;height:100%;position:absolute;top:0;width:100%;z-index:2000;}"])), document.body);
+      id: "3523804534",
+      dynamic: [layers.applicationTop]
+    }, [`div.__jsx-style-dynamic-selector{left:0;height:100%;position:absolute;top:0;width:100%;z-index:${layers.applicationTop};}`])), document.body);
   }
 
 }
@@ -113,11 +110,12 @@ Tooltip.propTypes = {
   spacing: propTypes.number,
 
   /**
-   * Will add a triangular arrow icon to the opposite side of "props.side"
+   * Will remove the triangular arrow icon to the opposite side of "props.side"
    */
-  withArrow: propTypes.bool
+  noArrow: propTypes.bool
 };
 Tooltip.defaultProps = {
-  spacing: 0
+  spacing: 0,
+  side: 'top'
 };
 export { Tooltip };

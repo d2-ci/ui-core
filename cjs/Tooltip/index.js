@@ -23,6 +23,8 @@ var _Content = require("./Content");
 
 var _helpers = require("./helpers");
 
+var _theme = require("../theme");
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -55,11 +57,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-/**
- * The Tooltip component is a content container that behaves like a context menu
- * container. It can be used to create multi level context menus that won't be
- * displayed off-screen by wrapping each level with the Tooltip component.
- */
 var Tooltip =
 /*#__PURE__*/
 function (_Component) {
@@ -128,12 +125,12 @@ function (_Component) {
           side = _this$props2.side,
           children = _this$props2.children,
           onClose = _this$props2.onClose,
-          withArrow = _this$props2.withArrow;
+          noArrow = _this$props2.noArrow;
       var _this$state = this.state,
           position = _this$state.position,
           adjustment = _this$state.adjustment;
       return (0, _reactDom.createPortal)(_react.default.createElement("div", {
-        className: "jsx-1869453644"
+        className: _style.default.dynamic([["3523804534", [_theme.layers.applicationTop]]])
       }, _react.default.createElement(_BackgroundCover.BackgroundCover, {
         onClick: onClose
       }), _react.default.createElement(_Content.Content, {
@@ -141,11 +138,12 @@ function (_Component) {
         side: side,
         position: position,
         children: children,
-        withArrow: withArrow,
+        noArrow: noArrow,
         adjustment: adjustment
       }), _react.default.createElement(_style.default, {
-        id: "1869453644"
-      }, ["div.jsx-1869453644{left:0;height:100%;position:absolute;top:0;width:100%;z-index:2000;}"])), document.body);
+        id: "3523804534",
+        dynamic: [_theme.layers.applicationTop]
+      }, ["div.__jsx-style-dynamic-selector{left:0;height:100%;position:absolute;top:0;width:100%;z-index:".concat(_theme.layers.applicationTop, ";}")])), document.body);
     }
   }]);
 
@@ -180,10 +178,11 @@ Tooltip.propTypes = {
   spacing: _propTypes.default.number,
 
   /**
-   * Will add a triangular arrow icon to the opposite side of "props.side"
+   * Will remove the triangular arrow icon to the opposite side of "props.side"
    */
-  withArrow: _propTypes.default.bool
+  noArrow: _propTypes.default.bool
 };
 Tooltip.defaultProps = {
-  spacing: 0
+  spacing: 0,
+  side: 'top'
 };
