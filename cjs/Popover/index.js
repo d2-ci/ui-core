@@ -5,8 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Popover = void 0;
 
-var _style = _interopRequireDefault(require("styled-jsx/style"));
-
 var _reactDom = require("react-dom");
 
 var _react = _interopRequireWildcard(require("react"));
@@ -17,17 +15,15 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _reactRef = require("../prop-validators/reactRef");
 
-var _BackgroundCover = require("./BackgroundCover");
-
 var _Content = require("./Content");
 
 var _helpers = require("./helpers");
 
 var _theme = require("../theme");
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -82,6 +78,12 @@ function (_Component) {
       adjustment: {}
     });
 
+    _defineProperty(_assertThisInitialized(_this), "onDocClick", function (evt) {
+      if (_this.ref.current && !_this.ref.current.contains(evt.target)) {
+        _this.props.onClose();
+      }
+    });
+
     _defineProperty(_assertThisInitialized(_this), "updatePosition", function () {
       if (_this.props.open && _this.ref.current) {
         var _this$props = _this.props,
@@ -114,8 +116,15 @@ function (_Component) {
   _createClass(Popover, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.updatePosition();
+      document.addEventListener('click', this.onDocClick);
       window.addEventListener('resize', this.updatePosition);
+      this.updatePosition();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      document.removeEventListener('click', this.onDocClick);
+      window.removeEventListener('resize', this.updatePosition);
     }
   }, {
     key: "render",
@@ -129,21 +138,14 @@ function (_Component) {
       var _this$state = this.state,
           position = _this$state.position,
           adjustment = _this$state.adjustment;
-      return (0, _reactDom.createPortal)(_react.default.createElement("div", {
-        className: _style.default.dynamic([["3523804534", [_theme.layers.applicationTop]]])
-      }, _react.default.createElement(_BackgroundCover.BackgroundCover, {
-        onClick: onClose
-      }), _react.default.createElement(_Content.Content, {
+      return (0, _reactDom.createPortal)(_react.default.createElement(_Content.Content, {
         ref: this.ref,
         side: side,
         position: position,
         children: children,
         noArrow: noArrow,
         adjustment: adjustment
-      }), _react.default.createElement(_style.default, {
-        id: "3523804534",
-        dynamic: [_theme.layers.applicationTop]
-      }, ["div.__jsx-style-dynamic-selector{left:0;height:100%;position:absolute;top:0;width:100%;z-index:".concat(_theme.layers.applicationTop, ";}")])), document.body);
+      }), document.body);
     }
   }]);
 
