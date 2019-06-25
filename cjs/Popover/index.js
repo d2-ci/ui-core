@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Tooltip = void 0;
+exports.Popover = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -57,23 +57,23 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var Tooltip =
+var Popover =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Tooltip, _Component);
+  _inherits(Popover, _Component);
 
-  function Tooltip() {
+  function Popover() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _classCallCheck(this, Tooltip);
+    _classCallCheck(this, Popover);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Tooltip)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Popover)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_this), "ref", (0, _react.createRef)());
 
@@ -111,7 +111,7 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(Tooltip, [{
+  _createClass(Popover, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.updatePosition();
@@ -147,18 +147,18 @@ function (_Component) {
     }
   }]);
 
-  return Tooltip;
+  return Popover;
 }(_react.Component);
 
-exports.Tooltip = Tooltip;
-Tooltip.propTypes = {
+exports.Popover = Popover;
+Popover.propTypes = {
   /**
    * Must be created with `React.createRef()`
    */
   anchorRef: _reactRef.reactRef.isRequired,
 
   /**
-   * Tooltip will always be centered to the center of the anchor's side
+   * Popover will always be centered to the center of the anchor's side
    */
   side: _propTypes.default.oneOf(['top', 'right', 'bottom', 'left']).isRequired,
 
@@ -182,7 +182,7 @@ Tooltip.propTypes = {
    */
   noArrow: _propTypes.default.bool
 };
-Tooltip.defaultProps = {
+Popover.defaultProps = {
   spacing: 0,
   side: 'top'
 };

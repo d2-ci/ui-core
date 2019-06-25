@@ -12,7 +12,7 @@ import { Content } from './Content';
 import { arePositionsEqual, getPosition, getScrollAndClientOffset, propPosition } from './helpers';
 import { layers } from '../theme';
 
-class Tooltip extends Component {
+class Popover extends Component {
   constructor(...args) {
     super(...args);
 
@@ -83,14 +83,14 @@ class Tooltip extends Component {
 
 }
 
-Tooltip.propTypes = {
+Popover.propTypes = {
   /**
    * Must be created with `React.createRef()`
    */
   anchorRef: reactRef.isRequired,
 
   /**
-   * Tooltip will always be centered to the center of the anchor's side
+   * Popover will always be centered to the center of the anchor's side
    */
   side: propTypes.oneOf(['top', 'right', 'bottom', 'left']).isRequired,
 
@@ -114,8 +114,8 @@ Tooltip.propTypes = {
    */
   noArrow: propTypes.bool
 };
-Tooltip.defaultProps = {
+Popover.defaultProps = {
   spacing: 0,
   side: 'top'
 };
-export { Tooltip };
+export { Popover };
