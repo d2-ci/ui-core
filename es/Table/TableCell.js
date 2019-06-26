@@ -1,7 +1,7 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
 import propTypes from 'prop-types';
-import { useTableContext } from './tableContext';
+import { Consumer } from './tableContext';
 const tableCellStyles = ["td.jsx-2476768987{border-bottom:1px solid #e8edf2;padding:0 12px;font-size:14px;}", "div.jsx-2476768987{min-height:45px;}", "tfooter div.jsx-2476768987{min-height:36px;}"];
 tableCellStyles.__hash = "2476768987";
 
@@ -42,17 +42,16 @@ export const TableCell = ({
   title,
   colSpan,
   rowSpan
+}) => React.createElement(Consumer, null, ({
+  staticLayout
 }) => {
-  const {
-    staticLayout
-  } = useTableContext();
   const TableCell = staticLayout ? TableCellStatic : TableCellResponsive;
   return React.createElement(TableCell, {
     colSpan: colSpan,
     rowSpan: rowSpan,
     title: title
   }, React.createElement("div", null, children));
-};
+});
 TableCell.propTypes = {
   title: propTypes.string,
   colSpan: propTypes.string,

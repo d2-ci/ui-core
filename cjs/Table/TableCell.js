@@ -58,15 +58,19 @@ var TableCell = function TableCell(_ref3) {
       colSpan = _ref3.colSpan,
       rowSpan = _ref3.rowSpan;
 
-  var _useTableContext = (0, _tableContext.useTableContext)(),
-      staticLayout = _useTableContext.staticLayout;
+  var _ref5 =
+  /*#__PURE__*/
+  _react.default.createElement("div", null, children);
 
-  var TableCell = staticLayout ? TableCellStatic : TableCellResponsive;
-  return _react.default.createElement(TableCell, {
-    colSpan: colSpan,
-    rowSpan: rowSpan,
-    title: title
-  }, _react.default.createElement("div", null, children));
+  return _react.default.createElement(_tableContext.Consumer, null, function (_ref4) {
+    var staticLayout = _ref4.staticLayout;
+    var TableCell = staticLayout ? TableCellStatic : TableCellResponsive;
+    return _react.default.createElement(TableCell, {
+      colSpan: colSpan,
+      rowSpan: rowSpan,
+      title: title
+    }, _ref5);
+  });
 };
 
 exports.TableCell = TableCell;

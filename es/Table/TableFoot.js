@@ -1,6 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-import { useTableContext } from './tableContext';
+import { Consumer } from './tableContext';
 const tableFootStylesResponsive = ["@media (max-width:768px){tfoot.jsx-1784078313{display:block;margin-top:16px;}}", "@media (max-width:400px){tfoot.jsx-1784078313{margin-top:32px;}}"];
 tableFootStylesResponsive.__hash = "1784078313";
 
@@ -18,10 +18,9 @@ const TFootResponsive = ({
 
 export const TableFoot = ({
   children
+}) => React.createElement(Consumer, null, ({
+  staticLayout
 }) => {
-  const {
-    staticLayout
-  } = useTableContext();
   const TFoot = staticLayout ? TFootStatic : TFootResponsive;
   return React.createElement(TFoot, null, children);
-};
+});

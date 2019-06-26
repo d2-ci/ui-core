@@ -1,6 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-import { useTableContext } from './tableContext';
+import { Consumer } from './tableContext';
 const tableStyles = ["table.jsx-2430604489{border:1px solid #e8edf2;background-color:#ffffff;min-width:100%;text-align:left;border-collapse:collapse;vertical-align:top;}"];
 tableStyles.__hash = "2430604489";
 const tableStylesResponsive = ["@media (max-width:768px){table.jsx-1164486484{display:block;border:0;}}"];
@@ -26,10 +26,9 @@ const TableStatic = ({
 
 export const Table = ({
   children
+}) => React.createElement(Consumer, null, ({
+  staticLayout
 }) => {
-  const {
-    staticLayout
-  } = useTableContext();
   const TableComponent = staticLayout ? TableStatic : TableRepsonsive;
   return React.createElement(TableComponent, null, children);
-};
+});

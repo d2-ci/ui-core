@@ -32,12 +32,11 @@ var THeadResponsive = function THeadResponsive(_ref2) {
 
 var TableHead = function TableHead(_ref3) {
   var children = _ref3.children;
-
-  var _useTableContext = (0, _tableContext.useTableContext)(),
-      staticLayout = _useTableContext.staticLayout;
-
-  var THead = staticLayout ? THeadStatic : THeadResponsive;
-  return _react.default.createElement(THead, null, children);
+  return _react.default.createElement(_tableContext.Consumer, null, function (_ref4) {
+    var staticLayout = _ref4.staticLayout;
+    var THead = staticLayout ? THeadStatic : THeadResponsive;
+    return _react.default.createElement(THead, null, children);
+  });
 };
 
 exports.TableHead = TableHead;

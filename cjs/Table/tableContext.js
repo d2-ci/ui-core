@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Consumer = exports.Provider = exports.useTableContext = exports.TableContext = void 0;
+exports.Consumer = exports.Provider = exports.TableContext = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -13,12 +13,6 @@ var TableContext = (0, _react.createContext)({
   staticLayout: false
 });
 exports.TableContext = TableContext;
-
-var useTableContext = function useTableContext() {
-  return (0, _react.useContext)(TableContext);
-};
-
-exports.useTableContext = useTableContext;
 var Provider = TableContext.Provider,
     Consumer = TableContext.Consumer;
 exports.Consumer = Consumer;

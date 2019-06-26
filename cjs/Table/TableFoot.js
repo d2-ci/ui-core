@@ -32,12 +32,11 @@ var TFootResponsive = function TFootResponsive(_ref2) {
 
 var TableFoot = function TableFoot(_ref3) {
   var children = _ref3.children;
-
-  var _useTableContext = (0, _tableContext.useTableContext)(),
-      staticLayout = _useTableContext.staticLayout;
-
-  var TFoot = staticLayout ? TFootStatic : TFootResponsive;
-  return _react.default.createElement(TFoot, null, children);
+  return _react.default.createElement(_tableContext.Consumer, null, function (_ref4) {
+    var staticLayout = _ref4.staticLayout;
+    var TFoot = staticLayout ? TFootStatic : TFootResponsive;
+    return _react.default.createElement(TFoot, null, children);
+  });
 };
 
 exports.TableFoot = TableFoot;

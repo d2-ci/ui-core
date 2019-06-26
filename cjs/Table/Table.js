@@ -40,12 +40,11 @@ var TableStatic = function TableStatic(_ref2) {
 
 var Table = function Table(_ref3) {
   var children = _ref3.children;
-
-  var _useTableContext = (0, _tableContext.useTableContext)(),
-      staticLayout = _useTableContext.staticLayout;
-
-  var TableComponent = staticLayout ? TableStatic : TableRepsonsive;
-  return _react.default.createElement(TableComponent, null, children);
+  return _react.default.createElement(_tableContext.Consumer, null, function (_ref4) {
+    var staticLayout = _ref4.staticLayout;
+    var TableComponent = staticLayout ? TableStatic : TableRepsonsive;
+    return _react.default.createElement(TableComponent, null, children);
+  });
 };
 
 exports.Table = Table;

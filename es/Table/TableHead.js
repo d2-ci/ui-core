@@ -1,6 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-import { useTableContext } from './tableContext';
+import { Consumer } from './tableContext';
 const tableHeadStylesResponsive = ["@media (max-width:768px){thead.jsx-3333755757{display:none;}}"];
 tableHeadStylesResponsive.__hash = "3333755757";
 
@@ -18,10 +18,9 @@ const THeadResponsive = ({
 
 export const TableHead = ({
   children
+}) => React.createElement(Consumer, null, ({
+  staticLayout
 }) => {
-  const {
-    staticLayout
-  } = useTableContext();
   const THead = staticLayout ? THeadStatic : THeadResponsive;
   return React.createElement(THead, null, children);
-};
+});

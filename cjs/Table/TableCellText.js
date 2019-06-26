@@ -42,13 +42,12 @@ var TableCellTextResponsive = function TableCellTextResponsive(_ref2) {
 
 var TableCellText = function TableCellText(_ref3) {
   var label = _ref3.label;
-
-  var _useTableContext = (0, _tableContext.useTableContext)(),
-      staticLayout = _useTableContext.staticLayout;
-
-  var TableCellTextComponent = staticLayout ? TableCellTextStatic : TableCellTextResponsive;
-  return _react.default.createElement(TableCellTextComponent, {
-    label: label
+  return _react.default.createElement(_tableContext.Consumer, null, function (_ref4) {
+    var staticLayout = _ref4.staticLayout;
+    var TableCellTextComponent = staticLayout ? TableCellTextStatic : TableCellTextResponsive;
+    return _react.default.createElement(TableCellTextComponent, {
+      label: label
+    });
   });
 };
 

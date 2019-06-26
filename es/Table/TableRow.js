@@ -1,6 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-import { useTableContext } from './tableContext';
+import { Consumer } from './tableContext';
 const tableRowStyles = ["tr.jsx-3962819116{min-height:45px;}", "tr.jsx-3962819116:nth-child(even){background:#fbfcfd;}", "thead tr.jsx-3962819116,tbody tr.jsx-3962819116{min-height:36px;}"];
 tableRowStyles.__hash = "3962819116";
 const tableRowStylesResponsive = ["@media (max-width:768px){tr.jsx-1489192940{display:table;width:100%;border:1px solid #e8edf2;}tr.jsx-1489192940+tr.jsx-1489192940{margin-top:16px;}}", "@media (max-width:400px){tr.jsx-1489192940{display:block;}tr.jsx-1489192940:nth-child(even){background:none;}tr.jsx-1489192940+tr.jsx-1489192940{margin-top:32px;}tr.jsx-1489192940:nth-child(even) td{background:#fbfcfd;}}"];
@@ -26,10 +26,9 @@ const TableRowResponsive = ({
 
 export const TableRow = ({
   children
+}) => React.createElement(Consumer, null, ({
+  staticLayout
 }) => {
-  const {
-    staticLayout
-  } = useTableContext();
   const TableRowComponent = staticLayout ? TableRowStatic : TableRowResponsive;
   return React.createElement(TableRowComponent, null, children);
-};
+});

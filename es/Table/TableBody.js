@@ -1,6 +1,6 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-import { useTableContext } from './tableContext';
+import { Consumer } from './tableContext';
 const tableBodyStylesResponsive = ["@media (max-width:768px){tbody.jsx-2019227652{display:block;}}"];
 tableBodyStylesResponsive.__hash = "2019227652";
 
@@ -18,10 +18,9 @@ const TBodyResponsive = ({
 
 export const TableBody = ({
   children
+}) => React.createElement(Consumer, null, ({
+  staticLayout
 }) => {
-  const {
-    staticLayout
-  } = useTableContext();
   const TBody = staticLayout ? TBodyStatic : TBodyResponsive;
   return React.createElement(TBody, null, children);
-};
+});
