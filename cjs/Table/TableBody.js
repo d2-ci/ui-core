@@ -9,15 +9,35 @@ var _style = _interopRequireDefault(require("styled-jsx/style"));
 
 var _react = _interopRequireDefault(require("react"));
 
+var _tableContext = require("./tableContext");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var TableBody = function TableBody(_ref) {
+var tableBodyStylesResponsive = ["@media (max-width:768px){tbody.jsx-2019227652{display:block;}}"];
+tableBodyStylesResponsive.__hash = "2019227652";
+
+var TBodyStatic = function TBodyStatic(_ref) {
   var children = _ref.children;
+  return _react.default.createElement("tbody", null, children);
+};
+
+var TBodyResponsive = function TBodyResponsive(_ref2) {
+  var children = _ref2.children;
   return _react.default.createElement("tbody", {
-    className: "jsx-1905405001"
+    className: "jsx-".concat(tableBodyStylesResponsive.__hash)
   }, children, _react.default.createElement(_style.default, {
-    id: "1905405001"
-  }, ["@media (max-width:768px){tbody.jsx-1905405001{display:block;}}"]));
+    id: tableBodyStylesResponsive.__hash
+  }, tableBodyStylesResponsive));
+};
+
+var TableBody = function TableBody(_ref3) {
+  var children = _ref3.children;
+
+  var _useTableContext = (0, _tableContext.useTableContext)(),
+      staticLayout = _useTableContext.staticLayout;
+
+  var TBody = staticLayout ? TBodyStatic : TBodyResponsive;
+  return _react.default.createElement(TBody, null, children);
 };
 
 exports.TableBody = TableBody;

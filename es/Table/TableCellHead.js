@@ -1,11 +1,20 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
+import propTypes from 'prop-types';
 export const TableCellHead = ({
-  children
+  children,
+  colSpan,
+  rowSpan
 }) => React.createElement("th", {
-  className: "jsx-1014159493"
+  colSpan: colSpan,
+  rowSpan: rowSpan,
+  className: "jsx-1940747275"
 }, React.createElement("div", {
-  className: "jsx-1014159493"
+  className: "jsx-1940747275"
 }, children), React.createElement(_JSXStyle, {
-  id: "1014159493"
-}, ["th.jsx-1014159493{border-bottom:1px solid #e8edf2;padding:0 12px;}", "@media (max-width:768px){th.jsx-1014159493{display:block;}}", "div.jsx-1014159493{min-height:36px;}"]));
+  id: "1940747275"
+}, ["th.jsx-1940747275{border-bottom:1px solid #e8edf2;padding:0 12px;}", "div.jsx-1940747275{min-height:36px;}"]));
+TableCellHead.propTypes = {
+  colSpan: propTypes.string,
+  rowSpan: propTypes.string
+};

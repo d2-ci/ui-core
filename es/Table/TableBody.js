@@ -1,9 +1,27 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-export const TableBody = ({
+import { useTableContext } from './tableContext';
+const tableBodyStylesResponsive = ["@media (max-width:768px){tbody.jsx-2019227652{display:block;}}"];
+tableBodyStylesResponsive.__hash = "2019227652";
+
+const TBodyStatic = ({
+  children
+}) => React.createElement("tbody", null, children);
+
+const TBodyResponsive = ({
   children
 }) => React.createElement("tbody", {
-  className: "jsx-1905405001"
+  className: `jsx-${tableBodyStylesResponsive.__hash}`
 }, children, React.createElement(_JSXStyle, {
-  id: "1905405001"
-}, ["@media (max-width:768px){tbody.jsx-1905405001{display:block;}}"]));
+  id: tableBodyStylesResponsive.__hash
+}, tableBodyStylesResponsive));
+
+export const TableBody = ({
+  children
+}) => {
+  const {
+    staticLayout
+  } = useTableContext();
+  const TBody = staticLayout ? TBodyStatic : TBodyResponsive;
+  return React.createElement(TBody, null, children);
+};

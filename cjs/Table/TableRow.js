@@ -9,15 +9,47 @@ var _style = _interopRequireDefault(require("styled-jsx/style"));
 
 var _react = _interopRequireDefault(require("react"));
 
+var _tableContext = require("./tableContext");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var TableRow = function TableRow(_ref) {
+var tableRowStyles = ["tr.jsx-3962819116{min-height:45px;}", "tr.jsx-3962819116:nth-child(even){background:#fbfcfd;}", "thead tr.jsx-3962819116,tbody tr.jsx-3962819116{min-height:36px;}"];
+tableRowStyles.__hash = "3962819116";
+var tableRowStylesResponsive = ["@media (max-width:768px){tr.jsx-1489192940{display:table;width:100%;border:1px solid #e8edf2;}tr.jsx-1489192940+tr.jsx-1489192940{margin-top:16px;}}", "@media (max-width:400px){tr.jsx-1489192940{display:block;}tr.jsx-1489192940:nth-child(even){background:none;}tr.jsx-1489192940+tr.jsx-1489192940{margin-top:32px;}tr.jsx-1489192940:nth-child(even) td{background:#fbfcfd;}}"];
+tableRowStylesResponsive.__hash = "1489192940";
+
+var TableRowStatic = function TableRowStatic(_ref) {
   var children = _ref.children;
   return _react.default.createElement("tr", {
-    className: "jsx-1066514356"
+    className: "jsx-".concat(tableRowStyles.__hash)
   }, children, _react.default.createElement(_style.default, {
-    id: "1066514356"
-  }, ["tr.jsx-1066514356{min-height:45px;}", "tr.jsx-1066514356:nth-child(even){background:#fbfcfd;}", "thead tr.jsx-1066514356,tbody tr.jsx-1066514356{min-height:36px;}", "@media (max-width:768px){tr.jsx-1066514356{display:table;width:100%;border:1px solid #e8edf2;}tr.jsx-1066514356+tr.jsx-1066514356{margin-top:16px;}}", "@media (max-width:400px){tr.jsx-1066514356{display:block;}tr.jsx-1066514356:nth-child(even){background:none;}tr.jsx-1066514356+tr.jsx-1066514356{margin-top:32px;}tr.jsx-1066514356:nth-child(even) td{background:#fbfcfd;}}"]));
+    id: tableRowStyles.__hash
+  }, tableRowStyles));
+};
+
+var TableRowResponsive = function TableRowResponsive(_ref2) {
+  var children = _ref2.children;
+  return _react.default.createElement("tr", {
+    className: "jsx-".concat(tableRowStyles.__hash, " jsx-").concat(tableRowStylesResponsive.__hash)
+  }, children, _react.default.createElement(_style.default, {
+    id: tableRowStyles.__hash
+  }, tableRowStyles), _react.default.createElement(_style.default, {
+    id: tableRowStylesResponsive.__hash
+  }, tableRowStylesResponsive));
+};
+
+var TableRow = function TableRow(_ref3) {
+  var children = _ref3.children;
+
+  var _useTableContext = (0, _tableContext.useTableContext)(),
+      staticLayout = _useTableContext.staticLayout;
+
+  var TableRowComponent = staticLayout ? TableRowStatic : TableRowResponsive;
+  return _react.default.createElement(TableRowComponent, {
+    className: "jsx-2085888330"
+  }, children, _react.default.createElement(_style.default, {
+    id: "2085888330"
+  }, []));
 };
 
 exports.TableRow = TableRow;
