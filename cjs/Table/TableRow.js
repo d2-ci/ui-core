@@ -45,11 +45,7 @@ var TableRow = function TableRow(_ref3) {
       staticLayout = _useTableContext.staticLayout;
 
   var TableRowComponent = staticLayout ? TableRowStatic : TableRowResponsive;
-  return _react.default.createElement(TableRowComponent, {
-    className: "jsx-2085888330"
-  }, children, _react.default.createElement(_style.default, {
-    id: "2085888330"
-  }, []));
+  return _react.default.createElement(TableRowComponent, null, children);
 };
 
 exports.TableRow = TableRow;
