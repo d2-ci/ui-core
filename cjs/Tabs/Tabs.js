@@ -49,11 +49,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var _ref =
+var _ref2 =
 /*#__PURE__*/
 _react.default.createElement(_Chevron.ChevronLeft, null);
 
-var _ref2 =
+var _ref3 =
 /*#__PURE__*/
 _react.default.createElement(_Chevron.ChevronRight, null);
 
@@ -81,58 +81,50 @@ function (_PureComponent) {
 
     _defineProperty(_assertThisInitialized(_this), "tabRefs", _react.Children.map(_this.props.children, _react.createRef));
 
-    _defineProperty(_assertThisInitialized(_this), "nodes", {
-      tabs: []
-    });
-
     _defineProperty(_assertThisInitialized(_this), "state", {
       scrolledToStart: true,
       scrolledToEnd: true,
       showTabIndicator: false
     });
 
-    _defineProperty(_assertThisInitialized(_this), "addTabRef", function (node) {
-      _this.nodes.tabs.push(node);
-    });
-
     _defineProperty(_assertThisInitialized(_this), "getSelectedTabRef", function () {
       var selected = _this.props.selected;
-      return _this.nodes.tabs[selected];
+      return _this.tabRefs[selected].current;
     });
 
     _defineProperty(_assertThisInitialized(_this), "scrollLeft", function () {
-      var tabs = _this.nodes.tabs;
+      var firstTab = _this.tabRefs[0].current;
       var _this$scrollBox$curre = _this.scrollBox.current,
           scrollLeft = _this$scrollBox$curre.scrollLeft,
           offsetWidth = _this$scrollBox$curre.offsetWidth;
       var offsetLeft = scrollLeft - offsetWidth;
-      var targetTab = offsetLeft <= 0 ? tabs[0] : _this.getTabAtOffsetLeft(offsetLeft);
+      var targetTab = offsetLeft <= 0 ? firstTab : _this.getTabAtOffsetLeft(offsetLeft);
 
       _this.scrollToTab(targetTab);
     });
 
     _defineProperty(_assertThisInitialized(_this), "scrollRight", function () {
-      var tabs = _this.nodes.tabs;
+      var lastTab = _this.tabRefs[_this.tabRefs.length - 1].current;
       var _this$scrollBox$curre2 = _this.scrollBox.current,
           scrollLeft = _this$scrollBox$curre2.scrollLeft,
           offsetWidth = _this$scrollBox$curre2.offsetWidth;
       var areaOffsetWidth = _this.scrollArea.current.offsetWidth;
       var offsetLeft = scrollLeft + offsetWidth * 2;
       var atEnd = areaOffsetWidth <= offsetLeft;
-      var targetTab = atEnd ? tabs[tabs.length - 1] : _this.getTabAtOffsetLeft(offsetLeft);
+      var targetTab = atEnd ? lastTab : _this.getTabAtOffsetLeft(offsetLeft);
 
       _this.scrollToTab(targetTab);
     });
 
-    _defineProperty(_assertThisInitialized(_this), "animatedScrollCallback", function () {
+    _defineProperty(_assertThisInitialized(_this), "initScrollableUI", function () {
+      _this.showTabIndicator();
+
       _this.toggleScrollButtonVisibility();
 
       _this.attachSideScrollListener();
     });
 
-    _defineProperty(_assertThisInitialized(_this), "updateScrollableUiAfterMount", function () {
-      _this.showTabIndicator();
-
+    _defineProperty(_assertThisInitialized(_this), "animatedScrollCallback", function () {
       _this.toggleScrollButtonVisibility();
 
       _this.attachSideScrollListener();
@@ -167,20 +159,20 @@ function (_PureComponent) {
 
       this.setHorizontalScrollbarHeight();
 
-      if (this.scrollRequiredToReachActiveTab()) {
+      if (this.scrollRequiredToReachSelectedTab()) {
         var scrollProps = {
           duration: 1,
-          callback: this.updateScrollableUiAfterMount
+          callback: this.initScrollableUI
         };
         this.scrollToTab(this.getSelectedTabRef(), scrollProps);
       } else {
-        this.updateScrollableUiAfterMount();
+        this.initScrollableUI();
       }
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      if (!this.props.contained && this.props.selected !== prevProps.selected && this.scrollRequiredToReachActiveTab()) {
+      if (!this.props.contained && this.props.selected !== prevProps.selected && this.scrollRequiredToReachSelectedTab()) {
         this.scrollToTab(this.getSelectedTabRef());
       }
     }
@@ -190,11 +182,9 @@ function (_PureComponent) {
       if (!this.props.contained) {
         this.removeSideScrollListener();
       }
-    } // Refs
-
+    }
   }, {
     key: "showTabIndicator",
-    // Methods
     value: function showTabIndicator() {
       this.setState({
         showTabIndicator: true
@@ -221,13 +211,14 @@ function (_PureComponent) {
   }, {
     key: "getTabAtOffsetLeft",
     value: function getTabAtOffsetLeft(offsetLeft) {
-      return this.nodes.tabs.find(function (tab) {
+      return this.tabRefs.find(function (_ref) {
+        var tab = _ref.current;
         return offsetLeft >= tab.offsetLeft && offsetLeft <= tab.offsetLeft + tab.offsetWidth;
-      });
+      }).current;
     }
   }, {
-    key: "scrollRequiredToReachActiveTab",
-    value: function scrollRequiredToReachActiveTab() {
+    key: "scrollRequiredToReachSelectedTab",
+    value: function scrollRequiredToReachSelectedTab() {
       var _this$scrollBox$curre5 = this.scrollBox.current,
           scrollLeft = _this$scrollBox$curre5.scrollLeft,
           offsetWidth = _this$scrollBox$curre5.offsetWidth;
@@ -258,12 +249,11 @@ function (_PureComponent) {
           selected = _this$props.selected;
       return _react.Children.map(children, function (child, index) {
         return (0, _react.cloneElement)(child, {
-          active: index === selected,
-          addTabRef: _this2.addTabRef
+          selected: index === selected,
+          ref: _this2.tabRefs[index]
         });
       });
-    } // Rendering
-
+    }
   }, {
     key: "renderTabBar",
     value: function renderTabBar() {
@@ -302,7 +292,7 @@ function (_PureComponent) {
           className: (0, _classnames.default)('scroll-button', {
             hidden: scrolledToStart
           })
-        }, _ref), _react.default.createElement("div", {
+        }, _ref2), _react.default.createElement("div", {
           className: "scroll-box-clipper"
         }, _react.default.createElement("div", {
           className: "scroll-box",
@@ -316,7 +306,7 @@ function (_PureComponent) {
           className: (0, _classnames.default)('scroll-button', {
             hidden: scrolledToEnd
           })
-        }, _ref2));
+        }, _ref3));
       }
 
       return _react.default.createElement("div", {
