@@ -37,11 +37,7 @@ var TableFoot = function TableFoot(_ref3) {
       staticLayout = _useTableContext.staticLayout;
 
   var TFoot = staticLayout ? TFootStatic : TFootResponsive;
-  return _react.default.createElement(TFoot, {
-    className: "jsx-431488448"
-  }, children, _react.default.createElement(_style.default, {
-    id: "431488448"
-  }, []));
+  return _react.default.createElement(TFoot, null, children);
 };
 
 exports.TableFoot = TableFoot;

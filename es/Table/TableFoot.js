@@ -23,9 +23,5 @@ export const TableFoot = ({
     staticLayout
   } = useTableContext();
   const TFoot = staticLayout ? TFootStatic : TFootResponsive;
-  return React.createElement(TFoot, {
-    className: "jsx-431488448"
-  }, children, React.createElement(_JSXStyle, {
-    id: "431488448"
-  }, []));
+  return React.createElement(TFoot, null, children);
 };
