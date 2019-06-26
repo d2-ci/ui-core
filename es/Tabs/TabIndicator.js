@@ -41,16 +41,16 @@ class TabIndicator extends Component {
     } = this.getTransformStyle();
     return React.createElement("span", {
       style: this.getTransformStyle(),
-      className: "jsx-1147635496 " + _JSXStyle.dynamic([["3970204105", [translateX, scaleX]]]) + " " + (cx({
+      className: "jsx-2564779855 " + _JSXStyle.dynamic([["284192492", [translateX, scaleX]]]) + " " + (cx({
         visible: this.props.visible,
         animated: this.state.animated
       }) || "")
     }, React.createElement(_JSXStyle, {
-      id: "3970204105",
+      id: "284192492",
       dynamic: [translateX, scaleX]
-    }, [`span.__jsx-style-dynamic-selector{-webkit-transform:translateX(${translateX}px) translateY(2px) scaleX(${scaleX});-ms-transform:translateX(${translateX}px) translateY(2px) scaleX(${scaleX});transform:translateX(${translateX}px) translateY(2px) scaleX(${scaleX});}`]), React.createElement(_JSXStyle, {
-      id: "1147635496"
-    }, ["span.jsx-1147635496{display:block;position:absolute;bottom:0;left:0;height:4px;width:1px;background-color:#1976d2;-webkit-transform-origin:left bottom;-ms-transform-origin:left bottom;transform-origin:left bottom;-webkit-transition:none;transition:none;visibility:hidden;}", "span.visible.jsx-1147635496{visibility:visible;}", "span.animated.jsx-1147635496{-webkit-transition:-webkit-transform 300ms ease-in-out;-webkit-transition:transform 300ms ease-in-out;transition:transform 300ms ease-in-out;}"]));
+    }, [`span.__jsx-style-dynamic-selector{-webkit-transform:translateX(${translateX}px) translateY(1px) scaleX(${scaleX});-ms-transform:translateX(${translateX}px) translateY(1px) scaleX(${scaleX});transform:translateX(${translateX}px) translateY(1px) scaleX(${scaleX});}`]), React.createElement(_JSXStyle, {
+      id: "2564779855"
+    }, ["span.jsx-2564779855{display:block;position:absolute;bottom:0;left:0;height:4px;width:1px;background-color:#1976d2;-webkit-transform-origin:left bottom;-ms-transform-origin:left bottom;transform-origin:left bottom;-webkit-transition:none;transition:none;visibility:hidden;z-index:99999;}", "span.visible.jsx-2564779855{visibility:visible;}", "span.animated.jsx-2564779855{-webkit-transition:-webkit-transform 300ms ease-in-out;-webkit-transition:transform 300ms ease-in-out;transition:transform 300ms ease-in-out;}"]));
   }
 
 }

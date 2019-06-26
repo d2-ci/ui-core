@@ -92,16 +92,16 @@ function (_Component) {
 
       return _react.default.createElement("span", {
         style: this.getTransformStyle(),
-        className: "jsx-1147635496 " + _style.default.dynamic([["3970204105", [translateX, scaleX]]]) + " " + ((0, _classnames.default)({
+        className: "jsx-2564779855 " + _style.default.dynamic([["284192492", [translateX, scaleX]]]) + " " + ((0, _classnames.default)({
           visible: this.props.visible,
           animated: this.state.animated
         }) || "")
       }, _react.default.createElement(_style.default, {
-        id: "3970204105",
+        id: "284192492",
         dynamic: [translateX, scaleX]
-      }, ["span.__jsx-style-dynamic-selector{-webkit-transform:translateX(".concat(translateX, "px) translateY(2px) scaleX(").concat(scaleX, ");-ms-transform:translateX(").concat(translateX, "px) translateY(2px) scaleX(").concat(scaleX, ");transform:translateX(").concat(translateX, "px) translateY(2px) scaleX(").concat(scaleX, ");}")]), _react.default.createElement(_style.default, {
-        id: "1147635496"
-      }, ["span.jsx-1147635496{display:block;position:absolute;bottom:0;left:0;height:4px;width:1px;background-color:#1976d2;-webkit-transform-origin:left bottom;-ms-transform-origin:left bottom;transform-origin:left bottom;-webkit-transition:none;transition:none;visibility:hidden;}", "span.visible.jsx-1147635496{visibility:visible;}", "span.animated.jsx-1147635496{-webkit-transition:-webkit-transform 300ms ease-in-out;-webkit-transition:transform 300ms ease-in-out;transition:transform 300ms ease-in-out;}"]));
+      }, ["span.__jsx-style-dynamic-selector{-webkit-transform:translateX(".concat(translateX, "px) translateY(1px) scaleX(").concat(scaleX, ");-ms-transform:translateX(").concat(translateX, "px) translateY(1px) scaleX(").concat(scaleX, ");transform:translateX(").concat(translateX, "px) translateY(1px) scaleX(").concat(scaleX, ");}")]), _react.default.createElement(_style.default, {
+        id: "2564779855"
+      }, ["span.jsx-2564779855{display:block;position:absolute;bottom:0;left:0;height:4px;width:1px;background-color:#1976d2;-webkit-transform-origin:left bottom;-ms-transform-origin:left bottom;transform-origin:left bottom;-webkit-transition:none;transition:none;visibility:hidden;z-index:99999;}", "span.visible.jsx-2564779855{visibility:visible;}", "span.animated.jsx-2564779855{-webkit-transition:-webkit-transform 300ms ease-in-out;-webkit-transition:transform 300ms ease-in-out;transition:transform 300ms ease-in-out;}"]));
     }
   }]);
 

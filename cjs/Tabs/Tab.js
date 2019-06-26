@@ -13,9 +13,13 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
+var _theme = require("../theme.js");
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var noop = function noop() {};
 
 var Tab = (0, _react.forwardRef)(function (_ref, ref) {
   var icon = _ref.icon,
@@ -25,16 +29,17 @@ var Tab = (0, _react.forwardRef)(function (_ref, ref) {
       stacked = _ref.stacked,
       children = _ref.children;
   return _react.default.createElement("button", {
-    onClick: onClick,
+    onClick: disabled ? noop : onClick,
     ref: ref,
-    className: "jsx-2872561569" + " " + "".concat((0, _classnames.default)('d2ui-align-icon', {
+    className: _style.default.dynamic([["3508618465", [_theme.colors.grey700, _theme.colors.grey700, _theme.colors.grey100, _theme.colors.grey200, _theme.colors.grey900, _theme.colors.grey900, _theme.colors.grey500, _theme.colors.grey500]]]) + " " + "".concat((0, _classnames.default)('d2ui-align-icon', {
       selected: selected,
       disabled: disabled,
       stacked: stacked
     }))
   }, icon && icon, children, _react.default.createElement(_style.default, {
-    id: "2872561569"
-  }, ["button.jsx-2872561569{background-color:transparent;height:100%;border:none;outline:none;color:rgba(0,0,0,0.6);-webkit-transition:all 150ms ease-in-out;transition:all 150ms ease-in-out;cursor:pointer;padding:0.375rem 1.5rem;text-transform:uppercase;font-size:0.875rem;line-height:2.25rem;font-weight:500;-webkit-letter-spacing:0.08929em;-moz-letter-spacing:0.08929em;-ms-letter-spacing:0.08929em;letter-spacing:0.08929em;display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;max-width:20rem;}", "button.selected.jsx-2872561569{color:#000000;}", "button.disabled.jsx-2872561569{color:rgba(0,0,0,0.3);pointer-events:none;}", "button.stacked.jsx-2872561569{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}", "button.jsx-2872561569>svg,button.jsx-2872561569>svg:first-child,button.jsx-2872561569>svg:last-child,button.jsx-2872561569>svg:only-child{margin:0.6rem 0 0 0;}", "button.jsx-2872561569:active{background-color:#e0e0e0;}"]));
+    id: "3508618465",
+    dynamic: [_theme.colors.grey700, _theme.colors.grey700, _theme.colors.grey100, _theme.colors.grey200, _theme.colors.grey900, _theme.colors.grey900, _theme.colors.grey500, _theme.colors.grey500]
+  }, ["button.__jsx-style-dynamic-selector{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:100%;max-width:320px;padding:19px 16px 13px 16px;-webkit-transform:translateY(-1px);-ms-transform:translateY(-1px);transform:translateY(-1px);background-color:transparent;border:none;outline:none;color:".concat(_theme.colors.grey700, ";font-size:14px;line-height:14px;-webkit-transition:all 150ms ease-in-out;transition:all 150ms ease-in-out;cursor:pointer;}"), "button.__jsx-style-dynamic-selector>svg{fill:".concat(_theme.colors.grey700, ";width:14px;height:14px;margin-right:4px;display:inline;line-height:14px;}"), "button.__jsx-style-dynamic-selector:hover{background-color:".concat(_theme.colors.grey100, ";}"), "button.__jsx-style-dynamic-selector:active{background-color:".concat(_theme.colors.grey200, ";}"), "button.selected.__jsx-style-dynamic-selector{color:".concat(_theme.colors.grey900, ";}"), "button.selected.__jsx-style-dynamic-selector>svg{fill:".concat(_theme.colors.grey900, ";}"), "button.disabled.__jsx-style-dynamic-selector{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), "button.disabled.__jsx-style-dynamic-selector>svg{fill:".concat(_theme.colors.grey500, ";}")]));
 });
 exports.Tab = Tab;
 Tab.propTypes = {
