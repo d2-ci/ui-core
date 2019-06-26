@@ -1,5 +1,5 @@
 const DURATION = 350;
-export default function animatedSideScroll({
+export function animatedSideScroll({
   targetEl,
   scrollBox,
   callback

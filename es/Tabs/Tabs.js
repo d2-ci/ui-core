@@ -4,22 +4,15 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import React, { PureComponent, Children, cloneElement, createRef, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import Tab from './Tab';
-import TabIndicator from './TabIndicator';
-import animatedSideScroll from './animatedSideScroll';
-import { ChevronLeft, ChevronRight } from '../icons/Chevron';
+import React, { PureComponent, Children, cloneElement, createRef } from 'react';
+import propTypes from 'prop-types';
+import { TabIndicator } from './TabIndicator';
+import { animatedSideScroll } from './animatedSideScroll';
 import cx from 'classnames';
 import styles from './styles';
-
-var _ref =
-/*#__PURE__*/
-React.createElement(ChevronLeft, null);
-
-var _ref2 =
-/*#__PURE__*/
-React.createElement(ChevronRight, null);
+import { TabBar } from './TabBar';
+import { Tab } from './Tab';
+import { instanceOfComponent } from '../prop-validators';
 
 class Tabs extends PureComponent {
   constructor(...args) {
@@ -181,79 +174,39 @@ class Tabs extends PureComponent {
     }, scrollProps));
   }
 
-  renderChildren() {
-    const {
-      children,
-      selected
-    } = this.props;
-    return Children.map(children, (child, index) => cloneElement(child, {
-      selected: index === selected,
-      ref: this.tabRefs[index]
-    }));
-  }
-
-  renderTabBar() {
-    const {
-      cluster,
-      contained
-    } = this.props;
-    const {
-      showTabIndicator
-    } = this.state;
-    const className = cx('tab-container', // A scrollable tabBar cannot be clustered
-    {
-      [`cluster-${cluster}`]: cluster && contained,
-      contained
-    });
-    return React.createElement("div", {
-      className: className
-    }, this.renderChildren(), React.createElement(TabIndicator, {
-      getSelectedTabRef: this.getSelectedTabRef,
-      visible: showTabIndicator
-    }));
-  }
-
   render() {
     const {
       scrolledToStart,
-      scrolledToEnd
+      scrolledToEnd,
+      showTabIndicator
     } = this.state;
     const {
       className,
       position,
-      contained
+      contained,
+      cluster,
+      children,
+      selected
     } = this.props;
-    const scrollBoxStyle = {
-      marginBottom: -this.horizontalScrollbarHeight
-    };
-    let tabBar = this.renderTabBar();
-
-    if (!contained) {
-      tabBar = React.createElement(Fragment, null, React.createElement("button", {
-        onClick: this.scrollLeft,
-        className: cx('scroll-button', {
-          hidden: scrolledToStart
-        })
-      }, _ref), React.createElement("div", {
-        className: "scroll-box-clipper"
-      }, React.createElement("div", {
-        className: "scroll-box",
-        ref: this.scrollBox,
-        style: scrollBoxStyle
-      }, React.createElement("div", {
-        className: 'scroll-area',
-        ref: this.scrollArea
-      }, tabBar))), React.createElement("button", {
-        onClick: this.scrollRight,
-        className: cx('scroll-button', {
-          hidden: scrolledToEnd
-        })
-      }, _ref2));
-    }
-
     return React.createElement("div", {
       className: `jsx-${styles.__hash}` + " " + (cx(className, position) || "")
-    }, tabBar, React.createElement(_JSXStyle, {
+    }, React.createElement(TabBar, {
+      cluster: cluster,
+      contained: contained,
+      scrollLeft: this.scrollLeft,
+      scrollRight: this.scrollRight,
+      scrolledToStart: scrolledToStart,
+      scrolledToEnd: scrolledToEnd,
+      scrollBoxRef: this.scrollBox,
+      scrollAreaRef: this.scrollArea,
+      marginBottom: -this.horizontalScrollbarHeight
+    }, Children.map(children, (child, index) => cloneElement(child, {
+      selected: index === selected,
+      ref: this.tabRefs[index]
+    })), React.createElement(TabIndicator, {
+      getSelectedTabRef: this.getSelectedTabRef,
+      visible: showTabIndicator
+    })), React.createElement(_JSXStyle, {
       id: styles.__hash
     }, styles));
   }
@@ -261,17 +214,16 @@ class Tabs extends PureComponent {
 }
 
 Tabs.propTypes = {
-  className: PropTypes.string,
-  selected: PropTypes.number.isRequired,
-  position: PropTypes.oneOf(['relative', 'fixed', 'absolute', 'sticky']),
-  contained: PropTypes.bool,
-  cluster: PropTypes.oneOf([null, 'left', 'centered', 'right']),
-  children: PropTypes.oneOfType([PropTypes.objectOf(Tab), PropTypes.arrayOf(Tab)])
+  className: propTypes.string,
+  selected: propTypes.number.isRequired,
+  position: propTypes.oneOf(['relative', 'fixed', 'absolute', 'sticky']),
+  contained: TabBar.propTypes.contained,
+  cluster: TabBar.propTypes.cluster,
+  children: propTypes.arrayOf(instanceOfComponent(Tab))
 };
 Tabs.defaultProps = {
-  items: [],
   contained: false,
   position: 'relative',
   cluster: null
 };
-export default Tabs;
+export { Tabs };

@@ -1,19 +1,24 @@
 import _JSXStyle from "styled-jsx/style";
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 class TabIndicator extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+  constructor(...args) {
+    super(...args);
+
+    _defineProperty(this, "state", {
       animated: false
-    };
+    });
   }
 
   componentDidUpdate(prevProps) {
-    // The tabindicator should not move with a CSS transition when it is first positioned into place
-    // The tick after the visibility is true, the animation should start
+    /* The tabindicator should not move with a CSS transition when
+       it is first positioned into place. In the render cycle
+       after it became visible the animation should be enabled  */
     if (!prevProps.visible && this.props.visible) {
       this.setState({
         animated: true
@@ -23,28 +28,29 @@ class TabIndicator extends Component {
 
   getTransformStyle() {
     const activeTabNode = this.props.getSelectedTabRef();
-
-    if (!activeTabNode) {
-      return null;
-    }
-
-    const translateX = `translateX(${activeTabNode.offsetLeft}px)`;
-    const scaleX = `scaleX(${activeTabNode.offsetWidth})`;
     return {
-      transform: `${translateX} translateY(2px) ${scaleX}`
+      translateX: activeTabNode ? activeTabNode.offsetLeft : 0,
+      scaleX: activeTabNode ? activeTabNode.offsetWidth : 100
     };
   }
 
   render() {
+    const {
+      translateX,
+      scaleX
+    } = this.getTransformStyle();
     return React.createElement("span", {
       style: this.getTransformStyle(),
-      className: "jsx-3163709226" + " " + (cx({
+      className: "jsx-1147635496 " + _JSXStyle.dynamic([["3970204105", [translateX, scaleX]]]) + " " + (cx({
         visible: this.props.visible,
         animated: this.state.animated
       }) || "")
     }, React.createElement(_JSXStyle, {
-      id: "3163709226"
-    }, ["span.jsx-3163709226{display:block;position:absolute;bottom:0;left:0;height:4px;width:1px;background-color:#1976d2;-webkit-transform-origin:left bottom;-ms-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:translateX(0) translateY(2px) scaleX(100);-ms-transform:translateX(0) translateY(2px) scaleX(100);transform:translateX(0) translateY(2px) scaleX(100);-webkit-transition:none;transition:none;visibility:hidden;}", "span.visible.jsx-3163709226{visibility:visible;}", "span.animated.jsx-3163709226{-webkit-transition:-webkit-transform 300ms ease-in-out;-webkit-transition:transform 300ms ease-in-out;transition:transform 300ms ease-in-out;}"]));
+      id: "3970204105",
+      dynamic: [translateX, scaleX]
+    }, [`span.__jsx-style-dynamic-selector{-webkit-transform:translateX(${translateX}px) translateY(2px) scaleX(${scaleX});-ms-transform:translateX(${translateX}px) translateY(2px) scaleX(${scaleX});transform:translateX(${translateX}px) translateY(2px) scaleX(${scaleX});}`]), React.createElement(_JSXStyle, {
+      id: "1147635496"
+    }, ["span.jsx-1147635496{display:block;position:absolute;bottom:0;left:0;height:4px;width:1px;background-color:#1976d2;-webkit-transform-origin:left bottom;-ms-transform-origin:left bottom;transform-origin:left bottom;-webkit-transition:none;transition:none;visibility:hidden;}", "span.visible.jsx-1147635496{visibility:visible;}", "span.animated.jsx-1147635496{-webkit-transition:-webkit-transform 300ms ease-in-out;-webkit-transition:transform 300ms ease-in-out;transition:transform 300ms ease-in-out;}"]));
   }
 
 }
@@ -53,4 +59,4 @@ TabIndicator.propTypes = {
   getSelectedTabRef: PropTypes.func.isRequired,
   visible: PropTypes.bool.isRequired
 };
-export default TabIndicator;
+export { TabIndicator };

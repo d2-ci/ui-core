@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.Tabs = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -11,17 +11,19 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _Tab = _interopRequireDefault(require("./Tab"));
+var _TabIndicator = require("./TabIndicator");
 
-var _TabIndicator = _interopRequireDefault(require("./TabIndicator"));
-
-var _animatedSideScroll = _interopRequireDefault(require("./animatedSideScroll"));
-
-var _Chevron = require("../icons/Chevron");
+var _animatedSideScroll = require("./animatedSideScroll");
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
 var _styles = _interopRequireDefault(require("./styles"));
+
+var _TabBar = require("./TabBar");
+
+var _Tab = require("./Tab");
+
+var _propValidators = require("../prop-validators");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -48,14 +50,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var _ref2 =
-/*#__PURE__*/
-_react.default.createElement(_Chevron.ChevronLeft, null);
-
-var _ref3 =
-/*#__PURE__*/
-_react.default.createElement(_Chevron.ChevronRight, null);
 
 var Tabs =
 /*#__PURE__*/
@@ -234,84 +228,48 @@ function (_PureComponent) {
         callback: this.animatedScrollCallback
       };
       this.removeSideScrollListener();
-      (0, _animatedSideScroll.default)(_objectSpread({
+      (0, _animatedSideScroll.animatedSideScroll)(_objectSpread({
         targetEl: tab,
         scrollBox: this.scrollBox.current
       }, scrollProps));
     }
   }, {
-    key: "renderChildren",
-    value: function renderChildren() {
+    key: "render",
+    value: function render() {
       var _this2 = this;
 
+      var _this$state = this.state,
+          scrolledToStart = _this$state.scrolledToStart,
+          scrolledToEnd = _this$state.scrolledToEnd,
+          showTabIndicator = _this$state.showTabIndicator;
       var _this$props = this.props,
+          className = _this$props.className,
+          position = _this$props.position,
+          contained = _this$props.contained,
+          cluster = _this$props.cluster,
           children = _this$props.children,
           selected = _this$props.selected;
-      return _react.Children.map(children, function (child, index) {
+      return _react.default.createElement("div", {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, position) || "")
+      }, _react.default.createElement(_TabBar.TabBar, {
+        cluster: cluster,
+        contained: contained,
+        scrollLeft: this.scrollLeft,
+        scrollRight: this.scrollRight,
+        scrolledToStart: scrolledToStart,
+        scrolledToEnd: scrolledToEnd,
+        scrollBoxRef: this.scrollBox,
+        scrollAreaRef: this.scrollArea,
+        marginBottom: -this.horizontalScrollbarHeight
+      }, _react.Children.map(children, function (child, index) {
         return (0, _react.cloneElement)(child, {
           selected: index === selected,
           ref: _this2.tabRefs[index]
         });
-      });
-    }
-  }, {
-    key: "renderTabBar",
-    value: function renderTabBar() {
-      var _cx;
-
-      var _this$props2 = this.props,
-          cluster = _this$props2.cluster,
-          contained = _this$props2.contained;
-      var showTabIndicator = this.state.showTabIndicator;
-      var className = (0, _classnames.default)('tab-container', (_cx = {}, _defineProperty(_cx, "cluster-".concat(cluster), cluster && contained), _defineProperty(_cx, "contained", contained), _cx));
-      return _react.default.createElement("div", {
-        className: className
-      }, this.renderChildren(), _react.default.createElement(_TabIndicator.default, {
+      }), _react.default.createElement(_TabIndicator.TabIndicator, {
         getSelectedTabRef: this.getSelectedTabRef,
         visible: showTabIndicator
-      }));
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$state = this.state,
-          scrolledToStart = _this$state.scrolledToStart,
-          scrolledToEnd = _this$state.scrolledToEnd;
-      var _this$props3 = this.props,
-          className = _this$props3.className,
-          position = _this$props3.position,
-          contained = _this$props3.contained;
-      var scrollBoxStyle = {
-        marginBottom: -this.horizontalScrollbarHeight
-      };
-      var tabBar = this.renderTabBar();
-
-      if (!contained) {
-        tabBar = _react.default.createElement(_react.Fragment, null, _react.default.createElement("button", {
-          onClick: this.scrollLeft,
-          className: (0, _classnames.default)('scroll-button', {
-            hidden: scrolledToStart
-          })
-        }, _ref2), _react.default.createElement("div", {
-          className: "scroll-box-clipper"
-        }, _react.default.createElement("div", {
-          className: "scroll-box",
-          ref: this.scrollBox,
-          style: scrollBoxStyle
-        }, _react.default.createElement("div", {
-          className: 'scroll-area',
-          ref: this.scrollArea
-        }, tabBar))), _react.default.createElement("button", {
-          onClick: this.scrollRight,
-          className: (0, _classnames.default)('scroll-button', {
-            hidden: scrolledToEnd
-          })
-        }, _ref3));
-      }
-
-      return _react.default.createElement("div", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, position) || "")
-      }, tabBar, _react.default.createElement(_style.default, {
+      })), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default));
     }
@@ -320,19 +278,17 @@ function (_PureComponent) {
   return Tabs;
 }(_react.PureComponent);
 
+exports.Tabs = Tabs;
 Tabs.propTypes = {
   className: _propTypes.default.string,
   selected: _propTypes.default.number.isRequired,
   position: _propTypes.default.oneOf(['relative', 'fixed', 'absolute', 'sticky']),
-  contained: _propTypes.default.bool,
-  cluster: _propTypes.default.oneOf([null, 'left', 'centered', 'right']),
-  children: _propTypes.default.oneOfType([_propTypes.default.objectOf(_Tab.default), _propTypes.default.arrayOf(_Tab.default)])
+  contained: _TabBar.TabBar.propTypes.contained,
+  cluster: _TabBar.TabBar.propTypes.cluster,
+  children: _propTypes.default.arrayOf((0, _propValidators.instanceOfComponent)(_Tab.Tab))
 };
 Tabs.defaultProps = {
-  items: [],
   contained: false,
   position: 'relative',
   cluster: null
 };
-var _default = Tabs;
-exports.default = _default;

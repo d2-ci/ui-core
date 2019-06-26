@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = animatedSideScroll;
+exports.animatedSideScroll = animatedSideScroll;
 var DURATION = 350;
 
 function animatedSideScroll(_ref) {
