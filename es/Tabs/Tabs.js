@@ -17,6 +17,8 @@ class Tabs extends PureComponent {
   constructor(...args) {
     super(...args);
 
+    _defineProperty(this, "container", createRef());
+
     _defineProperty(this, "scrollBox", createRef());
 
     _defineProperty(this, "scrollArea", createRef());
@@ -24,9 +26,33 @@ class Tabs extends PureComponent {
     _defineProperty(this, "tabRefs", Children.map(this.props.children, createRef));
 
     _defineProperty(this, "state", {
+      isScrollingRequired: true,
       scrolledToStart: true,
       scrolledToEnd: true,
       showTabIndicator: false
+    });
+
+    _defineProperty(this, "init", () => {
+      const isScrollingRequired = this.isScrollingRequired();
+      this.setState({
+        isScrollingRequired
+      });
+
+      if (this.props.fixed || !isScrollingRequired) {
+        this.showTabIndicator();
+      } else {
+        this.setHorizontalScrollbarHeight();
+
+        if (this.scrollRequiredToReachSelectedTab()) {
+          const scrollProps = {
+            duration: 0,
+            callback: this.initScrollableUI
+          };
+          this.scrollToTab(this.getSelectedTabRef(), scrollProps);
+        } else {
+          this.initScrollableUI();
+        }
+      }
     });
 
     _defineProperty(this, "getSelectedTabRef", () => {
@@ -94,34 +120,30 @@ class Tabs extends PureComponent {
   }
 
   componentDidMount() {
-    if (this.props.contained) {
-      this.showTabIndicator();
-      return;
-    }
-
-    this.setHorizontalScrollbarHeight();
-
-    if (this.scrollRequiredToReachSelectedTab()) {
-      const scrollProps = {
-        duration: 1,
-        callback: this.initScrollableUI
-      };
-      this.scrollToTab(this.getSelectedTabRef(), scrollProps);
-    } else {
-      this.initScrollableUI();
-    }
+    window.addEventListener('resize', this.init);
+    this.init();
   }
 
   componentDidUpdate(prevProps) {
-    if (!this.props.contained && this.props.selected !== prevProps.selected && this.scrollRequiredToReachSelectedTab()) {
+    if (!this.props.fixed && this.state.isScrollingRequired && this.props.selected !== prevProps.selected && this.scrollRequiredToReachSelectedTab()) {
       this.scrollToTab(this.getSelectedTabRef());
     }
   }
 
   componentWillUnmount() {
-    if (!this.props.contained) {
+    window.addEventListener('resize', this.onResize);
+
+    if (!this.props.fixed && this.state.isScrollingRequired) {
       this.removeSideScrollListener();
     }
+  }
+
+  isScrollingRequired() {
+    const availableWidth = this.container.current.offsetWidth;
+    const requiredWidth = this.tabRefs.reduce((total, {
+      current: el
+    }) => total + el.offsetWidth, 0);
+    return requiredWidth > availableWidth;
   }
 
   showTabIndicator() {
@@ -175,22 +197,23 @@ class Tabs extends PureComponent {
 
   render() {
     const {
+      isScrollingRequired,
       scrolledToStart,
       scrolledToEnd,
       showTabIndicator
     } = this.state;
     const {
       className,
-      contained,
-      cluster,
+      fixed,
       children,
       selected
     } = this.props;
     return React.createElement("div", {
-      className: _JSXStyle.dynamic([["4177469255", [colors.white]]]) + " " + (className || "")
+      ref: this.container,
+      className: _JSXStyle.dynamic([["3964222018", [colors.white, colors.grey400]]]) + " " + (className || "")
     }, React.createElement(TabBar, {
-      cluster: cluster,
-      contained: contained,
+      isScrollingRequired: isScrollingRequired,
+      fixed: fixed,
       scrollLeft: this.scrollLeft,
       scrollRight: this.scrollRight,
       scrolledToStart: scrolledToStart,
@@ -200,14 +223,15 @@ class Tabs extends PureComponent {
       marginBottom: -this.horizontalScrollbarHeight
     }, Children.map(children, (child, index) => cloneElement(child, {
       selected: index === selected,
-      ref: this.tabRefs[index]
+      ref: this.tabRefs[index],
+      fixed
     })), React.createElement(TabIndicator, {
       getSelectedTabRef: this.getSelectedTabRef,
       visible: showTabIndicator
     })), React.createElement(_JSXStyle, {
-      id: "4177469255",
-      dynamic: [colors.white]
-    }, [`div.__jsx-style-dynamic-selector{width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;box-sizing:border-box;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;background-color:${colors.white};}`]));
+      id: "3964222018",
+      dynamic: [colors.white, colors.grey400]
+    }, [`div.__jsx-style-dynamic-selector{width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;box-sizing:border-box;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;background-color:${colors.white};box-shadow:inset 0 -1px 0 0 ${colors.grey400};}`]));
   }
 
 }
@@ -215,13 +239,10 @@ class Tabs extends PureComponent {
 Tabs.propTypes = {
   className: propTypes.string,
   selected: propTypes.number.isRequired,
-  contained: TabBar.propTypes.contained,
-  cluster: TabBar.propTypes.cluster,
+  fixed: TabBar.propTypes.fixed,
   children: propTypes.arrayOf(instanceOfComponent(Tab))
 };
 Tabs.defaultProps = {
-  contained: false,
-  position: 'relative',
-  cluster: null
+  fixed: false
 };
 export { Tabs };

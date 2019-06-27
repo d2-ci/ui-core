@@ -59,10 +59,24 @@ function (_Component) {
       animated: false
     });
 
+    _defineProperty(_assertThisInitialized(_this), "refresh", function () {
+      _this.forceUpdate();
+    });
+
     return _this;
   }
 
   _createClass(TabIndicator, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      window.addEventListener('resize', this.refresh);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      window.removeEventListener('resize', this.refresh);
+    }
+  }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       /* The tabindicator should not move with a CSS transition when

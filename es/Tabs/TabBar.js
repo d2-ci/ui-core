@@ -9,24 +9,22 @@ import { TabBarScroller } from './TabBarScroller';
 
 const TabBar = (_ref) => {
   let {
-    cluster,
-    contained,
+    fixed,
+    isScrollingRequired,
     children
   } = _ref,
-      tabBarScrollerProps = _objectWithoutProperties(_ref, ["cluster", "contained", "children"]);
+      tabBarScrollerProps = _objectWithoutProperties(_ref, ["fixed", "isScrollingRequired", "children"]);
 
-  return contained ? React.createElement(InnerTabBar, {
-    cluster: cluster,
-    contained: contained
+  return fixed || !isScrollingRequired ? React.createElement(InnerTabBar, {
+    fixed: fixed
   }, children) : React.createElement(TabBarScroller, tabBarScrollerProps, React.createElement(InnerTabBar, {
-    cluster: cluster,
-    contained: contained
+    fixed: fixed
   }, children));
 };
 
 TabBar.propTypes = {
-  cluster: InnerTabBar.propTypes.cluster,
-  contained: InnerTabBar.propTypes.contained,
+  isScrollingRequired: propTypes.bool.isRequired,
+  fixed: InnerTabBar.propTypes.fixed,
   children: propTypes.node.isRequired
 };
 export { TabBar };

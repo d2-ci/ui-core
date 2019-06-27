@@ -26,20 +26,23 @@ var Tab = (0, _react.forwardRef)(function (_ref, ref) {
       onClick = _ref.onClick,
       selected = _ref.selected,
       disabled = _ref.disabled,
-      stacked = _ref.stacked,
+      fixed = _ref.fixed,
       children = _ref.children;
   return _react.default.createElement("button", {
     onClick: disabled ? noop : onClick,
     ref: ref,
-    className: _style.default.dynamic([["2749516310", [_theme.colors.grey400, _theme.colors.grey700, _theme.colors.grey700, _theme.colors.grey100, _theme.colors.grey200, _theme.colors.grey900, _theme.colors.grey900, _theme.colors.grey500, _theme.colors.grey500]]]) + " " + "".concat((0, _classnames.default)('d2ui-align-icon', {
+    className: _style.default.dynamic([["3666495809", [fixed ? 1 : 0]], ["3504351397", [_theme.colors.grey400, _theme.colors.grey700, _theme.colors.grey700, _theme.colors.grey100, _theme.colors.grey200, _theme.colors.grey900, _theme.colors.grey900, _theme.colors.grey500, _theme.colors.grey500]]]) + " " + "".concat((0, _classnames.default)({
       selected: selected,
       disabled: disabled,
-      stacked: stacked
+      fixed: fixed
     }))
   }, icon && icon, children, _react.default.createElement(_style.default, {
-    id: "2749516310",
+    id: "3666495809",
+    dynamic: [fixed ? 1 : 0]
+  }, ["button.__jsx-style-dynamic-selector{-webkit-box-flex:".concat(fixed ? 1 : 0, ";-webkit-flex-grow:").concat(fixed ? 1 : 0, ";-ms-flex-positive:").concat(fixed ? 1 : 0, ";flex-grow:").concat(fixed ? 1 : 0, ";}")]), _react.default.createElement(_style.default, {
+    id: "3504351397",
     dynamic: [_theme.colors.grey400, _theme.colors.grey700, _theme.colors.grey700, _theme.colors.grey100, _theme.colors.grey200, _theme.colors.grey900, _theme.colors.grey900, _theme.colors.grey500, _theme.colors.grey500]
-  }, ["button.__jsx-style-dynamic-selector{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;vertical-align:bottom;height:100%;max-width:320px;padding:19px 16px 14px 16px;background-color:transparent;border:none;outline:none;border-bottom:1px solid ".concat(_theme.colors.grey400, ";color:").concat(_theme.colors.grey700, ";font-size:14px;line-height:14px;-webkit-transition:all 150ms ease-in-out;transition:all 150ms ease-in-out;cursor:pointer;}"), "button.__jsx-style-dynamic-selector>svg{fill:".concat(_theme.colors.grey700, ";width:14px;height:14px;margin:0 4px 0 0;}"), "button.__jsx-style-dynamic-selector:hover{background-color:".concat(_theme.colors.grey100, ";}"), "button.__jsx-style-dynamic-selector:active{background-color:".concat(_theme.colors.grey200, ";}"), "button.selected.__jsx-style-dynamic-selector{color:".concat(_theme.colors.grey900, ";}"), "button.selected.__jsx-style-dynamic-selector>svg{fill:".concat(_theme.colors.grey900, ";}"), "button.disabled.__jsx-style-dynamic-selector{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), "button.disabled.__jsx-style-dynamic-selector>svg{fill:".concat(_theme.colors.grey500, ";}")]));
+  }, ["button.__jsx-style-dynamic-selector{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;vertical-align:bottom;height:100%;max-width:320px;padding:19px 16px 14px 16px;background-color:transparent;border:none;outline:none;border-bottom:1px solid ".concat(_theme.colors.grey400, ";color:").concat(_theme.colors.grey700, ";font-size:14px;line-height:14px;-webkit-transition:all 150ms ease-in-out;transition:all 150ms ease-in-out;cursor:pointer;}"), "button.__jsx-style-dynamic-selector>svg{fill:".concat(_theme.colors.grey700, ";width:14px;height:14px;margin:0 4px 0 0;}"), "button.__jsx-style-dynamic-selector:hover{background-color:".concat(_theme.colors.grey100, ";}"), "button.__jsx-style-dynamic-selector:active{background-color:".concat(_theme.colors.grey200, ";}"), "button.selected.__jsx-style-dynamic-selector{color:".concat(_theme.colors.grey900, ";}"), "button.selected.__jsx-style-dynamic-selector>svg{fill:".concat(_theme.colors.grey900, ";}"), "button.disabled.__jsx-style-dynamic-selector{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), "button.disabled.__jsx-style-dynamic-selector:hover,button.selected.__jsx-style-dynamic-selector:hover{background-color:transparent;}", "button.disabled.__jsx-style-dynamic-selector>svg{fill:".concat(_theme.colors.grey500, ";}")]));
 });
 exports.Tab = Tab;
 Tab.propTypes = {
@@ -48,12 +51,10 @@ Tab.propTypes = {
   addTabRef: _propTypes.default.func,
   selected: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
-  stacked: _propTypes.default.bool,
   children: _propTypes.default.node
 };
 Tab.defaultProps = {
   active: false,
   disabled: false,
-  stacked: false,
-  onClick: function onClick() {}
+  onClick: noop
 };

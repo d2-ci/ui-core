@@ -20,23 +20,21 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 var TabBar = function TabBar(_ref) {
-  var cluster = _ref.cluster,
-      contained = _ref.contained,
+  var fixed = _ref.fixed,
+      isScrollingRequired = _ref.isScrollingRequired,
       children = _ref.children,
-      tabBarScrollerProps = _objectWithoutProperties(_ref, ["cluster", "contained", "children"]);
+      tabBarScrollerProps = _objectWithoutProperties(_ref, ["fixed", "isScrollingRequired", "children"]);
 
-  return contained ? _react.default.createElement(_InnerTabBar.InnerTabBar, {
-    cluster: cluster,
-    contained: contained
+  return fixed || !isScrollingRequired ? _react.default.createElement(_InnerTabBar.InnerTabBar, {
+    fixed: fixed
   }, children) : _react.default.createElement(_TabBarScroller.TabBarScroller, tabBarScrollerProps, _react.default.createElement(_InnerTabBar.InnerTabBar, {
-    cluster: cluster,
-    contained: contained
+    fixed: fixed
   }, children));
 };
 
 exports.TabBar = TabBar;
 TabBar.propTypes = {
-  cluster: _InnerTabBar.InnerTabBar.propTypes.cluster,
-  contained: _InnerTabBar.InnerTabBar.propTypes.contained,
+  isScrollingRequired: _propTypes.default.bool.isRequired,
+  fixed: _InnerTabBar.InnerTabBar.propTypes.fixed,
   children: _propTypes.default.node.isRequired
 };

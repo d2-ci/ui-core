@@ -67,6 +67,8 @@ function (_PureComponent) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Tabs)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
+    _defineProperty(_assertThisInitialized(_this), "container", (0, _react.createRef)());
+
     _defineProperty(_assertThisInitialized(_this), "scrollBox", (0, _react.createRef)());
 
     _defineProperty(_assertThisInitialized(_this), "scrollArea", (0, _react.createRef)());
@@ -74,9 +76,35 @@ function (_PureComponent) {
     _defineProperty(_assertThisInitialized(_this), "tabRefs", _react.Children.map(_this.props.children, _react.createRef));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
+      isScrollingRequired: true,
       scrolledToStart: true,
       scrolledToEnd: true,
       showTabIndicator: false
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "init", function () {
+      var isScrollingRequired = _this.isScrollingRequired();
+
+      _this.setState({
+        isScrollingRequired: isScrollingRequired
+      });
+
+      if (_this.props.fixed || !isScrollingRequired) {
+        _this.showTabIndicator();
+      } else {
+        _this.setHorizontalScrollbarHeight();
+
+        if (_this.scrollRequiredToReachSelectedTab()) {
+          var scrollProps = {
+            duration: 0,
+            callback: _this.initScrollableUI
+          };
+
+          _this.scrollToTab(_this.getSelectedTabRef(), scrollProps);
+        } else {
+          _this.initScrollableUI();
+        }
+      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "getSelectedTabRef", function () {
@@ -144,36 +172,34 @@ function (_PureComponent) {
   _createClass(Tabs, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      if (this.props.contained) {
-        this.showTabIndicator();
-        return;
-      }
-
-      this.setHorizontalScrollbarHeight();
-
-      if (this.scrollRequiredToReachSelectedTab()) {
-        var scrollProps = {
-          duration: 1,
-          callback: this.initScrollableUI
-        };
-        this.scrollToTab(this.getSelectedTabRef(), scrollProps);
-      } else {
-        this.initScrollableUI();
-      }
+      window.addEventListener('resize', this.init);
+      this.init();
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      if (!this.props.contained && this.props.selected !== prevProps.selected && this.scrollRequiredToReachSelectedTab()) {
+      if (!this.props.fixed && this.state.isScrollingRequired && this.props.selected !== prevProps.selected && this.scrollRequiredToReachSelectedTab()) {
         this.scrollToTab(this.getSelectedTabRef());
       }
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      if (!this.props.contained) {
+      window.addEventListener('resize', this.onResize);
+
+      if (!this.props.fixed && this.state.isScrollingRequired) {
         this.removeSideScrollListener();
       }
+    }
+  }, {
+    key: "isScrollingRequired",
+    value: function isScrollingRequired() {
+      var availableWidth = this.container.current.offsetWidth;
+      var requiredWidth = this.tabRefs.reduce(function (total, _ref) {
+        var el = _ref.current;
+        return total + el.offsetWidth;
+      }, 0);
+      return requiredWidth > availableWidth;
     }
   }, {
     key: "showTabIndicator",
@@ -203,8 +229,8 @@ function (_PureComponent) {
   }, {
     key: "getTabAtOffsetLeft",
     value: function getTabAtOffsetLeft(offsetLeft) {
-      return this.tabRefs.find(function (_ref) {
-        var tab = _ref.current;
+      return this.tabRefs.find(function (_ref2) {
+        var tab = _ref2.current;
         return offsetLeft >= tab.offsetLeft && offsetLeft <= tab.offsetLeft + tab.offsetWidth;
       }).current;
     }
@@ -237,20 +263,21 @@ function (_PureComponent) {
       var _this2 = this;
 
       var _this$state = this.state,
+          isScrollingRequired = _this$state.isScrollingRequired,
           scrolledToStart = _this$state.scrolledToStart,
           scrolledToEnd = _this$state.scrolledToEnd,
           showTabIndicator = _this$state.showTabIndicator;
       var _this$props = this.props,
           className = _this$props.className,
-          contained = _this$props.contained,
-          cluster = _this$props.cluster,
+          fixed = _this$props.fixed,
           children = _this$props.children,
           selected = _this$props.selected;
       return _react.default.createElement("div", {
-        className: _style.default.dynamic([["4177469255", [_theme.colors.white]]]) + " " + (className || "")
+        ref: this.container,
+        className: _style.default.dynamic([["3964222018", [_theme.colors.white, _theme.colors.grey400]]]) + " " + (className || "")
       }, _react.default.createElement(_TabBar.TabBar, {
-        cluster: cluster,
-        contained: contained,
+        isScrollingRequired: isScrollingRequired,
+        fixed: fixed,
         scrollLeft: this.scrollLeft,
         scrollRight: this.scrollRight,
         scrolledToStart: scrolledToStart,
@@ -261,15 +288,16 @@ function (_PureComponent) {
       }, _react.Children.map(children, function (child, index) {
         return (0, _react.cloneElement)(child, {
           selected: index === selected,
-          ref: _this2.tabRefs[index]
+          ref: _this2.tabRefs[index],
+          fixed: fixed
         });
       }), _react.default.createElement(_TabIndicator.TabIndicator, {
         getSelectedTabRef: this.getSelectedTabRef,
         visible: showTabIndicator
       })), _react.default.createElement(_style.default, {
-        id: "4177469255",
-        dynamic: [_theme.colors.white]
-      }, ["div.__jsx-style-dynamic-selector{width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;box-sizing:border-box;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;background-color:".concat(_theme.colors.white, ";}")]));
+        id: "3964222018",
+        dynamic: [_theme.colors.white, _theme.colors.grey400]
+      }, ["div.__jsx-style-dynamic-selector{width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;box-sizing:border-box;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;background-color:".concat(_theme.colors.white, ";box-shadow:inset 0 -1px 0 0 ").concat(_theme.colors.grey400, ";}")]));
     }
   }]);
 
@@ -280,12 +308,9 @@ exports.Tabs = Tabs;
 Tabs.propTypes = {
   className: _propTypes.default.string,
   selected: _propTypes.default.number.isRequired,
-  contained: _TabBar.TabBar.propTypes.contained,
-  cluster: _TabBar.TabBar.propTypes.cluster,
+  fixed: _TabBar.TabBar.propTypes.fixed,
   children: _propTypes.default.arrayOf((0, _propValidators.instanceOfComponent)(_Tab.Tab))
 };
 Tabs.defaultProps = {
-  contained: false,
-  position: 'relative',
-  cluster: null
+  fixed: false
 };

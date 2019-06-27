@@ -13,6 +13,18 @@ class TabIndicator extends Component {
     _defineProperty(this, "state", {
       animated: false
     });
+
+    _defineProperty(this, "refresh", () => {
+      this.forceUpdate();
+    });
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.refresh);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.refresh);
   }
 
   componentDidUpdate(prevProps) {
