@@ -183,6 +183,10 @@ function (_PureComponent) {
       if (!this.props.fixed && this.state.isScrollingRequired && this.props.selected !== prevProps.selected && this.scrollRequiredToReachSelectedTab()) {
         this.scrollToTab(this.getSelectedTabRef());
       }
+
+      if (_react.Children.count(this.props.children) !== _react.Children.count(prevProps.children)) {
+        this.tabRefs = _react.Children.map(this.props.children, _react.createRef);
+      }
     }
   }, {
     key: "componentWillUnmount",
@@ -306,5 +310,5 @@ Tabs.propTypes = {
   children: _propTypes.default.arrayOf((0, _propValidators.instanceOfComponent)(_Tab.Tab))
 };
 Tabs.defaultProps = {
-  fixed: false
+  fixed: _TabBar.TabBar.defaultProps.fixed
 };

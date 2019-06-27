@@ -38,3 +38,6 @@ TabBar.propTypes = {
   fixed: _InnerTabBar.InnerTabBar.propTypes.fixed,
   children: _propTypes.default.node.isRequired
 };
+TabBar.defaultProps = {
+  fixed: false
+};

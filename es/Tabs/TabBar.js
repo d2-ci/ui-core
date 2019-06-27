@@ -27,4 +27,7 @@ TabBar.propTypes = {
   fixed: InnerTabBar.propTypes.fixed,
   children: propTypes.node.isRequired
 };
+TabBar.defaultProps = {
+  fixed: false
+};
 export { TabBar };

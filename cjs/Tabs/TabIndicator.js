@@ -105,7 +105,6 @@ function (_Component) {
           scaleX = _this$getTransformSty.scaleX;
 
       return _react.default.createElement("span", {
-        style: this.getTransformStyle(),
         className: "jsx-2564779855 " + _style.default.dynamic([["816389923", [translateX, scaleX]]]) + " " + ((0, _classnames.default)({
           visible: this.props.visible,
           animated: this.state.animated

@@ -19,8 +19,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var noop = function noop() {};
-
 var Tab = (0, _react.forwardRef)(function (_ref, ref) {
   var icon = _ref.icon,
       onClick = _ref.onClick,
@@ -29,20 +27,22 @@ var Tab = (0, _react.forwardRef)(function (_ref, ref) {
       fixed = _ref.fixed,
       children = _ref.children;
   return _react.default.createElement("button", {
-    onClick: disabled ? noop : onClick,
+    onClick: disabled ? undefined : onClick,
     ref: ref,
-    className: _style.default.dynamic([["3666495809", [fixed ? 1 : 0]], ["3504351397", [_theme.colors.grey400, _theme.colors.grey700, _theme.colors.grey700, _theme.colors.grey100, _theme.colors.grey200, _theme.colors.grey900, _theme.colors.grey900, _theme.colors.grey500, _theme.colors.grey500]]]) + " " + "".concat((0, _classnames.default)({
+    className: _style.default.dynamic([["3666495809", [fixed ? 1 : 0]], ["2750581602", [_theme.colors.grey400, _theme.colors.grey600, _theme.colors.grey600, _theme.colors.grey100, _theme.colors.grey200, _theme.theme.primary800, _theme.theme.primary800, _theme.colors.grey500, _theme.colors.grey500]]]) + " " + "".concat((0, _classnames.default)({
       selected: selected,
       disabled: disabled,
       fixed: fixed
     }))
-  }, icon && icon, children, _react.default.createElement(_style.default, {
+  }, icon, _react.default.createElement("span", {
+    className: _style.default.dynamic([["3666495809", [fixed ? 1 : 0]], ["2750581602", [_theme.colors.grey400, _theme.colors.grey600, _theme.colors.grey600, _theme.colors.grey100, _theme.colors.grey200, _theme.theme.primary800, _theme.theme.primary800, _theme.colors.grey500, _theme.colors.grey500]]])
+  }, children), _react.default.createElement(_style.default, {
     id: "3666495809",
     dynamic: [fixed ? 1 : 0]
   }, ["button.__jsx-style-dynamic-selector{-webkit-box-flex:".concat(fixed ? 1 : 0, ";-webkit-flex-grow:").concat(fixed ? 1 : 0, ";-ms-flex-positive:").concat(fixed ? 1 : 0, ";flex-grow:").concat(fixed ? 1 : 0, ";}")]), _react.default.createElement(_style.default, {
-    id: "3504351397",
-    dynamic: [_theme.colors.grey400, _theme.colors.grey700, _theme.colors.grey700, _theme.colors.grey100, _theme.colors.grey200, _theme.colors.grey900, _theme.colors.grey900, _theme.colors.grey500, _theme.colors.grey500]
-  }, ["button.__jsx-style-dynamic-selector{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;vertical-align:bottom;height:100%;max-width:320px;padding:19px 16px 14px 16px;background-color:transparent;border:none;outline:none;border-bottom:1px solid ".concat(_theme.colors.grey400, ";color:").concat(_theme.colors.grey700, ";font-size:14px;line-height:14px;-webkit-transition:all 150ms ease-in-out;transition:all 150ms ease-in-out;cursor:pointer;}"), "button.__jsx-style-dynamic-selector>svg{fill:".concat(_theme.colors.grey700, ";width:14px;height:14px;margin:0 4px 0 0;}"), "button.__jsx-style-dynamic-selector:hover{background-color:".concat(_theme.colors.grey100, ";}"), "button.__jsx-style-dynamic-selector:active{background-color:".concat(_theme.colors.grey200, ";}"), "button.selected.__jsx-style-dynamic-selector{color:".concat(_theme.colors.grey900, ";}"), "button.selected.__jsx-style-dynamic-selector>svg{fill:".concat(_theme.colors.grey900, ";}"), "button.disabled.__jsx-style-dynamic-selector{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), "button.disabled.__jsx-style-dynamic-selector:hover,button.selected.__jsx-style-dynamic-selector:hover{background-color:transparent;}", "button.disabled.__jsx-style-dynamic-selector>svg{fill:".concat(_theme.colors.grey500, ";}")]));
+    id: "2750581602",
+    dynamic: [_theme.colors.grey400, _theme.colors.grey600, _theme.colors.grey600, _theme.colors.grey100, _theme.colors.grey200, _theme.theme.primary800, _theme.theme.primary800, _theme.colors.grey500, _theme.colors.grey500]
+  }, ["button.__jsx-style-dynamic-selector{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;vertical-align:bottom;height:100%;padding:19px 16px 14px 16px;background-color:transparent;border:none;outline:none;border-bottom:1px solid ".concat(_theme.colors.grey400, ";color:").concat(_theme.colors.grey600, ";font-size:14px;line-height:14px;-webkit-transition:all 150ms ease-in-out;transition:all 150ms ease-in-out;cursor:pointer;}"), "button.__jsx-style-dynamic-selector>span.__jsx-style-dynamic-selector{max-width:320px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}", "button.__jsx-style-dynamic-selector>svg{fill:".concat(_theme.colors.grey600, ";width:14px;height:14px;margin:0 4px 0 0;}"), "button.__jsx-style-dynamic-selector:hover{background-color:".concat(_theme.colors.grey100, ";}"), "button.__jsx-style-dynamic-selector:active{background-color:".concat(_theme.colors.grey200, ";}"), "button.selected.__jsx-style-dynamic-selector{color:".concat(_theme.theme.primary800, ";}"), "button.selected.__jsx-style-dynamic-selector>svg{fill:".concat(_theme.theme.primary800, ";}"), "button.disabled.__jsx-style-dynamic-selector{color:".concat(_theme.colors.grey500, ";cursor:not-allowed;}"), "button.disabled.__jsx-style-dynamic-selector:hover,button.selected.__jsx-style-dynamic-selector:hover{background-color:transparent;}", "button.disabled.__jsx-style-dynamic-selector>svg{fill:".concat(_theme.colors.grey500, ";}")]));
 });
 exports.Tab = Tab;
 Tab.propTypes = {
@@ -52,9 +52,4 @@ Tab.propTypes = {
   selected: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   children: _propTypes.default.node
-};
-Tab.defaultProps = {
-  active: false,
-  disabled: false,
-  onClick: noop
 };

@@ -129,6 +129,10 @@ class Tabs extends PureComponent {
     if (!this.props.fixed && this.state.isScrollingRequired && this.props.selected !== prevProps.selected && this.scrollRequiredToReachSelectedTab()) {
       this.scrollToTab(this.getSelectedTabRef());
     }
+
+    if (Children.count(this.props.children) !== Children.count(prevProps.children)) {
+      this.tabRefs = Children.map(this.props.children, createRef);
+    }
   }
 
   componentWillUnmount() {
@@ -236,6 +240,6 @@ Tabs.propTypes = {
   children: propTypes.arrayOf(instanceOfComponent(Tab))
 };
 Tabs.defaultProps = {
-  fixed: false
+  fixed: TabBar.defaultProps.fixed
 };
 export { Tabs };

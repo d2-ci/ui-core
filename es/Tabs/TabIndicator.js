@@ -52,7 +52,6 @@ class TabIndicator extends Component {
       scaleX
     } = this.getTransformStyle();
     return React.createElement("span", {
-      style: this.getTransformStyle(),
       className: "jsx-2564779855 " + _JSXStyle.dynamic([["816389923", [translateX, scaleX]]]) + " " + (cx({
         visible: this.props.visible,
         animated: this.state.animated
