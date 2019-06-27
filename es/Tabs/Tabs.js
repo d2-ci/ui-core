@@ -4,15 +4,14 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import React, { PureComponent, Children, cloneElement, createRef } from 'react';
 import propTypes from 'prop-types';
-import { TabIndicator } from './TabIndicator';
-import { animatedSideScroll } from './animatedSideScroll';
-import cx from 'classnames';
-import styles from './styles';
-import { TabBar } from './TabBar';
-import { Tab } from './Tab';
+import React, { Children, cloneElement, createRef, PureComponent } from 'react';
 import { instanceOfComponent } from '../prop-validators';
+import { colors } from '../theme.js';
+import { animatedSideScroll } from './animatedSideScroll';
+import { Tab } from './Tab';
+import { TabBar } from './TabBar';
+import { TabIndicator } from './TabIndicator';
 
 class Tabs extends PureComponent {
   constructor(...args) {
@@ -182,14 +181,13 @@ class Tabs extends PureComponent {
     } = this.state;
     const {
       className,
-      position,
       contained,
       cluster,
       children,
       selected
     } = this.props;
     return React.createElement("div", {
-      className: `jsx-${styles.__hash}` + " " + (cx(className, position) || "")
+      className: _JSXStyle.dynamic([["4177469255", [colors.white]]]) + " " + (className || "")
     }, React.createElement(TabBar, {
       cluster: cluster,
       contained: contained,
@@ -207,8 +205,9 @@ class Tabs extends PureComponent {
       getSelectedTabRef: this.getSelectedTabRef,
       visible: showTabIndicator
     })), React.createElement(_JSXStyle, {
-      id: styles.__hash
-    }, styles));
+      id: "4177469255",
+      dynamic: [colors.white]
+    }, [`div.__jsx-style-dynamic-selector{width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;box-sizing:border-box;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;background-color:${colors.white};}`]));
   }
 
 }
@@ -216,7 +215,6 @@ class Tabs extends PureComponent {
 Tabs.propTypes = {
   className: propTypes.string,
   selected: propTypes.number.isRequired,
-  position: propTypes.oneOf(['relative', 'fixed', 'absolute', 'sticky']),
   contained: TabBar.propTypes.contained,
   cluster: TabBar.propTypes.cluster,
   children: propTypes.arrayOf(instanceOfComponent(Tab))

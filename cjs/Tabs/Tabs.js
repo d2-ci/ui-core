@@ -7,23 +7,21 @@ exports.Tabs = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireWildcard(require("react"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _TabIndicator = require("./TabIndicator");
+var _react = _interopRequireWildcard(require("react"));
+
+var _propValidators = require("../prop-validators");
+
+var _theme = require("../theme.js");
 
 var _animatedSideScroll = require("./animatedSideScroll");
 
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _styles = _interopRequireDefault(require("./styles"));
+var _Tab = require("./Tab");
 
 var _TabBar = require("./TabBar");
 
-var _Tab = require("./Tab");
-
-var _propValidators = require("../prop-validators");
+var _TabIndicator = require("./TabIndicator");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -244,13 +242,12 @@ function (_PureComponent) {
           showTabIndicator = _this$state.showTabIndicator;
       var _this$props = this.props,
           className = _this$props.className,
-          position = _this$props.position,
           contained = _this$props.contained,
           cluster = _this$props.cluster,
           children = _this$props.children,
           selected = _this$props.selected;
       return _react.default.createElement("div", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(className, position) || "")
+        className: _style.default.dynamic([["4177469255", [_theme.colors.white]]]) + " " + (className || "")
       }, _react.default.createElement(_TabBar.TabBar, {
         cluster: cluster,
         contained: contained,
@@ -270,8 +267,9 @@ function (_PureComponent) {
         getSelectedTabRef: this.getSelectedTabRef,
         visible: showTabIndicator
       })), _react.default.createElement(_style.default, {
-        id: _styles.default.__hash
-      }, _styles.default));
+        id: "4177469255",
+        dynamic: [_theme.colors.white]
+      }, ["div.__jsx-style-dynamic-selector{width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;box-sizing:border-box;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;background-color:".concat(_theme.colors.white, ";}")]));
     }
   }]);
 
@@ -282,7 +280,6 @@ exports.Tabs = Tabs;
 Tabs.propTypes = {
   className: _propTypes.default.string,
   selected: _propTypes.default.number.isRequired,
-  position: _propTypes.default.oneOf(['relative', 'fixed', 'absolute', 'sticky']),
   contained: _TabBar.TabBar.propTypes.contained,
   cluster: _TabBar.TabBar.propTypes.cluster,
   children: _propTypes.default.arrayOf((0, _propValidators.instanceOfComponent)(_Tab.Tab))
