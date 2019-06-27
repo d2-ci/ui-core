@@ -17,6 +17,8 @@ var _theme = require("../theme.js");
 
 var _animatedSideScroll = require("./animatedSideScroll");
 
+var _detectHorizontalScrollbarHeight = require("./detectHorizontalScrollbarHeight");
+
 var _Tab = require("./Tab");
 
 var _TabBar = require("./TabBar");
@@ -75,6 +77,8 @@ function (_PureComponent) {
 
     _defineProperty(_assertThisInitialized(_this), "tabRefs", _react.Children.map(_this.props.children, _react.createRef));
 
+    _defineProperty(_assertThisInitialized(_this), "horizontalScrollbarHeight", (0, _detectHorizontalScrollbarHeight.detectHorizontalScrollbarHeight)());
+
     _defineProperty(_assertThisInitialized(_this), "state", {
       isScrollingRequired: true,
       scrolledToStart: true,
@@ -92,8 +96,6 @@ function (_PureComponent) {
       if (_this.props.fixed || !isScrollingRequired) {
         _this.showTabIndicator();
       } else {
-        _this.setHorizontalScrollbarHeight();
-
         if (_this.scrollRequiredToReachSelectedTab()) {
           var scrollProps = {
             duration: 0,
@@ -209,14 +211,6 @@ function (_PureComponent) {
       });
     }
   }, {
-    key: "setHorizontalScrollbarHeight",
-    value: function setHorizontalScrollbarHeight() {
-      var _this$scrollBox$curre4 = this.scrollBox.current,
-          offsetHeight = _this$scrollBox$curre4.offsetHeight,
-          clientHeight = _this$scrollBox$curre4.clientHeight;
-      this.horizontalScrollbarHeight = offsetHeight - clientHeight;
-    }
-  }, {
     key: "attachSideScrollListener",
     value: function attachSideScrollListener() {
       this.scrollBox.current.addEventListener('scroll', this.toggleScrollButtonVisibility);
@@ -237,9 +231,9 @@ function (_PureComponent) {
   }, {
     key: "scrollRequiredToReachSelectedTab",
     value: function scrollRequiredToReachSelectedTab() {
-      var _this$scrollBox$curre5 = this.scrollBox.current,
-          scrollLeft = _this$scrollBox$curre5.scrollLeft,
-          offsetWidth = _this$scrollBox$curre5.offsetWidth;
+      var _this$scrollBox$curre4 = this.scrollBox.current,
+          scrollLeft = _this$scrollBox$curre4.scrollLeft,
+          offsetWidth = _this$scrollBox$curre4.offsetWidth;
       var tab = this.getSelectedTabRef();
       var shouldScrollRight = tab.offsetLeft - scrollLeft + tab.offsetWidth > offsetWidth;
       var shouldScrollLeft = tab.offsetLeft < scrollLeft;

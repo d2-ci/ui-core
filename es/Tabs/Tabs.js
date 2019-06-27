@@ -9,6 +9,7 @@ import React, { Children, cloneElement, createRef, PureComponent } from 'react';
 import { instanceOfComponent } from '../prop-validators';
 import { colors } from '../theme.js';
 import { animatedSideScroll } from './animatedSideScroll';
+import { detectHorizontalScrollbarHeight } from './detectHorizontalScrollbarHeight';
 import { Tab } from './Tab';
 import { TabBar } from './TabBar';
 import { TabIndicator } from './TabIndicator';
@@ -24,6 +25,8 @@ class Tabs extends PureComponent {
     _defineProperty(this, "scrollArea", createRef());
 
     _defineProperty(this, "tabRefs", Children.map(this.props.children, createRef));
+
+    _defineProperty(this, "horizontalScrollbarHeight", detectHorizontalScrollbarHeight());
 
     _defineProperty(this, "state", {
       isScrollingRequired: true,
@@ -41,8 +44,6 @@ class Tabs extends PureComponent {
       if (this.props.fixed || !isScrollingRequired) {
         this.showTabIndicator();
       } else {
-        this.setHorizontalScrollbarHeight();
-
         if (this.scrollRequiredToReachSelectedTab()) {
           const scrollProps = {
             duration: 0,
@@ -150,14 +151,6 @@ class Tabs extends PureComponent {
     this.setState({
       showTabIndicator: true
     });
-  }
-
-  setHorizontalScrollbarHeight() {
-    const {
-      offsetHeight,
-      clientHeight
-    } = this.scrollBox.current;
-    this.horizontalScrollbarHeight = offsetHeight - clientHeight;
   }
 
   attachSideScrollListener() {
