@@ -41,14 +41,14 @@ class TabIndicator extends Component {
     } = this.getTransformStyle();
     return React.createElement("span", {
       style: this.getTransformStyle(),
-      className: "jsx-2564779855 " + _JSXStyle.dynamic([["284192492", [translateX, scaleX]]]) + " " + (cx({
+      className: "jsx-2564779855 " + _JSXStyle.dynamic([["816389923", [translateX, scaleX]]]) + " " + (cx({
         visible: this.props.visible,
         animated: this.state.animated
       }) || "")
     }, React.createElement(_JSXStyle, {
-      id: "284192492",
+      id: "816389923",
       dynamic: [translateX, scaleX]
-    }, [`span.__jsx-style-dynamic-selector{-webkit-transform:translateX(${translateX}px) translateY(1px) scaleX(${scaleX});-ms-transform:translateX(${translateX}px) translateY(1px) scaleX(${scaleX});transform:translateX(${translateX}px) translateY(1px) scaleX(${scaleX});}`]), React.createElement(_JSXStyle, {
+    }, [`span.__jsx-style-dynamic-selector{-webkit-transform:translateX(${translateX}px) scaleX(${scaleX});-ms-transform:translateX(${translateX}px) scaleX(${scaleX});transform:translateX(${translateX}px) scaleX(${scaleX});}`]), React.createElement(_JSXStyle, {
       id: "2564779855"
     }, ["span.jsx-2564779855{display:block;position:absolute;bottom:0;left:0;height:4px;width:1px;background-color:#1976d2;-webkit-transform-origin:left bottom;-ms-transform-origin:left bottom;transform-origin:left bottom;-webkit-transition:none;transition:none;visibility:hidden;z-index:99999;}", "span.visible.jsx-2564779855{visibility:visible;}", "span.animated.jsx-2564779855{-webkit-transition:-webkit-transform 300ms ease-in-out;-webkit-transition:transform 300ms ease-in-out;transition:transform 300ms ease-in-out;}"]));
   }
