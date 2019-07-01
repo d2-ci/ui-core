@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.animatedSideScroll = animatedSideScroll;
-var DURATION = 350;
+var DURATION = 250;
 
 function animatedSideScroll(_ref) {
   var targetEl = _ref.targetEl,
@@ -47,7 +47,7 @@ function createFrameStepper(_ref2) {
 
     elapsedTime = timestamp - startTimestamp;
     scrollValue = easeInOutQuad({
-      elapsedTime: elapsedTime,
+      currentTime: elapsedTime,
       duration: duration,
       startValue: startValue,
       change: change
@@ -55,25 +55,21 @@ function createFrameStepper(_ref2) {
 
     if (elapsedTime >= duration) {
       if (scrollValue !== endValue) {
-        scroll(scrollBox, endValue);
+        scrollBox.scrollLeft = endValue;
       }
 
       callback && callback();
     } else {
-      scroll(scrollBox, scrollValue);
+      scrollBox.scrollLeft = scrollValue;
       window.requestAnimationFrame(step);
     }
   };
 }
 
-function scroll(scrollBox, scrollValue) {
-  scrollBox.scrollLeft = scrollValue;
-}
-
 function easeInOutQuad(_ref3) {
   var currentTime = _ref3.currentTime,
       duration = _ref3.duration,
-      initialValue = _ref3.initialValue,
+      startValue = _ref3.startValue,
       change = _ref3.change;
-  return (currentTime /= duration / 2) < 1 ? change / 2 * currentTime * currentTime + initialValue : -change / 2 * (--currentTime * (currentTime - 2) - 1) + initialValue;
+  return (currentTime /= duration / 2) < 1 ? change / 2 * currentTime * currentTime + startValue : -change / 2 * (--currentTime * (currentTime - 2) - 1) + startValue;
 }
