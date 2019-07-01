@@ -20,7 +20,7 @@ export function animatedSideScroll({
 }
 
 function getEndValue(targetEl, scrollBox, startValue) {
-  return Math.round(targetEl.offsetLeft > startValue ? // scrolling forward
+  return Math.floor(targetEl.offsetLeft > startValue ? // scrolling forward
   targetEl.offsetLeft + targetEl.offsetWidth - scrollBox.offsetWidth : // scrolling backwards
   targetEl.offsetLeft);
 }
