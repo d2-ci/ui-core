@@ -40,6 +40,7 @@ const combineRowLables = (columnCount, rowCount, headerLabels) => Array(columnCo
 export const extractHeaderLabels = children => {
   if (React.Children.count(children) === 0) return [];
   const rows = extractRowsFromTableChildren(children);
+  if (!rows.length) return [];
   const rowCount = rows.length;
   const columnCount = calculateColumnCount(rows[0]);
   const headerLabels = rows.map(mapCellsToLabels);

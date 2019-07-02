@@ -78,6 +78,7 @@ var combineRowLables = function combineRowLables(columnCount, rowCount, headerLa
 var extractHeaderLabels = function extractHeaderLabels(children) {
   if (_react.default.Children.count(children) === 0) return [];
   var rows = extractRowsFromTableChildren(children);
+  if (!rows.length) return [];
   var rowCount = rows.length;
   var columnCount = calculateColumnCount(rows[0]);
   var headerLabels = rows.map(mapCellsToLabels);
