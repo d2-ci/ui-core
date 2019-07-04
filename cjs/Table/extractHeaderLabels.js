@@ -60,7 +60,7 @@ var mapCellsToLabels = function mapCellsToLabels(row) {
 };
 
 var extractLabelFromCell = function extractLabelFromCell(cell) {
-  return cell.props.label;
+  return !cell.props.noTitle ? cell.props.label : '';
 };
 
 var combineRowLables = function combineRowLables(columnCount, rowCount, headerLabels) {

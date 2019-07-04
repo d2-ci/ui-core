@@ -19,8 +19,8 @@ var _instanceOfComponent = require("../prop-validators/instanceOfComponent");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var tableFootStylesResponsive = ["@media (max-width:768px){tfoot.jsx-1784078313{display:block;margin-top:16px;}}", "@media (max-width:400px){tfoot.jsx-1784078313{margin-top:32px;}}"];
-tableFootStylesResponsive.__hash = "1784078313";
+var tableFootStylesResponsive = ["@media (max-width:768px){tfoot.jsx-4197728934{display:block;margin-top:32px;}}"];
+tableFootStylesResponsive.__hash = "4197728934";
 
 var TFootStatic = function TFootStatic(_ref) {
   var children = _ref.children;

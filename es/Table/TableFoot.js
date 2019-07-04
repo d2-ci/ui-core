@@ -4,8 +4,8 @@ import propTypes from 'prop-types';
 import { Consumer } from './tableContext';
 import { TableRow } from './TableRow';
 import { instanceOfComponent } from '../prop-validators/instanceOfComponent';
-const tableFootStylesResponsive = ["@media (max-width:768px){tfoot.jsx-1784078313{display:block;margin-top:16px;}}", "@media (max-width:400px){tfoot.jsx-1784078313{margin-top:32px;}}"];
-tableFootStylesResponsive.__hash = "1784078313";
+const tableFootStylesResponsive = ["@media (max-width:768px){tfoot.jsx-4197728934{display:block;margin-top:32px;}}"];
+tableFootStylesResponsive.__hash = "4197728934";
 
 const TFootStatic = ({
   children
