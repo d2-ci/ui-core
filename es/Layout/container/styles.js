@@ -1,0 +1,11 @@
+const containerStyles = [".container.jsx-4185096196{display:grid;grid-template-columns:auto;grid-template-rows:auto;}"];
+containerStyles.__hash = "4185096196";
+const containerV4Styles = [".container.jsx-2759953059{grid-template-areas: 'navigation' 'sidebar' 'content';}", "@media (min-width:768px){.container.jsx-2759953059{grid-template-columns:350px auto;grid-template-areas: 'navigation navigation' 'sidebar    content   ';}}"];
+containerV4Styles.__hash = "2759953059";
+const containerV3Styles = [".container.jsx-4010112288{grid-template-areas: 'sidebar' 'content';}", "@media (min-width:768px){.container.jsx-4010112288{grid-template-columns:350px auto;grid-template-areas:'sidebar content';}}"];
+containerV3Styles.__hash = "4010112288";
+const containerV2Styles = [".container.jsx-2914928634{grid-template-areas: 'navigation' 'content';}"];
+containerV2Styles.__hash = "2914928634";
+const containerV1Styles = [".container.jsx-778868547{grid-template-areas:'content';}"];
+containerV1Styles.__hash = "778868547";
+export { containerStyles, containerV1Styles, containerV2Styles, containerV3Styles, containerV4Styles };
