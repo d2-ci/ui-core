@@ -1,45 +1,65 @@
 import _JSXStyle from "styled-jsx/style";
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 import cx from 'classnames';
-import React from 'react';
+import React, { Component, createRef } from 'react';
 import propTypes from 'prop-types';
 import { mutuallyExclusive } from '../prop-validators/mutuallyExclusive';
 import styles from './styles.js';
+export class Button extends Component {
+  constructor(...args) {
+    super(...args);
 
-const Button = ({
-  type,
-  children,
-  icon,
-  name,
-  value,
-  disabled,
-  onClick,
-  className,
-  primary,
-  secondary,
-  destructive,
-  small,
-  large
-}) => React.createElement("button", {
-  disabled: disabled,
-  onClick: onClick,
-  type: type,
-  name: name,
-  value: value,
-  className: `jsx-${styles.__hash}` + " " + (cx(className, {
-    primary,
-    secondary,
-    destructive,
-    small,
-    large,
-    'icon-only': icon && !children,
-    icon
-  }) || "")
-}, icon && React.createElement("span", {
-  className: `jsx-${styles.__hash}` + " " + "button-icon"
-}, icon), children, React.createElement(_JSXStyle, {
-  id: styles.__hash
-}, styles));
+    _defineProperty(this, "buttonRef", createRef());
+  }
 
+  componentDidMount() {
+    if (this.props.initialFocus) {
+      this.buttonRef.current.focus();
+    }
+  }
+
+  render() {
+    const {
+      type,
+      children,
+      icon,
+      name,
+      value,
+      disabled,
+      onClick,
+      className,
+      primary,
+      secondary,
+      destructive,
+      small,
+      large
+    } = this.props;
+    return React.createElement("button", {
+      disabled: disabled,
+      onClick: onClick,
+      type: type,
+      name: name,
+      value: value,
+      ref: this.buttonRef,
+      className: `jsx-${styles.__hash}` + " " + (cx(className, {
+        primary,
+        secondary,
+        destructive,
+        small,
+        large,
+        'icon-only': icon && !children,
+        icon
+      }) || "")
+    }, icon && React.createElement("span", {
+      className: `jsx-${styles.__hash}` + " " + "button-icon"
+    }, icon), children, React.createElement(_JSXStyle, {
+      id: styles.__hash
+    }, styles));
+  }
+
+}
 Button.defaultProps = {
   type: 'button'
 };
@@ -57,6 +77,6 @@ Button.propTypes = {
   primary: variantPropType,
   secondary: variantPropType,
   destructive: variantPropType,
-  disabled: propTypes.bool
+  disabled: propTypes.bool,
+  initialFocus: propTypes.bool
 };
-export { Button };
