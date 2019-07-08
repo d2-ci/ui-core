@@ -50,8 +50,8 @@ class ScrollBar extends PureComponent {
       const {
         offsetWidth: areaOffsetWidth
       } = this.scrollArea.current;
-      const scrolledToStart = scrollLeft === 0;
-      const scrolledToEnd = scrollLeft + offsetWidth === areaOffsetWidth;
+      const scrolledToStart = scrollLeft <= 0;
+      const scrolledToEnd = scrollLeft + offsetWidth >= areaOffsetWidth;
 
       if (this.state.scrolledToStart !== scrolledToStart || this.state.scrolledToEnd !== scrolledToEnd) {
         this.setState({

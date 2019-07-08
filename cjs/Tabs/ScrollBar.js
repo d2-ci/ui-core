@@ -101,8 +101,8 @@ function (_PureComponent) {
           scrollLeft = _this$scrollBox$curre.scrollLeft,
           offsetWidth = _this$scrollBox$curre.offsetWidth;
       var areaOffsetWidth = _this.scrollArea.current.offsetWidth;
-      var scrolledToStart = scrollLeft === 0;
-      var scrolledToEnd = scrollLeft + offsetWidth === areaOffsetWidth;
+      var scrolledToStart = scrollLeft <= 0;
+      var scrolledToEnd = scrollLeft + offsetWidth >= areaOffsetWidth;
 
       if (_this.state.scrolledToStart !== scrolledToStart || _this.state.scrolledToEnd !== scrolledToEnd) {
         _this.setState({
