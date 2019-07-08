@@ -5,19 +5,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.animatedSideScroll = animatedSideScroll;
 var DURATION = 250;
+var SCROLL_STEP = 0.5;
 
-function animatedSideScroll(_ref) {
-  var targetEl = _ref.targetEl,
-      scrollBox = _ref.scrollBox,
-      _ref$duration = _ref.duration,
-      duration = _ref$duration === void 0 ? DURATION : _ref$duration,
-      callback = _ref.callback;
+function animatedSideScroll(scrollBox, callback) {
+  var goBackwards = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
   var startValue = scrollBox.scrollLeft;
-  var endValue = getEndValue(targetEl, scrollBox, startValue);
+  var endValue = getEndValue(scrollBox, startValue, goBackwards);
   var change = endValue - startValue;
   var step = createFrameStepper({
     scrollBox: scrollBox,
-    duration: duration,
     callback: callback,
     startValue: startValue,
     endValue: endValue,
@@ -26,19 +22,18 @@ function animatedSideScroll(_ref) {
   window.requestAnimationFrame(step);
 }
 
-function getEndValue(targetEl, scrollBox, startValue) {
-  return Math.floor(targetEl.offsetLeft > startValue ? // scrolling forward
-  targetEl.offsetLeft + targetEl.offsetWidth - scrollBox.offsetWidth : // scrolling backwards
-  targetEl.offsetLeft);
+function getEndValue(scrollBox, startValue, goBackwards) {
+  var scrollDistance = scrollBox.clientWidth * SCROLL_STEP;
+  var inverter = goBackwards ? -1 : 1;
+  return Math.floor(startValue + scrollDistance * inverter);
 }
 
-function createFrameStepper(_ref2) {
-  var scrollBox = _ref2.scrollBox,
-      duration = _ref2.duration,
-      callback = _ref2.callback,
-      startValue = _ref2.startValue,
-      endValue = _ref2.endValue,
-      change = _ref2.change;
+function createFrameStepper(_ref) {
+  var scrollBox = _ref.scrollBox,
+      callback = _ref.callback,
+      startValue = _ref.startValue,
+      endValue = _ref.endValue,
+      change = _ref.change;
   var startTimestamp, elapsedTime, scrollValue;
   return function step(timestamp) {
     if (!startTimestamp) {
@@ -48,12 +43,12 @@ function createFrameStepper(_ref2) {
     elapsedTime = timestamp - startTimestamp;
     scrollValue = easeInOutQuad({
       currentTime: elapsedTime,
-      duration: duration,
+      DURATION: DURATION,
       startValue: startValue,
       change: change
     });
 
-    if (elapsedTime >= duration) {
+    if (elapsedTime >= DURATION) {
       if (scrollValue !== endValue) {
         scrollBox.scrollLeft = endValue;
       }
@@ -66,10 +61,9 @@ function createFrameStepper(_ref2) {
   };
 }
 
-function easeInOutQuad(_ref3) {
-  var currentTime = _ref3.currentTime,
-      duration = _ref3.duration,
-      startValue = _ref3.startValue,
-      change = _ref3.change;
-  return (currentTime /= duration / 2) < 1 ? change / 2 * currentTime * currentTime + startValue : -change / 2 * (--currentTime * (currentTime - 2) - 1) + startValue;
+function easeInOutQuad(_ref2) {
+  var currentTime = _ref2.currentTime,
+      startValue = _ref2.startValue,
+      change = _ref2.change;
+  return (currentTime /= DURATION / 2) < 1 ? change / 2 * currentTime * currentTime + startValue : -change / 2 * (--currentTime * (currentTime - 2) - 1) + startValue;
 }

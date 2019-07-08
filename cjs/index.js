@@ -177,16 +177,22 @@ Object.defineProperty(exports, "SplitButton", {
     return _SplitButton.SplitButton;
   }
 });
-Object.defineProperty(exports, "Tabs", {
-  enumerable: true,
-  get: function get() {
-    return _Tabs.Tabs;
-  }
-});
 Object.defineProperty(exports, "Tab", {
   enumerable: true,
   get: function get() {
     return _Tabs.Tab;
+  }
+});
+Object.defineProperty(exports, "TabBar", {
+  enumerable: true,
+  get: function get() {
+    return _Tabs.TabBar;
+  }
+});
+Object.defineProperty(exports, "ScrollBar", {
+  enumerable: true,
+  get: function get() {
+    return _Tabs.ScrollBar;
   }
 });
 Object.defineProperty(exports, "theme", {

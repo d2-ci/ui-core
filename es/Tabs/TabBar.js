@@ -1,33 +1,22 @@
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
+import _JSXStyle from "styled-jsx/style";
 import React from 'react';
 import propTypes from 'prop-types';
-import { InnerTabBar } from './InnerTabBar';
-import { TabBarScroller } from './TabBarScroller';
+import { colors } from '../theme';
+import cx from 'classnames';
 
-const TabBar = (_ref) => {
-  let {
-    fixed,
-    isScrollingRequired,
-    children
-  } = _ref,
-      tabBarScrollerProps = _objectWithoutProperties(_ref, ["fixed", "isScrollingRequired", "children"]);
-
-  return fixed || !isScrollingRequired ? React.createElement(InnerTabBar, {
-    fixed: fixed
-  }, children) : React.createElement(TabBarScroller, tabBarScrollerProps, React.createElement(InnerTabBar, {
-    fixed: fixed
-  }, children));
-};
+const TabBar = ({
+  fixed,
+  children
+}) => React.createElement("div", {
+  className: _JSXStyle.dynamic([["3887201227", [colors.grey400]]]) + " " + (cx('tab-bar', {
+    fixed
+  }) || "")
+}, children, React.createElement(_JSXStyle, {
+  id: "3887201227",
+  dynamic: [colors.grey400]
+}, [`div.__jsx-style-dynamic-selector{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;position:relative;overflow:hidden;box-shadow:inset 0 -1px 0 0 ${colors.grey400};}`, "@-moz-document url-prefix(){div.__jsx-style-dynamic-selector{width:-moz-max-content;}}"]));
 
 TabBar.propTypes = {
-  isScrollingRequired: propTypes.bool.isRequired,
-  fixed: InnerTabBar.propTypes.fixed,
-  children: propTypes.node.isRequired
-};
-TabBar.defaultProps = {
-  fixed: false
+  fixed: propTypes.bool
 };
 export { TabBar };

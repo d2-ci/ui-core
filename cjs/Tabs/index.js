@@ -3,10 +3,10 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "Tabs", {
+Object.defineProperty(exports, "TabBar", {
   enumerable: true,
   get: function get() {
-    return _Tabs.Tabs;
+    return _TabBar.TabBar;
   }
 });
 Object.defineProperty(exports, "Tab", {
@@ -15,7 +15,15 @@ Object.defineProperty(exports, "Tab", {
     return _Tab.Tab;
   }
 });
+Object.defineProperty(exports, "ScrollBar", {
+  enumerable: true,
+  get: function get() {
+    return _ScrollBar.ScrollBar;
+  }
+});
 
-var _Tabs = require("./Tabs");
+var _TabBar = require("./TabBar");
 
 var _Tab = require("./Tab");
+
+var _ScrollBar = require("./ScrollBar");
