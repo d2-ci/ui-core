@@ -13,11 +13,11 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _LayoutAreaContent = require("../LayoutAreaContent");
+var _LayoutContent = require("../LayoutContent");
 
-var _LayoutAreaNavigation = require("../LayoutAreaNavigation");
+var _LayoutTopBar = require("../LayoutTopBar");
 
-var _LayoutAreaSidebar = require("../LayoutAreaSidebar");
+var _LayoutSidebar = require("../LayoutSidebar");
 
 var _styles = require("./styles");
 
@@ -30,7 +30,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * =====================
  *
  * |-------------------|
- * |     Navigaton     |
+ * |      TopBar       |
  * |-------------------|
  * | Sidebar | Content |
  * |-------------------|
@@ -48,8 +48,8 @@ var ContainerV4 = function ContainerV4(_ref) {
 
 exports.ContainerV4 = ContainerV4;
 
-var containerV4Areas = _propTypes.default.oneOfType([(0, _instanceOfComponent.instanceOfComponent)(_LayoutAreaNavigation.LayoutAreaNavigation), (0, _instanceOfComponent.instanceOfComponent)(_LayoutAreaSidebar.LayoutAreaSidebar), (0, _instanceOfComponent.instanceOfComponent)(_LayoutAreaContent.LayoutAreaContent)]);
+var containerV4s = _propTypes.default.oneOfType([(0, _instanceOfComponent.instanceOfComponent)(_LayoutTopBar.LayoutTopBar), (0, _instanceOfComponent.instanceOfComponent)(_LayoutSidebar.LayoutSidebar), (0, _instanceOfComponent.instanceOfComponent)(_LayoutContent.LayoutContent)]);
 
 ContainerV4.propTypes = {
-  children: _propTypes.default.arrayOf(containerV4Areas)
+  children: _propTypes.default.arrayOf(containerV4s)
 };

@@ -8,10 +8,10 @@ import { ContainerV4 } from './container/ContainerV4';
 
 const LayoutContainer = ({
   withSidebar,
-  withNavigation,
+  withTopBar,
   children
 }) => {
-  if (withSidebar && withNavigation) {
+  if (withSidebar && withTopBar) {
     return React.createElement(ContainerV4, {
       children: children
     });
@@ -23,7 +23,7 @@ const LayoutContainer = ({
     });
   }
 
-  if (withNavigation) {
+  if (withTopBar) {
     return React.createElement(ContainerV2, {
       children: children
     });
@@ -36,6 +36,6 @@ const LayoutContainer = ({
 
 LayoutContainer.propTypes = {
   withSidebar: propTypes.bool,
-  withNavigation: propTypes.bool
+  withTopBar: propTypes.bool
 };
 export { LayoutContainer };

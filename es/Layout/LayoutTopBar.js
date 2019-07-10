@@ -2,12 +2,12 @@ import _JSXStyle from "styled-jsx/style";
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const LayoutAreaNavigation = ({
+const LayoutTopBar = ({
   children
 }) => React.createElement("section", {
-  className: "jsx-1039941977"
+  className: "jsx-3664029056"
 }, children, React.createElement(_JSXStyle, {
-  id: "1039941977"
-}, ["section.jsx-1039941977{grid-area:navigation;}"]));
+  id: "3664029056"
+}, ["section.jsx-3664029056{grid-area:topbar;}"]));
 
-export { LayoutAreaNavigation };
+export { LayoutTopBar };

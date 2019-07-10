@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.LayoutAreaNavigation = void 0;
+exports.LayoutTopBar = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -13,13 +13,13 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var LayoutAreaNavigation = function LayoutAreaNavigation(_ref) {
+var LayoutTopBar = function LayoutTopBar(_ref) {
   var children = _ref.children;
   return _react.default.createElement("section", {
-    className: "jsx-1039941977"
+    className: "jsx-3664029056"
   }, children, _react.default.createElement(_style.default, {
-    id: "1039941977"
-  }, ["section.jsx-1039941977{grid-area:navigation;}"]));
+    id: "3664029056"
+  }, ["section.jsx-3664029056{grid-area:topbar;}"]));
 };
 
-exports.LayoutAreaNavigation = LayoutAreaNavigation;
+exports.LayoutTopBar = LayoutTopBar;

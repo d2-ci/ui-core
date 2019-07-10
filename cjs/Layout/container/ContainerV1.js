@@ -13,7 +13,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _LayoutAreaContent = require("../LayoutAreaContent");
+var _LayoutContent = require("../LayoutContent");
 
 var _styles = require("./styles");
 
@@ -42,5 +42,5 @@ var ContainerV1 = function ContainerV1(_ref) {
 
 exports.ContainerV1 = ContainerV1;
 ContainerV1.propTypes = {
-  children: (0, _instanceOfComponent.instanceOfComponent)(_LayoutAreaContent.LayoutAreaContent)
+  children: (0, _instanceOfComponent.instanceOfComponent)(_LayoutContent.LayoutContent)
 };

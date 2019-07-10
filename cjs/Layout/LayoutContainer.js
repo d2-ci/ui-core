@@ -23,10 +23,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var LayoutContainer = function LayoutContainer(_ref) {
   var withSidebar = _ref.withSidebar,
-      withNavigation = _ref.withNavigation,
+      withTopBar = _ref.withTopBar,
       children = _ref.children;
 
-  if (withSidebar && withNavigation) {
+  if (withSidebar && withTopBar) {
     return _react.default.createElement(_ContainerV4.ContainerV4, {
       children: children
     });
@@ -38,7 +38,7 @@ var LayoutContainer = function LayoutContainer(_ref) {
     });
   }
 
-  if (withNavigation) {
+  if (withTopBar) {
     return _react.default.createElement(_ContainerV2.ContainerV2, {
       children: children
     });
@@ -52,5 +52,5 @@ var LayoutContainer = function LayoutContainer(_ref) {
 exports.LayoutContainer = LayoutContainer;
 LayoutContainer.propTypes = {
   withSidebar: _propTypes.default.bool,
-  withNavigation: _propTypes.default.bool
+  withTopBar: _propTypes.default.bool
 };

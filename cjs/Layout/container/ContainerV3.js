@@ -13,9 +13,9 @@ var _react = _interopRequireDefault(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _LayoutAreaContent = require("../LayoutAreaContent");
+var _LayoutContent = require("../LayoutContent");
 
-var _LayoutAreaSidebar = require("../LayoutAreaSidebar");
+var _LayoutSidebar = require("../LayoutSidebar");
 
 var _styles = require("./styles");
 
@@ -44,8 +44,8 @@ var ContainerV3 = function ContainerV3(_ref) {
 
 exports.ContainerV3 = ContainerV3;
 
-var containerV3Areas = _propTypes.default.oneOfType([(0, _instanceOfComponent.instanceOfComponent)(_LayoutAreaSidebar.LayoutAreaSidebar), (0, _instanceOfComponent.instanceOfComponent)(_LayoutAreaContent.LayoutAreaContent)]);
+var containerV3s = _propTypes.default.oneOfType([(0, _instanceOfComponent.instanceOfComponent)(_LayoutSidebar.LayoutSidebar), (0, _instanceOfComponent.instanceOfComponent)(_LayoutContent.LayoutContent)]);
 
 ContainerV3.propTypes = {
-  children: _propTypes.default.arrayOf(containerV3Areas)
+  children: _propTypes.default.arrayOf(containerV3s)
 };

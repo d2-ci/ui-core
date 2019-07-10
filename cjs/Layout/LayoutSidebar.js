@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.LayoutAreaContent = void 0;
+exports.LayoutSidebar = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -13,13 +13,13 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var LayoutAreaContent = function LayoutAreaContent(_ref) {
+var LayoutSidebar = function LayoutSidebar(_ref) {
   var children = _ref.children;
   return _react.default.createElement("section", {
-    className: "jsx-800869476"
+    className: "jsx-2266834895"
   }, children, _react.default.createElement(_style.default, {
-    id: "800869476"
-  }, ["section.jsx-800869476{grid-area:content;}"]));
+    id: "2266834895"
+  }, ["section.jsx-2266834895{grid-area:sidebar;}"]));
 };
 
-exports.LayoutAreaContent = LayoutAreaContent;
+exports.LayoutSidebar = LayoutSidebar;

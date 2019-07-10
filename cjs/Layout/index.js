@@ -9,29 +9,29 @@ Object.defineProperty(exports, "LayoutContainer", {
     return _LayoutContainer.LayoutContainer;
   }
 });
-Object.defineProperty(exports, "LayoutAreaNavigation", {
+Object.defineProperty(exports, "LayoutTopBar", {
   enumerable: true,
   get: function get() {
-    return _LayoutAreaNavigation.LayoutAreaNavigation;
+    return _LayoutTopBar.LayoutTopBar;
   }
 });
-Object.defineProperty(exports, "LayoutAreaSidebar", {
+Object.defineProperty(exports, "LayoutSidebar", {
   enumerable: true,
   get: function get() {
-    return _LayoutAreaSidebar.LayoutAreaSidebar;
+    return _LayoutSidebar.LayoutSidebar;
   }
 });
-Object.defineProperty(exports, "LayoutAreaContent", {
+Object.defineProperty(exports, "LayoutContent", {
   enumerable: true,
   get: function get() {
-    return _LayoutAreaContent.LayoutAreaContent;
+    return _LayoutContent.LayoutContent;
   }
 });
 
 var _LayoutContainer = require("./LayoutContainer");
 
-var _LayoutAreaNavigation = require("./LayoutAreaNavigation");
+var _LayoutTopBar = require("./LayoutTopBar");
 
-var _LayoutAreaSidebar = require("./LayoutAreaSidebar");
+var _LayoutSidebar = require("./LayoutSidebar");
 
-var _LayoutAreaContent = require("./LayoutAreaContent");
+var _LayoutContent = require("./LayoutContent");

@@ -13,9 +13,9 @@ var _react = _interopRequireDefault(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _LayoutAreaContent = require("../LayoutAreaContent");
+var _LayoutContent = require("../LayoutContent");
 
-var _LayoutAreaNavigation = require("../LayoutAreaNavigation");
+var _LayoutTopBar = require("../LayoutTopBar");
 
 var _styles = require("./styles");
 
@@ -27,11 +27,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Layout Version 2
  * ================
  *
- * |-----------|
- * | Navigaton |
- * |-----------|
- * |  Content  |
- * |-----------|
+ * |---------|
+ * | TopBar  |
+ * |---------|
+ * | Content |
+ * |---------|
  */
 var ContainerV2 = function ContainerV2(_ref) {
   var children = _ref.children;
@@ -46,8 +46,8 @@ var ContainerV2 = function ContainerV2(_ref) {
 
 exports.ContainerV2 = ContainerV2;
 
-var containerV2Areas = _propTypes.default.oneOfType([(0, _instanceOfComponent.instanceOfComponent)(_LayoutAreaNavigation.LayoutAreaNavigation), (0, _instanceOfComponent.instanceOfComponent)(_LayoutAreaContent.LayoutAreaContent)]);
+var containerV2s = _propTypes.default.oneOfType([(0, _instanceOfComponent.instanceOfComponent)(_LayoutTopBar.LayoutTopBar), (0, _instanceOfComponent.instanceOfComponent)(_LayoutContent.LayoutContent)]);
 
 ContainerV2.propTypes = {
-  children: _propTypes.default.arrayOf(containerV2Areas)
+  children: _propTypes.default.arrayOf(containerV2s)
 };

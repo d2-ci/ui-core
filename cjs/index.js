@@ -3,6 +3,39 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var _exportNames = {
+  CssReset: true,
+  AlertBar: true,
+  AlertStack: true,
+  Button: true,
+  Card: true,
+  Checkbox: true,
+  Chip: true,
+  CircularLoader: true,
+  ComponentCover: true,
+  Divider: true,
+  Help: true,
+  InputField: true,
+  LinearLoader: true,
+  Logo: true,
+  LogoIcon: true,
+  LogoIconWhite: true,
+  LogoWhite: true,
+  MenuList: true,
+  MenuItem: true,
+  Radio: true,
+  ScreenCover: true,
+  SelectField: true,
+  Switch: true,
+  ButtonStrip: true,
+  DropdownButton: true,
+  Menu: true,
+  Node: true,
+  Modal: true,
+  SplitButton: true,
+  theme: true,
+  colors: true
+};
 Object.defineProperty(exports, "CssReset", {
   enumerable: true,
   get: function get() {
@@ -177,30 +210,6 @@ Object.defineProperty(exports, "SplitButton", {
     return _SplitButton.SplitButton;
   }
 });
-Object.defineProperty(exports, "LayoutContainer", {
-  enumerable: true,
-  get: function get() {
-    return _Layout.LayoutContainer;
-  }
-});
-Object.defineProperty(exports, "LayoutAreaNavigation", {
-  enumerable: true,
-  get: function get() {
-    return _Layout.LayoutAreaNavigation;
-  }
-});
-Object.defineProperty(exports, "LayoutAreaSidebar", {
-  enumerable: true,
-  get: function get() {
-    return _Layout.LayoutAreaSidebar;
-  }
-});
-Object.defineProperty(exports, "LayoutAreaContent", {
-  enumerable: true,
-  get: function get() {
-    return _Layout.LayoutAreaContent;
-  }
-});
 Object.defineProperty(exports, "theme", {
   enumerable: true,
   get: function get() {
@@ -267,5 +276,16 @@ var _Modal = require("./Modal");
 var _SplitButton = require("./SplitButton");
 
 var _Layout = require("./Layout");
+
+Object.keys(_Layout).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Layout[key];
+    }
+  });
+});
 
 var _theme = require("./theme.js");
