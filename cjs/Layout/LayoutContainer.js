@@ -5,8 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.LayoutContainer = void 0;
 
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _react = _interopRequireDefault(require("react"));
 
 var _instanceOfComponent = require("../prop-validators/instanceOfComponent");
@@ -22,9 +20,9 @@ var _ContainerV4 = require("./container/ContainerV4");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var LayoutContainer = function LayoutContainer(_ref) {
-  var withSidebar = _ref.withSidebar,
-      withTopBar = _ref.withTopBar,
-      children = _ref.children;
+  var children = _ref.children;
+  var withSidebar = childrenContainsSidebar(children);
+  var withTopBar = childrenContainsTopBar(children);
 
   if (withSidebar && withTopBar) {
     return _react.default.createElement(_ContainerV4.ContainerV4, {
@@ -50,7 +48,3 @@ var LayoutContainer = function LayoutContainer(_ref) {
 };
 
 exports.LayoutContainer = LayoutContainer;
-LayoutContainer.propTypes = {
-  withSidebar: _propTypes.default.bool,
-  withTopBar: _propTypes.default.bool
-};

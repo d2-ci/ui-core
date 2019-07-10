@@ -1,4 +1,3 @@
-import propTypes from 'prop-types';
 import React from 'react';
 import { instanceOfComponent } from '../prop-validators/instanceOfComponent';
 import { ContainerV1 } from './container/ContainerV1';
@@ -7,10 +6,11 @@ import { ContainerV3 } from './container/ContainerV3';
 import { ContainerV4 } from './container/ContainerV4';
 
 const LayoutContainer = ({
-  withSidebar,
-  withTopBar,
   children
 }) => {
+  const withSidebar = childrenContainsSidebar(children);
+  const withTopBar = childrenContainsTopBar(children);
+
   if (withSidebar && withTopBar) {
     return React.createElement(ContainerV4, {
       children: children
@@ -34,8 +34,4 @@ const LayoutContainer = ({
   });
 };
 
-LayoutContainer.propTypes = {
-  withSidebar: propTypes.bool,
-  withTopBar: propTypes.bool
-};
 export { LayoutContainer };
