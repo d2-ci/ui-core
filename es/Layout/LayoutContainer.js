@@ -1,5 +1,6 @@
 import React from 'react';
 import { instanceOfComponent } from '../prop-validators/instanceOfComponent';
+import { childrenContainsSidebar, childrenContainsTopBar } from './helper';
 import { ContainerV1 } from './container/ContainerV1';
 import { ContainerV2 } from './container/ContainerV2';
 import { ContainerV3 } from './container/ContainerV3';

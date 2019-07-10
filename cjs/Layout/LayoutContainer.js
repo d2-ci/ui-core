@@ -9,6 +9,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _instanceOfComponent = require("../prop-validators/instanceOfComponent");
 
+var _helper = require("./helper");
+
 var _ContainerV = require("./container/ContainerV1");
 
 var _ContainerV2 = require("./container/ContainerV2");
@@ -21,8 +23,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var LayoutContainer = function LayoutContainer(_ref) {
   var children = _ref.children;
-  var withSidebar = childrenContainsSidebar(children);
-  var withTopBar = childrenContainsTopBar(children);
+  var withSidebar = (0, _helper.childrenContainsSidebar)(children);
+  var withTopBar = (0, _helper.childrenContainsTopBar)(children);
 
   if (withSidebar && withTopBar) {
     return _react.default.createElement(_ContainerV4.ContainerV4, {
