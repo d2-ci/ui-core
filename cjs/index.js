@@ -177,6 +177,24 @@ Object.defineProperty(exports, "SplitButton", {
     return _SplitButton.SplitButton;
   }
 });
+Object.defineProperty(exports, "Tab", {
+  enumerable: true,
+  get: function get() {
+    return _Tabs.Tab;
+  }
+});
+Object.defineProperty(exports, "TabBar", {
+  enumerable: true,
+  get: function get() {
+    return _Tabs.TabBar;
+  }
+});
+Object.defineProperty(exports, "ScrollBar", {
+  enumerable: true,
+  get: function get() {
+    return _Tabs.ScrollBar;
+  }
+});
 Object.defineProperty(exports, "theme", {
   enumerable: true,
   get: function get() {
@@ -241,5 +259,7 @@ var _Node = require("./Node");
 var _Modal = require("./Modal");
 
 var _SplitButton = require("./SplitButton");
+
+var _Tabs = require("./Tabs");
 
 var _theme = require("./theme.js");
