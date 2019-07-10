@@ -21,13 +21,13 @@ var TabBar = function TabBar(_ref) {
   var fixed = _ref.fixed,
       children = _ref.children;
   return _react.default.createElement("div", {
-    className: _style.default.dynamic([["3887201227", [_theme.colors.grey400]]]) + " " + ((0, _classnames.default)('tab-bar', {
+    className: _style.default.dynamic([["681661024", [_theme.colors.grey400]]]) + " " + ((0, _classnames.default)('tab-bar', {
       fixed: fixed
     }) || "")
   }, children, _react.default.createElement(_style.default, {
-    id: "3887201227",
+    id: "681661024",
     dynamic: [_theme.colors.grey400]
-  }, ["div.__jsx-style-dynamic-selector{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;position:relative;overflow:hidden;box-shadow:inset 0 -1px 0 0 ".concat(_theme.colors.grey400, ";}"), "@-moz-document url-prefix(){div.__jsx-style-dynamic-selector{width:-moz-max-content;}}"]));
+  }, ["div.__jsx-style-dynamic-selector{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;position:relative;overflow:hidden;box-shadow:inset 0 -1px 0 0 ".concat(_theme.colors.grey400, ";-webkit-flex-wrap:nowrap;-ms-flex-wrap:nowrap;flex-wrap:nowrap;}")]));
 };
 
 exports.TabBar = TabBar;
