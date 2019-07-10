@@ -12,7 +12,7 @@ const Tab = ({
   children
 }) => React.createElement("button", {
   onClick: disabled ? undefined : onClick,
-  className: _JSXStyle.dynamic([["1104539587", [colors.grey400, colors.grey600, colors.grey600, colors.grey100, colors.grey200, theme.primary700, theme.primary700, theme.primary700, colors.grey500, colors.grey500]]]) + " " + `${cx({
+  className: _JSXStyle.dynamic([["1104539587", [colors.grey400, colors.grey600, colors.grey600, colors.grey100, colors.grey200, theme.primary700, theme.primary700, theme.primary700, colors.grey500, colors.grey500]]]) + " " + `${cx('tab', {
     selected,
     disabled
   })}`

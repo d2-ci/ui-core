@@ -25,7 +25,7 @@ var Tab = function Tab(_ref) {
       children = _ref.children;
   return _react.default.createElement("button", {
     onClick: disabled ? undefined : onClick,
-    className: _style.default.dynamic([["1104539587", [_theme.colors.grey400, _theme.colors.grey600, _theme.colors.grey600, _theme.colors.grey100, _theme.colors.grey200, _theme.theme.primary700, _theme.theme.primary700, _theme.theme.primary700, _theme.colors.grey500, _theme.colors.grey500]]]) + " " + "".concat((0, _classnames.default)({
+    className: _style.default.dynamic([["1104539587", [_theme.colors.grey400, _theme.colors.grey600, _theme.colors.grey600, _theme.colors.grey100, _theme.colors.grey200, _theme.theme.primary700, _theme.theme.primary700, _theme.theme.primary700, _theme.colors.grey500, _theme.colors.grey500]]]) + " " + "".concat((0, _classnames.default)('tab', {
       selected: selected,
       disabled: disabled
     }))

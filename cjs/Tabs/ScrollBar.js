@@ -118,6 +118,7 @@ function (_PureComponent) {
   _createClass(ScrollBar, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      this.scrollSelectedTabIntoView();
       this.attachSideScrollListener();
     }
   }, {
@@ -130,6 +131,20 @@ function (_PureComponent) {
     value: function scroll(goBackwards) {
       this.removeSideScrollListener();
       (0, _animatedSideScroll.animatedSideScroll)(this.scrollBox.current, this.animatedScrollCallback, goBackwards);
+    }
+  }, {
+    key: "scrollSelectedTabIntoView",
+    value: function scrollSelectedTabIntoView() {
+      var scrollBoxEl = this.scrollBox.current;
+      var tab = scrollBoxEl.querySelector('.tab.selected');
+
+      if (tab) {
+        var tabEnd = tab.offsetLeft + tab.offsetWidth;
+
+        if (tabEnd > scrollBoxEl.offsetWidth) {
+          scrollBoxEl.scrollLeft = tabEnd - scrollBoxEl.offsetWidth;
+        }
+      }
     }
   }, {
     key: "attachSideScrollListener",
