@@ -1,38 +1,28 @@
+import _JSXStyle from "styled-jsx/style";
 import React from 'react';
+import cx from 'classnames';
 import { instanceOfComponent } from '../prop-validators/instanceOfComponent';
 import { childrenContainsSidebar, childrenContainsTopBar } from './helper';
-import { ContainerV1 } from './container/ContainerV1';
-import { ContainerV2 } from './container/ContainerV2';
-import { ContainerV3 } from './container/ContainerV3';
-import { ContainerV4 } from './container/ContainerV4';
+import styles from './container.styles';
+
+const determineLayoutClassName = children => {
+  const withSidebar = childrenContainsSidebar(children);
+  const withTopBar = childrenContainsTopBar(children);
+  if (withSidebar && withTopBar) return 'with-topbar-sidebar';
+  if (withSidebar) return 'with-sidebar';
+  if (withTopBar) return 'with-topbar';
+  return 'content-only';
+};
 
 const LayoutContainer = ({
   children
 }) => {
-  const withSidebar = childrenContainsSidebar(children);
-  const withTopBar = childrenContainsTopBar(children);
-
-  if (withSidebar && withTopBar) {
-    return React.createElement(ContainerV4, {
-      children: children
-    });
-  }
-
-  if (withSidebar) {
-    return React.createElement(ContainerV3, {
-      children: children
-    });
-  }
-
-  if (withTopBar) {
-    return React.createElement(ContainerV2, {
-      children: children
-    });
-  }
-
-  return React.createElement(ContainerV1, {
-    children: children
-  });
+  const layoutClassName = determineLayoutClassName(children);
+  return React.createElement("div", {
+    className: `jsx-${styles.__hash}` + " " + (cx('container', layoutClassName) || "")
+  }, children, React.createElement(_JSXStyle, {
+    id: styles.__hash
+  }, styles));
 };
 
 export { LayoutContainer };
