@@ -1,5 +1,7 @@
 import _JSXStyle from "styled-jsx/style";
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 import cx from 'classnames';
@@ -20,15 +22,27 @@ export class Button extends Component {
     }
   }
 
+  getButtonProps() {
+    const {
+      as,
+      disabled,
+      type,
+      name,
+      value
+    } = this.props;
+    return as === 'button' ? {
+      disabled,
+      type,
+      name,
+      value
+    } : {};
+  }
+
   render() {
     const {
       as: Element,
-      type,
       children,
       icon,
-      name,
-      value,
-      disabled,
       onClick,
       className,
       primary,
@@ -37,13 +51,10 @@ export class Button extends Component {
       small,
       large
     } = this.props;
-    return React.createElement(Element, {
-      disabled: disabled,
+    return React.createElement(Element, _extends({
       onClick: onClick,
-      type: Element === 'button' ? type : undefined,
-      name: name,
-      value: value,
-      ref: this.buttonRef,
+      ref: this.buttonRef
+    }, this.getButtonProps(), {
       className: `jsx-${styles.__hash}` + " " + (cx('button', className, {
         primary,
         secondary,
@@ -53,7 +64,7 @@ export class Button extends Component {
         'icon-only': icon && !children,
         icon
       }) || "")
-    }, icon && React.createElement("span", {
+    }), icon && React.createElement("span", {
       className: `jsx-${styles.__hash}` + " " + "button-icon"
     }, icon), children, React.createElement(_JSXStyle, {
       id: styles.__hash

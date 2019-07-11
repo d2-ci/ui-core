@@ -23,6 +23,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -72,30 +74,39 @@ function (_Component) {
       }
     }
   }, {
+    key: "getButtonProps",
+    value: function getButtonProps() {
+      var _this$props = this.props,
+          as = _this$props.as,
+          disabled = _this$props.disabled,
+          type = _this$props.type,
+          name = _this$props.name,
+          value = _this$props.value;
+      return as === 'button' ? {
+        disabled: disabled,
+        type: type,
+        name: name,
+        value: value
+      } : {};
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          Element = _this$props.as,
-          type = _this$props.type,
-          children = _this$props.children,
-          icon = _this$props.icon,
-          name = _this$props.name,
-          value = _this$props.value,
-          disabled = _this$props.disabled,
-          onClick = _this$props.onClick,
-          className = _this$props.className,
-          primary = _this$props.primary,
-          secondary = _this$props.secondary,
-          destructive = _this$props.destructive,
-          small = _this$props.small,
-          large = _this$props.large;
-      return _react.default.createElement(Element, {
-        disabled: disabled,
+      var _this$props2 = this.props,
+          Element = _this$props2.as,
+          children = _this$props2.children,
+          icon = _this$props2.icon,
+          onClick = _this$props2.onClick,
+          className = _this$props2.className,
+          primary = _this$props2.primary,
+          secondary = _this$props2.secondary,
+          destructive = _this$props2.destructive,
+          small = _this$props2.small,
+          large = _this$props2.large;
+      return _react.default.createElement(Element, _extends({
         onClick: onClick,
-        type: Element === 'button' ? type : undefined,
-        name: name,
-        value: value,
-        ref: this.buttonRef,
+        ref: this.buttonRef
+      }, this.getButtonProps(), {
         className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('button', className, {
           primary: primary,
           secondary: secondary,
@@ -105,7 +116,7 @@ function (_Component) {
           'icon-only': icon && !children,
           icon: icon
         }) || "")
-      }, icon && _react.default.createElement("span", {
+      }), icon && _react.default.createElement("span", {
         className: "jsx-".concat(_styles.default.__hash) + " " + "button-icon"
       }, icon), children, _react.default.createElement(_style.default, {
         id: _styles.default.__hash
