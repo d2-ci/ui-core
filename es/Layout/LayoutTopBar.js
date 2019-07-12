@@ -1,13 +1,20 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 const LayoutTopBar = ({
+  as: Element,
   children
-}) => React.createElement("section", {
-  className: "jsx-3664029056"
+}) => React.createElement(Element, {
+  className: "jsx-439364583" + " " + "layout-top-bar"
 }, children, React.createElement(_JSXStyle, {
-  id: "3664029056"
-}, ["section.jsx-3664029056{grid-area:topbar;}"]));
+  id: "439364583"
+}, [".layout-top-bar.jsx-439364583{grid-area:topbar;}"]));
 
+LayoutTopBar.propTypes = {
+  as: propTypes.oneOf(['header', 'nav', 'section', 'aside', 'div'])
+};
+LayoutTopBar.defaultProps = {
+  as: 'div'
+};
 export { LayoutTopBar };

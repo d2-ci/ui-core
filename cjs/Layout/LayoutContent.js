@@ -14,12 +14,19 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var LayoutContent = function LayoutContent(_ref) {
-  var children = _ref.children;
-  return _react.default.createElement("section", {
-    className: "jsx-800869476"
+  var Element = _ref.as,
+      children = _ref.children;
+  return _react.default.createElement(Element, {
+    className: "jsx-2065439825" + " " + "layout-content"
   }, children, _react.default.createElement(_style.default, {
-    id: "800869476"
-  }, ["section.jsx-800869476{grid-area:content;}"]));
+    id: "2065439825"
+  }, [".layout-content.jsx-2065439825{grid-area:content;}"]));
 };
 
 exports.LayoutContent = LayoutContent;
+LayoutContent.propTypes = {
+  as: _propTypes.default.oneOf(['main', 'div'])
+};
+LayoutContent.defaultProps = {
+  as: 'main'
+};
