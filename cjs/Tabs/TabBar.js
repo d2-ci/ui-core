@@ -21,13 +21,13 @@ var TabBar = function TabBar(_ref) {
   var fixed = _ref.fixed,
       children = _ref.children;
   return _react.default.createElement("div", {
-    className: _style.default.dynamic([["681661024", [_theme.colors.grey400]]]) + " " + ((0, _classnames.default)('tab-bar', {
+    className: _style.default.dynamic([["2309449789", [_theme.colors.grey400]]]) + " " + ((0, _classnames.default)('tab-bar', {
       fixed: fixed
     }) || "")
   }, children, _react.default.createElement(_style.default, {
-    id: "681661024",
+    id: "2309449789",
     dynamic: [_theme.colors.grey400]
-  }, ["div.__jsx-style-dynamic-selector{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;position:relative;overflow:hidden;box-shadow:inset 0 -1px 0 0 ".concat(_theme.colors.grey400, ";-webkit-flex-wrap:nowrap;-ms-flex-wrap:nowrap;flex-wrap:nowrap;}")]));
+  }, ["div.__jsx-style-dynamic-selector{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;position:relative;overflow:hidden;box-shadow:inset 0 -1px 0 0 ".concat(_theme.colors.grey400, ";-webkit-flex-wrap:nowrap;-ms-flex-wrap:nowrap;flex-wrap:nowrap;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}")]));
 };
 
 exports.TabBar = TabBar;
