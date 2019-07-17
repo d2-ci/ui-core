@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.AlertBar = void 0;
+exports.variantPropType = exports.iconPropType = exports.AlertBar = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
@@ -207,13 +207,18 @@ function (_PureComponent) {
 
 exports.AlertBar = AlertBar;
 var variantPropType = (0, _propTypes2.mutuallyExclusive)(['success', 'warning', 'critical'], _propTypes.default.bool);
+exports.variantPropType = variantPropType;
+
+var iconPropType = _propTypes.default.oneOfType([_propTypes.default.bool, _propTypes.default.element]);
+
+exports.iconPropType = iconPropType;
 AlertBar.propTypes = {
   className: _propTypes.default.string,
   children: _propTypes.default.string.isRequired,
   success: variantPropType,
   warning: variantPropType,
   critical: variantPropType,
-  icon: _Icon.iconPropType,
+  icon: iconPropType,
   duration: _propTypes.default.number,
   permanent: _propTypes.default.bool,
   actions: _Actions.actionsPropType,

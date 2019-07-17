@@ -3,15 +3,15 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.iconPropType = exports.Icon = void 0;
+exports.Icon = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
 var _react = _interopRequireDefault(require("react"));
 
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _Status = require("../icons/Status");
+
+var _index = require("./index");
 
 var _theme = require("../theme.js");
 
@@ -66,13 +66,9 @@ var Icon = function Icon(_ref) {
 };
 
 exports.Icon = Icon;
-
-var iconPropType = _propTypes.default.oneOfType([_propTypes.default.bool, _propTypes.default.element]);
-
-exports.iconPropType = iconPropType;
 Icon.propTypes = {
-  icon: iconPropType,
-  success: _propTypes.default.bool,
-  warning: _propTypes.default.bool,
-  critical: _propTypes.default.bool
+  icon: _index.iconPropType,
+  success: _index.variantProptype,
+  warning: _index.variantProptype,
+  critical: _index.variantProptype
 };

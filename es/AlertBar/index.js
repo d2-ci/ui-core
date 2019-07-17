@@ -8,7 +8,7 @@ import cx from 'classnames';
 import styles, { ANIMATION_TIME } from './styles';
 import { Actions, actionsPropType } from './Actions';
 import { Dismiss } from './Dismiss';
-import { Icon, iconPropType } from './Icon';
+import { Icon } from './Icon';
 import { Message } from './Message';
 import { mutuallyExclusive } from '@dhis2/prop-types';
 
@@ -140,6 +140,7 @@ class AlertBar extends PureComponent {
 }
 
 const variantPropType = mutuallyExclusive(['success', 'warning', 'critical'], propTypes.bool);
+const iconPropType = propTypes.oneOfType([propTypes.bool, propTypes.element]);
 AlertBar.propTypes = {
   className: propTypes.string,
   children: propTypes.string.isRequired,
@@ -156,4 +157,4 @@ AlertBar.defaultProps = {
   icon: true,
   duration: 8000
 };
-export { AlertBar };
+export { AlertBar, iconPropType, variantPropType };
