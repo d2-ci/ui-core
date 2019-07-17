@@ -41,11 +41,12 @@ var ButtonStrip = function ButtonStrip(_ref) {
 };
 
 exports.ButtonStrip = ButtonStrip;
+var alignmentPropType = (0, _propTypes2.mutuallyExclusive)(['start', 'middle', 'end'], _propTypes.default.bool);
 ButtonStrip.propTypes = {
   className: _propTypes.default.string,
   children: _propTypes.default.arrayOf((0, _propTypes2.instanceOfComponent)(_Button.Button)),
   compact: _propTypes.default.bool,
-  start: _propTypes.default.bool,
-  middle: _propTypes.default.bool,
-  end: _propTypes.default.bool
+  start: alignmentPropType,
+  middle: alignmentPropType,
+  end: alignmentPropType
 };
