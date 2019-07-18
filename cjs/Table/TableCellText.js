@@ -53,5 +53,5 @@ var TableCellText = function TableCellText(_ref3) {
 
 exports.TableCellText = TableCellText;
 TableCellText.propTypes = {
-  children: _propTypes.default.string
+  children: _propTypes.default.element
 };

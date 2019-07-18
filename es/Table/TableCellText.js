@@ -36,5 +36,5 @@ export const TableCellText = ({
   });
 });
 TableCellText.propTypes = {
-  children: propTypes.string
+  children: propTypes.element
 };
