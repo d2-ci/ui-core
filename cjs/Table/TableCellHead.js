@@ -27,9 +27,7 @@ var TableCellHead = function TableCellHead(_ref) {
     className: "jsx-1940747275"
   }, !hideLabel && _react.default.createElement("div", {
     className: "jsx-1940747275"
-  }, children ? children : _react.default.createElement(_TableCellText.TableCellText, {
-    label: label
-  })), _react.default.createElement(_style.default, {
+  }, _react.default.createElement(_TableCellText.TableCellText, null, children || label)), _react.default.createElement(_style.default, {
     id: "1940747275"
   }, ["th.jsx-1940747275{border-bottom:1px solid #e8edf2;padding:0 12px;}", "div.jsx-1940747275{min-height:36px;}"]));
 };

@@ -5,7 +5,6 @@ import { Provider } from './tableContext';
 import { TableBody } from './TableBody';
 import { TableCell } from './TableCell';
 import { TableCellHead } from './TableCellHead';
-import { TableCellText } from './TableCellText';
 import { Table as TableComponent } from './Table';
 import { TableFoot } from './TableFoot';
 import { TableHead } from './TableHead';
@@ -33,4 +32,4 @@ const Table = ({
 Table.propTypes = {
   staticLayout: propTypes.bool
 };
-export { Table, TableRow, TableRowHead, TableHead, TableBody, TableFoot, TableCell, TableCellHead, TableCellText };
+export { Table, TableRow, TableRowHead, TableHead, TableBody, TableFoot, TableCell, TableCellHead };

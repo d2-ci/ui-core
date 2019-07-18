@@ -21,19 +21,19 @@ var tableCellTextStylesResponsive = ["@media (max-width:768px){tbody span.jsx-14
 tableCellTextStylesResponsive.__hash = "1412524969";
 
 var TableCellTextStatic = function TableCellTextStatic(_ref) {
-  var label = _ref.label;
+  var children = _ref.children;
   return _react.default.createElement("span", {
     className: "jsx-".concat(tableCellTextStyles.__hash)
-  }, label, _react.default.createElement(_style.default, {
+  }, children, _react.default.createElement(_style.default, {
     id: tableCellTextStyles.__hash
   }, tableCellTextStyles));
 };
 
 var TableCellTextResponsive = function TableCellTextResponsive(_ref2) {
-  var label = _ref2.label;
+  var children = _ref2.children;
   return _react.default.createElement("span", {
     className: "jsx-".concat(tableCellTextStyles.__hash, " jsx-").concat(tableCellTextStylesResponsive.__hash)
-  }, label, _react.default.createElement(_style.default, {
+  }, children, _react.default.createElement(_style.default, {
     id: tableCellTextStyles.__hash
   }, tableCellTextStyles), _react.default.createElement(_style.default, {
     id: tableCellTextStylesResponsive.__hash
@@ -41,17 +41,17 @@ var TableCellTextResponsive = function TableCellTextResponsive(_ref2) {
 };
 
 var TableCellText = function TableCellText(_ref3) {
-  var label = _ref3.label;
+  var children = _ref3.children;
   return _react.default.createElement(_tableContext.Consumer, null, function (_ref4) {
     var staticLayout = _ref4.staticLayout;
     var TableCellTextComponent = staticLayout ? TableCellTextStatic : TableCellTextResponsive;
     return _react.default.createElement(TableCellTextComponent, {
-      label: label
+      children: children
     });
   });
 };
 
 exports.TableCellText = TableCellText;
 TableCellText.propTypes = {
-  label: _propTypes.default.string
+  children: _propTypes.default.string
 };

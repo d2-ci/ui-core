@@ -14,9 +14,7 @@ export const TableCellHead = ({
   className: "jsx-1940747275"
 }, !hideLabel && React.createElement("div", {
   className: "jsx-1940747275"
-}, children ? children : React.createElement(TableCellText, {
-  label: label
-})), React.createElement(_JSXStyle, {
+}, React.createElement(TableCellText, null, children || label)), React.createElement(_JSXStyle, {
   id: "1940747275"
 }, ["th.jsx-1940747275{border-bottom:1px solid #e8edf2;padding:0 12px;}", "div.jsx-1940747275{min-height:36px;}"]));
 TableCellHead.propTypes = {

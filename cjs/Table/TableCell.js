@@ -67,16 +67,6 @@ var TableCellResponsive = function TableCellResponsive(_ref3) {
   }, tableCellStyles), _react.default.createElement(_style.default, {
     id: tableCellStylesResponsive.__hash
   }, tableCellStylesResponsive));
-}; // Leveraging on being able to return before creating the text component
-// If not extracted, TableCellText will be created on every render
-// and throw a warning as children is not a string
-
-
-var getContent = function getContent(children) {
-  if (typeof children !== 'string') return children;
-  return _react.default.createElement(_TableCellText.TableCellText, {
-    label: children
-  });
 };
 
 var TableCell = function TableCell(_ref4) {
@@ -84,18 +74,22 @@ var TableCell = function TableCell(_ref4) {
       colSpan = _ref4.colSpan,
       rowSpan = _ref4.rowSpan,
       column = _ref4.column;
+
+  var _ref6 =
+  /*#__PURE__*/
+  _react.default.createElement(_TableCellText.TableCellText, null, children);
+
   return _react.default.createElement(_tableContext.Consumer, null, function (_ref5) {
     var staticLayout = _ref5.staticLayout,
         headerLabels = _ref5.headerLabels;
     var title = staticLayout ? '' : headerLabels[column];
     var TableCellComponent = staticLayout ? TableCellStatic : TableCellResponsive;
-    var content = getContent(children);
     return _react.default.createElement(TableCellComponent, {
       column: column,
       colSpan: colSpan,
       rowSpan: rowSpan,
       title: title
-    }, content);
+    }, _ref6);
   });
 };
 

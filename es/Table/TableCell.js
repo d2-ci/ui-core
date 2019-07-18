@@ -48,17 +48,7 @@ const TableCellResponsive = ({
   id: tableCellStyles.__hash
 }, tableCellStyles), React.createElement(_JSXStyle, {
   id: tableCellStylesResponsive.__hash
-}, tableCellStylesResponsive)); // Leveraging on being able to return before creating the text component
-// If not extracted, TableCellText will be created on every render
-// and throw a warning as children is not a string
-
-
-const getContent = children => {
-  if (typeof children !== 'string') return children;
-  return React.createElement(TableCellText, {
-    label: children
-  });
-};
+}, tableCellStylesResponsive));
 
 export const TableCell = ({
   children,
@@ -71,13 +61,12 @@ export const TableCell = ({
 }) => {
   const title = staticLayout ? '' : headerLabels[column];
   const TableCellComponent = staticLayout ? TableCellStatic : TableCellResponsive;
-  const content = getContent(children);
   return React.createElement(TableCellComponent, {
     column: column,
     colSpan: colSpan,
     rowSpan: rowSpan,
     title: title
-  }, content);
+  }, React.createElement(TableCellText, null, children));
 });
 TableCell.propTypes = {
   colSpan: propTypes.string,

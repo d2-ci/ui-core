@@ -8,33 +8,33 @@ const tableCellTextStylesResponsive = ["@media (max-width:768px){tbody span.jsx-
 tableCellTextStylesResponsive.__hash = "1412524969";
 
 const TableCellTextStatic = ({
-  label
+  children
 }) => React.createElement("span", {
   className: `jsx-${tableCellTextStyles.__hash}`
-}, label, React.createElement(_JSXStyle, {
+}, children, React.createElement(_JSXStyle, {
   id: tableCellTextStyles.__hash
 }, tableCellTextStyles));
 
 const TableCellTextResponsive = ({
-  label
+  children
 }) => React.createElement("span", {
   className: `jsx-${tableCellTextStyles.__hash} jsx-${tableCellTextStylesResponsive.__hash}`
-}, label, React.createElement(_JSXStyle, {
+}, children, React.createElement(_JSXStyle, {
   id: tableCellTextStyles.__hash
 }, tableCellTextStyles), React.createElement(_JSXStyle, {
   id: tableCellTextStylesResponsive.__hash
 }, tableCellTextStylesResponsive));
 
 export const TableCellText = ({
-  label
+  children
 }) => React.createElement(Consumer, null, ({
   staticLayout
 }) => {
   const TableCellTextComponent = staticLayout ? TableCellTextStatic : TableCellTextResponsive;
   return React.createElement(TableCellTextComponent, {
-    label: label
+    children: children
   });
 });
 TableCellText.propTypes = {
-  label: propTypes.string
+  children: propTypes.string
 };

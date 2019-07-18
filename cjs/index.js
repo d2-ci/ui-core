@@ -3,6 +3,42 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var _exportNames = {
+  CssReset: true,
+  AlertBar: true,
+  AlertStack: true,
+  Button: true,
+  Card: true,
+  Checkbox: true,
+  Chip: true,
+  CircularLoader: true,
+  ComponentCover: true,
+  Divider: true,
+  Help: true,
+  InputField: true,
+  LinearLoader: true,
+  Logo: true,
+  LogoIcon: true,
+  LogoIconWhite: true,
+  LogoWhite: true,
+  MenuList: true,
+  MenuItem: true,
+  Radio: true,
+  ScreenCover: true,
+  SelectField: true,
+  Switch: true,
+  ButtonStrip: true,
+  DropdownButton: true,
+  Menu: true,
+  Node: true,
+  Modal: true,
+  SplitButton: true,
+  Tab: true,
+  TabBar: true,
+  ScrollBar: true,
+  theme: true,
+  colors: true
+};
 Object.defineProperty(exports, "CssReset", {
   enumerable: true,
   get: function get() {
@@ -141,54 +177,6 @@ Object.defineProperty(exports, "Switch", {
     return _Switch.Switch;
   }
 });
-Object.defineProperty(exports, "Table", {
-  enumerable: true,
-  get: function get() {
-    return _Table.Table;
-  }
-});
-Object.defineProperty(exports, "TableHead", {
-  enumerable: true,
-  get: function get() {
-    return _Table.TableHead;
-  }
-});
-Object.defineProperty(exports, "TableBody", {
-  enumerable: true,
-  get: function get() {
-    return _Table.TableBody;
-  }
-});
-Object.defineProperty(exports, "TableFoot", {
-  enumerable: true,
-  get: function get() {
-    return _Table.TableFoot;
-  }
-});
-Object.defineProperty(exports, "TableRow", {
-  enumerable: true,
-  get: function get() {
-    return _Table.TableRow;
-  }
-});
-Object.defineProperty(exports, "TableCell", {
-  enumerable: true,
-  get: function get() {
-    return _Table.TableCell;
-  }
-});
-Object.defineProperty(exports, "TableCellHead", {
-  enumerable: true,
-  get: function get() {
-    return _Table.TableCellHead;
-  }
-});
-Object.defineProperty(exports, "TableCellText", {
-  enumerable: true,
-  get: function get() {
-    return _Table.TableCellText;
-  }
-});
 Object.defineProperty(exports, "ButtonStrip", {
   enumerable: true,
   get: function get() {
@@ -297,6 +285,17 @@ var _SelectField = require("./SelectField");
 var _Switch = require("./Switch");
 
 var _Table = require("./Table");
+
+Object.keys(_Table).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Table[key];
+    }
+  });
+});
 
 var _ButtonStrip = require("./ButtonStrip");
 

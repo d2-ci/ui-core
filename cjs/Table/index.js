@@ -21,12 +21,6 @@ Object.defineProperty(exports, "TableCellHead", {
     return _TableCellHead.TableCellHead;
   }
 });
-Object.defineProperty(exports, "TableCellText", {
-  enumerable: true,
-  get: function get() {
-    return _TableCellText.TableCellText;
-  }
-});
 Object.defineProperty(exports, "TableFoot", {
   enumerable: true,
   get: function get() {
@@ -66,8 +60,6 @@ var _TableBody = require("./TableBody");
 var _TableCell = require("./TableCell");
 
 var _TableCellHead = require("./TableCellHead");
-
-var _TableCellText = require("./TableCellText");
 
 var _Table = require("./Table");
 
