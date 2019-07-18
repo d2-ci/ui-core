@@ -9,7 +9,17 @@ var _style = _interopRequireDefault(require("styled-jsx/style"));
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _tableContext = require("./tableContext");
+
+var _TableBody = require("./TableBody");
+
+var _TableFoot = require("./TableFoot");
+
+var _TableHead = require("./TableHead");
+
+var _instanceOfComponent = require("../prop-validators/instanceOfComponent");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48,3 +58,9 @@ var Table = function Table(_ref3) {
 };
 
 exports.Table = Table;
+
+var childPropType = _propTypes.default.oneOfType([(0, _instanceOfComponent.instanceOfComponent)(_TableHead.TableHead), (0, _instanceOfComponent.instanceOfComponent)(_TableBody.TableBody), (0, _instanceOfComponent.instanceOfComponent)(_TableFoot.TableFoot)]);
+
+Table.propTypes = {
+  children: _propTypes.default.oneOfType([childPropType, _propTypes.default.arrayOf(childPropType)]).isRequired
+};

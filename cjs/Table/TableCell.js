@@ -7,16 +7,22 @@ exports.TableCell = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _tableContext = require("./tableContext");
 
+var _TableCellText = require("./TableCellText");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var tableCellStyles = ["td.jsx-2476768987{border-bottom:1px solid #e8edf2;padding:0 12px;font-size:14px;}", "div.jsx-2476768987{min-height:45px;}", "tfooter div.jsx-2476768987{min-height:36px;}"];
 tableCellStyles.__hash = "2476768987";
+var tableCellStylesResponsive = ["@media (max-width:768px){td.jsx-3995202917{width:100%;display:block;}}"];
+tableCellStylesResponsive.__hash = "3995202917";
 
 var TableCellStatic = function TableCellStatic(_ref) {
   var children = _ref.children,
@@ -33,49 +39,69 @@ var TableCellStatic = function TableCellStatic(_ref) {
   }, tableCellStyles));
 };
 
-var TableCellResponsive = function TableCellResponsive(_ref2) {
-  var children = _ref2.children,
-      colSpan = _ref2.colSpan,
-      rowSpan = _ref2.rowSpan,
-      title = _ref2.title;
+var ContentWithTitle = function ContentWithTitle(_ref2) {
+  var title = _ref2.title,
+      children = _ref2.children;
+  return _react.default.createElement(_react.Fragment, null, title && _react.default.createElement("span", {
+    className: "jsx-1484001192" + " " + "title"
+  }, title), _react.default.createElement("span", {
+    className: "jsx-1484001192" + " " + "content"
+  }, children), _react.default.createElement(_style.default, {
+    id: "1484001192"
+  }, [".title.jsx-1484001192{display:none;}", ".content.jsx-1484001192{display:block;}", "@media (max-width:768px){.title.jsx-1484001192{display:block;white-space:normal;min-height:24px;line-height:18px;padding:8px 0 0 0;font-weight:bold;white-space:nowrap;}.content.jsx-1484001192{display:block;padding:0;min-height:32px;}.content.jsx-1484001192:first-child{padding-top:8px;padding-bottom:8px;}}"]));
+};
+
+var TableCellResponsive = function TableCellResponsive(_ref3) {
+  var children = _ref3.children,
+      colSpan = _ref3.colSpan,
+      rowSpan = _ref3.rowSpan,
+      title = _ref3.title;
   return _react.default.createElement("td", {
     colSpan: colSpan,
     rowSpan: rowSpan,
-    className: "jsx-".concat(tableCellStyles.__hash) + " " + _style.default.dynamic([["460684140", [title]]])
-  }, _react.default.createElement("div", {
-    className: "jsx-".concat(tableCellStyles.__hash) + " " + _style.default.dynamic([["460684140", [title]]])
+    className: "jsx-".concat(tableCellStyles.__hash, " jsx-").concat(tableCellStylesResponsive.__hash)
+  }, _react.default.createElement(ContentWithTitle, {
+    title: title
   }, children), _react.default.createElement(_style.default, {
     id: tableCellStyles.__hash
   }, tableCellStyles), _react.default.createElement(_style.default, {
-    id: "460684140",
-    dynamic: [title]
-  }, ["@media (max-width:768px){td.__jsx-style-dynamic-selector{display:table-row;width:100%;}td.__jsx-style-dynamic-selector:before{content:'".concat(title, ":';display:table-cell;white-space:nowrap;padding:0 16px;font-weight:bold;}tfoot td.__jsx-style-dynamic-selector:before{display:none;}div.__jsx-style-dynamic-selector{display:table-cell;width:100%;padding:0 16px;}}"), "@media (max-width:400px){td.__jsx-style-dynamic-selector{display:block;}td.__jsx-style-dynamic-selector:first-child{margin-top:0;}td.__jsx-style-dynamic-selector:before{display:block;white-space:normal;min-height:24px;line-height:18px;padding:8px 0 0 0;}div.__jsx-style-dynamic-selector{display:block;padding:0;min-height:32px;}}"]));
+    id: tableCellStylesResponsive.__hash
+  }, tableCellStylesResponsive));
+}; // Leveraging on being able to return before creating the text component
+// If not extracted, TableCellText will be created on every render
+// and throw a warning as children is not a string
+
+
+var getContent = function getContent(children) {
+  if (typeof children !== 'string') return children;
+  return _react.default.createElement(_TableCellText.TableCellText, {
+    label: children
+  });
 };
 
-var TableCell = function TableCell(_ref3) {
-  var children = _ref3.children,
-      title = _ref3.title,
-      colSpan = _ref3.colSpan,
-      rowSpan = _ref3.rowSpan;
-
-  var _ref5 =
-  /*#__PURE__*/
-  _react.default.createElement("div", null, children);
-
-  return _react.default.createElement(_tableContext.Consumer, null, function (_ref4) {
-    var staticLayout = _ref4.staticLayout;
-    var TableCell = staticLayout ? TableCellStatic : TableCellResponsive;
-    return _react.default.createElement(TableCell, {
+var TableCell = function TableCell(_ref4) {
+  var children = _ref4.children,
+      colSpan = _ref4.colSpan,
+      rowSpan = _ref4.rowSpan,
+      column = _ref4.column;
+  return _react.default.createElement(_tableContext.Consumer, null, function (_ref5) {
+    var staticLayout = _ref5.staticLayout,
+        headerLabels = _ref5.headerLabels;
+    var title = staticLayout ? '' : headerLabels[column];
+    var TableCellComponent = staticLayout ? TableCellStatic : TableCellResponsive;
+    var content = getContent(children);
+    return _react.default.createElement(TableCellComponent, {
+      column: column,
       colSpan: colSpan,
       rowSpan: rowSpan,
       title: title
-    }, _ref5);
+    }, content);
   });
 };
 
 exports.TableCell = TableCell;
 TableCell.propTypes = {
-  title: _propTypes.default.string,
   colSpan: _propTypes.default.string,
-  rowSpan: _propTypes.default.string
+  rowSpan: _propTypes.default.string,
+  column: _propTypes.default.number
 };

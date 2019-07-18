@@ -1,6 +1,9 @@
 import _JSXStyle from "styled-jsx/style";
 import React from 'react';
+import propTypes from 'prop-types';
 import { Consumer } from './tableContext';
+import { TableRowHead } from './TableRowHead';
+import { instanceOfComponent } from '../prop-validators/instanceOfComponent';
 const tableHeadStylesResponsive = ["@media (max-width:768px){thead.jsx-3333755757{display:none;}}"];
 tableHeadStylesResponsive.__hash = "3333755757";
 
@@ -24,3 +27,7 @@ export const TableHead = ({
   const THead = staticLayout ? THeadStatic : THeadResponsive;
   return React.createElement(THead, null, children);
 });
+const childPropType = instanceOfComponent(TableRowHead);
+TableHead.propTypes = {
+  children: propTypes.oneOfType([childPropType, propTypes.arrayOf(childPropType)]).isRequired
+};
