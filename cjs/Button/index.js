@@ -9,11 +9,11 @@ var _style = _interopRequireDefault(require("styled-jsx/style"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _react = _interopRequireWildcard(require("react"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _propTypes2 = require("@dhis2/prop-types");
+var _react = _interopRequireWildcard(require("react"));
+
+var _commonPropTypes = require("../common-prop-types");
 
 var _styles = _interopRequireDefault(require("./styles.js"));
 
@@ -119,8 +119,6 @@ exports.Button = Button;
 Button.defaultProps = {
   type: 'button'
 };
-var variantPropType = (0, _propTypes2.mutuallyExclusive)(['primary', 'secondary', 'destructive'], _propTypes.default.bool);
-var sizePropType = (0, _propTypes2.mutuallyExclusive)(['small', 'large'], _propTypes.default.bool);
 Button.propTypes = {
   onClick: _propTypes.default.func,
   className: _propTypes.default.string,
@@ -128,11 +126,11 @@ Button.propTypes = {
   name: _propTypes.default.string,
   value: _propTypes.default.string,
   type: _propTypes.default.oneOf(['submit', 'reset', 'button']),
-  small: sizePropType,
-  large: sizePropType,
-  primary: variantPropType,
-  secondary: variantPropType,
-  destructive: variantPropType,
+  small: _commonPropTypes.sizePropType,
+  large: _commonPropTypes.sizePropType,
+  primary: _commonPropTypes.buttonVariantPropType,
+  secondary: _commonPropTypes.buttonVariantPropType,
+  destructive: _commonPropTypes.buttonVariantPropType,
   disabled: _propTypes.default.bool,
   initialFocus: _propTypes.default.bool
 };

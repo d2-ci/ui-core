@@ -1,8 +1,9 @@
 import _JSXStyle from "styled-jsx/style";
-import React from 'react';
-import propTypes from 'prop-types';
 import cx from 'classnames';
-import { theme, spacers } from '../theme.js';
+import propTypes from 'prop-types';
+import React from 'react';
+import { statusPropType } from '../common-prop-types';
+import { spacers, theme } from '../theme.js';
 
 const Help = ({
   children,
@@ -25,8 +26,8 @@ Help.defaultProps = {};
 Help.propTypes = {
   className: propTypes.string,
   children: propTypes.string.isRequired,
-  error: propTypes.bool,
-  valid: propTypes.bool,
-  warning: propTypes.bool
+  error: statusPropType,
+  valid: statusPropType,
+  warning: statusPropType
 };
 export { Help };

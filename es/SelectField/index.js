@@ -4,8 +4,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 import propTypes from 'prop-types';
 import React from 'react';
-import { ArrowDown } from '../icons/Arrow';
+import { statusPropType } from '../common-prop-types';
 import { LabelFilled, LabelOutlined } from '../FieldLabel';
+import { ArrowDown } from '../icons/Arrow';
 import { Select } from './Select';
 
 var _ref =
@@ -120,9 +121,9 @@ SelectField.propTypes = {
   disabled: propTypes.bool,
   filled: propTypes.bool,
   dense: propTypes.bool,
-  valid: propTypes.bool,
-  warning: propTypes.bool,
-  error: propTypes.bool,
+  valid: statusPropType,
+  warning: statusPropType,
+  error: statusPropType,
   loading: propTypes.bool,
   initialFocus: propTypes.bool,
   onFocus: propTypes.func,

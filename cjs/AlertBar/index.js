@@ -3,17 +3,17 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.variantPropType = exports.iconPropType = exports.AlertBar = void 0;
+exports.AlertBar = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _classnames = _interopRequireDefault(require("classnames"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _classnames = _interopRequireDefault(require("classnames"));
+var _react = _interopRequireWildcard(require("react"));
 
-var _styles = _interopRequireWildcard(require("./styles"));
+var _commonPropTypes = require("../common-prop-types");
 
 var _Actions = require("./Actions");
 
@@ -23,7 +23,7 @@ var _Icon = require("./Icon");
 
 var _Message = require("./Message");
 
-var _propTypes2 = require("@dhis2/prop-types");
+var _styles = _interopRequireWildcard(require("./styles"));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -206,19 +206,13 @@ function (_PureComponent) {
 }(_react.PureComponent);
 
 exports.AlertBar = AlertBar;
-var variantPropType = (0, _propTypes2.mutuallyExclusive)(['success', 'warning', 'critical'], _propTypes.default.bool);
-exports.variantPropType = variantPropType;
-
-var iconPropType = _propTypes.default.oneOfType([_propTypes.default.bool, _propTypes.default.element]);
-
-exports.iconPropType = iconPropType;
 AlertBar.propTypes = {
   className: _propTypes.default.string,
   children: _propTypes.default.string.isRequired,
-  success: variantPropType,
-  warning: variantPropType,
-  critical: variantPropType,
-  icon: iconPropType,
+  success: _commonPropTypes.statusPropType,
+  warning: _commonPropTypes.statusPropType,
+  critical: _commonPropTypes.statusPropType,
+  icon: _Icon.iconPropType,
   duration: _propTypes.default.number,
   permanent: _propTypes.default.bool,
   actions: _Actions.actionsPropType,

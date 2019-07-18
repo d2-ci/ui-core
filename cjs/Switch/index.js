@@ -7,11 +7,13 @@ exports.Switch = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _classnames = _interopRequireDefault(require("classnames"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _classnames = _interopRequireDefault(require("classnames"));
+var _react = _interopRequireWildcard(require("react"));
+
+var _commonPropTypes = require("../common-prop-types");
 
 var _Switch = require("../icons/Switch.js");
 
@@ -178,9 +180,9 @@ Switch.propTypes = {
   required: _propTypes.default.bool,
   checked: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
-  valid: _propTypes.default.bool,
-  warning: _propTypes.default.bool,
-  error: _propTypes.default.bool,
+  valid: _commonPropTypes.statusPropType,
+  warning: _commonPropTypes.statusPropType,
+  error: _commonPropTypes.statusPropType,
   initialFocus: _propTypes.default.bool,
   onFocus: _propTypes.default.func,
   onBlur: _propTypes.default.func

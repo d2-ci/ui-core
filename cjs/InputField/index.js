@@ -11,11 +11,13 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Input = require("./Input.js");
+var _commonPropTypes = require("../common-prop-types");
 
 var _FieldLabel = require("../FieldLabel");
 
 var _theme = require("../theme.js");
+
+var _Input = require("./Input.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -160,9 +162,9 @@ InputField.propTypes = {
   disabled: _propTypes.default.bool,
   filled: _propTypes.default.bool,
   dense: _propTypes.default.bool,
-  valid: _propTypes.default.bool,
-  warning: _propTypes.default.bool,
-  error: _propTypes.default.bool,
+  valid: _commonPropTypes.statusPropType,
+  warning: _commonPropTypes.statusPropType,
+  error: _commonPropTypes.statusPropType,
   loading: _propTypes.default.bool,
   initialFocus: _propTypes.default.bool,
   onBlur: _propTypes.default.func,

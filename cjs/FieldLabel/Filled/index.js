@@ -7,19 +7,21 @@ exports.Filled = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
+var _classnames = _interopRequireDefault(require("classnames"));
+
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _react = _interopRequireDefault(require("react"));
 
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _InputContainer = require("./InputContainer");
-
-var _Label = require("./Label");
+var _commonPropTypes = require("../../common-prop-types");
 
 var _Status = require("../../icons/Status");
 
 var _theme = require("../../theme.js");
+
+var _InputContainer = require("./InputContainer");
+
+var _Label = require("./Label");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -90,9 +92,9 @@ Filled.propTypes = {
   value: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   required: _propTypes.default.bool,
-  valid: _propTypes.default.bool,
-  error: _propTypes.default.bool,
-  warning: _propTypes.default.bool,
+  valid: _commonPropTypes.statusPropType,
+  error: _commonPropTypes.statusPropType,
+  warning: _commonPropTypes.statusPropType,
   loading: _propTypes.default.bool,
   dense: _propTypes.default.bool,
   className: _propTypes.default.string

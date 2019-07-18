@@ -3,13 +3,14 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 import _JSXStyle from "styled-jsx/style";
-import React, { Component } from 'react';
-import propTypes from 'prop-types';
 import cx from 'classnames';
-import { ArrowUp, ArrowDown } from '../icons/Arrow.js';
-import { DropMenu } from '../DropMenu';
+import propTypes from 'prop-types';
+import React, { Component } from 'react';
 import { Button } from '../Button';
 import { ButtonStrip } from '../ButtonStrip';
+import { buttonVariantPropType } from '../common-prop-types';
+import { DropMenu } from '../DropMenu';
+import { ArrowDown, ArrowUp } from '../icons/Arrow.js';
 import { spacers } from '../theme.js';
 const rightButton = {
   styles: React.createElement(_JSXStyle, {
@@ -78,9 +79,9 @@ SplitButton.propTypes = {
   icon: propTypes.element,
   small: propTypes.bool,
   large: propTypes.bool,
-  primary: propTypes.bool,
-  secondary: propTypes.bool,
-  destructive: propTypes.bool,
+  primary: buttonVariantPropType,
+  secondary: buttonVariantPropType,
+  destructive: buttonVariantPropType,
   disabled: propTypes.bool
 };
 export { SplitButton };

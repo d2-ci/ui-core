@@ -7,11 +7,13 @@ exports.CircularLoader = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireDefault(require("react"));
+var _classnames = _interopRequireDefault(require("classnames"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _classnames = _interopRequireDefault(require("classnames"));
+var _react = _interopRequireDefault(require("react"));
+
+var _commonPropTypes = require("../common-prop-types");
 
 var _styles = _interopRequireDefault(require("./styles.js"));
 
@@ -45,6 +47,6 @@ var CircularLoader = function CircularLoader(_ref) {
 exports.CircularLoader = CircularLoader;
 CircularLoader.propTypes = {
   className: _propTypes.default.string,
-  small: _propTypes.default.bool,
-  large: _propTypes.default.bool
+  small: _commonPropTypes.sizePropType,
+  large: _commonPropTypes.sizePropType
 };

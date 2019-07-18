@@ -2,13 +2,14 @@ import _JSXStyle from "styled-jsx/style";
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import React, { Component, Fragment } from 'react';
-import propTypes from 'prop-types';
 import cx from 'classnames';
+import propTypes from 'prop-types';
+import React, { Component, Fragment } from 'react';
+import { statusPropType } from '../common-prop-types';
 import { theme } from '../theme.js';
 import { Icon } from './Icon';
-import { Label } from './Label';
 import { Input } from './Input';
+import { Label } from './Label';
 
 class Checkbox extends Component {
   constructor(props) {
@@ -106,9 +107,9 @@ Checkbox.propTypes = {
   required: propTypes.bool,
   checked: propTypes.bool,
   disabled: propTypes.bool,
-  valid: propTypes.bool,
-  warning: propTypes.bool,
-  error: propTypes.bool,
+  valid: statusPropType,
+  warning: statusPropType,
+  error: statusPropType,
   initialFocus: propTypes.bool
 };
 export { Checkbox };

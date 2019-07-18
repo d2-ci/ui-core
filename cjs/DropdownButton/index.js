@@ -7,15 +7,17 @@ exports.DropdownButton = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireWildcard(require("react"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _Arrow = require("../icons/Arrow.js");
+var _react = _interopRequireWildcard(require("react"));
+
+var _Button = require("../Button");
+
+var _commonPropTypes = require("../common-prop-types");
 
 var _DropMenu = require("../DropMenu");
 
-var _Button = require("../Button");
+var _Arrow = require("../icons/Arrow.js");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -119,10 +121,10 @@ DropdownButton.propTypes = {
   component: _propTypes.default.element.isRequired,
   icon: _propTypes.default.element,
   children: _propTypes.default.string,
-  small: _propTypes.default.bool,
-  large: _propTypes.default.bool,
-  primary: _propTypes.default.bool,
-  secondary: _propTypes.default.bool,
-  destructive: _propTypes.default.bool,
+  small: _commonPropTypes.sizePropType,
+  large: _commonPropTypes.sizePropType,
+  primary: _commonPropTypes.buttonVariantPropType,
+  secondary: _commonPropTypes.buttonVariantPropType,
+  destructive: _commonPropTypes.buttonVariantPropType,
   disabled: _propTypes.default.bool
 };

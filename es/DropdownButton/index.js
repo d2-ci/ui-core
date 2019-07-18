@@ -4,11 +4,12 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import { ArrowUp, ArrowDown } from '../icons/Arrow.js';
-import { DropMenu } from '../DropMenu';
+import React, { Component } from 'react';
 import { Button } from '../Button';
+import { buttonVariantPropType, sizePropType } from '../common-prop-types';
+import { DropMenu } from '../DropMenu';
+import { ArrowDown, ArrowUp } from '../icons/Arrow.js';
 
 var _ref =
 /*#__PURE__*/
@@ -61,11 +62,11 @@ DropdownButton.propTypes = {
   component: propTypes.element.isRequired,
   icon: propTypes.element,
   children: propTypes.string,
-  small: propTypes.bool,
-  large: propTypes.bool,
-  primary: propTypes.bool,
-  secondary: propTypes.bool,
-  destructive: propTypes.bool,
+  small: sizePropType,
+  large: sizePropType,
+  primary: buttonVariantPropType,
+  secondary: buttonVariantPropType,
+  destructive: buttonVariantPropType,
   disabled: propTypes.bool
 };
 export { DropdownButton };

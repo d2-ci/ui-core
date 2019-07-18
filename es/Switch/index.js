@@ -2,9 +2,10 @@ import _JSXStyle from "styled-jsx/style";
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import React, { Component, createRef } from 'react';
-import propTypes from 'prop-types';
 import cx from 'classnames';
+import propTypes from 'prop-types';
+import React, { Component, createRef } from 'react';
+import { statusPropType } from '../common-prop-types';
 import { SwitchIcon } from '../icons/Switch.js';
 import styles from './styles';
 const Input = React.forwardRef(({
@@ -123,9 +124,9 @@ Switch.propTypes = {
   required: propTypes.bool,
   checked: propTypes.bool,
   disabled: propTypes.bool,
-  valid: propTypes.bool,
-  warning: propTypes.bool,
-  error: propTypes.bool,
+  valid: statusPropType,
+  warning: statusPropType,
+  error: statusPropType,
   initialFocus: propTypes.bool,
   onFocus: propTypes.func,
   onBlur: propTypes.func

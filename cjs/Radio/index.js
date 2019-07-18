@@ -9,17 +9,19 @@ exports.Radio = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _classnames = _interopRequireDefault(require("classnames"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _classnames = _interopRequireDefault(require("classnames"));
+var _react = _interopRequireWildcard(require("react"));
+
+var _commonPropTypes = require("../common-prop-types");
+
+var _Radio = require("../icons/Radio.js");
 
 var _theme = require("../theme.js");
 
 var _styles = _interopRequireDefault(require("./styles.js"));
-
-var _Radio = require("../icons/Radio.js");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -201,8 +203,8 @@ Radio.propTypes = {
   required: _propTypes.default.bool,
   checked: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
-  valid: _propTypes.default.bool,
-  warning: _propTypes.default.bool,
-  error: _propTypes.default.bool,
+  valid: _commonPropTypes.statusPropType,
+  warning: _commonPropTypes.statusPropType,
+  error: _commonPropTypes.statusPropType,
   initialFocus: _propTypes.default.bool
 };

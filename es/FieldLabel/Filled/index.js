@@ -1,11 +1,12 @@
 import _JSXStyle from "styled-jsx/style";
+import cx from 'classnames';
 import propTypes from 'prop-types';
 import React from 'react';
-import cx from 'classnames';
+import { statusPropType } from '../../common-prop-types';
+import { StatusIconNoDefault } from '../../icons/Status';
+import { colors, spacers, theme } from '../../theme.js';
 import { InputContainer } from './InputContainer';
 import { Label } from './Label';
-import { StatusIconNoDefault } from '../../icons/Status';
-import { colors, theme, spacers } from '../../theme.js';
 const styles = [".label-filled.jsx-2208810752{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:rgba(0,0,10,0.05);border-bottom:2px solid transparent;border-radius:4px;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;height:56px;position:relative;}", ".label-filled.jsx-2208810752:not(.disabled):hover{background-color:rgba(0,0,10,0.08);}", ".disabled.jsx-2208810752{cursor:not-allowed;}", ".dense.jsx-2208810752{height:44px;}", `.focus.jsx-2208810752{border-color:${colors.teal600};}`, `.valid.jsx-2208810752{border-color:${theme.valid};}`, `.valid.focus.jsx-2208810752{border-color:${colors.blue700};}`, `.warning.jsx-2208810752{border-color:${theme.warning};}`, `.warning.focus.jsx-2208810752{border-color:${colors.yellow700};}`, `.error.jsx-2208810752{border-color:${theme.error};}`, `.error.focus.jsx-2208810752{border-color:${colors.red700};}`, ".content.jsx-2208810752{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:100%;position:relative;width:100%;}", `.status-icon.jsx-2208810752{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:24px;height:24px;margin-right:${spacers.dp4};margin-left:${spacers.dp12};}`, ".status-icon.jsx-2208810752:empty{display:none;}", `.status-icon.jsx-2208810752:last-child{margin-right:${spacers.dp12};}`];
 styles.__hash = "2208810752";
 export const Filled = ({
@@ -69,9 +70,9 @@ Filled.propTypes = {
   value: propTypes.bool,
   disabled: propTypes.bool,
   required: propTypes.bool,
-  valid: propTypes.bool,
-  error: propTypes.bool,
-  warning: propTypes.bool,
+  valid: statusPropType,
+  error: statusPropType,
+  warning: statusPropType,
   loading: propTypes.bool,
   dense: propTypes.bool,
   className: propTypes.string

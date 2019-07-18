@@ -7,13 +7,15 @@ exports.Modal = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = require("react-dom");
 
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
+var _commonPropTypes = require("../common-prop-types");
 
 var _ScreenCover = require("../ScreenCover");
 
@@ -66,6 +68,6 @@ Modal.propTypes = {
   // Callback used when clicking on the screen cover
   onClose: _propTypes.default.func,
   open: _propTypes.default.bool,
-  small: _propTypes.default.bool,
-  large: _propTypes.default.bool
+  small: _commonPropTypes.sizePropType,
+  large: _commonPropTypes.sizePropType
 };

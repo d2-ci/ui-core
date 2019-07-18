@@ -9,19 +9,21 @@ exports.SplitButton = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _classnames = _interopRequireDefault(require("classnames"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _Arrow = require("../icons/Arrow.js");
-
-var _DropMenu = require("../DropMenu");
+var _react = _interopRequireWildcard(require("react"));
 
 var _Button = require("../Button");
 
 var _ButtonStrip = require("../ButtonStrip");
+
+var _commonPropTypes = require("../common-prop-types");
+
+var _DropMenu = require("../DropMenu");
+
+var _Arrow = require("../icons/Arrow.js");
 
 var _theme = require("../theme.js");
 
@@ -141,8 +143,8 @@ SplitButton.propTypes = {
   icon: _propTypes.default.element,
   small: _propTypes.default.bool,
   large: _propTypes.default.bool,
-  primary: _propTypes.default.bool,
-  secondary: _propTypes.default.bool,
-  destructive: _propTypes.default.bool,
+  primary: _commonPropTypes.buttonVariantPropType,
+  secondary: _commonPropTypes.buttonVariantPropType,
+  destructive: _commonPropTypes.buttonVariantPropType,
   disabled: _propTypes.default.bool
 };

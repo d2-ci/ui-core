@@ -11,9 +11,11 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Arrow = require("../icons/Arrow");
+var _commonPropTypes = require("../common-prop-types");
 
 var _FieldLabel = require("../FieldLabel");
+
+var _Arrow = require("../icons/Arrow");
 
 var _Select = require("./Select");
 
@@ -172,9 +174,9 @@ SelectField.propTypes = {
   disabled: _propTypes.default.bool,
   filled: _propTypes.default.bool,
   dense: _propTypes.default.bool,
-  valid: _propTypes.default.bool,
-  warning: _propTypes.default.bool,
-  error: _propTypes.default.bool,
+  valid: _commonPropTypes.statusPropType,
+  warning: _commonPropTypes.statusPropType,
+  error: _commonPropTypes.statusPropType,
   loading: _propTypes.default.bool,
   initialFocus: _propTypes.default.bool,
   onFocus: _propTypes.default.func,

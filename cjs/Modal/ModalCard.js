@@ -7,15 +7,17 @@ exports.ModalCard = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireDefault(require("react"));
+var _classnames = _interopRequireDefault(require("classnames"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _theme = require("../theme.js");
+var _react = _interopRequireDefault(require("react"));
 
 var _Card = require("../Card");
+
+var _commonPropTypes = require("../common-prop-types");
+
+var _theme = require("../theme.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42,6 +44,6 @@ exports.ModalCard = ModalCard;
 ModalCard.propTypes = {
   // Can be Modal.Title; Must be Modal.Content and Modal.Actions
   children: _propTypes.default.oneOfType([_propTypes.default.element, _propTypes.default.arrayOf(_propTypes.default.element)]).isRequired,
-  small: _propTypes.default.bool,
-  large: _propTypes.default.bool
+  small: _commonPropTypes.sizePropType,
+  large: _commonPropTypes.sizePropType
 };

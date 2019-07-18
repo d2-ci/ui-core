@@ -1,9 +1,10 @@
 import _JSXStyle from "styled-jsx/style";
-import React from 'react';
-import propTypes from 'prop-types';
 import cx from 'classnames';
-import { spacers } from '../theme.js';
+import propTypes from 'prop-types';
+import React from 'react';
 import { Card } from '../Card';
+import { sizePropType } from '../common-prop-types';
+import { spacers } from '../theme.js';
 const cardBoxStyle = {
   styles: React.createElement(_JSXStyle, {
     id: "3900320195"
@@ -25,6 +26,6 @@ export const ModalCard = ({
 ModalCard.propTypes = {
   // Can be Modal.Title; Must be Modal.Content and Modal.Actions
   children: propTypes.oneOfType([propTypes.element, propTypes.arrayOf(propTypes.element)]).isRequired,
-  small: propTypes.bool,
-  large: propTypes.bool
+  small: sizePropType,
+  large: sizePropType
 };

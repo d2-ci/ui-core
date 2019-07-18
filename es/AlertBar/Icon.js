@@ -1,7 +1,8 @@
 import _JSXStyle from "styled-jsx/style";
+import propTypes from 'prop-types';
 import React from 'react';
-import { Valid, Warning, Error, Info } from '../icons/Status';
-import { iconPropType, variantProptype } from './index';
+import { statusPropType } from '../common-prop-types';
+import { Error, Info, Valid, Warning } from '../icons/Status';
 import { spacers } from '../theme.js';
 
 var _ref =
@@ -52,10 +53,11 @@ const Icon = ({
   }, [`div.__jsx-style-dynamic-selector{margin-right:${spacers.dp16};}`, "div.__jsx-style-dynamic-selector svg{width:24px;height:24px;}"]));
 };
 
+const iconPropType = propTypes.oneOfType([propTypes.bool, propTypes.element]);
 Icon.propTypes = {
   icon: iconPropType,
-  success: variantProptype,
-  warning: variantProptype,
-  critical: variantProptype
+  success: statusPropType,
+  warning: statusPropType,
+  critical: statusPropType
 };
-export { Icon };
+export { Icon, iconPropType };

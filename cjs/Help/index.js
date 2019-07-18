@@ -7,11 +7,13 @@ exports.Help = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireDefault(require("react"));
+var _classnames = _interopRequireDefault(require("classnames"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _classnames = _interopRequireDefault(require("classnames"));
+var _react = _interopRequireDefault(require("react"));
+
+var _commonPropTypes = require("../common-prop-types");
 
 var _theme = require("../theme.js");
 
@@ -40,7 +42,7 @@ Help.defaultProps = {};
 Help.propTypes = {
   className: _propTypes.default.string,
   children: _propTypes.default.string.isRequired,
-  error: _propTypes.default.bool,
-  valid: _propTypes.default.bool,
-  warning: _propTypes.default.bool
+  error: _commonPropTypes.statusPropType,
+  valid: _commonPropTypes.statusPropType,
+  warning: _commonPropTypes.statusPropType
 };

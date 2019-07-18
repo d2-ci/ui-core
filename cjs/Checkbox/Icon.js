@@ -7,15 +7,17 @@ exports.Icon = void 0;
 
 var _style = _interopRequireDefault(require("styled-jsx/style"));
 
-var _react = _interopRequireDefault(require("react"));
+var _classnames = _interopRequireDefault(require("classnames"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _classnames = _interopRequireDefault(require("classnames"));
+var _react = _interopRequireDefault(require("react"));
 
-var _theme = require("../theme.js");
+var _commonPropTypes = require("../common-prop-types");
 
 var _Checkbox = require("../icons/Checkbox");
+
+var _theme = require("../theme.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62,9 +64,9 @@ exports.Icon = Icon;
 Icon.propTypes = {
   checked: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
-  valid: _propTypes.default.bool,
-  error: _propTypes.default.bool,
-  warning: _propTypes.default.bool,
+  valid: _commonPropTypes.statusPropType,
+  error: _commonPropTypes.statusPropType,
+  warning: _commonPropTypes.statusPropType,
   indeterminate: _propTypes.default.bool,
   focus: _propTypes.default.bool
 };
