@@ -45,9 +45,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var icons = {
   styles: _react.default.createElement(_style.default, {
-    id: "1822073958"
-  }, ["svg.jsx-1822073958{display:block;height:24px;width:24px;fill:".concat(_theme.theme.default, ";}"), ".focus.jsx-1822073958{fill:".concat(_theme.colors.grey800, ";}"), ".checked.jsx-1822073958{fill:".concat(_theme.colors.teal400, ";}"), ".disabled.jsx-1822073958{fill:".concat(_theme.theme.disabled, ";}"), ".error.jsx-1822073958{fill:".concat(_theme.theme.error, ";}"), ".valid.jsx-1822073958{fill:".concat(_theme.theme.valid, ";}"), ".warning.jsx-1822073958{fill:".concat(_theme.theme.warning, ";}")]),
-  className: "jsx-1822073958"
+    id: "63432708"
+  }, ["svg.jsx-63432708{display:block;height:24px;width:24px;fill:".concat(_theme.theme.default, ";}"), ".focus.jsx-63432708{fill:".concat(_theme.colors.grey800, ";}"), ".checked.jsx-63432708{fill:".concat(_theme.colors.teal400, ";}"), ".disabled.jsx-63432708{fill:".concat(_theme.theme.disabled, ";}"), ".error.jsx-63432708{fill:".concat(_theme.theme.error, ";}"), ".valid.jsx-63432708{fill:".concat(_theme.theme.valid, ";}"), ".warning.jsx-63432708{fill:".concat(_theme.theme.warning, ";}")]),
+  className: "jsx-63432708"
 };
 
 var Input = _react.default.forwardRef(function (_ref, ref) {
